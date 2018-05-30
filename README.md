@@ -17,3 +17,10 @@ Overview of resources to prepare the upcoming Web and Database Technology course
 - [Web Programming /U Washington](https://courses.cs.washington.edu/courses/cse154/17au/lectures.shtml)
 - [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
 - [Javascript /UPenn](http://www.seas.upenn.edu/~cis197/)
+
+
+## Final project ideas
+- [Long list of sample apps](https://flaviocopes.com/sample-app-ideas/)
+- text2speech app that reads out any content pointed to by a URL
+- bill tracker - take pics of bills, automatically recognize amount/time and provide visual feedback
+- 
