@@ -4,7 +4,8 @@ Overview of resources to prepare the upcoming Web and Database Technology course
 
 ## Existing university-level courses
 - [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
-  - Text book: Introducing HTML5 (2012 edition), [PDF](ftp://ftp.micronet-rostov.ru/linux-support/books/programming/HTML-CSS/[New%20Riders]%20-%20Introducing%20HTML5,%202nd%20ed.%20-%20[Lawson,%20Sharp].pdf)
+  - Text book: Introducing HTML5 (2012 edition)
+  - Includes material on the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API); can be taught in the *Cookies & Sessions* lecture
 - [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
 - [Web Programming Fundamentals /Stanford](http://web.stanford.edu/class/cs193x/)
 - [Creating Modern Web Applications /Brown](https://cs.brown.edu/courses/csci1320/index.html)
