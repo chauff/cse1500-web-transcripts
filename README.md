@@ -4,6 +4,8 @@ Overview of resources to prepare the upcoming Web and Database Technology course
 
 ## Existing university-level courses
 - [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
+  - fds
+  - test
 - [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
 - [Web Programming Fundamentals /Stanford](http://web.stanford.edu/class/cs193x/)
 - [Creating Modern Web Applications /Brown](https://cs.brown.edu/courses/csci1320/index.html)
