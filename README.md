@@ -3,6 +3,7 @@
 Overview of resources to prepare the upcoming Web and Database Technology course.
 
 ## Existing university-level courses
+- [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
 - [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
   - Text book: Introducing HTML5 (2012 edition)
   - Includes material on the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API); can be taught in the *Cookies & Sessions* lecture
