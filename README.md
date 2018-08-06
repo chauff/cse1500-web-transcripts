@@ -49,7 +49,7 @@ This overview focuses solely on the Web programming part of the course (8 out of
   - Required readings:
     - Chapters 5 & 6 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
-    - [learnyounode](https://github.com/workshopper/learnyounode) is an interactive tutorial of node.js
+    - The following exercises of the [learnyounode](https://github.com/workshopper/learnyounode) interactive node.js tutorial:
     ![alt text](learnyounode-lecture4.png "List of learnyounode exercises, relevant for the lecture")
     - [how-to-npm](https://github.com/npm/how-to-npm) is an interactive tutorial on the use of npm (node's package manager)
     - CodeSchool has a [node.js module](https://www.codeschool.com/courses/real-time-web-with-node-js) tutorial as well; free trial available
