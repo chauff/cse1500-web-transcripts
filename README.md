@@ -9,6 +9,13 @@ This overview focuses solely on the Web programming part of the course (8 out of
 - [node.js](https://nodejs.org/en/) (required)
 - Modern Web browser (Chrome, Firefox, Edge, ...)
 
+## Grading
+- Course grade:
+  - 40% midterm
+  - 40% final exam
+  - 20% assignments
+- Requirements: to pass, the overall grade must be 5.8 or higher and both the midterm and final exam grade must have been a 5 or higher; assignments are not required (though they count towards the final grade)
+- Assignments are done in pairs of two and graded by TAs in a pass/fail manner
 
 ## List of lectures (as of 2017/18)
 
