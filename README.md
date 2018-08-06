@@ -1,8 +1,12 @@
 # Web-Teaching
 
 Overview of resources, notes and ideas for the upcoming edition of the [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438).
-This overview focuses solely on the Web programming part of the course (8 out of 15 lectures). 
+This overview focuses solely on the Web programming part of the course (8 out of 15 lectures).
 
+## Basic setup 
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [node.js](https://nodejs.org/en/)
+- Modern Web browser (Chrome, Firefox, ...)
 
 
 ## List of lectures (as of 2017/18)
