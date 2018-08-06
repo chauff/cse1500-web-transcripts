@@ -10,12 +10,13 @@ This overview focuses solely on the Web programming part of the course (8 out of
 - Modern Web browser (Chrome, Firefox, Edge, ...)
 
 ## Grading
+
 - Course grade:
   - 40% midterm
   - 40% final exam
   - 20% assignments
 - Requirements: to pass, the overall grade must be 5.8 or higher and both the midterm and final exam grade must have been a 5 or higher; assignments are not required (though they count towards the final grade)
-- Assignments are done in pairs of two and graded by TAs in a pass/fail manner
+- Assignments are done in pairs of two students and graded by TAs in a pass/fail manner
 
 ## List of lectures (as of 2017/18)
 
@@ -95,8 +96,6 @@ This overview focuses solely on the Web programming part of the course (8 out of
 
 - [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
 - [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
-  - Text book: Introducing HTML5 (2012 edition)
-  - Includes material on the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API); can be taught in the *Cookies & Sessions* lecture
 - [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
 - [Web Programming Fundamentals /Stanford](http://web.stanford.edu/class/cs193x/)
 - [Creating Modern Web Applications /Brown](https://cs.brown.edu/courses/csci1320/index.html)
