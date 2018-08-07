@@ -1,8 +1,8 @@
 # Web and Database Technology (CSE1500)
 
-Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **This overview focuses solely on the Web programming part of the course (first 8 out of 15 lectures).**
+Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
 
-## Required/recommended tools and frameworks
+## Required & recommended tools
 
 - [Visual Studio Code](https://code.visualstudio.com/) (recommended IDE, TAs are familiar with it)
 - [node.js](https://nodejs.org/en/) (required)
@@ -11,12 +11,22 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 ## Grading
 
 - Course grade:
-  - 40% midterm
-  - 40% final exam
+  - 40% midterm (covers the 8 Web technology lectures)
+  - 40% final exam (covers the 8 database technology lectures)
   - 20% assignments
-- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be **5** or higher AND the final exam grade must be **5** or higher. The assignments are **not required**, though they count towards the final grade.
-- Assignments are done in pairs of two students and graded by TAs in a pass/fail manner. There are five assignments in total.
+- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5**. The assignments are **not required**, though they count towards the final grade.
+- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are five assignments in total.
 - There is one option to resit one or more assignments in the week before Christmas.
+
+## Course topics
+
+- Week 1: (1) HTTP and (2) HTML5
+- Week 2: (3) JavaScript and (4) node.js
+- Week 3: (5) CSS and (6) node.js (advanced topics)
+- Week 4: (7) Cookies & sessions and (8) Web security
+- Week 5: DB topics
+- Week 6: _no lecture_ on Monday; midterm on Thursday
+- ...
 
 ## Assignments
 
@@ -28,7 +38,7 @@ Across the five assignments, a Web application, using the modern Web stack will 
 - [Assignment 4](Assignment-4.md)
 - [Assignment 5](Assignment-5.md)
 
-## Interactive exercises
+## Interactive Web technology exercises
 
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. 
