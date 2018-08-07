@@ -1,7 +1,6 @@
-# Web-Teaching
+# Web and Database Technology (CSE1500)
 
-Overview of resources, notes and ideas for the upcoming 2018/19 edition of the [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438).
-This overview focuses solely on the Web programming part of the course (8 out of 15 lectures).
+Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **This overview focuses solely on the Web programming part of the course (first 8 out of 15 lectures).**
 
 ## Required/recommended tools and frameworks
 
@@ -15,12 +14,32 @@ This overview focuses solely on the Web programming part of the course (8 out of
   - 40% midterm
   - 40% final exam
   - 20% assignments
-- Requirements: to pass, the overall grade must be 5.8 or higher and both the midterm and final exam grade must have been a 5 or higher; assignments are not required (though they count towards the final grade)
-- Assignments are done in pairs of two students and graded by TAs in a pass/fail manner
+- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be **5** or higher AND the final exam grade must be **5** or higher. The assignments are **not required**, though they count towards the final grade.
+- Assignments are done in pairs of two students and graded by TAs in a pass/fail manner. There are five assignments in total.
+- There is one option to resit one or more assignments in the week before Christmas.
 
-## [List of useful interactive exercises (new in 2018/19)](nodeschool-exercises.md)
+## Assignments
 
-## List of lectures (as of 2017/18)
+Across the five assignments, a Web application, using the modern Web stack will be built.
+
+- [Assignment 1](Assignment-1.md)
+- [Assignment 2](Assignment-2.md)
+- [Assignment 3](Assignment-3.md)
+- [Assignment 4](Assignment-4.md)
+- [Assignment 5](Assignment-5.md)
+
+## Interactive exercises
+
+Students who do not have a lot of prior knowledge often struggle to get started.
+Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. 
+
+## Handing in your code
+
+- proper `package.json`
+- proper `README.md` (check provided template)
+- Heroku deployment(?)
+
+## List of lectures (2017/18)
 
 - Lecture 1 ([PDF-1](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf), [PDF-2](https://chauff.github.io/documents/webdb-2017-18/web-http-continued.pdf)) on **HTTP**: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
   - Required readings: *none*
@@ -92,28 +111,3 @@ This overview focuses solely on the Web programming part of the course (8 out of
     - [Stanford's CS155](https://crypto.stanford.edu/cs155/): Computer and Network Security course has a number of lectures on Web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf))
     - CERN's [Web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class
     - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) provides an extensive list of practical tips, best practices and further readings on the topic.
-
-
-## List of external university-level courses with a Web focus
-
-- [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
-- [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
-- [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
-- [Web Programming Fundamentals /Stanford](http://web.stanford.edu/class/cs193x/)
-- [Creating Modern Web Applications /Brown](https://cs.brown.edu/courses/csci1320/index.html)
-- [Web Security /NUS](http://www.comp.nus.edu.sg/~prateeks/teaching/sp15/cs5331-sp15.html)
-- [Programming Languages for Web Applications /Virginia](http://www.cs.virginia.edu/~up3f/cs4640/schedule.html)
-- [Web Development /MIT](http://webdevelopment.mit.edu/2018/lectures)
-- [Web Technologies /USC](http://cs-server.usc.edu:45678/lectures.html)
-- [Web Development /NYU](https://cs.nyu.edu/courses/spring15/CSCI-UA.0061-002/syllabus/)
-- [Cutting-edge Web Technologies /Berkeley](https://inst.eecs.berkeley.edu/~cs294-101/sp15/)
-- [Web Technologies /U Texas](http://www.cs.utsa.edu/~cs4413/)
-- [Web Programming /U Washington](https://courses.cs.washington.edu/courses/cse154/17au/lectures.shtml)
-- [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
-- [Javascript /UPenn](http://www.seas.upenn.edu/~cis197/)
-
-## Final project ideas
-
-- [Long list of sample apps](https://flaviocopes.com/sample-app-ideas/)
-- text2speech app that reads out any content pointed to by a URL
-- bill tracker - take pics of bills, automatically recognize amount/time and provide visual feedback
