@@ -1,6 +1,6 @@
 # Overview of interactive Web programming exercises
 
-One of the issues beginning Web developers face is the deluge of materials that are "out there" on the Web. It is easy to be overwhelmed, not just by the amount of material, but also the fast pace of new standards, new frameworks and new languages. In this course, we only have a few weeks to teach you the basics of Web programming. For this reason, below we have listed a number of interactive exercises from a single source: [nodeschool.io](https://nodeschool.io/). 
+One of the issues beginning Web developers face is the deluge of materials that are "out there" on the Web. It is easy to be overwhelmed, not just by the amount of material, but also the fast pace of new standards, new frameworks and new languages. In this course, we only have a few weeks to teach you the basics of Web programming. For this reason, below we have listed a number of interactive exercises from a single source: [nodeschool.io](https://nodeschool.io/). These "exercise bundles" are themselves implemented as node.js packages! So, you will use `node` to learn `node`!
 
 Nodeschool offers a long list of self-guided tutorials and exercises; we have matched them up to our lectures. A ● indicates that this concept is taught in class, a ◐ indicates that this is useful knowledge (especially towards completing your assignments) but not required. If a row has no mark at all, then this exercise can savely be skipped. 
 
@@ -9,6 +9,13 @@ A nice side effect of the nodeschool.io exercises is the fact that they all requ
 These are largely introductory exercises, each one takes no longer than 3-4 minutes to read up upon and solve (some less than a minute). They will help you to get started if you have never programmed in JavaScript and/or node.js before this course. They do not only introduce language features, but also how to use the node package manger `npm`, how to debug node.js programs and so on.
 
 **Note**: _We do not require you to go through these exercises, they are supposed to help you get started on your assignments._
+
+## Where do I start?
+
+1. Make sure to have `node` and `npm` installed.
+2. Access the GitHub repositories linked in the table.
+3. Install each package as described in the GitHub README, e.g. `npm install --global javascripting` or `npm install learnyounode`. In the latter case (no `--global` option) the package will be installed in the current directory under `node_modules`. If you can choose, stick to the global installation of the package as described in the READMEs, as then you can directly follow the instructions in the respective repository and simply start the workshop with the command `javascripting` or `learnyounode`. If you cannot for some reason globally install the packages, your command will look something like this `node node_modules/javascripting/bin/javascripting`.
+4. Run through the workshop exercises!
 
 <center>
 
