@@ -1,9 +1,9 @@
 # Web-Teaching
 
-Overview of resources, notes and ideas for the upcoming edition of the [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438).
+Overview of resources, notes and ideas for the upcoming 2018/19 edition of the [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438).
 This overview focuses solely on the Web programming part of the course (8 out of 15 lectures).
 
-## Required/recommended tools and frameworks 
+## Required/recommended tools and frameworks
 
 - [Visual Studio Code](https://code.visualstudio.com/) (recommended IDE, TAs are familiar with it)
 - [node.js](https://nodejs.org/en/) (required)
@@ -18,6 +18,8 @@ This overview focuses solely on the Web programming part of the course (8 out of
 - Requirements: to pass, the overall grade must be 5.8 or higher and both the midterm and final exam grade must have been a 5 or higher; assignments are not required (though they count towards the final grade)
 - Assignments are done in pairs of two students and graded by TAs in a pass/fail manner
 
+## [List of useful interactive exercises (new in 2018/19)](nodeschool-exercises.md)
+
 ## List of lectures (as of 2017/18)
 
 - Lecture 1 ([PDF-1](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf), [PDF-2](https://chauff.github.io/documents/webdb-2017-18/web-http-continued.pdf)) on **HTTP**: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
@@ -29,7 +31,7 @@ This overview focuses solely on the Web programming part of the course (8 out of
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
-  - Required readings: 
+  - Required readings:
     - Chapter 2 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
     - HTML form slides
   - Recommended readings:
@@ -49,14 +51,12 @@ This overview focuses solely on the Web programming part of the course (8 out of
   - Required readings:
     - Chapters 5 & 6 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
-    - The following starred exercises of the [learnyounode](https://github.com/workshopper/learnyounode) interactive node.js tutorial:
-    ![alt text](learnyounode-lecture4.png "List of learnyounode exercises, relevant for the lecture")
-    - The following starred exercises of the [how-to-npm](https://github.com/npm/how-to-npm) interactive node package manager (npm) tutorial:
-    ![alt text](howtonpm-lecture4.png "List of how-to-npm exercises, relevant for the lecture")
+    - [learnyounode](https://github.com/workshopper/learnyounode) is an interactive tutorial of node.js
+    - [how-to-npm](https://github.com/npm/how-to-npm) is an interactive tutorial on the use of npm (node's package manager)
+    - CodeSchool has a [node.js module](https://www.codeschool.com/courses/real-time-web-with-node-js) tutorial as well; free trial available
   - Recommended readings:
     - A [comprehensive list of node.js resources](https://github.com/sergtitov/NodeJS-Learning) is updated by Sergey Titov
     - The recommended IDE for this course is [Visual Studio Code](https://code.visualstudio.com/) (open-source, available for all major operating systems). [Here](https://vscodecandothat.com/) is a good overview of some of the very useful but less obvious features of VS.
-  - *Missing bits and pieces: package.json, npmjs.com now requires a login*
   
 - Lecture 5 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
   - Required readings:
