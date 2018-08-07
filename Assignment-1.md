@@ -149,6 +149,7 @@ start, decide on your **target audience**.
 - the two designs (entry page and habit tracker page);
 - who you envision your target audience to be;
 - a paragraph on the reasoning behind your design and the design goals.
+
 **[TODO: is APONE a better choice here?]**
 
 ---
@@ -158,3 +159,7 @@ start, decide on your **target audience**.
 **[TODO: provide a folder structure that resembles what is needed later]**
 
 ### 8.1) Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript). 
+
+---
+
+**[TODO: summarize deliverables here again?]**
