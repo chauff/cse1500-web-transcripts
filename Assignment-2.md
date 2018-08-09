@@ -1,9 +1,8 @@
 # Assignment 2
 
-In the first part of this assignment, you will add client-­side JavaScript code to your application
-to make it *interactive*. In the second part of this assignment, you will get started with node.js.
+In this assignment you will built the backbone of your application. In the first part of this assignment, you will add client-­side JavaScript code to your application to make it interactive. In part II, you will write node.js code and use Ajax/JSON to enable the client and server to communicate with each other.
 
-Remember that this is a group assignment! Work efficiently as a team!
+Remember that this is a group assignment! Work efficiently as a team! **[TODO: both need to know the code, but one can have written one part and the other the other part ...]**
 
 **[TODO: make it clear how exactly the deliverable should look like: where to upload, what to upload]**
 
@@ -42,3 +41,30 @@ Recall the step-by-step guide of creating a responsive UI control, introduced in
 - Achieve a separation between content and interaction: the JavaScript-­based interaction functionality should not be embedded in your HTML files.
 
 *Note: do not have to incorporate style elements yet (CSS), we will cover the style in a later lecture. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment.*
+
+## 4. node.js
+
+So far your application can handle basic interactions, through client-side JavaScript. Lets now
+implement a first node.js script. Your script should be able to do the following:
+
+- Keep a list of the habits in memory on the server.
+- Allow the client (the browser) to retrieve the habits from the server; use the JSON format for this task.
+- Allow the client to add a habit to the server.
+- Allow the client to update a habit on the server.
+- Allow the client to delete a habit from the server.
+
+## 5. Ajax
+
+Use Ajax to allow the dynamic updating of the habit page in the browser (i.e. without reloading of the complete page). Again, book chapters 5 & 6 of the Web course book will help you if you are stuck.
+
+Note: Example 6 also contains a hint of how to enable repeated checking of the server (i.e. every X seconds the habit page polls the server for the habits). This can easily be achieved by wrapping this line into a timer function:
+
+```javascript
+setInterval(function () {
+    console.log("Fetching the habit list from the server.");
+    $.getJSON("habits", addHabitsToList);
+}, 2000);
+```
+
+This piece of code will retrieve a list of habits from the server every 2 seconds (it is your job to check whether those habits differ from what is already there).
+
