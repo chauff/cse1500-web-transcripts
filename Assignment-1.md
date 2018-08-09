@@ -4,23 +4,22 @@ The first part of this assignment gives you hands-­on experience in **http**. I
 
 Remember that this is a group assignment! Work efficiently as a team!
 
-**[TODO: make it clear what the deliverable is]**
-
+**[TODO: make it clear how exactly the deliverable should look like: where to upload, what to upload]**
 
 ## 1. HTTP request messages: GET/HEAD
 
 ---
 Hints:
-- To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`. As an example:
-`telnet www.microsoft.com 80|tee outfile` will save all output to the file outfile.
-- [carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when to press 'Enter'.
+
+- To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.microsoft.com 80|tee out` will save all output to a file called `out`.
+
+- [carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when to press `<Enter>`.
+
 ---
 
-This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go. If you are a Windows user you can either install the Windows Subsystem for Linux (on Windows 10) or install a Windows compatible telnet client such as [PuTTY](https://www.putty.org/). 
+This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go. If you are a Windows user please use the Windows Subsystem for Linux.
 
 Use `telnet` to request the contents of the bread section of the recipe website `myrecipes.com/bread-recipes`.
-
-**[TODO: separate instructions for the use of PuTTY]**
 
 **[TODO: check if the URL is still accessible]**
 
@@ -43,7 +42,7 @@ telnet myrecipes.com 80
 
 ## 2. HTTP request messages: PUT
 
-While `GET` and `HEAD` are request methods accepted by virtually all Web servers, `PUT`/`POST`/`DELETE` are less often available, due to the implications these methods have on the server.
+While `GET` and `HEAD` are request methods accepted by virtually all Web servers, `PUT`, `POST` and `DELETE` are less often available, due to the implications these methods have on the server.
 
 To test your skills in uploading, deleting and posting data, we will make use of [http://httpbin.org/](http://httpbin.org/), a service designed to test HTTP messages.
 
@@ -73,9 +72,10 @@ is of content-­type JSON; we are interested in the `data` field, which should 
 
 Lets now try to request a page, which is set up with HTTP basic authentication.
 
-### 3.1) First, open [http://httpbin.org/basic-­auth/user/passwd](http://httpbin.org/basic-­auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password. Reload the Web page -­ what happens now?
+### 3.1) First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password. Reload the Web page -­ what happens now?
 
 ### 3.2) Now let's see how this works with actual HTTP messages. Start off with a `HEAD` method to inspect the Web page and document all following steps (requests and responses):
+
 ```
 telnet httpbin.org 80
 
@@ -84,12 +84,15 @@ host:httpbin.org
 [carriage return]
 [carriage return]
 ```
-### Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g.[http://decodebase64.com](http://decodebase64.com). Remember that username and password should be combined as `username:password`.
 
-### 3.3) Now close the TCP connection and start a new one, using again: 
+### Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g.[http://decodebase64.com](http://decodebase64.com). Remember that username and password should be combined as `username:password`. **[TODO: find a better decodebase link!]**
+
+### 3.3) Now close the TCP connection and start a new one, using again:
+
 ````
 telnet httpbin.org 80
-```` 
+````
+
 ### Request the same page -­ what happens? Is the behavior the same as reloading the page in the browser?
 
 ---
@@ -104,6 +107,7 @@ reports.*
 In this assignment you will start developing your own habit tracker application by first considering existing applications and then designing your own.
 
 ### 4.1) Select two habit tracker applications, either from the following list or of your own choice (they should be accessible from the Web, without installing a native app):
+
 - A
 - B
 - C
@@ -117,10 +121,10 @@ In this assignment you will start developing your own habit tracker application 
 ### 5.1) For each of the two chosen applications, perform a usability test yourself by performing the following actions: 
 
 1. create a habit (e.g. “early morning yoga”) that should happen every weekday (not at the weekend), and
-2.  a habit that should happen once a week (e.g. “go swimming”);
+2. a habit that should happen once a week (e.g. “go swimming”);
 3. self-­report on both habits;
 4. check the progress on how well you are doing;
-5. delete one habit. 
+5. delete one habit.
 
 ### Report on which habit tracker you performed the tests on. Report how much time and how many clicks it took you to perform the actions.
 
@@ -144,8 +148,8 @@ start, decide on your **target audience**.
 
 ### Note: the wireframes can be done with pen and paper or a software tool (e.g. Gliffy, Balsamiq, Moqups or even Photoshop) of your choice.
 
-
 ### 7.3) Once you have completed the design of your app, head over to TI1506’s Brightspace, go to “Discussions” and then the forum HABIT TRACKER APP DESIGNS. Create a thread with your team’s name as subject/title (e.g. “Minor 01” or “TI-­CF 12”) and post your team’s proposed design. Include in the post the following:
+
 - the two designs (entry page and habit tracker page);
 - who you envision your target audience to be;
 - a paragraph on the reasoning behind your design and the design goals.
@@ -158,8 +162,4 @@ start, decide on your **target audience**.
 
 **[TODO: provide a folder structure that resembles what is needed later]**
 
-### 8.1) Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript). 
-
----
-
-**[TODO: summarize deliverables here again?]**
+### 8.1) Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).
