@@ -4,7 +4,12 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 
 ## Required & recommended tools
 
-- [Visual Studio Code](https://code.visualstudio.com/) (recommended IDE, TAs are familiar with it)
+- [Visual Studio Code](https://code.visualstudio.com/) (*VS Code* for short) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we will soon use in this class), but now has extensions for many major programming languages. Best of all, Visual Studio Code itself is written in JavaScript! VS Code offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint);
+  - [JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint);
+  - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer);
+  - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode);
+  - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one.
 - [node.js](https://nodejs.org/en/) (required)
 - Modern Web browser (Chrome, Firefox, Edge, ...)
 
