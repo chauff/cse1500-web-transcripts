@@ -30,7 +30,7 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 - Week 3: (5) CSS and (6) node.js (advanced topics)
 - Week 4: (7) Cookies & sessions and (8) Web security
 - Week 5: DB topics
-- Week 6: _no lecture_ on Monday; midterm on Thursday
+- Week 6: _no lecture_ on Monday; midterm on Thursday (*the midterm only covers Web programming topics*)
 - ...
 
 ## Assignments
