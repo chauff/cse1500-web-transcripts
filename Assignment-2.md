@@ -67,4 +67,3 @@ setInterval(function () {
 ```
 
 This piece of code will retrieve a list of habits from the server every 2 seconds (it is your job to check whether those habits differ from what is already there).
-
