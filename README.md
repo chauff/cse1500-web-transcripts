@@ -11,7 +11,7 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
   - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode);
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one.
 - [node.js](https://nodejs.org/en/) (required)
-- Modern Web browser (Chrome, Firefox, Edge, ...)
+- Modern Web browser such as Chrome, Firefox, Edge, ... (required)
 
 ## Useful online coding platforms
 
