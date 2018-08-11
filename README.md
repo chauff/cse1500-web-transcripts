@@ -1,6 +1,6 @@
 # Web and Database Technology (CSE1500)
 
-Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
+Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. At the moment, only Web topics are covered.
 
 ## Required/recommended tools
 
@@ -13,7 +13,7 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 - [node.js](https://nodejs.org/en/) (required)
 - Modern Web browser (Chrome, Firefox, Edge, ...)
 
-## Useful online platforms
+## Useful online coding platforms
 
 - [Glitch](https://glitch.com/)
 - [Codepen](https://codepen.io/#)
@@ -23,21 +23,23 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 
 - Course grade:
   - 40% midterm (covers the 8 Web technology lectures)
-  - 40% final exam (covers the 8 database technology lectures)
+  - 40% final exam (covers the 7-8 database technology lectures)
   - 20% assignments
-- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5**. The assignments are **not required**, though they count towards the final grade.
-- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are five assignments in total.
-- There is one option to resit one or more assignments in the week before Christmas.
+- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations. The assignments are **not required**, though they count towards the final grade.
+- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are five assignments in total, three cover Web programming topics and two cover database topics.
+- There is one option to resit one or more of the Web programmign assignments in the week before Christmas.
 
 ## Course topics
 
-- Week 1: (1) HTTP and (2) HTML5
-- Week 2: (3) JavaScript and (4) node.js
-- Week 3: (5) CSS and (6) node.js (advanced topics)
-- Week 4: (7) Cookies & sessions and (8) Web security
+- Week 1: (Lecture 1) HTTP and (L2) HTML5
+- Week 2: (L3) JavaScript and (L4) node.js
+- Week 3: (L5) CSS and (L6) node.js (advanced topics)
+- Week 4: (L7) Cookies & sessions and (L8) Web security
 - Week 5: DB topics
-- Week 6: _no lecture_ on Monday; midterm on Thursday (*the midterm only covers Web programming topics*)
-- ...
+- Week 6: _no lectures_ this week; midterm on Thursday (*the midterm only covers Web programming topics*)
+- Week 7: DB topics
+- Week 8: DB topics
+- Week 9: DB topics (still to be decided whether that week is lecture-free)
 
 ## Assignments
 
