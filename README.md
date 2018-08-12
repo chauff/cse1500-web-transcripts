@@ -67,7 +67,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 - proper `README.md` (check provided template)
 - Heroku deployment(?)
 
-## List of lectures (2017/18)
+## List of Wb lectures (2017/18)
 
 - Lecture 1 ([PDF-1](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf), [PDF-2](https://chauff.github.io/documents/webdb-2017-18/web-http-continued.pdf)) on **HTTP**: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
   - Required readings: *none*
