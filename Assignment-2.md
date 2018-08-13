@@ -53,6 +53,8 @@ implement a first node.js script. Your script should be able to do the following
 - Allow the client to update a habit on the server.
 - Allow the client to delete a habit from the server.
 
+Node.js has become a hugely popular way of server-side programming; here is a good overview of [best practices](https://github.com/i0natan/nodebestpractices). Visual Studio Code comes with a good debugging support for node.js by default. If you are more of a command line person, you find [here](https://www.clarkio.com/2017/04/25/debugging-in-nodejs/) a good tutorial of how to debug in the shell.
+
 ## 5. Ajax
 
 Use Ajax to allow the dynamic updating of the habit page in the browser (i.e. without reloading of the complete page). Again, book chapters 5 & 6 of the Web course book will help you if you are stuck.

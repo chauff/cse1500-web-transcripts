@@ -5,18 +5,18 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 ## Todos (instructors)
 
 - Functional email box `cse1500-ewi[at]tudelft.nl`
-- Slack or Mattermost setup
 
-## Required/recommended tools
+## Required [REQ] / recommended [REC] tools
 
-- [Visual Studio Code](https://code.visualstudio.com/) (*VS Code* for short) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we will soon use in this class), but now has extensions for many major programming languages. Best of all, Visual Studio Code itself is written in JavaScript! VS Code offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
+- [REC] [Visual Studio Code](https://code.visualstudio.com/) (*VS Code* for short) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we will soon use in this class), but now has extensions for many major programming languages. Best of all, Visual Studio Code itself is written in JavaScript! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. VS Code also offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint);
   - [JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint);
   - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer);
   - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode);
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one.
-- [node.js](https://nodejs.org/en/) (required)
-- Modern Web browser such as Chrome, Firefox, Edge, ... (required)
+- [REQ] [node.js](https://nodejs.org/en/) (required)
+- [REQ] Modern Web browser such as Chrome, Firefox, Edge, ... (required)
+- [REC] [jest](https://jestjs.io/) for JavaScript testing
 
 ## Useful online coding platforms
 
@@ -76,6 +76,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
     - Read up on the developer tools of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
+    - Note that http information can be used for [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
@@ -110,6 +111,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Chapter 3 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
     - Take a look at the ["pens"](https://codepen.io/pens/#) showcased at [CodePen.io](https://codepen.io/#); it is a good platform to see what is possible in front-end Web development
+    - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS
   - Recommended readings
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of Web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
     - To make sense of CSS positioning, take a look [here](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value) and [here](https://alistapart.com/article/css-positioning-101)
@@ -123,12 +125,14 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - To learn more about ejs, take a look at its [GitHub repository](https://github.com/mde/ejs).
     - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
     - An overview of [best practices in node.js](https://github.com/i0natan/nodebestpractices)
+    - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing)
 
 - Lecture 7 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, cookie flags/domain, cookies in Express (accessing and deleting them), evercookie, third-party cookies, client-side cookies (`document.cookie`), sessions in Express (memory stores), third-party authentication (OAuth 2.0, example authentication through Twitter via `passport`)
   - Required readings: *none*
   - Recommended activities: *none*
   - Recommended readings:
     - Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown
+    - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
 
 - Lecture 8 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **Web security**: Web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
   - Required readings: *none*
