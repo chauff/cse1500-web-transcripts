@@ -1,10 +1,14 @@
 # Assignment 1
 
-The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **Habit Tracker Web application**.
+The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **Board game application**.
 
 Remember that this is a group assignment! Work efficiently as a team!
 
 **[TODO: make it clear how exactly the deliverable should look like: where to upload, what to upload]**
+
+**[TODO: provide boilerplate cod structure]**
+
+**[TODO: provide a simple/quick tutorial on how to use GitHub and Visual Studio Code to make pair programming easier for the students]**
 
 ## 1. HTTP request messages: GET/HEAD
 
