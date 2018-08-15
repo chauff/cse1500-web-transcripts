@@ -14,8 +14,8 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
   - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer);
   - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode);
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
-- [REQ] [node.js](https://nodejs.org/en/) (required)
-- [REQ] Modern Web browser such as Chrome, Firefox, Edge, ... (required)
+- [REQ] [node.js](https://nodejs.org/en/)
+- [REQ] Modern Web browser such as Chrome, Firefox, Edge, ...
 - [REC] [jest](https://jestjs.io/) for JavaScript testing
 
 ## Useful online coding platforms
@@ -67,7 +67,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 - proper `README.md` (check provided template)
 - Heroku deployment(?)
 
-## List of Wb lectures (2017/18)
+## List of Web lectures (2017/18)
 
 - Lecture 1 ([PDF-1](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf), [PDF-2](https://chauff.github.io/documents/webdb-2017-18/web-http-continued.pdf)) on **HTTP**: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
   - Required readings: *none*
@@ -87,6 +87,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [From AppCache to Service Workers](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/)
     - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/)
     - [Running Firefox headlessly and why](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
+    - [Examples of what modern Web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
   
 - Lecture 3 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
