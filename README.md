@@ -13,7 +13,7 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
   - [JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint);
   - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer);
   - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode);
-  - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one.
+  - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 - [REQ] [node.js](https://nodejs.org/en/) (required)
 - [REQ] Modern Web browser such as Chrome, Firefox, Edge, ... (required)
 - [REC] [jest](https://jestjs.io/) for JavaScript testing
@@ -84,6 +84,9 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - HTML form slides
   - Recommended readings:
     - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604)
+    - [From AppCache to Service Workers](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/)
+    - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/)
+    - [Running Firefox headlessly and why](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
   
 - Lecture 3 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
@@ -94,6 +97,12 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended readings:
     - [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
     - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
+    - [What the f*ck JavaScript](https://github.com/denysdovhan/wtfjs) - a list of funny and tricky JavaScript examples
+    - [A blog post on why the dynamic nature of JavaScript makes optimization tricky](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html)
+    - A good blog post on [why we need all those fancy tools for JavaScript development nowadays](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70)
+    - A very good podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
+    - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/)
+    - Stanford University teaches [Programming Methodologies in JavaScript](http://web.stanford.edu/class/cs106j/)
 
 - Lecture 4 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
   - Required readings:
@@ -105,6 +114,9 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended readings:
     - A [comprehensive list of node.js resources](https://github.com/sergtitov/NodeJS-Learning) is updated by Sergey Titov
     - The recommended IDE for this course is [Visual Studio Code](https://code.visualstudio.com/) (open-source, available for all major operating systems). [Here](https://vscodecandothat.com/) is a good overview of some of the very useful but less obvious features of VS.
+    - [Event loop explained](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
+    - [Automated testing with node](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Automated_testing)
+    - [Node.js stats of 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
   
 - Lecture 5 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
   - Required readings:
@@ -115,6 +127,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended readings
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of Web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
     - To make sense of CSS positioning, take a look [here](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value) and [here](https://alistapart.com/article/css-positioning-101)
+    - Blog post on Mozilla's [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
 
 - Lecture 6 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: Ajax in more detail, node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
@@ -126,6 +139,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
     - An overview of [best practices in node.js](https://github.com/i0natan/nodebestpractices)
     - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing)
+    - Blog post in best practices to create a [node package](https://monades.roperzh.com/bootstrapping-javascript-library/)
 
 - Lecture 7 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, cookie flags/domain, cookies in Express (accessing and deleting them), evercookie, third-party cookies, client-side cookies (`document.cookie`), sessions in Express (memory stores), third-party authentication (OAuth 2.0, example authentication through Twitter via `passport`)
   - Required readings: *none*
@@ -143,3 +157,4 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Stanford's CS155](https://crypto.stanford.edu/cs155/): Computer and Network Security course has a number of lectures on Web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf))
     - CERN's [Web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class
     - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) provides an extensive list of practical tips, best practices and further readings on the topic.
+    - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d)
