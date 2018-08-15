@@ -12,7 +12,7 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint);
   - [JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint);
   - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer);
-  - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode);
+  - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode); a great tool to try out JavaScript snippets without hassle
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 - [REQ] [node.js](https://nodejs.org/en/)
 - [REQ] Modern Web browser such as Chrome, Firefox, Edge, ...
@@ -118,6 +118,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Event loop explained](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
     - [Automated testing with node](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Automated_testing)
     - [Node.js stats of 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
+    - [MDN Express tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website)
   
 - Lecture 5 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
   - Required readings:
@@ -159,3 +160,4 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - CERN's [Web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class
     - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) provides an extensive list of practical tips, best practices and further readings on the topic.
     - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d)
+    - [Deployment of the app on Heroku and securing it with Helmet](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment)
