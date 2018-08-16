@@ -27,7 +27,7 @@
 - Board game app
 - Doodle clone (plan out a night, crowdsource date/time and location)
 - Flashcard apps
-  - [List of apps](https://en.wikipedia.org/wiki/List_of_flashcard_software)
+  - [List of flashcard apps](https://en.wikipedia.org/wiki/List_of_flashcard_software)
   - Good example: [Tinycards](https://tinycards.duolingo.com/)
   - Good example: [Quizlet](https://quizlet.com/)
 
