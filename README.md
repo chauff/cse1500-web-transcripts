@@ -50,6 +50,8 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 
 Across the five assignments, a Web application, using the modern Web stack will be built.
 
+If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
+
 - [Assignment 1](Assignment-1.md)
 - [Assignment 2](Assignment-2.md)
 - [Assignment 3](Assignment-3.md)
@@ -78,6 +80,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
     - Note that http information can be used for [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
   - Addition in 2018/19: `Keep-Alive` and `Update` (WebSockets) headers; [info](https://medium.com/platform-engineer/web-api-design-35df8167460); [tutorial](https://www.html5rocks.com/en/tutorials/websockets/basics/)
+    - [A comic intro to http(s) and dns](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
+    - Include `Access-Control-Allow-Origin` header in the discussion
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
@@ -89,6 +93,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/)
     - [Running Firefox headlessly and why](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     - [Examples of what modern Web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
+    - [Progressive web apps](https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive#Core_PWA_guides)
   
 - Lecture 3 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
@@ -105,7 +110,10 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - A very good podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
     - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/)
     - Stanford University teaches [Programming Methodologies in JavaScript](http://web.stanford.edu/class/cs106j/)
-    - [Web tutorials, including JS ones by MDN](https://developer.mozilla.org/en-US/docs/Web/Tutorials)
+    - [Info on the `<script>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
+    - [Check with Lighthouse](https://developers.google.com/web/tools/lighthouse/)
+    - [Service Worker Cookbook](https://serviceworke.rs/)
+    - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger)
 
 - Lecture 4 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
   - Required readings:
@@ -132,6 +140,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of Web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
     - To make sense of CSS positioning, take a look [here](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value) and [here](https://alistapart.com/article/css-positioning-101)
     - Blog post on Mozilla's [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
+    - [Animation.css](https://daneden.github.io/animate.css/)
 
 - Lecture 6 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: Ajax in more detail, node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
@@ -163,3 +172,6 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) provides an extensive list of practical tips, best practices and further readings on the topic.
     - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d)
     - [Deployment of the app on Heroku and securing it with Helmet](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment)
+    - [Scientific paper on tracking](https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf)
+    - [Capture the Flag](https://hacks.mozilla.org/2018/03/hands-on-web-security-capture-the-flag-with-owasp-juice-shop/)
+    - [Who left open the Cookie Jar?](https://wholeftopenthecookiejar.eu/static/tpc-paper.pdf)
