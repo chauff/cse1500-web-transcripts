@@ -50,6 +50,8 @@ Materials and resources of the 2018/19 [Web and Database Technology course](http
 
 Across the five assignments, a Web application, using the modern Web stack will be built.
 
+If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
+
 - [Assignment 1](Assignment-1.md)
 - [Assignment 2](Assignment-2.md)
 - [Assignment 3](Assignment-3.md)
