@@ -77,6 +77,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Read up on the developer tools of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
     - Note that http information can be used for [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
+  - Addition in 2018/19: `Keep-Alive` and `Update` (WebSockets) headers; [info](https://medium.com/platform-engineer/web-api-design-35df8167460); [tutorial](https://www.html5rocks.com/en/tutorials/websockets/basics/)
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
@@ -104,6 +105,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - A very good podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
     - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/)
     - Stanford University teaches [Programming Methodologies in JavaScript](http://web.stanford.edu/class/cs106j/)
+    - [Web tutorials, including JS ones by MDN](https://developer.mozilla.org/en-US/docs/Web/Tutorials)
 
 - Lecture 4 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
   - Required readings:
