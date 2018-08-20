@@ -129,6 +129,7 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 
 In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following functionalities (you can opt to do more of course):
 
+- The game is for 2-4 players.
 - It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
 - Upon entering your Web application's URL, a *splash screen* will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.), an introduction of how-to-play on your platform and a "Play" button.
 - Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player when s/he is waiting for more players to enter the game.
@@ -162,7 +163,7 @@ Here are your board game options to choose from:
 
 *If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (XXX) your team ID and a short description of the game you have in mind.*
 
-First of all, settle on the game you will implement in your team.
+**First of all, settle on the game you will implement in your team.**
 
 ### 4.1) 
 Find **four** examples of your chosen board game that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
