@@ -129,7 +129,7 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 
 In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following minimal functionalities (you can opt to do more of course):
 
-- The game is for 2-4 players.
+- The game is for 2-4 players and in 2D.
 - It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
 - Upon entering your Web application's URL, a **splash screen** will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.), an introduction of how-to-play on your platform and a "Play" button.
 - Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
@@ -147,7 +147,7 @@ The list above should tell you that you have considerable (artistic) freedom. In
 
 The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the Web course book; you can use it too, but are not required to.
 
-**Optionally**: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application, you can indeed incorporate existing libraries/frameworks (make sure to document clearly where in your code you employ it). The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent - while for the game of battleship it would not be too hard to implement a computer opponent yourself that performs decently [based on a number of rules](http://www.slate.com/blogs/browbeat/2012/05/16/_battleship_how_to_win_the_classic_board_game_every_time.html), for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
+**Optionally**: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application, you can indeed incorporate existing libraries/frameworks (make sure to document clearly where in your code you employ it). The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent: while for the game of Ludo it would not be too difficult to come up with a number of rules to create a decent computer opponent, for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
 
 Here are your nine board game options to choose from:
 
@@ -166,7 +166,7 @@ Here are your nine board game options to choose from:
 **First of all, settle on the game you will implement in your team.**
 
 ### 4.1) 
-Find **four** examples of your chosen board game that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
+Find **four** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
 
 ### 4.2) 
 Which *game features* in the examples of 4.1) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
@@ -177,15 +177,16 @@ Which *game features* in the examples of 4.1) stand out positively and which sta
 
 Having looked at at least five existing implementations of your chosen board game, you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own application. As pointed out already, your Web application should be designed for the standard Desktop interface (i.e. not mobile). Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a Web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
-### 5.1) 
+### 5.1)
 
 Create a design for the splash screen (entry page): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/). 
 
-### 5.2) 
+### 5.2)
 
 Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in 4.2).
+You have a lot of artistic freedom in designing the board and game information. 
 
-### 5.3) 
+### 5.3)
 
 Once you have completed the design of your app, head over to CSE1500's Brightspace, go to *Discussions* and then the forum **BOARD GAME APP DESIGNS**. Create a thread with your team's name as subject/title (e.g. `CSE234`) and post your team's proposed splash screen and board screen. Feel free to also add a paragraph describing your choices.
 
