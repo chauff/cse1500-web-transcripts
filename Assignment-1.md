@@ -1,14 +1,28 @@
 # Assignment 1
 
-The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **Board game application**.
+The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **board game Web app**.
 
-Remember that this is a group assignment! Work efficiently as a team!
+Remember that this is a group assignment! Work efficiently as a team! Both tema members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
 
-**[TODO: make it clear how exactly the deliverable should look like: where to upload, what to upload]**
+**[TODO: provide boilerplate code structure]**
 
-**[TODO: provide boilerplate cod structure]**
+| **Task** | **Deliverable**                                |
+|------|----------------------------------------------------|
+| 1.1  | HTTP requests                                      |
+| 1.2  | Answer Q1.2                                        |
+| 1.3  | Answer Q1.3                                        |
+| 1.4  | Answer Q1.4                                        |
+| 2.1  | Answer Q2.1                                        |
+| 3.1  | Answer Q3.1                                        |
+| 3.2  | Answer Q3.2                                        |
+| 4.1  | Four annotated game screens (include the game URL) |
+| 4.2  | Description of six game features                   |
+| 5.1  | Splash screen design (wireframe)                   |
+| 5.2  | Game screen design (wireframe)                     |
+| 5.3  | →→→ Brightspace                                    |
+| 6.1  | Two html files                                     |
 
-**[TODO: provide a simple/quick tutorial on how to use GitHub and Visual Studio Code to make pair programming easier for the students]**
+All deliverable text/imagery (apart from 5.3 which asks you to upload your wireframes to Brightspace) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
 
 ## 1. HTTP request messages: GET/HEAD
 
@@ -21,7 +35,7 @@ Hints:
 
 ---
 
-This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go. If you are a Windows user please use the Windows Subsystem for Linux.
+This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1.
 
 Use `telnet` to request the contents of the bread section of the recipe website `myrecipes.com/bread-recipes`.
 
@@ -91,7 +105,7 @@ host:httpbin.org
 
 ### Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g.[http://decodebase64.com](http://decodebase64.com). Remember that username and password should be combined as `username:password`. **[TODO: find a better decodebase link!]**
 
-### 3.3) Now close the TCP connection and start a new one, using again:
+### Now close the TCP connection and start a new one, using again:
 
 ````
 telnet httpbin.org 80
@@ -101,69 +115,63 @@ telnet httpbin.org 80
 
 ---
 
-## 4. Habbit tracker application
+## 4. Web programming project: Board game
 
-**Note**: The Web course book develops a TODO list Web application throughout the different chapters. The assignments in this course focus on the development a different but essentially similar application. Since a similar project is developed in the book and in class, if you find some aspects of the assignments very difficult, the book should help you along.
+In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following functionalities:
 
-**Habit trackers** are applications that allow you to set and track your habits- - ­the good as well as the bad ones. Habit trackers either rely on self-­reports or use data from sensors (FitBit, etc.). Many habit trackers are only available as native apps (Android, iOS). *In this class project we focus on building a Web-­based habit tracker application instead that relies on self-­
-reports.*
+- It works well in a modern browser used on a laptop/desktop, i.e. we are considering screen resolutions of 1366x768 or similar. In this project, we are **not** concerned about apps for mobile screens.
+- Upon entering your Web application's URL, a *splash screen* will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.), an introduction of how-to-play on your platform and a "Play" button.
+- Upon pressing "Play" the user will enter the **game screen** (more than one is possible, but only one is required) and wait for a sufficient number of other gamers to start playing (it has to be made clear to the user that s/he is currently waiting for other players).
+- Once there are sufficiently many players, the game starts and the players play against each other. Many games can take place at the same time.
+- The board needs to look sufficiently good; all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible)
+- Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players in the game.
+- Players see basic game information (at least time passed since the game started; depending on the game other basic information should be included, e.g. in chess, each player sees a list of lost pieces).
+- Players are able to play the game in fullscreen mode.
+- Players play the game with the mouse.
+- Players receive notifications on their Desktop when it is their turn to move.
+- Once a player drops out of a game, the game is aborted.
+- Moves are animated and have sound effects.
 
-In this assignment you will start developing your own habit tracker application by first considering existing applications and then designing your own.
+The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to have in your code); you can of course do more than required. For instance, if you implement a chess game, you can also add a game engine that evaluates each position and displays this information (likelihood of winning) to the players. Or you can offer a computer opponent, if no human player is available.
 
-### 4.1) Select two habit tracker applications, either from the following list or of your own choice (they should be accessible from the Web, without installing a native app):
+The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the Web course book; you can use it too, but are not required to.
 
-- A
-- B
-- C
+Here are your board game options to choose from:
 
-### 4.2) Use the application's standard interface. Consider their design based on the Web design principles covered in class. Which 2 design aspects stand out in each of the two applications (in the positive or negative sense)?
+- [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game)): 2-4 players
+- [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
+- Chess - there are many variants available, [pick one](https://en.wikipedia.org/wiki/List_of_chess_variants): 2-4 players depending on the variant
+- [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders): 2-4 players
+- [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)): 2 players
+- [Scrabble](https://en.wikipedia.org/wiki/Scrabble): 2-4 players
+- [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)): 2 players
+- [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
+- [Backgammon](https://en.wikipedia.org/wiki/Backgammon): 2 players
 
----
+*If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (XXX) your team ID and a short description of the game you have in mind.*
 
-## 5. Usability test
+First of all, settle on the game you will implement in your team.
 
-### 5.1) For each of the two chosen applications, perform a usability test yourself by performing the following actions: 
+### 4.1) Find four examples of your chosen board game that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
 
-1. create a habit (e.g. “early morning yoga”) that should happen every weekday (not at the weekend), and
-2. a habit that should happen once a week (e.g. “go swimming”);
-3. self-­report on both habits;
-4. check the progress on how well you are doing;
-5. delete one habit.
-
-### Report on which habit tracker you performed the tests on. Report how much time and how many clicks it took you to perform the actions.
-
----
-
-## 6. Habbit tracker features
-
-### 6.1) Create a list of 10 habit tracker features that you think a habit tracker Web application should have1. To get you started, here are two essential features: (1) create a habit to track, and, (2) delete a habit.
-
----
-
-## 7. Design your own habit tracker
-
-Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own habit tracker application. You will develop this application
-throughout the course. Take inspirations from the habit trackers you looked at. Your Web application should be designed for the standard Desktop interface (i.e. not mobile). Before you
-start, decide on your **target audience**.
-
-### 7.1) Create a design for the entry page (splash screen): think of a name for your application, a short description & a logo. Feel free to use images with Creative Commons license.
-
-### 7.2) Create a design for the habit tracker page; allow at least the following: (1) add/delete a habit, (2) label a habit as either a positive (a habit you want to build up) or a negative (a habit you want to get rid off) one and (3) visually track the habits progress over time. Add another two features to your design that you think are useful (take inspiration from 3.).
-
-### Note: the wireframes can be done with pen and paper or a software tool (e.g. Gliffy, Balsamiq, Moqups or even Photoshop) of your choice.
-
-### 7.3) Once you have completed the design of your app, head over to TI1506’s Brightspace, go to “Discussions” and then the forum HABIT TRACKER APP DESIGNS. Create a thread with your team’s name as subject/title (e.g. “Minor 01” or “TI-­CF 12”) and post your team’s proposed design. Include in the post the following:
-
-- the two designs (entry page and habit tracker page);
-- who you envision your target audience to be;
-- a paragraph on the reasoning behind your design and the design goals.
-
-**[TODO: is APONE a better choice here?]**
+### 4.2) Which *game features* in the examples of 4.1) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss three positive and three negative features.
 
 ---
 
-## 8. Your own habbit tracker: HTML
+## 5. Design your own board game
+
+Having looked at at least five existing implementations of your chosen board game, you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own application. As pointed out already, your Web application should be designed for the standard Desktop interface (i.e. not mobile). Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a Web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
+
+### 5.1) Create a design for the splash screen (entry page): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/). 
+
+### 5.2) Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in 4.2).
+
+### 5.3) Once you have completed the design of your app, head over to CSE1500's Brightspace, go to *Discussions* and then the forum BOARD GAME APP DESIGNS. Create a thread with your team's name as subject/title (e.g. "CSE234") and post your team's proposed splash screen and board screen. Feel free to also add a paragraph describing your choices.
+
+---
+
+## 6. Your own boad game app: HTML
 
 **[TODO: provide a folder structure that resembles what is needed later]**
 
-### 8.1) Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).
+### 6.1) Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).
