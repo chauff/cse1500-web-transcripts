@@ -127,20 +127,20 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 
 ## 4. Web programming project: board game app
 
-In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following functionalities (you can opt to do more of course):
+In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following minimal functionalities (you can opt to do more of course):
 
 - The game is for 2-4 players.
 - It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
 - Upon entering your Web application's URL, a *splash screen* will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.), an introduction of how-to-play on your platform and a "Play" button.
-- Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player when s/he is waiting for more players to enter the game.
-- Once there are sufficiently many players, the game starts and the players play against each other. Many games can take place at the same time.
-- The board needs to look sufficiently good; all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
-- Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players in the game.
+- Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
+- Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
+- The splash and game screens need to look good (adhere to modern design standards); all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
+- Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players currently participating in the game.
 - Players see basic information about the ongoing game (at least time passed since the game started; depending on the game other basic information should be included, e.g. in chess, each player sees a list of lost pieces).
 - Players are able to play the game in fullscreen mode.
 - Players play the game with the mouse.
-- Players receive notifications on their Desktop when it is their turn to move.
-- Once a player drops out of a game, the game is aborted.
+- Players receive desktop notifications when it is their turn to move.
+- Once a player drops out of a game, the game is aborted; this is announced to all players currently active in the game.
 - Moves are animated and have sound effects.
 
 The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to have in your code); you can of course do more than required.
