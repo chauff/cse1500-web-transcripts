@@ -2,9 +2,12 @@
 
 The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **board game Web app**.
 
+## 0. Preliminaries
 Remember that this is a group assignment! Work efficiently as a team! Both tema members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
 
 **[TODO: provide boilerplate code structure]**
+
+### Overview of deliverables and upload procedure
 
 | **Task** | **Deliverable**                                |
 |------|----------------------------------------------------|
