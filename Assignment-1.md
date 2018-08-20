@@ -1,17 +1,15 @@
 # Assignment 1 (2018/2019 edition)
 
-The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **board game Web app**.
+The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **board game Web application**.
 
 ## 0. Preliminaries
 Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
-
-**[TODO: provide boilerplate code structure]**
 
 ### Overview of deliverables and upload procedure
 
 If you get lost in the assignment, use this overview of deliverables to get back on track!
 
-| **Task** | **Deliverable**                                |
+| **Task** | **Deliverables**                               |
 |------|----------------------------------------------------|
 | 1.1  | HTTP requests                                      |
 | 1.2  | Answer Q1.2                                        |
@@ -127,32 +125,37 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 
 ---
 
-## 4. Web programming project: Board game
+## 4. Web programming project: board game app
 
-In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following functionalities:
+In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following functionalities (you can opt to do more of course):
 
-- It works well in a modern browser used on a laptop/desktop, i.e. we are considering screen resolutions of 1366x768 or similar. In this project, we are **not** concerned about apps for mobile screens.
+- It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
 - Upon entering your Web application's URL, a *splash screen* will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.), an introduction of how-to-play on your platform and a "Play" button.
-- Upon pressing "Play" the user will enter the **game screen** (more than one is possible, but only one is required) and wait for a sufficient number of other gamers to start playing (it has to be made clear to the user that s/he is currently waiting for other players).
+- Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player when s/he is waiting for more players to enter the game.
 - Once there are sufficiently many players, the game starts and the players play against each other. Many games can take place at the same time.
-- The board needs to look sufficiently good; all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible)
+- The board needs to look sufficiently good; all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
 - Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players in the game.
-- Players see basic game information (at least time passed since the game started; depending on the game other basic information should be included, e.g. in chess, each player sees a list of lost pieces).
+- Players see basic information about the ongoing game (at least time passed since the game started; depending on the game other basic information should be included, e.g. in chess, each player sees a list of lost pieces).
 - Players are able to play the game in fullscreen mode.
 - Players play the game with the mouse.
 - Players receive notifications on their Desktop when it is their turn to move.
 - Once a player drops out of a game, the game is aborted.
 - Moves are animated and have sound effects.
 
-The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to have in your code); you can of course do more than required. For instance, if you implement a chess game, you can also add a game engine that evaluates each position and displays this information (likelihood of winning) to the players. Or you can offer a computer opponent, if no human player is available.
+The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to have in your code); you can of course do more than required.
 
 The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the Web course book; you can use it too, but are not required to.
+
+A caveat to the caveat: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application, you can indeed incorporate existing libraries/frameworks (make sure to document clearly where in your code you employ it). The basic use case here is the inclusion of a semi-intelligent computer opponent - while for the game of battleship it would not be too hard to implement a computer opponent yourself that performs decently [based on a number of rules](http://www.slate.com/blogs/browbeat/2012/05/16/_battleship_how_to_win_the_classic_board_game_every_time.html), for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
+
+For instance, if you implement a chess game, you can also add a game engine that evaluates each position and displays this information (likelihood of winning) to the players. Or you can offer a computer opponent, if no human player is available.
+
 
 Here are your board game options to choose from:
 
 1. [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game)): 2-4 players
 2. [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
-3. Chess - there are many variants available, [pick one](https://en.wikipedia.org/wiki/List_of_chess_variants): 2-4 players depending on the variant
+3. Chess - there are many variants available besides the default, [pick one](https://en.wikipedia.org/wiki/List_of_chess_variants): 2-4 players depending on the variant
 4. [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders): 2-4 players
 5. [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)): 2 players
 6. [Scrabble](https://en.wikipedia.org/wiki/Scrabble): 2-4 players
@@ -172,7 +175,7 @@ Which *game features* in the examples of 4.1) stand out positively and which sta
 
 ---
 
-## 5. Design your own board game
+## 5. Design your own board game app
 
 Having looked at at least five existing implementations of your chosen board game, you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own application. As pointed out already, your Web application should be designed for the standard Desktop interface (i.e. not mobile). Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a Web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
