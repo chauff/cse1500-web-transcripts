@@ -22,10 +22,10 @@ Remember that this is a group assignment! Work efficiently as a team! Both tema 
 | 4.2  | Description of six game features                   |
 | 5.1  | Splash screen design (wireframe)                   |
 | 5.2  | Game screen design (wireframe)                     |
-| 5.3  | →→→ Brightspace                                    |
+| 5.3  | →→→ *upload 5.1/5.2 to Brightspace*                |
 | 6.1  | Two html files                                     |
 
-All deliverable text/imagery (apart from 5.3 which asks you to upload your wireframes to Brightspace) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
+All deliverable text/imagery (apart from 5.3) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
 
 ## 1. HTTP request messages: GET/HEAD
 
