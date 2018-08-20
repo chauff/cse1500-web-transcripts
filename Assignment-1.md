@@ -3,11 +3,13 @@
 The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **board game Web app**.
 
 ## 0. Preliminaries
-Remember that this is a group assignment! Work efficiently as a team! Both tema members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
+Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
 
 **[TODO: provide boilerplate code structure]**
 
 ### Overview of deliverables and upload procedure
+
+If you get lost in the assignment, use this overview of deliverables to get back on track!
 
 | **Task** | **Deliverable**                                |
 |------|----------------------------------------------------|
@@ -25,7 +27,7 @@ Remember that this is a group assignment! Work efficiently as a team! Both tema 
 | 5.3  | →→→ *upload 5.1/5.2 to Brightspace*                |
 | 6.1  | Two html files                                     |
 
-All deliverable text/imagery (apart from 5.3) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
+All deliverable text/imagery (apart from 5.3 obviously) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
 
 ## 1. HTTP request messages: GET/HEAD
 
@@ -50,13 +52,17 @@ Start your "conversation" with the Web server by typing the following into the t
 telnet myrecipes.com 80
 ```
 
-### 1.1) Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the recipes Web page. Always use `HEAD` first to retrieve meta-­data about the resource.
+### 1.1) 
+Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the recipes Web page. Always use `HEAD` first to retrieve meta-­data about the resource.
 
-### 1.2) Does the content correspond to what you see when accessing the page with your browser? To check, save the response to a file, use "html" as file ending and open it with your browser.
+### 1.2) 
+Does the content correspond to what you see when accessing the page with your browser? To check, save the response to a file, use "html" as file ending and open it with your browser.
 
-### 1.3) What is the purpose of the ETag in the header information?
+### 1.3) 
+What is the purpose of the ETag in the header information?
 
-### 1.4) What do the different `Cache-Control` directives mean?
+### 1.4) 
+What do the different `Cache-Control` directives mean?
 
 ---
 
@@ -85,7 +91,8 @@ Hello World!
 With this code, we have just created a file on the server called `myfile` which contains the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response
 is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
 
-### 2.1) The `Content-­length` is exactly the number of characters (12) of `Hello World!`. What happens if the `Content-length` field is smaller or larger than the exact number of characters in the content?
+### 2.1) 
+The `Content-­length` is exactly the number of characters (12) of `Hello World!`. What happens if the `Content-length` field is smaller or larger than the exact number of characters in the content?
 
 ---
 
@@ -93,9 +100,11 @@ is of content-­type JSON; we are interested in the `data` field, which should 
 
 Lets now try to request a page, which is set up with HTTP basic authentication.
 
-### 3.1) First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password. Reload the Web page -­ what happens now?
+### 3.1) 
+First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password. Reload the Web page -­ what happens now?
 
-### 3.2) Now let's see how this works with actual HTTP messages. Start off with a `HEAD` method to inspect the Web page and document all following steps (requests and responses):
+### 3.2) 
+Now let's see how this works with actual HTTP messages. Start off with a `HEAD` method to inspect the Web page and document all following steps (requests and responses):
 
 ```
 telnet httpbin.org 80
@@ -106,15 +115,15 @@ host:httpbin.org
 [carriage return]
 ```
 
-### Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g.[http://decodebase64.com](http://decodebase64.com). Remember that username and password should be combined as `username:password`. **[TODO: find a better decodebase link!]**
+Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g.[http://decodebase64.com](http://decodebase64.com). Remember that username and password should be combined as `username:password`. **[TODO: find a better decodebase link!]**
 
-### Now close the TCP connection and start a new one, using again:
+Now close the TCP connection and start a new one, using again:
 
 ````
 telnet httpbin.org 80
 ````
 
-### Request the same page -­ what happens? Is the behavior the same as reloading the page in the browser?
+Request the same page -­ what happens? Is the behavior the same as reloading the page in the browser?
 
 ---
 
@@ -141,23 +150,25 @@ The only caveat is that no external libraries or frameworks are allowed, apart f
 
 Here are your board game options to choose from:
 
-- [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game)): 2-4 players
-- [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
-- Chess - there are many variants available, [pick one](https://en.wikipedia.org/wiki/List_of_chess_variants): 2-4 players depending on the variant
-- [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders): 2-4 players
-- [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)): 2 players
-- [Scrabble](https://en.wikipedia.org/wiki/Scrabble): 2-4 players
-- [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)): 2 players
-- [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
-- [Backgammon](https://en.wikipedia.org/wiki/Backgammon): 2 players
+1. [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game)): 2-4 players
+2. [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
+3. Chess - there are many variants available, [pick one](https://en.wikipedia.org/wiki/List_of_chess_variants): 2-4 players depending on the variant
+4. [Snakes and Ladders](https://en.wikipedia.org/wiki/Snakes_and_Ladders): 2-4 players
+5. [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)): 2 players
+6. [Scrabble](https://en.wikipedia.org/wiki/Scrabble): 2-4 players
+7. [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)): 2 players
+8. [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
+9. [Backgammon](https://en.wikipedia.org/wiki/Backgammon): 2 players
 
 *If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (XXX) your team ID and a short description of the game you have in mind.*
 
 First of all, settle on the game you will implement in your team.
 
-### 4.1) Find four examples of your chosen board game that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
+### 4.1) 
+Find **four** examples of your chosen board game that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
 
-### 4.2) Which *game features* in the examples of 4.1) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss three positive and three negative features.
+### 4.2) 
+Which *game features* in the examples of 4.1) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
 
 ---
 
@@ -165,11 +176,17 @@ First of all, settle on the game you will implement in your team.
 
 Having looked at at least five existing implementations of your chosen board game, you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own application. As pointed out already, your Web application should be designed for the standard Desktop interface (i.e. not mobile). Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a Web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
-### 5.1) Create a design for the splash screen (entry page): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/). 
+### 5.1) 
 
-### 5.2) Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in 4.2).
+Create a design for the splash screen (entry page): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/). 
 
-### 5.3) Once you have completed the design of your app, head over to CSE1500's Brightspace, go to *Discussions* and then the forum BOARD GAME APP DESIGNS. Create a thread with your team's name as subject/title (e.g. "CSE234") and post your team's proposed splash screen and board screen. Feel free to also add a paragraph describing your choices.
+### 5.2) 
+
+Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in 4.2).
+
+### 5.3) 
+
+Once you have completed the design of your app, head over to CSE1500's Brightspace, go to *Discussions* and then the forum **BOARD GAME APP DESIGNS**. Create a thread with your team's name as subject/title (e.g. `CSE234`) and post your team's proposed splash screen and board screen. Feel free to also add a paragraph describing your choices.
 
 ---
 
@@ -177,4 +194,5 @@ Having looked at at least five existing implementations of your chosen board gam
 
 **[TODO: provide a folder structure that resembles what is needed later]**
 
-### 6.1) Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).
+### 6.1) 
+Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).
