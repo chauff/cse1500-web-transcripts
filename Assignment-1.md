@@ -147,9 +147,9 @@ The list above should tell you that you have considerable (artistic) freedom. In
 
 The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the Web course book; you can use it too, but are not required to.
 
-**Optionally**: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application, you can indeed incorporate existing libraries/frameworks (make sure to document clearly where in your code you employ it). The obvious next step to improve the app is the inclusion of a semi-intelligent computer opponent - while for the game of battleship it would not be too hard to implement a computer opponent yourself that performs decently [based on a number of rules](http://www.slate.com/blogs/browbeat/2012/05/16/_battleship_how_to_win_the_classic_board_game_every_time.html), for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps. 
+**Optionally**: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application, you can indeed incorporate existing libraries/frameworks (make sure to document clearly where in your code you employ it). The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent - while for the game of battleship it would not be too hard to implement a computer opponent yourself that performs decently [based on a number of rules](http://www.slate.com/blogs/browbeat/2012/05/16/_battleship_how_to_win_the_classic_board_game_every_time.html), for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
 
-Here are your board game options to choose from:
+Here are your nine board game options to choose from:
 
 1. [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game)): 2-4 players
 2. [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
