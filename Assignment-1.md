@@ -1,4 +1,4 @@
-# Assignment 1
+# Assignment 1 (2018/2019 edition)
 
 The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **board game Web app**.
 
