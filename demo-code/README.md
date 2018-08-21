@@ -18,8 +18,10 @@ Move to the folder where you want to create the folder structure in and run (rep
 
 `express --view=ejs balloons`
 
-This results in a folder structure that will be occuppied over the course of the assignments. Some default code is already placed in `app.js` and a few other files. What exactly this code means will become clear over the course of the next lectures.
+This results in a folder structure that will be occuppied over the course of the assignments. Some default code is already placed in `app.js` and a few other files. What exactly this code means, and how to build your own application with it will become clear in the next lectures. 
 
-# Assignment 1
+# Assignment 1: HTML
 
-Head to `[appname]/public` and create two HTML files: `game.html` and `splash.html`. Add the corresponding HTML.
+Head to `[appname]/public` and create two HTML files: `game.html` and `splash.html`. Add the HTML as instructed for assignment 1. To test your HTML, just double-click on the html files and they will open in your browser. There is not much to see as we did not add interactive or visually exciting parts.
+
+
