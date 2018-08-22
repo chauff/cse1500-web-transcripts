@@ -1,160 +1,191 @@
-"use strict"; //not necessary, flags up a few more potential errors
-
 const USED = -1; //letter has been used, not available anymore
 const AVAIL = 1; //letter has not been used yet
-const MAX_ALLOWED_GUESSES = 5; //maximum number of guesses allowed
 
-//the following lines are a placeholder until the data is delivered from the server
-var targetWord = "MUMMYRETURNSMMS"; 
-var visibleWord = new Array(targetWord.length);
-visibleWord.fill('#');
+//placeholders ...
+const PH_WORD = "THEMUMMY";
+const PH_GUESSES = 3;
 
-var wrongGuesses = 0;
+/* basic constructor of game state */
+function GameState(MAX_ALLOWED, targetWord, visibleWordBoard){
 
+    //dynamic language issues
+    console.assert(Number.isInteger(MAX_ALLOWED), "Expecting an integer!");
+    console.assert(MAX_ALLOWED>=0, "Expecting a non-negative integer!");
+    console.assert(typeof targetWord === "string", "Expecting a string!");
 
-var letters = {
-    A: AVAIL,
-    B: AVAIL,
-    C: AVAIL,
-    D: AVAIL,
-    E: AVAIL,
-    F: AVAIL,
-    G: AVAIL,
-    H: AVAIL,
-    I: AVAIL,
-    J: AVAIL,
-    K: AVAIL,
-    L: AVAIL,
-    M: AVAIL,
-    N: AVAIL,
-    O: AVAIL,
-    P: AVAIL,
-    Q: AVAIL,
-    R: AVAIL,
-    S: AVAIL,
-    T: AVAIL,
-    U: AVAIL,
-    V: AVAIL,
-    W: AVAIL,
-    X: AVAIL,
-    Y: AVAIL,
-    Z: AVAIL
-}
+    this.MAX_ALLOWED = MAX_ALLOWED;
+    this.wrongGuesses = 0;
+    this.targetWord = targetWord;
+    this.visibleWordArray = new Array(targetWord.length);
+    this.visibleWordArray.fill("#");
+    this.alphabet = new Alphabet();
+    this.alphabet.initialize();
+    this.visibleWordBoard = visibleWordBoard;
 
-//is the argument a valid letter?
-function isLetter(letter){
-    if( letters.hasOwnProperty(letter) ){
-        return true;
-    }
-    return false; //not a valid letter
-}
+    this.getVisibleWordArray = function(){
+        return this.visibleWordArray;
+    };
 
-//is this an available letter?
-function isLetterAvailable(letter){
-    if( isLetter(letter) && letters[letter] == AVAIL){
-        return true;
-    }
-    return false;
-}
+    this.incrWrongGuess = function(){
+        this.wrongGuesses++;
+    };
 
-//make the letter unavailable for future use
-function makeLetterUnAvailable(letter){
-    if( isLetter(letter) ){
-        letters[letter] = USED;
-    }
-}
+    this.isGameOver = function(){
+        return (this.wrongGuesses>this.MAX_ALLOWED);
+    };
 
-//is this a letter that is in the target word (and has not been revealed yet)?
-function isLetterInTarget(letter){
-    if( !isLetter(letter) || !isLetterAvailable(letter)){
-        return false;
-    }
-
-    if(targetWord.indexOf(letter)>=0){
-        return true;
-    }
-}
-
-//expects as input the letter indices in the target word
-function updateGameStats(res){
-    if(res.length == 0){
-        wrongGuesses++;
-    }
-}
-
-//returns the letter indices in the target word
-function getLetterInTargetIndices(letter){
-
-    var res = [];
-
-    if(!isLetterInTarget(letter)){
-        console.log("Letter is not in target word!");
-        return res;
-    }
-
-    for(let i=0; i<targetWord.length; i++){
-        if(targetWord.charAt(i) == letter){
-            res.push(i);
+    this.revealLetters = function(letter){
+        var indices = this.alphabet.getLetterInWordIndices(letter, this.targetWord);
+        for(let i=0; i<indices.length; i++){
+            this.visibleWordArray[ indices[i] ] = letter;
         }
-    }
-    return res;
+    };
+
+    this.updateGame = function(clickedLetter){
+
+        var res = this.alphabet.getLetterInWordIndices(clickedLetter, this.targetWord);
+
+        //wrong guess?
+        if(res.length == 0){
+            this.incrWrongGuess();
+        }
+
+        //game over?
+        if( this.isGameOver() ){
+            console.log("Game lost!");
+        }
+        else {
+            this.revealLetters(clickedLetter);
+            this.alphabet.makeLetterUnAvailable(clickedLetter);
+            this.visibleWordBoard.setWord(this.visibleWordArray);
+        }
+    };
 }
 
-//set hidden word in the correct div element
-function setHiddenWord(){
-    document.getElementById('hiddenWord').innerHTML = visibleWord.join('');
-};
+function Alphabet(){
 
-function setGameStats(){
-    console.log("Wrong guesses: "+wrongGuesses);
-}
+    this.letters = undefined;
 
-//reveal letters to the player
-function revealLetters(letter){
+    this.initialize = function(){
+        this.letters = {
+            A: AVAIL,
+            B: AVAIL,
+            C: AVAIL,
+            D: AVAIL,
+            E: AVAIL,
+            F: AVAIL,
+            G: AVAIL,
+            H: AVAIL,
+            I: AVAIL,
+            J: AVAIL,
+            K: AVAIL,
+            L: AVAIL,
+            M: AVAIL,
+            N: AVAIL,
+            O: AVAIL,
+            P: AVAIL,
+            Q: AVAIL,
+            R: AVAIL,
+            S: AVAIL,
+            T: AVAIL,
+            U: AVAIL,
+            V: AVAIL,
+            W: AVAIL,
+            X: AVAIL,
+            Y: AVAIL,
+            Z: AVAIL
+        };
+    };
 
-    var indices = getLetterInTargetIndices(letter);
-    for(let i=0; i<indices.length; i++){
-        visibleWord[ indices[i] ] = letter;
-    }
-    setHiddenWord();
-};
+    //is it a valid letter?
+    this.isLetter = function(letter){
+        console.assert(typeof letter === "string", "Single string expected");
+        return this.letters.hasOwnProperty(letter);
+    };
 
-//the game is lost if the number of wrong guesses is over the max.
-function isGameLost(){
-    return (wrongGuesses>MAX_ALLOWED_GUESSES)
-}
+    //is it an available letter?
+    this.isLetterAvailable = function(letter){
+        console.assert(typeof letter === "string", "Single string expected");
+        return (this.isLetter(letter) && this.letters[letter]==AVAIL);
+    };
 
+    this.makeLetterUnAvailable = function(letter){
+        console.assert(typeof letter === "string", "Single string expected");
+        if( this.isLetter(letter)){
+            this.letters[letter] = USED;
+        }
+    };
 
-//every letter needs to react to a click
-(function setup(){
+    //does the letter appear in the word?
+    this.isLetterIn = function(letter, word){
+        console.assert(typeof letter === "string", "String expected");
+        console.assert(typeof word === "string", "String expected");
+        if( !this.isLetter(letter) || !this.isLetterAvailable(letter)){
+            return false;
+        }
+        return (word.indexOf(letter)>=0);
+    };
 
-    //initially all letters are hidden
-    setHiddenWord(); 
+    //letter locations in the word
+    this.getLetterInWordIndices = function(letter, word){
+        console.assert(typeof letter === "string", "String expected");
+        console.assert(typeof word === "string", "String expected");
 
-    var elements = document.querySelectorAll(".alphabet");
-    
-    Array.from(elements).forEach( function(el){
-
-        el.addEventListener('click', function(e){
-
-            //hint: to determine how exactly object e looks like, use the WebConsole of your browser
-            var clickedLetter = e.originalTarget.id;
-
-            //testing ...
-            console.log(clickedLetter); 
-
-            var res = getLetterInTargetIndices(clickedLetter);
-            updateGameStats(res);
-            revealLetters(clickedLetter);
-            makeLetterUnAvailable(clickedLetter);
-            setGameStats();
-
-            if( isGameLost()){
-                console.log(" +++ GAME LOST +++");
+        var res = [];
+        
+        if(!this.isLetterIn(letter, word)){
+            console.log("Letter is not in target word!");
+            return res;
+        }
+        
+        for(let i=0; i<word.length; i++){
+            if(word.charAt(i) == letter){
+                res.push(i);
             }
+        }
+        return res;       
+    };
+}
+
+function VisibleWordBoard(){
+
+    //set hidden word in the correct div element
+    this.setWord = function(visibleWord){
+
+        //dynamic language issues ...
+        console.assert(Array.isArray(visibleWord), "Expecting an array, got a %s instead" );
+
+        document.getElementById("hiddenWord").innerHTML = visibleWord.join("");
+    };
+}
+
+function AlphabetBoard(gs){
+
+    this.initialize = function(){
+
+        var elements = document.querySelectorAll(".alphabet");
+        Array.from(elements).forEach( function(el){
+
+            el.addEventListener("click", function(e){
+                var clickedLetter = e.originalTarget.id;
+                gs.updateGame(clickedLetter);
+
+                //"testing" ...
+                console.log(clickedLetter); 
+            });
         });
-    });
-})(); //execute the setup immediately
+    };
+}
+
+
+//set everything up
+(function setup(){
+    var vw = new VisibleWordBoard();
+    var gs = new GameState(PH_GUESSES, PH_WORD, vw);
+    var ab = new AlphabetBoard(gs);
+    ab.initialize();
+    vw.setWord(gs.getVisibleWordArray());
+})(); //execute immediately
 
 
 

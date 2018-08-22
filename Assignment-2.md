@@ -24,7 +24,7 @@ All deliverable text/imagery must be included in a single PDF file. The first pa
 
 Before you start coding, you need to have a *plan* of what needs to be done. Here, focus on your `game.html` page (we deal with `splash.html` in the next assignment). Make a list of *all* responsive UI elements and their functionality. Here are example items for the demo code introduced in the lecture to help you get started:
 
-- mouse click on a letter in the `div` element with `id=alphabet`: first, check whether the letter is still available (enabled); if so, check whether the letter occurs in the target string (the hidden word); if yes, reveal the letter, if not, remove a balloon; disable the letter
+- mouse click on a letter in the `div` element with `id=alphabet`: first, check whether the letter is still available (enabled); if so, check whether the letter occurs in the target string (the hidden word); if yes, reveal the letter, if not, remove a balloon; disable the letter; if the guessed letter was wrong, check wether the game is lost.
 
 The plan should include all actions possible in the game interface.
 
@@ -43,10 +43,11 @@ Now that you have made your plan and decided on the use of design patterns, star
 A few hints:
 
 - JavaScript is a dynamic language, important to remember when debugging.
-- The browser dev tools are extremely helpful to debug client-side JavaScript. Use them.
+- The browser development tools are extremely helpful to debug client-side JavaScript. Use them.
 - Don't be afraid to use place-holders (e.g. in our word guessing game, we start off with a fixed string to guess).
 - You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is normal.
 - If you are using `console.log`, familiarize yourself with the other abilities of the `Console` object as well, they are useful for client-side JavaScript debugging in the browser. The [MDN documentation is availab here](https://developer.mozilla.org/en-US/docs/Web/API/Console), `console.table` makes the output more readable and `console.assert` is good for sanity checks of your code.
+- **[TODO: describe how to use eslint, why; node code vs browser code - we need two variants]** [ESLint](https://eslint.org/docs/user-guide/getting-started)
 
 *Note: do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment.*
 
