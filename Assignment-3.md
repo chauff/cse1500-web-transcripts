@@ -1,5 +1,7 @@
 # Assignment 3
 
+- take a concrete website and let students determine number of cookies sent; number of third-party cookies
+
 In the first part of the assignment, you will complete the first prototype of your Web application, by adding CSS. In the second part, you will refactor and refine your application to make it more maintainable and robust.
 
 **[TODO: make it clear how exactly the deliverable should look like: where to upload, what to upload]**
