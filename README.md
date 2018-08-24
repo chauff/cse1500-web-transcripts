@@ -81,7 +81,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Note that http information can be used for [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
   - Addition in 2018/19: `Keep-Alive` and `Update` (WebSockets) headers; [info](https://medium.com/platform-engineer/web-api-design-35df8167460); [tutorial](https://www.html5rocks.com/en/tutorials/websockets/basics/)
     - [A comic intro to http(s) and dns](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
-    - Include `Access-Control-Allow-Origin` header in the discussion
+    - Include `Access-Control-Allow-Origin` header in the discussion; polling vs. long polling; websocket protocol
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
