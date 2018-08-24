@@ -34,4 +34,4 @@
 ## Misc links
 - [faker.js](https://github.com/marak/Faker.js/)
 - [Good hoisting example](https://andy-carter.com/blog/variable-scope-in-modern-javascript)
-- [Windows 95 in an Electron app!](https://twitter.com/felixrieseberg/status/1032642127178547201)
+- [Windows 95 in an Electron app!](https://twitter.com/felixrieseberg/status/1032642127178547201); actual source [here](https://github.com/felixrieseberg/windows95)
