@@ -178,13 +178,37 @@ function AlphabetBoard(gs){
 }
 
 
-//set everything up
+//set everything up, including the WebSocket
 (function setup(){
     var vw = new VisibleWordBoard();
     var gs = new GameState(PH_GUESSES, PH_WORD, vw);
     var ab = new AlphabetBoard(gs);
     ab.initialize();
     vw.setWord(gs.getVisibleWordArray());
+
+    console.log("Connecting to server WebSocket ...");
+    var socket = new WebSocket("ws://localhost:3000", "protocolOne");
+    socket.onmessage = function(event){
+        var msg = event.data;
+        console.log("message received: "+msg);
+        if(msg == "CHOOSE-WORD"){
+            var res = prompt("Select the word to play!");
+            console.log("Selected word: "+res);
+        }
+    };
+
+    socket.onopen = function(){
+        socket.send("hello!");
+    };
+    
+    socket.onclose = function(){
+        alert("closed");
+    };
+
+    socket.onerror = function(){
+        alert("error!");
+    };
+
 })(); //execute immediately
 
 

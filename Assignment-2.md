@@ -55,6 +55,8 @@ A few hints:
 
 ## 4. node.js
 
+### 4.1) Your first server
+
 First, install [express](https://www.npmjs.com/package/express), one of the most popular minimalist web frameworks for node.js. In the terminal, enter your top-level game folder (it contains already a `package.json` file). Run this command in the top level folder of your game app (it contains already a `package.json` file), using the `--save` option to ensure its appearance in `package.json` **[TODO: explain at some point what package.json is for ... ]**:
 
 ```
@@ -85,20 +87,33 @@ Here, `3000` is the port number, you can use any above 1024 safely. Then, open y
 
 You can also use `npm start` **[TODO: explain what needs to be done in package.json and why it is a good idea]**
 
-Of course, such a server (i.e. one that just serves static content) is not overly interesting, so lets start the real work!
+### 4.2) Your first routes
 
-Here are your requirements:
+In the next step, lets get a first taste of routes:
 
-- Typing out `splash.html` is pretty old-fashioned, usually there is no `.html` ending in URLs; add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`.
-- A click on `Play` in the splash screen will start the game.
+Typing out `splash.html` is pretty old-fashioned, usually there is no `.html` ending in URLs; add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. (Hint: if you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute.).
+
+### 4.3) WebSockets
+
+Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for node.js. First, lets install it via `npm`:
+
+````
+npm install --save ws
+````
+
+
+Here is what we want to achieve:
+
+- If a player wants to play and sufficient other players are not available, the player should receive a status message to that effect. Once enough players are willing to play, the game starts.
+- If a player wants to play and sufficient other players (or a single other player) are available, the game starts. Some games require a setup phase (e.g. [Battleship](https://en.wikipedia.org/wiki/Battleship_(game))) which may differ between players (e.g. in [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)) one player is the codemaker and one is the codebreaker).
+- Once a player drops out of an ongoing game, the other players are alerted and the game is aborted.
+- Once a game is finished the winner and loser receive a status update.
+- The server keeps track of the number of games started, the number of currently ongoing games and the number of successfully completed games.
+
+A few hints:
+
+- The game status on the server can be implemented as an in-memory object; we do not require you to store the game status in a database (will happen in a later assignment) or on file.
 - 
-
-
-- Keep a list of the habits in memory on the server.
-- Allow the client (the browser) to retrieve the habits from the server; use the JSON format for this task.
-- Allow the client to add a habit to the server.
-- Allow the client to update a habit on the server.
-- Allow the client to delete a habit from the server.
 
 Node.js has become a hugely popular way of server-side programming; here is a good overview of [best practices](https://github.com/i0natan/nodebestpractices). Visual Studio Code comes with a good debugging support for node.js by default. If you are more of a command line person, you find [here](https://www.clarkio.com/2017/04/25/debugging-in-nodejs/) a good tutorial of how to debug in the shell.
 
