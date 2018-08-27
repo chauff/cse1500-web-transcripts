@@ -30,14 +30,16 @@ The plan should include all actions possible in the game interface.
 
 ### 1.2)
 
-Think about the design of your JavaScript code – which aspects of your action plan can you translate into objects? For example, you might want to model the current game state as an object as well as the game statistics. Similarly, you can also think about modeling the list of all possible actions as an object and so on. Decide on the use of at least one of the introduced JavaScript design patterns.
+Think about the design of your JavaScript code – which aspects of your action plan can you translate into objects? It will make sense to separate the game logic from the game interface. For example, you might want to model the current game state as an object, as well as the game board, the game items (e.g. an alphabet or a dice) and the specific UI elements that correspond to them.
+
+Choose at **least one of the object design patterns introduced in the lecture and implement your objects accordingly** (the introduced basic constructor pattern is the simplest one to implement, the module pattern is more complex but preferrable for code maintainability). Feel free to try more than one design pattern.
 
 ### 1.3)
 
-Now that you have made your plan and decided on the use of design patterns, start coding! Implement your plan of actions one action at a time with the following requirements:
+Now that you have made your plan and decided on the use of the design patterns, start coding! Be mindful of the following requirements:
 
-- Reduce the redundancy in the code as much as possible.
-- Create as few global variables as possible.
+- Reduce the redundancy in the code as much as possible (improves code maintainability).
+- Create as few global variables as possible (improves code maintainability).
 - Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` but instead in the corresponding `[appname]/public/javascripts` folder.
 
 A few hints:
@@ -46,15 +48,51 @@ A few hints:
 - The browser development tools are extremely helpful to debug client-side JavaScript. Use them.
 - Don't be afraid to use place-holders (e.g. in our word guessing game, we start off with a fixed string to guess).
 - You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is normal.
-- If you are using `console.log`, familiarize yourself with the other abilities of the `Console` object as well, they are useful for client-side JavaScript debugging in the browser. The [MDN documentation is availab here](https://developer.mozilla.org/en-US/docs/Web/API/Console), `console.table` makes the output more readable and `console.assert` is good for sanity checks of your code.
-- **[TODO: describe how to use eslint, why; node code vs browser code - we need two variants]** [ESLint](https://eslint.org/docs/user-guide/getting-started)
+- If you are using `console.log`, familiarize yourself with the other abilities of the `Console` object as well, they are useful for client-side JavaScript debugging in the browser. The [MDN documentation is availab here](https://developer.mozilla.org/en-US/docs/Web/API/Console), `console.table` makes the output more readable. `console.assert` is good for sanity checks of your code: e.g. if you have functions that expect an array, you can add an assert statement to check whether the argument is indeed of the expected type. 
+- **[TODO: describe how to use eslint, why; node code vs browser code - we need two variants; check what the difference is between the npm module and the VSC extension]** [ESLint](https://eslint.org/docs/user-guide/getting-started)
 
 *Note: do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment.*
 
 ## 4. node.js
 
-So far your application can handle basic interactions, through client-side JavaScript. Lets now
-implement a first node.js script. Your script should be able to do the following:
+First, install [express](https://www.npmjs.com/package/express), one of the most popular minimalist web frameworks for node.js. In the terminal, enter your top-level game folder (it contains already a `package.json` file). Run this command in the top level folder of your game app (it contains already a `package.json` file), using the `--save` option to ensure its appearance in `package.json` **[TODO: explain at some point what package.json is for ... ]**:
+
+```
+npm install express --save
+```
+
+Then, open `app.js`, delete its current content (which is an elaborate version of what we will add here) and add the following:
+
+```javascript
+var express = require("express");
+var http = require("http");
+
+var port = process.argv[2];
+var app = express();
+
+app.use(express.static(__dirname + "/public"));
+http.createServer(app).listen(port);
+```
+
+This is all the code you need for your server-side (for now). Save the file, and start the server in the terminal:
+
+```
+node app.js 3000
+```
+
+Here, `3000` is the port number, you can use any above 1024 safely. Then, open your browser and use the following URLs:
+`http://localhost:3000/game.html` and `http://localhost:3000/splash.html` (change the port number if you used a different one) - if you see the two HTML files, then, congratulations, you have successfully "implemented" your first node.js server!
+
+You can also use `npm start` **[TODO: explain what needs to be done in package.json and why it is a good idea]**
+
+Of course, such a server (i.e. one that just serves static content) is not overly interesting, so lets start the real work!
+
+Here are your requirements:
+
+- Typing out `splash.html` is pretty old-fashioned, usually there is no `.html` ending in URLs; add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`.
+- A click on `Play` in the splash screen will start the game.
+- 
+
 
 - Keep a list of the habits in memory on the server.
 - Allow the client (the browser) to retrieve the habits from the server; use the JSON format for this task.

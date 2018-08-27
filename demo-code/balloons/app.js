@@ -1,9 +1,13 @@
-
 var express = require("express");
+var http = require("http");
+
 var indexRouter = require("./routes/index");
+
+var port = process.argv[2];
 var app = express();
 
-// view engine setup
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname + "/public"));
 app.use("/", indexRouter);
-module.exports = app;
+app.use("/play", indexRouter);
+
+http.createServer(app).listen(port);

@@ -79,7 +79,6 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Read up on the developer tools of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
     - Note that http information can be used for [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
-  - Addition in 2018/19: `Keep-Alive` and `Update` (WebSockets) headers; [info](https://medium.com/platform-engineer/web-api-design-35df8167460); [tutorial](https://www.html5rocks.com/en/tutorials/websockets/basics/)
     - [A comic intro to http(s) and dns](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
     - Include `Access-Control-Allow-Origin` header in the discussion
   
@@ -140,7 +139,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of Web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
     - To make sense of CSS positioning, take a look [here](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value) and [here](https://alistapart.com/article/css-positioning-101)
     - Blog post on Mozilla's [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
-    - [Animation.css](https://daneden.github.io/animate.css/)
+    - [Animate.css](https://daneden.github.io/animate.css/)
 
 - Lecture 6 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: Ajax in more detail, node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
