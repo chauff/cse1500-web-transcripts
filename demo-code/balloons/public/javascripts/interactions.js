@@ -1,33 +1,34 @@
 const USED = -1; //letter has been used, not available anymore
 const AVAIL = 1; //letter has not been used yet
 
-//placeholders ...
-const PH_WORD = "THEMUMMY";
-
 /* basic constructor of game state */
-function GameState(visibleWordBoard){
+function GameState(visibleWordBoard, socket){
 
     this.playerType = null;
     this.MAX_ALLOWED = Setup.MAX_ALLOWED_GUESSES;
     this.wrongGuesses = 0;
-    this.visibleWordArray = new Array(Setup.MAX_WORD_LENGTH);
-    this.visibleWordArray.fill("#");
+    this.visibleWordArray = null;
     this.alphabet = new Alphabet();
     this.alphabet.initialize();
     this.visibleWordBoard = visibleWordBoard;
     this.targetWord = null;
 
+    this.initializeVisibleWordArray = function(){
+        this.visibleWordArray = new Array(this.targetWord.length);
+        this.visibleWordArray.fill("#");
+    };
+
     this.getPlayerType = function () {
         return this.playerType;
-    }
+    };
 
     this.setPlayerType = function (p) {
         this.playerType = p;
-    }
+    };
 
     this.setTargetWord = function (w) {
         this.targetWord = w;
-    }
+    };
 
     this.getVisibleWordArray = function(){
         return this.visibleWordArray;
@@ -66,6 +67,11 @@ function GameState(visibleWordBoard){
             this.alphabet.makeLetterUnAvailable(clickedLetter);
             this.visibleWordBoard.setWord(this.visibleWordArray);
         }
+
+        //send the guess to the server
+        var outgoingMsg = Messages.O_MAKE_A_GUESS;
+        outgoingMsg.data = clickedLetter;
+        socket.send(JSON.stringify(outgoingMsg));
     };
 }
 
@@ -127,6 +133,10 @@ function Alphabet(){
     this.isLetterIn = function(letter, word){
         console.assert(typeof letter === "string", "String expected");
         console.assert(typeof word === "string", "String expected");
+
+        console.log("isLetter: "+this.isLetter(letter));
+        console.log("isAvailable: "+this.isLetterAvailable(letter));
+
         if( !this.isLetter(letter) || !this.isLetterAvailable(letter)){
             return false;
         }
@@ -141,7 +151,7 @@ function Alphabet(){
         var res = [];
         
         if(!this.isLetterIn(letter, word)){
-            console.log("Letter is not in target word!");
+            console.log("Letter [%s] is not in target word [%s]!", letter, word);
             return res;
         }
         
@@ -168,6 +178,7 @@ function VisibleWordBoard(){
 
 function AlphabetBoard(gs){
 
+    //only initialize for player that should actually be able to use the board
     this.initialize = function(){
 
         var elements = document.querySelectorAll(".alphabet");
@@ -187,14 +198,15 @@ function AlphabetBoard(gs){
 
 //set everything up, including the WebSocket
 (function setup(){
-    var vw = new VisibleWordBoard();
-    var gs = new GameState(vw);
-    var ab = new AlphabetBoard(gs);
-    ab.initialize();
-    vw.setWord(gs.getVisibleWordArray());
 
     console.log("Connecting to server WebSocket ...");
     var socket = new WebSocket(Setup.WEB_SOCKET_URL);
+
+    var vw = new VisibleWordBoard();
+    var gs = new GameState(vw, socket);
+    var ab = new AlphabetBoard(gs);
+
+
 
     socket.onmessage = function (event) {
 
@@ -202,31 +214,52 @@ function AlphabetBoard(gs){
 
         //set player type
         if (incomingMsg.type == Messages.T_PLAYER_TYPE) {
-            console.log("Player type is %s", incomingMsg.type);
+            console.log("Player type is %s", incomingMsg.data);
             gs.setPlayerType( incomingMsg.data );//should be "A" or "B"
 
             //if player type is A, (1) pick a word, and (2) sent it to the server
             if (gs.getPlayerType() == "A") {
-                var res = prompt("Select the word to play!");
+                var res = prompt("You are Player 1, select the word to guess!");
                 gs.setTargetWord(res);
-                var outgoingMsg = Messages.MSG_TARGET_WORD;
-                console.log(typeof (outgoingMsg));
+                gs.initializeVisibleWordArray(); // initialize the word array, now that we have the word
+                vw.setWord(gs.getVisibleWordArray());
+
+                var outgoingMsg = Messages.O_TARGET_WORD;
                 outgoingMsg.data = res;
                 socket.send(JSON.stringify(outgoingMsg));
             }
         }
+
+        //Player B: wait for target word and then start guessing ...
+        if( incomingMsg.type == Messages.T_TARGET_WORD && gs.getPlayerType() == "B"){
+            gs.setTargetWord(incomingMsg.data);
+            console.log("Player B: target word set to %s.", incomingMsg.data);
+
+            console.log("Enable alphabet board ...");
+            gs.initializeVisibleWordArray(); // initialize the word array, now that we have the word
+            ab.initialize();
+            vw.setWord(gs.getVisibleWordArray());
+        }
+
+        //Player A: wait for guesses and update the board ...
+        if( incomingMsg.type == Messages.T_MAKE_A_GUESS && gs.getPlayerType()=="A"){
+            console.log("The other player guessed %s.", incomingMsg.data);
+            gs.updateGame(incomingMsg.data);
+        }
+
+
     };
 
     socket.onopen = function(){
-        socket.send("hello!");
+        socket.send("{}");
     };
     
     socket.onclose = function(){
-        alert("closed");
+        
     };
 
     socket.onerror = function(){
-        alert("error!");
+        
     };
 
 })(); //execute immediately

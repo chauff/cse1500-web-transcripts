@@ -6,29 +6,42 @@
 
 (function(exports){
 
-    exports.O_CHOOSE = { type: "CHOOSE-WORD" }        /* Player selects a word */
-    exports.S_CHOOSE = JSON.stringify(this.O_CHOOSE);
+    exports.O_CHOOSE = { type: "CHOOSE-WORD" };        /* Server to client: choose target word */
+    exports.S_CHOOSE = JSON.stringify(exports.O_CHOOSE);
 
-    exports.T_PLAYER_TYPE = "PLAYER-TYPE"
-    exports.O_PLAYER_A = {                            /* Player A */
+    exports.T_PLAYER_TYPE = "PLAYER-TYPE";
+    exports.O_PLAYER_A = {                            /* Server to client: set as player A */
         type: exports.T_PLAYER_TYPE,
         data: "A"
-    }
-    exports.S_PLAYER_A = JSON.stringify(exports.O_PLAYER_A)
+    };
+    exports.S_PLAYER_A = JSON.stringify(exports.O_PLAYER_A);
 
-    exports.O_PLAYER_B = {                            /* Player B */
+    exports.O_PLAYER_B = {                            /* Server to client: set as player B */
         type: exports.T_PLAYER_TYPE,
         data: "B"
-    }
+    };
     exports.S_PLAYER_B = JSON.stringify(exports.O_PLAYER_B);
 
-    exports.T_TARGET_WORD = "TARGET-WORD"
-    exports.O_TARGET_WORD = {                         /* Target word */
+    exports.T_TARGET_WORD = "SET-TARGET-WORD";
+    exports.O_TARGET_WORD = {                         /* Player A to server OR server to Player B: this is the target word */
         type: exports.T_TARGET_WORD,
         data: null
-    }
-    exports.S_TARGET_WORD = JSON.stringify(exports.O_TARGET_WORD)
+    };
+    //exports.S_TARGET_WORD does not exist, as we always need to fill the data property
+
+    exports.T_MAKE_A_GUESS = "MAKE-A-GUESS";         /* Player B to server OR server to Player A: guessed character */
+    exports.O_MAKE_A_GUESS = {
+        type: exports.T_MAKE_A_GUESS,
+        data: null
+    };
+    //exports.S_MAKE_A_GUESS does not exist, as data needs to be set
+
+    exports.T_GAME_OVER = "GAME-OVER";              /* Server to Player A & B: game over with result won/loss */
+    exports.O_GAME_OVER = {
+        type: exports.T_GAME_OVER,
+        data: null
+    };
 
 
-}(typeof exports === 'undefined' ? this.Messages = {} : exports));
+}(typeof exports === "undefined" ? this.Messages = {} : exports));
 //if exports is undefined, we are on the client; else the server
