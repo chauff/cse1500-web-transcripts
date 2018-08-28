@@ -3,24 +3,31 @@ const AVAIL = 1; //letter has not been used yet
 
 //placeholders ...
 const PH_WORD = "THEMUMMY";
-const PH_GUESSES = 3;
 
 /* basic constructor of game state */
-function GameState(MAX_ALLOWED, targetWord, visibleWordBoard){
+function GameState(visibleWordBoard){
 
-    //dynamic language issues
-    console.assert(Number.isInteger(MAX_ALLOWED), "Expecting an integer!");
-    console.assert(MAX_ALLOWED>=0, "Expecting a non-negative integer!");
-    console.assert(typeof targetWord === "string", "Expecting a string!");
-
-    this.MAX_ALLOWED = MAX_ALLOWED;
+    this.playerType = null;
+    this.MAX_ALLOWED = Setup.MAX_ALLOWED_GUESSES;
     this.wrongGuesses = 0;
-    this.targetWord = targetWord;
-    this.visibleWordArray = new Array(targetWord.length);
+    this.visibleWordArray = new Array(Setup.MAX_WORD_LENGTH);
     this.visibleWordArray.fill("#");
     this.alphabet = new Alphabet();
     this.alphabet.initialize();
     this.visibleWordBoard = visibleWordBoard;
+    this.targetWord = null;
+
+    this.getPlayerType = function () {
+        return this.playerType;
+    }
+
+    this.setPlayerType = function (p) {
+        this.playerType = p;
+    }
+
+    this.setTargetWord = function (w) {
+        this.targetWord = w;
+    }
 
     this.getVisibleWordArray = function(){
         return this.visibleWordArray;
@@ -181,19 +188,32 @@ function AlphabetBoard(gs){
 //set everything up, including the WebSocket
 (function setup(){
     var vw = new VisibleWordBoard();
-    var gs = new GameState(PH_GUESSES, PH_WORD, vw);
+    var gs = new GameState(vw);
     var ab = new AlphabetBoard(gs);
     ab.initialize();
     vw.setWord(gs.getVisibleWordArray());
 
     console.log("Connecting to server WebSocket ...");
-    var socket = new WebSocket("ws://localhost:3000", "protocolOne");
-    socket.onmessage = function(event){
-        var msg = event.data;
-        console.log("message received: "+msg);
-        if(msg == "CHOOSE-WORD"){
-            var res = prompt("Select the word to play!");
-            console.log("Selected word: "+res);
+    var socket = new WebSocket(Setup.WEB_SOCKET_URL);
+
+    socket.onmessage = function (event) {
+
+        var incomingMsg = JSON.parse(event.data);
+
+        //set player type
+        if (incomingMsg.type == Messages.T_PLAYER_TYPE) {
+            console.log("Player type is %s", incomingMsg.type);
+            gs.setPlayerType( incomingMsg.data );//should be "A" or "B"
+
+            //if player type is A, (1) pick a word, and (2) sent it to the server
+            if (gs.getPlayerType() == "A") {
+                var res = prompt("Select the word to play!");
+                gs.setTargetWord(res);
+                var outgoingMsg = Messages.MSG_TARGET_WORD;
+                console.log(typeof (outgoingMsg));
+                outgoingMsg.data = res;
+                socket.send(JSON.stringify(outgoingMsg));
+            }
         }
     };
 
