@@ -142,9 +142,9 @@ You can also use `npm start` **[TODO: explain what needs to be done in package.j
 
 ### 3.2) Your first routes
 
-In the next step, lets get a first taste of routes:
+In the next step, lets make our two html files available with modern Web tech, i.e. routes:
 
-URLs ending in  `*.html` are considered old-fashioned, modern Web frameworks avoid this and use *routes* insetad. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. (Hint: if you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute.).
+URLs ending in  `*.html` are considered old-fashioned, modern Web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content (Hint: if you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute.). Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
 
 **[TODO: mention to store the routes in routes/index.js]**
 
@@ -189,7 +189,7 @@ Before you implement anything useful, try this [minimal example](demo-code/minim
             socket.onopen = function(){
                 socket.send("Hello from the client!");
             };
-        </script> 
+        </script>
     </body>
 </html>
 ```
