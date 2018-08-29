@@ -164,7 +164,7 @@ Lets now connect our two (or more - depending on the game you chose) gamers, to 
 npm install --save ws
 ````
 
-Before you implement anything useful, try this minimal example of a WebSocket: here, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. Here is our minimal client code (`test.html`):
+Before you implement anything useful, try this [minimal example](demo-code/minimum-example-ws) of a WebSocket: here, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. Here is our minimal client code (`test.html`):
 
 ```html
 <!DOCTYPE html>
