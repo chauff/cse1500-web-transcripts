@@ -206,8 +206,6 @@ Once you have completed the design of your app, head over to CSE1500's Brightspa
 
 ## 6. Your own boad game app: HTML
 
-**[TODO: provide a folder structure that resembles what is needed later]**
-
 ### 6.1)
 
 Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).

@@ -1,38 +1,45 @@
 # Assignment 3
 
+In the first part of this assignment, you will finally employ *CSS* to make your splash and game screen look good.
+
+In the second part of this assignment, you will implement a number of smaller items, that each do not take a lot of time, but round off your application and showcase additional abilities of the modern browser.
+
+## 0. Preliminaries
+
+Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code.
+
+### Overview of deliverables and upload procedure
+
+| **Task** | **Deliverables**                               |
+|------|----------------------------------------------------|
+| 1    | -                                                  |
+| 2.1  | Plan of action (bullet points are sufficient)      |
+| 2.2  | Use of design patterns (bullet points are sufficient)      |
+| 2.3  | Source code                                        |
+| 3.1  | -                                                  |
+| 3.2  | -                                                  |
+| 3.3  | WebSocket-based communication pattern between clients and server  |
+| 3.4  | -                                                  |
+| 3.5  | Source code                                        |
+
 - take a concrete website and let students determine number of cookies sent; number of third-party cookies
 
-In the first part of the assignment, you will complete the first prototype of your Web application, by adding CSS. In the second part, you will refactor and refine your application to make it more maintainable and robust.
+Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
 
-**[TODO: make it clear how exactly the deliverable should look like: where to upload, what to upload]**
+Submit your code either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
-
-## 5. Ajax
-
-Use Ajax to allow the dynamic updating of the habit page in the browser (i.e. without reloading of the complete page). Again, book chapters 5 & 6 of the Web course book will help you if you are stuck.
-
-Note: Example 6 also contains a hint of how to enable repeated checking of the server (i.e. every X seconds the habit page polls the server for the habits). This can easily be achieved by wrapping this line into a timer function:
-
-```javascript
-setInterval(function () {
-    console.log("Fetching the habit list from the server.");
-    $.getJSON("habits", addHabitsToList);
-}, 2000);
-```
-
-This piece of code will retrieve a list of habits from the server every 2 seconds (it is your job to check whether those habits differ from what is already there).
+Use heroku??
 
 ## 1. CSS
 
-Now that we (finally) covered CSS, you will continue to work on your two HTML documents (the
-splash screen and habit tracker page) and style them with CSS. To ensure that your CSS is of high
-quality, you can make use of CSS Lint: [http://csslint.net/](http://csslint.net/).
-Choose three browsers (e.g. the latest versions of Safari, Google Chrome and Microsoft Edge) on which to test your Web application - the application should look and run in the same manner across those three browsers.
+Now that we (finally) covered CSS, you will continue to work on your splash and game screens and style them with CSS.
 You are **not allowed** to use external libraries or preprocessing tools. Your application should have a modern look and feel (that is, use sufficient CSS styling).
+
+As you might have already guessed, your CSS should reside in `myapp/public/stylesheets`. That folder already contains a `style.css` file by default. In order to keep your code maintainable, you can for instance place all CSS that applies to both screens in `style.css` and in addition create separate `splash.css` and `game.css` stylesheets for CSS rules specific to each screen. Note that stylesheets [can contain other stylesheets](https://developer.mozilla.org/en-US/docs/Web/CSS/@import).
 
 ### 1.1) Splash screen
 
-First, work on your splash screen and style the page with CSS according to your design. To ensure that every student learns the basics of CSS, we provide a list of must-have CSS properties. Your code must include at least one instance of each of the following:
+First, work on your splash screen and style the page with CSS according to your design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties, i.e. your code must include at least one instance of each of the following:
 
 - Pseudo-classes :hover :active
 - Pseudo-elements: ::after ::before
@@ -74,3 +81,22 @@ Templates allow us to change this setup and immediately send the existing habits
 We finally make use of the application's splash screen. Implement a third-party authentication of your own choice (e.g. Twitter [as covered in class] or Facebook). Use the passport middleware for this task: [http://passportjs.org/]](http://passportjs.org/).
 
 The habits of each user using your application should only be visible to him/her. Note that you will have to install passport via npm (don't forget to update your `package.json`, i.e. use the `–save` option).
+
+
+
+## 5. Ajax
+
+Use Ajax to allow the dynamic updating of the habit page in the browser (i.e. without reloading of the complete page). Again, book chapters 5 & 6 of the Web course book will help you if you are stuck.
+
+Note: Example 6 also contains a hint of how to enable repeated checking of the server (i.e. every X seconds the habit page polls the server for the habits). This can easily be achieved by wrapping this line into a timer function:
+
+```javascript
+setInterval(function () {
+    console.log("Fetching the habit list from the server.");
+    $.getJSON("habits", addHabitsToList);
+}, 2000);
+```
+
+This piece of code will retrieve a list of habits from the server every 2 seconds (it is your job to check whether those habits differ from what is already there).
+
+## 1. CSS

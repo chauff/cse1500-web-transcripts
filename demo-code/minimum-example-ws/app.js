@@ -18,7 +18,7 @@ wss.on("connection", function connection(ws, req) {
     ws.send("Hello to you too!");
 
     ws.on("message", function incoming(message) {
-        console.log("Message received: "+message);
+        console.log("[LOG]: "+message);
     });
 });
 

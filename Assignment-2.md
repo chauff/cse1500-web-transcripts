@@ -107,7 +107,7 @@ A few hints:
 - If you are using `console.log`, familiarize yourself with the other abilities of the `Console` object as well, they are useful for client-side JavaScript debugging in the browser. The [MDN documentation is availab here](https://developer.mozilla.org/en-US/docs/Web/API/Console), `console.table` makes the output more readable. `console.assert` is good for sanity checks of your code: e.g. if you have functions that expect an array, you can add an assert statement to check whether the argument is indeed of the expected type.
 - **[TODO: describe how to use eslint, why; node code vs browser code - we need two variants; check what the difference is between the npm module and the VSC extension]** [ESLint](https://eslint.org/docs/user-guide/getting-started)
 
-*Note: do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment.*
+*Note: do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment. *
 
 ## 3. node.js
 
@@ -230,7 +230,7 @@ To check whether this minimal example works, place `test.html` and `app-test.js`
 
 ### 3.5) WebSockets: implementing your game
 
-Time to implement client-server communication in your game application via WebSockets. Here is what we want to achieve:
+Having seen and ran the minimal WebSocket example, it is now time to implement client-server communication in your game application via WebSockets. Here is what we want to achieve:
 
 - Upon pressing "Play" button the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game (*as stated in assignment 1*).
 - Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time (*as stated in assignment 1*). Some games require a setup phase (e.g. [Battleship](https://en.wikipedia.org/wiki/Battleship_(game))) which may differ between players (e.g. in [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)) one player is the codemaker and one is the codebreaker).
