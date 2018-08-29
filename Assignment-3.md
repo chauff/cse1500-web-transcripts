@@ -6,6 +6,22 @@ In the first part of the assignment, you will complete the first prototype of yo
 
 **[TODO: make it clear how exactly the deliverable should look like: where to upload, what to upload]**
 
+
+## 5. Ajax
+
+Use Ajax to allow the dynamic updating of the habit page in the browser (i.e. without reloading of the complete page). Again, book chapters 5 & 6 of the Web course book will help you if you are stuck.
+
+Note: Example 6 also contains a hint of how to enable repeated checking of the server (i.e. every X seconds the habit page polls the server for the habits). This can easily be achieved by wrapping this line into a timer function:
+
+```javascript
+setInterval(function () {
+    console.log("Fetching the habit list from the server.");
+    $.getJSON("habits", addHabitsToList);
+}, 2000);
+```
+
+This piece of code will retrieve a list of habits from the server every 2 seconds (it is your job to check whether those habits differ from what is already there).
+
 ## 1. CSS
 
 Now that we (finally) covered CSS, you will continue to work on your two HTML documents (the

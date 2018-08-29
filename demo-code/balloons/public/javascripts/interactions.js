@@ -216,7 +216,10 @@ function AlphabetBoard(gs){
                 var clickedLetter = e.originalTarget.id;
                 gs.updateGame(clickedLetter);
 
-                //each letter can only be clicked once ...
+                /*
+                 * every letter can only be selected once; handling this within
+                 * JS is one option, here simply remove the event listener when a click happened 
+                 */
                 el.removeEventListener("click", singleClick, false);
             });
         });
