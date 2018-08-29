@@ -6,6 +6,17 @@
 
 (function(exports){
 
+    exports.T_GAME_WON_BY = "GAME-WON-BY";             /* Client to server: game is complete, the winner is ... */
+    exports.O_GAME_WON_BY = {
+        type: exports.T_GAME_WON_BY,
+        data: null
+    };
+
+    exports.O_GAME_ABORTED = {                          /* Server to client: abort game (e.g. if second player exited the game) */
+        type: "GAME-ABORTED"
+    };
+    exports.S_GAME_ABORTED = JSON.stringify(exports.O_GAME_ABORTED);
+
     exports.O_CHOOSE = { type: "CHOOSE-WORD" };        /* Server to client: choose target word */
     exports.S_CHOOSE = JSON.stringify(exports.O_CHOOSE);
 

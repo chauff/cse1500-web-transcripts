@@ -2,7 +2,7 @@ const USED = -1; //letter has been used, not available anymore
 const AVAIL = 1; //letter has not been used yet
 
 /* basic constructor of game state */
-function GameState(visibleWordBoard, socket){
+function GameState(visibleWordBoard, sb, socket){
 
     this.playerType = null;
     this.MAX_ALLOWED = Setup.MAX_ALLOWED_GUESSES;
@@ -12,6 +12,7 @@ function GameState(visibleWordBoard, socket){
     this.alphabet.initialize();
     this.visibleWordBoard = visibleWordBoard;
     this.targetWord = null;
+    this.statusBar = sb;
 
     this.initializeVisibleWordArray = function(){
         this.visibleWordArray = new Array(this.targetWord.length);
@@ -38,12 +39,19 @@ function GameState(visibleWordBoard, socket){
         this.wrongGuesses++;
     };
 
-    this.isGameOver = function(){
-        return (this.wrongGuesses>this.MAX_ALLOWED);
+    this.whoWon = function(){
+        //too many wrong guesses? Player A (who set the word) won
+        if( this.wrongGuesses>Setup.MAX_ALLOWED_GUESSES){
+            return "A";
+        }
+        //word solved? Player B won
+        if( this.visibleWordArray.indexOf("#")<0){
+            return "B";
+        }
+        return null; //nobody won yet
     };
 
-    this.revealLetters = function(letter){
-        var indices = this.alphabet.getLetterInWordIndices(letter, this.targetWord);
+    this.revealLetters = function(letter, indices){
         for(let i=0; i<indices.length; i++){
             this.visibleWordArray[ indices[i] ] = letter;
         }
@@ -58,20 +66,37 @@ function GameState(visibleWordBoard, socket){
             this.incrWrongGuess();
         }
 
-        //game over?
-        if( this.isGameOver() ){
-            console.log("Game lost!");
-        }
-        else {
-            this.revealLetters(clickedLetter);
-            this.alphabet.makeLetterUnAvailable(clickedLetter);
-            this.visibleWordBoard.setWord(this.visibleWordArray);
-        }
+        this.revealLetters(clickedLetter, res);
+        this.alphabet.makeLetterUnAvailable(clickedLetter);
+        this.visibleWordBoard.setWord(this.visibleWordArray);
 
-        //send the guess to the server
+        //TODO: both A and B do that ...
         var outgoingMsg = Messages.O_MAKE_A_GUESS;
         outgoingMsg.data = clickedLetter;
         socket.send(JSON.stringify(outgoingMsg));
+
+        //is the game complete?
+        let winner = this.whoWon();
+        let alertString = "Game over. You ";
+        if(winner != null){
+            if( winner == this.playerType){
+                alertString += "won!";
+            }
+            else {
+                alertString += "lost!";
+            }
+            alertString += " <a href='/play'>Play again!</a>";
+            sb.setStatus(alertString);
+
+            //player B sends final message
+            if(this.playerType == "B"){
+                let finalMsg = Messages.O_GAME_WON_BY;
+                finalMsg.data = winner;
+                socket.send(JSON.stringify(finalMsg));
+            }
+
+            socket.close();
+        }
     };
 }
 
@@ -134,9 +159,6 @@ function Alphabet(){
         console.assert(typeof letter === "string", "String expected");
         console.assert(typeof word === "string", "String expected");
 
-        console.log("isLetter: "+this.isLetter(letter));
-        console.log("isAvailable: "+this.isLetterAvailable(letter));
-
         if( !this.isLetter(letter) || !this.isLetterAvailable(letter)){
             return false;
         }
@@ -176,6 +198,12 @@ function VisibleWordBoard(){
     };
 }
 
+function StatusBar(){
+    this.setStatus = function(status){
+        document.getElementById("statusbar").innerHTML = status;
+    }
+}
+
 function AlphabetBoard(gs){
 
     //only initialize for player that should actually be able to use the board
@@ -184,12 +212,12 @@ function AlphabetBoard(gs){
         var elements = document.querySelectorAll(".alphabet");
         Array.from(elements).forEach( function(el){
 
-            el.addEventListener("click", function(e){
+            el.addEventListener("click", function singleClick(e){
                 var clickedLetter = e.originalTarget.id;
                 gs.updateGame(clickedLetter);
 
-                //"testing" ...
-                console.log(clickedLetter); 
+                //each letter can only be clicked once ...
+                el.removeEventListener("click", singleClick, false);
             });
         });
     };
@@ -203,30 +231,35 @@ function AlphabetBoard(gs){
     var socket = new WebSocket(Setup.WEB_SOCKET_URL);
 
     var vw = new VisibleWordBoard();
-    var gs = new GameState(vw, socket);
+    var sb = new StatusBar();
+
+    var gs = new GameState(vw, sb, socket);
     var ab = new AlphabetBoard(gs);
-
-
 
     socket.onmessage = function (event) {
 
-        var incomingMsg = JSON.parse(event.data);
-
+        let incomingMsg = JSON.parse(event.data);
+ 
         //set player type
         if (incomingMsg.type == Messages.T_PLAYER_TYPE) {
-            console.log("Player type is %s", incomingMsg.data);
+            
             gs.setPlayerType( incomingMsg.data );//should be "A" or "B"
 
             //if player type is A, (1) pick a word, and (2) sent it to the server
             if (gs.getPlayerType() == "A") {
-                var res = prompt("You are Player 1, select the word to guess!");
+                sb.setStatus("You are Player 1. Pick the word to guess (A-Z only)! If player 2 cannot guess your word, you won.");
+                let res = prompt("Word to guess!").toUpperCase();
+                sb.setStatus("Your chosen word: "+res);
                 gs.setTargetWord(res);
                 gs.initializeVisibleWordArray(); // initialize the word array, now that we have the word
                 vw.setWord(gs.getVisibleWordArray());
 
-                var outgoingMsg = Messages.O_TARGET_WORD;
+                let outgoingMsg = Messages.O_TARGET_WORD;
                 outgoingMsg.data = res;
                 socket.send(JSON.stringify(outgoingMsg));
+            }
+            else {
+                sb.setStatus("You are Player 2, the word guesser. You win if you can complete the word within " + Setup.MAX_ALLOWED_GUESSES +" attempts. Waiting for Player 1 to pick a word ...");
             }
         }
 
@@ -235,7 +268,7 @@ function AlphabetBoard(gs){
             gs.setTargetWord(incomingMsg.data);
             console.log("Player B: target word set to %s.", incomingMsg.data);
 
-            console.log("Enable alphabet board ...");
+            sb.setStatus("You are Player 2, the word guesser. You win if you can complete the word within " + Setup.MAX_ALLOWED_GUESSES+" attempts. Player 1 picked a word, start guessing!");
             gs.initializeVisibleWordArray(); // initialize the word array, now that we have the word
             ab.initialize();
             vw.setWord(gs.getVisibleWordArray());
@@ -243,7 +276,7 @@ function AlphabetBoard(gs){
 
         //Player A: wait for guesses and update the board ...
         if( incomingMsg.type == Messages.T_MAKE_A_GUESS && gs.getPlayerType()=="A"){
-            console.log("The other player guessed %s.", incomingMsg.data);
+            sb.setStatus("The other player guessed " + incomingMsg.data + ".");
             gs.updateGame(incomingMsg.data);
         }
 
@@ -254,8 +287,11 @@ function AlphabetBoard(gs){
         socket.send("{}");
     };
     
+    //server sends a close event only if the game was aborted from some side
     socket.onclose = function(){
-        
+        if(gs.whoWon()==null){
+            sb.setStatus("Your gaming partner is no longer available, game aborted. <a href='/play'>Play again!</a>");
+        }
     };
 
     socket.onerror = function(){
