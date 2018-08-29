@@ -156,15 +156,17 @@ For example, your game may have different types of players (in our example game,
 
 Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need depends on your chosen game to implement.
 
-### 3.4) WebSockets: a first app
+### 3.4) WebSockets: a minimum viable examples
 
-Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for node.js. First, lets install it via `npm`:
+Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for node.js. 
+
+First, lets install it via `npm`:
 
 ````
 npm install --save ws
 ````
 
-Before you implement anything useful, try this [minimal example](demo-code/minimum-example-ws) of a WebSocket: here, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. Here is our minimal client code (`test.html`):
+Before you implement anything useful, try this [minimal example](demo-code/minimum-example-ws) of a WebSocket - **note, that it is completely independent of your board game application code!**. In this minimum viable example, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. Here is our minimal client code (`test.html`):
 
 ```html
 <!DOCTYPE html>
