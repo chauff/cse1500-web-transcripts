@@ -8,17 +8,17 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 
 ### Overview of deliverables and upload procedure
 
-If you get lost in the assignment, use this overview of deliverables to get back on track!
-
 | **Task** | **Deliverables**                               |
 |------|----------------------------------------------------|
+| 1    | -                                                  |
 | 2.1  | Plan of action (bullet points are sufficient)      |
 | 2.2  | Use of design patterns (bullet points are sufficient)      |
 | 2.3  | Source code                                        |
 | 3.1  | -                                                  |
 | 3.2  | -                                                  |
-| 3.3  | Communication between clients and server (bullet points are sufficient; a diagram is possible too)|
-| 3.4  | Source code                                        |
+| 3.3  | WebSocket-based communication pattern between clients and server  |
+| 3.4  | -                                                  |
+| 3.5  | Source code                                        |
 
 Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
 
@@ -146,6 +146,8 @@ In the next step, lets get a first taste of routes:
 
 URLs ending in  `*.html` are considered old-fashioned, modern Web frameworks avoid this and use *routes* insetad. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. (Hint: if you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute.).
 
+**[TODO: mention to store the routes in routes/index.js]**
+
 ### 3.3) WebSockets: communication between client and server
 
 Before you are implementing the client-server communication via WebSockets, it is important to work out which entity communicates what.
@@ -154,7 +156,7 @@ For example, your game may have different types of players (in our example game,
 
 Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need depends on your chosen game to implement.
 
-### 3.4) WebSockets implementation
+### 3.4) WebSockets: a first app
 
 Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for node.js. First, lets install it via `npm`:
 
@@ -162,9 +164,71 @@ Lets now connect our two (or more - depending on the game you chose) gamers, to 
 npm install --save ws
 ````
 
-**[TODO: example of a very simple ping/pong websocket with ws]**
+Before you implement anything useful, try this minimal example of a WebSocket: here, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. Here is our minimal client code (`test.html`):
 
-Here is what we want to achieve:
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket test</title>
+    </head>
+    <body>
+        <main>
+            Waiting for a hello from the server: <span id="hello"></span>
+        </main>
+
+        <!-- Poor coding standard, only for demonstration purposes.
+             JavaScript code should not be part of HTML documents.
+        -->
+        <script>
+            var socket = new WebSocket("ws://localhost:3000");
+            socket.onmessage = function(event){
+                document.getElementById("hello").innerHTML = event.data;
+            }
+
+            socket.onopen = function(){
+                socket.send("Hello from the client!");
+            };
+        </script> 
+    </body>
+</html>
+```
+
+The server-side code (`app-test.js`) is equally short:
+
+```javascript
+var express = require("express");
+var http = require("http");
+var websocket = require("ws");
+
+var port = process.argv[2];
+var app = express();
+
+app.use("/", function(req, res) {
+    res.sendFile("test.html", {root: "./"});
+});
+
+var server = http.createServer(app);
+
+const wss = new websocket.Server({ server });
+
+wss.on("connection", function connection(ws, req) {
+
+    ws.send("Hello to you too!");
+
+    ws.on("message", function incoming(message) {
+        console.log("[LOG]: "+message);
+    });
+});
+```
+
+To check whether this minimal example works, place `test.html` and `app-test.js` in a single directory and run `node app-test.js 3000`. You will receive errors for missing node packages, unless you have placed those two files in a directory with the correct node packages already installed. That should not stop you, however, by now you know how to install node packages (`npm install ...`). Once your `app-test` server is running, open the browser at `http://localhost:3000/` and you will see your first WebSocket in action.
+
+
+
+### 3.5) WebSockets: implementing your game
+
+Time to implement client-server communication in your game application via WebSockets. Here is what we want to achieve:
 
 - Upon pressing "Play" button the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game (*as stated in assignment 1*).
 - Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time (*as stated in assignment 1*). Some games require a setup phase (e.g. [Battleship](https://en.wikipedia.org/wiki/Battleship_(game))) which may differ between players (e.g. in [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)) one player is the codemaker and one is the codebreaker).
@@ -177,6 +241,6 @@ A few hints:
 
 - You may want to share code between the client and server - the message types described above are a good candidate for code you do not want to duplicate. The solution is a particular design pattern, [described here](https://medium.com/@ShamreshKhan/how-to-share-client-side-and-server-side-js-code-cc04c3422497). If you add for instance `messages.js` to `myapp/public/javascripts` following that particular design pattern, you can add the following line to `app.js` to access it in node as well: `var messages = require("./public/javascripts/messages");`.
 
-- The server has to keep track of all ongoing games in order to facilitate the broadcasting of messages to the correct clients. There are many ways to do this, one option is to create a `game` object that keeps track of the WebSocket objects belonging to the game's players; each WebSocket object receives an `id` and a `Map` object with WebSocket `id` as key and `game` object as values ensures that the server can determine quickly for which WebSockets the received messages are meant.
+- The server has to keep track of all ongoing games in order to facilitate the broadcasting of messages to the correct clients. There are many ways to do this, one option is to create a `game` object that keeps track of the WebSocket objects belonging to the game's players; each WebSocket object receives an `id` and a `Map` object with WebSocket `id` as key and `game` object as values ensures that the server can determine quickly for which WebSockets the received messages are meant. In order to clean up your WebSocket-Game map, you can use a `setInterval` function to regularly check and remove inactive/completed games from it.
 
 - The game status on the server can be implemented as an in-memory object; we do not require you to store the game status in a database (will happen in a later assignment) or on file.
