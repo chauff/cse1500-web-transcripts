@@ -24,7 +24,9 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 
 Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
 
-Submit your code either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
+Submit your application's **source code** either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your submission contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
+
+*Note: we expect a single source code submission, **not** one submission per task!*
 
 ## 1. Boilerplate code
 

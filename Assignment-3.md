@@ -2,7 +2,7 @@
 
 In the first part of this assignment, you will finally employ *CSS* to make your splash and game screen look good.
 
-In the second part of this assignment, you will implement a number of smaller items, that each do not take a lot of time, but round off your application and showcase additional abilities of the modern browser.
+In the second part of this assignment, you will implement a number of smaller items, that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the modern browser.
 
 ## 0. Preliminaries
 
@@ -15,23 +15,14 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.1  | Splash screen CSS                                  |
 | 1.2  | Game screen CSS                                    |
 | 1.3  |→→→ *upload 1.1 / 1.2 to Brightspace*               |
+| 2    | Source code                                        |
+| 3    | Source code                                        |
 
-| 2.1  | Plan of action (bullet points are sufficient)      |
-| 2.2  | Use of design patterns (bullet points are sufficient)      |
-| 2.3  | Source code                                        |
-| 3.1  | -                                                  |
-| 3.2  | -                                                  |
-| 3.3  | WebSocket-based communication pattern between clients and server  |
-| 3.4  | -                                                  |
-| 3.5  | Source code                                        |
+This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
-- take a concrete website and let students determine number of cookies sent; number of third-party cookies
+Submit your application's **source code** either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your submission contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
-Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
-
-Submit your code either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
-
-Use heroku??
+*Note: we expect a single source code submission, **not** one code submission per task!*
 
 ## 1. CSS
 
@@ -63,7 +54,7 @@ Next, tackle the CSS for your **game screen**. The look of the game screen shoul
 
 Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).
 
-A few hints:
+A hint:
 
 - In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
 
@@ -95,34 +86,15 @@ app.get('/', (req, res) => {
 
 *Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use caes. Both technologies are relevant in practice, make sure to understand both of them.*
 
-## 2. Code refactoring: modularization
+## 3. Desktop notifications
 
-We finally covered the topic of node.js modules. Based on your understanding of node.js modules,
-modularize your code and organize the different functionalities into separate modules (e.g. one module to keep track of all configuration settings, one module for routes, etc.).
+Desktop notificatons are becoming increasingly normal on the Web. If you don't know what exactly Desktop notificaitons are, head to []
+https://developer.mozilla.org/en-US/docs/Web/API/notification
+Lets tackle another requirement listed in *Assignment 1*: desktop notifications. 
 
+## 4. Cookies - first and third party
 
+- take a concrete website and let students determine number of cookies sent; number of third-party cookies
 
-## 5. Third-party authentication
+## 5. Performance metrics / Heroku
 
-We finally make use of the application's splash screen. Implement a third-party authentication of your own choice (e.g. Twitter [as covered in class] or Facebook). Use the passport middleware for this task: [http://passportjs.org/]](http://passportjs.org/).
-
-The habits of each user using your application should only be visible to him/her. Note that you will have to install passport via npm (don't forget to update your `package.json`, i.e. use the `–save` option).
-
-
-
-## 5. Ajax
-
-Use Ajax to allow the dynamic updating of the habit page in the browser (i.e. without reloading of the complete page). Again, book chapters 5 & 6 of the Web course book will help you if you are stuck.
-
-Note: Example 6 also contains a hint of how to enable repeated checking of the server (i.e. every X seconds the habit page polls the server for the habits). This can easily be achieved by wrapping this line into a timer function:
-
-```javascript
-setInterval(function () {
-    console.log("Fetching the habit list from the server.");
-    $.getJSON("habits", addHabitsToList);
-}, 2000);
-```
-
-This piece of code will retrieve a list of habits from the server every 2 seconds (it is your job to check whether those habits differ from what is already there).
-
-## 1. CSS

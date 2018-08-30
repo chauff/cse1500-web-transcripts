@@ -16,7 +16,7 @@ function GameState(visibleWordBoard, sb, socket){
 
     this.initializeVisibleWordArray = function(){
         this.visibleWordArray = new Array(this.targetWord.length);
-        this.visibleWordArray.fill("#");
+        this.visibleWordArray.fill(Setup.HIDDEN_CHAR);
     };
 
     this.getPlayerType = function () {
@@ -90,16 +90,18 @@ function GameState(visibleWordBoard, sb, socket){
 
         //is the game complete?
         let winner = this.whoWon();
-        let alertString = "Game over. You ";
+        
         if(winner != null){
             this.revealAll();
+
+            let alertString;
             if( winner == this.playerType){
-                alertString += "won!";
+                alertString = Status["gameWon"];
             }
             else {
-                alertString += "lost!";
+                alertString = Status["gameLost"];
             }
-            alertString += " <a href='/play'>Play again!</a>";
+            alertString += Status["playAgain"];
             sb.setStatus(alertString);
 
             //player B sends final message
@@ -273,28 +275,28 @@ function AlphabetBoard(gs){
 
             //if player type is A, (1) pick a word, and (2) sent it to the server
             if (gs.getPlayerType() == "A") {
-                sb.setStatus("You are Player 1. Pick the English word to guess (A-Z only, 5-15 characters)!");
+                sb.setStatus(Status["player1Intro"]);
                 let validWord = -1;
-                let promptString = "Word to guess!";
+                let promptString = Status["prompt"];
                 let res = null;
 
                 while(validWord<0){
                     res = prompt(promptString).toUpperCase();
                     if(res.length<Setup.MIN_WORD_LENGTH || res.length>Setup.MAX_WORD_LENGTH){
-                        promptString = "Try again! 5-15 [A-Z] characters please!";
+                        promptString = Status["promptAgainLength"];
                     }
                     else if(/^[a-zA-Z]+$/.test(res) == false){
-                        promptString = "Try again! A-Z only!";
+                        promptString = Status["promptChars"];
                     }
                     //dictionary has only lowercase entries
                     else if(englishDict.hasOwnProperty(res.toLocaleLowerCase())==false){
-                        promptString = "Try again, it has to be a valid English word!";
+                        promptString = Status["promptEnglish"];
                     }
                     else {
                         validWord = 1;
                     }
                 }
-                sb.setStatus("Your chosen word: "+res);
+                sb.setStatus(Status["chosen"]+res);
                 gs.setTargetWord(res);
                 gs.initializeVisibleWordArray(); // initialize the word array, now that we have the word
                 vw.setWord(gs.getVisibleWordArray());
@@ -304,16 +306,15 @@ function AlphabetBoard(gs){
                 socket.send(JSON.stringify(outgoingMsg));
             }
             else {
-                sb.setStatus("You are Player 2, the word guesser. You win if you can complete the word within " + Setup.MAX_ALLOWED_GUESSES +" attempts. Waiting for Player 1 to pick a word ...");
+                sb.setStatus(Status["player2IntroNoTargetYet"]);   
             }
         }
 
         //Player B: wait for target word and then start guessing ...
         if( incomingMsg.type == Messages.T_TARGET_WORD && gs.getPlayerType() == "B"){
             gs.setTargetWord(incomingMsg.data);
-            console.log("Player B: target word set to %s.", incomingMsg.data);
 
-            sb.setStatus("You are Player 2, the word guesser. You win if you can complete the word within " + Setup.MAX_ALLOWED_GUESSES+" attempts. Player 1 picked a word, start guessing!");
+            sb.setStatus(Status["player2Intro"]);
             gs.initializeVisibleWordArray(); // initialize the word array, now that we have the word
             ab.initialize();
             vw.setWord(gs.getVisibleWordArray());
@@ -321,7 +322,7 @@ function AlphabetBoard(gs){
 
         //Player A: wait for guesses and update the board ...
         if( incomingMsg.type == Messages.T_MAKE_A_GUESS && gs.getPlayerType()=="A"){
-            sb.setStatus("The other player guessed " + incomingMsg.data + ".");
+            sb.setStatus(Status["guessed"] + incomingMsg.data);
             gs.updateGame(incomingMsg.data);
         }
 
@@ -335,7 +336,7 @@ function AlphabetBoard(gs){
     //server sends a close event only if the game was aborted from some side
     socket.onclose = function(){
         if(gs.whoWon()==null){
-            sb.setStatus("Your gaming partner is no longer available, game aborted. <a href='/play'>Play again!</a>");
+            sb.setStatus(Status["aborted"]);
         }
     };
 
