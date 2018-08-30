@@ -1,0 +1,94 @@
+@import 'style.css';
+
+#alphabet {
+    float: left;
+    width: 50%;
+    background-color: white;
+}
+
+.alphabet {
+    position: relative;
+    width: 8%;
+    height: 8%;
+    background-color: #aaa;
+    border-color: #999;
+    display: inline-block;
+    margin: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+
+    text-align: center;
+    font-size: 250%;
+    padding: 10px;
+
+    border-color: #fff;
+    box-shadow: none;
+    
+    box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5);
+}
+
+.alphabet:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(128, 128, 128, 0.1) inset;
+}
+
+#hiddenWord {
+    float: left;
+    width: 50%;
+    height: 50%;
+    background-color: #AAA;
+}
+
+#balloons {
+    float: left;
+    width: 50%;
+    height: 45%;
+    background-color: red;
+}
+
+#status {
+    float: left;
+    width: 50%;
+    height: 5%;
+    background-color: #222;
+    font-family:monaco,Bitstream Vera Sans Mono,monospace;
+    color: #41FF00;
+    font-size: 75%;
+    vertical-align: middle;
+}
+
+#statusbar {
+    display:inline-block; 
+    vertical-align: middle; 
+    padding: 15px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 5s steps(40, end);
+    letter-spacing: .1em;
+}
+
+/*
+    Typing/blinking inspired by: https://css-tricks.com/books/volume-i/animate-text-like-typewriter/
+ */
+
+#statusbar::after {
+    content: " _";
+    animation: blinking 0.9s steps(3, start) infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+@keyframes blinking {
+    to {
+      visibility: hidden;
+    }
+}
+
+
+
+
+
+

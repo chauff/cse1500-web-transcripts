@@ -21,3 +21,7 @@ Add a few screenshots
 ## Debugging node.js scripts in VSC
 
 Add a few screenshots and explanations
+
+## Live Share functionality
+
+effective working together as a team remotely

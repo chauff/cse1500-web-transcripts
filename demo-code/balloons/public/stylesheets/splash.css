@@ -1,11 +1,7 @@
+@import 'style.css';
+
 body {
     font-family: fantasy;
-}
-
-html, body, main, section {
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
 }
 
 h1 {
@@ -127,14 +123,9 @@ button {
 }
 
 button:hover {
-    background-color: #C3343C;
+    background-color: #000;
     transition: background-color 2s ease;
     text-decoration: underline overline;
 }
 
-button:active {
-    transition: all 0s;
-    background-color: black;
-    color: white;
-}
 

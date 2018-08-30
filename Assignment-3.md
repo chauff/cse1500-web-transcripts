@@ -12,7 +12,9 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 
 | **Task** | **Deliverables**                               |
 |------|----------------------------------------------------|
-| 1    | -                                                  |
+| 1.1  | Splash screen CSS                                  |
+| 1.2  | Game screen CSS                                    |
+| 1.3  |→→→ *upload 1.1 / 1.2 to Brightspace*               |
 | 2.1  | Plan of action (bullet points are sufficient)      |
 | 2.2  | Use of design patterns (bullet points are sufficient)      |
 | 2.3  | Source code                                        |
@@ -37,28 +39,34 @@ You are **not allowed** to use external libraries or preprocessing tools. Your a
 
 As you might have already guessed, your CSS should reside in `myapp/public/stylesheets`. That folder already contains a `style.css` file by default. In order to keep your code maintainable, you can for instance place all CSS that applies to both screens in `style.css` and in addition create separate `splash.css` and `game.css` stylesheets for CSS rules specific to each screen. Note that stylesheets [can contain other stylesheets](https://developer.mozilla.org/en-US/docs/Web/CSS/@import).
 
-### 1.1) Splash screen
+### 1.1) 
 
-First, work on your splash screen and style the page with CSS according to your design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties, i.e. your code must include at least one instance of each of the following:
+First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 1. You can deviate from your initial design (check out 1.3 to see what to do if you did so significantly). To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties, i.e. your code must include at least one instance of each of the following:
 
-- Pseudo-classes :hover :active
-- Pseudo-elements: ::after ::before
+- Pseudo-classes `:hover` and `:active`
+- Pseudo-elements: `::after` and `::before`
 - Box model: margin, padding, border
-- At least two different position attributes, e.g. position:relative and position:absolute.
-- At least one CSS animation
+- At least two different position attributes, e.g. `position:relative` and `position:absolute`.
+- At least one CSS animation and one CSS transition
 
-You are of course welcome to use more CSS properties to style your splash screen. Once you have completed your CSS implementation, make a screenshot and add your implemented design to your Brightspace discussion forum thread (where you already posted your initial design). Does your implementation deviate significantly from your initial design? Write a paragraph comparing the two.
+You are of course welcome to use more CSS properties to style your splash screen.
 
-### 1.2) Habit tracker page
+A few hints:
 
-Work on your habit tracker page and implement your design in CSS. The look of the habits page should be coherent with the splash screen. You will be able to reuse some of the CSS written for the splash screen - make sure that you are efficient and do not duplicate existing CSS code if possible.
+- CSS examples are plentiful on the Web; you can adapt them to your own needs. Make sure though, that you *understand* the different CSS rules you are adding and are able to explain their effect. If in doubt, go for simpler CSS rules, often the same effect can be achieved in a myriad of ways.
+- If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as Sass exist. Do not use those, in this course we make use of *plain CSS*.
 
-Your design must visually distinguish between:
-- habits that are on track and habits whose desired and actual frequency differ substantially (e.g. a positive habit with a daily goal of execution that is executed once a week could be flagged here). You can decide what "substantially" means to you.
-- positive and negative habits (if you have those in your design), and
-- habits that have been executed vs those still due in the desired time interval (e.g. a weekly habit that has not been completed this week should visually differ from one that has). 
+### 1.2)
 
-Once you have completed your CSS implementation, make a screenshot and add your implemented design to your Brightspace discussion forum thread (where you already posted your initial design). Does your implementation deviate significantly from your initial design? Write a paragraph comparing the two. Note that designs can change and if your implemented design differs considerably from the envisioned one this is not a problem. It will not cause an issue during the assessment of your work - be prepared to discus the reasons for your change in design.
+Next, tackle the CSS for your **game screen**. The look of the game screen should be coherent with the splash screen. The two are likely to share basic CSS settings (colors, fonts, etc.) - make sure that you are efficient and do not duplicate existing CSS code. Check out the CSS imports mentioned above.
+
+Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).
+
+### 1.3)
+
+Once you have completed the CSS of your app, head over to CSE1500's Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
+
+*Feel free to browse your colleagues designs and implementations and comment on them!*
 
 ## 2. Code refactoring: modularization
 

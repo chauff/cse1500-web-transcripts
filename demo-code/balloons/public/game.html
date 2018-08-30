@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Balloons: a two player word game</title>
+        <link rel="stylesheet" href="stylesheets/game.css">
     </head>
     <body>
         <main>
@@ -46,13 +47,13 @@
                     <div id="balloon5"></div>
                     <div id="balloon6"></div>
                 </div>
+                <div id="status">
+                    <span id="statusbar"></span>
+                </div>
             </section>
         </main>
-        <footer id="statusbar">
-
-        </footer>
         <script src="javascripts/messages.js"></script>
         <script src="javascripts/config.js"></script> 
-        <script src="javascripts/interactions.js"></script> <!-- browser parses the code from top to bottom, by this time the DOM is built -->
+        <script src="javascripts/interactions.js"></script> <!-- browser parses the code from top to bottom, by now the DOM is built -->
     </body>
 </html>
