@@ -1,3 +1,7 @@
+body {
+    font-family: fantasy;
+}
+
 html, body, main, section, div {
     height: 100%;
 }
@@ -5,33 +9,63 @@ html, body, main, section, div {
 h1 {
     position: absolute;
     font-size: 400%;
-    top: 20px;
-    left: 30px;
+    top: 200px;
+    left: 50px;
     color: white;
+}
+
+h1::before {
+    content: "★ ";
+    color: #f4424b;
+}
+
+ h2::after {
+    content: " ★";
+    color: #f4424b;
 }
 
 h2 {
     position: absolute;
     font-size: 220%;
-    top: 150px;
-    left: 30px;
+    top: 350px;
+    left: 50px;
     color:#ccc;
 }
 
-button {
+#decoration-top {
     position: absolute;
-    background-color: #f4424b;
-    color: #fff;
-    bottom: 100px;
-    right: 250px;
-    font-size: 700%;
-    border: none;
-    padding: 20px;
+    top: 100px;
+    left: 50px;
 }
 
-button:hover {
+@keyframes wobblySquare {
+    from {
+      height: 24px;
+      width: 79px;
+    }
+  
+    to {
+      height: 25px;
+      width: 80px;
+    }
+}
+
+.square {
+    height: 25px;
+    width: 80px;
+    margin-right: 10px;
+    background-color: white;
+    display: inline-block;
+    animation-duration: 1s;
+    animation-name: wobblySquare;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.square:hover {
+    transform: scale(1.1);
     background-color: #C3343C;
-    text-decoration: underline overline;
+    transform: rotateZ(-5deg);
 }
 
 #left {
@@ -47,4 +81,58 @@ button:hover {
 }
 
 
+.balloon {
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #555;
+}
+
+#b1 {
+      position: absolute;
+      bottom: 10px;
+      right: 50px;
+      background-color: #fff;
+}
+
+#b2 {
+    position: absolute;
+    bottom: 10px;
+    right: 200px;
+    background-color: #ddd;
+}
+
+#b3 {
+    position: absolute;
+    bottom: 10px;
+    right: 350px;
+    background-color: #aaa;
+}
+
+button {
+    position: absolute;
+    background-color: #f4424b;
+    color: #fff;
+    bottom: 100px;
+    right: 250px;
+    font-size: 700%;
+    border: none;
+    padding: 20px;
+    padding: 30px;
+    width: 30%;
+    z-index: 1;
+}
+
+button:hover {
+    background-color: #C3343C;
+    transition: background-color 2s ease;
+    text-decoration: underline overline;
+}
+
+button:active {
+    transition: all 0s;
+    background-color: black;
+    color: white;
+}
 
