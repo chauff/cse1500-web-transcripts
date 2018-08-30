@@ -232,14 +232,7 @@ function AlphabetBoard(gs){
         Array.from(elements).forEach( function(el){
 
             el.addEventListener("click", function singleClick(e){
-                //var clickedLetter = e.originalTarget.id;
-                var clickedLetter;
-                if(e.srcElement){
-                    clickedLetter = e.srcElement.id;
-                }
-                if(e.originalTarget){
-                    clickedLetter = e.originalTarget.id;
-                }
+                var clickedLetter = e.target.id;
                 gs.updateGame(clickedLetter);
 
                 /*

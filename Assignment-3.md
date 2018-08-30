@@ -39,7 +39,7 @@ You are **not allowed** to use external libraries or preprocessing tools. Your a
 
 As you might have already guessed, your CSS should reside in `myapp/public/stylesheets`. That folder already contains a `style.css` file by default. In order to keep your code maintainable, you can for instance place all CSS that applies to both screens in `style.css` and in addition create separate `splash.css` and `game.css` stylesheets for CSS rules specific to each screen. Note that stylesheets [can contain other stylesheets](https://developer.mozilla.org/en-US/docs/Web/CSS/@import).
 
-### 1.1) 
+### 1.1)
 
 First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 1. You can deviate from your initial design (check out 1.3 to see what to do if you did so significantly). To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties, i.e. your code must include at least one instance of each of the following:
 
@@ -53,7 +53,7 @@ You are of course welcome to use more CSS properties to style your splash screen
 
 A few hints:
 
-- CSS examples are plentiful on the Web; you can adapt them to your own needs. Make sure though, that you *understand* the different CSS rules you are adding and are able to explain their effect. If in doubt, go for simpler CSS rules, often the same effect can be achieved in a myriad of ways.
+- CSS examples are plentiful on the Web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, go for simpler CSS rules, often the same effect can be achieved in a myriad of ways.
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as Sass exist. Do not use those, in this course we make use of *plain CSS*.
 
 ### 1.2)
@@ -64,7 +64,7 @@ Your code for the game screen must have at least one instance of each of the req
 
 A few hints:
 
-- `document.getElementById(id).className += " alphabetUsed";`
+- In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
 
 ### 1.3)
 
@@ -72,21 +72,21 @@ Once you have completed the CSS of your app, head over to CSE1500's Brightspace,
 
 *Feel free to browse your colleagues designs and implementations and comment on them!*
 
-## 2. Code refactoring: modularization
+## 2. Templating
 
-We finally covered the topic of node.js modules. Based on your understanding of node.js modules,
-modularize your code and organize the different functionalities into separate modules (e.g. one module to keep track of all configuration settings, one module for routes, etc.).
-
-## 3. Code refactoring: routes
-
-Allow your users to make small mistakes in the URL paths; for example, if you have a route ‘listhabits’ a user typing `https://localhost:3000/listhabitts` should be served `https://localhost:3000/listhabits`. Every route you have in your application should allow such small deviations to some degree. It is up to you to find sensible regular expressions. Introduce routing parameters into at least one of your routes (it is up to you to find out where it makes most sense).
-
-## 4. Code refactoring: templating
+When you started out and generated the boilerplate code (A2), you were asked to use the `ejs` view engine. Lets now make use of templating: the splash screen
 
 So far, when you access your application's URL for the first time, an empty habit list is returned (unless you already added code to mitigate this effect). In a subsequent Ajax request, the existing habits are sent from the server to the client.
 Templates allow us to change this setup and immediately send the existing habits. In this exercise you are asked to use EJS for templating. To get started, follow the EJS procedure outlined in the lecture.
 
 *Note: this exercise requires you (once again) to rewrite parts of the code you have already written. This is not a mistake; it is intended and one of the goals of the lab: we want you to realise the different manners in which the same result can be achieved.*
+
+## 2. Code refactoring: modularization
+
+We finally covered the topic of node.js modules. Based on your understanding of node.js modules,
+modularize your code and organize the different functionalities into separate modules (e.g. one module to keep track of all configuration settings, one module for routes, etc.).
+
+
 
 ## 5. Third-party authentication
 
