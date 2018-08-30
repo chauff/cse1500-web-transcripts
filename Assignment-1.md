@@ -148,7 +148,6 @@ In this, and the upcoming two assignments, you will complete a Web programming p
 - Players see basic information about the ongoing game, e.g. the time passed since starting the game or number of lost/won pieces.
 - Players are able to play the game in fullscreen mode.
 - Players play the game with the mouse.
-- Players receive desktop notifications when it is their turn to move.
 - Once a player drops out of a game, the game is aborted; this is announced to all players currently active in the game.
 - Moves are animated and have sound effects.
 

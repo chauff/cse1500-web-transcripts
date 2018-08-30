@@ -86,15 +86,13 @@ app.get('/', (req, res) => {
 
 *Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use caes. Both technologies are relevant in practice, make sure to understand both of them.*
 
-## 3. Desktop notifications
+## 3. Fullscreen mode
 
-Desktop notificatons are becoming increasingly normal on the Web. If you don't know what exactly Desktop notificaitons are, head to []
-https://developer.mozilla.org/en-US/docs/Web/API/notification
-Lets tackle another requirement listed in *Assignment 1*: desktop notifications. 
 
-## 4. Cookies - first and third party
+
+## 3. Cookies - first and third party
 
 - take a concrete website and let students determine number of cookies sent; number of third-party cookies
 
-## 5. Performance metrics / Heroku
+## 4. Performance metrics / Heroku
 
