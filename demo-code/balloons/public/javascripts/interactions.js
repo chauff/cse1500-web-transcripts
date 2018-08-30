@@ -42,6 +42,9 @@ function GameState(visibleWordBoard, sb, socket){
             //kill a balloon
             let id = "b"+this.wrongGuesses;
             document.getElementById(id).className += " balloonGone";
+            setTimeout(function () {
+                new Audio('../data/pop.wav').play();
+            }, 500);
         }
     };
 
@@ -233,6 +236,7 @@ function AlphabetBoard(gs){
 
             el.addEventListener("click", function singleClick(e){
                 var clickedLetter = e.target.id;
+                new Audio('../data/click.wav').play();
                 gs.updateGame(clickedLetter);
 
                 /*

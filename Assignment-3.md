@@ -15,6 +15,7 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.1  | Splash screen CSS                                  |
 | 1.2  | Game screen CSS                                    |
 | 1.3  |→→→ *upload 1.1 / 1.2 to Brightspace*               |
+
 | 2.1  | Plan of action (bullet points are sufficient)      |
 | 2.2  | Use of design patterns (bullet points are sufficient)      |
 | 2.3  | Source code                                        |
@@ -74,10 +75,10 @@ Once you have completed the CSS of your app, head over to CSE1500's Brightspace,
 
 ## 2. Templating
 
-When you started out and generated the boilerplate code (A2), you were asked to use the `ejs` view engine. Lets now make use of templating: the splash screen
+When you started out and generated the boilerplate code (Assignmnent 2, task 1), we asked you to set as *view engine* ejs. Lets now make use of that view engine for the **splash screen**. So far, not a lot is going on with it (if you followed the instructions so far); it should visually look appealing and have a *Play* button, but that is about it.
 
-So far, when you access your application's URL for the first time, an empty habit list is returned (unless you already added code to mitigate this effect). In a subsequent Ajax request, the existing habits are sent from the server to the client.
-Templates allow us to change this setup and immediately send the existing habits. In this exercise you are asked to use EJS for templating. To get started, follow the EJS procedure outlined in the lecture.
+One last requirement for the splash screen is to show a number of statistics about the games played, games completed, etc. Templates offer us a simple way to "inject" those numbers into our splash screen (as an alternative Ajax can be used, however, as you will have seen in the lecture, this is quite tedious). 
+
 
 *Note: this exercise requires you (once again) to rewrite parts of the code you have already written. This is not a mistake; it is intended and one of the goals of the lab: we want you to realise the different manners in which the same result can be achieved.*
 

@@ -27,3 +27,8 @@ Head to `[appname]/public` and create two HTML files: `game.html` and `splash.ht
 # Word list
 
 The English word list came from: https://github.com/dwyl/english-words
+
+# Sounds
+
+Button click: http://www.pachd.com/button.html
+Balloon pop: https://bigsoundbank.com/detail-1023-explosion-far-away.html
