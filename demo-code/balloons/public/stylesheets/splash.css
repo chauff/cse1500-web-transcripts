@@ -2,8 +2,10 @@ body {
     font-family: fantasy;
 }
 
-html, body, main, section, div {
+html, body, main, section {
     height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1 {
