@@ -78,15 +78,6 @@ h2 {
     background-color: #AAA;
 }
 
-
-.balloon {
-    height: 400px;
-    width: 400px;
-    border-radius: 50%;
-    display: inline-block;
-    border: 1px solid #555;
-}
-
 #b1 {
       position: absolute;
       bottom: 10px;

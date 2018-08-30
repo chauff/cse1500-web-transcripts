@@ -3,7 +3,7 @@
 #alphabet {
     float: left;
     width: 50%;
-    background-color: white;
+    background-color: #ddd;
 }
 
 .alphabet {
@@ -31,19 +31,23 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(128, 128, 128, 0.1) inset;
 }
 
-#hiddenWord {
+#word {
     float: left;
     width: 50%;
     height: 50%;
     background-color: #AAA;
+
+    font-size: 500%;
+    color: #f4424b;
+    text-align: center;
 }
 
-#balloons {
-    float: left;
-    width: 50%;
-    height: 45%;
-    background-color: red;
+#hiddenWord {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 500%;
 }
+
 
 #status {
     float: left;
@@ -51,7 +55,7 @@
     height: 5%;
     background-color: #222;
     font-family:monaco,Bitstream Vera Sans Mono,monospace;
-    color: #41FF00;
+    color: #fd2130;
     font-size: 75%;
     vertical-align: middle;
 }
@@ -87,6 +91,43 @@
     }
 }
 
+#balloons {
+    float: left;
+    width: 50%;
+    height: 45%;
+    background-color: #eee;
+}
+
+.balloon {
+    width: 10vw;
+    height: 10vw;
+    margin: 10px;
+    border: 0px;
+}
+
+#b1 {
+    background-color: #222;
+}
+
+#b2 {
+    background-color: #444;
+}
+
+#b3 {
+    background-color: #666;
+}
+
+#b4 {
+    background-color: #888;
+}
+
+#b5 {
+    background-color: #aaa;
+}
+
+#b6 {
+    background-color: #ccc;
+}
 
 
 
