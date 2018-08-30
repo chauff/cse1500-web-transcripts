@@ -138,6 +138,7 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following minimal functionalities (you can opt to do more of course):
 
 - The game is for 2-4 players and in 2D.
+- The game works in at least two major browsers (e.g. Firefox and Chrome).
 - It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
 - Upon entering your Web application's URL, a **splash screen** will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), an brief description of how-to-play on your platform and a "Play" button (or something similar to that effect).
 - Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.

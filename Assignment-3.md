@@ -62,6 +62,10 @@ Next, tackle the CSS for your **game screen**. The look of the game screen shoul
 
 Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).
 
+A few hints:
+
+- `document.getElementById(id).className += " alphabetUsed";`
+
 ### 1.3)
 
 Once you have completed the CSS of your app, head over to CSE1500's Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.

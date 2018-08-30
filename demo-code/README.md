@@ -24,4 +24,6 @@ This results in a folder structure that will be occuppied over the course of the
 
 Head to `[appname]/public` and create two HTML files: `game.html` and `splash.html`. Add the HTML as instructed for assignment 1. To test your HTML, just double-click on the html files and they will open in your browser. There is not much to see as we did not add interactive or visually exciting parts.
 
+# Word list
 
+The English word list came from: https://github.com/dwyl/english-words

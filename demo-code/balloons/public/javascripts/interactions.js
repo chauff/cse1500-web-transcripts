@@ -37,6 +37,12 @@ function GameState(visibleWordBoard, sb, socket){
 
     this.incrWrongGuess = function(){
         this.wrongGuesses++;
+
+        if(this.whoWon() == null){
+            //kill a balloon
+            let id = "b"+this.wrongGuesses;
+            document.getElementById(id).className += " balloonGone";
+        }
     };
 
     this.whoWon = function(){
@@ -55,6 +61,10 @@ function GameState(visibleWordBoard, sb, socket){
         for(let i=0; i<indices.length; i++){
             this.visibleWordArray[ indices[i] ] = letter;
         }
+    };
+
+    this.revealAll = function(){
+        this.visibleWordBoard.setWord(this.targetWord);
     };
 
     this.updateGame = function(clickedLetter){
@@ -79,6 +89,7 @@ function GameState(visibleWordBoard, sb, socket){
         let winner = this.whoWon();
         let alertString = "Game over. You ";
         if(winner != null){
+            this.revealAll();
             if( winner == this.playerType){
                 alertString += "won!";
             }
@@ -151,6 +162,9 @@ function Alphabet(){
         console.assert(typeof letter === "string", "Single string expected");
         if( this.isLetter(letter)){
             this.letters[letter] = USED;
+
+            //visually switch off the UI element by simply adding a classname
+            document.getElementById(letter).className += " alphabetUsed";
         }
     };
 
@@ -192,9 +206,14 @@ function VisibleWordBoard(){
     this.setWord = function(visibleWord){
 
         //dynamic language issues ...
-        console.assert(Array.isArray(visibleWord), "Expecting an array, got a %s instead" );
+        console.assert(Array.isArray(visibleWord) || typeof visibleWord == "string", "Expecting an array, got a %s instead" );
 
-        document.getElementById("hiddenWord").innerHTML = visibleWord.join("");
+        if(Array.isArray(visibleWord)){
+            document.getElementById("hiddenWord").innerHTML = visibleWord.join("");
+        }
+        else {
+            document.getElementById("hiddenWord").innerHTML = visibleWord;
+        }
     };
 }
 
@@ -213,7 +232,14 @@ function AlphabetBoard(gs){
         Array.from(elements).forEach( function(el){
 
             el.addEventListener("click", function singleClick(e){
-                var clickedLetter = e.originalTarget.id;
+                //var clickedLetter = e.originalTarget.id;
+                var clickedLetter;
+                if(e.srcElement){
+                    clickedLetter = e.srcElement.id;
+                }
+                if(e.originalTarget){
+                    clickedLetter = e.originalTarget.id;
+                }
                 gs.updateGame(clickedLetter);
 
                 /*
@@ -250,8 +276,27 @@ function AlphabetBoard(gs){
 
             //if player type is A, (1) pick a word, and (2) sent it to the server
             if (gs.getPlayerType() == "A") {
-                sb.setStatus("You are Player 1. Pick the word to guess (A-Z only)! If player 2 cannot guess your word, you won.");
-                let res = prompt("Word to guess!").toUpperCase();
+                sb.setStatus("You are Player 1. Pick the English word to guess (A-Z only, 5-15 characters)!");
+                let validWord = -1;
+                let promptString = "Word to guess!";
+                let res = null;
+
+                while(validWord<0){
+                    res = prompt(promptString).toUpperCase();
+                    if(res.length<Setup.MIN_WORD_LENGTH || res.length>Setup.MAX_WORD_LENGTH){
+                        promptString = "Try again! 5-15 [A-Z] characters please!";
+                    }
+                    else if(/^[a-zA-Z]+$/.test(res) == false){
+                        promptString = "Try again! A-Z only!";
+                    }
+                    //dictionary has only lowercase entries
+                    else if(englishDict.hasOwnProperty(res.toLocaleLowerCase())==false){
+                        promptString = "Try again, it has to be a valid English word!";
+                    }
+                    else {
+                        validWord = 1;
+                    }
+                }
                 sb.setStatus("Your chosen word: "+res);
                 gs.setTargetWord(res);
                 gs.initializeVisibleWordArray(); // initialize the word array, now that we have the word

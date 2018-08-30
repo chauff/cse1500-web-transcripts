@@ -92,6 +92,7 @@ Choose at **least one of the object design patterns introduced in the lecture an
 
 Now that you have made your plan and decided on the use of the design patterns, start coding! Be mindful of the following requirements:
 
+- The game has to work in two major browsers (*as stated in assignment 1*).
 - Players play the game with the mouse (*as stated in assignment 1*).
 - Once a player makes a move, the validity of the move is checked and invalid moves are rejected (*as stated in assignment 1*).
 - Reduce the redundancy in the code as much as possible (improves code maintainability).
@@ -100,6 +101,8 @@ Now that you have made your plan and decided on the use of the design patterns, 
 
 A few hints:
 
+- Before using browser features unknown to you, check whether they are supported by at least some of the major browsers. For example, the feature [Event.originalTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/originalTarget) is Mozilla-specific and thus not a good option for you.
+- When you test your code's functionality, test it in more than one browser.
 - JavaScript is a dynamic language, important to remember when debugging.
 - The browser development tools are extremely helpful to debug client-side JavaScript. Use them.
 - Don't be afraid to use place-holders (e.g. in our word guessing game, we start off with a fixed string to guess).
@@ -225,8 +228,6 @@ wss.on("connection", function connection(ws, req) {
 ```
 
 To check whether this minimal example works, place `test.html` and `app-test.js` in a single directory and run `node app-test.js 3000`. You will receive errors for missing node packages, unless you have placed those two files in a directory with the correct node packages already installed. That should not stop you, however, by now you know how to install node packages (`npm install ...`). Once your `app-test` server is running, open the browser at `http://localhost:3000/` and you will see your first WebSocket in action.
-
-
 
 ### 3.5) WebSockets: implementing your game
 

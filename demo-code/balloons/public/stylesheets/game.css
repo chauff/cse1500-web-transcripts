@@ -31,6 +31,16 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(128, 128, 128, 0.1) inset;
 }
 
+.alphabetUsed {
+    border: 2px solid #bbb;
+    background-color: #ccc;
+    box-shadow: none;
+}
+
+.alphabetUsed:hover {
+    box-shadow: none;
+}
+
 #word {
     float: left;
     width: 50%;
@@ -43,6 +53,7 @@
 }
 
 #hiddenWord {
+    font-family:monaco,Bitstream Vera Sans Mono,monospace;
     display: inline-block;
     vertical-align: middle;
     line-height: 500%;
@@ -103,6 +114,7 @@
     height: 10vw;
     margin: 10px;
     border: 0px;
+    transition: width 2s, height 2s, transform 2s;
 }
 
 #b1 {
@@ -127,6 +139,11 @@
 
 #b6 {
     background-color: #ccc;
+}
+
+.balloonGone {
+    width: 0vw;
+    height: 0vw;
 }
 
 
