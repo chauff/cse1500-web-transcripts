@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-<!--    Note: this file is not in use any longer, it is superseded by splash.ejs which
-        is an almost exact copy (apart from template tags).
--->
 <html>
     <head>
         <title>Ballons: a two player word game</title>
@@ -23,6 +20,16 @@
                 </div>
                 <h1>Exploding balloons</h1>
                 <h2>A two player word game</h2>
+                <h3><%= gamesInitialized %> 
+                    <%if (gamesInitialized != 1) { %>
+                        games
+                    <% } else { %>
+                        game
+                    <% } %>
+                    started, 
+                    <%= gamesCompleted %> 
+                    completed
+                </h3>
             </section>
             <section id="right">
                 &nbsp;

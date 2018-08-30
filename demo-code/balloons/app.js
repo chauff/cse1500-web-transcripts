@@ -8,6 +8,15 @@ var messages = require("./public/javascripts/messages");
 var port = process.argv[2];
 var app = express();
 
+app.set('view engine', 'ejs')
+app.use(express.static(__dirname + "/public"));
+
+app.get("/play", indexRouter);
+
+app.get('/', (req, res) => {
+    res.render('splash.ejs', { gamesInitialized: gameStatus.gamesInitialized, gamesCompleted: gameStatus.gamesCompleted });
+})
+
 /* keep track of the games' finalStatus in memory */
 var gameStatus = {
     since : Date.now(),     /* since we keep it simple and in-memory, keep track of when this object was created */
@@ -85,10 +94,6 @@ setInterval(function() {
 
 var currentGame = new Game();
 var connectionID = 0;//ID given to each client
-
-app.use(express.static(__dirname + "/public"));
-app.use("/", indexRouter);
-app.use("/play", indexRouter);
 
 var server = http.createServer(app);
 

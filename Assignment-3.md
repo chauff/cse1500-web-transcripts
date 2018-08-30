@@ -77,10 +77,23 @@ Once you have completed the CSS of your app, head over to CSE1500's Brightspace,
 
 When you started out and generated the boilerplate code (Assignmnent 2, task 1), we asked you to set as *view engine* ejs. Lets now make use of that view engine for the **splash screen**. So far, not a lot is going on with it (if you followed the instructions so far); it should visually look appealing and have a *Play* button, but that is about it.
 
-One last requirement for the splash screen is to show a number of statistics about the games played, games completed, etc. Templates offer us a simple way to "inject" those numbers into our splash screen (as an alternative Ajax can be used, however, as you will have seen in the lecture, this is quite tedious). 
+One last requirement for the splash screen (outlined in *assignment 1*) is to show a number of statistics about the games played, games completed, etc. Templates offer us a simple way to "inject" those numbers into our splash screen.
 
+There are many view engines available, `ejs` is one of the more common ones. All we have to do now is to (1) create a file `myapp/views/splash.ejs` file (this folder is the default one the view engine is looking into). `splash.ejs` is a copy of your `splash.html` file. Add a few template tags for the game statistics in the right place. Then, rewrite a few lines of `app.js` to incorporate the view engine and alter the route to `/`; it should now use the `res.render` call. This code snippet can help you:
 
-*Note: this exercise requires you (once again) to rewrite parts of the code you have already written. This is not a mistake; it is intended and one of the goals of the lab: we want you to realise the different manners in which the same result can be achieved.*
+```javascript
+//code snippet, not a complete piece of code!
+var app = express();
+...
+//only the route to / needs to be changed
+app.set('view engine', 'ejs')
+app.get('/', (req, res) => {
+    //example of data to render; here gameStatus is an object holding this information
+    res.render('splash.ejs', { gamesInitialized: gameStatus.gamesInitialized, gamesCompleted: gameStatus.gamesCompleted });
+})
+```
+
+*Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use caes. Both technologies are relevant in practice, make sure to understand both of them.*
 
 ## 2. Code refactoring: modularization
 

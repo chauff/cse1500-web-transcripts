@@ -30,6 +30,19 @@ h2 {
     color:#ccc;
 }
 
+h3::before {
+    content: "★ ";
+    color: #f4424b;
+}
+h3 {
+    position: absolute;
+    font-size: 110%;
+    top: 550px;
+    left: 50px;
+    color: white;
+    font-family:monaco,Bitstream Vera Sans Mono,monospace;
+}
+
 #decoration-top {
     position: absolute;
     top: 100px;
