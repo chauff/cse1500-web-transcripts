@@ -1,14 +1,14 @@
-# CSE1500: Web and Database Technology (2018/2019 edition)
+# CSE1500: Web and Database Technology
 
 Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only Web topics are covered.**
 
 ## Contact
 
-The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi[at]tudelft.nl`. *Note: mailbox not active until November 2018.*
+The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi[at]tudelft.nl`. *Warning: the mailbox will note be active before November 2018.*
 
 ## Required [REQ] and recommended [REC] tools
 
-- [REC] [Visual Studio Code](https://code.visualstudio.com/) (*VSC* for short) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, Visual Studio Code itself is written in JavaScript! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. VS Code also offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
+- [REC] [Visual Studio Code](https://code.visualstudio.com/) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, Visual Studio Code itself is written in JavaScript! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. VS Code also offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), the most popular linting utility for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables);
   - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) does what the name suggests;
   - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a great tool to try out JavaScript snippets without hassle;
@@ -59,6 +59,18 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 - [Assignment 1 (Web)](Assignment-1.md)
 - [Assignment 2 (Web)](Assignment-2.md)
 - [Assignment 3 (Web)](Assignment-3.md)
+
+## Demo app
+
+A demo board game app (a word guesser) [is available](https://github.com/chauff/Web-Teaching/tree/master/demo-code) as well.
+
+The demo app, just as listed in this year's board game project, consists of two screens, a splash screen:
+
+<img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-splash-CSS-completed.png" alt="splash screen" width="600px">
+
+and a game screen:
+
+<img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-game-CSS-completed.png" alt="splash screen" width="600px">
 
 ## Interactive Web technology exercises
 
