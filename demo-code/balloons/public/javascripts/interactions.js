@@ -1,3 +1,6 @@
+/* ESLint global variables information */
+/* global Setup, Status, Messages, englishDict*/
+
 const USED = -1; //letter has been used, not available anymore
 const AVAIL = 1; //letter has not been used yet
 
