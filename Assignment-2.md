@@ -19,7 +19,7 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 3.3  | WebSocket-based communication pattern between clients and server  |
 | 3.4  | -                                                  |
 | 3.5  | Source code                                        |
-| 3.6  | -                                        |
+| 4  | -                                        |
 
 Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. 
 
@@ -253,6 +253,8 @@ A few hints:
 
 - The game status on the server can be implemented as an in-memory object; we do not require you to store the game status in a database (will happen in a later assignment) or on file.
 
-# 3.6) Cleaning up
+## 4. Cleaning up
+
+Ensure that your app works as intended in two major browsers.
 
 Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.

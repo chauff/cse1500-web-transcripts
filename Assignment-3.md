@@ -18,8 +18,9 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.4  | CSS                                                |
 | 1.5  | →→→ *upload 1.1 / 1.2 to Brightspace*              |
 | 2    | Source code                                        |
-| 3.1  | -                                                  |
-| 3.2  | →→→ *upload URL to Brightspace*                    |
+| 3  | -                    |
+| 3.1 (optional) | -                                                  |
+| 3.2 (optional) | →→→ *upload URL to Brightspace*                    |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
@@ -64,11 +65,11 @@ A hint:
 
 - In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
 
-## 1.3)
+### 1.3)
 
 To ensure that your players are aware of the screen size limitations (i.e. the game works well on a larger screen), use [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to **alert players** if their screen resolution is below a sufficiently large minimum. What this minimum is, depends on the game you implemented, the way you wrote your CSS. No need to actually try your app on many different devices, Firefox (other major browsers have similar tooling) has a [Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode) tool that simulates different devices.
 
-## 1.4)
+### 1.4)
 
 Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen) of your game.
 
@@ -100,7 +101,13 @@ app.get('/', (req, res) => {
 
 *Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use caes. Both technologies are relevant in practice, make sure to understand both of them.*
 
-## 3. Optional: Heroku deployment
+## 3. Cleaning up
+
+Ensure that your app works as intended in two major browsers.
+
+Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
+
+## 4. Optional: Heroku deployment
 
 Well done! If you have reached this point, you have a fully functioning game. To make your game accessible to the public, it needs to be deployed somewhere (locahost only goes so far). **This is an optional step.**
 
@@ -115,3 +122,5 @@ Deploy your app in Heroku according to the instructions linke above.
 ### 3.2)
 
 Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app!
+
+
