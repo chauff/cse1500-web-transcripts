@@ -7,7 +7,9 @@ before_install:
 install:
   - npm install
 script:
-  - npm start
+  - npm start &
+  - sleep 20
+  - pkill node
 cache:
   directories:
     - "node_modules"
