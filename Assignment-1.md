@@ -25,7 +25,7 @@ If you get lost in the assignment, use this overview of deliverables to get back
 | 5.1  | Splash screen design (wireframe)                   |
 | 5.2  | Game screen design (wireframe)                     |
 | 5.3  | →→→ *upload 5.1/5.2 to Brightspace*                |
-| 6.1  | Two html files                                     |
+| 6  | Two html files                                     |
 
 All deliverable text/imagery (apart from 6.1) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
 
@@ -211,7 +211,5 @@ Once you have completed the design of your app, head over to CSE1500's Brightspa
 ---
 
 ## 6. Your own boad game app: HTML
-
-### 6.1)
 
 Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).

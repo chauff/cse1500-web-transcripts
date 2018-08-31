@@ -29,7 +29,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The PDF and code has to be uploaded by one of the team members to Brightspace under **Assignment 2** before the assessment session with the TAs.
 
-**To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and client-server communication needs to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that it is ok, if your app does not [yet] deal with players aborting the game in the middle or making undesired moves. While it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
+**To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and client-server communication needs to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that it is ok, if your app does not [yet] deal with players aborting the game in the middle or making undesired moves. In addition, while it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
 
 ## 1. Boilerplate code
 
@@ -107,7 +107,8 @@ Now that you have made your plan and decided on the use of the design patterns, 
 - Create as few global variables as possible (this improves code maintainability).
 - Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` but instead in the corresponding `[appname]/public/javascripts` folder.
 
-A few hints:
+---
+Hints:
 
 - Before using browser features unknown to you, check whether they are supported by at least some of the major browsers. Some features are expressed differently in different browsers.
 - When you test your code's functionality, test it in more than one browser.
@@ -118,7 +119,9 @@ A few hints:
 - If you are using `console.log`, familiarize yourself with the other abilities of the `Console` object as well, they are useful for client-side JavaScript debugging in the browser. The [MDN documentation is availab here](https://developer.mozilla.org/en-US/docs/Web/API/Console), `console.table` makes the output more readable. `console.assert` is good for sanity checks of your code: e.g. if you have functions that expect an array, you can add an assert statement to check whether the argument is indeed of the expected type.
 - **[TODO: describe how to use eslint, why; node code vs browser code - we need two variants; check what the difference is between the npm module and the VSC extension]** [ESLint](https://eslint.org/docs/user-guide/getting-started)
 
-*Note: do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment. *
+---
+
+*Note: do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment.*
 
 ## 3. node.js
 
@@ -248,13 +251,16 @@ Having seen and ran the minimal WebSocket example, it is now time to implement c
 - The server keeps track of certain game statistics (as stated in assignment 1: pick three statistics you want to report).
 - The players communicate with each other (i.e. their moves) via WebSockets.
 
-A few hints:
+---
+Hints:
 
 - You may want to share code between the client and server - the message types described above are a good candidate for code you do not want to duplicate. The solution is a particular design pattern, [described here](https://medium.com/@ShamreshKhan/how-to-share-client-side-and-server-side-js-code-cc04c3422497). If you add for instance `messages.js` to `myapp/public/javascripts` following that particular design pattern, you can add the following line to `app.js` to access it in node as well: `var messages = require("./public/javascripts/messages");`.
 
 - The server has to keep track of all ongoing games in order to facilitate the broadcasting of messages to the correct clients. There are many ways to do this, one option is to create a `game` object that keeps track of the WebSocket objects belonging to the game's players; each WebSocket object receives an `id` and a `Map` object with WebSocket `id` as key and `game` object as values ensures that the server can determine quickly for which WebSockets the received messages are meant. In order to clean up your WebSocket-Game map, you can use a `setInterval` function to regularly check and remove inactive/completed games from it.
 
 - The game status on the server can be implemented as an in-memory object; we do not require you to store the game status in a database (will happen in a later assignment) or on file.
+
+---
 
 ## 4. Cleaning up
 
