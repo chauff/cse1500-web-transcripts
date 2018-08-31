@@ -104,7 +104,7 @@ app.get('/', (req, res) => {
 
 ## 3. Cookies
 
-Lets (quickly) practice cookies. Use client-side cookies to log how often a user has accessed your game. Report this information to the user.
+Lets (quickly) practice cookies. Use **client-side cookies** to log how often a user has accessed your game. Report this information to the user.
 
 ## 4. Cleaning up
 
@@ -120,14 +120,14 @@ For short-term deployments (a few minutes/hours), e.g. to let your fellow study 
 
 That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
-### 3.1)
+### 5.1)
 
 Deploy your app in Heroku according to the instructions linked above.
 
-### 3.2)
+### 5.2)
 
 Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app! 
 
-### 3.3)
+### 5.3)
 
 Play some apps of your fellow study colleagues!
