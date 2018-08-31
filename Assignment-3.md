@@ -14,8 +14,10 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 |------|----------------------------------------------------|
 | 1.1  | Splash screen CSS                                  |
 | 1.2  | Game screen CSS                                    |
-| 1.3  |→→→ *upload 1.1 / 1.2 to Brightspace*               |
-| 2    | Source code                                        |
+| 1.3  | Media queries CS                                   |
+| 1.4  | Fullscreen CSS                                     |
+| 1.5  |→→→ *upload 1.1 / 1.2 to Brightspace*               |
+| 2    | Templating source code                             |
 | 3    | Source code                                        |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
@@ -28,6 +30,7 @@ Submit your application's **source code** either in the form of a link to a repo
 
 Now that we (finally) covered CSS, you will continue to work on your splash and game screens and style them with CSS.
 You are **not allowed** to use external libraries or preprocessing tools. Your application should have a modern look and feel (that is, use sufficient CSS styling).
+Style the game so that it looks and works well on  a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher (*A1 requirement*). In this project, we are **not** concerned about apps for mobile devices.
 
 As you might have already guessed, your CSS should reside in `myapp/public/stylesheets`. That folder already contains a `style.css` file by default. In order to keep your code maintainable, you can for instance place all CSS that applies to both screens in `style.css` and in addition create separate `splash.css` and `game.css` stylesheets for CSS rules specific to each screen. Note that stylesheets [can contain other stylesheets](https://developer.mozilla.org/en-US/docs/Web/CSS/@import).
 
@@ -58,7 +61,15 @@ A hint:
 
 - In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
 
-### 1.3)
+## 1.3)
+
+To ensure that your players are aware of the screen size limitations (i.e. the game works well on a larger screen), use [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to **alert players** if their screen resolution is below a sufficiently large minimum. What this minimum is, depends on the game you implemented, the way you wrote your CSS. No need to actually try your app on many different devices, Firefox (other major browsers have similar tooling) has a [Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode) tool that simulates different devices.
+
+## 1.4)
+
+Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen) of your game.
+
+### 1.5)
 
 Once you have completed the CSS of your app, head over to CSE1500's Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
 
@@ -86,13 +97,12 @@ app.get('/', (req, res) => {
 
 *Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use caes. Both technologies are relevant in practice, make sure to understand both of them.*
 
-## 3. Fullscreen mode
+## 3. Optional: Heroku deployment
 
+Well done! If you have reached this point, you have a fully functioning game. To make your game accessible to the public, it needs to be deployed somewhere (locahost only goes so far). **This is an optional step.**
 
+For short-term deployments (a few minutes/hours), e.g. to let your fellow study colleagues play your game, a quick solution is [ngrok](https://ngrok.com/) - you can run your server on localhost and expose it through a public URL.
 
-## 3. Cookies - first and third party
+That though is not a solution for an actual deployment. Heroku (among others) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
-- take a concrete website and let students determine number of cookies sent; number of third-party cookies
-
-## 4. Performance metrics / Heroku
-
+When you have managed a deployment, post about it on the Brightspace thread: deployed apps. **[TODO: Brightspace forum]**

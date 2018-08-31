@@ -2,8 +2,6 @@
 
 In this assignment you will build the backbone of your application. In the first part of this assignment, you will add **client-­side JavaScript** code to your application to make it interactive. In part two, you will write server-side code in **node.js** and use WebSockets to enable clients to communicate with each other (via the server).
 
-**[TODO: explain diff between `app.get`, `app.use` and `app.set`]**
-
 ## 0. Preliminaries
 
 Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
@@ -24,9 +22,7 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 
 Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
 
-Submit your application's **source code** either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your submission contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
-
-*Note: we expect a single source code submission, **not** one submission per task!*
+Submit your code either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
 ## 1. Boilerplate code
 
@@ -105,7 +101,7 @@ Now that you have made your plan and decided on the use of the design patterns, 
 
 A few hints:
 
-- Before using browser features unknown to you, check whether they are supported by at least some of the major browsers. For example, the feature [Event.originalTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/originalTarget) is Mozilla-specific and thus not a good option for you.
+- Before using browser features unknown to you, check whether they are supported by at least some of the major browsers. Some features are expressed differently in different browsers.
 - When you test your code's functionality, test it in more than one browser.
 - JavaScript is a dynamic language, important to remember when debugging.
 - The browser development tools are extremely helpful to debug client-side JavaScript. Use them.
