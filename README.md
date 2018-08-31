@@ -41,7 +41,7 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 - Week 2.2: (L3) JavaScript and (L4) node.js
 - Week 2.3: (L5) CSS and (L6) node.js (advanced topics)
 - Week 2.4: (L7) Cookies & sessions and (L8) Web security
-- Week 2.5: _no lectures_ this week; midterm on December 13 (*the midterm only covers Web technology topics*)
+- Week 2.5: midterm on December 13 (*the midterm only covers Web technology topics*)
 - Week 2.6: DB topics
 - Week 2.7: DB topics
 - Week 2.8: DB topics
