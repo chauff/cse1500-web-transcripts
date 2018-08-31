@@ -128,7 +128,7 @@ Deploy your app in Heroku according to the instructions linked above.
 
 ### 5.2)
 
-Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app! 
+Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app!
 
 ### 5.3)
 

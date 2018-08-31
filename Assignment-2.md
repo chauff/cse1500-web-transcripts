@@ -4,7 +4,7 @@ In this assignment you will build the backbone of your application. In the first
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. 
+Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code.
 
 ### Overview of deliverables and upload procedure
 
@@ -21,7 +21,7 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 3.5  | Source code                                        |
 | 4  | -                                        |
 
-Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. 
+Deliverables 2.1, 2.2 and 3.3 must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
 
 Submit your code in the form of a zipped folder. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
@@ -35,24 +35,25 @@ The PDF and code has to be uploaded by one of the team members to Brightspace un
 
 Web application tend to have specific file and folder structures, which today are often generated automatically - you can consider those to be current best practices of how to set up a Web application project with your chosen set of libraries and frameworks. In this course we [Express](https://expressjs.com/), a "fast, unopionated, minimalist Web framework for node.js". Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).
 
-We will use it to set up the basic code structur of our game application. 
+We will use it to set up the basic code structur of our game application.
 
 First of all, create a directory for this course and `cd` into it.
 
 Then, install the necessary npm package `express-generator`:
 
-```
+```console
 npm install express-generator
 ```
 
 Think of a name for your application, e.g. `myapp` and then generate the boilerplate code as follows:
 
-```
+```console
 express --view=ejs myapp
 ```
 
-Your terminal should show something like this: 
-```bash
+Your terminal should show something like this:
+
+```console
    create : myapp/
    create : myapp/public/
    create : myapp/public/javascripts/
@@ -141,7 +142,7 @@ http.createServer(app).listen(port);
 This is all the code you need for your server-side (for now). Save the file, and start the server in the terminal:
 **[TODO: describe how to start the server in VSC]**
 
-```
+```console
 node app.js 3000
 ```
 
@@ -168,11 +169,11 @@ Create a list of message types (e.g. game-start, game-move, player-type, abort-g
 
 ### 3.4) WebSockets: a minimum viable examples
 
-Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for node.js. 
+Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for node.js.
 
 First, lets install it via `npm`:
 
-````
+````console
 npm install --save ws
 ````
 

@@ -27,7 +27,7 @@ If you get lost in the assignment, use this overview of deliverables to get back
 | 5.3  | →→→ *upload 5.1/5.2 to Brightspace*                |
 | 6.1  | Two html files                                     |
 
-All deliverable text/imagery (apart from 6.1) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. 
+All deliverable text/imagery (apart from 6.1) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
 
 Submit your two html files in the form of a zipped folder.
 
@@ -54,7 +54,7 @@ Use `telnet` to request the contents of the bread section of the recipe website 
 
 Start your "conversation" with the Web server by typing the following into the terminal:
 
-```
+```console
 telnet myrecipes.com 80
 ```
 
@@ -84,7 +84,7 @@ To test your skills in uploading, deleting and posting data, we will make use of
 
 Below is an example of how to upload data to the server with `PUT`:
 
-```
+```console
 telnet httpbin.org 80
 
 PUT /myfile HTTP/1.1
@@ -118,7 +118,7 @@ First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic
 
 Now let's see how this works with actual HTTP messages. Start off with a `HEAD` method to inspect the Web page and document all following steps (requests and responses):
 
-```
+```console
 telnet httpbin.org 80
 
 HEAD /basic-auth/user/passwd HTTP/1.1
@@ -131,7 +131,7 @@ Then, use the `Authorization` field to provide username and password to the serv
 
 Now close the TCP connection and start a new one, using again:
 
-````
+````console
 telnet httpbin.org 80
 ````
 

@@ -33,7 +33,7 @@ If you are new to team programming, and want to use VSC's features efficiently, 
   - 20% assignments
 - Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations.
 - Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover Web programming topics and three cover database topics.
-- We have two assessment weeks: one before Christmas and one at the end of January. In the December assessment week **all** three Web assignments are assessed in a single session; in the January assessment week **all** three database assignments are assessed in a single session. Each session can yield anything between 3x pass and 3x no-pass. 
+- We have two assessment weeks: one before Christmas and one at the end of January. In the December assessment week **all** three Web assignments are assessed in a single session; in the January assessment week **all** three database assignments are assessed in a single session. Each session can yield anything between 3x pass and 3x no-pass.
 
 ## Course topics
 
@@ -46,7 +46,7 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 - Week 2.7: DB topics
 - Week 2.8: DB topics
 - Week 2.9: DB topics
-- Week 2.10: _no lectures_ this week; final exam on February 1 (*the final exam only covers DB topics*) 
+- Week 2.10: _no lectures_ this week; final exam on February 1 (*the final exam only covers DB topics*)
 
 ## Assignments
 
@@ -75,7 +75,7 @@ and a game screen:
 ## Interactive Web technology exercises
 
 Students who do not have a lot of prior knowledge often struggle to get started.
-Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve. 
+Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
 ## List of 2017/18 Web lectures
 
