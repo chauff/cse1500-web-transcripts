@@ -29,6 +29,8 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The PDF and code has to be uploaded by one of the team members to Brightspace under **Assignment 2** before the assessment session with the TAs.
 
+**To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and client-server communication needs to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that it is ok, if your app does not [yet] deal with players aborting the game in the middle or making undesired moves.
+
 ## 1. Boilerplate code
 
 Web application tend to have specific file and folder structures, which today are often generated automatically - you can consider those to be current best practices of how to set up a Web application project with your chosen set of libraries and frameworks. In this course we [Express](https://expressjs.com/), a "fast, unopionated, minimalist Web framework for node.js". Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).

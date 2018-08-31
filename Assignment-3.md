@@ -31,6 +31,8 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The code has to be uploaded by one of the team members to Brightspace under **Assignment 3** before the assessment session with the TAs.
 
+**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended.** This means that it is ok if your app does not [yet] deal with players aborting the game in the middle or making undesired moves.
+
 ## 1. CSS
 
 Now that we (finally) covered CSS, you will continue to work on your splash and game screens and style them with CSS.

@@ -33,6 +33,8 @@ Submit your two html files in the form of a zipped folder.
 
 The PDF and code has to be uploaded by one of the team members to Brightspace under **Assignment 1** before the assessment session with the TAs.
 
+**To pass this assignment, you must have completed all tasks.**
+
 ## 1. HTTP request messages: GET/HEAD
 
 ---
