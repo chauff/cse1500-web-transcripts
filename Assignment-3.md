@@ -1,8 +1,8 @@
 # Assignment 3 (2018/2019 edition)
 
-In the first part of this assignment, you will finally employ *CSS* to make your splash and game screen look good.
+In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.
 
-In the second part of this assignment, you will implement a number of smaller items, that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the modern browser.
+In the second part of this assignment, you will implement a number of smaller items (templating), that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the modern browser.
 
 ## 0. Preliminaries
 
@@ -18,13 +18,14 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.4  | CSS                                                |
 | 1.5  | →→→ *upload 1.1 / 1.2 to Brightspace*              |
 | 2    | Source code                                        |
-| 3  | -                    |
-| 3.1 (optional) | -                                                  |
-| 3.2 (optional) | →→→ *upload URL to Brightspace*                    |
+| 3    | Source code                                        |
+| 4    | -                                                  |
+| 5.1 (optional) | -                                        |
+| 5.2 (optional) | →→→ *upload URL to Brightspace*          |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
-Submit your code either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zipped folder. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
+Submit your code in the form of a zipped folder. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
 *Note: we expect a single source code submission, **not** one code submission per task!*
 
@@ -71,7 +72,7 @@ To ensure that your players are aware of the screen size limitations (i.e. the g
 
 ### 1.4)
 
-Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen) of your game.
+Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen) of your game. While we have not discussed this in the lecture, it is a good (and short) exercise to apply your CSS knowledge.
 
 ### 1.5)
 
@@ -101,13 +102,19 @@ app.get('/', (req, res) => {
 
 *Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use caes. Both technologies are relevant in practice, make sure to understand both of them.*
 
-## 3. Cleaning up
+## 3. Cookies
+
+Finally, lets practice cookies. Use client-side cookies to log how often a user has accessed your game. Report this information to the user.
+
+
+
+## 4. Cleaning up
 
 Ensure that your app works as intended in two major browsers.
 
 Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
-## 4. Optional: Heroku deployment
+## 5. Optional: Heroku deployment
 
 Well done! If you have reached this point, you have a fully functioning game. To make your game accessible to the public, it needs to be deployed somewhere (locahost only goes so far). **This is an optional step.**
 

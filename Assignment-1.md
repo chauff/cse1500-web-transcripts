@@ -4,7 +4,7 @@ The first part of this assignment gives you hands-­on experience in **http**. I
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
+Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The assessment will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
 
 ### Overview of deliverables and upload procedure
 
@@ -27,7 +27,11 @@ If you get lost in the assignment, use this overview of deliverables to get back
 | 5.3  | →→→ *upload 5.1/5.2 to Brightspace*                |
 | 6.1  | Two html files                                     |
 
-All deliverable text/imagery (apart from 5.3) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. The PDF has to be uploaded by one of the team members to Brightspace **before** the assessment with the TAs. **[TODO: some info on where to upload]**
+All deliverable text/imagery (apart from 6.1) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name. 
+
+Submit your two html files in the form of a zipped folder.
+
+The PDF and code has to be uploaded by one of the team members to Brightspace under **Assignment 1** before the assessment session with the TAs.
 
 ## 1. HTTP request messages: GET/HEAD
 
@@ -177,7 +181,7 @@ Here are your nine board game options to choose from:
 
 ### 4.2)
 
-Find **four** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
+Find **four** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Record the game URLs. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
 
 ### 4.2)
 
