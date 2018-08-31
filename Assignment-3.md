@@ -2,7 +2,7 @@
 
 In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.
 
-In the second part of this assignment, you will implement a number of smaller items (templating), that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the modern browser.
+In the second part of this assignment, you will implement a number of smaller items (templating, cookies), that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the modern browser.
 
 ## 0. Preliminaries
 
@@ -104,9 +104,7 @@ app.get('/', (req, res) => {
 
 ## 3. Cookies
 
-Finally, lets practice cookies. Use client-side cookies to log how often a user has accessed your game. Report this information to the user.
-
-
+Lets (quickly) practice cookies. Use client-side cookies to log how often a user has accessed your game. Report this information to the user.
 
 ## 4. Cleaning up
 
@@ -116,18 +114,20 @@ Ensure that your code contains the necessary `package.json` file content to inst
 
 ## 5. Optional: Heroku deployment
 
-Well done! If you have reached this point, you have a fully functioning game. To make your game accessible to the public, it needs to be deployed somewhere (locahost only goes so far). **This is an optional step.**
+**Well done!** If you have reached this point, you have a fully functioning game. To make your game accessible to the public, it needs to be deployed somewhere - `locahost:3000` only goes so far. **This is an optional step.**
 
-For short-term deployments (a few minutes/hours), e.g. to let your fellow study colleagues play your game, a quick solution is [ngrok](https://ngrok.com/) - you can run your server on localhost and expose it through a public URL.
+For short-term deployments (a few minutes/hours), e.g. to let your fellow study colleagues play your game, a quick solution is [ngrok](https://ngrok.com/) - you can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive app this way.*
 
-That though is not a solution for an actual deployment. Heroku (among others) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 ### 3.1)
 
-Deploy your app in Heroku according to the instructions linke above.
+Deploy your app in Heroku according to the instructions linked above.
 
 ### 3.2)
 
-Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app!
+Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app! 
 
+### 3.3)
 
+Play some apps of your fellow study colleagues!
