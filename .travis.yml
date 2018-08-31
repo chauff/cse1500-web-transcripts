@@ -1,0 +1,10 @@
+language: node_js
+
+node_js:
+ - "node"
+
+ before_install:
+ - cd demo-code/balloons/
+
+ script
+ - npm start
