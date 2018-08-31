@@ -1,75 +1,73 @@
-# Web and Database Technology (CSE1500)
+# CSE1500: Web and Database Technology (2018/2019 edition)
 
-Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. At the moment, only Web topics are covered.
+Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only Web topics are covered.**
 
-## Todos (instructors)
+## Contact
 
-- Functional email box `cse1500-ewi[at]tudelft.nl`
+The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi[at]tudelft.nl`. *Note: mailbox not active until November 2018.*
 
-## Required [REQ] / recommended [REC] tools
+## Required [REQ] and recommended [REC] tools
 
-- [REC] [Visual Studio Code](https://code.visualstudio.com/) (*VS Code* for short) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we will soon use in this class), but now has extensions for many major programming languages. Best of all, Visual Studio Code itself is written in JavaScript! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. VS Code also offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint);
-  - [JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint);
-  - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer);
-  - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode); a great tool to try out JavaScript snippets without hassle
+- [REC] [Visual Studio Code](https://code.visualstudio.com/) (*VSC* for short) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, Visual Studio Code itself is written in JavaScript! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. VS Code also offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), the most popular linting utility for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables);
+  - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) does what the name suggests;
+  - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a great tool to try out JavaScript snippets without hassle;
+  - [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension (especially useful if a student team works mostly remotely);
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 - [REQ] [node.js](https://nodejs.org/en/)
-- [REQ] Modern Web browser such as Chrome, Firefox, Edge, ...
-- [REC] [jest](https://jestjs.io/) for JavaScript testing
-
-## Useful online coding platforms
-
-- [Glitch](https://glitch.com/)
-- [Codepen](https://codepen.io/#)
-- [MDN](https://developer.mozilla.org/en-US/)
-
-## Grading
-
-- Course grade:
-  - 40% midterm (covers the 8 Web technology lectures)
-  - 40% final exam (covers the 7-8 database technology lectures)
-  - 20% assignments
-- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations. The assignments are **not required**, though they count towards the final grade.
-- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are five assignments in total, three cover Web programming topics and two cover database topics.
-- There is one option to resit one or more of the Web programmign assignments in the week before Christmas.
-
-## Course topics
-
-- Week 1: (Lecture 1) HTTP and (L2) HTML5
-- Week 2: (L3) JavaScript and (L4) node.js
-- Week 3: (L5) CSS and (L6) node.js (advanced topics)
-- Week 4: (L7) Cookies & sessions and (L8) Web security
-- Week 5: DB topics
-- Week 6: _no lectures_ this week; midterm on Thursday (*the midterm only covers Web programming topics*)
-- Week 7: DB topics
-- Week 8: DB topics
-- Week 9: DB topics (still to be decided whether that week is lecture-free)
-
-## Assignments
-
-Across the five assignments, a Web application, using the modern Web stack will be built.
+- [REQ] Two modern Web browsers such as Chrome, Firefox, Edge, ...
 
 If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
 
-- [Assignment 1](Assignment-1.md)
-- [Assignment 2](Assignment-2.md)
-- [Assignment 3](Assignment-3.md)
-- [Assignment 4](Assignment-4.md)
-- [Assignment 5](Assignment-5.md)
+## Resources
+
+- [MDN](https://developer.mozilla.org/en-US/): Mozilla's resource site for developers.
+- [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/) are similar to MDN in spirit.
+- [Codepen](https://codepen.io/#) showcases many front-end experiments; if you are looking what is possible with CSS, this is the place for you.
+
+## Course grading
+
+- Course grade:
+  - 40% midterm (covers all Web technology lectures)
+  - 40% final exam (covers all database technology lectures)
+  - 20% assignments
+- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations.
+- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover Web programming topics and three cover database topics.
+- We have two assessment weeks: one before Christmas and one at the end of January. In the December assessment week **all** three Web assignments are assessed in a single session; in the January assessment week **all** three database assignments are assessed in a single session. Each session can yield anything between 3x pass and 3x no-pass. 
+
+## Course topics
+
+- Week 2.1: (Lecture L1) HTTP and (L2) HTML5
+- Week 2.2: (L3) JavaScript and (L4) node.js
+- Week 2.3: (L5) CSS and (L6) node.js (advanced topics)
+- Week 2.4: (L7) Cookies & sessions and (L8) Web security
+- Week 2.5: _no lectures_ this week; midterm on December 13 (*the midterm only covers Web technology topics*)
+- Week 2.6: DB topics
+- Week 2.7: DB topics
+- Week 2.8: DB topics
+- Week 2.9: DB topics
+- Week 2.10: _no lectures_ this week; final exam on February 1 (*the final exam only covers DB topics*) 
+
+## Assignments
+
+There are six assignments in total.
+
+The first three assignments cover Web technology topics.
+
+If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
+
+- [Assignment 1 (Web)](Assignment-1.md)
+- [Assignment 2 (Web)](Assignment-2.md)
+- [Assignment 3 (Web)](Assignment-3.md)
 
 ## Interactive Web technology exercises
 
 Students who do not have a lot of prior knowledge often struggle to get started.
-Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. 
+Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve. 
 
-## Handing in your code
+## List of 2017/18 Web lectures
 
-- proper `package.json`
-- proper `README.md` (check provided template)
-- Heroku deployment(?)
-
-## List of Web lectures (2017/18)
+The list below will be amended over time, to fit the 2018/19 topic setup. Some lectures will remain as-is, some will change.
 
 - Lecture 1 ([PDF-1](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf), [PDF-2](https://chauff.github.io/documents/webdb-2017-18/web-http-continued.pdf)) on **HTTP**: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
   - Required readings: *none*

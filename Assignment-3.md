@@ -1,4 +1,4 @@
-# Assignment 3
+# Assignment 3 (2018/2019 edition)
 
 In the first part of this assignment, you will finally employ *CSS* to make your splash and game screen look good.
 
@@ -12,19 +12,22 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 
 | **Task** | **Deliverables**                               |
 |------|----------------------------------------------------|
-| 1.1  | Splash screen CSS                                  |
-| 1.2  | Game screen CSS                                    |
-| 1.3  | Media queries CS                                   |
-| 1.4  | Fullscreen CSS                                     |
-| 1.5  |→→→ *upload 1.1 / 1.2 to Brightspace*               |
-| 2    | Templating source code                             |
-| 3    | Source code                                        |
+| 1.1  | CSS                                                |
+| 1.2  | CSS                                                |
+| 1.3  | CSS                                                |
+| 1.4  | CSS                                                |
+| 1.5  | →→→ *upload 1.1 / 1.2 to Brightspace*              |
+| 2    | Source code                                        |
+| 3.1  | -                                                  |
+| 3.2  | →→→ *upload URL to Brightspace*                    |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
-Submit your application's **source code** either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zip file. Make sure that your submission contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
+Submit your code either in the form of a link to a repository (on GitHub, BitBucket, etc. - make sure it is publicly accessible) or a zipped folder. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
 *Note: we expect a single source code submission, **not** one code submission per task!*
+
+The code has to be uploaded by one of the team members to Brightspace under **Assignment 3** before the assessment session with the TAs.
 
 ## 1. CSS
 
@@ -105,4 +108,10 @@ For short-term deployments (a few minutes/hours), e.g. to let your fellow study 
 
 That though is not a solution for an actual deployment. Heroku (among others) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
-When you have managed a deployment, post about it on the Brightspace thread: deployed apps. **[TODO: Brightspace forum]**
+### 3.1)
+
+Deploy your app in Heroku according to the instructions linke above.
+
+### 3.2)
+
+Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app!
