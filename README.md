@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
+
 # CSE1500: Web and Database Technology
 
 Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only Web topics are covered.**
