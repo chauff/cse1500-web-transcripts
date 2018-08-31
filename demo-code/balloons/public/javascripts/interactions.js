@@ -43,7 +43,7 @@ function GameState(visibleWordBoard, sb, socket){
             let id = "b"+this.wrongGuesses;
             document.getElementById(id).className += " balloonGone";
             setTimeout(function () {
-                new Audio('../data/pop.wav').play();
+                new Audio("../data/pop.wav").play();
             }, 500);
         }
     };
@@ -93,6 +93,16 @@ function GameState(visibleWordBoard, sb, socket){
         
         if(winner != null){
             this.revealAll();
+
+            /* disable further clicks by cloning each alphabet
+             * letter and not adding an event listener; then
+             * replace the original node through some DOM logic
+             */
+            var elements = document.querySelectorAll(".alphabet");
+            Array.from(elements).forEach(function (e) {
+                var cloned = e.cloneNode(true);
+                e.parentNode.replaceChild(cloned, e);
+            });
 
             let alertString;
             if( winner == this.playerType){
@@ -225,7 +235,7 @@ function VisibleWordBoard(){
 function StatusBar(){
     this.setStatus = function(status){
         document.getElementById("statusbar").innerHTML = status;
-    }
+    };
 }
 
 function AlphabetBoard(gs){
@@ -238,7 +248,7 @@ function AlphabetBoard(gs){
 
             el.addEventListener("click", function singleClick(e){
                 var clickedLetter = e.target.id;
-                new Audio('../data/click.wav').play();
+                new Audio("../data/click.wav").play();
                 gs.updateGame(clickedLetter);
 
                 /*
