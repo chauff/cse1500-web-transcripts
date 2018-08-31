@@ -29,7 +29,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The PDF and code has to be uploaded by one of the team members to Brightspace under **Assignment 2** before the assessment session with the TAs.
 
-**To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and client-server communication needs to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that it is ok, if your app does not [yet] deal with players aborting the game in the middle or making undesired moves. While it is strongly recommended to fix the issues ESlint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
+**To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and client-server communication needs to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that it is ok, if your app does not [yet] deal with players aborting the game in the middle or making undesired moves. While it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
 
 ## 1. Boilerplate code
 
@@ -260,6 +260,6 @@ A few hints:
 
 Ensure that your app works as intended in two major browsers.
 
-Check the ESlint (or any other linter) output: it should help you to spot easy-to-make mistakes (which in turn should help you write better code). Fix them.
+Check the ESLint (or any other linter) output: it should help you to spot easy-to-make mistakes (which in turn should help you write better code). Fix them.
 
 Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
