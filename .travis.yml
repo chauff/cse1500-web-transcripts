@@ -8,3 +8,6 @@ install:
   - npm install
 script:
   - npm start
+cache:
+  directories:
+    - "node_modules"
