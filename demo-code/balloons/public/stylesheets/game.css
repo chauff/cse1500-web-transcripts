@@ -11,7 +11,6 @@
     width: 8%;
     height: 8%;
     background-color: #aaa;
-    border-color: #999;
     display: inline-block;
     margin: 20px;
     border: 2px solid black;
@@ -22,8 +21,6 @@
     padding: 10px;
 
     border-color: #fff;
-    box-shadow: none;
-    
     box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5);
 }
 
@@ -145,8 +142,3 @@
     width: 0vw;
     height: 0vw;
 }
-
-
-
-
-
