@@ -16,13 +16,13 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/play", indexRouter);
 
+//TODO: move to routes/index
 app.get("/", (req, res) => {
     res.render("splash.ejs", { gamesInitialized: gameStatus.gamesInitialized, gamesCompleted: gameStatus.gamesCompleted });
 });
 
 var server = http.createServer(app);
 const wss = new websocket.Server({ server });
-
 
 var websockets = {};//key: websocket, value: game
 
@@ -41,7 +41,7 @@ setInterval(function() {
 }, 50000);
 
 var currentGame = new Game(gameStatus.gamesInitialized++);
-var connectionID = 0;//ID given to each client
+var connectionID = 0;//ID given to each websocket
 
 wss.on("connection", function connection(ws) {
 
@@ -51,25 +51,25 @@ wss.on("connection", function connection(ws) {
     let playerType = currentGame.addPlayer(con);
     websockets[con.id] = currentGame;
 
-    console.log("Player with ID %s placed in game %s as type %s", con.id, currentGame.id, playerType);
+    console.log("Player %s placed in game %s as %s", con.id, currentGame.id, playerType);
 
     //inform the player about its assigned player type
     con.send((playerType == "A") ? messages.S_PLAYER_A : messages.S_PLAYER_B);
 
-    //if it is player B, check whether we have a target word already, if so, send it
+    //if player B, send target word (if available)
     if(playerType == "B" && currentGame.getWord()!=null){
         let msg = messages.O_TARGET_WORD;
         msg.data = currentGame.getWord();
         con.send(JSON.stringify(msg));
     }
 
-    //when the currentGame has sufficient players, start a new game
-    if (currentGame.hasTwoConnectedPlayers() == true) {
-        console.log("Two connected players!");
+    //if the currentGame object has two players, create a new object
+    if (currentGame.hasTwoConnectedPlayers()) {
         currentGame = new Game();
     }
 
-    /* When a player from a game sends a message, determine the other game player and broadcast the message to him */
+    /* When a player from a game sends a message, 
+     * determine the other player and send the message to him */
     con.on("message", function incoming(message) {
 
         let oMsg = JSON.parse(message);
@@ -82,7 +82,7 @@ wss.on("connection", function connection(ws) {
         if( oMsg.type!=undefined && oMsg.type == messages.T_TARGET_WORD && isPlayerA==true) {
             gameObj.setWord(oMsg.data);
 
-            if(gameObj.hasSufficientPlayers()){
+            if(gameObj.hasTwoConnectedPlayers()){
                 let msg = messages.O_TARGET_WORD;
                 msg.data = gameObj.getWord();
                 gameObj.playerB.send(JSON.stringify(msg)); 
@@ -96,10 +96,7 @@ wss.on("connection", function connection(ws) {
 
         //Player B has the right to claim who won/lost
         if( oMsg.type!=undefined && oMsg.type == messages.T_GAME_WON_BY && isPlayerA==false){
-
-            console.log("Game over ...");
             gameObj.setFinalStatus(oMsg.data);
-
             //game was won by somebody, update statistics
             gameStatus.gamesCompleted++;
         }
