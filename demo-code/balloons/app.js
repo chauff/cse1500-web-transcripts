@@ -5,81 +5,33 @@ var websocket = require("ws");
 var indexRouter = require("./routes/index");
 var messages = require("./public/javascripts/messages");
 
+var gameStatus = require("./statTracker");
+var Game = require("./game");
+
 var port = process.argv[2];
 var app = express();
 
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
 app.get("/play", indexRouter);
 
-app.get('/', (req, res) => {
-    res.render('splash.ejs', { gamesInitialized: gameStatus.gamesInitialized, gamesCompleted: gameStatus.gamesCompleted });
-})
+app.get("/", (req, res) => {
+    res.render("splash.ejs", { gamesInitialized: gameStatus.gamesInitialized, gamesCompleted: gameStatus.gamesCompleted });
+});
 
-/* keep track of the games' finalStatus in memory */
-var gameStatus = {
-    since : Date.now(),     /* since we keep it simple and in-memory, keep track of when this object was created */
-    gamesInitialized : 0,   /* number of games initialized */
-    gamesAborted : 0,       /* number of games aborted */
-    gamesCompleted : 0      /* number of games successfully completed */
-};
+var server = http.createServer(app);
+const wss = new websocket.Server({ server });
 
-/* every game has two players, identified by their connection */
-var Game = function(){
-    this.playerA = null;
-    this.playerB = null;
-    this.id = gameStatus.gamesInitialized++;
-    this.wordToGuess = null; //first player to join the game, can set the word
-    this.finalStatus = null; //"A" means A won, "B" means B won, "ABORTED" means the game was aborted
-
-    this.setFinalStatus = function(w){
-        this.finalStatus = w;
-    };
-
-    this.setWord = function (w) {
-        /* TODO: server-side check whether this is a valid word (according to our rules) */
-        this.wordToGuess = w;
-        console.log("Game %s has target word set to %s!", this.id, this.wordToGuess);
-    };
-
-    this.getWord = function(){
-        return this.wordToGuess;
-    };
-
-    this.hasSufficientPlayers = function(){
-        if(this.playerA != null && this.playerB != null){
-            return true;
-        }
-        return false;
-    };
-
-    this.addPlayer = function(p){
-        if(this.hasSufficientPlayers()){
-            return null;
-        }
-
-        if(this.playerA == null){
-            this.playerA = p;
-            return "A";
-        }
-        else {
-            this.playerB = p;
-            return "B";
-        }
-    };
-};
 
 var websockets = {};//key: websocket, value: game
 
 //regularly clean up the websockets object
 setInterval(function() {
-
-    console.log("Cleaning up websockets object ...");
-
     for(let i in websockets){
         if(websockets.hasOwnProperty(i)){
             let gameObj = websockets[i];
+            //if the gameObj has a final status, the game is complete/aborted
             if(gameObj.finalStatus!=null){
                 console.log("\tDeleting element "+i);
                 delete websockets[i];
@@ -88,18 +40,10 @@ setInterval(function() {
     }
 }, 50000);
 
-//game stats make a regular appearance in the console log ...
-setInterval(function() {
-    console.table(gameStatus)}, 10000);
-
-var currentGame = new Game();
+var currentGame = new Game(gameStatus.gamesInitialized++);
 var connectionID = 0;//ID given to each client
 
-var server = http.createServer(app);
-
-const wss = new websocket.Server({ server }); //pre-created node.js http server as argument
-
-wss.on("connection", function connection(ws, req) {
+wss.on("connection", function connection(ws) {
 
     /* Two-player game: every two players are added to the same game  ... */
     let con = ws; 
@@ -120,7 +64,8 @@ wss.on("connection", function connection(ws, req) {
     }
 
     //when the currentGame has sufficient players, start a new game
-    if(currentGame.hasSufficientPlayers() == true){
+    if (currentGame.hasTwoConnectedPlayers() == true) {
+        console.log("Two connected players!");
         currentGame = new Game();
     }
 
@@ -162,7 +107,7 @@ wss.on("connection", function connection(ws, req) {
 
     con.on("close", function(){
        
-        //lets wait a few seconds before reacting ... if the game status has changed, no need to deal with this
+        //lets wait a second before reacting ... if the game status has changed, no need to deal with this
 
         //alternative explanation of a close event is one websocket being closed (e.g. browser tab closes), inform the other player
         console.log(con.id + " disconnected ...");
@@ -180,21 +125,23 @@ wss.on("connection", function connection(ws, req) {
 
                     try {
                         gameObj.playerA.close();
+                        gameObj.playerA = null;
                     }
                     catch(e){
                         console.log("Player A closing: "+ e);
                     }
 
                     try {
-                        gameObj.playerB.close();                        
+                        gameObj.playerB.close(); 
+                        gameObj.playerB = null;
                     }
                     catch(e){
-                        console.log("Player B closing: "+ e);
+                        console.log("Player B closing: " + e);
                     }
                 }
             }
 
-        }, 2000);
+        }, 1000);
     });
 });
 
