@@ -98,11 +98,12 @@ Choose at **least one of the object design patterns introduced in the lecture an
 
 ### 2.3)
 
-Now that you have made your plan and decided on the use of the design patterns, start coding! Be mindful of the following requirements:
+Now that you have made your plan and decided on the use of the design patterns, start coding! Be mindful of the following requirements (most you already encountered them in assignment 1):
 
-- The game has to work in two major browsers (*as stated in assignment 1*).
-- Players play the game with the mouse (*as stated in assignment 1*).
-- Once a player makes a move, the validity of the move is checked and invalid moves are rejected (*as stated in assignment 1*).
+- Besides `jQuery` (covered in the course book), no other library is allowed; use "plain" JavaScript.
+- The game has to work in two major browsers.
+- Players play the game with the mouse.
+- Once a player makes a move, the validity of the move is checked and invalid moves are rejected.
 - Reduce the redundancy in the code as much as possible (improves code maintainability).
 - Create as few global variables as possible (this improves code maintainability).
 - Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` but instead in the corresponding `[appname]/public/javascripts` folder.
@@ -110,8 +111,9 @@ Now that you have made your plan and decided on the use of the design patterns, 
 ---
 Hints:
 
-- Before using browser features unknown to you, check whether they are supported by at least some of the major browsers. Some features are expressed differently in different browsers.
-- When you test your code's functionality, test it in more than one browser.
+- You can, but do not have to use ES6 features. Check [http://es6-features.org](http://es6-features.org) if you are interested in what ES6 has to offer.
+- Be mindful of the time you have for your implementation work. Go for the fast solution if one is available, and move on to the next item to implement instead of being hung up on one feature for too long. For example, the demo game requires player 1 to enter a word (that player 2 has to guess). There are different ways to ask the player to provide a word, the simplest is the use of [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt). Unarguably there are visually more appealing solutions, however, this requires only one line of code, and is sufficient for our project. When you have time left, you can always go back to a feature and improve it.
+- When you test your code's functionality, test it in two browsers. If it works in one, but not the other, check the browser's WebConsole output; you will learn quickly whether you used a feature in your code that only one of your chosen browsers supported.
 - JavaScript is a dynamic language, important to remember when debugging.
 - The browser development tools are extremely helpful to debug client-side JavaScript. Use them.
 - Don't be afraid to use place-holders (e.g. in our word guessing game, we start off with a fixed string to guess).
