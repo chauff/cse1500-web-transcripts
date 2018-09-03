@@ -42,5 +42,4 @@ game.prototype.addPlayer = function (p) {
     }
 };
 
-
 module.exports = game;
