@@ -127,6 +127,7 @@ The list below will be amended over time, to fit the 2018/19 topic setup. Some l
     - [Service Worker Cookbook](https://serviceworke.rs/)
     - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger)
     - Jimmy Lin's [words](http://ceur-ws.org/Vol-2167/keynote1.pdf) on JavaScript ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
+    - Another Jimmy Lin [paper](http://aclweb.org/anthology/N18-5013): using CNNs for inference in the browser with JavaScript.
 
 - Lecture 4 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
   - Required readings:
