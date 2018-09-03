@@ -31,7 +31,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The code has to be uploaded by one of the team members to Brightspace under **Assignment 3** before the assessment session with the TAs.
 
-**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended.** This means that it is ok if your app does not [yet] deal with players aborting the game in the middle or making undesired moves.
+**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended.** This means that it is ok if your app does not [yet] deal with players aborting the game in the middle or making undesired moves. In addition, while it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
 
 ## 1. CSS
 
@@ -53,10 +53,13 @@ First, work on your **splash screen** and style the page with CSS according to t
 
 You are of course welcome to use more CSS properties to style your splash screen.
 
-A few hints:
+---
+Hints:
 
 - CSS examples are plentiful on the Web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, go for simpler CSS rules, often the same effect can be achieved in a myriad of ways.
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as Sass exist. Do not use those, in this course we make use of *plain CSS*.
+
+---
 
 ### 1.2)
 
@@ -64,9 +67,12 @@ Next, tackle the CSS for your **game screen**. The look of the game screen shoul
 
 Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).
 
-A hint:
+---
+Hint:
 
 - In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
+
+---
 
 ### 1.3)
 
@@ -111,6 +117,8 @@ Lets (quickly) practice cookies. Use **client-side cookies** to log how often a 
 ## 4. Cleaning up
 
 Ensure that your app works as intended in two major browsers.
+
+Check the ESLint (or any other linter) output: it should help you to spot easy-to-make mistakes (which in turn should help you write better code). Fix them.
 
 Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 

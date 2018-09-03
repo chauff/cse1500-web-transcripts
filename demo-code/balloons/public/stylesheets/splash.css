@@ -74,9 +74,8 @@ h3 {
 }
 
 .square:hover {
-    transform: scale(1.1);
     background-color: #C3343C;
-    transform: rotateZ(-5deg);
+    transform: scale(1.1) rotateZ(-5deg);
 }
 
 #left {
@@ -120,7 +119,6 @@ button {
     right: 250px;
     font-size: 700%;
     border: none;
-    padding: 20px;
     padding: 30px;
     width: 30%;
     z-index: 1;

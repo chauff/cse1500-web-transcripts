@@ -1,3 +1,4 @@
+/* global Setup */
 var Status = {};
 Status["gameWon"] = "Congratulations! You won!";
 Status["gameLost"] = "Game over. You lost!";

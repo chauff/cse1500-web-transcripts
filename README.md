@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
+
 # CSE1500: Web and Database Technology
 
 Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only Web topics are covered.**
@@ -8,11 +10,12 @@ The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi
 
 ## Required [REQ] and recommended [REC] tools
 
-- [REC] [Visual Studio Code](https://code.visualstudio.com/) is the recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, Visual Studio Code itself is written in JavaScript! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. VS Code also offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
-  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), the most popular linting utility for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables);
+- [REC] [Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, Visual Studio Code itself is written in JavaScript! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. VS Code also offers many extensions (see a guide of how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery)), we recommend the following:
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), the most popular linting utility for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables) - use it to improve your code;
   - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) does what the name suggests;
   - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a great tool to try out JavaScript snippets without hassle;
   - [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension (especially useful if a student team works mostly remotely);
+  - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier;
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 - [REQ] [node.js](https://nodejs.org/en/)
 - [REQ] Two modern Web browsers such as Chrome, Firefox, Edge, ...
@@ -62,7 +65,7 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 ## Demo app
 
-A demo board game app (a word guesser) [is available](https://github.com/chauff/Web-Teaching/tree/master/demo-code) as well.
+A demo board game app (a word guesser) [is available](https://github.com/chauff/Web-Teaching/tree/master/demo-code) as well. If you are stuck on how to go about implementing something, the source code of this app can help you to get unstuck. Is has been implemented along the lines of the assignments.
 
 The demo app, just as listed in this year's board game project, consists of two screens, a splash screen:
 
