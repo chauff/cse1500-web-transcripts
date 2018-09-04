@@ -74,16 +74,17 @@ function GameState(visibleWordBoard, sb, socket){
 
         var res = this.alphabet.getLetterInWordIndices(clickedLetter, this.targetWord);
 
-        //wrong guess?
-        if(res.length == 0){
+        //wrong guess
+        if (res.length == 0) {
             this.incrWrongGuess();
         }
+        else {
+            this.revealLetters(clickedLetter, res);
+        }
 
-        this.revealLetters(clickedLetter, res);
         this.alphabet.makeLetterUnAvailable(clickedLetter);
         this.visibleWordBoard.setWord(this.visibleWordArray);
 
-        //TODO: both A and B do that ...
         var outgoingMsg = Messages.O_MAKE_A_GUESS;
         outgoingMsg.data = clickedLetter;
         socket.send(JSON.stringify(outgoingMsg));
@@ -125,28 +126,6 @@ function GameState(visibleWordBoard, sb, socket){
     };
 }
 
-function VisibleWordBoard(){
-
-    //set hidden word in the correct div element
-    this.setWord = function(visibleWord){
-
-        console.assert(Array.isArray(visibleWord) || typeof visibleWord == "string", "Expecting an array, got a %s instead" );
-
-        if(Array.isArray(visibleWord)){
-            document.getElementById("hiddenWord").innerHTML = visibleWord.join("");
-        }
-        else {
-            document.getElementById("hiddenWord").innerHTML = visibleWord;
-        }
-    };
-}
-
-function StatusBar(){
-    this.setStatus = function(status){
-        document.getElementById("statusbar").innerHTML = status;
-    };
-}
-
 function AlphabetBoard(gs){
 
     //only initialize for player that should actually be able to use the board
@@ -175,6 +154,14 @@ function AlphabetBoard(gs){
 
     var socket = new WebSocket(Setup.WEB_SOCKET_URL);
 
+    /*
+     * initialize all UI elements of the game:
+     * - visible word board (i.e. place where the hidden/unhidden word is shown)
+     * - status bar
+     * - alphabet board
+     * 
+     * the GameState object coordinates everything
+     */ 
     var vw = new VisibleWordBoard();
     var sb = new StatusBar();
 

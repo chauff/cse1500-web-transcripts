@@ -59,10 +59,17 @@
              a better solution would be LocalStorage
         -->
         <script src="data/english.js"></script>
+
+        <!-- In general, in a production environment, 
+             all files would be compressed into a single one
+             to avoid multiple HTTP requests.
+             Automatic tools are available for this step.
+        -->
         <script src="javascripts/config.js"></script> 
         <script src="javascripts/statuses.js"></script>
         <script src="javascripts/messages.js"></script>
         <script src="javascripts/alphabet.js"></script>
+        <script src="javascripts/ui-right.js"></script>
         <script src="javascripts/interactions.js"></script> <!-- browser parses the code from top to bottom, by now the DOM is built -->
     </body>
 </html>

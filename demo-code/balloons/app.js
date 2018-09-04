@@ -103,7 +103,7 @@ wss.on("connection", function connection(ws) {
                 gameObj.setWord(oMsg.data);
 
                 if(gameObj.hasTwoConnectedPlayers()){
-                    gameObj.playerB.send(JSON.stringify(message)); 
+                    gameObj.playerB.send(message); 
                 }                
             }
         }
