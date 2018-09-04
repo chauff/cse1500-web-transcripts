@@ -165,6 +165,9 @@ function AlphabetBoard(gs){
     var vw = new VisibleWordBoard();
     var sb = new StatusBar();
 
+    //no object, just a function
+    createBalloons();
+
     var gs = new GameState(vw, sb, socket);
     var ab = new AlphabetBoard(gs);
 
@@ -185,19 +188,27 @@ function AlphabetBoard(gs){
                 let res = null;
 
                 while(validWord<0){
-                    res = prompt(promptString).toUpperCase();
-                    if(res.length<Setup.MIN_WORD_LENGTH || res.length>Setup.MAX_WORD_LENGTH){
-                        promptString = Status["promptAgainLength"];
-                    }
-                    else if(/^[a-zA-Z]+$/.test(res) == false){
-                        promptString = Status["promptChars"];
-                    }
-                    //dictionary has only lowercase entries
-                    else if(englishDict.hasOwnProperty(res.toLocaleLowerCase())==false){
-                        promptString = Status["promptEnglish"];
+                    res = prompt(promptString);
+
+                    if (res == null) {
+                        promptString = Status["prompt"];
                     }
                     else {
-                        validWord = 1;
+                        res = res.toUpperCase();
+                    
+                        if (res.length < Setup.MIN_WORD_LENGTH || res.length > Setup.MAX_WORD_LENGTH) {
+                            promptString = Status["promptAgainLength"];
+                        }
+                        else if (/^[a-zA-Z]+$/.test(res) == false) {
+                            promptString = Status["promptChars"];
+                        }
+                        //dictionary has only lowercase entries
+                        else if (englishDict.hasOwnProperty(res.toLocaleLowerCase()) == false) {
+                            promptString = Status["promptEnglish"];
+                        }
+                        else {
+                            validWord = 1;
+                        }
                     }
                 }
                 sb.setStatus(Status["chosen"]+res);

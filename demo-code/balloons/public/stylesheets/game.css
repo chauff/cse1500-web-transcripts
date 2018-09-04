@@ -114,30 +114,6 @@
     transition: width 2s, height 2s, transform 2s;
 }
 
-#b1 {
-    background-color: #222;
-}
-
-#b2 {
-    background-color: #444;
-}
-
-#b3 {
-    background-color: #666;
-}
-
-#b4 {
-    background-color: #888;
-}
-
-#b5 {
-    background-color: #aaa;
-}
-
-#b6 {
-    background-color: #ccc;
-}
-
 .balloonGone {
     width: 0vw;
     height: 0vw;
