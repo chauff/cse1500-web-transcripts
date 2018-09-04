@@ -31,7 +31,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The code has to be uploaded by one of the team members to Brightspace under **Assignment 3** before the assessment session with the TAs.
 
-**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended.** This means that it is ok if your app does not [yet] deal with players aborting the game in the middle or making undesired moves. In addition, while it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
+**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in assignment 2) **AND with players aborting the game in the middle of it OR trying to make invalid moves.** You can pick either one of the two conditions (aborting vs invalid moves) to focus on. In addition, while it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
 
 ## 1. CSS
 
