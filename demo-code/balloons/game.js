@@ -15,8 +15,8 @@ game.prototype.transitionStates["0 JOINT"] = 0;
 game.prototype.transitionStates["1 JOINT"] = 1;
 game.prototype.transitionStates["2 JOINT"] = 2;
 game.prototype.transitionStates["CHAR GUESSED"] = 3;
-game.prototype.transitionStates["A WON"] = 4;
-game.prototype.transitionStates["B WON"] = 5;
+game.prototype.transitionStates["A"] = 4; //A won
+game.prototype.transitionStates["B"] = 5; //B won
 game.prototype.transitionStates["ABORTED"] = 6;
 
 /*
@@ -38,14 +38,14 @@ game.prototype.isValidTransition = function (from, to) {
     
     let i, j;
     if (! (from in game.prototype.transitionStates)) {
-        new Error("Invalid state %s", from);
+        return new Error("Invalid state %s", from);
     }
     else {
         i = game.prototype.transitionStates[from];
     }
 
     if (!(to in game.prototype.transitionStates)) {
-        new Error("Invalid state %s", to);
+        return new Error("Invalid state %s", to);
     }
     else {
         j = game.prototype.transitionStates[to];
@@ -59,12 +59,13 @@ game.prototype.isValidState = function (s) {
 };
 
 game.prototype.setStatus = function (w) {
-    if (this.isValidState(w) && this.isValidTransition(this.gameState, w)) {
+
+    if (game.prototype.isValidState(w) && game.prototype.isValidTransition(this.gameState, w)) {
         this.gameState = w;
         console.log("[STATUS] %s", this.gameState);
     }
     else {
-        new Error("Impossible status change from %s to %s", this.gameState, w);
+        return new Error("Impossible status change from %s to %s", this.gameState, w);
     }
 };
 
@@ -73,7 +74,7 @@ game.prototype.setWord = function (w) {
     //two possible options for the current game state:
     //1 JOINT, 2 JOINT
     if (this.gameState != "1 JOINT" && this.gameState != "2 JOINT") {
-        new Error("Trying to set word, but game status is %s", this.gameState);
+        return new Error("Trying to set word, but game status is %s", this.gameState);
     }
     this.wordToGuess = w;
 };
@@ -92,14 +93,12 @@ game.prototype.addPlayer = function (p) {
         new Error("Invalid call to addPlayer, current state is %s", this.gameState);
     }
 
-    if (this.gameState == "0 JOINT") {
-        this.gameState = "1 JOINT";
-    }
-    else if (this.gameState == "1 JOINT") {
-        this.gameState = "2 JOINT";
-    }
-    else {
-        ;
+    /*
+     * revise the game state
+     */ 
+    var error = this.setStatus("1 JOINT");
+    if(error instanceof Error){
+        this.setStatus("2 JOINT");
     }
 
     if (this.playerA == null) {

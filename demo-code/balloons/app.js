@@ -77,7 +77,7 @@ wss.on("connection", function connection(ws) {
      * if a player now leaves, the game is aborted (player is not preplaced)
      */ 
     if (currentGame.hasTwoConnectedPlayers()) {
-        currentGame = new Game();
+        currentGame = new Game(gameStatus.gamesInitialized++);
     }
 
     /*
@@ -123,7 +123,6 @@ wss.on("connection", function connection(ws) {
             if( oMsg.type == messages.T_GAME_WON_BY){
                 gameObj.setStatus(oMsg.data);
                 //game was won by somebody, update statistics
-                gameObj.setStatus(oMsg.data);
                 gameStatus.gamesCompleted++;
             }            
         }
