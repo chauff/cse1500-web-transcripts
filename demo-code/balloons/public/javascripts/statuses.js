@@ -1,3 +1,4 @@
+/* ESLint global variables information */
 /* global Setup */
 var Status = {};
 Status["gameWon"] = "Congratulations! You won!";

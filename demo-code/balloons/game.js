@@ -1,4 +1,4 @@
-/* every game has two players, identified by their connection */
+/* every game has two players, identified by their WebSocket */
 var game = function (gameID) {
     this.playerA = null;
     this.playerB = null;
@@ -90,7 +90,7 @@ game.prototype.hasTwoConnectedPlayers = function () {
 game.prototype.addPlayer = function (p) {
 
     if (this.gameState != "0 JOINT" && this.gameState != "1 JOINT") {
-        new Error("Invalid call to addPlayer, current state is %s", this.gameState);
+        return new Error("Invalid call to addPlayer, current state is %s", this.gameState);
     }
 
     /*

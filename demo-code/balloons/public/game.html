@@ -52,10 +52,17 @@
                 </div>
             </section>
         </main>
+        <!-- This import is very far from optimal 
+            (but at easy to implement): 
+             every time the page is loaded, 
+             the English dictionary is loaded;
+             a better solution would be LocalStorage
+        -->
         <script src="data/english.js"></script>
         <script src="javascripts/config.js"></script> 
         <script src="javascripts/statuses.js"></script>
         <script src="javascripts/messages.js"></script>
+        <script src="javascripts/alphabet.js"></script>
         <script src="javascripts/interactions.js"></script> <!-- browser parses the code from top to bottom, by now the DOM is built -->
     </body>
 </html>
