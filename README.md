@@ -144,6 +144,7 @@ The list below will be amended over time, to fit the 2018/19 topic setup. Some l
     - [Automated testing with node](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Automated_testing)
     - [Node.js stats of 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
     - [MDN Express tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website)
+    - [The world runs on nodejs (tweet)](https://twitter.com/bitandbang/status/1037306199522328577)
   
 - Lecture 5 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
   - Required readings:
