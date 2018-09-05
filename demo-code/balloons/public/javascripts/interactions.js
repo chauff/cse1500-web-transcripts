@@ -24,10 +24,12 @@ function GameState(visibleWordBoard, sb, socket){
     };
 
     this.setPlayerType = function (p) {
+        console.assert(typeof p == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof p);
         this.playerType = p;
     };
 
     this.setTargetWord = function (w) {
+        console.assert(typeof w == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof w);
         this.targetWord = w;
     };
 
@@ -60,7 +62,11 @@ function GameState(visibleWordBoard, sb, socket){
         return null; //nobody won yet
     };
 
-    this.revealLetters = function(letter, indices){
+    this.revealLetters = function (letter, indices) {
+        
+        console.assert(typeof letter == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof letter);
+        console.assert(indices instanceof Array, "%s: Expecting an array", arguments.callee.name);
+
         for(let i=0; i<indices.length; i++){
             this.visibleWordArray[ indices[i] ] = letter;
         }
@@ -71,6 +77,8 @@ function GameState(visibleWordBoard, sb, socket){
     };
 
     this.updateGame = function(clickedLetter){
+
+        console.assert(typeof clickedLetter == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof clickedLetter);
 
         var res = this.alphabet.getLetterInWordIndices(clickedLetter, this.targetWord);
 
