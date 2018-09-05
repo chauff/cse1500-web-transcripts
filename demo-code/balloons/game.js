@@ -36,6 +36,9 @@ game.prototype.transitionMatrix = [
 
 game.prototype.isValidTransition = function (from, to) {
     
+    console.assert(typeof from == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof from);
+    console.assert(typeof to == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof to);
+
     let i, j;
     if (! (from in game.prototype.transitionStates)) {
         return new Error("Invalid state %s", from);
@@ -60,6 +63,8 @@ game.prototype.isValidState = function (s) {
 
 game.prototype.setStatus = function (w) {
 
+    console.assert(typeof w == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof w);
+
     if (game.prototype.isValidState(w) && game.prototype.isValidTransition(this.gameState, w)) {
         this.gameState = w;
         console.log("[STATUS] %s", this.gameState);
@@ -70,6 +75,8 @@ game.prototype.setStatus = function (w) {
 };
 
 game.prototype.setWord = function (w) {
+
+    console.assert(typeof w == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof w);
 
     //two possible options for the current game state:
     //1 JOINT, 2 JOINT
@@ -88,6 +95,8 @@ game.prototype.hasTwoConnectedPlayers = function () {
 };
 
 game.prototype.addPlayer = function (p) {
+
+    console.assert(p instanceof Object, "%s: Expecting an object (WebSocket), got a %s", arguments.callee.name, typeof p);
 
     if (this.gameState != "0 JOINT" && this.gameState != "1 JOINT") {
         return new Error("Invalid call to addPlayer, current state is %s", this.gameState);
