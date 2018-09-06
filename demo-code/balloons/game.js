@@ -38,17 +38,20 @@ game.prototype.isValidTransition = function (from, to) {
     
     console.assert(typeof from == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof from);
     console.assert(typeof to == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof to);
+    console.assert( from in game.prototype.transitionStates == true, "%s: Expecting %s to be a valid transition state", arguments.callee.name, from);
+    console.assert( to in game.prototype.transitionStates == true, "%s: Expecting %s to be a valid transition state", arguments.callee.name, to);
+
 
     let i, j;
     if (! (from in game.prototype.transitionStates)) {
-        return new Error("Invalid state %s", from);
+        return false;
     }
     else {
         i = game.prototype.transitionStates[from];
     }
 
     if (!(to in game.prototype.transitionStates)) {
-        return new Error("Invalid state %s", to);
+        return false;
     }
     else {
         j = game.prototype.transitionStates[to];
