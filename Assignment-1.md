@@ -177,7 +177,7 @@ Here are your nine board game options to choose from:
 8. [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
 9. [Backgammon](https://en.wikipedia.org/wiki/Backgammon): 2 players
 
-*If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (XXX) your team ID and a short description of the game you have in mind.*
+*If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (cse1500-ewi@tudelft.nl) your team ID and a short description of the game you have in mind.*
 
 ### 4.1)
 
@@ -212,4 +212,4 @@ Once you have completed the design of your app, head over to CSE1500's Brightspa
 
 ## 6. Your own board game app: HTML
 
-Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).
+Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript). You can also check the `game.html` and `splash.html` files in `demo-code/balloons/public/` folder to get an idea on the expected content (and as stated before, ignore the few lines of code loading JavaScript files, this will come in Assignment 2).
