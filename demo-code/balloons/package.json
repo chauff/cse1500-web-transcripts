@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js 3000",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
