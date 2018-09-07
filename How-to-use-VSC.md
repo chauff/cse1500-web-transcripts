@@ -1,10 +1,12 @@
-# How to use VSC
+
+# TODO!! How to use VSC
 
 The project is conducted in pairs of students. Here we provide an overview of how VSC can help you to efficiently work in pairs. It is beyond the scope of this course to introduce `git` (a very popular and today's standard version control system to file changes) in detail. Instead, we restrict ourselves to describe how you can use the functionality of `git` from within VSC.
 
 In the last part, you find information on how to make use of VSC's debugging functionalities.
 
 _Note: this information is provided to help you work in pairs efficiently during the project. This is not exam material (i.e. we will not ask you questions about `git` or VSC or debugging.)_
+
 
 ## Synchronization in VSC with Git and Github
 
@@ -22,10 +24,10 @@ git config --global user.name "myUserName"
 git config --global user.email "myEmail"
 ```
 
-### Github
-Github is a web-based hosting service for git repositories. That way collaborators can push and pull changes to the repository located at Github, and synchronize it with their local copies.
+### GitHub
+GitHub is a web-based hosting service for git repositories. That way collaborators can push and pull changes to the repository located at Github, and synchronize it with their local copies.
 
-In order to work with Github first all the members of a group must create an account at [Github](https://github.com) if you don't have one already. Then one of you will create a new repository for the project by clicking on 'New repository'. It can be public, so everyone can see it, or private, so you can share it only with your partners.
+In order to work with GitHub first all the members of a group must create an account at [Github](https://github.com) if you don't have one already. Then one of you will create a new repository for the project by clicking on 'New repository'. It can be public, so everyone can see it, or private, so you can share it only with your partners.
 
 Now you can add your partners to the repository, so all of you can work together. To that end just go to the main page of the new repository and click the tab 'Settings': 
  
@@ -100,3 +102,4 @@ You can configure the debugger to start the execution in different files, for ex
 </p><br> 
 
 You can debug easily the app by debugging in VSC the client side, while debugging in the browser (see Web Developer::Web Console in Firefox, or More Tools::Developer Tools in Chrome) the client side.
+

@@ -2,7 +2,7 @@
 
 # CSE1500: Web and Database Technology
 
-Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only Web topics are covered.**
+Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only Web topics are covered.** Work in progress. 
 
 ## Contact
 
@@ -80,20 +80,21 @@ and a game screen:
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
-## List of 2017/18 Web lectures
+## List of (2017/18) Web lectures
 
-The list below will be amended over time, to fit the 2018/19 topic setup. Some lectures will remain as-is, some will change.
+The list below will be amended over time, to fit the 2018/19 topic setup. Some lectures will remain as-is, some will change. All lectures will be transcribed in time.
 
-- Lecture 1 ([PDF-1](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf), [PDF-2](https://chauff.github.io/documents/webdb-2017-18/web-http-continued.pdf)) on **HTTP**: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
+- Lecture 1 covers HTTP ([transcript](Lecture-1.md))
+  - Topics: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
   - Required readings: *none*
   - Recommended readings:
     - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do)
     - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-    - Read up on the developer tools of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
+    - Developer tools overview of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
-    - Note that http information can be used for [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
-    - [A comic intro to http(s) and dns](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
-    - Include `Access-Control-Allow-Origin` header in the discussion; polling vs. long polling; websocket protocol
+    - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
+    - [A crash course on http and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
+    - Missing lecture material: `Access-Control-Allow-Origin` header; polling vs. long polling; websocket protocol
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
@@ -127,6 +128,10 @@ The list below will be amended over time, to fit the 2018/19 topic setup. Some l
     - [Service Worker Cookbook](https://serviceworke.rs/)
     - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger)
     - Jimmy Lin's [words](http://ceur-ws.org/Vol-2167/keynote1.pdf) on JavaScript ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
+    - Another Jimmy Lin [paper](http://aclweb.org/anthology/N18-5013): using CNNs for inference in the browser with JavaScript.
+    - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057)
+    - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript
+    - [The State of JavaScript 2017](https://2017.stateofjs.com/)
 
 - Lecture 4 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
   - Required readings:
@@ -142,6 +147,7 @@ The list below will be amended over time, to fit the 2018/19 topic setup. Some l
     - [Automated testing with node](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Automated_testing)
     - [Node.js stats of 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
     - [MDN Express tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website)
+    - [The world runs on nodejs (tweet)](https://twitter.com/bitandbang/status/1037306199522328577)
   
 - Lecture 5 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
   - Required readings:

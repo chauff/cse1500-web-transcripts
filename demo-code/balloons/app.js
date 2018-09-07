@@ -26,7 +26,9 @@ const wss = new websocket.Server({ server });
 
 var websockets = {};//key: websocket, value: game
 
-//regularly clean up the websockets object
+/*
+ * regularly clean up the websockets object
+ */ 
 setInterval(function() {
     for(let i in websockets){
         if(websockets.hasOwnProperty(i)){
@@ -41,11 +43,13 @@ setInterval(function() {
 }, 50000);
 
 var currentGame = new Game(gameStatus.gamesInitialized++);
-var connectionID = 0;//ID given to each websocket
+var connectionID = 0;//each websocket receives a unique ID
 
 wss.on("connection", function connection(ws) {
 
-    /* Two-player game: every two players are added to the same game  ... */
+    /*
+     * two-player game: every two players are added to the same game
+     */
     let con = ws; 
     con.id = connectionID++;
     let playerType = currentGame.addPlayer(con);
@@ -53,92 +57,117 @@ wss.on("connection", function connection(ws) {
 
     console.log("Player %s placed in game %s as %s", con.id, currentGame.id, playerType);
 
-    //inform the player about its assigned player type
+    /*
+     * inform the client about its assigned player type
+     */ 
     con.send((playerType == "A") ? messages.S_PLAYER_A : messages.S_PLAYER_B);
 
-    //if player B, send target word (if available)
+    /*
+     * client B receives the target word (if already available)
+     */ 
     if(playerType == "B" && currentGame.getWord()!=null){
         let msg = messages.O_TARGET_WORD;
         msg.data = currentGame.getWord();
         con.send(JSON.stringify(msg));
     }
 
-    //if the currentGame object has two players, create a new object
+    /*
+     * once we have two players, there is no way back; 
+     * a new game object is created;
+     * if a player now leaves, the game is aborted (player is not preplaced)
+     */ 
     if (currentGame.hasTwoConnectedPlayers()) {
-        currentGame = new Game();
+        currentGame = new Game(gameStatus.gamesInitialized++);
     }
 
-    /* When a player from a game sends a message, 
-     * determine the other player and send the message to him */
+    /*
+     * message coming in from a player:
+     *  1. determine the game object
+     *  2. determine the opposing player OP
+     *  3. send the message to OP 
+     */ 
     con.on("message", function incoming(message) {
 
         let oMsg = JSON.parse(message);
  
-        //game instance of the player
         let gameObj = websockets[con.id];
         let isPlayerA = (gameObj.playerA == con) ? true : false;
 
-        //Player A can set the target word - if we have a player B, send it to him
-        if( oMsg.type!=undefined && oMsg.type == messages.T_TARGET_WORD && isPlayerA==true) {
-            gameObj.setWord(oMsg.data);
+        if (isPlayerA) {
+            
+            /*
+             * player A cannot do a lot, just send the target word;
+             * if player B is already available, send message to B
+             */
+            if (oMsg.type == messages.T_TARGET_WORD) {
+                gameObj.setWord(oMsg.data);
 
-            if(gameObj.hasTwoConnectedPlayers()){
-                let msg = messages.O_TARGET_WORD;
-                msg.data = gameObj.getWord();
-                gameObj.playerB.send(JSON.stringify(msg)); 
+                if(gameObj.hasTwoConnectedPlayers()){
+                    gameObj.playerB.send(message); 
+                }                
             }
         }
+        else {
+            /*
+             * player B can make a guess; 
+             * this guess is forwarded to A
+             */ 
+            if(oMsg.type == messages.T_MAKE_A_GUESS){
+                gameObj.playerA.send(message);
+                gameObj.setStatus("CHAR GUESSED");
+            }
 
-        //Player B can make a guess, which is forwarded to player A
-        if( oMsg.type!=undefined && oMsg.type == messages.T_MAKE_A_GUESS && isPlayerA==false){
-            gameObj.playerA.send(message);
-        }
-
-        //Player B has the right to claim who won/lost
-        if( oMsg.type!=undefined && oMsg.type == messages.T_GAME_WON_BY && isPlayerA==false){
-            gameObj.setFinalStatus(oMsg.data);
-            //game was won by somebody, update statistics
-            gameStatus.gamesCompleted++;
+            /*
+             * player B can state who won/lost
+             */ 
+            if( oMsg.type == messages.T_GAME_WON_BY){
+                gameObj.setStatus(oMsg.data);
+                //game was won by somebody, update statistics
+                gameStatus.gamesCompleted++;
+            }            
         }
     });
 
-    con.on("close", function(){
-       
-        //lets wait a second before reacting ... if the game status has changed, no need to deal with this
-
-        //alternative explanation of a close event is one websocket being closed (e.g. browser tab closes), inform the other player
+    con.on("close", function (code) {
+        
+        /*
+         * code 1001 means almost always closing initiated by the client;
+         * source: https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent
+         */
         console.log(con.id + " disconnected ...");
 
-        setTimeout(function() {
+        if (code == "1001") {
+            /*
+            * if possible, abort the game; if not, the game is already completed
+            */
+            let gameObj = websockets[con.id];
 
-            if(websockets.hasOwnProperty(con.id)){
+            if (gameObj.isValidTransition(gameObj.gameState, "ABORTED")) {
+                gameObj.setStatus("ABORTED"); 
+                gameStatus.gamesAborted++;
 
-                let gameObj = websockets[con.id];
-
-                if(gameObj.finalStatus == null){
-
-                    gameObj.finalStatus="ABORTED";
-                    gameStatus.gamesAborted++;
-
-                    try {
-                        gameObj.playerA.close();
-                        gameObj.playerA = null;
-                    }
-                    catch(e){
-                        console.log("Player A closing: "+ e);
-                    }
-
-                    try {
-                        gameObj.playerB.close(); 
-                        gameObj.playerB = null;
-                    }
-                    catch(e){
-                        console.log("Player B closing: " + e);
-                    }
+                /*
+                 * determine whose connection remains open;
+                 * close it
+                 */
+                try {
+                    gameObj.playerA.close();
+                    gameObj.playerA = null;
                 }
-            }
+                catch(e){
+                    console.log("Player A closing: "+ e);
+                }
 
-        }, 1000);
+                try {
+                    gameObj.playerB.close(); 
+                    gameObj.playerB = null;
+                }
+                catch(e){
+                    console.log("Player B closing: " + e);
+                }                
+            }
+            
+        }
     });
 });
 

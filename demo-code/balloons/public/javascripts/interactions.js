@@ -1,9 +1,6 @@
 /* ESLint global variables information */
 /* global Setup, Status, Messages, englishDict*/
 
-const USED = -1; //letter has been used, not available anymore
-const AVAIL = 1; //letter has not been used yet
-
 /* basic constructor of game state */
 function GameState(visibleWordBoard, sb, socket){
 
@@ -27,10 +24,12 @@ function GameState(visibleWordBoard, sb, socket){
     };
 
     this.setPlayerType = function (p) {
+        console.assert(typeof p == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof p);
         this.playerType = p;
     };
 
     this.setTargetWord = function (w) {
+        console.assert(typeof w == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof w);
         this.targetWord = w;
     };
 
@@ -63,7 +62,11 @@ function GameState(visibleWordBoard, sb, socket){
         return null; //nobody won yet
     };
 
-    this.revealLetters = function(letter, indices){
+    this.revealLetters = function (letter, indices) {
+        
+        console.assert(typeof letter == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof letter);
+        console.assert(indices instanceof Array, "%s: Expecting an array", arguments.callee.name);
+
         for(let i=0; i<indices.length; i++){
             this.visibleWordArray[ indices[i] ] = letter;
         }
@@ -75,18 +78,21 @@ function GameState(visibleWordBoard, sb, socket){
 
     this.updateGame = function(clickedLetter){
 
+        console.assert(typeof clickedLetter == "string", "%s: Expecting a string, got a %s", arguments.callee.name, typeof clickedLetter);
+
         var res = this.alphabet.getLetterInWordIndices(clickedLetter, this.targetWord);
 
-        //wrong guess?
-        if(res.length == 0){
+        //wrong guess
+        if (res.length == 0) {
             this.incrWrongGuess();
         }
+        else {
+            this.revealLetters(clickedLetter, res);
+        }
 
-        this.revealLetters(clickedLetter, res);
         this.alphabet.makeLetterUnAvailable(clickedLetter);
         this.visibleWordBoard.setWord(this.visibleWordArray);
 
-        //TODO: both A and B do that ...
         var outgoingMsg = Messages.O_MAKE_A_GUESS;
         outgoingMsg.data = clickedLetter;
         socket.send(JSON.stringify(outgoingMsg));
@@ -123,121 +129,8 @@ function GameState(visibleWordBoard, sb, socket){
                 finalMsg.data = winner;
                 socket.send(JSON.stringify(finalMsg));
             }
-
             socket.close();
         }
-    };
-}
-
-function Alphabet(){
-
-    this.letters = undefined;
-
-    this.initialize = function(){
-        this.letters = {
-            A: AVAIL,
-            B: AVAIL,
-            C: AVAIL,
-            D: AVAIL,
-            E: AVAIL,
-            F: AVAIL,
-            G: AVAIL,
-            H: AVAIL,
-            I: AVAIL,
-            J: AVAIL,
-            K: AVAIL,
-            L: AVAIL,
-            M: AVAIL,
-            N: AVAIL,
-            O: AVAIL,
-            P: AVAIL,
-            Q: AVAIL,
-            R: AVAIL,
-            S: AVAIL,
-            T: AVAIL,
-            U: AVAIL,
-            V: AVAIL,
-            W: AVAIL,
-            X: AVAIL,
-            Y: AVAIL,
-            Z: AVAIL
-        };
-    };
-
-    //is it a valid letter?
-    this.isLetter = function(letter){
-        console.assert(typeof letter === "string", "Single string expected");
-        return this.letters.hasOwnProperty(letter);
-    };
-
-    //is it an available letter?
-    this.isLetterAvailable = function(letter){
-        console.assert(typeof letter === "string", "Single string expected");
-        return (this.isLetter(letter) && this.letters[letter]==AVAIL);
-    };
-
-    this.makeLetterUnAvailable = function(letter){
-        console.assert(typeof letter === "string", "Single string expected");
-        if( this.isLetter(letter)){
-            this.letters[letter] = USED;
-
-            //visually switch off the UI element by simply adding a classname
-            document.getElementById(letter).className += " alphabetUsed";
-        }
-    };
-
-    //does the letter appear in the word?
-    this.isLetterIn = function(letter, word){
-        console.assert(typeof letter === "string", "String expected");
-        console.assert(typeof word === "string", "String expected");
-
-        if( !this.isLetter(letter) || !this.isLetterAvailable(letter)){
-            return false;
-        }
-        return (word.indexOf(letter)>=0);
-    };
-
-    //letter locations in the word
-    this.getLetterInWordIndices = function(letter, word){
-        console.assert(typeof letter === "string", "String expected");
-        console.assert(typeof word === "string", "String expected");
-
-        var res = [];
-        
-        if(!this.isLetterIn(letter, word)){
-            console.log("Letter [%s] is not in target word [%s]!", letter, word);
-            return res;
-        }
-        
-        for(let i=0; i<word.length; i++){
-            if(word.charAt(i) == letter){
-                res.push(i);
-            }
-        }
-        return res;       
-    };
-}
-
-function VisibleWordBoard(){
-
-    //set hidden word in the correct div element
-    this.setWord = function(visibleWord){
-
-        //dynamic language issues ...
-        console.assert(Array.isArray(visibleWord) || typeof visibleWord == "string", "Expecting an array, got a %s instead" );
-
-        if(Array.isArray(visibleWord)){
-            document.getElementById("hiddenWord").innerHTML = visibleWord.join("");
-        }
-        else {
-            document.getElementById("hiddenWord").innerHTML = visibleWord;
-        }
-    };
-}
-
-function StatusBar(){
-    this.setStatus = function(status){
-        document.getElementById("statusbar").innerHTML = status;
     };
 }
 
@@ -264,15 +157,24 @@ function AlphabetBoard(gs){
     };
 }
 
-
 //set everything up, including the WebSocket
 (function setup(){
 
-    console.log("Connecting to server WebSocket ...");
     var socket = new WebSocket(Setup.WEB_SOCKET_URL);
 
+    /*
+     * initialize all UI elements of the game:
+     * - visible word board (i.e. place where the hidden/unhidden word is shown)
+     * - status bar
+     * - alphabet board
+     * 
+     * the GameState object coordinates everything
+     */ 
     var vw = new VisibleWordBoard();
     var sb = new StatusBar();
+
+    //no object, just a function
+    createBalloons();
 
     var gs = new GameState(vw, sb, socket);
     var ab = new AlphabetBoard(gs);
@@ -294,19 +196,27 @@ function AlphabetBoard(gs){
                 let res = null;
 
                 while(validWord<0){
-                    res = prompt(promptString).toUpperCase();
-                    if(res.length<Setup.MIN_WORD_LENGTH || res.length>Setup.MAX_WORD_LENGTH){
-                        promptString = Status["promptAgainLength"];
-                    }
-                    else if(/^[a-zA-Z]+$/.test(res) == false){
-                        promptString = Status["promptChars"];
-                    }
-                    //dictionary has only lowercase entries
-                    else if(englishDict.hasOwnProperty(res.toLocaleLowerCase())==false){
-                        promptString = Status["promptEnglish"];
+                    res = prompt(promptString);
+
+                    if (res == null) {
+                        promptString = Status["prompt"];
                     }
                     else {
-                        validWord = 1;
+                        res = res.toUpperCase();
+                    
+                        if (res.length < Setup.MIN_WORD_LENGTH || res.length > Setup.MAX_WORD_LENGTH) {
+                            promptString = Status["promptAgainLength"];
+                        }
+                        else if (/^[a-zA-Z]+$/.test(res) == false) {
+                            promptString = Status["promptChars"];
+                        }
+                        //dictionary has only lowercase entries
+                        else if (englishDict.hasOwnProperty(res.toLocaleLowerCase()) == false) {
+                            promptString = Status["promptEnglish"];
+                        }
+                        else {
+                            validWord = 1;
+                        }
                     }
                 }
                 sb.setStatus(Status["chosen"]+res);
@@ -338,8 +248,6 @@ function AlphabetBoard(gs){
             sb.setStatus(Status["guessed"] + incomingMsg.data);
             gs.updateGame(incomingMsg.data);
         }
-
-
     };
 
     socket.onopen = function(){
@@ -353,11 +261,6 @@ function AlphabetBoard(gs){
         }
     };
 
-    socket.onerror = function(){
-        
+    socket.onerror = function(){  
     };
-
 })(); //execute immediately
-
-
-

@@ -119,6 +119,7 @@ Now that you have made your plan and decided on the use of the design patterns, 
 ---
 Hints:
 
+- You do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS (because it helps you be more productive by already having some nice visuals to look at), this is fine as well. Be aware though that we have certain requirements for CSS, so if you want to use CSS already, check out the requirements ([Assignment 3](Assignment-3.md)) to avoid duplicate work.
 - You can, but do not have to use ES6 features. Check [http://es6-features.org](http://es6-features.org) if you are interested in what ES6 has to offer.
 - Be mindful of the time you have for your implementation work. Go for the fast solution if one is available, and move on to the next item to implement instead of being hung up on one feature for too long. For example, the demo game requires player 1 to enter a word (that player 2 has to guess). There are different ways to ask the player to provide a word, the simplest is the use of [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt). Unarguably there are visually more appealing solutions, however, this requires only one line of code, and is sufficient for our project. When you have time left, you can always go back to a feature and improve it.
 - When you test your code's functionality, test it in two browsers. If it works in one, but not the other, check the browser's WebConsole output; you will learn quickly whether you used a feature in your code that only one of your chosen browsers supported.
@@ -131,7 +132,6 @@ Hints:
 
 ---
 
-*Note: do not have to incorporate style elements yet (CSS), we will cover the style in the next assignment. If you choose to incorporate CSS, be aware that the TAs will ignore the CSS during the assessment.*
 
 ## 3. node.js
 
@@ -277,6 +277,6 @@ Hints:
 
 Ensure that your app works as intended in two major browsers.
 
-Check the ESLint (or any other linter) output: it should help you to spot easy-to-make mistakes (which in turn should help you write better code). Fix them.
+Check the ESLint (or any other linter) output: it should help you to spot easy-to-make mistakes (which in turn should help you write better code). We recommend that you fix them; though this is not required.
 
 Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.

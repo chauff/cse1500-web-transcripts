@@ -2,7 +2,7 @@
 
 In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.
 
-In the second part of this assignment, you will implement a number of smaller items (templating, cookies), that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the modern browser.
+In the second part of this assignment, you will implement a number of smaller items (templating, cookies), that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the browser.
 
 ## 0. Preliminaries
 
@@ -31,13 +31,13 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The code has to be uploaded by one of the team members to Brightspace under **Assignment 3** before the assessment session with the TAs.
 
-**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended.** This means that it is ok if your app does not [yet] deal with players aborting the game in the middle or making undesired moves. In addition, while it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
+**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in assignment 2) **AND with players aborting the game in the middle of it OR trying to make invalid moves.** You can pick either one of the two conditions (aborting vs invalid moves) to focus on. In addition, while it is strongly recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance (or non-compliance) does not impact your assessment.
 
 ## 1. CSS
 
 Now that we (finally) covered CSS, you will continue to work on your splash and game screens and style them with CSS.
 You are **not allowed** to use external libraries or preprocessing tools. Your application should have a modern look and feel (that is, use sufficient CSS styling).
-Style the game so that it looks and works well on  a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher (*A1 requirement*). In this project, we are **not** concerned about apps for mobile devices.
+Style the game so that it looks and works well on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
 
 As you might have already guessed, your CSS should reside in `myapp/public/stylesheets`. That folder already contains a `style.css` file by default. In order to keep your code maintainable, you can for instance place all CSS that applies to both screens in `style.css` and in addition create separate `splash.css` and `game.css` stylesheets for CSS rules specific to each screen. Note that stylesheets [can contain other stylesheets](https://developer.mozilla.org/en-US/docs/Web/CSS/@import).
 
@@ -49,7 +49,7 @@ First, work on your **splash screen** and style the page with CSS according to t
 - Pseudo-elements: `::after` and `::before`
 - Box model: margin, padding, border
 - At least two different position attributes, e.g. `position:relative` and `position:absolute`.
-- At least one CSS animation and one CSS transition
+- At least one CSS animation and one CSS transition.
 
 You are of course welcome to use more CSS properties to style your splash screen.
 
@@ -76,11 +76,11 @@ Hint:
 
 ### 1.3)
 
-To ensure that your players are aware of the screen size limitations (i.e. the game works well on a larger screen), use [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to **alert players** if their screen resolution is below a sufficiently large minimum. What this minimum is, depends on the game you implemented, the way you wrote your CSS. No need to actually try your app on many different devices, Firefox (other major browsers have similar tooling) has a [Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode) tool that simulates different devices.
+To ensure that your players are aware of the screen size limitations (i.e. the game works well on a larger screen), use [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to **alert players** if their screen resolution is below a sufficiently large minimum. What this minimum is, depends on the game you implemented, the way you wrote your CSS. No need to actually try your app on many different physical devices, Firefox (other major browsers have similar tooling) has a [Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode) tool that provides good simulations of various devices.
 
 ### 1.4)
 
-Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen) of your game. While we have not discussed this in the lecture, it is a good (and short) exercise to apply your CSS knowledge.
+Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen) of your game. While we have not discussed this in the lecture, it is a good (and short) exercise to apply and extend your CSS knowledge.
 
 ### 1.5)
 
@@ -90,11 +90,11 @@ Once you have completed the CSS of your app, head over to CSE1500's Brightspace,
 
 ## 2. Templating
 
-When you started out and generated the boilerplate code (Assignmnent 2, task 1), we asked you to set as *view engine* ejs. Lets now make use of that view engine for the **splash screen**. So far, not a lot is going on with it (if you followed the instructions so far); it should visually look appealing and have a *Play* button, but that is about it.
+When you started out and generated the boilerplate code (Assignmnent 2, task 1), we asked you to set as *view engine* `ejs`. Let's now make use of that view engine for the **splash screen**. So far, not a lot is going on with it (if you followed our instructions); it should visually look appealing and have a *Play* button, but that's about it.
 
-One last requirement for the splash screen (outlined in *assignment 1*) is to show a number of statistics about the games played, games completed, etc. Templates offer us a simple way to "inject" those numbers into our splash screen.
+One last requirement for the splash screen is to show a number of statistics about the games played, games completed, etc. Templates offer us a simple way to "inject" those numbers into our splash screen.
 
-There are many view engines available, `ejs` is one of the more common ones. All we have to do now is to (1) create a file `myapp/views/splash.ejs` file (this folder is the default one the view engine is looking into). `splash.ejs` is a copy of your `splash.html` file. Add a few template tags for the game statistics in the right place. Then, rewrite a few lines of `app.js` to incorporate the view engine and alter the route to `/`; it should now use the `res.render` call. This code snippet can help you:
+There are many view engines available, `ejs` is one of the more common ones. All we have to do now is to (1) create a file `myapp/views/splash.ejs` file (this folder is the default one the view engine is looking for content). `splash.ejs` is a copy of your `splash.html` file. Add a few template tags for the game statistics in the right place. Then, rewrite a few lines of `app.js` to incorporate the view engine and alter the route to `/`; it should now use the `res.render` call. This code snippet can help you:
 
 ```javascript
 //code snippet, not a complete piece of code!
@@ -108,17 +108,17 @@ app.get('/', (req, res) => {
 })
 ```
 
-*Note: in the lecture we covered Ajax, which is an alternative approach to templating for our use case. Both technologies are relevant in practice, make sure to understand both of them.*
+*Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use case of presenting game statistics. Both technologies are relevant in practice, make sure to understand both of them.*
 
 ## 3. Cookies
 
-Lets (quickly) practice cookies. Use **client-side cookies** to log how often a user has accessed your game. Report this information to the user.
+Lets (quickly) practice cookies. Use a **client-side cookie** to log how often a user has accessed your game. Report this information to the user (on either the splash or game screen).
 
 ## 4. Cleaning up
 
 Ensure that your app works as intended in two major browsers.
 
-Check the ESLint (or any other linter) output: it should help you to spot easy-to-make mistakes (which in turn should help you write better code). Fix them.
+Check the ESLint (or any other linter) output: it should help you to spot easy-to-make mistakes (which in turn should help you write better code). We recommend you fix them (not required though).
 
 Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 

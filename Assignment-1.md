@@ -4,7 +4,7 @@ The first part of this assignment gives you hands-­on experience in **http**. I
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The assessment will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
+Remember that this is a group assignment! Work efficiently as a team! Both team members **must contribute to the code** and **both team members must understand all parts of the code**. The assessment will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). If you use Visual Studio Code, an easy way of working together (while not needing to worry about file inconsistencies) is [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare).
 
 ### Overview of deliverables and upload procedure
 
@@ -27,13 +27,13 @@ If you get lost in the assignment, use this overview of deliverables to get back
 | 5.3  | →→→ *upload 5.1/5.2 to Brightspace*                |
 | 6  | Two html files                                     |
 
-All deliverable text/imagery (apart from 6.1) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
+All deliverable text/imagery (apart from 6.) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
 
 Submit your two html files in the form of a zipped folder.
 
-The PDF and code has to be uploaded by one of the team members to Brightspace under **Assignment 1** before the assessment session with the TAs.
+The PDF and code have to be uploaded by one of the team members to Brightspace under **Assignment 1** before the assessment session with the TAs.
 
-**To pass this assignment, you must have completed all tasks.**
+**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.**
 
 ## 1. HTTP request messages: GET/HEAD
 
@@ -43,6 +43,8 @@ Hints:
 - To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.microsoft.com 80|tee out` will save all output to a file called `out`.
 
 - [carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when to press `<Enter>`.
+
+- Be aware of the **backspace key** when "telneting": while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key is forwarded to the server instead. In other words: **do not use the backspace key when telneting**.
 
 ---
 
@@ -108,7 +110,7 @@ The `Content-­length` is exactly the number of characters (12) of `Hello World!
 
 ## 3. Basic authentication
 
-Lets now try to request a page, which is set up with HTTP basic authentication.
+Lets now try to request a page, that is set up with HTTP basic authentication.
 
 ### 3.1)
 
@@ -127,7 +129,7 @@ host:httpbin.org
 [carriage return]
 ```
 
-Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g.[http://decodebase64.com](http://decodebase64.com). Remember that username and password should be combined as `username:password`. **[TODO: find a better decodebase link!]**
+Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders. Remember that username and password should be combined as `username:password`. 
 
 Now close the TCP connection and start a new one, using again:
 
@@ -146,7 +148,7 @@ In this, and the upcoming two assignments, you will complete a Web programming p
 - The game is for 2-4 players and in 2D.
 - The game works in at least two major browsers (e.g. Firefox and Chrome).
 - It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
-- Upon entering your Web application's URL, a **splash screen** will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), an brief description of how-to-play on your platform and a "Play" button (or something similar to that effect).
+- Upon entering your Web application's URL, a **splash screen** will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), a brief description of how-to-play on your platform and a "Play" button (or something to that effect).
 - Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
 - Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
 - The splash and game screens need to look good (adhere to modern design standards); all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
@@ -155,9 +157,9 @@ In this, and the upcoming two assignments, you will complete a Web programming p
 - Players are able to play the game in fullscreen mode.
 - Players play the game with the mouse.
 - Once a player drops out of a game, the game is aborted; this is announced to all players currently active in the game.
-- Moves are animated and have sound effects.
+- Moves are animated (this can be as simple as changing a token's color) and have sound effects.
 
-The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to have in your code); you can of course do more than required.
+The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to employ in your code); you can of course do more than required.
 
 The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the Web course book; you can use it too, but are not required to.
 
@@ -175,7 +177,7 @@ Here are your nine board game options to choose from:
 8. [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
 9. [Backgammon](https://en.wikipedia.org/wiki/Backgammon): 2 players
 
-*If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (XXX) your team ID and a short description of the game you have in mind.*
+*If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (cse1500-ewi@tudelft.nl) your team ID and a short description of the game you have in mind.*
 
 ### 4.1)
 
@@ -208,6 +210,6 @@ You have a lot of artistic freedom in designing the board and game information.
 
 Once you have completed the design of your app, head over to CSE1500's Brightspace, go to *Discussions* and then the forum **BOARD GAME APP DESIGNS**. Create a thread with your team's name as subject/title (e.g. `CSE234`) and post your team's proposed splash screen and game screen. Feel free to also add a paragraph describing your choices.
 
-## 6. Your own boad game app: HTML
+## 6. Your own board game app: HTML
 
-Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript).
+Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript). You can also check the `game.html` and `splash.html` files in `demo-code/balloons/public/` folder to get an idea on the expected content (and as stated before, ignore the few lines of code loading JavaScript files, this will come in Assignment 2).

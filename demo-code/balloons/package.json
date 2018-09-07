@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js 3000"
+    "start": "node app.js 3000",
+    "test": "jest --coverage"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -15,6 +16,7 @@
     "ws": "^6.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.4.0"
+    "eslint": "^5.4.0",
+    "jest": "^23.5.0"
   }
 }
