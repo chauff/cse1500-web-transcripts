@@ -25,6 +25,10 @@ npm test
 
 *Note: you will learn all about testing in a later course; Jest is included here for those that want to know how testing in JavaScript can be done.*
 
+## What about ES6?
+
+The code is mostly void of [ES6 features](http://es6-features.org/) (the exception being the use of `let`). This was a conscious choice due to the small amount of time we have to teach JavaScript. You can use ES6 features in your own code.
+
 ## Wireframes
 
 In sync with A1, the wireframe designs for this game are: [Splash screen](https://wireframe.cc/uInPWd) and [game screen](https://wireframe.cc/z9NaMr).
