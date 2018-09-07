@@ -95,7 +95,7 @@ Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 ```
 
 HTTP is a **plain text protocol** and **line-oriented**. 
-The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  What are we requesting? Line 2 answers this question, we are requesting the Web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. In the last line, you can see that in this request, a cookie is sent from the client to the server as well. 
+The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  What are we requesting? Line 2 answers this question, we are requesting the Web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. In the last line, you can see that in this request, a cookie is sent from the client to the server as well.
 
 ### HTTP response message
 <a name="http-response"></a>
@@ -138,7 +138,6 @@ Many header fields exist, the most important ones (though to some extent this re
 | **Last-Modified**    | Date on which this entity was created/modified      |
 | **Expires**          | Date at which the entity will become stale          |
 | Allow            | Lists the legal request methods for the entity      |
-
 
 The bold header fields will be covered below. Let's briefly walk over the other fields:
 
@@ -387,7 +386,9 @@ From back to front:
 ### URL syntax: query
 
 One of the most important URL types for us is the syntax for a `query`. What does that mean? Let's consider `https://duckduckgo.com/html?q=delft`. This is an example of a URL pointing to the Duckduckgo website that - as part of the URL - contains the `q=Delft` query. This query component is passed to the application accessed at  the Web server - in this case Duckduckgo's search system and returned to you is a list of search results for the query *Delft*. This syntax is necessary to enable interactive application. 
-By convention we use `name=value` to pass application variables. If an application expects several variables, e.g. not only the search string but also the number of expected search results, we combine them with an `&`: `name1=value1&name2=value2& ...`
+By convention we use `name=value` to pass application variables. If an application expects several variables, e.g. not only the search string but also the number of expected search results, we combine them with an `&`: `name1=value1&name2=value2& ...`.
+
+<a name="answer">Answer: All URLs are valid.</a>
 
 ### Schemes: more than just http(s)
 
@@ -443,5 +444,100 @@ One word of caution though: **mixed scripts** (i.e. using different alphabets in
 
 ## Authentication
 
+The last topic we cover in this first lecture is authentication. **Authentication is any process by which a system verifies the identity of a User who wishes to access it.**
+
+So far, we have viewed HTTP is an anonymous and **stateless** request/response protocol. This means that the same HTTP request is treated in exactly the same manner by a server, independent of who or what entity sends this request. We have seen that each HTTP request is dealt with independently, the server does not maintain a state for a client, i.e. the server does not keep track how often a client has already requested a Web resource.
+
+But of course, this is not how today's Web works: servers **do** identify devices and users, most Web applications indeed track their users very closely. We have several options to identify users and devices:
+
+- http headers;
+- client IP addresses;
+- user login;
+- fat URLs.
+
+If you already know a bit more about Web development you will miss in this list cookies and sessions we cover these concepts in one of the later lectures. Let's now look how each of the four identification options listed above work. 
+
+### User-related HTTP header fields
+
+The HTTP header fields we have seen so far were only a few of all possible ones. Several HTTP header fields can be used to provide information about the user or his context. Some are shown here:
+
+| Request header field |                             |
+|----------------------|-----------------------------|
+| `From`                 | User's email address        |
+| `User-Agent`           | User's browser              |
+| `Referer`              | Resource the user came from |
+| `Client-IP`  (Extension)          | Client's IP address         |
+| `Authorization`        | Username and password       |
+
+All of the shown header fields are request header fields, i.e. sent from the client to the server. Most are standard and one is an extension, meaning it is not recognised by all existing implementations. 
+
+Let's look at the first three fields for now, they can contain information about the user such as the his email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the Web page the user came from.
+
+In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by Web crawlers; in case they break a Web server due to too much crawling, the owner of the Web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device-specific customization, but not more. The `Referer` is similarly crude: it can tell us something about a user's interests but does not enable us to uniquely identify a user.
+
+To conclude, the HTTP headers `From`, `Referer` and `User-Agent` are not suitable to track the modern Web user.
+
+### Client-IP address tracking
+
+The second option we have to authenticate users is client IP address tracking, either extracted from the HTTP header or the underlying TCP connection. This would provide us with an ideal way to authenticate users **IF** every user would be assigned a distinct IP address that rarely or never changes.
+
+However ... we know that IP addresses are assigned to machines, not users. Internet service provides do not assign a unique IP to each one of their users, they dynamically assign IP addresses to users from a common address pool; a user's IP address can change any day. 
+
+Today's Internet is also more complicated than just straightforward client and servers. We access the Web through firewalls which obscure the users' IP addresses, we use proxies and gateways that in turn set up their own TCP connections and come with their own IP addresses.
+To conclude, in this day and age, IP addresses cannot be used anymore to provide a reliable authentication mechanism.
+
+### Fat URLs
+
+That brings us to fat URLs. The options we have covered so far are not good choices for authentication today, fat URLs on the other hand are in use to this day.
+
+The principle of fat URLs is simple: users are tracked through the generation of **unique URLs for each user**. If a user visits a Web site for the first time, the server recognises the URL as not containing a "fat element" and assumes the user has not visited the site before. It generates a unique ID for the user. The server then redirects the user to that fat URL. Crucially here in the last step, the server **on the fly rewrites the HTML** for every single user, adding the user's ID to each and every hyperlink. A rewritten HTML link may look like this (note the random numbers string at the end): `<a href="/browse/002-1145265-8016838">Gifts</a>`.
+
+In this manner, different HTTP requests can be tied into a single **logical session**: the server is aware which requests are coming from the same user through the ID inside the fat URLs. 
+
+Let's look at this concept one more time, based on the following toy example:
+
+![Fat URL toy example](img/fatURLs.png)
+
+On the left you see a shop Web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page, the server recognises the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server.
+
+**Fat URLs have issues**:
+
+1. First of all, they are ugly, instead of short and easy to remember URLs you are left with overly long ones. 
+2. Fat URLs should not be shared - you never know what kind of private information you share with others if you hand out the URLs generated for you! 
+3. Fat URLs are also not a good idea when it comes to Web caches - these caches rely on the one page per request paradigm; fat URLs though follow the one page per user paradigm. 
+4. Dynamically generating HTML every time a user requests a Web resource adds to the server load.
+5. All of this effort still does not completely avoid loosing the user: as soon as the user navigates away from the Web site, the user's identification is lost.
+
+To conclude, fat URLs are a valid option for authentication as long as you are aware of the potential issues they have.
+
+### HTTP basic authentication
+
+Let's move on to the final authentication option we discuss here: HTTP basic authentication. You are already familiar with this type of authentication: the server asks the user EXPLICITLY for authentication by asking for a user name and a password.
+HTTP has a built-in mechanism to support this process through the `WWW-Authenticate` and `Authorization` headers. Since HTTP is **stateless**, once a user has logged in, the login information has to be resend to the server with every single http request the user's device is making.
+
+Here is a concrete example of HTTP basic authentication:
+
+![Basic authentication example](img/basicauth.png)
+
+ We have the usual server and client setup. The client sends an HTTP request to access a particular Web resource, in this case the `index.html` page residing at `www.microsoft.com`. 
+
+The server sends back a `401` status code, indicating to the client that this Web resource requires a login. It also sends back information about the supported authentication scheme which here is `Basic`. There are several authentication schemes, but we will only consider the basic one here. The *realm* describes the protection area: if several Web resources on the same server require authentication within the same realm, a single user/password combination should be sufficient to access all of them.
+
+In response to the `401` status code, the client presents a login screen to the user, requesting the username and password. The client sends username and password encoded (**but not encrypted**) to the server via the http `Authorization` header field.
+
+If the username/password are correct, the server sends an HTTP response with the Web resource in question in the message body.
+
+For future HTTP requests to the site, the browser **automatically sends along** the stored username/password. It does not wait for another request.
+
+As just said, the username/password combination are encoded by the client, before being passed to the server. The **encoding scheme** is very simple: the username and password are joined together by a colon and converted into **base-64 encoding**. It is a simple *binary-to-text* encoding scheme that ensures that only HTTP compatible characters are entered into the message. In this manner, not only strings with non-ASCII characters can be converted, images for instance can be converted as well - you will see this sometimes in CSS files where an entire image can be dumped into a CSS file via base-64 encoding in so-called "data URIs".
+
+For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`.
+
+It needs to be emphasised here once more that encoding has nothing to do with encryption. The username and password send via basic authentication can be decoded trivially, they are sent over the network *in the clear*.
+This by itself is not critical, as long as users are aware of this. However, users tend to be lazy, they tend to reuse the same or similar login/password combinations for a wide range of websites of highly varying criticality. Even though the login/password for site X may be worthless to an attacker, if the user only made a slight modification to her usual login/password combination to access site Y, lets say her email account, the user will be in trouble.
+
+Overall, basic authentication is the best of the four options discussed here; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalisation and access control within a friendly environment such as an intranet.
+
+In the wild, i.e. the general Web, basic authentication should only be used in combination with secure HTTP (most popular variant being https with URL scheme `https`) to avoid sending the username/password combination in the clear across the network. Here, request and response data are encrypted before being sent across the network.
 
 
