@@ -13,6 +13,8 @@ npm start
 
 You can now access the game at [http://localhost:3000/](http://localhost:3000/) in the browser. Open another browser or a New Private Window for any other player.
 
+If you want to change the port two actions are required: (1) alter `balloons/package.json` (change the line `node app.js 3000` and replace `3000` with your preferred port); (2) alter `balloons/public/javascripts/config.js` (the port of the Websocket URL).
+
 A click on the "Play" button brings you to the game. If you are Player 1, you are asked to think of an English word to guess. If you are Player 2, you are asked to start guessing the word Player 1 thought of.
 
 ## Testing
