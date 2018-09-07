@@ -80,12 +80,13 @@ and a game screen:
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
-## List of (2017/18) Web lectures
+## List of Web lectures
 
-The list below will be amended over time, to fit the 2018/19 topic setup. Some lectures will remain as-is, some will change. All lectures will be transcribed in time.
+**This is work in progress, lectures in a good draft status for 2018/19 are bolded.**
 
-- Lecture 1 covers HTTP ([transcript](Lecture-1.md))
-  - Topics: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
+- **Lecture 1** covers HTTP ([transcript](Lecture-1.md))
+  - *Still to do: `Access-Control-Allow-Origin` header; polling vs. long polling; websocket protocol*
+  - Topics: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
   - Required readings: *none*
   - Recommended readings:
     - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do)
@@ -94,7 +95,6 @@ The list below will be amended over time, to fit the 2018/19 topic setup. Some l
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
     - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
     - [A crash course on http and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
-    - Missing lecture material: `Access-Control-Allow-Origin` header; polling vs. long polling; websocket protocol
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:

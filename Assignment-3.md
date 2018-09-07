@@ -130,8 +130,6 @@ For short-term deployments (a few minutes/hours), e.g. to let your fellow study 
 
 That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
-  
-
 ### 5.1)
 
 Deploy your app in Heroku according to the instructions linked above, but first make these changes:
