@@ -108,7 +108,7 @@ app.get('/', (req, res) => {
 })
 ```
 
-*Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use caes. Both technologies are relevant in practice, make sure to understand both of them.*
+*Note: in the lecture we covered Ajax, which is an alternative approach to templating for our use case. Both technologies are relevant in practice, make sure to understand both of them.*
 
 ## 3. Cookies
 
@@ -130,10 +130,22 @@ For short-term deployments (a few minutes/hours), e.g. to let your fellow study 
 
 That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
+  
+
 ### 5.1)
 
-Deploy your app in Heroku according to the instructions linked above.
+Deploy your app in Heroku according to the instructions linked above, but first make these changes:
 
+1. In `app.js`, replace `http.createServer(app).listen(port);` by `http.createServer(app).listen(process.env.PORT || 3000);`
+2. In `myapp` folder, create a new File called `Procfile` with this line: `web: node app.js`
+3. In the instructions you will see that to "Prepare the app" they clone an existing app to test. Instad of doing that, in that step you have to make sure that you have a local `git` repository in `myapp`. If that is not the case then install `git`, go to `myapp` folder and type the following from the terminal:
+
+```
+git init
+git add .
+git commit -n "First commit"
+```
+ 
 ### 5.2)
 
 Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app!

@@ -33,9 +33,9 @@ The PDF and code has to be uploaded by one of the team members to Brightspace un
 
 ## 1. Boilerplate code
 
-Web application tend to have specific file and folder structures, which today are often generated automatically - you can consider those to be current best practices of how to set up a Web application project with your chosen set of libraries and frameworks. In this course we [Express](https://expressjs.com/), a "fast, unopionated, minimalist Web framework for node.js". Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).
+Web application tend to have specific file and folder structures, which today are often generated automatically - you can consider those to be current best practices of how to set up a Web application project with your chosen set of libraries and frameworks. In this course we will use [Express](https://expressjs.com/), a "fast, unopinionated, minimalist Web framework for node.js". Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).
 
-We will use it to set up the basic code structur of our game application.
+We will use it to set up the basic code structure of our game application.
 
 First of all, create a directory for this course and `cd` into it.
 
@@ -44,12 +44,20 @@ Then, install the necessary npm package `express-generator`:
 ```console
 npm install express-generator
 ```
+_Note: in Ubuntu you may need to install also modules `commander` and `mkdirp`:_
+
+```console
+sudo npm install commander -g
+sudo npm install mkdirp -g
+```
 
 Think of a name for your application, e.g. `myapp` and then generate the boilerplate code as follows:
 
 ```console
 express --view=ejs myapp
 ```
+
+_Note: if you already created a directory for your app in VSC, let's say 'myapp', and it is empty, you can still generate the boilerplate code as explained above._
 
 Your terminal should show something like this:
 
@@ -119,7 +127,7 @@ Hints:
 - Don't be afraid to use place-holders (e.g. in our word guessing game, we start off with a fixed string to guess).
 - You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is expected. For instance, here you may want to check the validity of players' moves on the client-side (which is fine), but you may later decide to move this functionality to the server-side.
 - If you are using `console.log`, familiarize yourself with the other abilities of the `Console` object as well, they are useful for client-side JavaScript debugging in the browser. The [MDN documentation is availab here](https://developer.mozilla.org/en-US/docs/Web/API/Console), `console.table` makes the output more readable. `console.assert` is good for sanity checks of your code: e.g. if you have functions that expect an array, you can add an assert statement to check whether the argument is indeed of the expected type.
-- **[TODO: describe how to use eslint, why; node code vs browser code - we need two variants; check what the difference is between the npm module and the VSC extension]** [ESLint](https://eslint.org/docs/user-guide/getting-started)
+- You can use ESLint to help you make a cleaner code. You can run it on the JavaScript files following [this guide]()[ESLint](https://eslint.org/docs/user-guide/getting-started), or you can install it as an [extension of VSC](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), so you could see the problems in the code while you type (underlined in red). In both cases though you need to create a configuration file for the browser and another one for node in the server. In the command line tool you can do that by typing `eslint --init`. In the VSC extension, open View::Command Palette and type `Create ESLint configuration`, once in the `myapp/public/javascript` folder for the browser code, and once in the root folder of the app for node.js code.    
 
 ---
 
@@ -145,7 +153,6 @@ http.createServer(app).listen(port);
 ```
 
 This is all the code you need for your server-side (for now). Save the file, and start the server in the terminal:
-**[TODO: describe how to start the server in VSC]**
 
 ```console
 node app.js 3000
@@ -154,7 +161,9 @@ node app.js 3000
 Here, `3000` is the port number, you can use any above 1024 safely. Then, open your browser and use the following URLs:
 `http://localhost:3000/game.html` and `http://localhost:3000/splash.html` (change the port number if you used a different one) - if you see the two HTML files, then, congratulations, you have successfully "implemented" your first node.js server!
 
-You can also use `npm start` **[TODO: explain what needs to be done in package.json and why it is a good idea]**
+You can also use `npm start`. This command runs an arbitrary command specified in the package's start property ("start" property in `package.json`). By default this property contains `"start": "nodejs ./bin/www"`. Replace this line by `"start": "nodejs app.js"` in order to execute your program entry point which, in this case, is `app.js`.
+
+Alternatively you can also start a server directly from VSC by installing [this extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). Once started, you will be able to open any HTML file by right-clicking on the file and selecting "Open with Live Server".
 
 ### 3.2) Your first routes
 
@@ -226,7 +235,7 @@ app.use("/", function(req, res) {
     res.sendFile("test.html", {root: "./"});
 });
 
-var server = http.createServer(app);
+var server = http.createServer(app).listen(port);
 
 const wss = new websocket.Server({ server });
 
