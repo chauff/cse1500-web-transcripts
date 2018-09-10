@@ -82,9 +82,9 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 
 ## List of Web lectures
 
-**This is work in progress, lectures in a good draft status for 2018/19 are bolded.**
+**This is work in progress, lectures in a good draft status for 2018/19 are bolded.** The transcripts are an 2018/19 addition, the lectures slides are currently all from 2017/18.
 
-- **Lecture 1** covers HTTP ([transcript](Lecture-1.md))
+- **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Topics: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
   - Required readings: *none*
   - Recommended readings:
@@ -95,7 +95,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
     - [A crash course on http and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
   
-- Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
+- Lecture 2 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
     - Chapter 2 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
     - HTML form slides
@@ -107,7 +107,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Examples of what modern Web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
     - [Progressive web apps](https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive#Core_PWA_guides)
   
-- Lecture 3 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
+- Lecture 3 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
     - Chapter 4 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
@@ -132,7 +132,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript
     - [The State of JavaScript 2017](https://2017.stateofjs.com/)
 
-- Lecture 4 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
+- Lecture 4 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
   - Required readings:
     - Chapters 5 & 6 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
@@ -148,7 +148,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [MDN Express tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website)
     - [The world runs on nodejs (tweet)](https://twitter.com/bitandbang/status/1037306199522328577)
   
-- Lecture 5 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
+- Lecture 5 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
   - Required readings:
     - Chapter 3 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
@@ -160,7 +160,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Blog post on Mozilla's [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
     - [Animate.css](https://daneden.github.io/animate.css/)
 
-- Lecture 6 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: Ajax in more detail, node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
+- Lecture 6 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: Ajax in more detail, node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
   - Recommended activities:
     - An interactive ejs playground can be found [here](https://ionicabizau.github.io/ejs-playground/).
@@ -172,14 +172,14 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing)
     - Blog post in best practices to create a [node package](https://monades.roperzh.com/bootstrapping-javascript-library/)
 
-- Lecture 7 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, cookie flags/domain, cookies in Express (accessing and deleting them), evercookie, third-party cookies, client-side cookies (`document.cookie`), sessions in Express (memory stores), third-party authentication (OAuth 2.0, example authentication through Twitter via `passport`)
+- Lecture 7 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, cookie flags/domain, cookies in Express (accessing and deleting them), evercookie, third-party cookies, client-side cookies (`document.cookie`), sessions in Express (memory stores), third-party authentication (OAuth 2.0, example authentication through Twitter via `passport`)
   - Required readings: *none*
   - Recommended activities: *none*
   - Recommended readings:
     - Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown
     - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
 
-- Lecture 8 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **Web security**: Web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
+- Lecture 8 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **Web security**: Web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
   - Required readings: *none*
   - Recommended activities:
     - In a "star module" two years ago, two first-year students in TI1506 implemented [CrapStore](https://github.com/nielsdebruin/CrapStore), a node.js based Web app modeled after BadStore (discussed in class). Try it out if you want to test some basic Web security issues.
