@@ -634,7 +634,7 @@ Here are a few questions you should be able to answer after having followed the 
     - Web caches lead to reduced distance delay.
 10. Which of the following statements about IPv6 are FALSE?
     - IPv6 has approximately ten times as much address space available as IPv4.
-    - Most Internet traffic today makes use of IPv6 (instead of IPv4).
+    - Most Internet traffic today makes use of IPv6 (instead of IPv4).
     - IPv6 addresses do not have an associated domain name in the Domain Name System registry.
     - IPv6 addresses are 128 bit long.
 
