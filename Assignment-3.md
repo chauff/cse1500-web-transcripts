@@ -132,8 +132,18 @@ That though is not a solution for an actual deployment. [Heroku](https://www.her
 
 ### 5.1)
 
-Deploy your app in Heroku according to the instructions linked above.
+Deploy your app in Heroku according to the instructions linked above, but first make these changes:
 
+1. In `app.js`, replace `http.createServer(app).listen(port);` by `http.createServer(app).listen(process.env.PORT || 3000);`
+2. In `myapp` folder, create a new File called `Procfile` with this line: `web: node app.js`
+3. In the instructions you will see that to "Prepare the app" they clone an existing app to test. Instad of doing that, in that step you have to make sure that you have a local `git` repository in `myapp`. If that is not the case then install `git`, go to `myapp` folder and type the following from the terminal:
+
+```
+git init
+git add .
+git commit -n "First commit"
+```
+ 
 ### 5.2)
 
 Once you have deployed your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED GAMES**. Add the URL of your deployed app!

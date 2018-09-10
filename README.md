@@ -80,20 +80,21 @@ and a game screen:
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
-## List of 2017/18 Web lectures
+## List of Web lectures
 
-The list below will be amended over time, to fit the 2018/19 topic setup. Some lectures will remain as-is, some will change.
+**This is work in progress, lectures in a good draft status for 2018/19 are bolded.**
 
-- Lecture 1 ([PDF-1](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf), [PDF-2](https://chauff.github.io/documents/webdb-2017-18/web-http-continued.pdf)) on **HTTP**: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses
+- **Lecture 1** covers HTTP ([transcript](Lecture-1.md))
+  - *Still to do: `Access-Control-Allow-Origin` header; polling vs. long polling; websocket protocol*
+  - Topics: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
   - Required readings: *none*
   - Recommended readings:
     - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do)
     - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-    - Read up on the developer tools of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
+    - Developer tools overview of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
-    - Note that http information can be used for [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
-    - [A comic intro to http(s) and dns](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
-    - Include `Access-Control-Allow-Origin` header in the discussion; polling vs. long polling; websocket protocol
+    - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
+    - [A crash course on http and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
   
 - Lecture 2 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
