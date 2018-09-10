@@ -50,7 +50,7 @@ Consider this example of [ebay.com](https://www.ebay.com/) (September 10, 2018):
 
 Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and get dressed for the upcoming fall season.
 
-Contrast ebay with the following example from [koopplein](koopplein.nl/) (February 8, 2014):
+Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/) (February 8, 2014):
 
 ![koopplein web site](img/L2-koopplein.png)
 
@@ -60,25 +60,25 @@ Here, it is not self-evident for the user how to act to achieve her goals and a 
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
-In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's koopplein.nl presence looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission it is to **archive** the Web. The Wayback Machine of course does not archive the entire Web (this would be impossible), but it does take regular snapshots of more than 330 billion web pages, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
+In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission it is to **archive** the Web. The Wayback Machine of course does not archive the entire Web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
 
-When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text *Jobs* or *Vacancies* (clear to the user what this link is about) instead of *Interested?* or *Join us!* (less clear).
+When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
-Similarly, there are established style standards of how to format a link (in the early years of the Web blue underlined text was synonymous with a link). 
+Similarly, there are established style standards of how to format a link (in the early years of the Web blue underlined text was synonymous with a link and thus we are now stuck with the saying "10 blue links" as a synonym for Web search results). 
 
-Users should not get lost within a web site; provide users with information on where they are on how they arrived at that point (leave "breadcrumbs"):
+Users should **not get lost within a web site**; provide users with information on where they are on how they arrived at that point. Leave so-called **breadcrumbs** as ebay does:
 
 ![ebay web site](img/L2-ebay2.png)
 
-Lastly, it should be easy for the user to distinguish different parts of a site - e.g. advertisement vs. content. Here is an example from Google that does not make it very easy to distinguish ads and content:
+Lastly, it should be easy for the user to **distinguish different parts of a site** - e.g. advertisement vs. content. Here is an example from Google that does a poor job in this respect: it is not obvious on first sight that the first search result is indeed a sponsored search result (i.e. a paid advertisement) instead of a so-called "organic" search result:
 
 ![google web site](img/L2-google.png)
 
-A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot clearer in its ad placement:
+A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot more forthcoming when it came to notifying its users about advertisements:
 
 ![google web site](img/L2-google2.png)
 
-Google though is not the only offender here, take this example from Twitter:
+It should be mentioned though that Google is not the only offender here, take this example from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
 
 ![google web site](img/L2-twitter.png)
 
@@ -94,29 +94,29 @@ vs. ZDNet on [August 31, 2014](https://web.archive.org/web/20140831235129/http:/
 
 ![ZDNet web site](img/L2-zdnet-2014.png)
 
-While it is easy to point to very old Web designs and fault them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming and expensive to achieve. It made sense to push as much content as possible into a single Web page which could then be sent to the client in a single HTTP response. 
+While it is not hard to go back to very old Web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming and expensive. It made sense to push as much content as possible into a single Web page which could then be sent to the client in a single HTTP response. 
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 
-Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world, it is wise to keep the mobile user in mind as well (scrolling is expensive). 
+Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world, it is wise to keep the mobile user in mind as well (a lot of scrolling is undesired). 
 
 Avoid *happy talk* - text without any content for the sake of adding some text (e.g. a welcome message).
 
-A very good example of this rule is the following Surveymonkey (]December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) entry page:
+A very good example of this rule is the following Surveymonkey [December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) entry page:
 
 ![Surveymonkey](img/L2-surveymonkey.png)
 
-### Expectations vs. reality
+### Expectations vs. reality: usability testing
 
-Our expectations of Web users are often not grounded in reality. We may expect users to be **rational**, **attentive**, having a clear goal in mind.
+Our expectations of Web users are often not grounded in reality. We may expect users to be **rational**, **attentive**, with a **clear goal** in mind.
 
-Instead, they:
+Instead, the average user:
 
-- quickly scan a Web page (not even reading it);
-- decide within seconds whether or not a site is worth their attention;
-- click on the first link they find;
-- depend a lot on the browser's back button (and not all Web applications cannot deal with it);
-- do not read instructions.
+- quickly scans a Web page (not even reading it);
+- decides within seconds whether or not a site is worth their attention;
+- clicks on the first link they find;
+- depends a lot on the browser's back button (and not all Web applications cannot deal with it);
+- does not read instructions.
 
 Relevant scientific papers: [1](https://dl.acm.org/citation.cfm?id=1835513), [2](https://dl.acm.org/citation.cfm?id=2835833)
 
@@ -179,28 +179,28 @@ If you have completed the required readings, you should be able to fill in the `
 ```html
 <!doctype html>
 <html>
-	<head>
-		<title>My First Search Form</title>
-	</head>
+    <head>
+        <title>My First Search Form</title>
+    </head>
     <body>
-		<form action="http://www.google.com/search" method="???" target="_blank">
+        <form action="http://www.google.com/search" method="???" target="_blank">
             <input name="q" type="???" />
             <input type="submit" value="???"/>
         </form>
-	</body>
+    </body>
 </html>
 ```
 
 ### Overview
 
-HTML4 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich Web content**: 
+HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich Web content**: 
 - **Core HTML5**: mark up content;
 - **CSS**: control the appearance of marked-up content;
-- **JavaScript**: manipulate the contents of HTML documents and respont do user interactions.
+- client-side **JavaScript**: manipulate the contents of HTML documents and respont do user interactions.
 
-Modern Web application development requires knowledge of all three technologies. *Realistically, it also requires a whole set of additional frameworks and technologies to go from coding to production code, such as build tools, transpilers, code coverage tools and so on. Even for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70). We will introduce a few of those things throughout this course.*
+Modern Web application development requires knowledge of all three technologies. *In practice, it also requires a whole set of additional frameworks and technologies to go from prototype code to production code, such as build tools, transpilers, code coverage tools and so on. Even "just" for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70). We will introduce a few of those things throughout this course.*
 
-Before HTML5 we had XHTML and HTML 4.01. XHTML is a reformulation of HTML 4 as an XML 1.0 application and stands for *Extensible HyperText Markup Language*. It looks as follows (straight from the [W3C XHTML recommendation](https://www.w3.org/TR/xhtml1/)):
+Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 as an XML 1.0 application and stands for **Extensible HyperText Markup Language**. It looks as follows (straight from the [W3C XHTML recommendation](https://www.w3.org/TR/xhtml1/)):
 
 ```html
 <?xml version="1.0" encoding="UTF-8"?>
@@ -217,15 +217,17 @@ Before HTML5 we had XHTML and HTML 4.01. XHTML is a reformulation of HTML 4 as a
 </html>
 ```
 
-XHTML was designed to make processing of Web pages easier for machines with a very strict set of rules. The problem though was that HTML is written by developers, not machines and it turned out to be too much hassle to always write valid XHTML. Browsers were able to render invalid XHTML pages properly and thus XHTML was eventually abandoned in favour of HTML5, which is not only less strict but also added a host of new features to the language.
+XHTML was designed to make processing of Web pages **easier for machines** by having a very strict set of rules. The problem though was that (X)HTML is written by developers, not machines and it turned out to be too much hassle to write valid XHTML. Moreover, browsers were and are able to render invalid XHTML pages properly (so why even try to write valid XHTML?) and thus XHTML was eventually abandoned in favour of HTML5, which is not only less strict but also added a host of new features to the language.
 
-With the host of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to their own non-standardized features). A good resource to check which browser versions support which HTML5 feature (and to what extent) is [caniuse.com](http://caniuse.com/). 
+With the host of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to their own non-standardized features). A good resource to check which browser versions support which HTML5 feature (and to what extent) is [caniuse.com](http://caniuse.com/). We 
 
 ### The move towards HTML5
 
-The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <plaintext> <listing> <p> <h1> <address> <hp1> <dl> <dt> <ul>`. JavaScript was created within 10 days (*which explains many of the JavaScript quirks) in May 1995 by Brendan Eich (a co-founder of Mozilla) at the time at Netscape; this was the beginning of client-side **dynamic** scripting for the browser. **Plugins** (the most famous being Adobe Flash in 1996) were created to go beyond what at the time was possible with HTML. HTML5 was a drive to return rich content **directly** into the browser, without the need for plugins or addons. **Semantic HTML** became a popular wish to enable large-scale automated processing of Web content (whilst avoiding anything that looks like XML).
+The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <plaintext> <listing> <p> <h1> <address> <hp1> <dl> <dt> <ul>`. JavaScript was created within 10 days (*which explains many of the JavaScript quirks*) in May 1995 by [Brendan Eich](https://twitter.com/BrendanEich) (a co-founder of Mozilla who is also behind the browser [brave](https://brave.com/), developed to block out ads and trackers) at the time at Netscape; this was the beginning of client-side **dynamic** scripting for the browser. 
 
-HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentaiton, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the Web. For the browser vendors, backwards compatibility is a necessity, not an option. 
+**Plugins** (the most famous being Adobe Flash in 1996) were created to go beyond what at the time was possible with HTML. HTML5 was a drive to return rich content **directly** into the browser, without the need for plugins or addons. 
+
+HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentaiton, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the Web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **Semantic HTML** is quite different from the vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/).
 
 As a guideline, when creating an HTML document, it is always best to select the **most specific** element to represent your content (instead of only using `<div>`'s).
 
