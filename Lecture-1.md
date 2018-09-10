@@ -1,5 +1,7 @@
 # HTTP: the language of Web communication
 
+*Note: in practice, this material is taught in Lecture 1 and about half of Lecture 2.*
+
 ## Web standards
 
 A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium (also known as `W3C`): what are Web standards and what makes Web standards so important?
@@ -69,12 +71,12 @@ HTTP is at the top of the stack, and TCP builds on top of IP. Important to know 
 
 Open your favourite browser and use its built-in **Web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website. 
 
-![Browser built-in Web dev tools](img/devtools.png)
+![Browser built-in Web dev tools](img/L1-devtools.png)
 
 You can see several panels, for the different types of data that are downloaded or created when a Web site loads. To load a seemingly simple site like [https://www.tudelft.nl/](https://www.tudelft.nl/), many different Web resources are actually needed. The resource initially requested (`/`, i.e. the page residing at the URL you chose) links to a myriad of additional Web resources, which are then automatically requested by the Web browser as well, leading to a **cascade of resource requests**.
 Each resource is requested separately by your browser. How exactly is it requested? Through an HTTP request! And how exactly that looks you can view in the Headers tab (and not just the request header, but also the response header):
 
-![Browser built-in Web dev tools](img/devtools2.png)
+![Browser built-in Web dev tools](img/L1-devtools2.png)
 
 You will also notice that the HTTP requests differ slightly between different types of Web resources (e.g. image vs. html page).
 
@@ -225,9 +227,9 @@ An alternative title of this section could have been *Polling and WebSockets*.
 
 In HTTP/1.1 the client **always** initiates the conversation with the server via an HTTP request. For a number of use cases though this is a severe limitation. Take a look at these two examples from the New York Times website and Twitter respectively:
 
-![New York Times live polling](img/nytimes-example.png)
+![New York Times live polling](img/L1-nytimes-example.png)
 
-![Twitter update](img/twitter-example.png)
+![Twitter update](img/L1-twitter-example.png)
 
 In both examples, the encircled numbers are updated "on the fly", without the user having to manually refresh the page. This can be achieved through **polling**: here, the client regularly sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response. An alternative to polling is **long polling**: here, the client sends an HTTP request as before, but this time the server holds the request open until new data is available before sending its HTTP response (once the response is sent, the client immediately sends another HTTP request that is kept open). While this avoids wasteful HTTP request/response pairs, it requires the backend to become significantly more complex: the backend is now responsible for ensuring the right data is sent to the right client and scaling becomes an issue. 
 
@@ -559,7 +561,7 @@ In this manner, different HTTP requests can be tied into a single **logical sess
 
 Let's look at this concept one more time, based on the following toy example:
 
-![Fat URL toy example](img/fatURLs.png)
+![Fat URL toy example](img/L1-fatURLs.png)
 
 On the left you see a shop Web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page, the server recognises the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server.
 
@@ -580,7 +582,7 @@ HTTP has a built-in mechanism to support this process through the `WWW-Authentic
 
 Here is a concrete example of HTTP basic authentication:
 
-![Basic authentication example](img/basicauth.png)
+![Basic authentication example](img/L1-basicauth.png)
 
  We have the usual server and client setup. The client sends an HTTP request to access a particular Web resource, in this case the `index.html` page residing at `www.microsoft.com`. 
 
@@ -637,6 +639,8 @@ Here are a few questions you should be able to answer after having followed the 
     - Most Internet traffic today makes use of IPv6 (instead of IPv4).
     - IPv6 addresses do not have an associated domain name in the Domain Name System registry.
     - IPv6 addresses are 128 bit long.
+11. What issues do Fat URLs have?
+
 
 
 

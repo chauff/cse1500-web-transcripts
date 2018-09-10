@@ -95,10 +95,11 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
     - [A crash course on http and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
   
-- Lecture 2 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)) on **HTML5**: Web sites vs. Web applications, Electron, Web design basics (*Don't make me think* by Steve Krug), usability testing, HTML5 history, Web standards, HTML forms, AppCache
+- **Lecture 2** covers Web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf))
+  - Topics: Web sites vs. Web applications, Electron, Web design basics, usability testing, HTML5 history, Web standards, HTML forms, AppCache
   - Required readings:
     - Chapter 2 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
-    - HTML form slides
+    - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*);
   - Recommended readings:
     - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604)
     - [From AppCache to Service Workers](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/)
