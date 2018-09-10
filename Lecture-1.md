@@ -138,6 +138,7 @@ Many header fields exist, the most important ones (though to some extent this re
 | **Last-Modified**    | Date on which this entity was created/modified      |
 | **Expires**          | Date at which the entity will become stale          |
 | Allow            | Lists the legal request methods for the entity      |
+| **Connection & Upgrade**       | Protocol upgrade  |
 
 
 The bold header fields will be covered below. Let's briefly walk over the other fields:
@@ -219,6 +220,68 @@ It is often used in combination with `If-Modified-Since`. When Web caches active
 
 `Last-Modified` dates should be taken with a grain of salt. They are not always reliable, and can be manipulated by the origin server to ensure high cache validation rates for instance.
 
+### Connection & Upgrade
+
+An alternative title of this section could have been *Polling and WebSockets*.
+
+In HTTP/1.1 the client **always** initiates the conversation with the server via an HTTP request. For a number of use cases though this is a severe limitation. Take a look at these two examples from the New York Times website and Twitter respectively:
+
+![New York Times live polling](img/nytimes-example.png)
+
+![Twitter update](img/twitter-example.png)
+
+In both examples, the encircled numbers are updated "on the fly", without the user having to manually refresh the page. This can be achieved through **polling**: here, the client regularly sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response. An alternative to polling is **long polling**: here, the client sends an HTTP request as before, but this time the server holds the request open until new data is available before sending its HTTP response (once the response is sent, the client immediately sends another HTTP request that is kept open). While this avoids wasteful HTTP request/response pairs, it requires the backend to become significantly more complex: the backend is now responsible for ensuring the right data is sent to the right client and scaling becomes an issue. 
+
+Both options are workarounds to the requirement of client-initiated HTTP request/response pairs. The IETF recognized early on that such solutions are not sufficient and in 2011 standardized the **WebSocket protocol** ([RFC 6455](https://tools.ietf.org/html/rfc6455)). The RFC abstract read as follows:
+
+```
+"The WebSocket Protocol enables two-way communication between a client
+running untrusted code in a controlled environment to a remote host
+that has opted-in to communications from that code.  The security
+model used for this is the origin-based security model commonly used
+by web browsers.  The protocol consists of an opening handshake
+followed by basic message framing, layered over TCP.  The goal of
+this technology is to provide a mechanism for browser-based
+applications that need two-way communication with servers that does
+not rely on opening multiple HTTP connections (e.g., using
+XMLHttpRequest or <iframe>s and long polling)."
+```
+
+WebSockets finally enable **bidirectional communication** between client and server! The server no longer has to wait for an HTTP request to send data to a client, but can do so at any time - as long as both client and server agree to use the WebSocket protocol. 
+
+Client and server agree to this new protocol as follows: the client initiates the upgrade by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
+
+As a concrete example, you can consider the demo game of this course. It relies on WebSockets to enable bidirectional communication between client and server. The client sends the following HTTP headers to request the upgrade to the WebSocket protocol:
+
+```
+Host: localhost:3000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:61.0) Gecko/20100101 Firefox/61.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Sec-WebSocket-Version: 13
+Origin: http://localhost:3000
+Sec-WebSocket-Extensions: permessage-deflate
+Sec-WebSocket-Key: ve3NDibwD/111x/ZKV0Phw==
+Connection: keep-alive, Upgrade
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade: websocket
+```
+
+As you can see, besides `Connection` and `Upgrade` a number of other information is sent, those though are beyond the scope of this course.
+
+The server accepts the protocol with the following headers:
+
+```
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: b3yldD7Y6THeWnQGTJYzO1l4F3g=
+```
+
+Lastly it is worth to mention that besides switching to the WebSocket protocol, another common switch is from HTTP/1.1 to HTTP/2.
+
 ### Status codes
 
 To finish off this part about HTTP header fields, we take a look at the response status codes. You have just read about the `304` status code, sent by the origin server in the response after a request from the Web cache asking about an updated copy of a Web resource.
@@ -229,13 +292,13 @@ Quite a few different status codes exist that provide the client with some level
 
 | Status codes         |                 |
 |----------------------|------------------------------|
-| 1XX                  | Informational                |
+| 1XX                  | Informational (101 Switching Protocols)                |
 | 2XX                  | Success (200 OK)             |
 | 3XX                  | Redirected                   |
 | 4XX                  | Client error (404 Not Found) |
 | 5XX                  | Server error                 |
 
-Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. A status code we will come across in later lectures is `101 Switching Protocols` when we discuss WebSockets; this response code indicates the server switching to a protocol as requested by the client. 
+Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. As just seen status code `101` indicates the server switching to a protocol as requested by the client. 
 
 Status code `200` is the most common one - it indicates that the HTTP request was successful and the response contains the requested Web resource (or a part of it). 
 
