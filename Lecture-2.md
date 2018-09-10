@@ -11,7 +11,12 @@
 The W3C has many working groups, among them (until 2016) the *Web Applications (WebApps) Working Group* whose [goal](https://www.w3.org/2014/06/webapps-charter.html) was as follows:
 
 ```
-As Web browsers and the Web engine components that power them become ubiquitous across a range of operating systems and devices, developers are increasingly using Web technologies to build applications and are relying on Web engines as application runtime environments. Examples of applications now commonly built using Web technologies include reservation systems, online shopping / auction sites, games, multimedia applications, maps, enterprise-specific applications, interactive design applications, and PIM (email, calendar, etc) systems. 
+As Web browsers and the Web engine components that power them become ubiquitous across a range 
+of operating systems and devices, developers are increasingly using Web technologies to build 
+applications and are relying on Web engines as application runtime environments. Examples of 
+applications now commonly built using Web technologies include reservation systems, online 
+shopping / auction sites, games, multimedia applications, maps, enterprise-specific applications, 
+interactive design applications, and PIM (email, calendar, etc) systems. 
 ```
 
 In 2017 this group was superseded by the [*Web Platform Working Group*](https://www.w3.org/2017/08/webplatform-charter.html) which has a similar goal (but not written up as nicely). The working group is responsible for a number of Web technologies that move us closer towards the vision of the *browser as the operating system*, including:
@@ -35,7 +40,7 @@ The major benefit of Electron should be clear: instead of writing three separate
 
 Web design is not trivial. However, a few basic rules go a long way. Most of these principles may seem obvious, but are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much wworth a read. In the following subsections we go over a number of Krug's rules.
 
-### Don't make me think
+### Rule: Don't make me think
 
 The way a Web site/application (I tend to use the terms interchangeably in this lecture; the rules apply to both apps and sites) works should be self-evident; the user should not have to expend **cognitive effort** to understand what she can do next.
 
@@ -77,7 +82,7 @@ Google though is not the only offender here, take this example from Twitter:
 
 ![google web site](img/L2-twitter.png)
 
-### Minimize noise and clutter
+### Rule: Minimize noise and clutter
 
 The rule does not have to be explained, here are two examples that should make things clear:
 
@@ -89,7 +94,9 @@ vs. ZDNet on [August 31, 2014](https://web.archive.org/web/20140831235129/http:/
 
 ![ZDNet web site](img/L2-zdnet-2014.png)
 
-### If you cannot make it self-evident, make it self-explanatory
+While it is easy to point to very old Web designs and fault them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming and expensive to achieve. It made sense to push as much content as possible into a single Web page which could then be sent to the client in a single HTTP response. 
+
+### Rule: If you cannot make it self-evident, make it self-explanatory
 
 Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world, it is wise to keep the mobile user in mind as well (scrolling is expensive). 
 
@@ -110,6 +117,8 @@ Instead, they:
 - click on the first link they find;
 - depend a lot on the browser's back button (and not all Web applications cannot deal with it);
 - do not read instructions.
+
+Relevant scientific papers: [1](https://dl.acm.org/citation.cfm?id=1835513), [2](https://dl.acm.org/citation.cfm?id=2835833)
 
 A web application should be designed based on **user reality**. **Usability testing** is an important step to make a Web application successful. Designing-testing-reviewing should be the development cycle:
 
