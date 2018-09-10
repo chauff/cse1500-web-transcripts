@@ -85,7 +85,6 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 **This is work in progress, lectures in a good draft status for 2018/19 are bolded.**
 
 - **Lecture 1** covers HTTP ([transcript](Lecture-1.md))
-  - *Still to do: `Access-Control-Allow-Origin` header; polling vs. long polling; websocket protocol*
   - Topics: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
   - Required readings: *none*
   - Recommended readings:
