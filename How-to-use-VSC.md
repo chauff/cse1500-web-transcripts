@@ -1,11 +1,13 @@
 
-# TODO!! How to use VSC
+# How to use VSC
 
 The project is conducted in pairs of students. Here we provide an overview of how VSC can help you to efficiently work in pairs. It is beyond the scope of this course to introduce `git` (a very popular and today's standard version control system to file changes) in detail. Instead, we restrict ourselves to describe how you can use the functionality of `git` from within VSC.
 
 In the last part, you find information on how to make use of VSC's debugging functionalities.
 
 _Note: this information is provided to help you work in pairs efficiently during the project. This is not exam material (i.e. we will not ask you questions about `git` or VSC or debugging.)_
+
+If you need to be convinced abut why Visual Studio Code is a great IDE to use, check out [this podcast](https://syntax.fm/show/012/why-is-everyone-switching-to-vs-code) by Wes Bos and Scott Tolinski on this very topic.
 
 
 ## Synchronization in VSC with Git and Github
