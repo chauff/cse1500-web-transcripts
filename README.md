@@ -108,7 +108,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Examples of what modern Web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
     - [Progressive web apps](https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive#Core_PWA_guides)
   
-- Lecture 3 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
+- **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
     - Chapter 4 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
