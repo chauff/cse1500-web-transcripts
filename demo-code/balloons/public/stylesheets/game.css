@@ -45,7 +45,7 @@
     background-color: #AAA;
 
     font-size: 500%;
-    color: #f4424b;
+    color: var(--main-red);
     text-align: center;
 }
 
@@ -63,7 +63,7 @@
     height: 5%;
     background-color: #222;
     font-family:monaco,Bitstream Vera Sans Mono,monospace;
-    color: #fd2130;
+    color: var(--status-red);
     font-size: 75%;
     vertical-align: middle;
 }
