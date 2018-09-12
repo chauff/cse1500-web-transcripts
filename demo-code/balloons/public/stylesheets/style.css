@@ -1,3 +1,8 @@
+:root {
+  --main-red: #f4424b;
+  --status-red: #fd2130;
+}
+
 html, body, main, section {
   height: 100%;
   margin: 0px;

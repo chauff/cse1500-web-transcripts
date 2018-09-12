@@ -14,12 +14,12 @@ h1 {
 
 h1::before {
     content: "★ ";
-    color: #f4424b;
+    color: var(--main-red);
 }
 
  h2::after {
     content: " ★";
-    color: #f4424b;
+    color: var(--main-red);
 }
 
 h2 {
@@ -32,7 +32,7 @@ h2 {
 
 h3::before {
     content: "★ ";
-    color: #f4424b;
+    color: var(--main-red);
 }
 h3 {
     position: absolute;
@@ -113,7 +113,7 @@ h3 {
 
 button {
     position: absolute;
-    background-color: #f4424b;
+    background-color: var(--main-red);
     color: #fff;
     bottom: 100px;
     right: 250px;
