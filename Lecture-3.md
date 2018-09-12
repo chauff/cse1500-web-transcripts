@@ -390,8 +390,899 @@ Why do we have to also set the `constructor` property? You will see if you run t
 TwoPlayerGame.prototype.constructor = TwoPlayerGame;
 ```
 
-the code still works as expected.
+the code still works as expected. Why do we even add this line? If we do not add this line, then the `constructor` of `TwoPlayerGame.prototype` will be `Game` (check it out for yourself). With this extra line of code we "hand-wire" the correct constructor (which for `TwoPlayerGame.prototype` should be `TwoPlayerGame`). You can think of this as making sure the wiring is correct, even if your code does not rely on this wiring.
+
+Here is one example where it does indeed matter whether whether this wiring is correct:
+
+```javascript
+function Game() {};
+function TwoPlayerGame() {}
+
+TwoPlayerGame.prototype = Object.create(Game.prototype);
+
+TwoPlayerGame.prototype.create = function create() {
+  return new this.constructor();
+}
+
+var o = new TwoPlayerGame().create(); 
+console.log( o instanceof TwoPlayerGame ); //prints out "false" as long as the constructor is not set to TwoPlayerGame
+```
+
+As a rule of thumb: when using prototypical inheritance, always set up both the `prototype` and `prototype.constructor`; in this manner the wiring is correct, no matter how you will use the inheritance chain later on.
+
+To finish off, here is a quick summary of the prototype-based constructor:
+- Advantages:
+    - **Inheritance is easy** to achieve;
+    - **Objects share functions**;
+- Issue:
+    - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
+
+
+### Design pattern 3:  Module
+
+In order to tackle this last remaining issue above, we need to talk about **scoping** (i.e. the context in which values and expressions are visible) in JavaScript. In contrast to other languages, JavaScript has very **limited** scoping:
+- `var` declared within a function: **local** scope;
+- `var` declared outside of a function: **global** scope;
+- no `var`: **global scope** (no matter where declared);
+- `let` was introduced in **ES6**: **block** scope;
+- `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
+
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to uninituitive behaviour can be seen in the following code snippets.
+
+Imagine we want to print out the numbers 1 to 10. This is easy to achieve, e.g.:
+
+```javascript
+for (var i = 1; i <= 10; i++) {
+    console.log(i);
+}
+```
+
+Lets now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function (below: an **anonymous function**) after a delay (specified in milliseconds) you might expect the following piece of code to print out the numbers 1 to 10 with each number appearing after roughly a second ([JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
+
+```javascript
+for (var i = 1; i <= 10; i++) {
+    setTimeout(function() { 
+        console.log(i);
+    }, 1000);
+}
+```
+When you run this code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Why is this? Well, first of all, what happens here is that `setTimeout` is executed ten times without delay - defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` (and then breaks as the `i<=10` condition is no longer fulfilled) which means `i` is `11` at the end of the `for` loop. As `i` has global scope, every single callback refers to the same variable. After a bit more time passes (reaching ~1 second) each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i` to console. Since `i` is `11` and all  we will get ten print outs of `11`.
+
+Lets fix the two issues (printing 11s instead of 1...10 and waiting a ~second between print outs one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** this was the established solution (you will find this construct in all kinds of older pieces of code):
+
+```javascript
+function fn(i) {
+    setTimeout(function() { 
+        console.log(i); 
+    }, 1000 * i);
+}
+  
+for (var i = 1; i <= 10; i++)
+    fn(i);
+```
+
+We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
+
+With the introduction of **ES6** and `let`, we no longer need this additional function construct (though again, a lot of code still uses those constructs) as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as expected:
+
+```javascript
+for (let i = 1; i <= 10; i++)
+    setTimeout( function() {
+        console.log(i)
+    }, 1000 * i)
+```
+
+Scoping is also important when it comes to larger programming projects: imagine that you are working on some complicated project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point or another your code would stop working. Here is a very simple `jQuery` to showcase this issue: 
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    //$ = "overwriting";
+    $("#b").click(function(){
+        $("#b").hide();
+    });
+});
+</script>
+</head>
+<body>
+
+<h1>Hide this button</h1>
+
+<button id="b">Hide me forever</button>
+
+</body>
+</html>
+```
+This code does exactly what we expect (hiding a button once we click it)). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
+
+Luckily, `jQuery` and other libraries have very vew variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. 
+
+How is that achieved? Through the module pattern, which we finally come to now. It has the following goals:
+- **Do not declare any global variables** or functions unless required.
+- Emulate **private/public** membership.
+- Expose only the **necessary** members to the public.
+
+Here is how the **module pattern** looks like:
+
+```javascript
+/* creating a module */
+var gameStatModule = ( function() {
+
+    /* private members */
+    var gamesStarted = 0;
+    var gamesCompleted = 0;
+    var gamesAbolished = 0;
+
+    /* public members: return accessible object */
+    return {
+        incrGamesStarted : function(){
+            gamesStarted++;
+        },
+        getNumGamesStarted : function(){
+            return gamesStarted;
+        }
+    }
+})();
+
+/* using the module */
+gameStatModule.incrGamesStarted();
+console.log( gameStatModule.getNumGamesStarted() ); //prints out "1"
+console.log( gameStatModule.gamesStarted ); //prints out "undefined"
+```
+
+In this code snippet, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked (also known as [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) ). An IFFE itself is also a design pattnern, it looks as follows:
+
+```javascript
+(function () {
+    //statements
+})();
+```
+Here, the function is **anonymous** (it does not have a name - it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to it immediate execution (the brackets surrounding the function are not strictly necessary, but they are commonly used). 
+
+Going back to our `gameStatModule`, we immediately execute the function. What does this function contain? It contains a number of variables with function scope (`gamesStarted` and so on) as well as a return statement. This return statement contains the result of the function invocation. In this case, an *object literal* is returned and this object literal has two methods `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other "private" variables, all we will get is an `undefined` as the returned object does not contain those properties (though the returned object has access to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables.
+
+The encapsulating function can also contain arguments:
+
+```javascript
+/* creating a module */
+var gameStatModule =  function(s, c, a) {
+
+    /* private members */
+    var gamesStarted = s;
+    var gamesCompleted = c;
+    var gamesAbolished = a;
+
+    /* public members: return accessible object */
+    return {
+        incrGamesStarted : function(){
+            gamesStarted++;
+        },
+        getNumGamesStarted : function(){
+            return gamesStarted;
+        }
+    }
+}(1, 1, 1);
+
+/* using the module */
+gameStatModule.incrGamesStarted();
+console.log( gameStatModule.getNumGamesStarted() ); //prints out 2
+
+//can be defined on the fly, but ...
+gameStatModule.decrGamesStarted = function(){
+    gamesStarted--;
+}
+
+/*
+ * once this method is called, it leads to an error:
+ * ReferenceError: gamesStarted is not defined;
+ * methods added on-the-fly cannot access 'private' variables
+ */ 
+gameStatModule.decrGamesStarted();
+```
+
+Summarizing the module pattern:
+- Advantages:
+    - Encapsulation is achieved;
+    - Object members are either public or private;
+- Issues:
+    - Changing the type of membership (public/private) takes effort (unlike in Java where a 'private' simply becomes 'public').
+    - Methods added on the fly later cannot access "private" members (as seen in the last code snippet).
+
+Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) series, a whole book is dedicated to scopes and closures.
+
+
+## Events and the DOM
+
+Having read chapter 4 of the course book, you should be familiar with code such as this:
+
+```javascript
+var main = function () {
+  "use strict";
+  $(".comment-input button").on("click", function (event) {
+    var $new_comment = $("<p>"),
+    comment_text = $(".comment-input input").val();
+    $new_comment.text(comment_text);
+    $(".comments").append($new_comment);
+  });
+};
+$(document).ready(main);
+```
+
+The course book makes extensive use of `jQuery` (a big time saver in practice). With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the Web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
+- `document.getElementById`
+- `document.getElementsByClassName`
+- `document.getElementsByTagName`
+- `document.querySelector` (returns the first element within the DOM tree that matches the selector)
+- `document.querySelectorAll` (returns all elements that match)
+
+The code snippet above also shows off the **callback principle**, which you come across in all of JavaScript: we define here what hapens *when* an event fires (in this case the event is the click on a button).
+
+The course book walks you through several examples of making a responsive UI control. Here is a short step-by-step guide:
+
+1. Pick a control, e.g. a `button`.
+2. Pick an event, e.g. a `click`.
+3. Write a JavaScript function: what should happen when the event occurs, e.g. an `alert` message may appear.
+4. Attach the function to the even **on** the control.
+
+If you want to examine how existing Web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML pane allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
+
+![Exploring events](img/L3-event-listeners.png)
+
+### Document Object Model
+
+The DOM is our entry point to interactive Web applications. It allows use to:
+- **Extract an element's state**
+    - Is the checkbox checked?
+    - Is the button disabled?
+    - Is a `<h1>` appearing on the page?
+- **Change an element's state**
+    - Check a checkbox
+    - Disable a button
+    - Create an `<h1>` element on a page if none exists
+- **Change an element's style** (material for a later lecture)
+    - Change the color of a button
+    - Change the size of a paragraph
+    - Change the background color of a Web application
+
+In the remainder of this lecture, you will see a number of simple event-based examples that add an interactive element to a web page. 
+These example are simple and self-contained. This means that all necessary code is contained within a single code snippet (even though by now you are aware that in a real coding project there should be a strict separation between HTML, JavaScript and CSS, the latter will be introduced in a later lecture).
+
+#### Example 1: document.getElementById
+
+Example 1 is as simple as possible: a page with two elements, a button and a text box. A click on the button will show `Hello World!` in the text box. We can include all necessary code in a single HTML file:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 1</title>
+    </head>
+    <body>
+        <button onclick="
+            var tb = document.getElementById('out');
+            tb.value = 'Hello World!'
+        ">Say Hello World</button>
+        <input id="out" type="text">
+    </body>
+</html>
+```
+
+This is of course not ideal as we are writting JavaScript code in the middle of HTML elements, a slight refactoring gets us to this improved version:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 1</title>
+        <script>
+            /* we define the function */
+            function sayHello() {
+              var tb = document.getElementById("out");
+              tb.value = 'Hello World';
+            };
+
+            /* we attach a function to a button's click event 
+             * after the DOM finished loading
+             */
+            window.onload = function() {
+                document.getElementById("b").onclick = sayHello;
+            };
+        </script>
+    </head>
+
+    <body>
+        <button id="b">Say Hello World</button>
+        <input id="out" type="text">
+    </body>
+</html>
+```
+
+Better! Although everything is still in a single file, we have now moved all JavaScript code within `<script>` tags. Be sure to check out what happens if the snippet
+
+```javascript
+window.onload = function() {
+    document.getElementById("b").onclick = sayHello;
+};
+```
+
+is replaced just by:
+
+```javascript
+document.getElementById("b").onclick = sayHello;
+```
+
+As another exercise, add a second `<input>` element with the **same id** and see what happens. And lastly, try for yourself to replace `<input>` with a `<span>` element. You can no longer use `.value` but instead need to rely on a different property ([hint](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)).
+
+#### Example 2: creating new nodes
+
+HTML tags and content can be added dynamically in two steps:
+1. Create a DOM node.
+2. Add the new node to the document as a **child of an existing node**.
+
+To achieve step two, a number of methods are available to every DOM element:
+
+| Name                   | Description                                                              |
+|------------------------|--------------------------------------------------------------------------|
+| `appendChild(new)`       |  places the new node at the end of this node's child list                |
+| `insertBefore(new, old)` |  places the new node in this node's child list just before the old child |
+| `removeChild(node)`      |  removes the given node from this node's child list                      |
+| `replaceChild(new, old)` | replaces the old node with the new one                                   |
+
+Lets look at how this works in practice:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 2</title>
+        <script>
+            window.onload = function() {
+              document.getElementById("b").onclick = addElement;
+            };
+
+            function addElement() {
+              var ul = document.getElementById('u');
+              var li = document.createElement('li');
+              li.innerHTML = 'List element ' + (ul.childElementCount+1) +' ';
+              ul.appendChild(li);
+            };
+
+        </script>
+    </head>
+
+    <body>
+        <button id="b">Add List Element</button>
+        <ul id="u"></ul>
+    </body>
+</html>
+```
+Note here, that the HTML part initally contains an empty `<ul>` element. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then starting adding children to it. 
+
+We can of course also remove elements:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 2</title>
+        <script>
+          /* JavaScript */
+          window.onload = function() {
+            document.getElementById("bRemoveF").onclick = removeFirstChild;
+            document.getElementById("bRemoveL").onclick = removeLastChild;
+          };
+
+          function removeLastChild() {
+            var ul = document.getElementById('u');
+            ul.removeChild(ul.lastElementChild);
+          };
+
+          function removeFirstChild() {
+            var ul = document.getElementById('u');
+            ul.removeChild(ul.firstElementChild);  
+          }
+        </script>
+    </head>
+
+    <body>
+        <button id="bRemoveF">Remove first child</button>
+        <button id="bRemoveL">Remove last child</button>
+        <ul id="u">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+          <li>Item 5</li>
+        </ul>
+    </body>
+</html>
+```
+
+Important to note here is that there are often methods available for DOM elements which look similar, but are leading to quite different behaviour. Case in point: in the above example we used `ul.firstElementChild` and `ul.lastElementChild`. Instead, we could have also used `ul.firstChild` and `ul.lastChild`. And this will work to - at least with every second click, as those methods also keep track of a node's children that are comments or text nodes, instead of just `li` nodes as we intend with our code.
+
+#### Example 3: `this`
+
+We have already discussed `this` to some extent, it refers to the current object. Event handlers are bound to the attached element's objects and the handler function "knows" which element it is listening to (`this`). This simplifies programming as a function can serve different objects.
+
+Imagine you want to create a simple multiplication app that has one text input box and three buttons. A click on a button multiplies the number found in the input with a fixed number (unique per button).
+
+We can of course write three different functions and then separately attach each of them to the correct button:
+
+```javascript
+document.getElementById("button10").onclick = computeTimes10;
+document.getElementById("button23").onclick = computeTimes23;
+document.getElementById("button76").onclick = computeTimes76;
+```
+
+This is tedious, error prone and not maintainable (what if you need a hundred buttons next). We could also be tempted to use the following construct:
+
+```javascript
+document.getElementById("button10").onclick = computeTimes(10);
+document.getElementById("button23").onclick = computeTimes(23);
+document.getElementById("button76").onclick = computeTimes(76);
+```
+
+but this will not work either, as in this case the execution of each line of code will immediately execute the `computeTimes` function instead of attaching it to the click event.
+
+The best option is to use `this`:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 3</title>
+        <script>
+          /* JavaScript */
+          window.onload = function() {
+            document.getElementById("button10").onclick = computeTimes;
+            document.getElementById("button23").onclick = computeTimes;
+            document.getElementById("button76").onclick = computeTimes;
+          };
+
+          function computeTimes() {
+            var times = parseInt(this.innerHTML);
+            var input = parseFloat(document.getElementById("input").value);
+            var res = times * input;
+            alert("The result is " + res);
+          }
+        </script>
+    </head>
+
+    <body>
+        <input type="text" id="input">
+        <button id="button10">10 times</button>
+        <button id="button23">23 times</button>
+        <button id="button76">76 times</button>
+    </body>
+</html>
+```
+
+Depending on which button was clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here a lazy way of stripping out the "times" text, forcing a conversion to type `number`.
+
+Note that in global code or regular functions (not bound to an object), `this` refers to the global `window` object.
+
+#### Example 4: mouse events
+
+A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, ...) and some are defined as a series of simpler mouse events, e.g.
+- A click of the mouse button in-place consists of:
+    1. `mousedown`
+    2. `mouseup`
+    3. `click`
+- A click of the mouse button while moving the mouse ("dragging") consists of:
+    1. `mousedown`
+    2. `mousemove`
+    3. ...
+    n-1. `mousemove`
+    n. `mouseup`
+
+Here is an example of `mouseover` and `mouseout`: a timer starts as long as the mouse hovers over an element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 4</title>
+        <script>
+          window.onload = function() {
+            document.getElementById("b1").onmouseover = mouseover;
+            document.getElementById("b1").onmouseout = mouseout;
+
+            document.getElementById("b10").onmouseover = mouseover;
+            document.getElementById("b10").onmouseout = mouseout;
+
+            document.getElementById("b100").onmouseover = mouseover;
+            document.getElementById("b100").onmouseout = mouseout;
+          };
+
+          var intervals = {};
+
+          function updateNum(button){
+            var num = parseInt(button.innerHTML);
+            num = num + 1;
+            button.innerHTML = num;
+          }
+
+          function mouseover() {
+            var incr = parseInt(this.id.substr(1));
+            intervals[this.id] = setInterval(updateNum, 1000/incr, this);
+          };
+
+          function mouseout()
+          {
+            clearInterval(intervals[this.id]);
+            this.innerHTML = "0";
+          }
+        </script>
+    </head>
+
+    <body>
+      <button style="width:500px" id="b1">0</button>
+      <button style="width:500px" id="b10">0</button>
+      <button style="width:500px" id="b100">0</button>
+    </body>
+</html>
+```
+
+Mouse events can be tricky, the more complex ones are not consistently implemented across browsers. 
+
+#### Example 5: a crowdsourcing interface
+
+Here is another event that can be useful, especially for text-heavy interfaces: `onselect`. We here have an interface with a read-only text that the user can select passages in. If enough passages have been selected, the user can submit the answers.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 5</title>
+        <script>
+          window.onload = function() {
+            document.getElementById("ta").onselect = updateNuggets;
+          };
+
+          function updateNuggets() {
+            var n1 = document.getElementById('n1').value;
+            var n2 = document.getElementById('n2').value;
+            var n3 = document.getElementById('n3').value;
+
+            var selected = null;
+            var myTextArea = document.getElementById('ta');
+            if (myTextArea.selectionStart != undefined)
+            {
+              var p1 = myTextArea.selectionStart;
+              var p2 = myTextArea.selectionEnd;
+              selected = myTextArea.value.substring(p1, p2);
+            }
+
+            //if the selected phrase is already in a nugget, remove it
+            if(selected==n1) {document.getElementById('n1').value = "";}
+            else if(selected==n2){document.getElementById('n2').value = "";}
+            else if(selected==n3){document.getElementById('n3').value = "";}
+            //if the first nugget is empty, add it
+            else if(n1.length==0){document.getElementById('n1').value = selected;}
+            //if the second nugget is empty, add it
+            else if(n2.length==0){document.getElementById('n2').value = selected;}
+            //third nugget is treated differently, as now the button becomes unhidden
+            else if(n3.length==0)
+            {
+              document.getElementById('n3').value = selected;
+              document.getElementById('b').hidden = false;
+            }
+            else {
+              alert('You have selected three information nuggets. Either unselect one or manually empty text box.');
+            }
+          }
+        </script>
+    </head>
+
+    <body>
+      <form>
+          <p><em>Task: Write or mark the 3 most important information nuggets</em>
+            <br>
+            
+            <textarea id="ta" cols="50" rows="5" readonly>"Hobey Baker (1892-1918) was an American amateur athlete of the early twentieth century, widely regarded by his contemporaries as one of the best athletes of his time."
+            </textarea>
+            <br>
+            
+            <label>Nugget 1: <input type="text" id="n1" autocomplete="off"></label>
+            <br>
+            <label>Nugget 2: <input type="text" id="n2" autocomplete="off"></label><br>
+            <label>Nugget 3: <input type="text" id="n3" autocomplete="off"></label><br>
+            <button hidden="hidden" id="b">Submit Answers</button><br>
+        </form>
+    </body>
+</html>
+```
+
+#### Example 6: a typing game
+
+The last example is a typing game: given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keypress` event type. We start the timer with `setInterval` (incrementing once per second), which returns a handle that we can later pass to `clearInterval` to stop the associated callback from executing (thus stopping the clock).
+
+In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those line on the `.style` properties. 
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 5</title>
+        <script>
+          window.onload = function() {
+            document.getElementById("typed").onkeypress = checkTextAtKeyPress;
+          };
+
+          var currentPos = 0;
+          var givenText = "given";
+          var typedText = "typed";
+          var timerLog = "timer";
+          var intervals = {};
+
+          //e refers to the event (we need it to extradt the char typed)
+          function checkTextAtKeyPress(e) {
+
+            var textToType = document.getElementById(givenText).value;
+
+            //we reached the end, do nothing
+            if(currentPos >= textToType.length) {return;}
+
+            var nextChar = textToType.charAt(currentPos);
+
+            var keyPressed = String.fromCharCode(e.which);
+            console.log("Key pressed: "+keyPressed+", charCode: "+e.which);
+
+            //correct key was pressed
+            if(nextChar==keyPressed) {
+              //CSS is used here to "style" the text box
+              document.getElementById(typedText).style.backgroundColor="rgb(255,255,255)";
+              document.getElementById(typedText).value = textToType.substring(0,currentPos+1);
+
+              currentPos++;
+
+              //first time key was pressed, start counter
+              if(currentPos==1) {
+                intervals[this.id]=setInterval(function(){ 
+                    var t = parseInt(document.getElementById(timerLog).innerHTML);
+                    t = t + 1;
+                    document.getElementById(timerLog).innerHTML = t +" seconds";
+                ;}, 1000);
+
+              }
+
+              //we reached the end
+              if(currentPos==textToType.length) {
+                clearInterval(intervals[this.id]);
+                //CSS is used here to "style" the text box
+                document.getElementById(timerLog).style.color="orange";
+              }
+            }
+            //incorrect key
+            else {
+              //CSS is used here to "style" the text box
+              document.getElementById(typedText).style.backgroundColor="rgb(255,100,100)";
+            }
+          }
+        </script>
+    </head>
+
+    <body>
+      <form id="f">
+          <p>
+            <em>Task: Type out the following text correctly:</em>
+            <br>
+          
+            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">H. Baker was an American amateur athlete of the 20th century.</textarea>
+            <br>
+
+            <textarea id="typed" cols="50" rows="5" readonly="" autocomplete="off"></textarea>
+            <br>          
+            
+            <span id="timer">0 seconds</span>
+          </p>
+      </form>
+    </body>
+</html>
+```
+
+To conclude this lecture, here is an overview of important keyboard and text events:
+
+| Event    | Description                                                                           |
+|----------|---------------------------------------------------------------------------------------|
+| blur     | element loses keyboard focus                                                          |
+| focus    | element gains keyboard focus                                                          |
+| keydown  |   user presses key while element has keyboard focus                                   |
+| keypress |  user presses and releases key while element has keyboard focus (a problematic event) |
+| keyup    |  user releases key while element has keyboard focus                                   |
+| select   | user selects text in an element                                                       |
+
+
 
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
+
+1. After executing the JavaScript code snippet below in the browser, what is the output on the console?
+
+```javascript
+var f = ( function myfunc1(a){
+    var c = 2 * a;
+    return function myfunc2(b){
+        return 3 * c;
+    }
+})(5);
+
+console.log(f(4));
+```
+
+2. After executing the JavaScript code snippet below in the browser, how many of `a`, `b`, `c` and `d` have global scope (they become a property of the `window` object)? 
+
+```javascript
+var a = 5;
+b = 10;
+
+function outer(a){
+    c = 0;
+    d = 1;
+
+    function inner(d){
+        c = 12;
+    }
+    inner(5);
+    var c, d;
+}
+outer(6);
+```
+
+3. After executing the JavaScript code snippet below in the browser, what is the output on the console?
+
+```javascript
+function Habit(habit){
+    this.habit = habit;
+}
+
+function WeeklyHabit(habit, timesPerWeek){
+    Habit.call(this, habit);
+    this.timesPerWeek = timesPerWeek;
+}
+
+WeeklyHabit.prototype = Object.create( Habit.prototype );
+WeeklyHabit.prototype.constructor = WeeklyHabit;
+
+Habit.prototype.updateFreq = function(f){ this.freq = f; }
+WeeklyHabit.prototype.updateFreq = function(f){ this.freq = f + " times"; }
+
+var h1 = new Habit("Go swimming");
+var h2 = new WeeklyHabit("Eat healthily", "5");
+
+h1.updateFreq(1);
+h2.updateFreq(2);
+console.log(h1.freq);
+console.log(h2.freq);
+
+```
+
+4. What is the output on the Web console when running the following piece of JavaScript in the browser?
+
+```javascript
+function A(x){
+    var y = x * 2;
+    return function(y){
+        var z = y * 3;
+        return function(z){
+            return x + y + z;
+        }
+    }
+}
+console.log( A(3)(4)(5) );
+```
+
+5. Which of the following statements about the basic constructor in JavaScript is **wrong**?
+- Objects share functions.
+- All members are public.
+- An object constructor looks like a normal function.
+- Prexing a call to a function with the keyword `new` indicates to the JavaScript runtime that the function should behave like a constructor.
+
+6. What is the output on the Web console when running the following piece of JavaScript in the browser?
+
+```javascript
+var todoModule = ( function() {
+    var numTodos = 0;
+
+    return {
+        incrNumTodos: function(){
+            numTodos++;
+        },
+        decrNumTodos: function(){
+            if(numTodos>0){
+                numTodos--;
+            }
+        },
+        printTodos: function(){
+            console.log(numTodos);
+        }
+    };
+});
+
+for(let i=0; i<5; i++){
+    todoModule.incrNumTodos();
+}
+todoModule.printTodos();
+```
+
+7. After executing the JavaScript code snippet below in the browser what will be the console output?
+
+```javascript
+var message = "Toy kitchen";
+var price = "89.90";
+
+var deal1 = {
+    message: "Peppa Pig",
+    details: {
+        price: "29.95",
+        getPrice: function(){
+            console.log(this.price);
+        }
+    }
+}
+
+var a = deal1.details.getPrice;
+a();
+```
+
+8. After executing the JavaScript code snippet below in the browser what will be the console output?
+
+```javascript
+var message = "Toy kitchen";
+var price = "89.90";
+
+var deal1 = {
+    message: "Peppa Pig",
+    details: {
+        price: "29.95",
+        getPrice: function(){
+            console.log(this.price);
+        }
+    }
+}
+
+deal1.details.getPrice();
+```
+
+9. In a prototype version of one of our applications, we want to implement functionality in JavaScript that retrieves details of local deals from the server when a user clicks on a deal. The code below contains a first implementation of this functionality. What is the main issue of this code?
+- Reloading the Web page *n* times will lead to *n* listeners being attached to the same list item.
+- No event listeners will be attached to click events on list items.
+- The JavaScript code will be executed before teh DOM tree is loaded, the event listeners will be attached to the `window` object instead of the list items.
+- The method `document.getElementsByTagName()` does not exist leading to an error in the script.
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Local Deals Finder</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            var main = function(){
+                var list = document.getElementsByTagName("li");
+                for(var i = 0; i<list.length; i++){
+                    document.getElementsByTagName("li")[i].onclick = showDetails();
+                }
+            }
+            $(document).ready(main);
+
+            function showDetails(){
+                /* implementation of show details functionality */
+                console.log("Showing some details ...");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="deals">
+            <ul>
+                <li id="i1" data-id="122" data-latitude="12.43" data-longitude="44.31" data-price="29.90">Toy car</li>
+                <li id="i2" data-id="342" data-latitude="13.01" data-longitude="43.21" data-price="14.55">Perfume</li>
+            </ul>
+        </div>
+    </body>
+</html>
+```
