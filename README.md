@@ -19,6 +19,7 @@ The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 - [REQ] [node.js](https://nodejs.org/en/)
 - [REQ] Two modern Web browsers such as Chrome, Firefox, Edge, ...
+- [REC] Browser developer tools ... those come built into all modern browsers; be sure to make yourself familiar with them. For Firefox, you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
 
 If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
 

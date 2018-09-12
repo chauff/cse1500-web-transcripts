@@ -38,7 +38,7 @@ The major benefit of Electron should be clear: instead of writing three separate
 
 ## Web design basics
 
-Web design is not trivial. However, a few basic rules go a long way. Most of these principles may seem obvious, but are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much wworth a read. In the following subsections we go over a number of Krug's rules.
+Web design is not trivial. However, a few basic rules go a long way. Most of these principles may seem obvious, but are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much worth a read. In the following subsections we go over a number of Krug's rules.
 
 ### Rule: Don't make me think
 
@@ -60,13 +60,13 @@ Here, it is not self-evident for the user how to act to achieve her goals and a 
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
-In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission it is to **archive** the Web. The Wayback Machine of course does not archive the entire Web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
+In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the Web. The Wayback Machine of course does not archive the entire Web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
 Similarly, there are established style standards of how to format a link (in the early years of the Web blue underlined text was synonymous with a link and thus we are now stuck with the saying "10 blue links" as a synonym for Web search results). 
 
-Users should **not get lost within a web site**; provide users with information on where they are on how they arrived at that point. Leave so-called **breadcrumbs** as ebay does:
+Users should **not get lost within a web site**; provide users with information on where they are and on how they arrived at that point. Leave so-called **breadcrumbs** as ebay does:
 
 ![ebay web site](img/L2-ebay2.png)
 
@@ -115,7 +115,7 @@ Instead, the average user:
 - quickly scans a Web page (not even reading it);
 - decides within seconds whether or not a site is worth their attention;
 - clicks on the first link they find;
-- depends a lot on the browser's back button (and not all Web applications cannot deal with it);
+- depends a lot on the browser's back button (and not all Web applications can deal with it);
 - does not read instructions.
 
 Relevant scientific papers: [1](https://dl.acm.org/citation.cfm?id=1835513), [2](https://dl.acm.org/citation.cfm?id=2835833)
@@ -165,7 +165,7 @@ The home page (or entry page) of a web application should answer a number of ess
 - What **is** this?
 - What can I **do** here?
 - Why **should** I be here?
-- Whjat do they **have** here?
+- What do they **have** here?
 
 Surprisingly many home pages are not able to answer these questions. Take for example the home page of [coffeecompany.nl](https://web.archive.org/web/20180810044705/http://coffeecompany.nl/) - it is not obvious that the core business here is a chain of small cafes. Another serial offender are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
@@ -196,7 +196,7 @@ If you have completed the required readings, you should be able to fill in the `
 HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich Web content**: 
 - **Core HTML5**: mark up content;
 - **CSS**: control the appearance of marked-up content;
-- client-side **JavaScript**: manipulate the contents of HTML documents and respont do user interactions.
+- client-side **JavaScript**: manipulate the contents of HTML documents and respond to user interactions.
 
 Modern Web application development requires knowledge of all three technologies. *In practice, it also requires a whole set of additional frameworks and technologies to go from prototype code to production code, such as build tools, transpilers, code coverage tools and so on. Even "just" for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70). We will introduce a few of those things throughout this course.*
 
@@ -247,7 +247,7 @@ Consensus building takes time. HTML5 for instance was a candidate recommendation
 
 As of August 2018, [HTML5.3](https://www.w3.org/TR/html53/) has a *Working Draft* status; if you look at the standard text you will find it to be very elaborate and precise, sufficiently so that any browser vendor can take the text and implement the features described in it without ambiguity. Converting the HTML to a single page PDF file leads to a document of more than 1000 pages!
 
-Note, that in rare cases features added to the Web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime examples of this: it was developed as technology to enable offline Web applications in a simple manner, but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favour of another set of technolgoies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is still supported by all major browsers today, as shown here ([source](https://caniuse.com/#search=appcache)):
+Note, that in rare cases features added to the Web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline Web applications in a simple manner, but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favour of another set of technolgoies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is still supported by all major browsers today, as shown here ([source](https://caniuse.com/#search=appcache)):
 
 ![AppCache](img/L2-appcache.png)
 
