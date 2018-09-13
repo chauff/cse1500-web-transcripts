@@ -37,9 +37,9 @@ Similar to HTML5, after a number of years with hardly any development, we are cu
 In this course we do include very few **ES6** features, as we have only a few lectures to cover the material. If you want to dive into the depth of JavaScript, check out the free [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
 
 In this course we cover *plain JavaScript*, but it is also worthwhile to know that [MANY](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
-The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a differences, especially when it comes to debugging.
+The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
-Here is one example of what TypeScript (the 11th most popular language on GitHub as of [2017](https://octoverse.github.com/)) offers: JavaScript is a **dynamic languages**, this means that you have no way of enforcing a certain type on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you know what you want the type to be (for instance function parameters), so it is good to give this knowledge to the compiler to avoid errors. TypeScript (as the name suggests, TypeScript enables static type checking) allows you to do that, so you can catch errors early on!
+Here is one example of what TypeScript (the 11th most popular language on GitHub as of [2017](https://octoverse.github.com/)) offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain type on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you know what you want the type to be (for instance function parameters), so it is good to give this knowledge to the compiler to avoid errors. TypeScript (as the name suggests, TypeScript enables static type checking) allows you to do that, so you can catch errors early on!
 
 ## Scripting overview
 
@@ -98,9 +98,9 @@ The Web course book focuses on what JavaScript to place where, it does not empha
 
 The object-oriented programming paradigm is based on a set of cooperating objects (each one able to send/receive "messages" and process data) instead of a collections of functions or a set of commands. The goal of OOP is to assign every object a distinct role, in order to improve code maintainability.
 
-In JavaScript, **functions are also objects**. Apart from functions, JavaScript also comes with a number of built-in objects: Strings, arrays and objects specific to the fact that JavaScript was developed to add interaction to HTML. One example is the `document` object, which only makes sense in the context of an HTML page. Note, that the `document` object is not part of core JavaScript (the language is defined independent of the browser context), however when we discuss client-side scripting we do mean JavaScript in the browser. The browser is the host application in this case and provides the `document` object.
+In JavaScript, **functions are also objects**. Apart from functions, JavaScript also comes with a number of built-in objects: Strings, arrays and objects specific to the fact that JavaScript was developed to add interaction to HTML. One example is the `document` object, which only makes sense in the context of an HTML page. Note, that the `document` object is not part of core JavaScript (the language is defined independently of the browser context), however when we discuss client-side scripting we do mean JavaScript in the browser. The browser is the host application in this case and provides the `document` object.
 
-In JavaScript objects can be created in different ways. This is very much unlike Java where where there is essentially only one: you have a class, write a constructor and then use  the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at other developers' code).
+JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use  the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at other developers' code).
 
 ### Object creation with `new`
 
@@ -166,11 +166,11 @@ The function `console.table` is an alternative for `console.log`, especially for
 Back to object literals ... what happens if we need 1000 objects of this kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
 
 
-### Design pattnern I: Basic constructor
+### Design pattern I: Basic constructor
 
 First, let's quickly recap what classes in Java offer us:
 - we can encapsulate private members, i.e. members of the class that are not accessible externally;
-- we define constructors that define how to initialise a new object;
+- we define constructors that define how to initialize a new object;
 - we define methods (public, protected, private). 
 
 Here is a **Java** example:
@@ -205,7 +205,7 @@ function Game( id){
 }
 ```
 
-We use functions as **constructors** and rely on `this`. We rely on the keyword `new` to initialize a new object similar to what you hae already seen before:
+We use functions as **constructors** and rely on `this`. We rely on the keyword `new` to initialize a new object similar to what you have already seen before:
 
 ```javascript
 var g1 = new Game(1);
@@ -499,7 +499,7 @@ $(document).ready(function(){
 ```
 This code does exactly what we expect (hiding a button once we click it)). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
 
-Luckily, `jQuery` and other libraries have very vew variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. 
+Luckily, `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. 
 
 How is that achieved? Through the module pattern, which we finally come to now. It has the following goals:
 - **Do not declare any global variables** or functions unless required.
@@ -534,7 +534,7 @@ console.log( gameStatModule.getNumGamesStarted() ); //prints out "1"
 console.log( gameStatModule.gamesStarted ); //prints out "undefined"
 ```
 
-In this code snippet, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked (also known as [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) ). An IFFE itself is also a design pattnern, it looks as follows:
+In this code snippet, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked (also known as [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) ). An IIFE itself is also a design pattern, it looks as follows:
 
 ```javascript
 (function () {
@@ -626,9 +626,9 @@ The course book walks you through several examples of making a responsive UI con
 1. Pick a control, e.g. a `button`.
 2. Pick an event, e.g. a `click`.
 3. Write a JavaScript function: what should happen when the event occurs, e.g. an `alert` message may appear.
-4. Attach the function to the even **on** the control.
+4. Attach the function to the event **on** the control.
 
-If you want to examine how existing Web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML pane allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
+If you want to examine how existing Web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML panel allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
 
 ![Exploring events](img/L3-event-listeners.png)
 
@@ -649,7 +649,7 @@ The DOM is our entry point to interactive Web applications. It allows use to:
     - Change the background color of a Web application
 
 In the remainder of this lecture, you will see a number of simple event-based examples that add an interactive element to a web page. 
-These example are simple and self-contained. This means that all necessary code is contained within a single code snippet (even though by now you are aware that in a real coding project there should be a strict separation between HTML, JavaScript and CSS, the latter will be introduced in a later lecture).
+These examples are simple and self-contained. This means that all necessary code is contained within a single code snippet (even though by now you are aware that in a real coding project there should be a strict separation between HTML, JavaScript and CSS, the latter will be introduced in a later lecture).
 
 #### Example 1: document.getElementById
 
