@@ -420,6 +420,8 @@ To finish off, here is a quick summary of the prototype-based constructor:
 
 ### Design pattern 3:  Module
 
+#### Scoping
+
 In order to tackle this last remaining issue above, we need to talk about **scoping** (i.e. the context in which values and expressions are visible) in JavaScript. In contrast to other languages, JavaScript has very **limited** scoping:
 - `var` declared within a function: **local** scope;
 - `var` declared outside of a function: **global** scope;
@@ -501,10 +503,77 @@ This code does exactly what we expect (hiding a button once we click it)). You s
 
 Luckily, `jQuery` and other libraries have very vew variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. 
 
-How is that achieved? Through the module pattern, which we finally come to now. It has the following goals:
+How is that achieved? Through the module pattern, which we come to very soon. It has the following goals:
 - **Do not declare any global variables** or functions unless required.
 - Emulate **private/public** membership.
 - Expose only the **necessary** members to the public.
+
+
+#### Hoisting
+
+Hoisting is best explained with a concrete example. Consider this JavaScript code snippet. What kind of console output do you expect after executing this snippet?
+
+```javascript
+var x = six();
+
+//function declaration
+function six(){
+    return 6;
+}
+
+var y = seven();
+
+//function expression
+var seven = function(){
+    return 7;
+}
+
+console.log(x+" - "+y);
+```
+In both cases we seem to be executing a function before it is defined. You may either believe that the JavaScript runtime does not care about this and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function` and abort. Unfortunately, neither of these two options are true (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works, `var y = seven()`;` does not. 
+
+The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. 
+
+In our example, the JavaScript runtime *hoists* the declaration of `six` is processed before the remaining code is executed.
+
+Once more:
+- Declarations are hoisted to the top.
+- Expressions are not hoisted.
+
+This is not only the case for functions, also variable declarations are hoisted. Consider this example:
+
+```javascript
+function f(){
+    x = 5;
+    y = 3;
+    console.log("writing from an IIFE");
+    var x;
+};
+f();
+console.log(x);
+console.log(y);
+```
+Variables `x` and `y` have global scope as they are not prefixed by `var` or `let` or `const`. And so the console output will be `5` and `3`.
+
+But what happens in this slightly changed piece of code?
+```javascript
+function f(){
+    a = 5;
+    b = 3;
+    console.log("writing from an IIFE");
+    var a, b;
+};
+f();
+console.log(a);
+console.log(b);
+```
+Now we will end up with a `ReferenceError: a is not defined` as the `var a` statement at the end of function `f` is **hoisted** to the top of the function - as `var a` is a declaration.
+
+
+
+#### Finally ...
+
+Ok, after this interlude of scoping and hoisting, let's finally come to our module pattern.
 
 Here is how the **module pattern** looks like:
 
