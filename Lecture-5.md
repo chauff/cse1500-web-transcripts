@@ -271,6 +271,7 @@ An example:
 
 Here you can see that it is possible to combine pseudo-classes, in this case we use `button:enabled:active` and define a style that an enabled and active button should have. Once the button is disabled, its style will not change anymore, no matter the mouse movements.
 
+[AT SLIDE 25]
 
 
 ## Self-check
