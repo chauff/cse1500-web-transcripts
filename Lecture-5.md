@@ -14,12 +14,12 @@
 
 This tweet pretty much sums up CSS - some things are incredible easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish, will cost you a lot of time. CSS - or **Cascading Style Sheets** - is a very complex language as you will find out in a moment.
 
-
 ## A bit of context
 
 In essence, CSS describes how elements in the DOM should be rendered.
 
 As other Web technologies, CSS can be considered as a victim of the browser wars - which led to years of inactivity in the standards' development:
+
 - **CSS 1** became a W3C recommendation in 1996. It had support for fonts, colors, alignment, margins ids and classes.
 - Two years later, **CCS 2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS 3. However, the browser support for CSS 2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS 2.1.
 - In 2011, **CSS 2.1** became a W3C recommendation whcih fixed errors and added support for features already widely implemented in major browsers (standardization of features that the browser vendors by themselves had added without much coordination).
@@ -28,6 +28,7 @@ As other Web technologies, CSS can be considered as a victim of the browser wars
 Any CSS module developed after CSS 2.1 can be considered CSS 3. There will not be a monolithic CSS 4, instead the different modules of the CSS specification will each continue to develop at their own pace. 
 
 Today, it is not possible to make use of the latest CSS features and to expect them to work across all major browsers. Instead, which features to use should be based on
+
 - the intended user base (will tell us something about the most popular browsers in use);
 - the mode of usage (smartphone vs. touch screen vs ...);
 - the type of Web application (are 3D animations necessary);
@@ -40,6 +41,7 @@ When building Web applications that should work across a range of browsers (old 
 If you have already read Chapter 3 of the course book, you should be able to answer the following question.
 
 What is the result of applying the CSS below?
+
 - The text within the paragraph `<p class="last">...</p>` will appear green.
 - The text within `<span>...</span>` appearing right after a paragraph `<p>...</p>` will appear grey.
 - The text within `<span>...</span>` appearing within a paragraph `<p>...</p>` will appear grey.
@@ -64,18 +66,18 @@ p#last {
 ```
 
 You have read about the three types of style sheets:
+
 - the browser's style sheet;
 - the author's style sheet;
 - the user's style sheet;
+
 with the user's style sheet overriding the other two and the author's style sheet overriding the browser's.
 
 Style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
 
-You know that in the code snippet above, `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**.
+You know that in the code snippet above, `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to style both.
 
 Lastly, you read about `!important` which overrides all other declarations.
-
-
 
 ## Pseudo-elements and pseudo-classes
 
@@ -95,7 +97,7 @@ selector:pseudo-class {
 - `nth-child(X)` is any element that is the Xth **child element** of its parent;
 - `nth-of-type(X)` is any element that is the Xth **sibling** of its type.
 
-In both cases, `X` can be an int or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing.	
+In both cases, `X` can be an int or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing.
 
 In this example both pseudo-classes are showcased:
 
@@ -179,6 +181,7 @@ In fact, since 2015/2016 (yes! it took that long), [CSS variables](https://devel
 In this example, we want to create a number of so-called global CSS variables, i.e. they should be available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality.
 
 In the beginning we mentioned as one of the document external factors mouse movements that we can make our elements react to. Two popular pseudo-classes in this category are `:hover` and `:active`:
+
 - `:hover` is a selector that becomes active when a mouseover on the element occurs
 - `:active` is a selector that becomes active when the element is currently *being active* (usually that means clicked)
 
@@ -219,6 +222,7 @@ In the beginning we mentioned as one of the document external factors mouse move
 While this may seem not very impressive, `:hover` can also easily employed to create image galleries (preview vs. full image) as well as pure CSS dropdown menus (hide the menu items apart from the "header" and only reveal them when the mouse hovers over the header).
 
 Particularly important for games may be the pseudo-classes `:enabled` and `:disabled`; imagine a game item that is only available sometimes (in our demo game for instance once a letter has been clicked once it is no longer possible to click/select it again). And of course this information should be visually conveyed to the user:
+
 - `:enabled` is an element that can be clicked or selected
 - `:disabled` is an element that cannot be clicked or selected
 
@@ -269,9 +273,104 @@ An example:
 </html>
 ```
 
-Here you can see that it is possible to combine pseudo-classes, in this case we use `button:enabled:active` and define a style that an enabled and active button should have. Once the button is disabled, its style will not change anymore, no matter the mouse movements.
+Here you can see that it is possible to combine pseudo-classes, in this case we use `button:enabled:active` and define a style that an enabled **and** active button should have. Once the button is disabled, its style will not change anymore, no matter the mouse movements.
 
-[AT SLIDE 25]
+`:not(X)` is a pseudo-class that matches all elements that are not represented by selector X. Let's look at this example:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			main :not(.todo){
+				color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h2>Todos</h2>
+			<p class="firsttodo">Today's todos</p>
+			<p class="todo">Tomorrow's todos</p>
+			<p class="todo">Saturday's todos</p>
+			<p>Sunday's todos</p>
+		</main>
+	</body>
+</html>
+```
+
+Important to know here is, that the selector `e1 e2` selects all `<e2>` elements inside `<e1>` elements. The `:not` selector is a short form for `*:not` with `*` being the universal selector (selecting all elements). Altogether our CSS rule says that any element within `<main>` that does not have class attribute `.todo` is assigned an orange font color.
+
+`e1 e2` is not the only possible element combination as selector. Most commonly used are:
+
+| Selector | Despcription                                            |
+|----------|---------------------------------------------------------|
+| e1       | Selects all `<e1>` elements                               |
+| e1 e2    | Selects all `<e2>` elements within `<e1>`                   |
+| e1,e2    | Selects all `<e1>` elements and all `<e2>` elements         |
+| e1>e2    | Selects all `<e2>` elements that have `<e1>` as parent      |
+| e1+e2    | Selects all `<e2>` elements that follow `<e1>` immmediately |
+
+An example should make the differences between them clear:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+
+    		div p {
+				background-color:black;
+				color: white;
+			}
+			
+			main, footer {
+				background-color:yellow;
+			}
+
+			div > p {
+				font-weight: bold;
+			}
+
+			div + p {
+				color: red;
+			}
+
+		</style>
+	</head>
+	<body>
+		<main>
+			<div class="today">
+				<div class="urgent">
+					<p>Shopping</p>
+					<p>Sports</p>
+				</div>
+				<p>Go to class</p>
+			</div>
+			<div class="tomorrow">
+				<p>Go to class</p>
+
+				<div class="urgent">
+					<p>Organising the holidays</p>
+				</div>
+			</div>
+		</main>
+		<footer>
+			CSS example 2018.
+		</footer>
+	</body>
+</html>
+```
+
+Note, that your browser's *style editor* does not only allow you to inspect the CSS rules, but also see which rules apply to what part of the page (when hovering over a rule). You can edit the rules on the fly as well, which makes it a very useful tool for debugging your CSS. Here is a screenshot from Firefox's style editor:
+
+![Firefox's style editor](img/L5-style-editor.png)
+
+Let's move on to two more pseudo-classes, that are particularly useful for the styling of HTML forms:
+
+p. 29
+
+
 
 
 ## Self-check
