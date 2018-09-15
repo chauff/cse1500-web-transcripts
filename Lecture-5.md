@@ -366,11 +366,179 @@ Note, that your browser's *style editor* does not only allow you to inspect the 
 
 ![Firefox's style editor](img/L5-style-editor.png)
 
-Let's move on to two more pseudo-classes, that are particularly useful for the styling of HTML forms:
+Let's move on to four more pseudo-classes, that are particularly useful for the styling of HTML forms: `:in-range` and `:out-of-range` as well as `:valid` and `:invalid`. The latter two can be employed for any `<input>` element, while `:in-range` and `:out-of-range` apply specifically to `<input type="number">`. Input elements are valid if their value adheres to the input type (a number for `type=number`, an email for [`type=email`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email), etc.) and potential additional limitations due to attribute settings (e.g. `min`, `max` and `maxlength`).
 
-p. 29
+Here is an example:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			input[type=text] {
+				border: 0px;
+				width: 150px;
+			}
+
+			input[type=number]{
+				width: 100px;
+			}
+
+			input:in-range {
+				background-color: rgba(0, 255, 0, 0.25);
+  				border: 2px solid green;
+			}
+
+			input:out-of-range {
+				background-color: rgba(255, 0, 0, 0.25);
+  				border: 2px solid red;
+			}
+
+			input:in-range + label::after {
+				content: "\2714";
+				color: green;
+			}
+
+			input:out-of-range + label::after {
+				content: " (invalid)";
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<input type="text" placeholder="add your todo" />
+			<input id="dl" type="number" min="1" max="30" placeholder="Days to deadline" />
+			<label for="deadline1"> </label>
+		</main>
+	</body>
+</html>
+```
+
+This example does not only show off these four pseudo-classes, but also a number of other CSS features:
+- **Attribute selectors** (e.g. `input[type=number]`) allow us to select specific types of `<input>` elements.
+- The [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) element can be associated with an `<input>` element when the latter's `id` attribute is the same as the `<label>`'s `for` attribute. This is particularly useful when labels are used as captions for a user interface elements: a click on the label text will then activate the interface element (e.g. a checkbox). Here, we make use of the label to signal a valid or invalid input.
+- We see here how to include **unicode characters**: when the deadline number is valid, we choose to display a checkmark. This checkmark could be an image, but here we chose to use a character, specifically unicode character [U+2714](http://graphemica.com/%E2%9C%94).
+- The pseudo-element `::after` makes a first appearance, together with the `content` property. We discuss those next.
+
+### Popular pseudo-elements
+
+A **pseudo-element** creates an abstractions about the document tree *beyond* those specified by the document language; it provides access to an element's sub-part.
+
+In order to distinguish pseudo-classes and pseudo-elements, the `::` notation was introduced in the specification, though browsers also accept the one-colon notation.
+
+So, what are abstractions that go beyond what is specified in the document language? Two popular examples are the `::first-letter` and the `::first-line` pseudo-elements; they do exactly what the names suggests, enabling you to style the first letter and line respectively without sticking a `<span>` around them:
 
 
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		p::first-line {
+			color: gray;
+			font-size: 125%;
+		}
+
+		p::first-letter {
+			font-size: 200%;
+		}
+		</style>
+	</head>
+	<body>
+		<p>
+			To be or not to be, that is the question -
+		</p>
+
+		<p>
+			Whether 'tis nobler in the mind to suffer <br>
+			The slings and arrows of outrageous fortune, <br>
+			Or to take arms against a sea of troubles, <br>
+			...
+		</p>
+	</body>
+</html>
+```
+The example also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale you font-size in relation to the initial size. This is especially helpful when you design Web applications for different device sizes - no additional "tuning" for different devices is required.
+
+Adding (cosmetic) content right before and after an element is achieved (not surprisingly) through:
+- `::after`
+- `::before`
+in combination with the `content` property.
+
+Here is one extreme example of this concept, where all document *content* is delegated to the stylesheet:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		cite::before {
+			content: "\201CTo be, or ";
+		}
+
+		cite::after {
+			content: "not to be ... \201D";
+		}
+		</style>
+	</head>
+	<body>
+		<cite></cite>
+	</body>
+</html>
+```
+
+This is a poor choice admittedly as [accessibility](https://www.w3.org/standards/webdesign/accessibility) is close to zero. The document for appears as content-less to a screen reader, a form of assistive technology that most commonly makes use of a text-to-speech engine to translate a HTML document into speech.
+
+Let's dive into the idea of storing data in CSS in the next section in more detail.
+
+## Data in CSS
+
+CSS does not only describe the style, it *can* carry data too. There are issues though:
+- Data is distributed across HTML and CSS files.
+- CSS is conventionally not used to store data.
+- Content is not part of the DOM (leading to the just described accessibility problem).
+
+Here is another example of storing data in CSS:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		p::after {
+			background-color: gold;
+			border: 1px solid;
+			font-size: 70%;
+			padding: 2px;
+			margin-left: 50px;
+		}
+
+		p#t1::after {
+			content: "due 10/12/2018";
+		}
+
+		p#t2::after {
+			content: "due 12/12/2018";
+		}
+
+		p#t3::after {
+			content: "due 13/12/2018";
+		}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h2>Todos</h2>
+			<p id="t1">Walk the dogs </p>
+			<p id="t2">Wash the fiat </p>
+			<p id="t3">House cleaning</p>
+		</main>
+	</body>
+</html>
+```
+
+A better way ... [p. 37]
 
 
 ## Self-check
