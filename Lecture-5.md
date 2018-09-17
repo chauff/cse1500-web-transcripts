@@ -1011,6 +1011,8 @@ So far, we have covered the basics of CSS but ignored - largely - the fact that 
 | `media screen` |  Suitable for screens.                    |
 | `media speech` | Suitable for speech synthesizers.         |
 
+Media queries are specified as so-called [at-rules](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule), that start with an `@` and instruct CSS how to behave. We will not only encounter at-rules for media queries, but also when discussing CSS animations.
+
 Here is a concrete example of how media queries enable a *responsive design*; use your browser's responsive design mode and *Print as PDF* feature to test the behaviour of the media queries:
 
 ```html
@@ -1083,7 +1085,7 @@ Here is a concrete example of how media queries enable a *responsive design*; us
 ```
 ## Animations and transitions
 
-In general, SSS styles (states) are defined by teh user, the rendering engine takes care of the transition between styles. A **rendering engine** (or browser engine, layout engine) is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will come across from time to time (especially when using CSS animations and transitions):
+In general, CSS styles (states) are defined by the user, the **rendering engine** takes care of the transition between styles. A rendering engine (also known as *browser engine* or *layout engine*) is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time (especially when using CSS animations and transitions):
 
 | Engine   | Browsers                                |
 |----------|-----------------------------------------|
@@ -1104,35 +1106,217 @@ In general, SSS styles (states) are defined by teh user, the rendering engine ta
 
 There are several advantages to using CSS-based instead of JavaScript-based animations:
 - CSS is relatively easy to use (no need to learn the intricate details of JavaScript).
-- The rendering engines are optimized for CSS-based animations.
+- The rendering engines are optimized for CSS-based animations; there is no need to optimize your JavaScript code.
 - CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css animation).
 
-slide 65
+Here is a first animation example, adapted from [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq):
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+        <!-- Loading a specific font: https://fonts.google.com/specimen/Monoton -->
+		<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+
+		<style>
+
+			body{
+			  background: black;
+			}
+
+			.neon{
+			  font-family: 'Monoton', cursive; /* referencing the loaded font */
+			  font-size: 150px;
+			  color: #00A6D6;
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  transform: translate(-50%, -50%);
+			  font-weight: 400;
+			  letter-spacing: 10px;
+			  text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A;
+			}
+
+            /*
+             * Instead of linear, also try out `ease-in`, `ease-out`, `steps(10)`.
+             */
+			.flicker-slow{
+			  animation: flicker 3s linear infinite;
+			}
+
+			.flicker-fast{
+			  animation: flicker 1s linear infinite;
+            }
+            
+            /*
+             * The above short-hand can be replaced by the
+             * following animation properties:
+             */
+            /*
+            .flicker-slow{
+			  animation-name: flicker;
+			  animation-duration: 3s;
+			  animation-timing-function: linear;
+			  animation-iteration-count: infinite;
+			}
+
+			.flicker-fast{
+			  animation-name: flicker;
+			  animation-duration: 1s;
+			  animation-timing-function: linear;
+			  animation-iteration-count: infinite;
+            }
+            */
+
+			@keyframes flicker {
+				0%, 30%, 33%, 55%, 100% {
+			    	opacity: .99;
+				}
+
+				31%, 50%, 56% {
+					opacity: 0.3;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="neon">
+			TU <span class="flicker-slow">D</span>E<span class="flicker-fast">L</span><span class="flicker-slow">F</span>T
+		</h1>
+	</body>
+</html>
+```
+
+The example contains a number of interesting points:
+- It is easy to load additional fonts. A popular free font service is [Google Fonts](https://fonts.google.com/); more information on how to use it is available from [MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts#Using_an_online_font_service). 
+- The CSS property [`text-shadow`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow) adds - as the name suggests - shadow to text. Importantly, a list of shadows can be added in a comma-separated list which are applied front-to-back (the first shadow is on top). Shadows can be defined in a number of ways, we here stick to a single one: `offset-x offset-y blur-radius color`.
+- The [`animation`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation) property is a short-hand property that combines a number of `animation-*` properties in one line. Specifically in our example `animation: flicker 3s linear infinite` refers to the keyframes (`flicker` - the `animation-name`), the duration of one animation cycle (3 seconds - the `animation-duration`), the `animation-timing-function` (`linear` means that the animation moves from start to end in a constant rate) and the `animation-iteration-count` (here: `infinite`, i.e. the animation never stops). We defined here two types of flickers: a slow flicker (3 seconds to complete a cycle) and a fast flicker (1 second to complete the cycle). Different letters of our `TU Delft` string are assigned to differnt "flicker classes".
+- The [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) control the intermediate steps in a CSS animation. In order to achieve flickering we simply change change the opacity of the text string. In one animation cycle, we repeatedly move from an opacity of `.99` to `.3` and back. Specifically, we define 8 waypoints of our animation (with either opacity of `.99` or `.3`): `0%, 30%, 31%, 33%, 50%, 55%, 56%, 100%`. The rendering engine is then responsible to turn this code into an actual animation that resembles flickering.
+
+To summarize, for us the most important animation properties are the following:
+
+| Property                  | Despcription                                                                                                                       |
+|---------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| `animation-iteration-count` | Number of times an animation is executed (default: 1);  the value is either a positive number or `infinite`.                         |
+| `animation-direction`       | By default the animation restarts at the starting keyframe;  if set to `alternate` the animation direction changes every  iteration. |
+| `animation-delay`           | Number of seconds (s) or milliseconds (ms) until the animation  starts (default 0s).                                               |
+| `animation-name`            | Identifies the `@keyframes`.                                                                                                         |
+| `animation-duration`        | The duration of a single animation cycle in seconds (s) or milliseconds (ms).                                                      |
+| `animation-timing-function` | Specifies how a CSS animation progresses between waypoints (common  choices are `linear`, `ease-in`, `ease-out`, `steps(N)`).              |
+
+
+Let's look at a second example, which shows a slightly different way to define keyframe waypoints: instead of `0%` the start state can also be defined with `from`, while the end state (`100%`) can be defined with `to` (and these two can also be mixed with other waypoints such as `50%`):
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body {
+				background-color: black;
+				width: 900px;
+				margin: 100px auto;
+			}
+
+			.box {
+				width: auto;
+				height: 100px;
+				background-color: #00a6d6;
+				margin: 0 auto;
+				float: left;
+				font-size: 100px;
+				padding: 20px;
+				color: white;
+				text-shadow: 3px 3px 2px black;
+			}
+
+			@keyframes move {
+			  from {
+			  	transform: translate(0px, 1000px)
+			  }
+
+			  to   {
+			  	transform: translate(0px, 0px)
+			  }
+			}
+
+			#box1, #box7 {
+				animation: move 1s;
+			}
+
+			#box2, #box8 {
+				animation: move 4s;
+			}
+
+			#box3, #box6 {
+				animation: move 2s;
+			}
+
+			#box4, #box5 {
+				animation: move 3s;
+			}
+		</style>
+	</head>
+	<body>
+		  <div class="box" id="box1">T</div>
+		  <div class="box" id="box2">U</div>
+		  <div class="box" id="box3">&nbsp;&nbsp;</div>
+		  <div class="box" id="box4">D</div>
+		  <div class="box" id="box5">E</div>
+		  <div class="box" id="box6">L</div>
+		  <div class="box" id="box7">F</div>
+		  <div class="box" id="box8">T</div>
+	</body>
+</html>
+```
+The animation's start state is defined through the [`transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) property, which allows us to rotate, scale, skew and translate an element: at the start of the animation, the elements are moved ([`translate`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate)) from their original position to a position that is 1000 pixels "down". The end state of the animation moves the elements to position 0/0 again. While this may seem to move all letter elements to the same position, the `float:left` property ensures that the letters appear next to each other as intended.
+
+Finally, a word on **CSS transitions**. Transitions are animations with only two states (a start state and an end state). We actually have been using transitions all this time already, e.g. when defining `:hover`, `:active` - the transition in this case is from the original element style to the hover style. We can make use the [`transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) property to control the animation between the start and end state. The example below shows off what the impact of `transition` is: we define two boxes which, when being hovered over, change their rotation by 70 degrees. `#box1` has no `transition` property, which makes the style change instanteneous. On the other hand, `#box2` has the `transition` property which determines how fast in this case the transition for different properties takes place and we see a smooth animation when hovering.
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+			#box1 {
+				width: 100px;
+				height: 100px;
+				background-color: lightgreen;
+			}
+
+			#box1:hover {
+				transform: rotate(70deg);
+				background-color: black;
+			}
+
+			#box2 {
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+				transition: width 2s, height 2s, background-color 2s, transform 2s;
+			}
+
+			#box2:hover {
+				transform: rotate(70deg);
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box1">
+
+		</div>
+
+		<div id="box2">
+		</div>
+	</body>
+</html>
+```
+
+Once again, the line `transition: width 2s, height 2s, background-color 2s, transform 2s` is a short-hand for the `transition-property` (the CSS property to which a transition should be applied) and the `transition-duration` (the seconds or milliseconds until the transition is complete). As seen here, we can define multiple transition properties in one line.
 
 ## Browser-specific prefixes
 
-CSS is under active development, many features are not stable, are often used with browser vendor prefixes, and, might change in the future (as the specification changes).
-
-Recent move towards disabling experimental features in browsers by default; explicit reset by user required.
-But … vendor prefixes will not go away anytime soon (that would break a lot of pages on the Web).
-
-Advantage: exciting new features can be used early on
-
-Disadvantage: a new browser release might break the implemented CSS
-
-http://lists.w3.org/Archives/Public/public-webapps/2012OctDec/0731.html
-“For what it's worth, the current trend inside Mozilla is exactly what 
-you say: avoiding vendor prefixes by either turning things off before 
-shipping or shipping them unprefixed if they're stable enough.  At least 
-as a general policy; specific cases might merit exceptions.”
-
-At the same time, browsers need to implement these features so we can see how they work in practice. But consider the difficulties that would occur if two separate browsers implemented the same property but interpreted it inconsistently: The result of your code would appear differently—perhaps radically so—in each of the browsers. To prevent this from happening, each of the browser vendors began to prefix a short code to the beginning of experimental properties. Let’s imagine our much-desired monkeys property has been newly defined in a specification, and that all of the major browser vendors have decided to implement it to see how it works
-E {
-    -moz-monkeys: value; /* Firefox */
-    -ms-monkeys: value; /* Internet Explorer */
-    -webkit-monkeys: value; /* Chrome/Safari */
-}
-
+A last word on **vendor prefixes**. Older existing CSS code snippets will contain vendor prefixes. As an example, consider this [Stack Overflow question](https://stackoverflow.com/questions/20586143/css-animation-vs-transition). It contains CSS properties such as `-webkit-transition`, `-webkit-animation-duration` and so on. In the past, browser vendors decided to use [browser-specific prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) to include experimental CSS features in their rendering engines. This led to a lot of duplicate code, e.g.
 
 ```css
  main:-webkit-full-screen {
@@ -1148,20 +1332,7 @@ main:fullscreen {
 } /* W3C proposal */
 ```
 
--webkit? Google Chrome is not based on Webkit anymore …
-
-www.chromium.org/blink/developer-faq
-
-*Will we see a -chrome- vendor prefix now?*
-
-*We’ve seen how the proliferation of vendor prefixes has caused pain for developers and we don't want to exacerbate this. As of today, Chrome is adopting a policy on vendor prefixes, one that is similar to Mozilla's recently announced policy.*
-
-*In short: we won't use vendor prefixes for new features. Instead, we’ll expose a single setting (in about:flags) to enable experimental DOM/CSS features for you to see what's coming, play around, and provide feedback, much as we do today with the “Experimental WebKit Features”/"Enable experimental Web Platform features" flag. Only when we're ready to see these features ship to stable will they be enabled by default in the dev/canary channels.*
-
-*For legacy vendor-prefixed features, we will continue to use the -webkit- prefix because renaming all these prefixes to something else would cause developers unnecessary pain. We've started looking into real world usage of HTML5 and CSS3 features and hope to use data like this to better inform how we can responsibly deprecate prefixed properties and APIs. As for any non-standard features that we inherited (like -webkit-box-reflect), over time we hope to either help standardize or deprecate them on a case-by-case basis.*
-
-
-## Rendering engine
+ This approach has now been deprecated and although the vendor-specific prefixed properties still work (even Firefox recognizes `-webkit-*` properties today ...), the use of such properties should be avoided.
 
 
 ## Self-check
