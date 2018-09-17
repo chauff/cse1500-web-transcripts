@@ -160,17 +160,15 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [MDN Express tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website)
     - [The world runs on nodejs (tweet)](https://twitter.com/bitandbang/status/1037306199522328577)
   
-- Lecture 5 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements (`first-letter`,`after`,`before`) and pseudo-classes (`nth-child`,`nth-of-type`, `first-child`, `hover`, `enabled`, `not`, `in-range`), rendering engine, `content` attribute (data in CSS), CSS counters, browser-specific prefixes, element positioning (`float`, `position`, `display`), CSS coordinate system, CSS media queries, CSS animations and transitions
+- Lecture 5 2017/18 ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS 3, pseudo-elements, pseudo-classes, rendering engine, data/variables in CSS, element positioning (`float`, `position`, `display`), CSS media queries, CSS animations and transitions
   - Required readings:
     - Chapter 3 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
-    - Take a look at the ["pens"](https://codepen.io/pens/#) showcased at [CodePen.io](https://codepen.io/#); it is a good platform to see what is possible in front-end Web development
     - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS
   - Recommended readings
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of Web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
-    - To make sense of CSS positioning, take a look [here](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value) and [here](https://alistapart.com/article/css-positioning-101)
-    - Blog post on Mozilla's [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
-    - [Animate.css](https://daneden.github.io/animate.css/)
+    - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101)
+    - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
 
 - Lecture 6 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: Ajax in more detail, node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
