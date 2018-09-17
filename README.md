@@ -52,6 +52,16 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 - Week 2.9: DB topics
 - Week 2.10: _no lectures_ this week; final exam on February 1 (*the final exam only covers DB topics*)
 
+## Sample exams
+
+In the past years, the Web and database (DB) topics were interwoven (usually 1 lecture of Web and 1 lecture of DB topics per week) and thus the existing midterm and final exams also contain questions on both topics. To study for the midterm and/or final **this year**, make sure to look at the midterm and final exams from the past together to find examples of all Web/DB question types.
+
+- [Midterm 2015/16](https://chauff.github.io/documents/webdb-2017-18/midterm2.pdf)
+- [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf)
+- [Midterm 2016/17](https://chauff.github.io/documents/webdb-2017-18/midterm1.pdf)
+- [Final 2016/117](https://chauff.github.io/documents/webdb-2017-18/final1.pdf)
+
+
 ## Assignments
 
 There are six assignments in total.
