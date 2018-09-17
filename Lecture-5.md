@@ -538,7 +538,135 @@ Here is another example of storing data in CSS:
 </html>
 ```
 
-A better way ... [p. 37]
+Instead of storing data directly in CSS, a better way is to *make use of data stored in HTML elements*. This is achieved through so-called **data attributes**: attributes on any HTML element that start with `data-`. CSS can access those data attributes with the [`attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/attr) function: it retrieves the value of the selected element and data attribute.
+
+Rewriting the example above with `data-` attributes removes the data from CSS and reduces the amount of CSS rule duplication:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		p::after {
+			background-color: gold;
+			border: 1px solid;
+			font-size: 70%;
+			padding: 2px;
+			margin-left: 50px;
+		}
+
+		p::after {
+			content: "due " attr(data-due);
+		}
+
+		</style>
+	</head>
+	<body>
+		<main>
+			<h2>Todos</h2>
+			<p id="t1" data-due="10/12/2018" data-level="urgent">Walk the dogs </p>
+			<p id="t2" data-due="12/12/2018">Wash the fiat </p>
+			<p id="t3" data-due="13/12/2018">House cleaning</p>
+		</main>
+	</body>
+</html>
+```
+
+A canonical example for `data-` attributes are tooltips:
+
+```html
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		li {
+			cursor: help;
+		}
+
+		li:hover::after{
+			background-color: rgba(10,10,10,0.7);
+			color: gold;
+			border: 1px dashed;
+			padding: 5px;
+			font-size: 60%;
+			content: attr(data-name);
+			position: relative;
+			bottom: 15px;
+			left: 5px;
+		}
+		</style>
+	</head>
+	<body>
+		<main>
+			<ul>
+				<li data-name="Cascading Style Sheets">CSS</li>
+				<li data-name="HyperText Markup Language">HTML</li>
+				<li data-name="HyperText Transfer Protocol">http</li>
+				<li data-name="HyperText Transfer Protocol Secure">https</li>
+			</ul>
+		</main>
+	</body>
+</html>
+```
+
+This example also showcases the use of the [`cursor`](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) property - here, hovering over the list items results in a help icon. Note, that `cursor: none` results in no cursor being rendered, though this should be used with care as it tends to confuse users. The `position`, `bottom` and `left` properties will be discussed next (in short: they determine the placement of the tooltip).
+
+##
+
+##
+
+## Browser-specific prefixes
+
+CSS is under active development, many features are not stable, are often used with browser vendor prefixes, and, might change in the future (as the specification changes).
+
+Recent move towards disabling experimental features in browsers by default; explicit reset by user required.
+But … vendor prefixes will not go away anytime soon (that would break a lot of pages on the Web).
+
+Advantage: exciting new features can be used early on
+
+Disadvantage: a new browser release might break the implemented CSS
+
+http://lists.w3.org/Archives/Public/public-webapps/2012OctDec/0731.html
+“For what it's worth, the current trend inside Mozilla is exactly what 
+you say: avoiding vendor prefixes by either turning things off before 
+shipping or shipping them unprefixed if they're stable enough.  At least 
+as a general policy; specific cases might merit exceptions.”
+
+At the same time, browsers need to implement these features so we can see how they work in practice. But consider the difficulties that would occur if two separate browsers implemented the same property but interpreted it inconsistently: The result of your code would appear differently—perhaps radically so—in each of the browsers. To prevent this from happening, each of the browser vendors began to prefix a short code to the beginning of experimental properties. Let’s imagine our much-desired monkeys property has been newly defined in a specification, and that all of the major browser vendors have decided to implement it to see how it works
+E {
+    -moz-monkeys: value; /* Firefox */
+    -ms-monkeys: value; /* Internet Explorer */
+    -webkit-monkeys: value; /* Chrome/Safari */
+}
+
+
+```css
+ main:-webkit-full-screen {
+ } /* Chrome */
+ 
+ main:-moz-full-screen {
+ } /* Firefox */
+
+main:-ms-fullscreen {
+} /* Internet Explorer */
+
+main:fullscreen {
+} /* W3C proposal */
+```
+
+-webkit? Google Chrome is not based on Webkit anymore …
+
+www.chromium.org/blink/developer-faq
+
+*Will we see a -chrome- vendor prefix now?*
+
+*We’ve seen how the proliferation of vendor prefixes has caused pain for developers and we don't want to exacerbate this. As of today, Chrome is adopting a policy on vendor prefixes, one that is similar to Mozilla's recently announced policy.*
+
+*In short: we won't use vendor prefixes for new features. Instead, we’ll expose a single setting (in about:flags) to enable experimental DOM/CSS features for you to see what's coming, play around, and provide feedback, much as we do today with the “Experimental WebKit Features”/"Enable experimental Web Platform features" flag. Only when we're ready to see these features ship to stable will they be enabled by default in the dev/canary channels.*
+
+*For legacy vendor-prefixed features, we will continue to use the -webkit- prefix because renaming all these prefixes to something else would cause developers unnecessary pain. We've started looking into real world usage of HTML5 and CSS3 features and hope to use data like this to better inform how we can responsibly deprecate prefixed properties and APIs. As for any non-standard features that we inherited (like -webkit-box-reflect), over time we hope to either help standardize or deprecate them on a case-by-case basis.*
+
+
 
 
 ## Self-check
