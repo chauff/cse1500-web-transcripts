@@ -611,9 +611,503 @@ A canonical example for `data-` attributes are tooltips:
 
 This example also showcases the use of the [`cursor`](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) property - here, hovering over the list items results in a help icon. Note, that `cursor: none` results in no cursor being rendered, though this should be used with care as it tends to confuse users. The `position`, `bottom` and `left` properties will be discussed next (in short: they determine the placement of the tooltip).
 
-##
+## Element positioning
 
-##
+One of the most confusing aspects in CSS are the myriad of ways to achieve element positioning (MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what exists). Due to our limited time, we will only consider three CSS properties used for element positioning:
+- [`float`](https://developer.mozilla.org/en-US/docs/Web/CSS/float) defines how an element floats in the containing element (which in turn determines how other elements flow around it);
+- [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) defines how an element is positioned in a document;
+- [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) defines the display type of an element.
+
+Let's also define two additional concepts, that stem from HTML4 - while HTML5 has more categories with more complex interactions, for our three elements above, the following two notions are sufficient:
+- **Block-level elements** are surrounded by line-breaks. They can contain block-level and inline elements. **The width is determined by their containing element.** Examples of block-level elements are `<main>` or `<p>`.
+- **Inline elements** can be placed within block-level or inline elements. They can contain other inline elements. **The width is determined by their content.** Examples are `<span>` or `<a>`. 
+
+### Float
+
+By default, elements *flow*. Their order is determined by the order of their appearance in the HTML document. Toggling the `<main>` element's width between `auto` and `400px` (and manually resizing the browser window) shows off the difference between block-level and inline elements. 
+
+```html
+<!DOCTYPE html>
+	<head>
+		<style>
+
+			* {
+				border-style: solid;
+
+				/* Try out what happens when the following two lines
+				 * are removed ("CSS reset")
+				*/
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				border-color: orange;
+			}
+
+			main {
+				border-color: grey;
+			}
+
+			span {
+				border-color: green;
+			}
+
+			a {
+				border-color: red;
+			}
+
+			p {
+				border-color: blue;
+			}
+
+			/* Block-level vs. inline elements:
+			 * use `width: auto` as alternative
+			 */
+			main {
+				width: 400px;
+			}
+
+			/* element floating (use left/right/none) */
+			/* a {
+			 *	float: left;
+			 * }
+			 */
+
+		</style>
+	</head>
+	<body>
+		<main>
+			<p>
+				This is a paragraph containing <a href="#">a link</a>.
+			</p>
+			<p>
+				This is another paragraph
+				<span>
+					with a span and a <a href="#">link in the span</a>.
+				</span>
+			</p>
+		</main>
+	</body>
+</html>
+```
+
+With the `float` property, we can change this default flow. `float:left` (or `float:right`) takes an element **out of the flow**; it is then moved to the **leftmost** (or rightmost) possible position **in the containing element** - which is either the element edge or another float. In addition, if an element should not float, we can use `float: none`.
+
+Try out the effects of `float` by using one after the other:
+- `a {float: right}`
+- `a {float: left}`
+- `a {float: none}`
+
+in the above example. Remember, that you can make these changes directly in the *Style Editor* of your browser!
+
+If needed, we can also reset the flow the the value `clear` (either to reset the `left`, `right` or `both` sides of the flow). The canonical example for flow resetting are web page layouts that have **sidebars**, something like this:
+
+![Sidebars](img/L5-sidebars.png)
+
+Here, we have two sidebars that each *float* to the left and right of the main content respectively. The footer should appear below both sidebars. Try out the HTML below to see the effect of both `float` and `clear`.
+
+```html
+<!DOCTYPE html>
+	<head>
+		<style>
+
+		.nav {
+			background-color: grey;
+		}
+
+		main {
+			background-color: red;
+		}
+
+		footer {
+			background-color: green;
+		}
+
+
+		/* Floating to the sides */
+		/*
+		 * #nav1 {
+		 *	float: right;
+		 * }
+		
+		 * #nav2 {
+		 *	float: left;
+		 * }
+		 */
+
+		/* 
+		 * Resetting the flow: try what happens if clear:left or clear:right
+		 * is used alone. Instead of both left and right, we can also use
+		 * clear:both; 
+		 */
+		/*
+		 * footer {
+		 *	clear: left;
+		 *	clear: right;
+		 * }
+		 */	
+
+		</style>
+	</head>
+	<body>
+		<div id="nav1" class="nav">
+			<ul>
+				<li>Go to page 1</li>
+				<li>Go to page 2</li>
+				<li>Go to page 3</li>
+				<li>Go to page 4</li>
+				<li>Go to page 5</li>
+			</ul>
+		</div>
+
+		<div id="nav2" class="nav">
+			<ul>
+				<li>January 2019</li>
+				<li>February 2019</li>
+				<li>March 2019</li>
+				<li>April 2019</li>
+			</ul>
+		</div>
+
+		<main>
+			<p>
+				Paragraph 1.
+			</p>
+
+			<p>
+				Paragraph 2.
+			</p>
+		</main>
+
+		<footer>
+			Footer information.
+		</footer>
+	</body>
+</html>
+```
+
+### Position
+
+The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements (in contrast to `float` which is meets our demands for coarse-grained positioning). Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
+
+The `position` attribute has a number of possible values:
+
+| Value             | Description                                                                        |
+|-------------------|------------------------------------------------------------------------------------|
+| `position:static`   | the default                                                                            |
+| `position:relative` |  the element is adjusted on the fly, other elements are not affected               |
+| `position:absolute` |  the element is taken out of the normal flow (no space is reserved for it)         |
+| `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (=the area currently being viewed) |
+| `position:sticky`   | in-between `relative` and `fixed`                                                      |
+
+Important to know when using the `position` property is the direction of the CSS coordinate system: the top-left corner is `(0,0)`. The y-axis extends **downwards**. The x-axis extends to the **right**.
+
+Let's walk through each of the position values in turn, starting with `relative`: here, the movement of the element is **relative** to its original position. The horizontal offset from the original position is set through properties `left` and `right`, the vertical offset is controlled through `top` and `bottom`. 
+
+```html
+<!DOCTYPE html>
+	<head>
+		<style>
+
+		img {
+			width: 50px;
+		}
+		/* 
+		 * Try out different pixel values. 
+		 * Remember that the coordinate system starts at the top-left
+		 * corner and extends downward and to the right!
+		 * What happens if the pixel value is negative?
+		 * At what point do the "eggs" leave the viewport?
+		 */
+		#egg2 {
+			position: relative;
+			bottom: 20px; 
+			left: 20px;
+		}
+
+		#egg4 {
+			position: relative;
+			bottom: 50px;
+			right: 10px;
+		}
+
+		</style>
+	</head>
+	<body>
+		<main>
+		    <img src="https://openclipart.org/image/300px/svg_to_png/19477/shokunin_easter_egg_single.png" id="egg1" /><br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/6695/dStulle_white_egg.png" id="egg2" /> <br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/15696/mystica_Easter_egg_%28star%29.png" id="egg3" /> <br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/15694/mystica_Easter_egg_%28Painted%29.png" id="egg4" /><br />
+		</main>
+	</body>
+</html>
+```
+
+If we change the positioning of some of our little eggs to `position:absolute`, we now see that they are taken out of the normal flow and no space is reserved for them. The positioning of those elements is now relative to the nearest ancestor or the window itself (in our case it is the window).
+
+```html
+<!DOCTYPE html>
+	<head>
+		<style>
+
+		img {
+			width: 50px;
+		}
+
+		/* 
+		 * Try out different pixel values. 
+		 * Remember that the coordinate system starts at the top-left
+		 * corner and extends downward and to the right!
+		 */
+		#egg2 {
+			position: absolute;
+			bottom: 50px; 
+			left: 0px;
+		}
+
+		#egg4 {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+		}
+
+		</style>
+	</head>
+	<body>
+		<main>
+		    <img src="https://openclipart.org/image/300px/svg_to_png/19477/shokunin_easter_egg_single.png" id="egg1" /><br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/6695/dStulle_white_egg.png" id="egg2" /> <br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/15696/mystica_Easter_egg_%28star%29.png" id="egg3" /> <br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/15694/mystica_Easter_egg_%28Painted%29.png" id="egg4" /><br />
+		</main>
+	</body>
+</html>
+```
+
+The `position:fixed` value is similar to `position:absolute`, but now the containing element is the **viewport**, i.e. the area of the document that is visible in the browser. This means that elements with `position:fixed` remain visible. Here is an example (you need to minimize the window until you need to scroll down to see all of our four eggs to achieve a visible effect):
+
+```html
+<!DOCTYPE html>
+	<head>
+		<style>
+
+		img {
+			width: 50px;
+		}
+
+		#info {
+			position: fixed;
+			background: yellow;
+			left: 20px;
+			top: 20px;
+		}
+
+		</style>
+	</head>
+	<body>
+		<main>
+		    <img src="https://openclipart.org/image/300px/svg_to_png/19477/shokunin_easter_egg_single.png" id="egg1" /><br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/6695/dStulle_white_egg.png" id="egg2" /> <br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/15696/mystica_Easter_egg_%28star%29.png" id="egg3" /> <br />
+		    <img src="https://openclipart.org/image/300px/svg_to_png/15694/mystica_Easter_egg_%28Painted%29.png" id="egg4" /><br />
+		</main>
+
+		<div id="info">
+				These are no easter eggs.
+		</div>
+	</body>
+</html>
+```
+
+Finally, we cover the `display` property, which enables us to change the element type at will (block-level to inline and vice versa) at will and *hide* elements from view. The latter is likely to be most useful to us:
+
+| Value          | Description                                                                                   |
+|----------------|-----------------------------------------------------------------------------------------------|
+| `display:inline` |  The element is rendered with an inline element box.                                          |
+| `display:block`  |  The element is rendered with a   block element box.                                          |
+| `display:none`   |  The element (and its descendents) are hidden from view; no space is reserved in the layout.  |
+
+Once more, an example is sufficient to highlight the use of each of these values:
+
+```html
+<!DOCTYPE html>
+	<head>
+		<style>
+			p, span {
+				border-style: solid;
+				padding: 10px;
+				margin: 10px;
+			}
+			p {
+				border-color: blue;
+			}
+
+			/*
+			 * Try out the effect of adding each of these
+			 * display settings.
+			 */
+
+			/* 
+			 * span {
+			 *	border-color: red;
+			 * }
+			*/
+
+			/*	
+			 * span {
+			 *	display: block;
+			 * }
+			 */
+
+			/*
+			 * p {
+			 * 	display: inline;
+			 * }
+			 */
+
+			/*
+			 * span {
+			 *	display: none;
+			 * }
+			 */
+		</style>
+	</head>
+	<body>
+		<p>
+			This is paragraph one.
+		</p>
+
+		<span> 
+			Span element one.
+		</span>
+
+		<span>
+			Span element two.
+		</span>
+
+		<p>
+			This is paragraph two.
+		</p>
+	</body>
+</html>
+```
+
+## CSS media queries
+
+So far, we have covered the basics of CSS but ignored - largely - the fact that in today's multi-device world, we are designing Web applications for vastly different screen sizes. Different devices should be served different styles, e.g.
+- when **printing** a Web application's screen, the information printed should be the essentials (no ads, no sidebars, etc.);
+- when **viewing** a Web application on a small screen, non-essential information (e.g. a footer) should be removed;
+- when **viewing** a Web application on a large screen all available information should be presented;
+- when using **text-to-speech** devices, non-essential information should be removed.
+
+**CSS media queries** enable the use of **device-dependent** (i.e. media-type dependent) stylesheets. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
+
+| Value         | Description                               |
+|---------------|-------------------------------------------|
+| `media all`    |  Suitable for all device types.           |
+| `media print` |  Suitable for documents in print preview. |
+| `media screen` |  Suitable for screens.                    |
+| `media speech` | Suitable for speech synthesizers.         |
+
+Here is a concrete example of how media queries enable a *responsive design*; use your browser's responsive design mode and *Print as PDF* feature to test the behaviour of the media queries:
+
+```html
+<!DOCTYPE html>
+	<head>
+
+		<!-- We can link a stylesheet conditional on the media attribute -->
+		<!-- Example of a logical or (,) in the media query -->
+		<link rel="stylesheet" media="screen and (min-width: 800px), (min-width: 3000px)" href="large-device.css">
+
+		<style>
+
+			* {
+				padding: 10px;
+			}
+
+			main {
+				background-color: red;
+			}
+
+			#sidebar {
+				background-color: green;
+				float: right;
+			}
+
+			/* when printing, use black and white */
+			@media print {
+				body {
+					color: black !important;
+					width: 100%;
+				}
+			}
+
+			/* hide the sidebar for small devices */
+			/* Example of a logical or (",") as well as and ("and") in the media query */
+			@media print, screen and (max-width: 400px) {
+				#sidebar {
+					display: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="sidebar">
+			<ul>
+				<li>Anchor 1</li>
+				<li>Anchor 2</li>
+				<li>Anchor 3</li>
+			</ul>
+		</div>
+
+		<main>
+			<p>
+				Paragraph 1
+			</p>
+			<p>
+				Paragraph 2
+			</p>	
+			<p>
+				Paragraph 3
+			</p>	
+			<p>
+				Paragraph 4
+			</p>	
+		</main>
+
+
+	</body>
+</html>
+```
+## Animations and transitions
+
+In general, SSS styles (states) are defined by teh user, the rendering engine takes care of the transition between styles. A **rendering engine** (or browser engine, layout engine) is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will come across from time to time (especially when using CSS animations and transitions):
+
+| Engine   | Browsers                                |
+|----------|-----------------------------------------|
+| `Gecko`    | Firefox                                 |
+| `Trident`  | Internet Explorer                       |
+| `EdgeHTML` | Microsoft Edge                          |
+| `WebKit`   | Safari, older versions of Google Chrome |
+| `Blink`    | Google Chrome, Opera                    |
+
+**Animations** consist of
+- an animation style (e.g. `linear`);
+- a number of **keyframes** that act as transition waypoints.
+
+**Transitions** are animations with a simpler syntax. They consist of
+- exactly two states: start and end state.
+
+### CSS vs. JavaScript animations
+
+There are several advantages to using CSS-based instead of JavaScript-based animations:
+- CSS is relatively easy to use (no need to learn the intricate details of JavaScript).
+- The rendering engines are optimized for CSS-based animations.
+- CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css animation).
+
+
 
 ## Browser-specific prefixes
 
@@ -667,6 +1161,7 @@ www.chromium.org/blink/developer-faq
 *For legacy vendor-prefixed features, we will continue to use the -webkit- prefix because renaming all these prefixes to something else would cause developers unnecessary pain. We've started looking into real world usage of HTML5 and CSS3 features and hope to use data like this to better inform how we can responsibly deprecate prefixed properties and APIs. As for any non-standard features that we inherited (like -webkit-box-reflect), over time we hope to either help standardize or deprecate them on a case-by-case basis.*
 
 
+## Rendering engine
 
 
 ## Self-check
