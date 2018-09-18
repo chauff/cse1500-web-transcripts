@@ -113,18 +113,12 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*);
   - Recommended readings:
     - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604)
-    - [From AppCache to Service Workers](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/)
     - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/)
-    - [Running Firefox headlessly and why](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)
     - [Examples of what modern Web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
-    - [Progressive web apps](https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive#Core_PWA_guides)
   
 - **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
     - Chapter 4 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
-  - Recommended activities:
-    - Follow the [CodeSchool Try jQuery](https://www.pluralsight.com/courses/code-school-try-jquery) course
-    - Follow the [CodeCademy JavaScript](https://www.codecademy.com/learn/introduction-to-javascript) tutorial
   - Recommended readings:
     - [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
     - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
@@ -133,13 +127,10 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - A good blog post on [why we need all those fancy tools for JavaScript development nowadays](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70)
     - A very good podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
     - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/)
-    - Stanford University teaches [Programming Methodologies in JavaScript](http://web.stanford.edu/class/cs106j/)
-    - [Info on the `<script>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
-    - [Check with Lighthouse](https://developers.google.com/web/tools/lighthouse/)
-    - [Service Worker Cookbook](https://serviceworke.rs/)
+    - Good to know! The University of Stanford University teaches [Programming Methodologies in JavaScript!](http://web.stanford.edu/class/cs106j/)
+    - [Lighthouse](https://developers.google.com/web/tools/lighthouse/) is a Web application auditing tool built by Google.
     - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger)
     - Jimmy Lin's [words](http://ceur-ws.org/Vol-2167/keynote1.pdf) on JavaScript ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
-    - Another Jimmy Lin [paper](http://aclweb.org/anthology/N18-5013): using CNNs for inference in the browser with JavaScript.
     - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057)
     - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript
     - [The State of JavaScript 2017](https://2017.stateofjs.com/)
