@@ -1098,6 +1098,10 @@ In general, CSS styles (states) are defined by the user, the **rendering engine*
 | `WebKit`   | Safari, older versions of Google Chrome |
 | `Blink`    | Google Chrome, Opera                    |
 
+Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
+
+After a quick detour to rendering engines, let's get back to animations and transitions.
+
 **Animations** consist of
 
 - an animation style (e.g. `linear`);
