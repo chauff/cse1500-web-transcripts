@@ -171,7 +171,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing)
     - Blog post in best practices to create a [node package](https://monades.roperzh.com/bootstrapping-javascript-library/)
 
-- Lecture 7 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, cookie flags/domain, cookies in Express (accessing and deleting them), evercookie, third-party cookies, client-side cookies (`document.cookie`), sessions in Express (memory stores), third-party authentication (OAuth 2.0, example authentication through Twitter via `passport`)
+- Lecture 7 2017/18 ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, evercookie, third-party cookies, client-side cookies, cookies and sessions in Express, third-party authentication
   - Required readings: *none*
   - Recommended activities: *none*
   - Recommended readings:
