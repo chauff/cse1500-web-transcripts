@@ -125,10 +125,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [What the f*ck JavaScript](https://github.com/denysdovhan/wtfjs) - a list of funny and tricky JavaScript examples
     - [A blog post on why the dynamic nature of JavaScript makes optimization tricky](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html)
     - A good blog post on [why we need all those fancy tools for JavaScript development nowadays](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-    - A very good podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
+    - A good podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
     - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/)
-    - Good to know! The University of Stanford University teaches [Programming Methodologies in JavaScript!](http://web.stanford.edu/class/cs106j/)
-    - [Lighthouse](https://developers.google.com/web/tools/lighthouse/) is a Web application auditing tool built by Google.
     - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger)
     - Jimmy Lin's [words](http://ceur-ws.org/Vol-2167/keynote1.pdf) on JavaScript ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
     - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057)
