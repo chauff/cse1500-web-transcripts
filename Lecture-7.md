@@ -145,7 +145,7 @@ Our example application will do two things:
 
 This is the annotated code of `app.js`:
 
-~[Node.js code example](img/L7-node-cookies-ex.png)
+![Node.js code example](img/L7-node-cookies-ex.png)
 
 The route `/sendMeCookies` sends cookies from the server to the client, one of which is signed. Signing is as simple as setting the `signed` property to `true`. Cookies the client sends back to the server appear in the http request object and can be accessed through `req.cookies`. Here a distinction is made between signed and unsigned cookies - you can only be sure that the signed cookies have not been tampered with.
 
@@ -258,7 +258,7 @@ Advantage: data is secure
 
 Let's look at a [code example](demo-code/node-sessions-ex):
 
-~[Session code example](img/L7-node-sessions-ex.png)
+![Session code example](img/L7-node-sessions-ex.png)
 
 Here, we store the session information in memory, which of course means that when the server fails, the data will be lost. In a real Web application, you would store this information most likely in a database.
 To set up the usage of sessions in Express, we need two middleware components: `cookie-parser` and `express-session`. Since sessions use cookies, we also need to ensure that our middleware pipeline is set up in the correct order: the `cookie-parser` should be added to the pipeline before `express-session`, otherwise this piece of code will lead to an error.
