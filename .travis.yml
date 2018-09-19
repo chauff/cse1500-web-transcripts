@@ -3,7 +3,7 @@ sudo: false
 node_js:
   - "node"
 before_install:
-  - cd demo-code/balloons/
+  - cd demo-code/balloons-game/
 install:
   - npm install
 script:
