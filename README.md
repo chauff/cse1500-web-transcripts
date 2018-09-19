@@ -17,7 +17,7 @@ The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi
   - [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension (especially useful if a student team works mostly remotely);
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier;
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
-- [REQ] [node.js](https://nodejs.org/en/)
+- [REQ] [node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one)
 - [REQ] Two modern Web browsers such as Chrome, Firefox, Edge, ...
 - [REC] Browser developer tools ... those come built into all modern browsers; be sure to make yourself familiar with them. For Firefox, you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
 
