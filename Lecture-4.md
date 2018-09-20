@@ -387,10 +387,62 @@ Here is an example of a concrete folder structure for a todo application:
 
 ![folder structure](img/L4-file-structure.png)
 
-In the assignment you will learn how to create such a folder structure semi-automatically, according to accepted best practices.
+In [Assignment 2](Assignment-2.md) you will learn how to create such a folder structure semi-automatically, according to accepted best practices.
 
-[SLIDE 47]
+Step (5), the interactivity between client and server is the most time-consumgin part of the application development, as can be based on different technologies, depending on the application's needs. In the course book, this interactivity is solved with **Ajax** (which is sensible in the context of the Todo application developed throughout the book), while in the game project we ask you to solve the interactive part with WebSockets (which is sensible due to the bidirectional communication needs). 
 
+Here is a typical Web application flow that showcases a possible client-server interaction for a Todo application:
+
+![Todo application](img/L4-todo-app.png)
+
+When designing your own application, it is vital to have a good understanding of the request/response flow in different stages of the application.
+
+## JSON: exchanging data between the client and server
+
+JSON stands for *JavaScript Object Notation* and is a format that transmits data in human-readable text. It consists of attribute value pairs and array data types. Here is an example of a Twitter message in JSON format (taken from [Twitter's documentation](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json.html):
+
+```javascript
+{
+  "created_at": "Thu Apr 06 15:24:15 +0000 2017",
+  "id_str": "850006245121695744",
+  "text": "1\/ Today we\u2019re sharing our vision for the future of the Twitter API platform!\nhttps:\/\/t.co\/XweGngmxlP",
+  "user": {
+    "id": 2244994945,
+    "name": "Twitter Dev",
+    "screen_name": "TwitterDev",
+    "location": "Internet",
+    "url": "https:\/\/dev.twitter.com\/",
+    "description": "Your official source for Twitter Platform news, updates & events. Need technical help? Visit https:\/\/twittercommunity.com\/ \u2328\ufe0f #TapIntoTwitter"
+  },
+  "place": {   
+  },
+  "entities": {
+    "hashtags": [      
+    ],
+    "urls": [
+      {
+        "url": "https:\/\/t.co\/XweGngmxlP",
+        "unwound": {
+          "url": "https:\/\/cards.twitter.com\/cards\/18ce53wgo4h\/3xo1c",
+          "title": "Building the Future of the Twitter API Platform"
+        }
+      }
+    ],
+    "user_mentions": [     
+    ]
+  }
+}
+```
+
+In early (earlier) years of the Web, XML was used as data exchange format. XML is well defined but not easy to handle. To get an idea of XML, take a look at [this Twitter output in XMl format](https://gist.github.com/jonm/3080489).
+
+JSON was developed by Douglas Crockford, one of the early advocates for JavaScript and the authors of the [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do). XML is often too bulky in practice; JSON has a much smaller footprint than XML. Importantly, JSON can be parsed with built-in JavaScript functionality ([`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)), which turns a JSON string into an object. Similarly, JavaScript objects can be turned into JSON with the [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method.
+
+Two major differences between JSON and JavaScript objects are:
+- In JSON, all property names must be enclosed in quotes.
+- JSON objects **do not have functions** as properties. If an object contains functions as properties, a call to `JSON.stringify` will strip them out. 
+
+SLIDE 52
 
 
 ## Self-check
