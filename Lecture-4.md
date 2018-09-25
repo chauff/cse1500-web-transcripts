@@ -442,7 +442,102 @@ Two major differences between JSON and JavaScript objects are:
 - In JSON, all property names must be enclosed in quotes.
 - JSON objects **do not have functions** as properties. If an object contains functions as properties, a call to `JSON.stringify` will strip them out. 
 
-SLIDE 52
+With JSON being a de facto data exchange standard, Express has a dedicated response object method to send a JSON response: [`res.json(param)`](http://expressjs.com/en/api.html#res.json). The method's parameter is converted to a JSON string using `JSON.stringify()`. You will see a working example of this method in the next section.
+
+## Ajax: dynamic updating on the client
+
+Ajax stands for **Asynchronous JavaScript and XML**, although XML is only in the name (we tend to use JSON for data exchanges today or some other self-designed format). Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing Web page. Ajax is not a language, it is not a proeduct. You see examples of this technology every day; if you stay long enough on the Twitter homepage, you will see a message such as *See 2 new tweets*, which appeared without a complete reload of the page. If we keep the browser's Web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we now see a continous stream of request/response message pairs - every few seconds the browser sends a request to Twitter's servers to check for new tweets to load:
+
+![Twitter xhr](img/L4-xhr.png)
+
+ The column *Cause* lists the reason for the network request - `xhr`, which tells us that Ajax was used. `xhr` is short for `XMLHttpRequest`, which is an object offered by all major browsers that is the heart of Ajax and allows you to:
+- make requests to the server without a full page reload;
+- receive data from the server.
+
+The `jQuery` library hides a lot of the low-level `XMLHttpRequest` details. A working toy example can be found [here](demo-code/node-ajax-ex). In this example code, you will note that the server-side code does not do anything special because Ajax is involved; to the server, the requests look like any other HTTP request. This leaves us to look at the client-side. Here, we first consider `index.html`:
+
+```html
+<!doctype html>
+<head>
+	<title>Plain text TODOs</title>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+	<script src="js/client-app.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<main>
+		<section id="todo-section">
+			<p>My list of TODOS:</p>
+			<ul id="todo-list">
+			</ul>
+		</section>
+	</main>
+</body>
+</html>
+```
+
+We first load the jQuery library and then the client-side JavaScript source. Note here, that the TODO list is empty. We have an empty unordered list element (`<ul>`) that will be filled with TODOs via Ajax calls. Let's find out how to make Ajax requests with the help of jQuery by looking at `js/client-app.js`:
+
+```javascript
+var main = function () {
+	"use strict";
+
+	var addTodosToList = function (todos) {
+		console.log("Loading todos from server");
+		var todolist = document.getElementById("todo-list");
+		for (var key in todos) {
+			var li = document.createElement("li");
+			li.innerHTML = "TODO: " + todos[key].message;
+			todolist.appendChild(li);
+		}
+	};
+
+	/*
+	 * This request retrieves the todo list once, to make this a regular
+	 * "event", make use of setInterval() 
+	 */ 
+	$.getJSON("../todos", addTodosToList)
+		.done( function(){ console.log("Ajax request successful.");})
+		.fail( function(){ console.log("Ajax request failed.");});
+};
+$(document).ready(main);
+```
+
+Let's start at the bottom of this code snippet. In order to retrieve the list of TODOs from the server, we use `$.getJSON(url, function(data))`. This is jQuery's shorthand for making an HTTP GET request to `url` and executing the function specified as second parameter in the case of a successful request. When the request is successful, `data` will contain the data retrieved from the server. What do we do with that data then? To answer this question, we need to parse our function expression `addTodosToList`: we first locate in the DOM tree the unordered list placeholder which we gave the id `todo-list`; for every todo we received, we create a list element (`<li>`) with the corresponding text and append it to our `<ul>` element.
+
+Without the use of jQuery, the `XMLHttpRequest` object leads to more clunky looking code, as this [MDN example](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started) shows.
+
+In a nutshell, Ajax works as follows:
+1. The Web browser creates a `XMLHttpRequest` object.
+2. The `XMLHttpRequest` object requests data from a Web server.
+3. The data is sent back from the server.
+4. On the client, JavaScript code injects the data into the page.
+
+Or graphically:
+
+![Ajax in a picture](img/L4-ajax.png)
+
+Importantly, with Ajax, the number of complete page reloads is vastly reduced. Only the newly available or changed data needs to be retrieved from the server, instead of the complete Web page.
+
+In practice, implementing Ajax calls correctly can be frustrating, mostly due to Ajax's security model. In our example, we have conveniently requested data from "our" Web server. In fact, a security restriction of Ajax is that it can only fetch files or request routes from the same Web server as the calling page (so-called *Same-origin policy*). The same origin policy is fulfilled when the protocol, port and host are the same for two pages. Important for debugging: Ajax **cannot** be executed from a Web page opened locally from disk (e.g. if you head to your browser and open `file:///Users/claudia/GitHub/Web-Teaching/demo-code/node-ajax-ex/client/index.html`).
+
+Note, that there are ways around Ajax' same-origin policy, some of which have been collected in this rather old [stackoverflow thread](https://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy). As in all scenarios and usages of Web technologies, the interaction between technologies and the availability of all kinds of Web technologies makes it possible to "misuse" a technology for another purpose to circumvent a perceived restriction or shortcoming. So, despite there being possibilities to enable Ajax across origins, it is not recommended and using Ajax as-is does not allow it. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Self-check
@@ -481,3 +576,11 @@ f(function(n)){
     console.log(n);
 }
 ```
+4. How does an Ajax request appear to a Web server?
+    - An Ajax request looks like any other HTTP request.
+    - An Ajax request is not sent via HTTP, but instead via atp, the Ajax transfer protocol.
+    - An Ajax request always has to be sent as part of an HTML `<form>`.
+    - An Ajax request is never sent to a Web server, the reply is generated by the browser cache.
+5. Imagine building a chat application using Ajax (under HTTP/1.1). How is the browser notified of new messages to display?
+    - Ajax allows the server to push HTTP responses to the client.
+    - The browser has to poll the server for message updates in short time intervals.
