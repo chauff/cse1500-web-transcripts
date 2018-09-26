@@ -521,7 +521,39 @@ Importantly, with Ajax, the number of complete page reloads is vastly reduced. O
 
 In practice, implementing Ajax calls correctly can be frustrating, mostly due to Ajax's security model. In our example, we have conveniently requested data from "our" Web server. In fact, a security restriction of Ajax is that it can only fetch files or request routes from the same Web server as the calling page (so-called *Same-origin policy*). The same origin policy is fulfilled when the protocol, port and host are the same for two pages. Important for debugging: Ajax **cannot** be executed from a Web page opened locally from disk (e.g. if you head to your browser and open `file:///Users/claudia/GitHub/Web-Teaching/demo-code/node-ajax-ex/client/index.html`).
 
-Note, that there are ways around Ajax' same-origin policy, some of which have been collected in this rather old [stackoverflow thread](https://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy). As in all scenarios and usages of Web technologies, the interaction between technologies and the availability of all kinds of Web technologies makes it possible to "misuse" a technology for another purpose to circumvent a perceived restriction or shortcoming. So, despite there being possibilities to enable Ajax across origins, it is not recommended and using Ajax as-is does not allow it. 
+Note, that there are ways around Ajax' same-origin policy, some of which have been collected in this rather old [stackoverflow thread](https://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy). As in all scenarios and usages of Web technologies, the interaction between technologies and the availability of all kinds of Web technologies makes it possible to "misuse" a technology for another purpose to circumvent a perceived restriction or shortcoming. So, despite there being possibilities to enable Ajax across origins, it is not recommended and using Ajax as-is does not allow it.
+
+## WebSockets
+
+While Ajax is a mainstay of today's Web, it has a major limitation: the server cannot *push* data to the client, it can only respond to HTTP requests, thus requiring a form of *polling* to simulate the desired push-based behaviour. This results in a number of issues:
+- Every time data is sent, an HTTP response is required - this has a considerable amount of overhead if the data to send is only a few bytes.
+- The client 
+
+
+   o  The wire protocol has a high overhead, with each client-to-server
+      message having an HTTP header.
+
+   o  The client-side script is forced to maintain a mapping from the
+      outgoing connections to the incoming connection to track replies.
+
+
+
+The WebSocket protocol (defined in [RFC 6455](https://tools.ietf.org/html/rfc6455)) was designed to fill this gap. Quoting the RFC abstract:
+
+```quote
+The WebSocket Protocol enables two-way communication between a client
+[...] to a remote host [...]. The protocol consists of an opening handshake
+followed by basic message framing, layered over TCP.  The goal of
+this technology is to provide a mechanism for browser-based
+applications that need two-way communication with servers that does
+not rely on opening multiple HTTP connections (e.g., using
+XMLHttpRequest or <iframe>s and long polling).
+```
+
+In other words, the WebSocket protocol enables **bidirectional** communication between client and server over HTTP. Once a connection between a client and server is opened, messages can be send back and forth. This is especially vital for Web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners)and gaming applications (a client/player sends his own move to the server, the server pushes the other players' moves to the client).
+
+
+
 
 
 
