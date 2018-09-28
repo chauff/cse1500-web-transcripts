@@ -119,6 +119,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 - **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
     - Chapter 4 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
+  - Recommended activity:
+    - [Interactive exercises for Lecture 3](nodeschool-exercises.md)
   - Recommended readings:
     - [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
     - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
@@ -133,21 +135,14 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript
     - [The State of JavaScript 2017](https://2017.stateofjs.com/)
 
-- Lecture 4 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax
+- Lecture 4 ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax, WebSockets
   - Required readings:
     - Chapters 5 & 6 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
-  - Recommended activities:
-    - [learnyounode](https://github.com/workshopper/learnyounode) is an interactive tutorial of node.js
-    - [how-to-npm](https://github.com/npm/how-to-npm) is an interactive tutorial on the use of npm (node's package manager)
-    - CodeSchool has a [node.js module](https://www.codeschool.com/courses/real-time-web-with-node-js) tutorial as well; free trial available
+  - Recommended activity:
+    - [Interactive exercises for Lecture 4](nodeschool-exercises.md)
   - Recommended readings:
-    - A [comprehensive list of node.js resources](https://github.com/sergtitov/NodeJS-Learning) is updated by Sergey Titov
-    - The recommended IDE for this course is [Visual Studio Code](https://code.visualstudio.com/) (open-source, available for all major operating systems). [Here](https://vscodecandothat.com/) is a good overview of some of the very useful but less obvious features of VS.
-    - [Event loop explained](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
-    - [Automated testing with node](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Automated_testing)
-    - [Node.js stats of 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
-    - [MDN Express tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website)
-    - [The world runs on nodejs (tweet)](https://twitter.com/bitandbang/status/1037306199522328577)
+    - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
+    - [The world runs on nodejs (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577)
   
 - **Lecture 5** ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS 3, pseudo-elements, pseudo-classes, rendering engine, data/variables in CSS, element positioning (`float`, `position`, `display`), CSS media queries, CSS animations and transitions
   - Required readings:
