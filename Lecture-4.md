@@ -525,20 +525,12 @@ Note, that there are ways around Ajax' same-origin policy, some of which have be
 
 ## WebSockets
 
-While Ajax is a mainstay of today's Web, it has a major limitation: the server cannot *push* data to the client, it can only respond to HTTP requests, thus requiring a form of *polling* to simulate the desired push-based behaviour. This results in a number of issues:
-- Every time data is sent, an HTTP response is required - this has a considerable amount of overhead if the data to send is only a few bytes.
-- The client 
+While Ajax is a mainstay of today's Web, it has issues: 
+- The server cannot *push* data to the client, it can only respond to HTTP requests, thus requiring a form of *polling* to simulate the desired push-based behaviour. This is resource-intensive on both the client and the server-side.
+- Every time data is request and sent, an entire HTTP message is required - this has a considerable amount of overhead if the data to send is only a few bytes.
+- The client-side script has to track the mapping from outgoing connections to the incoming connection (in cases where a client make requests to multiple servers).
 
-
-   o  The wire protocol has a high overhead, with each client-to-server
-      message having an HTTP header.
-
-   o  The client-side script is forced to maintain a mapping from the
-      outgoing connections to the incoming connection to track replies.
-
-
-
-The WebSocket protocol (defined in [RFC 6455](https://tools.ietf.org/html/rfc6455)) was designed to fill this gap. Quoting the RFC abstract:
+The WebSocket protocol (defined in [RFC 6455](https://tools.ietf.org/html/rfc6455)) was designed to bridge those issues, as stated in its RFC abstract:
 
 ```quote
 The WebSocket Protocol enables two-way communication between a client
@@ -550,25 +542,181 @@ not rely on opening multiple HTTP connections (e.g., using
 XMLHttpRequest or <iframe>s and long polling).
 ```
 
-In other words, the WebSocket protocol enables **bidirectional** communication between client and server over HTTP. Once a connection between a client and server is opened, messages can be send back and forth. This is especially vital for Web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners)and gaming applications (a client/player sends his own move to the server, the server pushes the other players' moves to the client).
+In other words, the WebSocket protocol enables **bidirectional** communication between client and server over HTTP---at least initially, the WebSocket protocol itself is a TCP-based protocol, the handshake (see next sentence) is interpreted by HTTP servers as an upgrade request. Once a connection between a client and server is established (this requires a *handshake* as the client requests an upgrade to the connection and the server responds to that upgrade before data transfer is possible), data (called *messages* in this protocol) can be send back and forth. Both the client and the server can now send messages and we thus no longer need to *simulate* a single connection, we actually *have* a single connection that can be reused again and again. This is especially vital for Web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners) or gaming applications (a client/player sends his own move to the server, the server pushes the other players' moves to the client).
+In order to close an established connection a *closing handshake* is required: both the client and the server can initiate the closing of the connection (unlike the initiation of the connection which is always started by the client). Once a connection is clsoed, no more data can be sent over it. Also important to know is that WebSocket servers can share a port with HTTP servers due to the HTTP upgrade request ability. The WebSocket protocol was created to be relatively simple and co-exist with HTTP and the already established HTTP infrastructure (e.g. proxies).
 
 
+The WebSocket Protocol uses the origin model used by web browsers to
+   restrict which web pages can contact a WebSocket server when the
+   WebSocket Protocol is used from a web page.
+
+We make use of the [Node.js WebSocket library](https://www.npmjs.com/package/ws), which hides some of the low-level details (similar to jQuery hiding some of Ajax's low-level details). We start with a hello-world like example: our client initiates a WebSocket connection with the server and sends a first message, and the server uses the established connection to send a reply. The example code can be found in [demo-code/node-websocket-ex](demo-code/node-websocket-ex). The example code can be started by first running `npm install` and then `node app.js 3000`. 
+
+First, the client-side:
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket test</title>
+    </head>
+    <body>
+        <main>
+            Status: <span id="hello"></span>
+        </main>
+
+        <!-- Poor coding standard, only for demonstration purposes.
+             JavaScript code should not be part of HTML documents.
+        -->
+        <script>
+            var socket = new WebSocket("ws://localhost:3000");
+            socket.onmessage = function(event){
+                document.getElementById("hello").innerHTML = event.data;
+            }
+
+            socket.onopen = function(){
+                socket.send("Hello from the client!");
+                document.getElementById("hello").innerHTML = "Sending a first message to the server ...";
+            };
+        </script> 
+    </body>
+</html>
+```
+We initiate a connection to a WebSocket server running on port `3000` on `localhost` with the line `var socket = new WebSocket("ws://localhost:3000");`. Due to the event-based nature of the WebSocket API, we write functions to be executed at certain events. In this case, for the `onopen` event, we send a message from client to server, while once we receive a message (event `onmessage`), we grab the message from the `event.data` field and change the `innerHTML` property of our `<span>` element. 
+
+The corresponding server-side script looks as follows:
+
+```javascript
+var express = require("express");
+var http = require("http");
+var websocket = require("ws");
+
+var port = process.argv[2];
+var app = express();
+
+app.use("/", function(req, res) {
+    res.sendFile("client/index.html", {root: "./"});
+});
+
+var server = http.createServer(app);
+
+const wss = new websocket.Server({ server });
+
+wss.on("connection", function(ws) {
+    //let's slow down the server response time a bit to make the change visible on the client side
+    setTimeout(function() {
+        console.log("Connection state: "+ ws.readyState);
+        ws.send("Thanks for the message. --Your server.");
+        ws.close();
+        console.log("Connection state: "+ ws.readyState);
+    }, 2000);
+    
+    ws.on("message", function incoming(message) {
+        console.log("[LOG] " + message);
+    });
+});
+
+server.listen(port);
+```
+
+Here, we instantiate a WebSocket server object (`wss`) and define what is to happen in case of a `connection` event: as connections are always initiated by clients our server simply sends a reply message and closes the connection; we also add a callback for the `message` event that is defined on the WebSocket object (`ws`): whenever a message arrives, the message is logged to the console. This code snippet also showcases how we can gather additional information about the *state* of a WebSocket via the `readyState` read-only property:
+
+| `readyState`      | Description                                            |
+|------------------|--------------------------------------------------------|
+| 0                | The connection is not yet open.                        |
+| 1                | The connection is open; messages can be send/received. |
+| 2                | The connection is currently being closed.              |
+| 3                | The connection is closed.                              |
 
 
+Make sure to take a look at the browser's Network Monitor, you should see the upgrade to the WebSocket protocol:
 
+![WebSocket in the Network Monitor](img/L4-websocket.png)
 
+The WebSocket protocol as described in [RFC 6455](https://tools.ietf.org/html/rfc6455) knows four event types overall:
+- `open`: this event fires once a connection request has been made and the handshake was successful; messages can be exchanged now;
+- `message`: this event fires when a message is received;
+- `error`: something failed;
+- `close`: this event fires when the connection closes; also fires after an `onerror` event;
 
+In our client-side code example we saw how simple it is to send data once a connection is established: `socket.send()`. 
 
+The above example is of course very simple and while it shows off how to establish a connection based on the WebSocket protocol and how to send/receive messages over it, it is not yet sufficient to allow you to use the code snippet as-is to build a multi-player game, as required in the assignments. In a multi-player game, every player (i.e. client) establishes a WebSocket connection to the server; the server has to keep track of which game each player is assigned to and when a player in a game with multiple players sends a message to the server (e.g. to "broadcast" his/her latest move in the game), the server has to send this message to all other players in the game---and only to those players. Players active in other games should obviously not receive those messages. Thus, the coordination effort lies with the server: the client-side can assume that a single WebSocket connection is sufficient for our use case and whenever a message arrives this message means an update to the game status (another player's move, another player dropped out of the game, the game has ended, etc.). 
 
+So, the main question then is, how does the server-side keep track of games and players and their respective WebSocket connections? One way is showcased in the [demo game application](demo-code/balloons-game). Let's walk through the relevant pieces of `app.js` and `game.js`.
 
+We keep track of which client is assigned to which game by mapping a WebSocket connection (the *key*) to a game (the *value*):
 
+```javascript
+var websockets = {};//property: websocket, value: game
+```
 
+We here make use of object properties, but of course could also use JavaScript's [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) object. 
 
+Our `game` data structure looks as follows:
 
+```javascript
+var game = function (gameID) {
+    this.playerA = null;
+    this.playerB = null;
+    this.id = gameID;
+    this.wordToGuess = null; 
+    this.gameState = "0 JOINT"; 
+};
+```
 
+Remember that in the demo code we built a word guesser game, so our game data structure holds the WebSocket connections of both players as well as a numeric game identifier, the word to guess (provided by whoever joined the game first) and the current game state (a set of states we defined based on the game mechanics).
 
+When a client establishes a new WebSocket connection with the server, the server-side script has several tasks:
+1. determine whether a new game should be started or whether the current game still requires additional players (and thus our newly connected player should join that game);
+2. inform the player about the current game status;
+3. request information from the player if necessary (e.g. in the word guessing game, the first player who joins a game is asked for the word to guess).
 
+The relevant code snippet looks as follows:
 
+```javascript
+var currentGame = new Game(gameStatus.gamesInitialized++);
+var connectionID = 0;//each websocket receives a unique ID
+
+wss.on("connection", function connection(ws) {
+
+    /*
+     * two-player game: every two players are added to the same game
+     */
+    let con = ws; 
+    con.id = connectionID++;
+    let playerType = currentGame.addPlayer(con);
+    websockets[con.id] = currentGame;
+
+    /*
+     * inform the client about its assigned player type
+     */ 
+    con.send((playerType == "A") ? messages.S_PLAYER_A : messages.S_PLAYER_B);
+
+    ...
+}
+```
+
+We here assign every WebSocket connection object a unique identifier, add the player to the game currently missing a player and then inform the player about the player type (word guesser or word provider). 
+
+Another interesting aspect to mention here is the choice of messages to pass back and forth: of course, what messages to pass depends entirely on the game to implement. As a concrete example, in the word guesser game, we have a number of messages which are defined in [messages.js](demo-code/balloons-game/public/javascripts/messages.js):
+- `GAME-WON-BY`
+- `GAME-ABORTED`
+- `CHOOSE-WORD`
+- `PLAYER-TYPE`
+- `SET-TARGET-WORD`
+- `MAKE-A-GUESS`
+- `GAME-OVER`
+
+If you look at the path of `messages.js` you will observe that this JavaScript file is actually part of the client-side JavaScript code. This makes sense, as both client and server need to be able to interpret the messages, so ideally we only create the message types once. While for now the first and last line of code in `messages.js` may not make sense:
+
+```javascript
+(function(exports){
+    ...
+}(typeof exports === "undefined" ? this.Messages = {} : exports));
+```
+
+you will learn more about this construct in the next lecture. For now, it is sufficient to know that these two lines of code enable us to share JavaScript code between our server-side and client-side JavaScript runtime. In our server-side `app.js` file, we can import this piece of code as usual via `var messages = require("./public/javascripts/messages");` (again, you will learn more details about `require` in the next lecture).
 
 
 
@@ -616,3 +764,4 @@ f(function(n)){
 5. Imagine building a chat application using Ajax (under HTTP/1.1). How is the browser notified of new messages to display?
     - Ajax allows the server to push HTTP responses to the client.
     - The browser has to poll the server for message updates in short time intervals.
+6. What is the purpose of browser built-in Web APIs?

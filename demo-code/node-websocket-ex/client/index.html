@@ -5,7 +5,7 @@
     </head>
     <body>
         <main>
-            Waiting for a hello from the server: <span id="hello"></span>
+            Status: <span id="hello"></span>
         </main>
 
         <!-- Poor coding standard, only for demonstration purposes.
@@ -19,6 +19,7 @@
 
             socket.onopen = function(){
                 socket.send("Hello from the client!");
+                document.getElementById("hello").innerHTML = "Sending a first message to the server ...";
             };
         </script> 
     </body>

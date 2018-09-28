@@ -594,7 +594,7 @@ If the username/password are correct, the server sends an HTTP response with the
 
 For future HTTP requests to the site, the browser **automatically sends along** the stored username/password. It does not wait for another request.
 
-As just said, the username/password combination are encoded by the client, before being passed to the server. The **encoding scheme** is very simple: the username and password are joined together by a colon and converted into **base-64 encoding**. It is a simple *binary-to-text* encoding scheme that ensures that only HTTP compatible characters are entered into the message. In this manner, not only strings with non-ASCII characters can be converted, images for instance can be converted as well - you will see this sometimes in CSS files where an entire image can be dumped into a CSS file via base-64 encoding in so-called "data URIs".
+As just said, the username/password combination are encoded by the client, before being passed to the server. The **encoding scheme** is very simple: the username and password are joined together by a colon and converted into **base-64 encoding** (described in detail in [RFC 4648](https://tools.ietf.org/html/rfc4648#section-4)). It is a simple *binary-to-text* encoding scheme that ensures that only HTTP compatible characters are entered into the message. In this manner, not only strings with non-ASCII characters can be converted, images for instance can be converted as well - you will see this sometimes in CSS files where an entire image can be dumped into a CSS file via base-64 encoding in so-called "data URIs".
 
 For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`.
 

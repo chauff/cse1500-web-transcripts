@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 var server = http.createServer(app);
 const wss = new websocket.Server({ server });
 
-var websockets = {};//key: websocket, value: game
+var websockets = {};//property: websocket, value: game
 
 /*
  * regularly clean up the websockets object
