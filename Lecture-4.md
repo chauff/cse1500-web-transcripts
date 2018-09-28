@@ -545,14 +545,11 @@ XMLHttpRequest or <iframe>s and long polling).
 In other words, the WebSocket protocol enables **bidirectional** communication between client and server over HTTP---at least initially, the WebSocket protocol itself is a TCP-based protocol, the handshake (see next sentence) is interpreted by HTTP servers as an upgrade request. Once a connection between a client and server is established (this requires a *handshake* as the client requests an upgrade to the connection and the server responds to that upgrade before data transfer is possible), data (called *messages* in this protocol) can be send back and forth. Both the client and the server can now send messages and we thus no longer need to *simulate* a single connection, we actually *have* a single connection that can be reused again and again. This is especially vital for Web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners) or gaming applications (a client/player sends his own move to the server, the server pushes the other players' moves to the client).
 In order to close an established connection a *closing handshake* is required: both the client and the server can initiate the closing of the connection (unlike the initiation of the connection which is always started by the client). Once a connection is clsoed, no more data can be sent over it. Also important to know is that WebSocket servers can share a port with HTTP servers due to the HTTP upgrade request ability. The WebSocket protocol was created to be relatively simple and co-exist with HTTP and the already established HTTP infrastructure (e.g. proxies).
 
+### A first WebSocket example
 
-The WebSocket Protocol uses the origin model used by web browsers to
-   restrict which web pages can contact a WebSocket server when the
-   WebSocket Protocol is used from a web page.
+In this class, we use the popular [Node.js WebSocket library](https://www.npmjs.com/package/ws), which hides some of the low-level details (similar to jQuery hiding some of Ajax's low-level details). We start with a hello-world like example: our client initiates a WebSocket connection with the server and sends a first message, and the server uses the established connection to send a reply and then closes the connection. The example code can be found in [demo-code/node-websocket-ex](demo-code/node-websocket-ex). The example code can be started by first running (as usual) `npm install` and then `node app.js 3000`. 
 
-We make use of the [Node.js WebSocket library](https://www.npmjs.com/package/ws), which hides some of the low-level details (similar to jQuery hiding some of Ajax's low-level details). We start with a hello-world like example: our client initiates a WebSocket connection with the server and sends a first message, and the server uses the established connection to send a reply. The example code can be found in [demo-code/node-websocket-ex](demo-code/node-websocket-ex). The example code can be started by first running `npm install` and then `node app.js 3000`. 
-
-First, the client-side:
+Let's look at the client-side:
 
 ```html
 <!DOCTYPE html>
@@ -641,6 +638,8 @@ The WebSocket protocol as described in [RFC 6455](https://tools.ietf.org/html/rf
 
 In our client-side code example we saw how simple it is to send data once a connection is established: `socket.send()`. 
 
+### WebSockets for multi-player games
+
 The above example is of course very simple and while it shows off how to establish a connection based on the WebSocket protocol and how to send/receive messages over it, it is not yet sufficient to allow you to use the code snippet as-is to build a multi-player game, as required in the assignments. In a multi-player game, every player (i.e. client) establishes a WebSocket connection to the server; the server has to keep track of which game each player is assigned to and when a player in a game with multiple players sends a message to the server (e.g. to "broadcast" his/her latest move in the game), the server has to send this message to all other players in the game---and only to those players. Players active in other games should obviously not receive those messages. Thus, the coordination effort lies with the server: the client-side can assume that a single WebSocket connection is sufficient for our use case and whenever a message arrives this message means an update to the game status (another player's move, another player dropped out of the game, the game has ended, etc.). 
 
 So, the main question then is, how does the server-side keep track of games and players and their respective WebSocket connections? One way is showcased in the [demo game application](demo-code/balloons-game). Let's walk through the relevant pieces of `app.js` and `game.js`.
@@ -718,7 +717,7 @@ If you look at the path of `messages.js` you will observe that this JavaScript f
 
 you will learn more about this construct in the next lecture. For now, it is sufficient to know that these two lines of code enable us to share JavaScript code between our server-side and client-side JavaScript runtime. In our server-side `app.js` file, we can import this piece of code as usual via `var messages = require("./public/javascripts/messages");` (again, you will learn more details about `require` in the next lecture).
 
-
+*Congratulations! You made it through one of the densest lectures of this class!*
 
 ## Self-check
 
