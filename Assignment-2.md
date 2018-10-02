@@ -44,7 +44,7 @@ Then, install the necessary npm package `express-generator`:
 ```console
 npm install express-generator
 ```
-_Note: in Ubuntu you may need to install also modules `commander` and `mkdirp`:_
+_Note: In Mac OS you might need to execute `sudo npm install -g express-generator`. In Ubuntu you may need to install also modules `commander` and `mkdirp`:_
 
 ```console
 sudo npm install commander -g
