@@ -191,7 +191,7 @@ First, lets install it via `npm`:
 npm install --save ws
 ````
 
-Before you implement anything useful, try this [minimal example](demo-code/minimum-example-ws) of a WebSocket - **note, that it is completely independent of your board game application code!**. In this minimum viable example, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. Here is our minimal client code (`test.html`):
+Before you implement anything useful, try this [minimal example](demo-code/node-websocket-ex) of a WebSocket - **note, that it is completely independent of your board game application code!**. In this minimum viable example, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. Here is our minimal client code (`test.html`):
 
 ```html
 <!DOCTYPE html>
