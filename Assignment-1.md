@@ -48,7 +48,7 @@ Hints:
 
 ---
 
-This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1.
+This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go, although for new Mac OS versions you might need to [install](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) telnet yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1.
 
 Use `telnet` to request the contents of the bread section of the recipe website `myrecipes.com/bread-recipes`.
 
@@ -100,7 +100,7 @@ Hello World!
 ```
 
 With this code, we have just created a file on the server called `myfile` which contains the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response
-is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
+is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
 
 ### 2.1)
 
