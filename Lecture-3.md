@@ -699,7 +699,7 @@ The course book walks you through several examples of making a responsive UI con
 
 If you want to examine how existing Web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML panel allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
 
-![Exploring events](img/L3-event-listeners.png)
+![Exploring events](img/L3-event-listeners.png) **[TODO: fix link]**
 
 ### Document Object Model
 
