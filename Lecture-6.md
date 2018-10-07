@@ -226,6 +226,7 @@ app.listen(3001);
 ```
 
 Importantly, `next()` enables us to move on to the next middleware component while `app.use(...)` registers the middleware component with the dispatcher. Try out this code for yourself and see what happens if:
+
 - `app.use` is removed;
 - the order of the middleware components is switched, i.e. we first add `app.use(delimiter)` and then `app.use(logger)`;
 - in one or both of the middleware components the `next()` call is removed.
@@ -234,7 +235,138 @@ You will observe different behaviours of the application when testing it in the 
 
 In the example above we did not actually sent an http response back, but you know how to write such a code snippet yourself. So far, none of our routes have contained `next` for a simple reason: all our routes ended with an http response being sent and this completes the request-response cycle; there is no need for a `next()` call.
 
-[SLIDE 33]
+### Authorisation component example
+
+In the [second application example](demo-code/node-component-ex), we add an authorisation component to a simple Todo application back-end: only clients with the **correct username and password** (i.e. authorised users) should be able to receive the list of todos when requesting them. We achieve this by adding a middleware component that is activated for every single HTTP request and determines whether the HTTP request contains an authorization header (if not, access is denied) and if the provided username and password combination is the desired one. Before we dive into the code details, let's first install and start the application:
+
+```
+git clone ...
+npm install
+npm start
+```
+
+Once the server is started, open another terminal and use `curl` (a command line tool that provides us with a convenient way to include username and password as you will see in a second):
+
+- Request the list of todos without authorisation, i.e. `curl http://localhost:3000/todos` - you should see an `Unauthorized access` error.
+- Request the list of todos with the correct username and password (as hardcoded in our demonstration code): `curl --user user:password http://localhost:3000/todos`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
+- Request the list of todos with an incorrect username/password combination: `curl --user test:test http://localhost:3000/todos`. You should receive a `Wrong username/password combination` error.
+
+Having found out who our code works, let us look at the authorization component, it is just a few lines of code (here we define an anynymous function directly as argument to `app.use`):
+
+```javascript
+app.use(function (req, res, next) {
+    var auth = req.headers.authorization;
+    if (!auth) {
+        return next(new Error("Unauthorized access!"));
+    }
+    var parts = auth.split(' ');
+    var buf = new Buffer(parts[1], 'base64');
+    var login = buf.toString().split(':');
+    var user = login[0];
+    var password = login[1];
+
+    //hardcoded for demonstration purposes
+    if (user === "user" && password === "password") {
+        next();
+    }
+    else {
+        return next(new Error("Wrong username/password combination!"));
+    }
+});
+```
+
+This code snippet first determines whether an authorization header was included in the HTTP request (accessible at `req.headers.authorization`). If no header was sent, we pass an error to the `next()` function, for Express to catch and process, i.e. sending the appropriate HTTP response. If an authorization header is present, we now manually parse out the username and password and determine whether they match `user` and `password` respectively. If they match, `next()` is called and the next middleware component processes the request, which in our `app.js` file is `app.get("/todos",...)`.
+
+### Components are configurable
+
+One of the design goals of middleware is **reusability** across applications: once we define a logger or an authorization component, we should be able to use it in a wide range of applications without additional engineering effort. Reusable code usually has parameters that can be set. To make this happen, we can wrap the original middleware function in a *setup function* which takes the function parameters as input:
+
+```javascript
+function setup(options) {
+    // setup logic
+    return function(req, res, next) {
+        // middleware logic
+    }
+}
+app.use( setup({ param1 : 'value1' }) );
+```
+
+## Routing
+
+Routing is the mechanism by which requests are routed to the code that handles them. The routes are specified by a URL and HTTP method (most often `GET` or `POST`). You have employed routes already - every time you wrote `app.get()` you specified a so-called **route handler** and wrote code that should be executed when that route (or URL) is called.
+
+This routing paradigm is a significant departure from the past, where **file-based** routing was commonly employed. In file-file based routing, we access files on the server by their actual name, e.g. if you have a Web application with your contact details, you typically would write those details in a file `contact.html` and a client would access that information through a URL that ends in `contact.html`. Modern web applications are not based on file-based routing, as is evident by the fact URLs these days do not contain file endings anymore (such as `.html` or `.asp`).
+
+In terms of routes, we distinguish between request types (`GET /user` differs from `POST /user`) and request routes (`GET /user` differs from `GET /users`).
+
+**Route handlers are middleware**. So far, we have not introduced routes that include `next` as third parameter, but since they *are* middleware, we can indeed add `next` as third argument.
+
+But when does it make sense? Let's look at the following code snippet:
+
+```javascript
+//clients requests todos
+app.get("/todos", function (req, res, next) {
+    //hardcoded “A-B” testing
+    if (Math.random() < 0.5) {
+        return next();
+    }
+    console.log("Todos in schema A returned");
+    res.json(todosA);
+});
+
+app.get("/todos", function (req, res,next) {
+    console.log("Todos in schema B returned");
+    res.json(todosB);
+});
+```
+
+Here, we define two route handlers for the same route `/todos`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
+If `next` was used, the dispatcher will move on to the second route handler and here, we do not call `next`, but instead simply send a response to the client.
+What we have done here is to hardcode so-called *A/B testing*. Imagine you have an application and two data schemas and you aim to learn which schema your users prefer. Half of the clients making requests will receive schema A and half will receive schema B.
+
+We can also provide multiple handlers in a single `app.get()` call as you see here:
+
+```javascript
+//A-B-C testing
+app.get('/todos',
+    function(req,res, next){
+        if (Math.random() < 0.33) {
+            return next();
+        }
+        console.log("Todos in schema A returned");
+        res.json(todosA);
+    },
+    function(req,res, next){
+        if (Math.random() < 0.5) {
+            return next();
+        }
+        console.log("Todos in schema B returned");
+        res.json(todosB);
+    },
+    function(req,res){
+        console.log("Todos in schema C returned");
+        res.json(todosC);
+    }
+);
+```
+
+This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/todos`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important here to understand when to call `next` and why in this setting we have to use a return statement - without a return statement, the function's code would be continued to be executed.
+
+### Routing paths and regular expressions
+
+When you specify a path (like `/todos`) in your route, the path is eventually converted into a **regular expression** by Express. A regular expression is a sequence of chars Regular expressions are very powerful. They allow you to specify matching patterns instead of hard-code all potential routes. Unfortunately, Express only supports a subset of the standard regex meta-characters: `+ ? * ( ) []` which are used as follows:
+
+| Character | Description                                      | Regex    | Matched expressions |
+|-----------|--------------------------------------------------|----------|---------------------|
+| +         | one or more occurrences                          | ab+cd    | abcd, abbcd, …      |
+| ?         | zero or one occurrence                           | ab?cd    | acd, abcd           |
+| *         | zero or more occurrences of any char (wildcard)  | ab*cd    | abcd, ab1234cd, …   |
+| […]       | match anything inside for one character position | ab[cd]?e | abe, abce, abde     |
+| (…)       | boundaries                                       | ab(cd)?e | abe, abcde          |
+
+
+
+
 
 
 
