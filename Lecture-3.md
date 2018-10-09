@@ -16,7 +16,8 @@ Preview: in today's lecture we look at JavaScript as the language of browser int
 If you have already read Chapter 4 of the course book, you should know:
 - the basics of JavaScript, 
 - how to include Javascript in your Web application, 
-- how to declare variables and functions and so on.
+- how to declare variables and functions, etc.,
+- what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is.
 
 You should have also learnt about `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked Web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
 
