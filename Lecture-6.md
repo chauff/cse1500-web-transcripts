@@ -17,7 +17,7 @@ So far, we have used a rather simple way to write Node.js code: all server-side 
 - Team-work is cumbersome.
 - Programming is cumbersome.
 
-These issues were recognized early on by the creators of Node.js and they introduced the concept of **modules**. A Node.js module is a single file and all code contained in it. 
+These issues were recognized early on by the creators of Node.js and they introduced the concept of **modules**. A Node.js module is a single file and all code contained in it.
 
 By default, *no code in a module is accessible to other modules*. Any variable or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. When you look at npm modules, such as Express:
 
@@ -43,7 +43,7 @@ module {
   filename: '/path/to/nodejs-file.js',
   loaded: false,
   children: [],
-  paths: 
+  paths:
    [ '/Users/path/path2/node_modules',
     '/Users/path/node_modules',
      '/Users/node_modules' ]
@@ -52,7 +52,7 @@ module {
 
  Finally, once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
-Here is a graphical overview of the connection between `require` and `module.exports`: 
+Here is a graphical overview of the connection between `require` and `module.exports`:
 
 ![Modules](img/L6-module.png)
 
@@ -66,7 +66,7 @@ Since we work with modules, let's consider files `foo.js`:
 var fooA = 1;
 module.exports = "Hello!";
 module.exports = function() {
-	console.log("Hi from foo!");
+    console.log("Hi from foo!");
 };
 ```
 
@@ -87,7 +87,7 @@ Here, `foo.js` is our `foo` module and `bar.js` is our application that imports 
 
 Node.js runs the referenced JavaScript file (here `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing foo.js? It is the function we defined in line 3. As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned. We can call the returned function and this results in *Hi from foo!* as you would expect. We can also combine lines 1 and 2 into a single line, as seen in line 3 with the same result. If we print out the variable `foo`, we learn that it is a function. Using the `toString()` function prints out the content of the function. Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. Finally, we can also look at the `module.exports` variable of `bar.js` - remember this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
 
-This setup also explains why **`require` is blocking**, i.e. once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return; this is in contrast to the usual *asynchronous* nature of Node.js functions. 
+This setup also explains why **`require` is blocking**, i.e. once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return; this is in contrast to the usual *asynchronous* nature of Node.js functions.
 
 Here is another example:
 
@@ -183,7 +183,8 @@ app.get("/round", function (req, res) {
 Middleware components are small, self-contained and reusable code pieces across applications. Imagine you have written an Express application with tens of different routes and now decide to log every single HTTP request coming in. You could add 2-3 lines of code to every route to achieve this logging OR you write a middleware logging component that gets called before any other route is called. How exactly this works in Express is discussed here.
 
 Middleware components take **three arguments**:
-- an HTTP request object, 
+
+- an HTTP request object,
 - an HTTP response object, and,
 - an optional callback function (`next()`) to indicate that the component is finished and the dispatcher (which orchestrates the order of middleware components) can move on to the next component.
 
@@ -384,7 +385,7 @@ app.get('/todos/:type', function (req, res, next) {
 });
 ```
 
-We here have defined an object `todoTypes` which contains `important`, `urgent` and `unimportant` todos. We can hardcode routes, for example `/todos/important` to return only the important todos, `/todos/urgent` to return the urgent todos only and `/todos/unimportant` to return the unimportant todos. This is not a maintainable solution though (think about objects with hundreds of properties...). 
+We here have defined an object `todoTypes` which contains `important`, `urgent` and `unimportant` todos. We can hardcode routes, for example `/todos/important` to return only the important todos, `/todos/urgent` to return the urgent todos only and `/todos/unimportant` to return the unimportant todos. This is not a maintainable solution though (think about objects with hundreds of properties...).
 
 Instead, we would like to write a single route that, dependent on a **routing parameter**, serves different todos. This is achieved in the code snippet shown here. The routing parameter type (indicated with a starting colon `:`) will match any string that does not contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `type`, we access it with `req.params.type`. What this piece of code is doing is to check whether the route parameter matches a proprty of the `todoTypes` object and if it is, the correct todo list is returned to the client. If the parameter does not match any property of our `todoTypes` object, we make a call to next and move on the next route handler - e.g. a 404 page specific to your application.
 
@@ -499,8 +500,7 @@ var context = {
 console.log(ejs.render(template, context));
 ```
 
-In this example, `transformUpper` is our user-defined function that expects a string as input and transforms it to uppercase. The `context` object has a property `helperFunc` which is assigned our user-defined function as value. In the template, we use the properties of the `context` object and `ejs.render` brings template and data together. 
-
+In this example, `transformUpper` is our user-defined function that expects a string as input and transforms it to uppercase. The `context` object has a property `helperFunc` which is assigned our user-defined function as value. In the template, we use the properties of the `context` object and `ejs.render` brings template and data together.
 
 ### JavaScript within EJS templates
 
@@ -510,7 +510,7 @@ To make templates even more flexible, we can incorporate JavaScript in the templ
 
  our context is an array of objects, each movie with a title and release date. In our template, we use [`Array.prototype.foreach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to pass over the array and print out the title and release data. The `<%` scriptlet tags are used for **control-flow purposes**.
 
- ### Express and templates
+### Express and templates
 
  How do templates tie in with the Express framework? So far, we have used the REPL to show off some of EJS' capabilities. It turns out that so-called **views** can be easily configured with Express. Not only that, an application can also make use of several template engines at the same time.
 
@@ -628,7 +628,7 @@ console.log(constants3["pi"]);
 
 ```javascript
 app.get('/user(name)?s+', function(req,res){
-	res.send(…)
+    res.send(…)
 });
 ```
 
@@ -636,7 +636,7 @@ app.get('/user(name)?s+', function(req,res){
 
 ```javascript
 app.get('/whaa+[dt]s+upp*', function(req,res){
-	res.send(…)
+    res.send(…)
 });
 ```
 

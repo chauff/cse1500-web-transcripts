@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
-
 # CSE1500: Web and Database Technology
 
-Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only web topics are covered.** Work in progress. 
+[![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
+
+Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only web topics are covered.** Work in progress.
 
 ## Contact
 
@@ -61,7 +61,6 @@ In the past years, the web and database (DB) topics were interwoven (usually 1 l
 - [Midterm 2016/17](https://chauff.github.io/documents/webdb-2017-18/midterm1.pdf)
 - [Final 2016/117](https://chauff.github.io/documents/webdb-2017-18/final1.pdf)
 
-
 ## Assignments
 
 There are six assignments in total.
@@ -93,7 +92,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 
 ## List of web lectures
 
-**This is work in progress, lectures in a good draft status for 2018/19 are bolded.** The transcripts are an 2018/19 addition, the lectures slides are currently all from 2017/18.
+**This is work in progress, lectures in a good draft status for 2018/19 are in bold.** The transcripts are an 2018/19 addition, the lectures slides are currently all from 2017/18.
 
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Topics: HTTP 1.1 request/response message, important HTTP headers, web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
@@ -101,7 +100,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended readings:
     - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do)
     - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-    - Developer tools overview of your favourite web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
+    - Developer tools overview of your favorite web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
     - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
     - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
@@ -165,7 +164,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - An overview of [best practices in Node.js](https://github.com/i0natan/nodebestpractices).
     - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing).
 
-- **Lecture 7** ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, evercookie, third-party cookies, client-side cookies, cookies and sessions in Express, third-party authentication
+- **Lecture 7** ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, Evercookie, third-party cookies, client-side cookies, cookies and sessions in Express, third-party authentication
   - Required readings: *none*
   - Recommended activities: *none*
   - Recommended readings:

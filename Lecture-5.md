@@ -40,8 +40,8 @@ If you have already read Chapter 3 of the course book, you should be able to ans
 What is the result of applying the CSS below?
 
 - The text within the paragraph `<p class="last">...</p>` will appear green.
-- The text within `<span>...</span>` appearing right after a paragraph `<p>...</p>` will appear grey.
-- The text within `<span>...</span>` appearing within a paragraph `<p>...</p>` will appear grey.
+- The text within `<span>...</span>` appearing right after a paragraph `<p>...</p>` will appear gray.
+- The text within `<span>...</span>` appearing within a paragraph `<p>...</p>` will appear gray.
 - The background of the rendered page will appear yellow.
 
 ```css
@@ -131,7 +131,7 @@ In this example both pseudo-classes are showcased:
 </html>
 ```
 
-The rendering will show `Today's todos` with a red font (it is the 2. child of `<main>`) and `Tomorrow's todos` with a green background colour (`#00ff00`) as that is the second element of type `<p>` among the sibling group.
+The rendering will show `Today's todos` with a red font (it is the 2. child of `<main>`) and `Tomorrow's todos` with a green background color (`#00ff00`) as that is the second element of type `<p>` among the sibling group.
 
 If we are aiming at the first and/or last child or sibling element, we can also use a different set of pseudo-classes:
 
@@ -1117,7 +1117,7 @@ There are several advantages to using CSS-based instead of JavaScript-based anim
 
 - CSS is relatively easy to use (no need to learn the intricate details of JavaScript).
 - The rendering engines are optimized for CSS-based animations; there is no need to optimize your JavaScript code.
-- CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css animation).
+- CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
 
 Here is a first animation example, adapted from [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq):
 

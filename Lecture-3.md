@@ -2,7 +2,7 @@
 
 *This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
-Preview: in today's lecture we look at JavaScript as the language of browser interactions. In the next lecture we will look at Node.js, a server-side JavaScript runtime. 
+Preview: in today's lecture we look at JavaScript as the language of browser interactions. In the next lecture we will look at Node.js, a server-side JavaScript runtime.
 
 ## Learning goals
 
@@ -14,12 +14,13 @@ Preview: in today's lecture we look at JavaScript as the language of browser int
 ## Take-aways of book chapter 4
 
 If you have already read Chapter 4 of the course book, you should know:
-- the basics of JavaScript, 
-- how to include JavaScript in your web application, 
+
+- the basics of JavaScript,
+- how to include JavaScript in your web application,
 - how to declare variables and functions, etc.,
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is.
 
-You should have also learnt about `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
+You should have also learned about `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
 
 In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
 
@@ -31,9 +32,9 @@ JavaScript tracks ECMAScript, the scripting-language specification standardized 
 
 JavaScript is a language in flux.
 
-One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **EcmaScript 2017**, etc. These names refer to different version of EcmaScript (ES for short) which is currently in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard required a long-standing effort: "the completion of the sixth edition is the culmination of a fifteen year effort" ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
+One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, etc. These names refer to different version of ECMAScript (ES for short) which is currently in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard required a long-standing effort: "the completion of the sixth edition is the culmination of a fifteen year effort" ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
 
-Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continous updates and changes.
+Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
 In this course we do include very few **ES6** features, as we have only a few lectures to cover the material. If you want to dive into the depth of JavaScript, check out the free [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
 
@@ -46,9 +47,9 @@ Here is one example of what TypeScript (the 11th most popular language on GitHub
 
 ### Server-side vs. client-side scripting
 
-**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client (usually an HTML document). The client thus has to trust the server. Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly increase the server's load. As the client often only receives an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML. 
+**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client (usually an HTML document). The client thus has to trust the server. Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly increase the server's load. As the client often only receives an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML.
 
-**Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code (and [this](https://twitter.com/atoker/status/796176641600974851) may happen). Having the clients execute the scripts **reduces the load on the web server**, though all data necessary for the script (which could be megabytes of data) need to be downloaded and processed by the client. 
+**Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code (and [this](https://twitter.com/atoker/status/796176641600974851) may happen). Having the clients execute the scripts **reduces the load on the web server**, though all data necessary for the script (which could be megabytes of data) need to be downloaded and processed by the client.
 
 ### `<script>`
 
@@ -59,7 +60,7 @@ By placing the `<script>` tags at the end, the JavaScript files will be one of t
 
 Once more: interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, [`jQuery`'s `document.ready` function is your friend](http://learn.jquery.com/using-jquery-core/document-ready/).
 
-### !Activity!
+### Activity
 
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
@@ -67,7 +68,7 @@ Based on chapter 4 of the course book, you should be able to answer the followin
 
 ```javascript
 function giveMe(x){
-    return function(y){ 
+    return function(y){
       return x*y;
     }
 }
@@ -92,12 +93,12 @@ my_func(5, toPrint);
 
 ## JavaScript design patterns
 
-*"Design patterns are reusable solutions to commonly occurring problems in software design."* This quote is on the first page of Addy Osmani's [book on JavaScript design pattners](https://addyosmani.com/resources/essentialjsdesignpatterns/book/) (available under CC). A basic example of a reusable solution is one for object creation. Instead of everyone of us trying to figure out how to create objects, we use well-known recipes (a.k.a. design patterns) that were developed over time and apply them. 
-There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Maybe also worth knowing that besides **design patterns**, there exist also **anti-patterns**, that are programming recipes which are popular but ineffictive at tackling a recurring problem.
+*"Design patterns are reusable solutions to commonly occurring problems in software design."* This quote is on the first page of Addy Osmani's [book on JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/) (available under CC). A basic example of a reusable solution is one for object creation. Instead of everyone of us trying to figure out how to create objects, we use well-known recipes (a.k.a. design patterns) that were developed over time and apply them.
+There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Maybe also worth knowing that besides **design patterns**, there exist also **anti-patterns**, that are programming recipes which are popular but ineffective at tackling a recurring problem.
 
 ### JavaScript objects
 
-The web course book focuses on what JavaScript to place where, it does not emphasise object principles. We do this here. One vital notion in JavaScript is the fact that **functions are first-class citizens** of the language. What does that mean? Well, it means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable**. 
+The web course book focuses on what JavaScript to place where, it does not emphasize object principles. We do this here. One vital notion in JavaScript is the fact that **functions are first-class citizens** of the language. What does that mean? Well, it means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable**.
 
 The object-oriented programming paradigm is based on a set of cooperating objects (each one able to send/receive "messages" and process data) instead of a collections of functions or a set of commands. The goal of OOP is to assign every object a distinct role, in order to improve code maintainability.
 
@@ -119,16 +120,17 @@ console.log( game.player1 ); //prints out "Alice"
 
 game["won lost"] = "1 12";
 
-game.printID = function(){ 
-    console.log( this.id ); 
+game.printID = function(){
+    console.log( this.id );
 }
 game["printID"](); // prints out "1"
 game.printID(); //prints out "1"
 ```
+
  We first create an empty object with the `new` notation that we can then assign name/value pairs. Here, `id`, `player` and so on are the object's **properties** and their name must be a valid JavaScript identifier (basically a string that does not start with a number). Note, that `printID` is also an object property, although it is often also referred to as a method (because we define a function here). As you see here, JavaScript makes it easy to add methods, by assigning a function to the property of an object.
 
- Here you also see the use of `this` for the first time. You should be familiar with it from Java, this refers to the current object. Although ... as with many things in JavaScript, it is not quite as simple. If you take a look at the very successful [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) book series, you will find half a book dedicated to `this` in JavaScript. 
- 
+ Here you also see the use of `this` for the first time. You should be familiar with it from Java, this refers to the current object. Although ... as with many things in JavaScript, it is not quite as simple. If you take a look at the very successful [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) book series, you will find half a book dedicated to `this` in JavaScript.
+
 We have two ways to set and access an object's properties: either through the bracket notation (`[name]`) or the dot notation (`.name`). It usually does not matter which notation to use, the exception here being property names with whitespaces. Property names that contain whitespaces must be set and accessed through the bracket notation (as in the example above for `game["won lost"]`, the alternative `game.won lost` or `game."won lost"` will lead to a `SyntaxError`).
 
 ### Object literals
@@ -146,6 +148,7 @@ var game = {
     }
 };
 ```
+
 This time, `"won lost"` is a valid property name, but only if enclosed in quotation marks. Instead of remembering when whitespaces are allowed, it is best to avoid them at all when assigning property names.
 
 Object literals can be complex, they can contain objects themselves:
@@ -168,15 +171,16 @@ The function `console.table` is an alternative for `console.log`, especially for
 
 Back to object literals ... what happens if we need 1000 objects of this kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
 
-
 ### Design pattern I: Basic constructor
 
 First, let's quickly recap what classes in Java offer us:
+
 - we can encapsulate private members, i.e. members of the class that are not accessible externally;
 - we define constructors that define how to initialize a new object;
-- we define methods (public, protected, private). 
+- we define methods (public, protected, private).
 
 Here is a **Java** example:
+
 ```java
 public class Game {
     private int id; /* encapsulate private members */
@@ -219,6 +223,7 @@ var g2 = new Game(3);
 ```
 
 An object constructor in JavaScript is just a **normal function**. When the `new` keyword appears the JavaScript runtime executes two steps:
+
 1. A new anonymous empty object is created and used as `this`.
 2. The new object is **returned** at the end of the function.
 
@@ -278,13 +283,14 @@ g1.toString(); //"[object Object]" (we never defined it, but it is there)
 The last line of this code snippet is also of interest: objects come with **default methods**, and so the natural question should be, where do these methods come from? The answer is **prototype chaining** .
 
 Before looking at prototype-based constructors, here is a quick summary of the basic constructor:
+
 - Advantage: very easy to use
 - Issues:
-    - Not obvious how to use **inheritance**;
-    - Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
-    - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
+  - Not obvious how to use **inheritance**;
+  - Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
+  - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
 
-The latter point may not be very obvious, but imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertantly overwrite important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works). There must be something else out there, and there is indeed. Let's move on to the next design pattern.
+The latter point may not be very obvious, but imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently overwrite important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works). There must be something else out there, and there is indeed. Let's move on to the next design pattern.
 
 ### Design pattern 2: Prototype-based constructor
 
@@ -320,7 +326,8 @@ g1["setID"] = function(id){
     this.id = id;
 }
 ```
-All we have to do to make properties available to all objects is to use the `.prototype` property to walk up the prototype chain and assign a property to `Game.prototype`. 
+
+All we have to do to make properties available to all objects is to use the `.prototype` property to walk up the prototype chain and assign a property to `Game.prototype`.
 When the two game objects are crated and `setID()` is called, the JavaScript runtime walks up the prototype chain and "finds" the **first** property that matches the desired property name.
 
 This explanation should also answer the last question posed in the code snippet: what happens if a property is also defined as property of the object **as well as** as property of the prototype? The JavaScript runtime stops at the first part of the chain where the property is found and this means that `g1.setID` and `g2.setID` now refer to different pieces of code.
@@ -350,10 +357,11 @@ g1.setID("3");//leads to "Assertion failed: Expecting a number"
 ```
 
 The prototype chaining allows us to set up **inheritance through prototyping**. This requires two steps:
+
 1. Create a new constructor.
 2. Redirect the prototype.
 
-Lets assume we want to inherit from `Game` to create a more specialied variant: `TwoPlayerGame`:
+Lets assume we want to inherit from `Game` to create a more specialized variant: `TwoPlayerGame`:
 
 ```javascript
 function Game(id){
@@ -369,7 +377,7 @@ function TwoPlayerGame(id, p1, p2){
     /*
      * call(...) calls a function with a given this value and arguments.
      * More information here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
-     */ 
+     */
     Game.call(this, id);
     this.p1 = p1;
     this.p2 = p2;
@@ -407,32 +415,33 @@ TwoPlayerGame.prototype.create = function create() {
   return new this.constructor();
 }
 
-var o = new TwoPlayerGame().create(); 
+var o = new TwoPlayerGame().create();
 console.log( o instanceof TwoPlayerGame ); //prints out "false" as long as the constructor is not set to TwoPlayerGame
 ```
 
 As a rule of thumb: when using prototypical inheritance, always set up both the `prototype` and `prototype.constructor`; in this manner the wiring is correct, no matter how you will use the inheritance chain later on.
 
 To finish off, here is a quick summary of the prototype-based constructor:
-- Advantages:
-    - **Inheritance is easy** to achieve;
-    - **Objects share functions**;
-- Issue:
-    - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
 
+- Advantages:
+  - **Inheritance is easy** to achieve;
+  - **Objects share functions**;
+- Issue:
+  - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
 
 ### Design pattern 3:  Module
 
 #### Scoping
 
 In order to tackle this last remaining issue above, we need to talk about **scoping** (i.e. the context in which values and expressions are visible) in JavaScript. In contrast to other languages, JavaScript has very **limited** scoping:
+
 - `var` declared within a function: **local** scope;
 - `var` declared outside of a function: **global** scope;
 - no `var`: **global scope** (no matter where declared);
 - `let` was introduced in **ES6**: **block** scope;
 - `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
 
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to unintuitive behaviour can be seen in the following code snippets.
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to unintuitive behavior can be seen in the following code snippets.
 
 Imagine we want to print out the numbers 1 to 10. This is easy to achieve, e.g.:
 
@@ -446,7 +455,7 @@ Lets now imagine that the print outs should happen each after a delay of one sec
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
-    setTimeout(function() { 
+    setTimeout(function() {
         console.log(i);
     }, 1000);
 }
@@ -458,8 +467,8 @@ Lets fix the two issues (printing 11s instead of 1...10 and waiting a ~second be
 
 ```javascript
 function fn(i) {
-    setTimeout(function() { 
-        console.log(i); 
+    setTimeout(function() {
+        console.log(i);
     }, 1000 * i);
 }
   
@@ -478,7 +487,7 @@ for (let i = 1; i <= 10; i++)
     }, 1000 * i)
 ```
 
-Scoping is also important when it comes to larger programming projects: imagine that you are working on some complicated project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point or another your code would stop working. Here is a very simple `jQuery` to showcase this issue: 
+Scoping is also important when it comes to larger programming projects: imagine that you are working on some complicated project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point or another your code would stop working. Here is a very simple `jQuery` to showcase this issue:
 
 ```html
 <!DOCTYPE html>
@@ -503,15 +512,16 @@ $(document).ready(function(){
 </body>
 </html>
 ```
+
 This code does exactly what we expect (hiding a button once we click it)). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
 
-Luckily, `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. 
+Luckily, `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible.
 
 How is that achieved? Through the module pattern, which we come to very soon. It has the following goals:
+
 - **Do not declare any global variables** or functions unless required.
 - Emulate **private/public** membership.
 - Expose only the **necessary** members to the public.
-
 
 #### Hoisting
 
@@ -534,13 +544,15 @@ var seven = function(){
 
 console.log(x+" - "+y);
 ```
-In both cases we seem to be executing a function before it is defined. You may either believe that the JavaScript runtime does not care about this and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function` and abort. Unfortunately, neither of these two options are true (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works, `var y = seven()`;` does not. 
 
-The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. 
+In both cases we seem to be executing a function before it is defined. You may either believe that the JavaScript runtime does not care about this and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function` and abort. Unfortunately, neither of these two options are true (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works, `var y = seven()`;` does not.
+
+The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed.
 
 In our example, the JavaScript runtime *hoists* the declaration of `six` is processed before the remaining code is executed.
 
 Once more:
+
 - Declarations are hoisted to the top.
 - Expressions are not hoisted.
 
@@ -557,6 +569,7 @@ f();
 console.log(x);
 console.log(y);
 ```
+
 Variables `x` and `y` have global scope as they are not prefixed by `var` or `let` or `const`. And so the console output will be `5` and `3`.
 
 But what happens in this slightly changed piece of code?
@@ -572,11 +585,10 @@ f();
 console.log(a);
 console.log(b);
 ```
+
 Now we will end up with a `ReferenceError: a is not defined` as the `var a` statement at the end of function `f` is **hoisted** to the top of the function - as `var a` is a declaration.
 
-
-
-#### Finally ...
+#### Finally
 
 Ok, after this interlude of scoping and hoisting, let's finally come to our module pattern.
 
@@ -616,7 +628,7 @@ In this code snippet, we are defining a variable `gameStatModule` which is assig
 })();
 ```
 
-Here, the function is **anonymous** (it does not have a name - it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to it immediate execution (the brackets surrounding the function are not strictly necessary, but they are commonly used). 
+Here, the function is **anonymous** (it does not have a name - it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to it immediate execution (the brackets surrounding the function are not strictly necessary, but they are commonly used).
 
 Going back to our `gameStatModule`, we immediately execute the function. What does this function contain? It contains a number of variables with function scope (`gamesStarted` and so on) as well as a return statement. This return statement contains the result of the function invocation. In this case, an *object literal* is returned and this object literal has two methods `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other "private" variables, all we will get is an `undefined` as the returned object does not contain those properties (though the returned object has access to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables.
 
@@ -655,20 +667,20 @@ gameStatModule.decrGamesStarted = function(){
  * once this method is called, it leads to an error:
  * ReferenceError: gamesStarted is not defined;
  * methods added on-the-fly cannot access 'private' variables
- */ 
+ */
 gameStatModule.decrGamesStarted();
 ```
 
 Summarizing the module pattern:
+
 - Advantages:
-    - Encapsulation is achieved;
-    - Object members are either public or private;
+  - Encapsulation is achieved;
+  - Object members are either public or private;
 - Issues:
-    - Changing the type of membership (public/private) takes effort (unlike in Java where a 'private' simply becomes 'public').
-    - Methods added on the fly later cannot access "private" members (as seen in the last code snippet).
+  - Changing the type of membership (public/private) takes effort (unlike in Java where a 'private' simply becomes 'public').
+  - Methods added on the fly later cannot access 'private' members (as seen in the last code snippet).
 
 Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) series, a whole book is dedicated to scopes and closures.
-
 
 ## Events and the DOM
 
@@ -688,6 +700,7 @@ $(document).ready(main);
 ```
 
 The course book makes extensive use of `jQuery` (a big time saver in practice). With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
+
 - `document.getElementById`
 - `document.getElementsByClassName`
 - `document.getElementsByTagName`
@@ -710,20 +723,21 @@ If you want to examine how existing web applications make use of events, the bro
 ### Document Object Model
 
 The DOM is our entry point to interactive web applications. It allows use to:
-- **Extract an element's state**
-    - Is the checkbox checked?
-    - Is the button disabled?
-    - Is a `<h1>` appearing on the page?
-- **Change an element's state**
-    - Check a checkbox
-    - Disable a button
-    - Create an `<h1>` element on a page if none exists
-- **Change an element's style** (material for a later lecture)
-    - Change the color of a button
-    - Change the size of a paragraph
-    - Change the background color of a web application
 
-In the remainder of this lecture, you will see a number of simple event-based examples that add an interactive element to a web page. 
+- **Extract an element's state**
+  - Is the checkbox checked?
+  - Is the button disabled?
+  - Is a `<h1>` appearing on the page?
+- **Change an element's state**
+  - Check a checkbox
+  - Disable a button
+  - Create an `<h1>` element on a page if none exists
+- **Change an element's style** (material for a later lecture)
+  - Change the color of a button
+  - Change the size of a paragraph
+  - Change the background color of a web application
+
+In the remainder of this lecture, you will see a number of simple event-based examples that add an interactive element to a web page.
 These examples are simple and self-contained. This means that all necessary code is contained within a single code snippet (even though by now you are aware that in a real coding project there should be a strict separation between HTML, JavaScript and CSS, the latter will be introduced in a later lecture).
 
 #### Example 1: document.getElementById
@@ -760,7 +774,7 @@ This is of course not ideal as we are writting JavaScript code in the middle of 
               tb.value = 'Hello World';
             };
 
-            /* we attach a function to a button's click event 
+            /* we attach a function to a button's click event
              * after the DOM finished loading
              */
             window.onload = function() {
@@ -795,6 +809,7 @@ As another exercise, add a second `<input>` element with the **same id** and see
 #### Example 2: creating new nodes
 
 HTML tags and content can be added dynamically in two steps:
+
 1. Create a DOM node.
 2. Add the new node to the document as a **child of an existing node**.
 
@@ -835,7 +850,8 @@ Lets look at how this works in practice:
     </body>
 </html>
 ```
-Note here, that the HTML part initally contains an empty `<ul>` element. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then starting adding children to it. 
+
+Note here, that the HTML part initally contains an empty `<ul>` element. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then starting adding children to it.
 
 We can of course also remove elements:
 
@@ -943,6 +959,7 @@ Note that in global code or regular functions (not bound to an object), `this` r
 #### Example 4: mouse events
 
 A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, ...) and some are defined as a series of simpler mouse events, e.g.
+
 - A click of the mouse button in-place consists of:
     1. `mousedown`
     2. `mouseup`
@@ -1002,7 +1019,7 @@ Here is an example of `mouseover` and `mouseout`: a timer starts as long as the 
 </html>
 ```
 
-Mouse events can be tricky, the more complex ones are not consistently implemented across browsers. 
+Mouse events can be tricky, the more complex ones are not consistently implemented across browsers.
 
 #### Example 5: a crowdsourcing interface
 
@@ -1057,11 +1074,11 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
       <form>
           <p><em>Task: Write or mark the 3 most important information nuggets</em>
             <br>
-            
+
             <textarea id="ta" cols="50" rows="5" readonly>"Hobey Baker (1892-1918) was an American amateur athlete of the early twentieth century, widely regarded by his contemporaries as one of the best athletes of his time."
             </textarea>
             <br>
-            
+
             <label>Nugget 1: <input type="text" id="n1" autocomplete="off"></label>
             <br>
             <label>Nugget 2: <input type="text" id="n2" autocomplete="off"></label><br>
@@ -1076,7 +1093,7 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
 
 The last example is a typing game: given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keypress` event type. We start the timer with `setInterval` (incrementing once per second), which returns a handle that we can later pass to `clearInterval` to stop the associated callback from executing (thus stopping the clock).
 
-In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those line on the `.style` properties. 
+In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those line on the `.style` properties.
 
 ```html
 <!DOCTYPE html>
@@ -1117,7 +1134,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
 
               //first time key was pressed, start counter
               if(currentPos==1) {
-                intervals[this.id]=setInterval(function(){ 
+                intervals[this.id]=setInterval(function(){
                     var t = parseInt(document.getElementById(timerLog).innerHTML);
                     t = t + 1;
                     document.getElementById(timerLog).innerHTML = t +" seconds";
@@ -1146,13 +1163,13 @@ In this example we do do make slight use of CSS (to flash a red background and a
           <p>
             <em>Task: Type out the following text correctly:</em>
             <br>
-          
+
             <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">H. Baker was an American amateur athlete of the 20th century.</textarea>
             <br>
 
             <textarea id="typed" cols="50" rows="5" readonly="" autocomplete="off"></textarea>
-            <br>          
-            
+            <br>
+
             <span id="timer">0 seconds</span>
           </p>
       </form>
@@ -1171,8 +1188,6 @@ To conclude this lecture, here is an overview of important keyboard and text eve
 | keyup    |  user releases key while element has keyboard focus                                   |
 | select   | user selects text in an element                                                       |
 
-
-
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
@@ -1190,7 +1205,7 @@ var f = ( function myfunc1(a){
 console.log(f(4));
 ```
 
-2. After executing the JavaScript code snippet below in the browser, how many of `a`, `b`, `c` and `d` have global scope (they become a property of the `window` object)? 
+2. After executing the JavaScript code snippet below in the browser, how many of `a`, `b`, `c` and `d` have global scope (they become a property of the `window` object)?
 
 ```javascript
 var a = 5;

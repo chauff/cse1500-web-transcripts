@@ -15,8 +15,9 @@ In the first lecture of this course we covered the hypertext transfer protocol i
 
 This became most obvious when we discussed authentication: the client, making an HTTP request to a server requiring authentication will send the username/password combination in every single request. This design decision simplifies the server architecture a lot.
 
-The modern web, however, is **not** stateless. Many websites and portals you visit track you and your state: 
-- [bol.com](https://www.bol.com/) keeps your shopping cart filled even when you leave their shop; 
+The modern web, however, is **not** stateless. Many websites and portals you visit track you and your state:
+
+- [bol.com](https://www.bol.com/) keeps your shopping cart filled even when you leave their shop;
 - [statcounter](http://statcounter.com/), a popular user tracking toolkit, can exclude yourself from being counted as visitor to your own website by the setting of a cookie;
 - JavaScript games often keep track of your game's current status and you can continue when re-visiting the game.
 
@@ -53,7 +54,7 @@ This lecture is about **cookies and sessions** and indeed both are closely relat
 
 [RFC6265](https://tools.ietf.org/html/rfc6265) contains a stern warning about the use of cookies:
 
-```
+```console
 "This document defines the HTTP Cookie and Set-Cookie header fields. These header fields can be used by HTTP servers to store state (called cookies) at HTTP user agents, letting the servers maintain a stateful session over the mostly stateless HTTP protocol.
 ...
 Although cookies have many historical infelicities that degrade their security and privacy the Cookie and Set-Cookie header fields are widely used on the Internet.
@@ -67,7 +68,7 @@ Below, on the right we have our server-side application and on the left our brow
 
 ![Cookie basics](img/L7-cookie-basics.png)
 
-At the first visit of a web application, the client sends an HTTP request not containing a cookie. The server-side application sends an HTTP response to the client including a cookie. Cookies are **encoded in the HTTP header**. At each subsequent HTTP request made to the same server-side application, the browser returns all cookies that were sent from that application. Cookies are actually **bound to a site domain name**, they are only sent back on requests to this specific site - a security feature of the browser. 
+At the first visit of a web application, the client sends an HTTP request not containing a cookie. The server-side application sends an HTTP response to the client including a cookie. Cookies are **encoded in the HTTP header**. At each subsequent HTTP request made to the same server-side application, the browser returns all cookies that were sent from that application. Cookies are actually **bound to a site domain name**, they are only sent back on requests to this specific site - a security feature of the browser.
 
 As we will see in a moment, we also have the ability for even more fine-grained control over when to return cookies from client to server.
 
@@ -92,8 +93,9 @@ Cookies can either be transient or persistent.
 ### Cookie fields
 
 Cookies consist of seven components, of which only the first one is required:
+
 1. The `cookie-name=cookie-value` field has to be set for a cookie to be valid;
-2. The `Expires` (expiration date) and `Max-Age` (seconds until the cookie expires) fields whether a cookie is a transient or persistent cookie. 
+2. The `Expires` (expiration date) and `Max-Age` (seconds until the cookie expires) fields whether a cookie is a transient or persistent cookie.
 3. The `Domain` field determines the domain the cookie is associated with and is restricted to the same domain as the server is running on.
 4. The `Path` field determines for which paths the cookie is applicable using wildcarding. Setting the path to a `/` matches all pages, while `/todos` will match all pages under the `/todos` path and so on.
 5. `Secure` flag: if this flag is set for a cookie it will only be sent via HTTPS, ensuring that the cookie is always encrypted when transmitting from client to server. This makes the cookie less likely to be exposed to cookie theft via eavesdropping. This is most useful for cookies that contain sensitive information, such as the session ID. A browser having stored a secure cookie will not add it to the HTTP request to a server if the request is sent via HTTP.
@@ -112,16 +114,16 @@ If the `Domain` field is set however, the cookie is applicable to the **domain l
 
 Once more:
 
-```
+```console
 GET http://www.my_site.nl/todos
 Set-Cookie: name=value; Path=/; Domain=my_site.nl
 ```
 
 is applicable to
 
-```
-www.my_site.nl 
-todos.my_site.nl 
+```console
+www.my_site.nl
+todos.my_site.nl
 serverA.admin.todos.my_site.nl
 ```
 
@@ -135,11 +137,12 @@ Since cookies can be modified by a malicious user we need to be able to verify t
 
 ```javascript
 module.exports = {
-	cookieSecret: "my_secret_abc_123"
+    cookieSecret: "my_secret_abc_123"
 };
 ```
 
 Our example application will do two things:
+
 1. send cookies to a client that requests them (route `/sendMeCookies`), and,
 2. list all cookies sent by the client on the server (route `/ListAllCookies`).
 
@@ -165,7 +168,7 @@ res.clearCookie('chocolate');
 
 ## A more pessimistic view on cookies
 
-While cookies have many beneficial uses, they are also often associated with user tracking. You have just learnt that cookies are exclusively returned from client to the server that initially sent the cookie. So how does that enable tracking of users?
+While cookies have many beneficial uses, they are also often associated with user tracking. You have just learned that cookies are exclusively returned from client to the server that initially sent the cookie. So how does that enable tracking of users?
 
 As you saw in the [code example above](demo-code/node-cookies-ex), cookies are easy to create, use and delete. The last aspects though only holds for *plain cookies*, i.e. little pieces of information that use the standard cookie infrastructure, HTTP and browsers offer to send and store cookies.
 
@@ -173,7 +176,7 @@ As you saw in the [code example above](demo-code/node-cookies-ex), cookies are e
 
 Storing little pieces of information *somewhere* in the browser can actually be done in many different browsers if you know the technologies within the browser well - more places than you may actually imagine.
 
-[Evercookie](https://github.com/samyk/evercookie) is a JavaScript API that does exactly that. It produces extremely persistent cookies that are not stored in the browser's standard cookie store, but elsewhere. Evercookie uses several types of storage mechanisms that are available in the browser and if a user tries to delete the cookies, it will recreate them using each mechanism available. Note: *this is a tool which should **not** be used for any type of web application used in production, it is however a very good educational tool to learn about different components of the browser.* Lets take a look what exactly evercookie exploits …
+[Evercookie](https://github.com/samyk/evercookie) is a JavaScript API that does exactly that. It produces extremely persistent cookies that are not stored in the browser's standard cookie store, but elsewhere. Evercookie uses several types of storage mechanisms that are available in the browser and if a user tries to delete the cookies, it will recreate them using each mechanism available. Note: *this is a tool which should **not** be used for any type of web application used in production, it is however a very good educational tool to learn about different components of the browser.* Lets take a look what exactly Evercookie exploits.
 
 ### Third-party cookies
 
@@ -281,11 +284,11 @@ There are two drawbacks though: you have to trust that the web platform providin
 
 Not surprisingly, we have a protocol that governs third-party authentication: the most common one in use today is the **OAuth 2.0 Authorization Framework**, standardized in [RFC6749](https://tools.ietf.org/html/rfc6749). Its' purpose is the following:
 
-```
+```console
 "The OAuth 2.0 authorization framework enables a third-party application
 to obtain limited access to an HTTP service, either on behalf of a resource
-owner by orchestrating an approval interaction between the resource owner 
-and the HTTP service, or by allowing the third-party application to obtain 
+owner by orchestrating an approval interaction between the resource owner
+and the HTTP service, or by allowing the third-party application to obtain
 access on its own behalf."
 ```
 
@@ -297,7 +300,7 @@ The OAuth 2.0 protocol knows several roles:
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------|
 | Resource owner       | Entity that grants access to a protected resource                                                                                 |
 | Resource server      | Server hosting the protected resources, capable of  accepting and responding to protected resource requests using access tokens. |
-| Client               |  An application making protected resource requests on   behalf of the resource owner and with its authorisation.                  |
+| Client               |  An application making protected resource requests on   behalf of the resource owner and with its authorization.                  |
 | Authorization server | Server issuing access tokens to the client after successfully  authenticating the resource owner and obtaining authorization.     |
 
 The **access token** referred to in the resource server role is a string denoting a *specific scope, lifetime and other access attributes*.
@@ -320,8 +323,6 @@ This final section of the lecture is very practical: we will walk through the st
 
 1. Head to [https://apps.twitter.com/](https://apps.twitter.com/) and create and **app**.
 2. ..
-
-
 
 ## Self-check
 

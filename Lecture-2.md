@@ -10,16 +10,17 @@
 
 The W3C has many working groups, among them (until 2016) the *Web Applications (WebApps) Working Group* whose [goal](https://www.w3.org/2014/06/webapps-charter.html) was as follows:
 
-```
-As web browsers and the web engine components that power them become ubiquitous across a range 
-of operating systems and devices, developers are increasingly using web technologies to build 
-applications and are relying on web engines as application runtime environments. Examples of 
-applications now commonly built using web technologies include reservation systems, online 
-shopping / auction sites, games, multimedia applications, maps, enterprise-specific applications, 
-interactive design applications, and PIM (email, calendar, etc) systems. 
+```console
+As web browsers and the web engine components that power them become ubiquitous across a range
+of operating systems and devices, developers are increasingly using web technologies to build
+applications and are relying on web engines as application runtime environments. Examples of
+applications now commonly built using web technologies include reservation systems, online
+shopping / auction sites, games, multimedia applications, maps, enterprise-specific applications,
+interactive design applications, and PIM (email, calendar, etc) systems.
 ```
 
 In 2017 this group was superseded by the [*Web Platform Working Group*](https://www.w3.org/2017/08/webplatform-charter.html) which has a similar goal (but not written up as nicely). The working group is responsible for a number of web technologies that move us closer towards the vision of the *browser as the operating system*, including:
+
 - client-side database and offline applications;
 - file and filesystem APIs;
 - WebSockets;
@@ -30,7 +31,7 @@ In 2017 this group was superseded by the [*Web Platform Working Group*](https://
 
 ## Electron
 
-Do web technologies also help you to create desktop apps? Indeed, they do! [Electron](https://electronjs.org/) is an open-source project that enables you to build **cross-platform** desktop apps (for Windows, Mac and Linux) with HTML, JavaScript and CSS - the very technologies you learn about in this course. 
+Do web technologies also help you to create desktop apps? Indeed, they do! [Electron](https://electronjs.org/) is an open-source project that enables you to build **cross-platform** desktop apps (for Windows, Mac and Linux) with HTML, JavaScript and CSS - the very technologies you learn about in this course.
 
 Electron itself uses [Node.js](https://nodejs.org/en/), the server-side JavaScript runtime we cover in a later lecture together with [Chromium](https://www.chromium.org/), an open-source web runtime (i.e. browser).
 
@@ -64,7 +65,7 @@ In case you wonder how it is possible to go back in time and look at older versi
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
-Similarly, there are established style standards of how to format a link (in the early years of the web blue underlined text was synonymous with a link and thus we are now stuck with the saying "10 blue links" as a synonym for web search results). 
+Similarly, there are established style standards of how to format a link (in the early years of the web blue underlined text was synonymous with a link and thus we are now stuck with the saying "10 blue links" as a synonym for web search results).
 
 Users should **not get lost within a web site**; provide users with information on where they are and on how they arrived at that point. Leave so-called **breadcrumbs** as ebay does:
 
@@ -94,11 +95,11 @@ vs. ZDNet on [August 31, 2014](https://web.archive.org/web/20140831235129/http:/
 
 ![ZDNet web site](img/L2-zdnet-2014.png)
 
-While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming and expensive. It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response. 
+While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming and expensive. It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 
-Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world, it is wise to keep the mobile user in mind as well (a lot of scrolling is undesired). 
+Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world, it is wise to keep the mobile user in mind as well (a lot of scrolling is undesired).
 
 Avoid *happy talk* - text without any content for the sake of adding some text (e.g. a welcome message).
 
@@ -125,15 +126,16 @@ A web application should be designed based on **user reality**. **Usability test
 ![Web app development cycle](img/L2-cycle.png)
 
 In a **usability test**, a user is given a **typical task**, e.g.
+
 - How to create a user account;
-- How to retrievea a lost password;
+- How to retrieve a lost password;
 - How to change the credit card information;
 - How to delete a user account;
 - How to find an article in the archive;
 - How to edit a posting made in a forum;
 - How to start a game;
 
-and her performance on the task is being recorded. Performance metrics depend on the task, it could be the **number of clicks** required to complete the task, the **time taken** or the **number of wrongly clicked elements**. 
+and her performance on the task is being recorded. Performance metrics depend on the task, it could be the **number of clicks** required to complete the task, the **time taken** or the **number of wrongly clicked elements**.
 
 Testers should be a mix of target audience and average web users; 2-3 testers per iteration tend to be sufficient.
 
@@ -152,6 +154,7 @@ The result of a usability test will be a set of issues. Each of those issues sho
 In order to determine whether a web site's navigation scheme is useful, Krug developed the "trunk test". Given a web site, pick a random page in it, print it and give it to a user who has never seen the site.
 
 As quickly as possible, the user should find:
+
 - the name of the web site;
 - the name of the page she currently views;
 - major sections of the page;
@@ -171,7 +174,8 @@ Surprisingly many home pages are not able to answer these questions. Take for ex
 
 ## HTML5
 
-### !Activity!
+### Activity
+
 If you have completed the required readings, you should be able to fill in the `???` entries in the HTML `<form>` snippet below which takes a user's search query as input and sends it off to Google. The rendered form looks as follows:
 
 ![Google search bar](img/L2-search.png)
@@ -193,7 +197,8 @@ If you have completed the required readings, you should be able to fill in the `
 
 ### Overview
 
-HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich web content**: 
+HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich web content**:
+
 - **Core HTML5**: mark up content;
 - **CSS**: control the appearance of marked-up content;
 - client-side **JavaScript**: manipulate the contents of HTML documents and respond to user interactions.
@@ -204,7 +209,7 @@ Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 
 
 ```html
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html 
+<!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -217,24 +222,23 @@ Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 
 </html>
 ```
 
-XHTML was designed to make processing of web pages **easier for machines** by having a very strict set of rules. The problem though was that (X)HTML is written by developers, not machines and it turned out to be too much hassle to write valid XHTML. Moreover, browsers were and are able to render invalid XHTML pages properly (so why even try to write valid XHTML?) and thus XHTML was eventually abandoned in favour of HTML5, which is not only less strict but also added a host of new features to the language.
+XHTML was designed to make processing of web pages **easier for machines** by having a very strict set of rules. The problem though was that (X)HTML is written by developers, not machines and it turned out to be too much hassle to write valid XHTML. Moreover, browsers were and are able to render invalid XHTML pages properly (so why even try to write valid XHTML?) and thus XHTML was eventually abandoned in favor of HTML5, which is not only less strict but also added a host of new features to the language.
 
-With the host of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to their own non-standardized features). A good resource to check which browser versions support which HTML5 feature (and to what extent) is [caniuse.com](http://caniuse.com/). We 
+With the host of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to their own non-standardized features). A good resource to check which browser versions support which HTML5 feature (and to what extent) is [caniuse.com](http://caniuse.com/).
 
 ### The move towards HTML5
 
-The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <plaintext> <listing> <p> <h1> <address> <hp1> <dl> <dt> <ul>`. JavaScript was created within 10 days (*which explains many of the JavaScript quirks*) in May 1995 by [Brendan Eich](https://twitter.com/BrendanEich) (a co-founder of Mozilla who is also behind the browser [brave](https://brave.com/), developed to block out ads and trackers) at the time at Netscape; this was the beginning of client-side **dynamic** scripting for the browser. 
+The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <plaintext> <listing> <p> <h1> <address> <hp1> <dl> <dt> <ul>`. JavaScript was created within 10 days (*which explains many of the JavaScript quirks*) in May 1995 by [Brendan Eich](https://twitter.com/BrendanEich) (a co-founder of Mozilla who is also behind the browser [brave](https://brave.com/), developed to block out ads and trackers) at the time at Netscape; this was the beginning of client-side **dynamic** scripting for the browser.
 
-**Plugins** (the most famous being Adobe Flash in 1996) were created to go beyond what at the time was possible with HTML. HTML5 was a drive to return rich content **directly** into the browser, without the need for plugins or addons. 
+**Plugins** (the most famous being Adobe Flash in 1996) were created to go beyond what at the time was possible with HTML. HTML5 was a drive to return rich content **directly** into the browser, without the need for plugins or addons.
 
-HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentaiton, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **Semantic HTML** is quite different from the vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/).
+HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentation, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **Semantic HTML** is quite different from the vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/).
 
 As a guideline, when creating an HTML document, it is always best to select the **most specific** element to represent your content (instead of only using `<div>`'s).
 
+### Who decides the HTML standard
 
-### Who decides the HTML standard?
-
-HTML is widely used, which makes standardisation a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (including Microsoft, Google, Mozilla, Nokia, Baidu, etc.). The standardisation process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardisation possible, before achieving it, a number of steps leading up to the recommendation are required (taken from the [W3C Recommendation Track Process](https://www.w3.org/2018/Process-20180201/#maturity-levels) document):
+HTML is widely used, which makes standardisation a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (including Microsoft, Google, Mozilla, Nokia, Baidu, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required (taken from the [W3C Recommendation Track Process](https://www.w3.org/2018/Process-20180201/#maturity-levels) document):
 
 1. **Working Draft**: *a document that W3C has published for review by the community, including W3C Members, the public, and other technical organizations.*
 2. **Candidate Recommendation**: *a document that W3C believes has been widely reviewed and satisfies the Working Group's technical requirements. W3C publishes a Candidate Recommendation to gather implementation experience.*
@@ -247,11 +251,11 @@ Consensus building takes time. HTML5 for instance was a candidate recommendation
 
 As of August 2018, [HTML5.3](https://www.w3.org/TR/html53/) has a *Working Draft* status; if you look at the standard text you will find it to be very elaborate and precise, sufficiently so that any browser vendor can take the text and implement the features described in it without ambiguity. Converting the HTML to a single page PDF file leads to a document of more than 1000 pages!
 
-Note, that in rare cases features added to the web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner, but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favour of another set of technolgoies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is still supported by all major browsers today, as shown here ([source](https://caniuse.com/#search=appcache)):
+Note, that in rare cases features added to the web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner, but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favor of another set of technologies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is still supported by all major browsers today, as shown here ([source](https://caniuse.com/#search=appcache)):
 
 ![AppCache](img/L2-appcache.png)
 
-The W3C writes the following about the AppCache: *This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead.* 
+The W3C writes the following about the AppCache: *This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead.*
 
 ## Self-check
 

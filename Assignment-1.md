@@ -1,6 +1,6 @@
 # Assignment 1 (2018/2019 edition)
 
-The first part of this assignment gives you hands-­on experience in **HTTP**. In the second part you will make a head-­start with the design of your **board game web application**.
+The first part of this assignment gives you hands-­on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application**.
 
 ## 0. Preliminaries
 
@@ -99,8 +99,7 @@ Hello World!
 [carriage return]
 ```
 
-With this code, we have just created a file on the server called `myfile` which contains the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response
-is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
+With this code, we have just created a file on the server called `myfile` which contains the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
 
 ### 2.1)
 
@@ -129,7 +128,7 @@ host:httpbin.org
 [carriage return]
 ```
 
-Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders. Remember that username and password should be combined as `username:password`. 
+Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders. Remember that username and password should be combined as `username:password`.
 
 Now close the TCP connection and start a new one, using again:
 
@@ -187,7 +186,7 @@ Here are your nine board game options to choose from:
 
 Find **four** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the web application's design (focus on the game screen) based on the **web design principles** covered in class. Record the game URLs. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
 
-### 4.2)
+### 4.3)
 
 Which *game features* in the examples of 4.1) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
 

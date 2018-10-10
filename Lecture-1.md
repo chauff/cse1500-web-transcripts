@@ -20,15 +20,15 @@ A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium (a
 
 The vision of the World Wide Web was already developed in the 1940s by Vannevar Bush, an American engineer who described his idea of a *memex* (a combination of memory and index) in the article [As We May Think](https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/). The web can simply be described as **a system of interconnected hypertext documents, available via the Internet**.
 
-In the 1960s, the first steps from vision to reality were made by DARPA, the *Defense Advanced Research Projects Agency* of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed in a way to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate. 
+In the 1960s, the first steps from vision to reality were made by DARPA, the *Defense Advanced Research Projects Agency* of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed in a way to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate.
 
-It took about 30 years, before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organisations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee created the World Wide Web: he was the man who first successfully implemented client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure on the web development today, in fact, he is the current director of the Word Wide Web Consortium.
+It took about 30 years, before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee created the World Wide Web: he was the man who first successfully implemented client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure on the web development today, in fact, he is the current director of the Word Wide Web Consortium.
 
 In the early days of the web, the "browser" looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, Lynx, which you can still use today:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Lynx-wikipedia.png" width="600">
 
-Browsers with graphical user interfaces started to appear in 1994, the frontrunner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain competitive advantages. Instead of adhering to a shared standard (as today published by the Word Wide Web Consortium), different browsers implemented very different features and the label *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
+Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain competitive advantages. Instead of adhering to a shared standard (as today published by the Word Wide Web Consortium), different browsers implemented very different features and the label *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 
 ### Key aspects of the Internet
 
@@ -36,40 +36,40 @@ The web is built on top of the Internet. The Internet describes the hardware lay
 The different sub-networks function autonomously, they do not depend on each other. There is not a single master - no machine or sub-network is in control of the whole network. It is very easy for machines or even entire sub-networks to join and leave the network without interrupting the flow of data among the remaining network.
 All devices interact with each other through agreed-upon open standards which are very easy to use as these standards are implemented in a wide range of open-source server and client software.
 
-To show how far we have come, [here](https://qz.com/860873/a-1973-map-of-the-internet-charted-by-darpa/) is the state of the Internet in 1973. 
+To show how far we have come, [here](https://qz.com/860873/a-1973-map-of-the-internet-charted-by-darpa/) is the state of the Internet in 1973.
 
 ### Two important organizations
 
-The web and the Internet are not static, they are continuously in development. This development is led by two organisations: the **IETF** - the *Internet Engineering Task Force* - leads the development of the Internet. The **W3C** - the *World Wide Web Consortium* - leads the development of the web. The IETF to many is a less well-known (but equally important) organization than the W3C, and while you may not often come across the IETF acronym, you will time and again encounter the so-called RFCs. RFCs are **Request for Comments**, released by the IETF. They describe the Internet standards in detail. As an example, [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) is the document describing the Internet Message Format, aka email format, in about 50 pages.
+The web and the Internet are not static, they are continuously in development. This development is led by two organizations: the **IETF** - the *Internet Engineering Task Force* - leads the development of the Internet. The **W3C** - the *World Wide Web Consortium* - leads the development of the web. The IETF to many is a less well-known (but equally important) organization than the W3C, and while you may not often come across the IETF acronym, you will time and again encounter the so-called RFCs. RFCs are **Request for Comments**, released by the IETF. They describe the Internet standards in detail. As an example, [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) is the document describing the Internet Message Format, aka email format, in about 50 pages.
 
 ## HTTP messages
 
-- **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardised in 1997.
+- **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardized in 1997.
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
 
 HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol ("speedy protocol"); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). According to current estimates, about 30% of websites support HTTP/2. As HTTP/1.1 is still the dominant protocol type, we focus on it in our lecture.
 
 ### Web servers and clients
 
-On the web, clients and servers communicate with each other through HTTP requests and responses. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your web browser is acting as the **client**. The **server** is your email provider. 
-How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve thousands of client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, but also software programs or web cam gateways. As long as they are accessible through an identifier, they can be considered as web resources. 
+On the web, clients and servers communicate with each other through HTTP requests and responses. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your web browser is acting as the **client**. The **server** is your email provider.
+How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve thousands of client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, but also software programs or web cam gateways. As long as they are accessible through an identifier, they can be considered as web resources.
 The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file it will send it to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
 
 ### Network communication
 
-Where does HTTP fit into the **network stack**? A very common representation of the network stack is the ****OSI model**, the *Open Systems Interconnection model*. It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. zeroes and ones that pass through the physical network, and ending at the **application layer**, were we end up with semantic units such as video segments and emails.
+Where does HTTP fit into the **network stack**? A very common representation of the network stack is the ****OSI model**, the *Open Systems Interconnection model*. It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. zeros and ones that pass through the physical network, and ending at the **application layer**, were we end up with semantic units such as video segments and emails.
 
 Many network protocols exist, to us only three are of importance:
 
-- the Internet Protocol (or IP), 
-- the Transmission Control Protocol (or TCP)
+- the Internet Protocol (or IP),
+- the Transmission Control Protocol (or TCP),
 - and HTTP itself.
 
 HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is the following: HTTP is **reliable**; the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
 
-### !Activity!
+### Activity
 
-Open your favourite browser and use its built-in **web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website. 
+Open your favorite browser and use its built-in **web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website.
 
 ![Browser built-in web dev tools](img/L1-devtools.png)
 
@@ -78,9 +78,10 @@ Each resource is requested separately by your browser. How exactly is it request
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
 
-You will also notice that the HTTP requests differ slightly between different types of web resources (e.g. image vs. html page).
+You will also notice that the HTTP requests differ slightly between different types of web resources (e.g. image vs. HTML page).
 
 ### HTTP request message
+
 <a name="http-request"></a>
 
 Below is a typical HTTP request message:
@@ -96,13 +97,14 @@ DNT: 1
 Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 ```
 
-HTTP is a **plain text protocol** and **line-oriented**. 
+HTTP is a **plain text protocol** and **line-oriented**.
 The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. In the last line, you can see that in this request, a cookie is sent from the client to the server as well.
 
 ### HTTP response message
+
 <a name="http-response"></a>
 
-The server that received the HTTP request above now assembles the following response (note that `[..xx..]` indicates other messsage content we are not interested in at the moment):
+The server that received the HTTP request above now assembles the following response (note that `[..xx..]` indicates other message content we are not interested in at the moment):
 
 ```bash
 HTTP/1.1 200 OK
@@ -110,19 +112,18 @@ Date: Fri, 01 Aug 2014 13:35:55 GMT
 Content-Type: text/html; charset=utf-8
 Content-Length: 5994
 Connection: keep-alive
-Set-Cookie: fe_typo_user=d5e20a55a4a92e0;  path=/; domain=tudelft.nl
+Set-Cookie: fe_typo_user=d5e20a55a4a92e0; path=/; domain=tudelft.nl
 [..other header fields..]
 Server: TU Delft Web Server
 
 [..body..]
 ```
+
 The first line indicates the status of the response - in this case, the requested resource exists and the server sends back the status `200 OK`: everything is okay, the resource was found and is send to you.
 The response is then structured into **header fields**, in the format of `name:value`, and the **response body** which contains the actual content. The body is optional - if the requested resource is not found, an error status code without a body would be returned to the client.
 The header fields contain important information for the client to understand the data being sent, including the type of content, the length and so on. As you can see here, the server can also send cookies to the client in the header fields.
 
-
 ## HTTP headers dissected
-
 
 ### Important entity header fields
 
@@ -144,13 +145,12 @@ Many header fields exist, the most important ones (though to some extent this re
 
 The bold header fields will be covered below. Let's briefly walk over the other fields:
 
-- The `Content-Language` indicates the language the entity is in, which can be English, Dutch or any other language. 
-- The `Content-Location` can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same web resource resides. 
+- The `Content-Language` indicates the language the entity is in, which can be English, Dutch or any other language.
+- The `Content-Location` can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same web resource resides.
 - `Content-Range` is important for entities that consist of multiple parts and are sent partially across different HTTP responses; without this information, the client would be unable to piece together the whole entity.
 - Finally, `Allow` indicates to the client what type of requests can be made for the entity in question; `GET` is only one of a number of methods, it may also be possible to alter or delete a web resource.
 
 Lets look at a few of these fields a bit more in detail.
-
 
 ### Content-Type
 
@@ -181,18 +181,18 @@ Among the least popular MIME types are application specific types such as `chemi
 
 The content-length contains the size of the entity body in the message.
 
-It has two purposes: 
+It has two purposes:
 
 1. to indicate to the client whether or not the entire message was received. If the message received is less than what was promised the client will make the same request again.
 
-2. The header is also of importance for so-called *persistent connections*. Building up a TCP connection costs time. Instead of doing this for every single HTTP request/response cycle, we can reuse the same TCP connection for multiple HTTP request/response messages. For this to work though, it needs to be known when a particular HTTP message ends and when a new one starts. 
+2. The header is also of importance for so-called *persistent connections*. Building up a TCP connection costs time. Instead of doing this for every single HTTP request/response cycle, we can reuse the same TCP connection for multiple HTTP request/response messages. For this to work though, it needs to be known when a particular HTTP message ends and when a new one starts.
 
 ### Content-Encoding
 
 Content is often encoded, and in particular **compressed**. The four common encodings are `gzip`, `compress`, `deflate` or `identity`, the latter indicates that no encoding should be used.
 How do client and server negotiate acceptable encodings? If the server would send content in an encoding for which the client requires specific software to decode but does not have, the client receives a blob of data but is unable to interpret it. To avoid this situation, the client sends in the HTTP request a list of encodings it can deal with. This happens in the `Accept-Encoding` request header, e.g. `Accept-Encoding: gzip, deflate`.
 
-Why bother with encodings at all? If an image or video is compressed by the server before it is sent to the client, network bandwidth is saved. There is a **tradeoff** however: compressed content needs to be decompressed by the client, which increases the processing costs. 
+Why bother with encodings at all? If an image or video is compressed by the server before it is sent to the client, network bandwidth is saved. There is a **tradeoff** however: compressed content needs to be decompressed by the client, which increases the processing costs.
 
 ### Content-MD5
 
@@ -231,7 +231,7 @@ In HTTP/1.1 the client **always** initiates the conversation with the server via
 
 ![Twitter update](img/L1-twitter-example.png)
 
-In both examples, the encircled numbers are updated "on the fly", without the user having to manually refresh the page. This can be achieved through **polling**: here, the client regularly sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response. An alternative to polling is **long polling**: here, the client sends an HTTP request as before, but this time the server holds the request open until new data is available before sending its HTTP response (once the response is sent, the client immediately sends another HTTP request that is kept open). While this avoids wasteful HTTP request/response pairs, it requires the backend to become significantly more complex: the backend is now responsible for ensuring the right data is sent to the right client and scaling becomes an issue. 
+In both examples, the encircled numbers are updated "on the fly", without the user having to manually refresh the page. This can be achieved through **polling**: here, the client regularly sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response. An alternative to polling is **long polling**: here, the client sends an HTTP request as before, but this time the server holds the request open until new data is available before sending its HTTP response (once the response is sent, the client immediately sends another HTTP request that is kept open). While this avoids wasteful HTTP request/response pairs, it requires the backend to become significantly more complex: the backend is now responsible for ensuring the right data is sent to the right client and scaling becomes an issue.
 
 Both options are workarounds to the requirement of client-initiated HTTP request/response pairs. The IETF recognized early on that such solutions are not sufficient and in 2011 standardized the **WebSocket protocol** ([RFC 6455](https://tools.ietf.org/html/rfc6455)). The RFC abstract read as follows:
 
@@ -248,13 +248,13 @@ not rely on opening multiple HTTP connections (e.g., using
 XMLHttpRequest or <iframe>s and long polling)."
 ```
 
-WebSockets finally enable **bidirectional communication** between client and server! The server no longer has to wait for an HTTP request to send data to a client, but can do so at any time - as long as both client and server agree to use the WebSocket protocol. 
+WebSockets finally enable **bidirectional communication** between client and server! The server no longer has to wait for an HTTP request to send data to a client, but can do so at any time - as long as both client and server agree to use the WebSocket protocol.
 
 Client and server agree to this new protocol as follows: the client initiates the upgrade by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
 
 As a concrete example, you can consider the demo game of this course. It relies on WebSockets to enable bidirectional communication between client and server. The client sends the following HTTP headers to request the upgrade to the WebSocket protocol:
 
-```
+```console
 Host: localhost:3000
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:61.0) Gecko/20100101 Firefox/61.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -274,7 +274,7 @@ As you can see, besides `Connection` and `Upgrade` a number of other information
 
 The server accepts the protocol with the following headers:
 
-```
+```console
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
@@ -299,13 +299,13 @@ Quite a few different status codes exist that provide the client with some level
 | 4XX                  | Client error (404 Not Found) |
 | 5XX                  | Server error                 |
 
-Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. As just seen status code `101` indicates the server switching to a protocol as requested by the client. 
+Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. As just seen status code `101` indicates the server switching to a protocol as requested by the client.
 
-Status code `200` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it). 
+Status code `200` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it).
 
 Status codes starting with 3 most often point to a redirect: a resource that was originally under URL `A` can now be found under URL `B`. These redirects are automatically resolved by the browser - you only notice a slightly longer loading time, otherwise redirects do not affect browser users.
 
-Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the web resource or entity the client requests, does not exist on the server. 
+Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the web resource or entity the client requests, does not exist on the server.
 Errors on the server side start with 5; one relatively common status code is `502: Bad gateway`.
 
 ## HTTP methods
@@ -321,6 +321,7 @@ So far, we have only seen `GET` requests, i.e. requests to get access to some we
 ### Common HTTP methods
 
 There are 7 common HTTP methods:
+
 - `GET` you have already seen.
 - `HEAD` returns the header of a HTTP response only (not the content)
 - `POST` sends data from the client to the server for processing
@@ -331,9 +332,9 @@ There are 7 common HTTP methods:
 
 This is by no means an exhaustive list of methods and not all servers enable or implement all the methods shown here. This list shows just the most common methods in use today.
 
-### !Activity!
+### Another activity
 
-Lets see how this protocol works in practice. One of the learning goals of this lecture is to be able to make HTTP requests yourself. 
+Lets see how this protocol works in practice. One of the learning goals of this lecture is to be able to make HTTP requests yourself.
 One basic tool to practice HTTP request writing is `telnet`. Telnet is a protocol defined in [RFC 15](https://tools.ietf.org/html/rfc15) (this low number should tell you that it is a very old standard - it is from 969). Software that implements the client-side part of the protocol is also called telnet. Telnet opens a TCP connection to a web server (this requires a port number, for now just take it as is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a web client and all returned data is displayed in the terminal.
 
 Try out the following examples yourself (everything indented is returned by the server and does not have to be typed out; `[carriage return]` indicates when/how often to press `Enter`):
@@ -353,7 +354,6 @@ host:microsoft.com
     [...]
     Location: http://www.microsoft.com
 ```
-
 
 **Use `HEAD` to see what is at the moved location**
 
@@ -402,12 +402,12 @@ By now it should be clear that multiple requests may be required to end up with 
 
 ### From domain to IP address
 
-Have you noticed something in the activity you just completed (hopefully)? We connected to the domain `microsoft.com` on port `80` and immediately got the response: `Trying 134.170.185.46`. This is called an **IP address** (an *Internet Protocol address*). 
+Have you noticed something in the activity you just completed (hopefully)? We connected to the domain `microsoft.com` on port `80` and immediately got the response: `Trying 134.170.185.46`. This is called an **IP address** (an *Internet Protocol address*).
 
-The Internet maintains two principal namespaces: the **domain name hierarchy** and the **IP address system**. While domain names are handy for humans, the IP address system is used for the communication among devices. 
+The Internet maintains two principal namespaces: the **domain name hierarchy** and the **IP address system**. While domain names are handy for humans, the IP address system is used for the communication among devices.
 
 The entity responsible for translating the domain into an IP address is called the **Domain Name System server** or DNS server. Several exist, a popular one is operated by Google, called [Public DNS](https://developers.google.com/speed/public-dns/).
-Version 4 IP addresses (IPv4) consist of 32 bits; they are divided into 4 blocks of 8 bits each. 8 bit can encode all numbers between 0 and 255. This means, that in this format, a total of **2^32 unique IP addresses** or just shy of 4.3 billion unique IP addresses can be generated. 
+Version 4 IP addresses (IPv4) consist of 32 bits; they are divided into 4 blocks of 8 bits each. 8 bit can encode all numbers between 0 and 255. This means, that in this format, a total of **2^32 unique IP addresses** or just shy of 4.3 billion unique IP addresses can be generated.
 
 This might sound like a lot, but just think about how many devices you own that connect to the Internet ... This problem was foreseen already in the early 1990s and over time a new standard was developed by the IETF (published in 1998). This is the **IPv6** standard. An IPv6 address consists of 128 bit, organised into 8 groups of four hexadecimal digits. This means, that up to 2^128 unique addresses can be generated, that is such a large number that meaningful comparisons are hard to come by. In decimal form, 2^128 is a number with 39 digits! A large enough address space to last us forever.
 
@@ -434,11 +434,12 @@ URLs are the common way to access any resource on the Internet; the format of UR
 
 In general, a URL consists of up to 9 parts
 
-```
+```console
 <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>
 ```
 
 From back to front:
+
 - `<frag>`: The name of a piece of a resource. Only used by the client - the fragment is not transmitted to the server.
 - `<query>`: Parameters passed to gateway resources, i.e. applications [identified by the path] such as search engines.
 - `<params>`: Additional input parameters applications may require to access a resource on the server correctly. Can be set per path segment.
@@ -450,56 +451,60 @@ From back to front:
 
 ### URL syntax: query
 
-One of the most important URL types for us is the syntax for a `query`. What does that mean? Let's consider `https://duckduckgo.com/html?q=delft`. This is an example of a URL pointing to the Duckduckgo website that - as part of the URL - contains the `q=Delft` query. This query component is passed to the application accessed at  the web server - in this case Duckduckgo's search system and returned to you is a list of search results for the query *Delft*. This syntax is necessary to enable interactive application. 
+One of the most important URL types for us is the syntax for a `query`. What does that mean? Let's consider `https://duckduckgo.com/html?q=delft`. This is an example of a URL pointing to the Duckduckgo website that - as part of the URL - contains the `q=Delft` query. This query component is passed to the application accessed at  the web server - in this case Duckduckgo's search system and returned to you is a list of search results for the query *Delft*. This syntax is necessary to enable interactive application.
 By convention we use `name=value` to pass application variables. If an application expects several variables, e.g. not only the search string but also the number of expected search results, we combine them with an `&`: `name1=value1&name2=value2& ...`.
 
 <a name="answer">Answer: All URLs are valid.</a>
 
 ### Schemes: more than just HTTP(S)
 
-We have already touched upon the fact that `http` and `https` are the most common protocols, but certainly not the only ones. `http` and `https` differ in their encryption - `http` does not offer encryption, while `https` does. `mailto` is the email protocol, `ftp` is the file transfer protocol. The local file system can also be accessed through the URL syntax as `file://<host>/<path>`, e.g. to view `tmp.html` from the directory `/Users/my_home` in the browser, you can use `file:///Users/my_home/tmp.html`. 
+We have already touched upon the fact that `http` and `https` are the most common protocols, but certainly not the only ones. `http` and `https` differ in their encryption - `http` does not offer encryption, while `https` does. `mailto` is the email protocol, `ftp` is the file transfer protocol. The local file system can also be accessed through the URL syntax as `file://<host>/<path>`, e.g. to view `tmp.html` from the directory `/Users/my_home` in the browser, you can use `file:///Users/my_home/tmp.html`.
 
 ### Relative vs. absolute URLs
 
 URLs can either be **absolute** or **relative**. Shown below are examples of both types:
 
 Absolute (our base URL):
-```
+
+```console
 http://www.st.ewi.tudelft.nl/~hauff/new/index.html
 ```
 
 Relative:
+
 ```html
 <h1>Visualizations</h1>
 <ol>
-	<li><a href="vis/trecvis.html">TREC</a></li>
-	<li><a href=" ../airsvis.html">AIRS</a></li>
+    <li><a href="vis/trecvis.html">TREC</a></li>
+    <li><a href=" ../airsvis.html">AIRS</a></li>
 </ol>
 ```
+
 Those relative URLs in combination with the base URL above lead to
-```
+
+```console
 http://www.st.ewi.tudelft.nl/~hauff/new/vis/trecvis.html
 http://www.st.ewi.tudelft.nl/~hauff/airsvis.html
 ```
 
-The absolute URL at the top can be used to retrieve a web resource without requiring any additional information. The two URLs below are relative as they by themselves do not provide sufficient information to resolve to a specific web resource. They are embedded in HTML markup which, in this case, resides within the web page pointed to by the absolute URL at the top. 
+The absolute URL at the top can be used to retrieve a web resource without requiring any additional information. The two URLs below are relative as they by themselves do not provide sufficient information to resolve to a specific web resource. They are embedded in HTML markup which, in this case, resides within the web page pointed to by the absolute URL at the top.
 
-Relative URLs require a **base URL** to enable their conversion into absolute URLs. By default, this base URL is derived from the absolute URL of the web page the relative URLs are found in. The base URL of a resource is everything up to and including the last slash in its path name. 
+Relative URLs require a **base URL** to enable their conversion into absolute URLs. By default, this base URL is derived from the absolute URL of the web page the relative URLs are found in. The base URL of a resource is everything up to and including the last slash in its path name.
 
-The base URL is used to convert the relative URLs into absolute URLs. The conversion in the first case (`vis/trecvis.html`) is straightforward, the relative URL is appended to the base URL. In the second case (`../airsvis.html`) you have to know that the meaning of `..` is to move a directory up, thus in the base URL the `/new` directory is removed from the base and then the relative URL is added. 
+The base URL is used to convert the relative URLs into absolute URLs. The conversion in the first case (`vis/trecvis.html`) is straightforward, the relative URL is appended to the base URL. In the second case (`../airsvis.html`) you have to know that the meaning of `..` is to move a directory up, thus in the base URL the `/new` directory is removed from the base and then the relative URL is added.
 Note, that this conversion can be governed by more complex rules, they are described in [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt).
 
 ### URL design restrictions
 
-When URLs were first developed they had two basic design goals: 
+When URLs were first developed they had two basic design goals:
 
 1. to be **portable across protocols**;
-2. to be **human readable**, i.e. they should not contain invisible or non-printing characters. 
+2. to be **human readable**, i.e. they should not contain invisible or non-printing characters.
 
 The development of the Internet had largely been driven by US companies and organization and thus it made sense - at the time - to limit URL characters to the [ASCII alphabet](https://en.wikipedia.org/wiki/ASCII): this alphabet includes the Latin alphabet and additional reserved characters (such as !, (, ), ...). The limitation is in the name: ASCII stands for *American Standard Code for Information Interchange* and thus heavily favours English speakers.
 
 Added later was the character encoding, e.g. a whitespace becomes `%20`. That means, that characters that are not part of ASCII can be encoded through a combination of ASCII characters.
-Character encodings are not sufficient though, what about languages that are not even based on the Latin alphabet (what about URLs like `http://правительство.рф`)? Ideally, URLs should allow non-Latin characters as well, which today boils down to the use of unicode characters. 
+Character encodings are not sufficient though, what about languages that are not even based on the Latin alphabet (what about URLs like `http://правительство.рф`)? Ideally, URLs should allow non-Latin characters as well, which today boils down to the use of unicode characters.
 
 IETF comes once again to the rescue! **Punycode** ([RFC 3492](https://www.ietf.org/rfc/rfc3492.txt)) was developed to allow URLs with unicode characters that are then translated uniquely and reversibly into an ASCII string.
 
@@ -520,7 +525,7 @@ But of course, this is not how today's web works: servers **do** identify device
 - user login;
 - fat URLs.
 
-If you already know a bit more about web development you will miss in this list cookies and sessions we cover these concepts in one of the later lectures. Let's now look how each of the four identification options listed above work. 
+If you already know a bit more about web development you will miss in this list cookies and sessions we cover these concepts in one of the later lectures. Let's now look how each of the four identification options listed above work.
 
 ### User-related HTTP header fields
 
@@ -534,7 +539,7 @@ The HTTP header fields we have seen so far were only a few of all possible ones.
 | `Client-IP`  (Extension)          | Client's IP address         |
 | `Authorization`        | Username and password       |
 
-All of the shown header fields are request header fields, i.e. sent from the client to the server. Most are standard and one is an extension, meaning it is not recognised by all existing implementations. 
+All of the shown header fields are request header fields, i.e. sent from the client to the server. Most are standard and one is an extension, meaning it is not recognised by all existing implementations.
 
 Let's look at the first three fields for now, they can contain information about the user such as the his email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
 
@@ -546,7 +551,7 @@ To conclude, the HTTP headers `From`, `Referer` and `User-Agent` are not suitabl
 
 The second option we have to authenticate users is client IP address tracking, either extracted from the HTTP header or the underlying TCP connection. This would provide us with an ideal way to authenticate users **IF** every user would be assigned a distinct IP address that rarely or never changes.
 
-However ... we know that IP addresses are assigned to machines, not users. Internet service provides do not assign a unique IP to each one of their users, they dynamically assign IP addresses to users from a common address pool; a user's IP address can change any day. 
+However ... we know that IP addresses are assigned to machines, not users. Internet service provides do not assign a unique IP to each one of their users, they dynamically assign IP addresses to users from a common address pool; a user's IP address can change any day.
 
 Today's Internet is also more complicated than just straightforward client and servers. We access the web through firewalls which obscure the users' IP addresses, we use proxies and gateways that in turn set up their own TCP connections and come with their own IP addresses.
 To conclude, in this day and age, IP addresses cannot be used anymore to provide a reliable authentication mechanism.
@@ -555,21 +560,21 @@ To conclude, in this day and age, IP addresses cannot be used anymore to provide
 
 That brings us to fat URLs. The options we have covered so far are not good choices for authentication today, fat URLs on the other hand are in use to this day.
 
-The principle of fat URLs is simple: users are tracked through the generation of **unique URLs for each user**. If a user visits a web site for the first time, the server recognises the URL as not containing a "fat element" and assumes the user has not visited the site before. It generates a unique ID for the user. The server then redirects the user to that fat URL. Crucially here in the last step, the server **on the fly rewrites the HTML** for every single user, adding the user's ID to each and every hyperlink. A rewritten HTML link may look like this (note the random numbers string at the end): `<a href="/browse/002-1145265-8016838">Gifts</a>`.
+The principle of fat URLs is simple: users are tracked through the generation of **unique URLs for each user**. If a user visits a web site for the first time, the server recognizes the URL as not containing a "fat element" and assumes the user has not visited the site before. It generates a unique ID for the user. The server then redirects the user to that fat URL. Crucially here in the last step, the server **on the fly rewrites the HTML** for every single user, adding the user's ID to each and every hyperlink. A rewritten HTML link may look like this (note the random numbers string at the end): `<a href="/browse/002-1145265-8016838">Gifts</a>`.
 
-In this manner, different HTTP requests can be tied into a single **logical session**: the server is aware which requests are coming from the same user through the ID inside the fat URLs. 
+In this manner, different HTTP requests can be tied into a single **logical session**: the server is aware which requests are coming from the same user through the ID inside the fat URLs.
 
 Let's look at this concept one more time, based on the following toy example:
 
 ![Fat URL toy example](img/L1-fatURLs.png)
 
-On the left you see a shop web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page, the server recognises the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server.
+On the left you see a shop web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page, the server recognizes the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server.
 
 **Fat URLs have issues**:
 
-1. First of all, they are ugly, instead of short and easy to remember URLs you are left with overly long ones. 
-2. Fat URLs should not be shared - you never know what kind of private information you share with others if you hand out the URLs generated for you! 
-3. Fat URLs are also not a good idea when it comes to web caches - these caches rely on the one page per request paradigm; fat URLs though follow the one page per user paradigm. 
+1. First of all, they are ugly, instead of short and easy to remember URLs you are left with overly long ones.
+2. Fat URLs should not be shared - you never know what kind of private information you share with others if you hand out the URLs generated for you!
+3. Fat URLs are also not a good idea when it comes to web caches - these caches rely on the one page per request paradigm; fat URLs though follow the one page per user paradigm.
 4. Dynamically generating HTML every time a user requests a web resource adds to the server load.
 5. All of this effort still does not completely avoid loosing the user: as soon as the user navigates away from the web site, the user's identification is lost.
 
@@ -584,7 +589,7 @@ Here is a concrete example of HTTP basic authentication:
 
 ![Basic authentication example](img/L1-basicauth.png)
 
- We have the usual server and client setup. The client sends an HTTP request to access a particular web resource, in this case the `index.html` page residing at `www.microsoft.com`. 
+ We have the usual server and client setup. The client sends an HTTP request to access a particular web resource, in this case the `index.html` page residing at `www.microsoft.com`.
 
 The server sends back a `401` status code, indicating to the client that this web resource requires a login. It also sends back information about the supported authentication scheme which here is `Basic`. There are several authentication schemes, but we will only consider the basic one here. The *realm* describes the protection area: if several web resources on the same server require authentication within the same realm, a single user/password combination should be sufficient to access all of them.
 
@@ -598,10 +603,10 @@ As just said, the username/password combination are encoded by the client, befor
 
 For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`.
 
-It needs to be emphasised here once more that encoding has nothing to do with encryption. The username and password send via basic authentication can be decoded trivially, they are sent over the network *in the clear*.
+It needs to be emphasized here once more that encoding has nothing to do with encryption. The username and password send via basic authentication can be decoded trivially, they are sent over the network *in the clear*.
 This by itself is not critical, as long as users are aware of this. However, users tend to be lazy, they tend to reuse the same or similar login/password combinations for a wide range of websites of highly varying criticality. Even though the login/password for site X may be worthless to an attacker, if the user only made a slight modification to her usual login/password combination to access site Y, lets say her email account, the user will be in trouble.
 
-Overall, basic authentication is the best of the four options discussed here; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalisation and access control within a friendly environment such as an intranet.
+Overall, basic authentication is the best of the four options discussed here; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalization and access control within a friendly environment such as an intranet.
 
 In the wild, i.e. the general web, basic authentication should only be used in combination with secure HTTP (most popular variant being https with URL scheme `https`) to avoid sending the username/password combination in the clear across the network. Here, request and response data are encrypted before being sent across the network.
 
@@ -610,10 +615,10 @@ In the wild, i.e. the general web, basic authentication should only be used in c
 Here are a few questions you should be able to answer after having followed the lecture:
 
 1. What are the main advantage and disadvantage of using compression?
-2. What is the main problem of HTTP’s plain text format compared to a  binary format?
+2. What is the main problem of HTTP's plain text format compared to a binary format?
 3. What is commonly compressed: HTTP headers and/or HTTP responses?
 4. In what circumstance might `HEAD` be useful?
-5. In what order do the following operations occur when you enter  http://www.microsoft.com in the browser's address bar?
+5. In what order do the following operations occur when you enter  [http://www.microsoft.com](http://www.microsoft.com) in the browser's address bar?
     - Convert domain to IP address
     - Send HTTP request
     - Receive HTTP response
@@ -640,10 +645,3 @@ Here are a few questions you should be able to answer after having followed the 
     - IPv6 addresses do not have an associated domain name in the Domain Name System registry.
     - IPv6 addresses are 128 bit long.
 11. What issues do Fat URLs have?
-
-
-
-
-
-
-
