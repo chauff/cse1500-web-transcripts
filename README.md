@@ -154,7 +154,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101)
     - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
 
-- **Lecture 6** 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: Ajax in more detail, node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
+- **Lecture 6** ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
   - Recommended activities:
     - An interactive ejs playground can be found [here](https://ionicabizau.github.io/ejs-playground/).
@@ -162,9 +162,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended readings:
     - To learn more about ejs, take a look at its [GitHub repository](https://github.com/mde/ejs).
     - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
-    - An overview of [best practices in node.js](https://github.com/i0natan/nodebestpractices)
-    - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing)
-    - Blog post in best practices to create a [node package](https://monades.roperzh.com/bootstrapping-javascript-library/)
+    - An overview of [best practices in node.js](https://github.com/i0natan/nodebestpractices).
+    - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing).
 
 - **Lecture 7** ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, evercookie, third-party cookies, client-side cookies, cookies and sessions in Express, third-party authentication
   - Required readings: *none*
