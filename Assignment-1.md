@@ -1,6 +1,6 @@
 # Assignment 1 (2018/2019 edition)
 
-The first part of this assignment gives you hands-­on experience in **http**. In the second part you will make a head-­start with the design of your **board game Web application**.
+The first part of this assignment gives you hands-­on experience in **HTTP**. In the second part you will make a head-­start with the design of your **board game web application**.
 
 ## 0. Preliminaries
 
@@ -54,7 +54,7 @@ Use `telnet` to request the contents of the bread section of the recipe website 
 
 **[TODO: check if the URL is still accessible]**
 
-Start your "conversation" with the Web server by typing the following into the terminal:
+Start your "conversation" with the web server by typing the following into the terminal:
 
 ```console
 telnet myrecipes.com 80
@@ -62,7 +62,7 @@ telnet myrecipes.com 80
 
 ### 1.1)
 
-Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the recipes Web page. Always use `HEAD` first to retrieve meta-­data about the resource.
+Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the recipes web page. Always use `HEAD` first to retrieve meta-­data about the resource.
 
 ### 1.2)
 
@@ -80,7 +80,7 @@ What do the different `Cache-Control` directives mean?
 
 ## 2. HTTP request messages: PUT
 
-While `GET` and `HEAD` are request methods accepted by virtually all Web servers, `PUT`, `POST` and `DELETE` are less often available, due to the implications these methods have on the server.
+While `GET` and `HEAD` are request methods accepted by virtually all web servers, `PUT`, `POST` and `DELETE` are less often available, due to the implications these methods have on the server.
 
 To test your skills in uploading, deleting and posting data, we will make use of [http://httpbin.org/](http://httpbin.org/), a service designed to test HTTP messages.
 
@@ -114,11 +114,11 @@ Lets now try to request a page, that is set up with HTTP basic authentication.
 
 ### 3.1)
 
-First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password. Reload the Web page -­ what happens now?
+First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password. Reload the web page -­ what happens now?
 
 ### 3.2)
 
-Now let's see how this works with actual HTTP messages. Start off with a `HEAD` method to inspect the Web page and document all following steps (requests and responses):
+Now let's see how this works with actual HTTP messages. Start off with a `HEAD` method to inspect the web page and document all following steps (requests and responses):
 
 ```console
 telnet httpbin.org 80
@@ -143,12 +143,12 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 
 ## 4. Web programming project: board game app
 
-In this, and the upcoming two assignments, you will complete a Web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following minimal functionalities (you can opt to do more of course):
+In this, and the upcoming two assignments, you will complete a web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following minimal functionalities (you can opt to do more of course):
 
 - The game is for 2-4 players and in 2D.
 - The game works in at least two major browsers (e.g. Firefox and Chrome).
 - It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
-- Upon entering your Web application's URL, a **splash screen** will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), a brief description of how-to-play on your platform and a "Play" button (or something to that effect).
+- Upon entering your web application's URL, a **splash screen** will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), a brief description of how-to-play on your platform and a "Play" button (or something to that effect).
 - Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
 - Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
 - The splash and game screens need to look good (adhere to modern design standards); all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
@@ -161,7 +161,7 @@ In this, and the upcoming two assignments, you will complete a Web programming p
 
 The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to employ in your code); you can of course do more than required.
 
-The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the Web course book; you can use it too, but are not required to.
+The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the web course book; you can use it too, but are not required to.
 
 **Optionally**: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application, you can indeed incorporate existing libraries/frameworks (make sure to document clearly where in your code you employ it). The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent: while for the game of Ludo it would not be too difficult to come up with a number of rules to create a decent computer opponent, for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
 
@@ -185,7 +185,7 @@ Here are your nine board game options to choose from:
 
 ### 4.2)
 
-Find **four** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the Web application's design (focus on the game screen) based on the **Web design principles** covered in class. Record the game URLs. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
+Find **four** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the web application's design (focus on the game screen) based on the **web design principles** covered in class. Record the game URLs. Which design aspects stand out positively and which stand out negatively? Make a screenshot of each example and annotate the good and the bad.
 
 ### 4.2)
 
@@ -195,7 +195,7 @@ Which *game features* in the examples of 4.1) stand out positively and which sta
 
 ## 5. Design your own board game app
 
-Having looked at at least four existing implementations of your chosen board game (4.1), you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your Web application should be designed for the standard Desktop interface (i.e. not mobile). Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a Web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
+Having looked at at least four existing implementations of your chosen board game (4.1), you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface (i.e. not mobile). Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
 ### 5.1)
 

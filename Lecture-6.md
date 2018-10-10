@@ -1,25 +1,25 @@
-# Taking a closer look at node.js
+# Taking a closer look at Node.js
 
-In this lecture, we cover different aspects of node.js that are important to be a productive Web developer.
+In this lecture, we cover different aspects of Node.js that are important to be a productive web developer.
 
 ## Learning goals
 
-- Organize node.js code into modules.
+- Organize Node.js code into modules.
 - Understand and employ the concept of *middleware*.
 - Employ routing.
 - Employ templating.
 
-## Organization and reusability of node.js code
+## Organization and reusability of Node.js code
 
-So far, we have used a rather simple way to write node.js code: all server-side code is organized in a single file, which is only a feasible solution for very small projects. In larger projects this quickly ends in unmaintainable code:
+So far, we have used a rather simple way to write Node.js code: all server-side code is organized in a single file, which is only a feasible solution for very small projects. In larger projects this quickly ends in unmaintainable code:
 
 - Debugging is cumbersome.
 - Team-work is cumbersome.
 - Programming is cumbersome.
 
-These issues were recognized early on by the creators of node.js and they introduced the concept of **modules**. A node.js module is a single file and all code contained in it. 
+These issues were recognized early on by the creators of Node.js and they introduced the concept of **modules**. A Node.js module is a single file and all code contained in it. 
 
-By default, *no code in a module is accessible to other modules*. Any variable or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. When you look at npm modules, such as Express:
+By default, *no code in a module is accessible to other modules*. Any variable or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. When you look at npm modules, such as Express:
 
 ![Express npm](img/L6-express.png)
 
@@ -27,13 +27,13 @@ you will see that modules often dependent on a number of other modules (in this 
 
  You already know how to install such modules, e.g. `npm install —save alexa-sdk`. You can also use the command line to search for modules to install, e.g. `npm search alexa`.
 
-While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern Web for half a day or so can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
+While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern web for half a day or so can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
 
 ### A file-based module system
 
-In node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In node.js we get this ability for free. When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in [Lecture 3](Lecture-3.md)).
+In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this ability for free. When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in [Lecture 3](Lecture-3.md)).
 
-The module system works as follows: each node.js file can access its so-called module definition through the module variable. The module variable is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or its alias `exports` is used as we will see in a second:
+The module system works as follows: each Node.js file can access its so-called module definition through the module variable. The module variable is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or its alias `exports` is used as we will see in a second:
 
 ```javascript
 module {
@@ -50,7 +50,7 @@ module {
 }
 ```
 
- Finally, once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using node.js modules since your first attempts with node.js.
+ Finally, once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
 Here is a graphical overview of the connection between `require` and `module.exports`: 
 
@@ -85,9 +85,9 @@ console.log(module.exports); //{}
 
 Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality. In our `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. Which of the two assignments will our application bar end up with? In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js`; you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
 
-Node.js runs the referenced JavaScript file (here `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing foo.js? It is the function we defined in line 3. As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned. We can call the returned function and this results in *Hi from foo!* as you would expect. We can also combine lines 1 and 2 into a single line, as seen in line 3 with the same result. If we print out the variable `foo`, we learn that it is a function. Using the `toString()` function prints out the content of the function. Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. Finally, we can also look at the `module.exports` variable of `bar.js` - remember this is always available to a file in node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
+Node.js runs the referenced JavaScript file (here `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing foo.js? It is the function we defined in line 3. As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned. We can call the returned function and this results in *Hi from foo!* as you would expect. We can also combine lines 1 and 2 into a single line, as seen in line 3 with the same result. If we print out the variable `foo`, we learn that it is a function. Using the `toString()` function prints out the content of the function. Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. Finally, we can also look at the `module.exports` variable of `bar.js` - remember this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
 
-This setup also explains why **`require` is blocking**, i.e. once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return; this is in contrast to the usual *asynchronous* nature of node.js functions. 
+This setup also explains why **`require` is blocking**, i.e. once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return; this is in contrast to the usual *asynchronous* nature of Node.js functions. 
 
 Here is another example:
 
@@ -103,8 +103,8 @@ console.log(new Date().getTime() - t2); // approx 0
 
 For this example, it is also important to know that `module.exports` is **cached**. The first time an application calls `require(foo.js)` the file `foo.js` is read from disk, but in subsequent calls to `require(foo.js)` the **in-memory object is returned**. What does this mean in practice? We call require twice for the file `foo.js`, storing the return value in `foo1` and `foo2` respectively. We also log how long require blocks further code execution. The first time we `require(foo)`, this will take a few milliseconds as the file is actually read from disk. The second time we call `require(foo)` though, this time will drop to near zero, as the cached in-memory object is returned.
 
-As mentioned before, every node.js file has access to `module.exports`. If a file does not assign anything to it, it will be an empty object, but it is **always** present.
-We also stated before that instead of `module.exports` we can also use `exports`. If you look up what the difference between the two is, you will find a lot of articles and questions on the Web. Do not be confused, it is rather simple: `exports` is just an **alias** of `module.exports`. This means that the following two code snippets are equivalent:
+As mentioned before, every Node.js file has access to `module.exports`. If a file does not assign anything to it, it will be an empty object, but it is **always** present.
+We also stated before that instead of `module.exports` we can also use `exports`. If you look up what the difference between the two is, you will find a lot of articles and questions on the web. Do not be confused, it is rather simple: `exports` is just an **alias** of `module.exports`. This means that the following two code snippets are equivalent:
 
 ```javascript
 module.exports.foo = function () {
@@ -180,11 +180,11 @@ app.get("/round", function (req, res) {
 
 ## Middleware in Express
 
-Middleware components are small, self-contained and reusable code pieces across applications. Imagine you have written an Express application with tens of different routes and now decide to log every single http request coming in. You could add 2-3 lines of code to every route to achieve this logging OR you write a middleware logging component that gets called before any other route is called. How exactly this works in Express is discussed here.
+Middleware components are small, self-contained and reusable code pieces across applications. Imagine you have written an Express application with tens of different routes and now decide to log every single HTTP request coming in. You could add 2-3 lines of code to every route to achieve this logging OR you write a middleware logging component that gets called before any other route is called. How exactly this works in Express is discussed here.
 
 Middleware components take **three arguments**:
-- an http request object, 
-- an http response object, and,
+- an HTTP request object, 
+- an HTTP response object, and,
 - an optional callback function (`next()`) to indicate that the component is finished and the dispatcher (which orchestrates the order of middleware components) can move on to the next component.
 
 Middleware components have a number of abilities:
@@ -198,7 +198,7 @@ As a concrete example, imagine an Express application with a POST route `/user/a
 
 ![Middleware components](img/L6-middleware.png)
 
-The first middleware to be called is the logging component, followed by the bodyParser component which parses the http request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete.
+The first middleware to be called is the logging component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete.
 
 ### Logger component example
 
@@ -233,7 +233,7 @@ Importantly, `next()` enables us to move on to the next middleware component whi
 
 You will observe different behaviours of the application when testing it in the browser that make clear how the middleware components interact with each other and how they should be used in an Express application.
 
-In the example above we did not actually sent an http response back, but you know how to write such a code snippet yourself. So far, none of our routes have contained `next` for a simple reason: all our routes ended with an http response being sent and this completes the request-response cycle; there is no need for a `next()` call.
+In the example above we did not actually sent an HTTP response back, but you know how to write such a code snippet yourself. So far, none of our routes have contained `next` for a simple reason: all our routes ended with an HTTP response being sent and this completes the request-response cycle; there is no need for a `next()` call.
 
 ### Authorisation component example
 
@@ -295,7 +295,7 @@ app.use( setup({ param1 : 'value1' }) );
 
 Routing is the mechanism by which requests are routed to the code that handles them. The routes are specified by a URL and HTTP method (most often `GET` or `POST`). You have employed routes already - every time you wrote `app.get()` you specified a so-called **route handler** and wrote code that should be executed when that route (or URL) is called.
 
-This routing paradigm is a significant departure from the past, where **file-based** routing was commonly employed. In file-file based routing, we access files on the server by their actual name, e.g. if you have a Web application with your contact details, you typically would write those details in a file `contact.html` and a client would access that information through a URL that ends in `contact.html`. Modern web applications are not based on file-based routing, as is evident by the fact URLs these days do not contain file endings anymore (such as `.html` or `.asp`).
+This routing paradigm is a significant departure from the past, where **file-based** routing was commonly employed. In file-file based routing, we access files on the server by their actual name, e.g. if you have a web application with your contact details, you typically would write those details in a file `contact.html` and a client would access that information through a URL that ends in `contact.html`. Modern web applications are not based on file-based routing, as is evident by the fact URLs these days do not contain file endings anymore (such as `.html` or `.asp`).
 
 In terms of routes, we distinguish between request types (`GET /user` differs from `POST /user`) and request routes (`GET /user` differs from `GET /users`).
 
@@ -437,7 +437,7 @@ require('./routes.js')(app);
 
 ## Templating with EJS
 
-When we started our journey with node.js and Express, you learned that writing HTML in this manner:
+When we started our journey with Node.js and Express, you learned that writing HTML in this manner:
 
 ![HTML mixed-in](img/L6-html-manually.png)
 
@@ -447,7 +447,7 @@ is a poor choice, as the code quickly becomes unmaintainable, hard to debug and 
 
 With templates, our goal is to write as little HTML by hand as possible. Instead, we create an HTML template void of any data, add data and from that generate a rendered HTML view in the end. This approach keeps the code clean and separates the logic from the presentation markup.
 
-This concept exists in several languages and even for node.js alone, several template engines exist. In this course, you will learn the basics of **EJS** - *Embedded JavaScript* - a relatively straightforward template engine and language. Different incompatible versions of EJS exist, we are using [version 2](https://github.com/mde/ejs), the most recent one, in this course. Templates fit naturally into the *Model-View-Controller* paradigm which is designed to keep logic, data and presentation separate.
+This concept exists in several languages and even for Node.js alone, several template engines exist. In this course, you will learn the basics of **EJS** - *Embedded JavaScript* - a relatively straightforward template engine and language. Different incompatible versions of EJS exist, we are using [version 2](https://github.com/mde/ejs), the most recent one, in this course. Templates fit naturally into the *Model-View-Controller* paradigm which is designed to keep logic, data and presentation separate.
 
 ### A first EJS example
 
@@ -458,7 +458,7 @@ var context = {message: 'Hello template!'};
 console.log(ejs.render(template, context));
 ```
 
-Let's take a first look at EJS. For this exercise, we will use node's **REPL** (*Read-Eval-Print Loop*). It is the **Node.js shell**; any valid JavaScript which can be written in a script can be passed to the REPL as well. It useful for experimenting with node.js, and figuring out some of Javascript's more eccentric behaviors. To start the REPL, simply type `node` in the terminal and the node shell becomes available, indicated by `>`. Try it out for yourself and type each of the JavaScript code lines above into the shell, ending each line with `<ENTER>`.
+Let's take a first look at EJS. For this exercise, we will use Node's **REPL** (*Read-Eval-Print Loop*). It is the **Node.js shell**; any valid JavaScript which can be written in a script can be passed to the REPL as well. It useful for experimenting with Node.js, and figuring out some of JavaScript's more eccentric behaviors. To start the REPL, simply type `node` in the terminal and the Node shell becomes available, indicated by `>`. Try it out for yourself and type each of the JavaScript code lines above into the shell, ending each line with `<ENTER>`.
 
 If after the `var ejs = require('ejs');` line you receive an `Error: Cannot find module 'ejs'` error, exit the shell (to do so, type `.exit`). You need to install the `ejs` module. To do this, run `npm install ejs` and then go back to the REPL.
 

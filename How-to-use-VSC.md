@@ -81,7 +81,7 @@ After signing in, you will see in your VSC the URL you can send to your project 
 
 You can find [here](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) more information about VS Live Share.
 
-## Debugging node.js scripts in VSC
+## Debugging Node.js scripts in VSC
 
 Using the debugging functionalities in VSC is easy and they will help you find bugs in the code. You can go to the debugging window just by clicking in the "Debug" icon in the menu located at the left. From this window you can run the code in debug mode by clicking on the play button at the top.
 

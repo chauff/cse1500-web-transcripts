@@ -2,7 +2,7 @@
 
 # CSE1500: Web and Database Technology
 
-Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only Web topics are covered.** Work in progress. 
+Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only web topics are covered.** Work in progress. 
 
 ## Contact
 
@@ -10,15 +10,15 @@ The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi
 
 ## Required [REQ] and recommended [REC] tools
 
-- [REC] [Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. It als has a *Live Share* extension, which allows you to code in pairs without the need for tools like `git`. VS Code offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this may be a bit overwhelming, we made a short list of the extensions we recommend to install for this course:
+- [REC] [Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support Node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. It als has a *Live Share* extension, which allows you to code in pairs without the need for tools like `git`. VS Code offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this may be a bit overwhelming, we made a short list of the extensions we recommend to install for this course:
   - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), the most popular linting utility for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables) - use it to improve your code;
   - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) does what the name suggests;
   - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a great tool to try out JavaScript snippets without hassle;
   - [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension (especially useful if a student team works mostly remotely);
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier;
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
-- [REQ] [node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one)
-- [REQ] Two modern Web browsers such as Chrome, Firefox, Edge, ...
+- [REQ] [Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one)
+- [REQ] Two modern web browsers such as Chrome, Firefox, Edge, ...
 - [REC] Browser developer tools ... those come built into all modern browsers; be sure to make yourself familiar with them. For Firefox, you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
 
 If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
@@ -32,20 +32,20 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 ## Course grading
 
 - Course grade:
-  - 40% midterm (covers all Web technology lectures)
+  - 40% midterm (covers all web technology lectures)
   - 40% final exam (covers all database technology lectures)
   - 20% assignments
 - Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations.
-- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover Web programming topics and three cover database topics.
-- We have two assessment weeks: one before Christmas and one at the end of January. In the December assessment week **all** three Web assignments are assessed in a single session; in the January assessment week **all** three database assignments are assessed in a single session. Each session can yield anything between 3x pass and 3x no-pass.
+- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover web programming topics and three cover database topics.
+- We have two assessment weeks: one before Christmas and one at the end of January. In the December assessment week **all** three web assignments are assessed in a single session; in the January assessment week **all** three database assignments are assessed in a single session. Each session can yield anything between 3x pass and 3x no-pass.
 
 ## Course topics
 
 - Week 2.1: (Lecture L1) HTTP and (L2) HTML5
-- Week 2.2: (L3) JavaScript and (L4) node.js
-- Week 2.3: (L5) CSS and (L6) node.js (advanced topics)
-- Week 2.4: (L7) Cookies & sessions and (L8) Web security
-- Week 2.5: midterm on December 13 (*the midterm only covers Web technology topics*)
+- Week 2.2: (L3) JavaScript and (L4) Node.js
+- Week 2.3: (L5) CSS and (L6) Node.js (advanced topics)
+- Week 2.4: (L7) Cookies & sessions and (L8) web security
+- Week 2.5: midterm on December 13 (*the midterm only covers web technology topics*)
 - Week 2.6: DB topics
 - Week 2.7: DB topics
 - Week 2.8: DB topics
@@ -54,7 +54,7 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 ## Sample exams
 
-In the past years, the Web and database (DB) topics were interwoven (usually 1 lecture of Web and 1 lecture of DB topics per week) and thus the existing midterm and final exams also contain questions on both topics. To study for the midterm and/or final **this year**, make sure to look at the midterm and final exams from the past together to find examples of all Web/DB question types.
+In the past years, the web and database (DB) topics were interwoven (usually 1 lecture of web and 1 lecture of DB topics per week) and thus the existing midterm and final exams also contain questions on both topics. To study for the midterm and/or final **this year**, make sure to look at the midterm and final exams from the past together to find examples of all Web/DB question types.
 
 - [Midterm 2015/16](https://chauff.github.io/documents/webdb-2017-18/midterm2.pdf)
 - [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf)
@@ -66,13 +66,13 @@ In the past years, the Web and database (DB) topics were interwoven (usually 1 l
 
 There are six assignments in total.
 
-The first three assignments cover Web technology topics.
+The first three assignments cover web technology topics.
 
 If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
 
-- [Assignment 1 (Web)](Assignment-1.md)
-- [Assignment 2 (Web)](Assignment-2.md)
-- [Assignment 3 (Web)](Assignment-3.md)
+- [Assignment 1 (web)](Assignment-1.md)
+- [Assignment 2 (web)](Assignment-2.md)
+- [Assignment 3 (web)](Assignment-3.md)
 
 ## Demo app
 
@@ -86,39 +86,39 @@ and a game screen:
 
 <img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-game-CSS-completed.png" alt="splash screen" width="600px">
 
-## Interactive Web technology exercises
+## Interactive web technology exercises
 
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
-## List of Web lectures
+## List of web lectures
 
 **This is work in progress, lectures in a good draft status for 2018/19 are bolded.** The transcripts are an 2018/19 addition, the lectures slides are currently all from 2017/18.
 
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
-  - Topics: HTTP 1.1 request/response message, important HTTP headers, Web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
+  - Topics: HTTP 1.1 request/response message, important HTTP headers, web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
   - Required readings: *none*
   - Recommended readings:
     - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do)
     - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-    - Developer tools overview of your favourite Web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
+    - Developer tools overview of your favourite web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
     - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
-    - [A crash course on http and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
+    - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
   
-- **Lecture 2** covers Web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf))
-  - Topics: Web sites vs. Web applications, Electron, Web design basics, usability testing, HTML5 history, Web standards, HTML forms, AppCache
-  - Required readings:
-    - Chapter 2 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
+- **Lecture 2** covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf))
+  - Topics: web sites vs. web applications, Electron, web design basics, usability testing, HTML5 history, web standards, HTML forms
+    - Required readings:
+    - Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
     - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*);
   - Recommended readings:
     - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604)
     - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/)
-    - [Examples of what modern Web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
+    - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
   
 - **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
-    - Chapter 4 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
+    - Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activity:
     - [Interactive exercises for Lecture 3](nodeschool-exercises.md)
   - Recommended readings:
@@ -135,34 +135,34 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript
     - [The State of JavaScript 2017](https://2017.stateofjs.com/)
 
-- **Lecture 4** ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with node.js (`net`), web server creation (`http`), urls for routing (`url`), Express framework (`express`), JSON, Ajax, WebSockets
+- **Lecture 4** ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **Node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with Node.js (`net`), web server creation (`http`), URLs for routing (`url`), Express framework (`express`), JSON, Ajax, WebSockets
   - Required readings:
-    - Chapters 5 & 6 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
+    - Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activity:
     - [Interactive exercises for Lecture 4](nodeschool-exercises.md)
   - Recommended readings:
     - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
-    - [The world runs on nodejs (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577)
+    - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577)
   
-- **Lecture 5** ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS 3, pseudo-elements, pseudo-classes, rendering engine, data/variables in CSS, element positioning (`float`, `position`, `display`), CSS media queries, CSS animations and transitions
+- **Lecture 5** ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements, pseudo-classes, rendering engine, data/variables in CSS, element positioning (`float`, `position`, `display`), CSS media queries, CSS animations and transitions
   - Required readings:
-    - Chapter 3 of the [Web course book](http://shop.oreilly.com/product/0636920030621.do)
+    - Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
     - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS
   - Recommended readings
-    - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of Web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
+    - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
     - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101)
     - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
 
-- **Lecture 6** ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced node.js**: node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
+- **Lecture 6** ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced Node.js**: Node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
   - Recommended activities:
     - An interactive ejs playground can be found [here](https://ionicabizau.github.io/ejs-playground/).
-    - An interactive playground for express routes and regular expression is available [here](http://forbeslindesay.github.io/express-route-tester/).
+    - An interactive playground for Express routes and regular expression is available [here](http://forbeslindesay.github.io/express-route-tester/).
   - Recommended readings:
     - To learn more about ejs, take a look at its [GitHub repository](https://github.com/mde/ejs).
     - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
-    - An overview of [best practices in node.js](https://github.com/i0natan/nodebestpractices).
+    - An overview of [best practices in Node.js](https://github.com/i0natan/nodebestpractices).
     - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing).
 
 - **Lecture 7** ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, evercookie, third-party cookies, client-side cookies, cookies and sessions in Express, third-party authentication
@@ -172,14 +172,14 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown
     - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
 
-- **Lecture 8** 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **Web security**: Web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
+- **Lecture 8** 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **web security**: web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
   - Required readings: *none*
   - Recommended activities:
-    - In a "star module" two years ago, two first-year students in TI1506 implemented [CrapStore](https://github.com/nielsdebruin/CrapStore), a node.js based Web app modeled after BadStore (discussed in class). Try it out if you want to test some basic Web security issues.
+    - In a "star module" two years ago, two first-year students in TI1506 implemented [CrapStore](https://github.com/nielsdebruin/CrapStore), a Node.js based web app modeled after BadStore (discussed in class). Try it out if you want to test some basic web security issues.
   - Recommended readings:
-    - If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html) (available for free). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the Web security lecture (warning: this is an extensive read).
-    - [Stanford's CS155](https://crypto.stanford.edu/cs155/): Computer and Network Security course has a number of lectures on Web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf))
-    - CERN's [Web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class
+    - If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html) (available for free). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).
+    - [Stanford's CS155](https://crypto.stanford.edu/cs155/): Computer and Network Security course has a number of lectures on web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf))
+    - CERN's [web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class
     - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) provides an extensive list of practical tips, best practices and further readings on the topic.
     - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d)
     - [Deployment of the app on Heroku and securing it with Helmet](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment)

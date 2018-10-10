@@ -2,7 +2,7 @@
 
 In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.
 
-In the second part of this assignment, you will implement a number of smaller items (templating, cookies), that each do not take a lot of time, but round off your application and showcase additional abilities of node.js and the browser.
+In the second part of this assignment, you will implement a number of smaller items (templating, cookies), that each do not take a lot of time, but round off your application and showcase additional abilities of Node.js and the browser.
 
 ## 0. Preliminaries
 
@@ -56,7 +56,7 @@ You are of course welcome to use more CSS properties to style your splash screen
 ---
 Hints:
 
-- CSS examples are plentiful on the Web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, go for simpler CSS rules, often the same effect can be achieved in a myriad of ways.
+- CSS examples are plentiful on the web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, go for simpler CSS rules, often the same effect can be achieved in a myriad of ways.
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as Sass exist. Do not use those, in this course we make use of *plain CSS*.
 
 ---
@@ -128,7 +128,7 @@ Ensure that your code contains the necessary `package.json` file content to inst
 
 For short-term deployments (a few minutes/hours), e.g. to let your fellow study colleagues play your game, a quick solution is [ngrok](https://ngrok.com/) - you can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive app this way.*
 
-That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for Web applications without a lot of traffic. You can deploy a node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 ### 5.1)
 

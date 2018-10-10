@@ -1,31 +1,31 @@
 # JavaScript: the language of browser interactions
 
-*This is the densest Web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
+*This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
-Preview: in today's lecture we look at JavaScript as the language of browser interactions. In the next lecture we will look at node.js, a server-side JavaScript runtime. 
+Preview: in today's lecture we look at JavaScript as the language of browser interactions. In the next lecture we will look at Node.js, a server-side JavaScript runtime. 
 
 ## Learning goals
 
 - Employ JavaScript objects.
 - Employ the principle of callbacks.
-- Write interactive Web applications based on click, mouse and keystroke events.
+- Write interactive web applications based on click, mouse and keystroke events.
 - Explain and use `jQuery` (the library introduced in the course book).
 
 ## Take-aways of book chapter 4
 
 If you have already read Chapter 4 of the course book, you should know:
 - the basics of JavaScript, 
-- how to include Javascript in your Web application, 
+- how to include JavaScript in your web application, 
 - how to declare variables and functions, etc.,
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is.
 
-You should have also learnt about `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked Web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
+You should have also learnt about `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
 
 In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
 
 ## JavaScript's reputation
 
-Until fairly recently JavaScript was considered more of a toy language. Today though, it is the most important language of the modern Web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in 2017](https://octoverse.github.com/). Over the past decade, the tooling, frameworks and libraries that have become available for JavaScript (browser built-in dev tools, build tools, testing frameworks, UI frameworks, ...) have vastly improved. In addition, the **JavaScript runtime environments** are highly efficient and a number of them co-exist: [V8](https://developers.google.com/v8/) is Google's JavaScript engine, [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox) and [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
+Until fairly recently JavaScript was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in 2017](https://octoverse.github.com/). Over the past decade, the tooling, frameworks and libraries that have become available for JavaScript (browser built-in dev tools, build tools, testing frameworks, UI frameworks, ...) have vastly improved. In addition, the **JavaScript runtime environments** are highly efficient and a number of them co-exist: [V8](https://developers.google.com/v8/) is Google's JavaScript engine, [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox) and [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
 
 JavaScript tracks ECMAScript, the scripting-language specification standardized by Ecma International. While JavaScript is the most popular implementation of the standard, other implementations (or dialects) exist as well, e.g. ActionScript.
 
@@ -46,9 +46,9 @@ Here is one example of what TypeScript (the 11th most popular language on GitHub
 
 ### Server-side vs. client-side scripting
 
-**Server-side scripting** refers to scripts that run on the **Web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client (usually an HTML document). The client thus has to trust the server. Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly increase the server's load. As the client often only receives an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML. 
+**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client (usually an HTML document). The client thus has to trust the server. Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly increase the server's load. As the client often only receives an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML. 
 
-**Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code (and [this](https://twitter.com/atoker/status/796176641600974851) may happen). Having the clients execute the scripts **reduces the load on the Web server**, though all data necessary for the script (which could be megabytes of data) need to be downloaded and processed by the client. 
+**Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code (and [this](https://twitter.com/atoker/status/796176641600974851) may happen). Having the clients execute the scripts **reduces the load on the web server**, though all data necessary for the script (which could be megabytes of data) need to be downloaded and processed by the client. 
 
 ### `<script>`
 
@@ -64,6 +64,7 @@ Once more: interactivity based on the DOM should only start **after** the DOM ha
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
 1. Executing this JavaScript code snippet yields what output?
+
 ```javascript
 function giveMe(x){
     return function(y){ 
@@ -76,6 +77,7 @@ console.log( giveMe5(10) );
 ```
 
 2. Executing this JavaScript code snippet yields what output?
+
 ```javascript
 function toPrint(x){
     console.log(x);
@@ -95,7 +97,7 @@ There are many different design patterns, some are known to work across language
 
 ### JavaScript objects
 
-The Web course book focuses on what JavaScript to place where, it does not emphasise object principles. We do this here. One vital notion in JavaScript is the fact that **functions are first-class citizens** of the language. What does that mean? Well, it means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable**. 
+The web course book focuses on what JavaScript to place where, it does not emphasise object principles. We do this here. One vital notion in JavaScript is the fact that **functions are first-class citizens** of the language. What does that mean? Well, it means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable**. 
 
 The object-oriented programming paradigm is based on a set of cooperating objects (each one able to send/receive "messages" and process data) instead of a collections of functions or a set of commands. The goal of OOP is to assign every object a distinct role, in order to improve code maintainability.
 
@@ -123,7 +125,7 @@ game.printID = function(){
 game["printID"](); // prints out "1"
 game.printID(); //prints out "1"
 ```
- We first create an empty object with the `new` notation that we can then assign name/value pairs. Here, `id`, `player` and so on are the object's **properties** and their name must be a valid JavaScript identifier (basically a string that does not start with a number). Note, that `printID` is also an object property, although it is often also referred to as a method (because we define a function here). As you see here, Javascript makes it easy to add methods, by assigning a function to the property of an object.
+ We first create an empty object with the `new` notation that we can then assign name/value pairs. Here, `id`, `player` and so on are the object's **properties** and their name must be a valid JavaScript identifier (basically a string that does not start with a number). Note, that `printID` is also an object property, although it is often also referred to as a method (because we define a function here). As you see here, JavaScript makes it easy to add methods, by assigning a function to the property of an object.
 
  Here you also see the use of `this` for the first time. You should be familiar with it from Java, this refers to the current object. Although ... as with many things in JavaScript, it is not quite as simple. If you take a look at the very successful [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) book series, you will find half a book dedicated to `this` in JavaScript. 
  
@@ -430,7 +432,7 @@ In order to tackle this last remaining issue above, we need to talk about **scop
 - `let` was introduced in **ES6**: **block** scope;
 - `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
 
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to uninituitive behaviour can be seen in the following code snippets.
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to unintuitive behaviour can be seen in the following code snippets.
 
 Imagine we want to print out the numbers 1 to 10. This is easy to achieve, e.g.:
 
@@ -449,6 +451,7 @@ for (var i = 1; i <= 10; i++) {
     }, 1000);
 }
 ```
+
 When you run this code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Why is this? Well, first of all, what happens here is that `setTimeout` is executed ten times without delay - defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` (and then breaks as the `i<=10` condition is no longer fulfilled) which means `i` is `11` at the end of the `for` loop. As `i` has global scope, every single callback refers to the same variable. After a bit more time passes (reaching ~1 second) each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i` to console. Since `i` is `11` and all  we will get ten print outs of `11`.
 
 Lets fix the two issues (printing 11s instead of 1...10 and waiting a ~second between print outs one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** this was the established solution (you will find this construct in all kinds of older pieces of code):
@@ -557,6 +560,7 @@ console.log(y);
 Variables `x` and `y` have global scope as they are not prefixed by `var` or `let` or `const`. And so the console output will be `5` and `3`.
 
 But what happens in this slightly changed piece of code?
+
 ```javascript
 function f(){
     a = 5;
@@ -611,6 +615,7 @@ In this code snippet, we are defining a variable `gameStatModule` which is assig
     //statements
 })();
 ```
+
 Here, the function is **anonymous** (it does not have a name - it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to it immediate execution (the brackets surrounding the function are not strictly necessary, but they are commonly used). 
 
 Going back to our `gameStatModule`, we immediately execute the function. What does this function contain? It contains a number of variables with function scope (`gamesStarted` and so on) as well as a return statement. This return statement contains the result of the function invocation. In this case, an *object literal* is returned and this object literal has two methods `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other "private" variables, all we will get is an `undefined` as the returned object does not contain those properties (though the returned object has access to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables.
@@ -682,7 +687,7 @@ var main = function () {
 $(document).ready(main);
 ```
 
-The course book makes extensive use of `jQuery` (a big time saver in practice). With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the Web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
+The course book makes extensive use of `jQuery` (a big time saver in practice). With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
 - `document.getElementById`
 - `document.getElementsByClassName`
 - `document.getElementsByTagName`
@@ -698,13 +703,13 @@ The course book walks you through several examples of making a responsive UI con
 3. Write a JavaScript function: what should happen when the event occurs, e.g. an `alert` message may appear.
 4. Attach the function to the event **on** the control.
 
-If you want to examine how existing Web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML panel allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
+If you want to examine how existing web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML panel allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
 
 ![Exploring events](img/L3-event-listeners.png) **[TODO: fix link]**
 
 ### Document Object Model
 
-The DOM is our entry point to interactive Web applications. It allows use to:
+The DOM is our entry point to interactive web applications. It allows use to:
 - **Extract an element's state**
     - Is the checkbox checked?
     - Is the button disabled?
@@ -716,7 +721,7 @@ The DOM is our entry point to interactive Web applications. It allows use to:
 - **Change an element's style** (material for a later lecture)
     - Change the color of a button
     - Change the size of a paragraph
-    - Change the background color of a Web application
+    - Change the background color of a web application
 
 In the remainder of this lecture, you will see a number of simple event-based examples that add an interactive element to a web page. 
 These examples are simple and self-contained. This means that all necessary code is contained within a single code snippet (even though by now you are aware that in a real coding project there should be a strict separation between HTML, JavaScript and CSS, the latter will be introduced in a later lecture).
@@ -1232,7 +1237,7 @@ console.log(h2.freq);
 
 ```
 
-4. What is the output on the Web console when running the following piece of JavaScript in the browser?
+4. What is the output on the web console when running the following piece of JavaScript in the browser?
 
 ```javascript
 function A(x){
@@ -1253,7 +1258,7 @@ console.log( A(3)(4)(5) );
 - An object constructor looks like a normal function.
 - Prexing a call to a function with the keyword `new` indicates to the JavaScript runtime that the function should behave like a constructor.
 
-6. What is the output on the Web console when running the following piece of JavaScript in the browser?
+6. What is the output on the web console when running the following piece of JavaScript in the browser?
 
 ```javascript
 var todoModule = ( function() {
@@ -1320,7 +1325,7 @@ deal1.details.getPrice();
 ```
 
 9. In a prototype version of one of our applications, we want to implement functionality in JavaScript that retrieves details of local deals from the server when a user clicks on a deal. The code below contains a first implementation of this functionality. What is the main issue of this code?
-- Reloading the Web page *n* times will lead to *n* listeners being attached to the same list item.
+- Reloading the web page *n* times will lead to *n* listeners being attached to the same list item.
 - No event listeners will be attached to click events on list items.
 - The JavaScript code will be executed before teh DOM tree is loaded, the event listeners will be attached to the `window` object instead of the list items.
 - The method `document.getElementsByTagName()` does not exist leading to an error in the script.

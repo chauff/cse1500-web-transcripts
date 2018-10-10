@@ -2,27 +2,27 @@
 
 ## Learning goals
 
-- Describe the most common security issues in Web applications.
+- Describe the most common security issues in web applications.
 - Describe a number of basic attacks that can be executed against unsecured code.
-- Implement measures to protect a Web application against such attacks.
+- Implement measures to protect a web application against such attacks.
 
 ## Introduction
 
 Web applications are an attractive target for attackers for several reasons:
 
-They are open to attack from **different angles** as Web applications by definition rely on various software systems to run: an attacker can go after the **Web server** hosting the Web application, the **Web browser** displaying the application, the **Web application** itself if it is programmed without security in mind and of course the **user** is also a point of attack.
+They are open to attack from **different angles** as web applications by definition rely on various software systems to run: an attacker can go after the **web server** hosting the web application, the **web browser** displaying the application, the **web application** itself if it is programmed without security in mind and of course the **user** is also a point of attack.
 
-Successfully attacking a Web application with hundreds of thousands or millions of users offers a lot of potential gain. And in effect, as we will see later, a single attack can be so severe that the company building and selling the application is forced out of business.
+Successfully attacking a web application with hundreds of thousands or millions of users offers a lot of potential gain. And in effect, as we will see later, a single attack can be so severe that the company building and selling the application is forced out of business.
 
 On top of that, "*hacking*" does not longer require expert knowledge, as easy-to-use automated tools are available that test servers and applications for known vulnerabilities (e.g. [Wapiti](http://wapiti.sourceforge.net/), [w3af](http://w3af.org/)). 
 
-When you develop a Web application you should always ask yourself the question *how can it be attacked?* and secure yourself against those attacks. While Web applications are relatively easy to develop thanks to all the tooling available today, they are difficult to secure as it requires a lot of technological understanding on the part of the developer to get this step right.
+When you develop a web application you should always ask yourself the question *how can it be attacked?* and secure yourself against those attacks. While web applications are relatively easy to develop thanks to all the tooling available today, they are difficult to secure as it requires a lot of technological understanding on the part of the developer to get this step right.
 
-Large-scale Web portals such as Facebook have partially "outsourced" the finding of security issues to so-called *white hat hackers* - people interested in security issues that instead of something illegal want to earn some money ([Facebook paid out millions by 2016](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/), [Google paid 36K to a single bug hunter once](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html)) through the finding of holes in a Web portal's security. Bug bounty programs exist from among others [Facebook](https://www.facebook.com/whitehat), [Google](https://www.google.com/about/appsecurity/reward-program/), [PayPal](https://www.paypal.com/us/webapps/mpp/security-tools/reporting-security-issues), [Quora](https://engineering.quora.com/Security-Bug-Bounty-Program), [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/) and [Microsoft](https://www.microsoft.com/en-us/msrc/bounty).
+Large-scale web portals such as Facebook have partially "outsourced" the finding of security issues to so-called *white hat hackers* - people interested in security issues that instead of something illegal want to earn some money ([Facebook paid out millions by 2016](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/), [Google paid 36K to a single bug hunter once](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html)) through the finding of holes in a web portal's security. Bug bounty programs exist from among others [Facebook](https://www.facebook.com/whitehat), [Google](https://www.google.com/about/appsecurity/reward-program/), [PayPal](https://www.paypal.com/us/webapps/mpp/security-tools/reporting-security-issues), [Quora](https://engineering.quora.com/Security-Bug-Bounty-Program), [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/) and [Microsoft](https://www.microsoft.com/en-us/msrc/bounty).
 
 ## Six main threats
 
-There are several threats that Web applications face.
+There are several threats that web applications face.
 
 ### Defacement
 
@@ -34,7 +34,7 @@ became this one:
 
 ![CERN web page hacked](img/L8-cern-2.png) 
 
-Quite a story was made out of this as this was a Web server that was "invaded" formed part of the monitoring systems for some of the LHC detector hardware.
+Quite a story was made out of this as this was a web server that was "invaded" formed part of the monitoring systems for some of the LHC detector hardware.
 
 ### Data disclosure
 
@@ -46,7 +46,7 @@ This threat is maybe the most devastating for companies that do not have proper 
 
 ### Denial of service
 
-Denial of service (DoS) attacks make Web applications unavailable for legitimate users. To showcase this threat we use a three-year old Steam store attack, which is extensively described in an [Steam post](https://store.steampowered.com/news/19852/). A signature of a DoS attack is the abnormal traffic increase - in this case, the Steam store had to deal with a 2000% increase in traffic. Steam had a defense against a DoS attack in place to minimize the impact on Steam's servers; however, the defense (caching rules of additional web caches) was imperfect and incorrectly cached web traffic was shown to authenticated users, which means that some users saw other people's account page. 
+Denial of service (DoS) attacks make web applications unavailable for legitimate users. To showcase this threat we use a three-year old Steam store attack, which is extensively described in an [Steam post](https://store.steampowered.com/news/19852/). A signature of a DoS attack is the abnormal traffic increase - in this case, the Steam store had to deal with a 2000% increase in traffic. Steam had a defense against a DoS attack in place to minimize the impact on Steam's servers; however, the defense (caching rules of additional web caches) was imperfect and incorrectly cached web traffic was shown to authenticated users, which means that some users saw other people's account page. 
 
 ### Foot in the door
 
@@ -54,21 +54,21 @@ Often the most vulnerable part of security are users. Phishing and social engine
 
 ### Unauthorized access
 
-In this last threat type, attackers can use functions of a Web application they should not be able to use. An example here is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the Web (it should have been only accessible from the internal Instagram network).  
+In this last threat type, attackers can use functions of a web application they should not be able to use. An example here is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web (it should have been only accessible from the internal Instagram network).  
 
 ## What are applications vulnerable to?
 
-In order to effectively secure a Web application we need to know what the most frequent security issues are. Let's turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) to answer this question. For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. The most important **software security issues** for web and mobile applications are the following (p. 56 of the report, reported as percentage of scanned applications):
+In order to effectively secure a web application we need to know what the most frequent security issues are. Let's turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) to answer this question. For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. The most important **software security issues** for web and mobile applications are the following (p. 56 of the report, reported as percentage of scanned applications):
 
 ![Web and mobile security](img/L8-security-report-1.png)
 
-In general, mobile applications are more vulnerable than Web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is *Input validation and representation* which covers issues such as cross-site scripting and SQL injection (we cover those issues later in this lecture), which is present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure Web applications exist - clearly though, these recommendations are often ignored. 
+In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is *Input validation and representation* which covers issues such as cross-site scripting and SQL injection (we cover those issues later in this lecture), which is present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored. 
 
 If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following (p. 57 of the report, reported are the percentage of applications and the median vulnerability count):
 
 ![Top 10 vulnerabilities](img/L8-security-report-2.png)
 
-Some of these vulnerabilities you should already recognize and be able to place in context, specifically *Cookie Security: cookie not sent over SSL* and *Cookie Security: HTTPOnly not set*. The vulnerability *Privacy violation: autocomplete* should intutively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent form with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields. Lastly, we will also discuss the *Hidden field* vulnerability later in this lecture - it provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted (for instance, a Web portal may offer the same form on every single Web page and the hidden field stores a numerical identifier of the page). However,as with any data sent to the browser, with a bit of knowledge about the Web developer tools available in browsers, the user can easily change the hidden field values, making them a vulnerability.
+Some of these vulnerabilities you should already recognize and be able to place in context, specifically *Cookie Security: cookie not sent over SSL* and *Cookie Security: HTTPOnly not set*. The vulnerability *Privacy violation: autocomplete* should intutively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent form with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields. Lastly, we will also discuss the *Hidden field* vulnerability later in this lecture - it provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted (for instance, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the page). However,as with any data sent to the browser, with a bit of knowledge about the web developer tools available in browsers, the user can easily change the hidden field values, making them a vulnerability.
 
 Taking a slightly higher-level view, the top five violated security categories across all scanned applications were the following (p. 59 of the report, reported are the percentage of applications violating a category): 
 
@@ -78,7 +78,7 @@ The only category not covered so far is *Insecure transport*. This refers to the
 
 ![NodeGoat not secure](img/L8-browser-warning.png)
 
-In addition it is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows Web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on the header field](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
+In addition it is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on the header field](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
 
 ```
 You log into a free WiFi access point at an airport and start surfing the web, visiting your 
@@ -102,7 +102,7 @@ This attack is typically used in conjunction with some form of social engineerin
 
 ## OWASP Node goat project
 
-One of the best ways of learning about Web security is to actually try out a few of the introduced techniques in an actual Web application that is vulnerable. The [NodeGoat](https://github.com/OWASP/NodeGoat) project was designed specifically for this purpose, it provides an "*environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js*". 
+One of the best ways of learning about web security is to actually try out a few of the introduced techniques in an actual web application that is vulnerable. The [NodeGoat](https://github.com/OWASP/NodeGoat) project was designed specifically for this purpose, it provides an "*environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js*". 
 
 In this section, I will provide a few hints of how to find exploits in this project that are relevant to the concepts taught in this class. 
 

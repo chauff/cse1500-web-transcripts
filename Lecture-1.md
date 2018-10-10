@@ -4,27 +4,27 @@
 
 ## Web standards
 
-A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium (also known as `W3C`): what are Web standards and what makes Web standards so important?
+A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium (also known as `W3C`): what are Web standards and what makes web standards so important?
 
 ## Learning goals
 
-- Describe how Web servers asnd clients interact with each other
-- Write HTTP messages that request Web resources from Web servers and understand the responses
+- Describe how web servers and clients interact with each other
+- Write HTTP messages that request web resources from web servers and understand the responses
 - Describe the different components of URLs and their purpose
 - Understand and employ basic HTTP authentication
 - Explain the difference between HTTP and HTTPS
 
 ## World Wide Web vs. Internet
 
-### A brief history of the Web
+### A brief history of the web
 
-The vision of the World Wide Web was already developed in the 1940s by Vannevar Bush, an American engineer who described his idea of a *memex* (a combination of memory and index) in the article [As We May Think](https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/). The Web can simply be described as **a system of interconnected hypertext documents, available via the Internet**.
+The vision of the World Wide Web was already developed in the 1940s by Vannevar Bush, an American engineer who described his idea of a *memex* (a combination of memory and index) in the article [As We May Think](https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/). The web can simply be described as **a system of interconnected hypertext documents, available via the Internet**.
 
 In the 1960s, the first steps from vision to reality were made by DARPA, the *Defense Advanced Research Projects Agency* of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed in a way to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate. 
 
-It took about 30 years, before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organisations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee created the World Wide Web: he was the man who first successfully implemented client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure on the Web development today, in fact, he is the current director of the Word Wide Web Consortium.
+It took about 30 years, before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organisations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee created the World Wide Web: he was the man who first successfully implemented client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure on the web development today, in fact, he is the current director of the Word Wide Web Consortium.
 
-In the early days of the Web, the "browser" looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, Lynx, which you can still use today:
+In the early days of the web, the "browser" looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, Lynx, which you can still use today:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Lynx-wikipedia.png" width="600">
 
@@ -32,7 +32,7 @@ Browsers with graphical user interfaces started to appear in 1994, the frontrunn
 
 ### Key aspects of the Internet
 
-The Web is built on top of the Internet. The Internet describes the hardware layer: it is spanned from **interconnected computer networks around the globe that all communicate through one common standard**, the so-called TCP/IP protocol.
+The web is built on top of the Internet. The Internet describes the hardware layer: it is spanned from **interconnected computer networks around the globe that all communicate through one common standard**, the so-called TCP/IP protocol.
 The different sub-networks function autonomously, they do not depend on each other. There is not a single master - no machine or sub-network is in control of the whole network. It is very easy for machines or even entire sub-networks to join and leave the network without interrupting the flow of data among the remaining network.
 All devices interact with each other through agreed-upon open standards which are very easy to use as these standards are implemented in a wide range of open-source server and client software.
 
@@ -40,20 +40,20 @@ To show how far we have come, [here](https://qz.com/860873/a-1973-map-of-the-int
 
 ### Two important organizations
 
-The Web and the Internet are not static, they are continuously in development. This development is led by two organisations: the **IETF** - the *Internet Engineering Task Force* - leads the development of the Internet. The **W3C** - the *World Wide Web Consortium* - leads the development of the Web. The IETF to many is a less well-known (but equally important) organization than the W3C, and while you may not often come across the IETF acronym, you will time and again encounter the so-called RFCs. RFCs are **Request for Comments**, released by the IETF. They describe the Internet standards in detail. As an example, [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) is the document describing the Internet Message Format, aka email format, in about 50 pages.
+The web and the Internet are not static, they are continuously in development. This development is led by two organisations: the **IETF** - the *Internet Engineering Task Force* - leads the development of the Internet. The **W3C** - the *World Wide Web Consortium* - leads the development of the web. The IETF to many is a less well-known (but equally important) organization than the W3C, and while you may not often come across the IETF acronym, you will time and again encounter the so-called RFCs. RFCs are **Request for Comments**, released by the IETF. They describe the Internet standards in detail. As an example, [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) is the document describing the Internet Message Format, aka email format, in about 50 pages.
 
 ## HTTP messages
 
 - **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardised in 1997.
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
 
-HTTP/2 is the first new version of http since HTTP/1.1. It originated at Google where it was developed as SPDY protocol ("speedy protocol"); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). According to current estimates, about 30% of websites support HTTP/2. As HTTP/1.1 is still the dominant protocol type, we focus on it in our lecture.
+HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol ("speedy protocol"); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). According to current estimates, about 30% of websites support HTTP/2. As HTTP/1.1 is still the dominant protocol type, we focus on it in our lecture.
 
 ### Web servers and clients
 
-On the Web, clients and servers communicate with each other through HTTP requests and responses. If you open a Web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your Web browser is acting as the **client**. The **server** is your email provider. 
-How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve thousands of client requests at the same time. Servers host **Web resources** that is any kind of content with an identity on the Web. This can be static files, but also software programs or Web cam gateways. As long as they are accessible through an identifier, they can be considered as Web resources. 
-The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file it will send it to the client, otherwise it will send an error message. The client, i.e. most often the Web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
+On the web, clients and servers communicate with each other through HTTP requests and responses. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your web browser is acting as the **client**. The **server** is your email provider. 
+How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve thousands of client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, but also software programs or web cam gateways. As long as they are accessible through an identifier, they can be considered as web resources. 
+The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file it will send it to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
 
 ### Network communication
 
@@ -69,16 +69,16 @@ HTTP is at the top of the stack, and TCP builds on top of IP. Important to know 
 
 ### !Activity!
 
-Open your favourite browser and use its built-in **Web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website. 
+Open your favourite browser and use its built-in **web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website. 
 
-![Browser built-in Web dev tools](img/L1-devtools.png)
+![Browser built-in web dev tools](img/L1-devtools.png)
 
-You can see several panels, for the different types of data that are downloaded or created when a Web site loads. To load a seemingly simple site like [https://www.tudelft.nl/](https://www.tudelft.nl/), many different Web resources are actually needed. The resource initially requested (`/`, i.e. the page residing at the URL you chose) links to a myriad of additional Web resources, which are then automatically requested by the Web browser as well, leading to a **cascade of resource requests**.
+You can see several panels, for the different types of data that are downloaded or created when a web site loads. To load a seemingly simple site like [https://www.tudelft.nl/](https://www.tudelft.nl/), many different web resources are actually needed. The resource initially requested (`/`, i.e. the page residing at the URL you chose) links to a myriad of additional web resources, which are then automatically requested by the web browser as well, leading to a **cascade of resource requests**.
 Each resource is requested separately by your browser. How exactly is it requested? Through an HTTP request! And how exactly that looks you can view in the Headers tab (and not just the request header, but also the response header):
 
-![Browser built-in Web dev tools](img/L1-devtools2.png)
+![Browser built-in web dev tools](img/L1-devtools2.png)
 
-You will also notice that the HTTP requests differ slightly between different types of Web resources (e.g. image vs. html page).
+You will also notice that the HTTP requests differ slightly between different types of web resources (e.g. image vs. html page).
 
 ### HTTP request message
 <a name="http-request"></a>
@@ -97,7 +97,7 @@ Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 ```
 
 HTTP is a **plain text protocol** and **line-oriented**. 
-The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  What are we requesting? Line 2 answers this question, we are requesting the Web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. In the last line, you can see that in this request, a cookie is sent from the client to the server as well.
+The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. In the last line, you can see that in this request, a cookie is sent from the client to the server as well.
 
 ### HTTP response message
 <a name="http-response"></a>
@@ -145,9 +145,9 @@ Many header fields exist, the most important ones (though to some extent this re
 The bold header fields will be covered below. Let's briefly walk over the other fields:
 
 - The `Content-Language` indicates the language the entity is in, which can be English, Dutch or any other language. 
-- The `Content-Location` can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same Web resource resides. 
-- `Content-Range` is important for entities that consist of multiple parts and are sent partially across different http responses; without this information, the client would be unable to piece together the whole entity.
-- Finally, `Allow` indicates to the client what type of requests can be made for the entity in question; `GET` is only one of a number of methods, it may also be possible to alter or delete a Web resource.
+- The `Content-Location` can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same web resource resides. 
+- `Content-Range` is important for entities that consist of multiple parts and are sent partially across different HTTP responses; without this information, the client would be unable to piece together the whole entity.
+- Finally, `Allow` indicates to the client what type of requests can be made for the entity in question; `GET` is only one of a number of methods, it may also be possible to alter or delete a web resource.
 
 Lets look at a few of these fields a bit more in detail.
 
@@ -159,7 +159,7 @@ Lets look at a few of these fields a bit more in detail.
 The pattern is always the same: each MIME type has a **primary object type** and a **subtype**.
 Here are a few typical examples: `text/plain`, `text/html`, `image/jpeg`, `video/quicktime`, `application/vnd.ms-powerpoint`. As you can see in the `text/*` cases, the primary object type can have several subtypes.
 
-MIME types can be very diverse. Here is a list of the most and least popular MIME types found on a sample of a large-scale [Web crawl](http://commoncrawl.org/) in 2014:
+MIME types can be very diverse. Here is a list of the most and least popular MIME types found on a sample of a large-scale [web crawl](http://commoncrawl.org/) in 2014:
 
 | Most popular         | Least popular               |
 |----------------------|-----------------------------|
@@ -173,7 +173,7 @@ MIME types can be very diverse. Here is a list of the most and least popular MIM
 | application/pdf      | application/postscript      |
 | application/atom+xml | application/x-msdos-program |
 
-You should be able to recognise most of the popular types; `application/rss+xml` and `application/atom+xml` are two popular types of Web feed standards. Note, that if a server does not include a specific MIME type the default setting becomes `unknown/unknown`.
+You should be able to recognise most of the popular types; `application/rss+xml` and `application/atom+xml` are two popular types of web feed standards. Note, that if a server does not include a specific MIME type the default setting becomes `unknown/unknown`.
 
 Among the least popular MIME types are application specific types such as `chemical/x-pdb` for protein databank data and others.
 
@@ -198,26 +198,26 @@ Why bother with encodings at all? If an image or video is compressed by the serv
 
 Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy. MD5 acts as a sanity check.
 
-MD5 stands for **message digest** and is an important data verification component: the message content is hashed into a 128 bit value. Once the client receives the http response it computes the checksum of the content as well and compares it with the checksum in the header field. If there is a mismatch, the client assumes that the content is corrupted and requests the content again.
+MD5 stands for **message digest** and is an important data verification component: the message content is hashed into a 128 bit value. Once the client receives the HTTP response it computes the checksum of the content as well and compares it with the checksum in the header field. If there is a mismatch, the client assumes that the content is corrupted and requests the content again.
 
 ### Expires
 
-**Web caches** make up an important part of the Internet. They cache **popular copies** of Web resources. This reduces the load on those servers that host these popular resources, reduces a network bottleneck and increases the responsiveness (the delay is decreased).
-But how does a Web cache know for how long a Web resource is valid? Imagine a Web cache caching `nu.nl` from the origin server (i.e. the server hosting `nu.nl`) - this copy will quickly become stale and outdated. On the other hand, an RFC page that rarely changes may be valid in the cache for a long time.
+**Web caches** make up an important part of the Internet. They cache **popular copies** of web resources. This reduces the load on those servers that host these popular resources, reduces a network bottleneck and increases the responsiveness (the delay is decreased).
+But how does a web cache know for how long a web resource is valid? Imagine a web cache caching `nu.nl` from the origin server (i.e. the server hosting `nu.nl`) - this copy will quickly become stale and outdated. On the other hand, an RFC page that rarely changes may be valid in the cache for a long time.
 
-This is where the `Expires` header field comes in. It indicates to a Web cache when a fetched resource is no longer valid and needs to be retrieved from the origin server.
+This is where the `Expires` header field comes in. It indicates to a web cache when a fetched resource is no longer valid and needs to be retrieved from the origin server.
 
 ### Expires & Cache-Control
 
-There is another header that is similar to `Expires`: `Cache-Control`. They differ in the manner they indicate staleness to the Web cache: `Expires` uses an **absolute expiration date**, e.g. December 1, 2021, while `Cache-Control` uses a **relative time**, e.g. 3600 seconds since being sent.
+There is another header that is similar to `Expires`: `Cache-Control`. They differ in the manner they indicate staleness to the web cache: `Expires` uses an **absolute expiration date**, e.g. December 1, 2021, while `Cache-Control` uses a **relative time**, e.g. 3600 seconds since being sent.
 
-Enabling the origin server to fix in advance how quickly a cached version of a resource goes stale was an important design decision. The alternative would have been to solely rely on Web caches to query the original server to determine whether or not the cached resources are out of date - this would be inefficient though as these kind of queries would have to happen very frequently.
+Enabling the origin server to fix in advance how quickly a cached version of a resource goes stale was an important design decision. The alternative would have been to solely rely on web caches to query the original server to determine whether or not the cached resources are out of date - this would be inefficient though as these kind of queries would have to happen very frequently.
 
 ### Last-Modified
 
-A final header field we consider is `Last-Modified`. It contains the date when the Web resource was last altered. There is no header field though that indicates **how much** the resource has changed. Even if only a whitespace was added to a plain text document, the `Last-Modified` header would change.
+A final header field we consider is `Last-Modified`. It contains the date when the web resource was last altered. There is no header field though that indicates **how much** the resource has changed. Even if only a whitespace was added to a plain text document, the `Last-Modified` header would change.
 
-It is often used in combination with `If-Modified-Since`. When Web caches actively try to revalidate Web resources they cache, they only want the Web resource sent by the origin server if it has changed since the `Last-Modified` date. If nothing has changed, the origin server simply returns a `304 Not Modified` response; otherwise the updated Web resource is sent to the Web cache.
+It is often used in combination with `If-Modified-Since`. When web caches actively try to revalidate web resources they cache, they only want the web resource sent by the origin server if it has changed since the `Last-Modified` date. If nothing has changed, the origin server simply returns a `304 Not Modified` response; otherwise the updated web resource is sent to the web cache.
 
 `Last-Modified` dates should be taken with a grain of salt. They are not always reliable, and can be manipulated by the origin server to ensure high cache validation rates for instance.
 
@@ -285,7 +285,7 @@ Lastly it is worth to mention that besides switching to the WebSocket protocol, 
 
 ### Status codes
 
-To finish off this part about HTTP header fields, we take a look at the response status codes. You have just read about the `304` status code, sent by the origin server in the response after a request from the Web cache asking about an updated copy of a Web resource.
+To finish off this part about HTTP header fields, we take a look at the response status codes. You have just read about the `304` status code, sent by the origin server in the response after a request from the web cache asking about an updated copy of a web resource.
 
 If you look at the [first HTTP response example](#http-response), you will see that the status code is a very prominent part of the HTTP response - it appears in the very first line of the response. In this case the status code is `200`.
 
@@ -301,11 +301,11 @@ Quite a few different status codes exist that provide the client with some level
 
 Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. As just seen status code `101` indicates the server switching to a protocol as requested by the client. 
 
-Status code `200` is the most common one - it indicates that the HTTP request was successful and the response contains the requested Web resource (or a part of it). 
+Status code `200` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it). 
 
 Status codes starting with 3 most often point to a redirect: a resource that was originally under URL `A` can now be found under URL `B`. These redirects are automatically resolved by the browser - you only notice a slightly longer loading time, otherwise redirects do not affect browser users.
 
-Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the Web resource or entity the client requests, does not exist on the server. 
+Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the web resource or entity the client requests, does not exist on the server. 
 Errors on the server side start with 5; one relatively common status code is `502: Bad gateway`.
 
 ## HTTP methods
@@ -316,7 +316,7 @@ Recall the first line of the [HTTP request message](#http-request) above:
 GET / HTTP/1.1
 ```
 
-So far, we have only seen `GET` requests, i.e. requests to get access to some Web resource. `GET` however is only one of multiple so-called **HTTP methods**.
+So far, we have only seen `GET` requests, i.e. requests to get access to some web resource. `GET` however is only one of multiple so-called **HTTP methods**.
 
 ### Common HTTP methods
 
@@ -327,14 +327,14 @@ There are 7 common HTTP methods:
 - `PUT` saves the body of the request on the server; if you have ever used ftp you are already familiar with put
 - `TRACE` can be used to trace where a message passes through before arriving at the server
 - `OPTIONS` is helpful to determine what kind of methods a server supports and finally
-- `DELETE` can be used to remove documents from a Web server
+- `DELETE` can be used to remove documents from a web server
 
 This is by no means an exhaustive list of methods and not all servers enable or implement all the methods shown here. This list shows just the most common methods in use today.
 
 ### !Activity!
 
 Lets see how this protocol works in practice. One of the learning goals of this lecture is to be able to make HTTP requests yourself. 
-One basic tool to practice HTTP request writing is `telnet`. Telnet is a protocol defined in [RFC 15](https://tools.ietf.org/html/rfc15) (this low number should tell you that it is a very old standard - it is from 969). Software that implements the client-side part of the protocol is also called telnet. Telnet opens a TCP connection to a Web server (this requires a port number, for now just take it as is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a Web client and all returned data is displayed in the terminal.
+One basic tool to practice HTTP request writing is `telnet`. Telnet is a protocol defined in [RFC 15](https://tools.ietf.org/html/rfc15) (this low number should tell you that it is a very old standard - it is from 969). Software that implements the client-side part of the protocol is also called telnet. Telnet opens a TCP connection to a web server (this requires a port number, for now just take it as is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a web client and all returned data is displayed in the terminal.
 
 Try out the following examples yourself (everything indented is returned by the server and does not have to be typed out; `[carriage return]` indicates when/how often to press `Enter`):
 
@@ -398,7 +398,7 @@ host:www.microsoft.com
     Location: http://www.microsoft.com/en-us/default.aspx?redir=true
 ```
 
-By now it should be clear that multiple requests may be required to end up with the wanted resource. The Web browser handles these redirects transparently. Lastly, you also saw that Web servers can recognise to some extent the source of a request and act accordingly; we did not include a user agent string to identify ourselves as requester and were given a response that assumed a machine-generated request.
+By now it should be clear that multiple requests may be required to end up with the wanted resource. The web browser handles these redirects transparently. Lastly, you also saw that web servers can recognise to some extent the source of a request and act accordingly; we did not include a user agent string to identify ourselves as requester and were given a response that assumed a machine-generated request.
 
 ### From domain to IP address
 
@@ -430,7 +430,7 @@ Let's now take a closer look at the format of Uniform Resource Locators or in sh
 
 [Find out](#answer)
 
-URLs are the common way to access any resource on the Internet; the format of URLs is standardized. You should already be relatively familiar with the format of URLs accessing resources through http or https. Resource access in other protocols (e.g. `ftp`) is similar, with only small variations.
+URLs are the common way to access any resource on the Internet; the format of URLs is standardized. You should already be relatively familiar with the format of URLs accessing resources through HTTP or HTTPS. Resource access in other protocols (e.g. `ftp`) is similar, with only small variations.
 
 In general, a URL consists of up to 9 parts
 
@@ -450,12 +450,12 @@ From back to front:
 
 ### URL syntax: query
 
-One of the most important URL types for us is the syntax for a `query`. What does that mean? Let's consider `https://duckduckgo.com/html?q=delft`. This is an example of a URL pointing to the Duckduckgo website that - as part of the URL - contains the `q=Delft` query. This query component is passed to the application accessed at  the Web server - in this case Duckduckgo's search system and returned to you is a list of search results for the query *Delft*. This syntax is necessary to enable interactive application. 
+One of the most important URL types for us is the syntax for a `query`. What does that mean? Let's consider `https://duckduckgo.com/html?q=delft`. This is an example of a URL pointing to the Duckduckgo website that - as part of the URL - contains the `q=Delft` query. This query component is passed to the application accessed at  the web server - in this case Duckduckgo's search system and returned to you is a list of search results for the query *Delft*. This syntax is necessary to enable interactive application. 
 By convention we use `name=value` to pass application variables. If an application expects several variables, e.g. not only the search string but also the number of expected search results, we combine them with an `&`: `name1=value1&name2=value2& ...`.
 
 <a name="answer">Answer: All URLs are valid.</a>
 
-### Schemes: more than just http(s)
+### Schemes: more than just HTTP(S)
 
 We have already touched upon the fact that `http` and `https` are the most common protocols, but certainly not the only ones. `http` and `https` differ in their encryption - `http` does not offer encryption, while `https` does. `mailto` is the email protocol, `ftp` is the file transfer protocol. The local file system can also be accessed through the URL syntax as `file://<host>/<path>`, e.g. to view `tmp.html` from the directory `/Users/my_home` in the browser, you can use `file:///Users/my_home/tmp.html`. 
 
@@ -482,9 +482,9 @@ http://www.st.ewi.tudelft.nl/~hauff/new/vis/trecvis.html
 http://www.st.ewi.tudelft.nl/~hauff/airsvis.html
 ```
 
-The absolute URL at the top can be used to retrieve a Web resource without requiring any additional information. The two URLs below are relative as they by themselves do not provide sufficient information to resolve to a specific Web resource. They are embedded in HTML markup which, in this case, resides within the Web page pointed to by the absolute URL at the top. 
+The absolute URL at the top can be used to retrieve a web resource without requiring any additional information. The two URLs below are relative as they by themselves do not provide sufficient information to resolve to a specific web resource. They are embedded in HTML markup which, in this case, resides within the web page pointed to by the absolute URL at the top. 
 
-Relative URLs require a **base URL** to enable their conversion into absolute URLs. By default, this base URL is derived from the absolute URL of the Web page the relative URLs are found in. The base URL of a resource is everything up to and including the last slash in its path name. 
+Relative URLs require a **base URL** to enable their conversion into absolute URLs. By default, this base URL is derived from the absolute URL of the web page the relative URLs are found in. The base URL of a resource is everything up to and including the last slash in its path name. 
 
 The base URL is used to convert the relative URLs into absolute URLs. The conversion in the first case (`vis/trecvis.html`) is straightforward, the relative URL is appended to the base URL. In the second case (`../airsvis.html`) you have to know that the meaning of `..` is to move a directory up, thus in the base URL the `/new` directory is removed from the base and then the relative URL is added. 
 Note, that this conversion can be governed by more complex rules, they are described in [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt).
@@ -511,16 +511,16 @@ One word of caution though: **mixed scripts** (i.e. using different alphabets in
 
 The last topic we cover in this first lecture is authentication. **Authentication is any process by which a system verifies the identity of a User who wishes to access it.**
 
-So far, we have viewed HTTP is an anonymous and **stateless** request/response protocol. This means that the same HTTP request is treated in exactly the same manner by a server, independent of who or what entity sends this request. We have seen that each HTTP request is dealt with independently, the server does not maintain a state for a client, i.e. the server does not keep track how often a client has already requested a Web resource.
+So far, we have viewed HTTP is an anonymous and **stateless** request/response protocol. This means that the same HTTP request is treated in exactly the same manner by a server, independent of who or what entity sends this request. We have seen that each HTTP request is dealt with independently, the server does not maintain a state for a client, i.e. the server does not keep track how often a client has already requested a web resource.
 
-But of course, this is not how today's Web works: servers **do** identify devices and users, most Web applications indeed track their users very closely. We have several options to identify users and devices:
+But of course, this is not how today's web works: servers **do** identify devices and users, most web applications indeed track their users very closely. We have several options to identify users and devices:
 
-- http headers;
+- HTTP headers;
 - client IP addresses;
 - user login;
 - fat URLs.
 
-If you already know a bit more about Web development you will miss in this list cookies and sessions we cover these concepts in one of the later lectures. Let's now look how each of the four identification options listed above work. 
+If you already know a bit more about web development you will miss in this list cookies and sessions we cover these concepts in one of the later lectures. Let's now look how each of the four identification options listed above work. 
 
 ### User-related HTTP header fields
 
@@ -536,11 +536,11 @@ The HTTP header fields we have seen so far were only a few of all possible ones.
 
 All of the shown header fields are request header fields, i.e. sent from the client to the server. Most are standard and one is an extension, meaning it is not recognised by all existing implementations. 
 
-Let's look at the first three fields for now, they can contain information about the user such as the his email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the Web page the user came from.
+Let's look at the first three fields for now, they can contain information about the user such as the his email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
 
-In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by Web crawlers; in case they break a Web server due to too much crawling, the owner of the Web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device-specific customization, but not more. The `Referer` is similarly crude: it can tell us something about a user's interests but does not enable us to uniquely identify a user.
+In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by web crawlers; in case they break a web server due to too much crawling, the owner of the web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device-specific customization, but not more. The `Referer` is similarly crude: it can tell us something about a user's interests but does not enable us to uniquely identify a user.
 
-To conclude, the HTTP headers `From`, `Referer` and `User-Agent` are not suitable to track the modern Web user.
+To conclude, the HTTP headers `From`, `Referer` and `User-Agent` are not suitable to track the modern web user.
 
 ### Client-IP address tracking
 
@@ -548,14 +548,14 @@ The second option we have to authenticate users is client IP address tracking, e
 
 However ... we know that IP addresses are assigned to machines, not users. Internet service provides do not assign a unique IP to each one of their users, they dynamically assign IP addresses to users from a common address pool; a user's IP address can change any day. 
 
-Today's Internet is also more complicated than just straightforward client and servers. We access the Web through firewalls which obscure the users' IP addresses, we use proxies and gateways that in turn set up their own TCP connections and come with their own IP addresses.
+Today's Internet is also more complicated than just straightforward client and servers. We access the web through firewalls which obscure the users' IP addresses, we use proxies and gateways that in turn set up their own TCP connections and come with their own IP addresses.
 To conclude, in this day and age, IP addresses cannot be used anymore to provide a reliable authentication mechanism.
 
 ### Fat URLs
 
 That brings us to fat URLs. The options we have covered so far are not good choices for authentication today, fat URLs on the other hand are in use to this day.
 
-The principle of fat URLs is simple: users are tracked through the generation of **unique URLs for each user**. If a user visits a Web site for the first time, the server recognises the URL as not containing a "fat element" and assumes the user has not visited the site before. It generates a unique ID for the user. The server then redirects the user to that fat URL. Crucially here in the last step, the server **on the fly rewrites the HTML** for every single user, adding the user's ID to each and every hyperlink. A rewritten HTML link may look like this (note the random numbers string at the end): `<a href="/browse/002-1145265-8016838">Gifts</a>`.
+The principle of fat URLs is simple: users are tracked through the generation of **unique URLs for each user**. If a user visits a web site for the first time, the server recognises the URL as not containing a "fat element" and assumes the user has not visited the site before. It generates a unique ID for the user. The server then redirects the user to that fat URL. Crucially here in the last step, the server **on the fly rewrites the HTML** for every single user, adding the user's ID to each and every hyperlink. A rewritten HTML link may look like this (note the random numbers string at the end): `<a href="/browse/002-1145265-8016838">Gifts</a>`.
 
 In this manner, different HTTP requests can be tied into a single **logical session**: the server is aware which requests are coming from the same user through the ID inside the fat URLs. 
 
@@ -563,34 +563,34 @@ Let's look at this concept one more time, based on the following toy example:
 
 ![Fat URL toy example](img/L1-fatURLs.png)
 
-On the left you see a shop Web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page, the server recognises the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server.
+On the left you see a shop web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page, the server recognises the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server.
 
 **Fat URLs have issues**:
 
 1. First of all, they are ugly, instead of short and easy to remember URLs you are left with overly long ones. 
 2. Fat URLs should not be shared - you never know what kind of private information you share with others if you hand out the URLs generated for you! 
-3. Fat URLs are also not a good idea when it comes to Web caches - these caches rely on the one page per request paradigm; fat URLs though follow the one page per user paradigm. 
-4. Dynamically generating HTML every time a user requests a Web resource adds to the server load.
-5. All of this effort still does not completely avoid loosing the user: as soon as the user navigates away from the Web site, the user's identification is lost.
+3. Fat URLs are also not a good idea when it comes to web caches - these caches rely on the one page per request paradigm; fat URLs though follow the one page per user paradigm. 
+4. Dynamically generating HTML every time a user requests a web resource adds to the server load.
+5. All of this effort still does not completely avoid loosing the user: as soon as the user navigates away from the web site, the user's identification is lost.
 
 To conclude, fat URLs are a valid option for authentication as long as you are aware of the potential issues they have.
 
 ### HTTP basic authentication
 
 Let's move on to the final authentication option we discuss here: HTTP basic authentication. You are already familiar with this type of authentication: the server asks the user EXPLICITLY for authentication by asking for a user name and a password.
-HTTP has a built-in mechanism to support this process through the `WWW-Authenticate` and `Authorization` headers. Since HTTP is **stateless**, once a user has logged in, the login information has to be resend to the server with every single http request the user's device is making.
+HTTP has a built-in mechanism to support this process through the `WWW-Authenticate` and `Authorization` headers. Since HTTP is **stateless**, once a user has logged in, the login information has to be resend to the server with every single HTTP request the user's device is making.
 
 Here is a concrete example of HTTP basic authentication:
 
 ![Basic authentication example](img/L1-basicauth.png)
 
- We have the usual server and client setup. The client sends an HTTP request to access a particular Web resource, in this case the `index.html` page residing at `www.microsoft.com`. 
+ We have the usual server and client setup. The client sends an HTTP request to access a particular web resource, in this case the `index.html` page residing at `www.microsoft.com`. 
 
-The server sends back a `401` status code, indicating to the client that this Web resource requires a login. It also sends back information about the supported authentication scheme which here is `Basic`. There are several authentication schemes, but we will only consider the basic one here. The *realm* describes the protection area: if several Web resources on the same server require authentication within the same realm, a single user/password combination should be sufficient to access all of them.
+The server sends back a `401` status code, indicating to the client that this web resource requires a login. It also sends back information about the supported authentication scheme which here is `Basic`. There are several authentication schemes, but we will only consider the basic one here. The *realm* describes the protection area: if several web resources on the same server require authentication within the same realm, a single user/password combination should be sufficient to access all of them.
 
-In response to the `401` status code, the client presents a login screen to the user, requesting the username and password. The client sends username and password encoded (**but not encrypted**) to the server via the http `Authorization` header field.
+In response to the `401` status code, the client presents a login screen to the user, requesting the username and password. The client sends username and password encoded (**but not encrypted**) to the server via the HTTP `Authorization` header field.
 
-If the username/password are correct, the server sends an HTTP response with the Web resource in question in the message body.
+If the username/password are correct, the server sends an HTTP response with the web resource in question in the message body.
 
 For future HTTP requests to the site, the browser **automatically sends along** the stored username/password. It does not wait for another request.
 
@@ -603,7 +603,7 @@ This by itself is not critical, as long as users are aware of this. However, use
 
 Overall, basic authentication is the best of the four options discussed here; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalisation and access control within a friendly environment such as an intranet.
 
-In the wild, i.e. the general Web, basic authentication should only be used in combination with secure HTTP (most popular variant being https with URL scheme `https`) to avoid sending the username/password combination in the clear across the network. Here, request and response data are encrypted before being sent across the network.
+In the wild, i.e. the general web, basic authentication should only be used in combination with secure HTTP (most popular variant being https with URL scheme `https`) to avoid sending the username/password combination in the clear across the network. Here, request and response data are encrypted before being sent across the network.
 
 ## Self-check
 
@@ -622,16 +622,16 @@ Here are a few questions you should be able to answer after having followed the 
 7. What is the main weakness of URLs as they are in use today?
     - URLs are unnecessarily long.
     - We are running out of URL space for ASCII-based URLs.
-    - URLs point to a location instead of a Web resource.
-    - URLs point to a Web resource instead of a location.
+    - URLs point to a location instead of a web resource.
+    - URLs point to a web resource instead of a location.
 8. Which of the following statements about the hypertext transfer protocol are TRUE?
-    - `HEAD` can be used to determine whether a given URL refers to an existing Web resource.
-    - The HTTP header field `Last-Modified` is used in an HTTP request that informs the server of the client's latest version of a given Web resource.
+    - `HEAD` can be used to determine whether a given URL refers to an existing web resource.
+    - The HTTP header field `Last-Modified` is used in an HTTP request that informs the server of the client's latest version of a given web resource.
     - The information retrieved via `HEAD` can also be retrieved via `GET`.
-    - The `Content-Length` header is used in an HTTP request to inform the server which parts of a Web resource a client wants to receive.
-9. Which of the following statements about Web caches are TRUE?
+    - The `Content-Length` header is used in an HTTP request to inform the server which parts of a web resource a client wants to receive.
+9. Which of the following statements about web caches are TRUE?
     - Web caches increase the processing power of origin servers.
-    - Web caches are the Web's backup: they keep a copy of every resource on the Web.
+    - Web caches are the web's backup: they keep a copy of every resource on the web.
     - Web caches rely on the `Content-Range` header field to determine when a copy becomes invalid.
     - Web caches lead to reduced distance delay.
 10. Which of the following statements about IPv6 are FALSE?
