@@ -138,7 +138,7 @@ Deploy your app in Heroku according to the instructions linked above, but first 
 2. In `myapp` folder, create a new File called `Procfile` with this line: `web: node app.js`
 3. In the instructions you will see that to "Prepare the app" they clone an existing app to test. Instad of doing that, in that step you have to make sure that you have a local `git` repository in `myapp`. If that is not the case then install `git`, go to `myapp` folder and type the following from the terminal:
 
-```bash
+```console
 git init
 git add .
 git commit -n "First commit"
