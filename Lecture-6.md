@@ -460,10 +460,124 @@ console.log(ejs.render(template, context));
 
 Let's take a first look at EJS. For this exercise, we will use node's **REPL** (*Read-Eval-Print Loop*). It is the **Node.js shell**; any valid JavaScript which can be written in a script can be passed to the REPL as well. It useful for experimenting with node.js, and figuring out some of Javascript's more eccentric behaviors. To start the REPL, simply type `node` in the terminal and the node shell becomes available, indicated by `>`. Try it out for yourself and type each of the JavaScript code lines above into the shell, ending each line with `<ENTER>`.
 
-Let's walk through the code: we first make the EJS engine available to us via `require()`. Next we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a name/value pair, `message` and `Hello template!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=` to indicate the start of an element to be replaced with data and `%>` indicates the end.
+If after the `var ejs = require('ejs');` line you receive an `Error: Cannot find module 'ejs'` error, exit the shell (to do so, type `.exit`). You need to install the `ejs` module. To do this, run `npm install ejs` and then go back to the REPL.
 
-[SLIDE 51]
+Let's walk through the code: we first make the EJS object available to us via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello template!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called *scriptlet tag* to indicate the start of an element to be replaced with data and an ending tag `%>`.
 
+Ther are two types of scriptlet tags that output values:
+
+- `<%= ... %>` outputs the value into the template in **HTML escaped** form.
+- `<%- ... %>` outputs the value into the template in **unescaped** form. This enables cross-site scripting attacks, which we will discuss in [Lecture 8](Lecture-8.md).
+
+In order to see the difference between the two types of tags, go back to Node's REPL and try out the following code snippet, with the two variants of the `template` string:
+
+```javascript
+var ejs = require('ejs');
+var template = ‘<%- message %>';
+//var template = ‘<%= message %>';
+var context = {message: "<script>alert('hi!');</script>"};
+console.log(ejs.render(template, context));
+```
+
+The HTML-escaped variant produces the output `&lt;script&gt;alert(&#39;hi&#39;);&lt;/script&gt;` while the un-escaped `template` variant produces `<script>alert('hi');</script>`. In the latter case, this is code that the browser will execute.
+
+### EJS and user-defined functions
+
+In order to make templates maintainable, it is possible to provide user-defined functions to a template as follows:
+
+```javascript
+var ejs = require('ejs');
+var people = ['wolverine', 'paul', 'picard'];
+
+var transformUpper = function (inputString) { return inputString.toUpperCase();}
+
+var template = '<%= helperFunc(input.join(", ")); %>';
+var context = {
+    input: people,
+    helperFunc: transformUpper //user-defined function
+};
+console.log(ejs.render(template, context));
+```
+
+In this example, `transformUpper` is our user-defined function that expects a string as input and transforms it to uppercase. The `context` object has a property `helperFunc` which is assigned our user-defined function as value. In the template, we use the properties of the `context` object and `ejs.render` brings template and data together. 
+
+
+### JavaScript within EJS templates
+
+To make templates even more flexible, we can incorporate JavaScript in the template, using the `<%` scriptlet tag. In this example:
+
+![EJS and JavaScript](img/L6-ejs-js.png)
+
+ our context is an array of objects, each movie with a title and release date. In our template, we use [`Array.prototype.foreach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to pass over the array and print out the title and release data. The `<%` scriptlet tags are used for **control-flow purposes**.
+
+ ### Express and templates
+
+ How do templates tie in with the Express framework? So far, we have used the REPL to show off some of EJS' capabilities. It turns out that so-called **views** can be easily configured with Express. Not only that, an application can also make use of several template engines at the same time.
+
+Three steps are involved:
+
+1. We set the *views directory* - the directory containing all templates. Templates are essentially HTML files with EJS scriptlet tags embedded and file ending `.ejs`:
+
+ ```javascript
+ app.set('views', __dirname + '/views');
+ ```
+
+2. We define the template engine of our choosing:
+
+```javascript
+app.set('view engine', 'ejs');
+```
+
+3. We create template files.
+
+An EJS demo can be found at [demo-code/node-ejs-ex]. Let's first consider `app.js`:
+
+```javascript
+var express = require("express");
+var url = require("url");
+var http = require("http");
+var app;
+
+var port = process.argv[2];
+app = express();
+http.createServer(app).listen(port, function () {
+  console.log("Ready on port " + port);
+});
+
+var todos = [];
+todos.push({ message: 'Final exam', dueDate: 'January 2016'  });
+todos.push({ message: 'Prepare for assignment 6', dueDate: '05/01/2016' });
+todos.push({ message: 'Sign up for final exam', dueDate: '06/01/2016' });
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.get("/todos", function (req, res) {
+  res.render('todos', { title: 'My list of TODOs', todo_array: todos });
+});
+```
+
+As described beforehand, we first set the views directory, then the view engine and finally we use Express' [`res.render`](https://expressjs.com/en/api.html#res.render) in order to render a view and send the rendered HTML to the client. Important to realize in this example is, that the first argument of `res.render` is a view stored in `views/todos.ejs` that the Express framework retrieves for us. The second argument is an object that holds the variables of the template, here `title` and `todo_array`. To confirm this, let's look at the template file itself, `todos.ejs` which contains the corresponding variable names:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>TODOs</h1>
+    <div>
+        <% todo_array.forEach(function(todo) { %>
+        <div>
+            <h3><%=todo.dueDate%></h3>
+            <p><%=todo.message%></p>
+        </div>
+        <% }) %>
+    </div>
+</body>
+</html>
+```
 
 ## Self-check
 
@@ -526,6 +640,36 @@ app.get('/whaa+[dt]s+upp*', function(req,res){
 });
 ```
 
+5. What is the console output after executing this code snippet?
 
+```javascript
+var ejs = require('ejs');
+var people = ['Wolverine', 'paul', 'picard'];
+var X = function (input) {
+        if(input){
+            return input[0];
+        }
+        return "";
+    }
+var template = '<%= helperFunc(input); %>';
+var context = {
+    input: people,
+    helperFunc: X
+};
+console.log(ejs.render(template, context));
+```
 
+6. What is the console output after executing this code snippet?
 
+```javascript
+var ejs = require('ejs');
+var template = '<% if(user) {
+    console.log("Hi "+user);
+    if(user.age>=18){
+        console.log("(adult)");
+    }
+    else {console.log("(minor)");}
+} %>';
+var context = {user: 'Tom', age:26, address:'Mekelweg 4'};
+ejs.render(template, context);
+```
