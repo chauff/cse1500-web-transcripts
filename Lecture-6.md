@@ -364,11 +364,105 @@ When you specify a path (like `/todos`) in your route, the path is eventually co
 | […]       | match anything inside for one character position | ab[cd]?e | abe, abce, abde     |
 | (…)       | boundaries                                       | ab(cd)?e | abe, abcde          |
 
+### Routing parameters
 
+Apart from regular expressions, routing parameters can be employed to enable **variable input** as part of the route. Consider the following code snippet:
 
+```javascript
+var todoTypes = {
+    important: ["TI1506","OOP","Calculus"],
+    urgent: ["Dentist","Hotel booking"],
+    unimportant: ["Groceries"],
+};
 
+app.get('/todos/:type', function (req, res, next) {
+    var todos = todoTypes[req.params.type];
+    if (!todos) {
+        return next(); // will eventually fall through to 404
+    }
+    res.send(todos);
+});
+```
 
+We here have defined an object `todoTypes` which contains `important`, `urgent` and `unimportant` todos. We can hardcode routes, for example `/todos/important` to return only the important todos, `/todos/urgent` to return the urgent todos only and `/todos/unimportant` to return the unimportant todos. This is not a maintainable solution though (think about objects with hundreds of properties...). 
 
+Instead, we would like to write a single route that, dependent on a **routing parameter**, serves different todos. This is achieved in the code snippet shown here. The routing parameter type (indicated with a starting colon `:`) will match any string that does not contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `type`, we access it with `req.params.type`. What this piece of code is doing is to check whether the route parameter matches a proprty of the `todoTypes` object and if it is, the correct todo list is returned to the client. If the parameter does not match any property of our `todoTypes` object, we make a call to next and move on the next route handler - e.g. a 404 page specific to your application.
+
+Routing parameters can have various levels of nesting as shown next:
+
+```javascript
+var todoTypes = {
+    important: {
+        today: ["TI1506"],
+        tomorrow: ["OOP", "Calculus"]
+    },
+    urgent: {
+        today: ["Dentist", "Hotel booking"],
+        tomorrow: []
+    },
+    unimportant: {
+        today: ["Groceries"],
+        tomorrow: []
+    }
+};
+app.get('/todos/:type/:level', function (req, res, next) {
+    var todos = todoTypes[req.params.type][req.params.level];
+    if (!todos) {return next();}
+    res.send(todos);
+});
+```
+
+We here do not only use the importance type for our todos, but also partition them according to their due date (today/tomorrow). Our route handler now contains two routing parameters, `:type` and `:level`. Both are accessible through the HTTP request object. And as in the previous example, we use the two parameters to access the contents of the `todoTypes` object. If the two parameters do not match any properties of the `todoTypes` object, we call `next()` and otherwise, we send the requested response.
+
+Lastly, a word on how to organize your routes. Adding routes to the main application file becomes unwieldy as the codebase grows. Based on the knowledge of this lecture, you can now move routes into a separate module. All you need to do is to pass the `app` instance into the module (here: `routes.js`) as an argument:
+
+```javascript
+/* routes.js */
+module.exports = function(app){
+    .get('/', function(req,res){
+        res.send(...);
+    }))
+    //...
+};
+```
+
+```javascript
+/* app.js */
+//...
+require('./routes.js')(app);
+//...
+```
+
+`routes.js` is our route module where we assign a function to `module.exports` which contains the routes. In our application `app.js` we add the routes to our application through the `require` function and passing `app` in as an argument.
+
+## Templating with EJS
+
+When we started our journey with node.js and Express, you learned that writing HTML in this manner:
+
+![HTML mixed-in](img/L6-html-manually.png)
+
+is a poor choice, as the code quickly becomes unmaintainable, hard to debug and generally a pain to work with. One approach to solve this problem is the use of Ajax: our HTML code is *blank* in the sense that it does not contain any user-specific data. The HTML and JavaScript (and other resources) are sent to the client and the client makes an Ajax request to retrieve the user-specific data from the server-side. With **templating we are able to directly send HTML with user-specific data to the client** and thus removing one request-response cycle.
+
+![templating](img/L6-templating.png)
+
+With templates, our goal is to write as little HTML by hand as possible. Instead, we create an HTML template void of any data, add data and from that generate a rendered HTML view in the end. This approach keeps the code clean and separates the logic from the presentation markup.
+
+This concept exists in several languages and even for node.js alone, several template engines exist. In this course, you will learn the basics of **EJS** - *Embedded JavaScript* - a relatively straightforward template engine and language. Different incompatible versions of EJS exist, we are using [version 2](https://github.com/mde/ejs), the most recent one, in this course. Templates fit naturally into the *Model-View-Controller* paradigm which is designed to keep logic, data and presentation separate.
+
+### A first EJS example
+
+```javascript
+var ejs = require('ejs');
+var template = '<%= message %>'; //<%= outputs the value into the template (HTML escaped)
+var context = {message: 'Hello template!'};
+console.log(ejs.render(template, context));
+```
+
+Let's take a first look at EJS. For this exercise, we will use node's **REPL** (*Read-Eval-Print Loop*). It is the **Node.js shell**; any valid JavaScript which can be written in a script can be passed to the REPL as well. It useful for experimenting with node.js, and figuring out some of Javascript's more eccentric behaviors. To start the REPL, simply type `node` in the terminal and the node shell becomes available, indicated by `>`. Try it out for yourself and type each of the JavaScript code lines above into the shell, ending each line with `<ENTER>`.
+
+Let's walk through the code: we first make the EJS engine available to us via `require()`. Next we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a name/value pair, `message` and `Hello template!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=` to indicate the start of an element to be replaced with data and `%>` indicates the end.
+
+[SLIDE 51]
 
 
 ## Self-check
@@ -414,6 +508,22 @@ console.log(constants2["password"]);
 var constants3 = require('./constants');
 constants2["pi"] = 3;
 console.log(constants3["pi"]);
+```
+
+4. Name three different routes that this handler matches.
+
+```javascript
+app.get('/user(name)?s+', function(req,res){
+	res.send(…)
+});
+```
+
+5. Name three different routes that this handler matches.
+
+```javascript
+app.get('/whaa+[dt]s+upp*', function(req,res){
+	res.send(…)
+});
 ```
 
 
