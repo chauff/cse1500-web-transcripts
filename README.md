@@ -97,6 +97,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Topics: HTTP 1.1 request/response message, important HTTP headers, web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
   - Required readings: *none*
+  - Recommended activity:
+    - Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
   - Recommended readings:
     - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do)
     - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
@@ -118,15 +120,15 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 - **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
     - Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
-  - Recommended activity:
+  - Recommended activities:
     - [Interactive exercises for Lecture 3](nodeschool-exercises.md)
+    - Listen to this podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
   - Recommended readings:
     - [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
     - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
     - [What the f*ck JavaScript](https://github.com/denysdovhan/wtfjs) - a list of funny and tricky JavaScript examples
     - [A blog post on why the dynamic nature of JavaScript makes optimization tricky](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html)
     - A good blog post on [why we need all those fancy tools for JavaScript development nowadays](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-    - A good podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
     - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/)
     - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger)
     - Jimmy Lin's [words](http://ceur-ws.org/Vol-2167/keynote1.pdf) on JavaScript ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
@@ -147,7 +149,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Required readings:
     - Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
   - Recommended activities:
-    - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS
+    - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS.
+    - Listen to [this podcast](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
   - Recommended readings
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
     - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101)
@@ -174,6 +177,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 - **Lecture 8** 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **web security**: web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
   - Required readings: *none*
   - Recommended activities:
+    - Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
     - In a "star module" two years ago, two first-year students in TI1506 implemented [CrapStore](https://github.com/nielsdebruin/CrapStore), a Node.js based web app modeled after BadStore (discussed in class). Try it out if you want to test some basic web security issues.
   - Recommended readings:
     - If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html) (available for free). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).

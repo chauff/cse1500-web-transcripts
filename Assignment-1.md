@@ -128,7 +128,7 @@ host:httpbin.org
 [carriage return]
 ```
 
-Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders. Remember that username and password should be combined as `username:password`.
+Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g. [https://codebeautify.org/base64-encode](https://codebeautify.org/base64-encode). Remember that username and password should be combined as `username:password`.
 
 Now close the TCP connection and start a new one, using again:
 
