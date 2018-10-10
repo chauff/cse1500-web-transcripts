@@ -100,61 +100,60 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended activity:
     - Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
   - Recommended readings:
-    - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do)
-    - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
-    - Developer tools overview of your favorite web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools))
-    - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/)
-    - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users
-    - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/)
+    - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do).
+    - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP).
+    - Developer tools overview of your favorite web browser (e.g. [Firefox](https://developer.mozilla.org/son/docs/Tools) or [Chrome](https://developer.chrome.com/devtools)).
+    - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/).
+    - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users.
+    - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/).
   
 - **Lecture 2** covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf))
   - Topics: web sites vs. web applications, Electron, web design basics, usability testing, HTML5 history, web standards, HTML forms
-    - Required readings:
-    - Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
-    - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*);
+  - Required readings:
+    - Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
+    - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
   - Recommended readings:
-    - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604)
-    - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/)
-    - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected)
+    - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
+    - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).
+    - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected).
   
 - **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
-    - Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
+    - Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
-    - [Interactive exercises for Lecture 3](nodeschool-exercises.md)
-    - Listen to this podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging)
+    - [Interactive exercises for Lecture 3](nodeschool-exercises.md).
+    - Listen to this podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging).
   - Recommended readings:
     - [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
-    - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
-    - [What the f*ck JavaScript](https://github.com/denysdovhan/wtfjs) - a list of funny and tricky JavaScript examples
-    - [A blog post on why the dynamic nature of JavaScript makes optimization tricky](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html)
-    - A good blog post on [why we need all those fancy tools for JavaScript development nowadays](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-    - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/)
-    - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger)
+    - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects).
+    - [A blog post on why the dynamic nature of JavaScript makes optimization tricky](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html).
+    - A good blog post on [why we need all those fancy tools for JavaScript development nowadays](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70).
+    - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/).
+    - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger).
     - Jimmy Lin's [words](http://ceur-ws.org/Vol-2167/keynote1.pdf) on JavaScript ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
-    - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057)
-    - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript
-    - [The State of JavaScript 2017](https://2017.stateofjs.com/)
+    - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057).
+    - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript.
+    - [The State of JavaScript 2017](https://2017.stateofjs.com/).
 
 - **Lecture 4** ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **Node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with Node.js (`net`), web server creation (`http`), URLs for routing (`url`), Express framework (`express`), JSON, Ajax, WebSockets
   - Required readings:
-    - Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
-  - Recommended activity:
-    - [Interactive exercises for Lecture 4](nodeschool-exercises.md)
+    - Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
+  - Recommended activities:
+    - [Interactive exercises for Lecture 4](nodeschool-exercises.md).
   - Recommended readings:
-    - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451)
-    - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577)
+    - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451).
+    - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).
   
 - **Lecture 5** ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements, pseudo-classes, rendering engine, data/variables in CSS, element positioning (`float`, `position`, `display`), CSS media queries, CSS animations and transitions
   - Required readings:
-    - Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do)
+    - Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
     - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS.
     - Listen to [this podcast](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
-  - Recommended readings
-    - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014)
-    - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101)
-    - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
+  - Recommended readings:
+    - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
+    - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
+    - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
 
 - **Lecture 6** ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced Node.js**: Node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
@@ -171,8 +170,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Required readings: *none*
   - Recommended activities: *none*
   - Recommended readings:
-    - Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown
-    - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/)
+    - Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown.
+    - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/).
 
 - **Lecture 8** 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **web security**: web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
   - Required readings: *none*
@@ -181,11 +180,11 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - In a "star module" two years ago, two first-year students in TI1506 implemented [CrapStore](https://github.com/nielsdebruin/CrapStore), a Node.js based web app modeled after BadStore (discussed in class). Try it out if you want to test some basic web security issues.
   - Recommended readings:
     - If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html) (available for free). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).
-    - [Stanford's CS155](https://crypto.stanford.edu/cs155/): Computer and Network Security course has a number of lectures on web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf))
-    - CERN's [web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class
+    - [Stanford's CS155](https://crypto.stanford.edu/cs155/): Computer and Network Security course has a number of lectures on web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf)).
+    - CERN's [web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class.
     - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) provides an extensive list of practical tips, best practices and further readings on the topic.
-    - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d)
-    - [Deployment of the app on Heroku and securing it with Helmet](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment)
-    - [Scientific paper on tracking](https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf)
-    - [Capture the Flag](https://hacks.mozilla.org/2018/03/hands-on-web-security-capture-the-flag-with-owasp-juice-shop/)
-    - [Who left open the Cookie Jar?](https://wholeftopenthecookiejar.eu/static/tpc-paper.pdf)
+    - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d).
+    - [Deployment of the app on Heroku and securing it with Helmet](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment).
+    - [Scientific paper on tracking](https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf).
+    - [Capture the Flag](https://hacks.mozilla.org/2018/03/hands-on-web-security-capture-the-flag-with-owasp-juice-shop/).
+    - [Who left open the Cookie Jar?](https://wholeftopenthecookiejar.eu/static/tpc-paper.pdf).
