@@ -1,8 +1,8 @@
-# CSS: the language of Web design
+# CSS: the language of web design
 
 ## Learning goals
 
-- Position and style HTML elements according to a given design of a Web application;
+- Position and style HTML elements according to a given design of a web application;
 - Employ pseudo-classes and pseudo-elements;
 - Employ CSS variables and data access/creation facilities;
 - Write CSS media queries;
@@ -16,22 +16,22 @@ This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) sums up 
 
 ## A bit of context
 
-In essence, the CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other Web technologies, CSS can be considered as a victim of the browser wars - which led to years of inactivity in the standard's refinement:
+In essence, the CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered as a victim of the browser wars - which led to years of inactivity in the standard's refinement:
 
-- **CSS 1** became a W3C recommendation in 1996. It had support for fonts, colours, alignment, margins, ids and classes.
-- Two years later, **CSS 2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS 3. However, the browser support for CSS 2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS 2.1.
-- In 2011, **CSS 2.1** became a W3C recommendation which fixed errors and added support for features already widely implemented in major browsers.
-- Work on **CSS 3** began already in 1998, was put on hold, and is now back in full swing with browser vendors today eager to implement the newest standards. CSS became so complex and agreeing on a standard for the entire language became so tedious that after CSS 2 the monolithic nature of the standard was given up. Instead, we now have **CSS modules**, which each progress at an individual pace. The current status of those modules is available at [https://www.w3.org/Style/CSS/current-work](https://www.w3.org/Style/CSS/current-work). Many of those modules are in *Working Draft* status, while some have already reached level 4 (the level number indicates how many revisions of the module have taken place). It is worthwhile to browse through at least one CSS module draft in order to get an idea of the complexity of the standardization work. One of the modules in working draft status is [CSS Animations Level 1](https://www.w3.org/TR/css-animations-1/) which - not surprisingly - describes the standard for CSS-based animations. Despite this being a *Working Draft*, CSS animations are already supported by all major browsers.
+- **CSS1** became a W3C recommendation in 1996. It had support for fonts, colors, alignment, margins, ids and classes.
+- Two years later, **CSS2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS3. However, the browser support for CSS 2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS 2.1.
+- In 2011, **CSS2.1** became a W3C recommendation which fixed errors and added support for features already widely implemented in major browsers.
+- Work on **CSS3** began already in 1998, was put on hold, and is now back in full swing with browser vendors today eager to implement the newest standards. CSS became so complex and agreeing on a standard for the entire language became so tedious that after CSS 2 the monolithic nature of the standard was given up. Instead, we now have **CSS modules**, which each progress at an individual pace. The current status of those modules is available at [https://www.w3.org/Style/CSS/current-work](https://www.w3.org/Style/CSS/current-work). Many of those modules are in *Working Draft* status, while some have already reached level 4 (the level number indicates how many revisions of the module have taken place). It is worthwhile to browse through at least one CSS module draft in order to get an idea of the complexity of the standardization work. One of the modules in working draft status is [CSS Animations Level 1](https://www.w3.org/TR/css-animations-1/) which - not surprisingly - describes the standard for CSS-based animations. Despite this being a *Working Draft*, CSS animations are already supported by all major browsers.
 
-Any CSS module developed after CSS 2.1 can be considered as CSS 3. There will not be a monolithic CSS 4, instead the different modules of the CSS specification will each continue to develop at their own pace.
+Any CSS module developed after CSS 2.1 can be considered as CSS3. There will not be a monolithic CSS 4, instead the different modules of the CSS specification will each continue to develop at their own pace.
 
 Today, it is not possible to make use of the latest CSS features and to expect them to work across all major browsers. Instead, which features to use should be based on:
 
 - the intended user base (will tell us something about the most popular browsers in use);
 - the mode of usage (smartphone vs. touch screen vs ...);
-- the type of Web application (are 3D animations necessary);
+- the type of web application (are 3D animations necessary);
 
-When building Web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (that includes CSS 3) functionality in browsers that do not natively support them.
+When building web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (that includes CSS3) functionality in browsers that do not natively support them.
 
 ## Take-aways of book chapter 3
 
@@ -40,8 +40,8 @@ If you have already read Chapter 3 of the course book, you should be able to ans
 What is the result of applying the CSS below?
 
 - The text within the paragraph `<p class="last">...</p>` will appear green.
-- The text within `<span>...</span>` appearing right after a paragraph `<p>...</p>` will appear grey.
-- The text within `<span>...</span>` appearing within a paragraph `<p>...</p>` will appear grey.
+- The text within `<span>...</span>` appearing right after a paragraph `<p>...</p>` will appear gray.
+- The text within `<span>...</span>` appearing within a paragraph `<p>...</p>` will appear gray.
 - The background of the rendered page will appear yellow.
 
 ```css
@@ -131,7 +131,7 @@ In this example both pseudo-classes are showcased:
 </html>
 ```
 
-The rendering will show `Today's todos` with a red font (it is the 2. child of `<main>`) and `Tomorrow's todos` with a green background colour (`#00ff00`) as that is the second element of type `<p>` among the sibling group.
+The rendering will show `Today's todos` with a red font (it is the 2. child of `<main>`) and `Tomorrow's todos` with a green background color (`#00ff00`) as that is the second element of type `<p>` among the sibling group.
 
 If we are aiming at the first and/or last child or sibling element, we can also use a different set of pseudo-classes:
 
@@ -455,7 +455,7 @@ So, what are abstractions that go beyond what is specified in the document langu
 </html>
 ```
 
-The example also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale you font-size in relation to the initial size. This is especially helpful when you design Web applications for different device sizes - no additional "tuning" for different devices is required.
+The example also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale you font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional "tuning" for different devices is required.
 
 Adding (cosmetic) content right before and after an element is achieved (not surprisingly) through:
 
@@ -600,7 +600,7 @@ A canonical example for `data-` attributes are tooltips:
       <ul>
         <li data-name="Cascading Style Sheets">CSS</li>
         <li data-name="HyperText Markup Language">HTML</li>
-        <li data-name="HyperText Transfer Protocol">http</li>
+        <li data-name="HyperText Transfer Protocol">HTTP</li>
         <li data-name="HyperText Transfer Protocol Secure">https</li>
       </ul>
     </main>
@@ -997,11 +997,11 @@ Once more, an example is sufficient to highlight the use of each of these values
 
 ## CSS media queries
 
-So far, we have covered the basics of CSS but ignored - largely - the fact that in today's multi-device world, we are designing Web applications for vastly different screen sizes. Different devices should be served different styles, e.g.
+So far, we have covered the basics of CSS but ignored - largely - the fact that in today's multi-device world, we are designing web applications for vastly different screen sizes. Different devices should be served different styles, e.g.
 
-- when **printing** a Web application's screen, the information printed should be the essentials (no ads, no sidebars, etc.);
-- when **viewing** a Web application on a small screen, non-essential information (e.g. a footer) should be removed;
-- when **viewing** a Web application on a large screen all available information should be presented;
+- when **printing** a web application's screen, the information printed should be the essentials (no ads, no sidebars, etc.);
+- when **viewing** a web application on a small screen, non-essential information (e.g. a footer) should be removed;
+- when **viewing** a web application on a large screen all available information should be presented;
 - when using **text-to-speech** devices, non-essential information should be removed.
 
 **CSS media queries** enable the use of **device-dependent** (i.e. media-type dependent) stylesheets. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
@@ -1117,7 +1117,7 @@ There are several advantages to using CSS-based instead of JavaScript-based anim
 
 - CSS is relatively easy to use (no need to learn the intricate details of JavaScript).
 - The rendering engines are optimized for CSS-based animations; there is no need to optimize your JavaScript code.
-- CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css animation).
+- CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
 
 Here is a first animation example, adapted from [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq):
 

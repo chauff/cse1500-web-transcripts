@@ -1,6 +1,6 @@
 # Assignment 2 (2018/2019 edition)
 
-In this assignment you will build the backbone of your application. In the first part of this assignment, you will add **client-­side JavaScript** code to your application to make it interactive. In part two, you will write server-side code in **node.js** and use WebSockets to enable clients to communicate with each other (via the server).
+In this assignment you will build the backbone of your application. In the first part of this assignment, you will add **client-­side JavaScript** code to your application to make it interactive. In part two, you will write server-side code in **Node.js** and use WebSockets to enable clients to communicate with each other (via the server).
 
 ## 0. Preliminaries
 
@@ -33,7 +33,7 @@ The PDF and code has to be uploaded by one of the team members to Brightspace un
 
 ## 1. Boilerplate code
 
-Web application tend to have specific file and folder structures, which today are often generated automatically - you can consider those to be current best practices of how to set up a Web application project with your chosen set of libraries and frameworks. In this course we will use [Express](https://expressjs.com/), a "fast, unopinionated, minimalist Web framework for node.js". Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).
+Web application tend to have specific file and folder structures, which today are often generated automatically - you can consider those to be current best practices of how to set up a web application project with your chosen set of libraries and frameworks. In this course we will use [Express](https://expressjs.com/), a "fast, unopinionated, minimalist web framework for Node.js". Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).
 
 We will use it to set up the basic code structure of our game application.
 
@@ -44,6 +44,7 @@ Then, install the necessary npm package `express-generator`:
 ```console
 npm install express-generator
 ```
+
 _Note: In Mac OS you might need to execute `sudo npm install -g express-generator`. In Ubuntu you may need to install also modules `commander` and `mkdirp`:_
 
 ```console
@@ -86,7 +87,7 @@ In order to install those, `cd` into the `myapp` directory and execute `npm inst
 
 Place the `game.html` and `splash.html` documents created in assignment 1 in the folder `myapp/public/`.
 
-Node.js has become a hugely popular way of server-side programming; here is a good overview of [best practices](https://github.com/i0natan/nodebestpractices). Visual Studio Code comes with a good debugging support for node.js by default. If you are more of a command line person, you find [here](https://www.clarkio.com/2017/04/25/debugging-in-nodejs/) a good tutorial of how to debug in the shell.
+Node.js has become a hugely popular way of server-side programming; here is a good overview of [best practices](https://github.com/i0natan/nodebestpractices). Visual Studio Code comes with a good debugging support for Node.js by default. If you are more of a command line person, you find [here](https://www.clarkio.com/2017/04/25/debugging-in-nodejs/) a good tutorial of how to debug in the shell.
 
 ## 2. Client-side JavaScript
 
@@ -128,12 +129,11 @@ Hints:
 - Don't be afraid to use place-holders (e.g. in our word guessing game, we start off with a fixed string to guess).
 - You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is expected. For instance, here you may want to check the validity of players' moves on the client-side (which is fine), but you may later decide to move this functionality to the server-side.
 - If you are using `console.log`, familiarize yourself with the other abilities of the `Console` object as well, they are useful for client-side JavaScript debugging in the browser. The [MDN documentation is availab here](https://developer.mozilla.org/en-US/docs/Web/API/Console), `console.table` makes the output more readable. `console.assert` is good for sanity checks of your code: e.g. if you have functions that expect an array, you can add an assert statement to check whether the argument is indeed of the expected type.
-- You can use ESLint to help you make a cleaner code. You can run it on the JavaScript files following [this guide](https://eslint.org/docs/user-guide/getting-started), or you can install it as an [extension of VSC](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), so you could see the problems in the code while you type (underlined in red). In both cases though you need to create a configuration file for the browser and another one for node in the server. In the command line tool you can do that by typing `eslint --init`. In the VSC extension, open View::Command Palette and type `Create ESLint configuration`, once in the `myapp/public/javascript` folder for the browser code, and once in the root folder of the app for node.js code.    
+- You can use ESLint to help you make a cleaner code. You can run it on the JavaScript files following [this guide](https://eslint.org/docs/user-guide/getting-started), or you can install it as an [extension of VSC](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), so you could see the problems in the code while you type (underlined in red). In both cases though you need to create a configuration file for the browser and another one for Node in the server. In the command line tool you can do that by typing `eslint --init`. In the VSC extension, open View::Command Palette and type `Create ESLint configuration`, once in the `myapp/public/javascript` folder for the browser code, and once in the root folder of the app for Node.js code.
 
 ---
 
-
-## 3. node.js
+## 3. Node.js
 
 ### 3.1) Your first server
 
@@ -159,7 +159,7 @@ node app.js 3000
 ```
 
 Here, `3000` is the port number, you can use any above 1024 safely. Then, open your browser and use the following URLs:
-`http://localhost:3000/game.html` and `http://localhost:3000/splash.html` (change the port number if you used a different one) - if you see the two HTML files, then, congratulations, you have successfully "implemented" your first node.js server!
+`http://localhost:3000/game.html` and `http://localhost:3000/splash.html` (change the port number if you used a different one) - if you see the two HTML files, then, congratulations, you have successfully "implemented" your first Node.js server!
 
 You can also use `npm start`. This command runs an arbitrary command specified in the package's start property ("start" property in `package.json`). By default this property contains `"start": "nodejs ./bin/www"`. Replace this line by `"start": "nodejs app.js"` in order to execute your program entry point which, in this case, is `app.js`.
 
@@ -167,9 +167,9 @@ Alternatively you can also start a server directly from VSC by installing [this 
 
 ### 3.2) Your first routes
 
-In the next step, lets make our two html files available with modern Web tech, i.e. routes:
+In the next step, lets make our two html files available with modern web tech, i.e. routes:
 
-URLs ending in  `*.html` are considered old-fashioned, modern Web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content (Hint: if you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute.). Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
+URLs ending in  `*.html` are considered old-fashioned, modern web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content (Hint: if you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute.). Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
 
 **[TODO: mention to store the routes in routes/index.js]**
 
@@ -183,7 +183,7 @@ Create a list of message types (e.g. game-start, game-move, player-type, abort-g
 
 ### 3.4) WebSockets: a minimum viable examples
 
-Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for node.js.
+Lets now connect our two (or more - depending on the game you chose) gamers, to play together. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws) one of the most popular WebSocket implementations for Node.js.
 
 First, lets install it via `npm`:
 
@@ -249,7 +249,7 @@ wss.on("connection", function connection(ws, req) {
 });
 ```
 
-To check whether this minimal example works, place `test.html` and `app-test.js` in a single directory and run `node app-test.js 3000`. You will receive errors for missing node packages, unless you have placed those two files in a directory with the correct node packages already installed. That should not stop you, however, by now you know how to install node packages (`npm install ...`). Once your `app-test` server is running, open the browser at `http://localhost:3000/` and you will see your first WebSocket in action.
+To check whether this minimal example works, place `test.html` and `app-test.js` in a single directory and run `node app-test.js 3000`. You will receive errors for missing Node packages, unless you have placed those two files in a directory with the correct Node packages already installed. That should not stop you, however, by now you know how to install Node packages (`npm install ...`). Once your `app-test` server is running, open the browser at `http://localhost:3000/` and you will see your first WebSocket in action.
 
 ### 3.5) WebSockets: implementing your game
 
@@ -265,7 +265,7 @@ Having seen and ran the minimal WebSocket example, it is now time to implement c
 ---
 Hints:
 
-- You may want to share code between the client and server - the message types described above are a good candidate for code you do not want to duplicate. The solution is a particular design pattern, [described here](https://medium.com/@ShamreshKhan/how-to-share-client-side-and-server-side-js-code-cc04c3422497). If you add for instance `messages.js` to `myapp/public/javascripts` following that particular design pattern, you can add the following line to `app.js` to access it in node as well: `var messages = require("./public/javascripts/messages");`.
+- You may want to share code between the client and server - the message types described above are a good candidate for code you do not want to duplicate. The solution is a particular design pattern, [described here](https://medium.com/@ShamreshKhan/how-to-share-client-side-and-server-side-js-code-cc04c3422497). If you add for instance `messages.js` to `myapp/public/javascripts` following that particular design pattern, you can add the following line to `app.js` to access it in Node as well: `var messages = require("./public/javascripts/messages");`.
 
 - The server has to keep track of all ongoing games in order to facilitate the broadcasting of messages to the correct clients. There are many ways to do this, one option is to create a `game` object that keeps track of the WebSocket objects belonging to the game's players; each WebSocket object receives an `id` and a `Map` object with WebSocket `id` as key and `game` object as values ensures that the server can determine quickly for which WebSockets the received messages are meant. In order to clean up your WebSocket-Game map, you can use a `setInterval` function to regularly check and remove inactive/completed games from it.
 
