@@ -111,7 +111,9 @@ For each lecture we provide a range of materials:
 
 **Status update**: transcripts of Lectures 1 to 7 are in a good draft status. Lecture 8 is work in progress. Lecture slides are from the 2017/18 edition. Will be updated in the coming month.
 
+```diff
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
+```
   - Required readings: *none*
   - Recommended activity:
     - Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
