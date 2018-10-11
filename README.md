@@ -112,7 +112,7 @@ For each lecture we provide a range of materials:
 **Status update**: transcripts of Lectures 1 to 7 are in a good draft status (traffic light colors indicate how far along the draft is: ![#f03c15](https://placehold.it/15/f03c15/000000?text=+), ![#f6ec14](https://placehold.it/15/f6ec14/000000?text=+), ![#00cd00](https://placehold.it/15/00cd00/000000?text=+), ). Lecture 8 is work in progress. Lecture slides are from the 2017/18 edition. Will be updated in the coming month.
 
 
-- ![#c5f015](https://placehold.it/15/c5f015/000000?text=+) **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
+- ![#00cd00](https://placehold.it/15/00cd00/000000?text=+) **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Required readings: *none*
   - Recommended activity:
     - Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
