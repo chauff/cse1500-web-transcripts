@@ -105,7 +105,7 @@ For each lecture we provide a range of materials:
 - **Required readings**: most of the required readings are book chapters of the web course book. The book introduces each technology from scratch. The lectures go beyond what is covered in the book and assume that you have read the corresponding book chapter(s) **before** the lecture.
 - **Recommended activities**: activities that we think will help you get a better grasp of the different web technologies. Activities are either programming exercises or podcasts (there are some great ones out there!).
 - **Recommended readings**: if you have trouble understanding one or more concepts introduced in the lectures, take a look at the recommended reading list; you will find here materials that cover the lecture content in a different manner.
-- **Relevant scientific papers**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here showcase a number of important scientific papers that contribute to our understanding of (the use of) web technologies.
+- **Relevant scientific publications**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here showcase a number of important scientific publications that contribute to our understanding of (the use of) web technologies.
 
 ## Web lectures
 
@@ -123,7 +123,7 @@ For each lecture we provide a range of materials:
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/).
     - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users.
     - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/).
-  - Relevant scientific papers:
+  - Relevant scientific publications:
     - Ihm, S. and Pai, V.S., 2011. [Towards understanding modern web traffic](https://dl.acm.org/citation.cfm?id=2068845). In Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference (pp. 295-312). ACM.
     - Naylor, D., Finamore, A., Leontiadis, I., Grunenberger, Y., Mellia, M., Munafò, M., Papagiannaki, K. and Steenkiste, P., 2014. [The cost of the S in HTTPS](https://dl.acm.org/citation.cfm?id=2674991). In Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies (pp. 133-140). ACM.
     - Falaki, H., Lymberopoulos, D., Mahajan, R., Kandula, S. and Estrin, D., 2010. [A first look at traffic on smartphones](https://dl.acm.org/citation.cfm?id=1879176). In Proceedings of the 10th ACM SIGCOMM conference on Internet measurement (pp. 281-287). ACM.
@@ -157,7 +157,7 @@ For each lecture we provide a range of materials:
     - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057).
     - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript.
     - [The State of JavaScript 2017](https://2017.stateofjs.com/).
-  - Relevant scientific papers:
+  - Relevant scientific publications:
     - Charland, A. and Leroux, B., 2011. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Queue, 9(4), p. 20.
     - Mowery, K., Bogenreif, D., Yilek, S. and Shacham, H., 2011. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). In Proceedings of W2SP (Vol. 2, No. 11).
     - Ratanaworabhan, P., Livshits, B. and Zorn, B.G., 2010. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). WebApps, 10, pp.3-3.
@@ -171,7 +171,7 @@ For each lecture we provide a range of materials:
   - Recommended readings:
     - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451).
     - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).
-  - Relevant scientific papers:
+  - Relevant scientific publications:
     - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp.1023-1044.
   
 - **Lecture 5** covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf))
@@ -184,7 +184,7 @@ For each lecture we provide a range of materials:
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
     - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
     - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
-  - Relevant scientific papers:
+  - Relevant scientific publications:
     - Meyerovich, L.A. and Bodik, R., 2010, April. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web (pp. 711-720). ACM.
 
 - **Lecture 6** on advanced Node.js concepts ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf))
@@ -197,7 +197,7 @@ For each lecture we provide a range of materials:
     - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
     - An overview of [best practices in Node.js](https://github.com/i0natan/nodebestpractices).
     - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing).
-  - Relevant scientific papers:
+  - Relevant scientific publications:
     - Fard, A.M. and Mesbah, A., 2013, September. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings/scam/2013/9999/00/06648192.pdf). In Source Code Analysis and Manipulation (SCAM), 2013 IEEE 13th International Working Conference on (pp. 116-125). IEEE.
     - Nasehi, S.M., Sillito, J., Maurer, F. and Burns, C., 2012, September. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). In 2012 28th IEEE International Conference on Software Maintenance (ICSM) (pp. 25-34). IEEE.
 
@@ -207,7 +207,7 @@ For each lecture we provide a range of materials:
   - Recommended readings:
     - Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown.
     - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/).
-  - Relevant scientific papers:
+  - Relevant scientific publications:
     - Roesner, F., Kohno, T. and Wetherall, D., 2012. [Detecting and defending against third-party tracking on the web](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final17.pdf). In Proceedings of the 9th USENIX conference on Networked Systems Design and Implementation (pp. 12-12). USENIX Association.
     - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](http://www.profsandhu.com/journals/ic/ieeeic00.pdf). IEEE internet computing, 4(4), pp.36-44.
     - Franken, G., Van Goethem, T. and Joosen, W., 2018. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168.
@@ -225,7 +225,7 @@ For each lecture we provide a range of materials:
     - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d).
     - [Deployment of the app on Heroku and securing it with Helmet](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment).
     - [Capture the Flag](https://hacks.mozilla.org/2018/03/hands-on-web-security-capture-the-flag-with-owasp-juice-shop/).
-  - Relevant scientific papers:
+  - Relevant scientific publications:
     - Aggarwal, G., Bursztein, E., Jackson, C. and Boneh, D., 2010. [An Analysis of Private Browsing Modes in Modern Browsers](http://crypto.stanford.edu/~dabo/papers/privatebrowsing.pdf). In Proceedings of the 19th USENIX conference on Security. USENIX Association.
     - Kieyzun, A., Guo, P.J., Jayaraman, K. and Ernst, M.D., 2009. [Automatic creation of SQL injection and cross-site scripting attacks](https://dl.acm.org/citation.cfm?id=1555036). In Proceedings of the 31st International Conference on Software Engineering (pp. 199-209). IEEE Computer Society.
     - Von Ahn, L., Maurer, B., McMillen, C., Abraham, D. and Blum, M., 2008. [recaptcha: Human-based character recognition via web security measures](http://science.sciencemag.org/content/321/5895/1465). Science, 321(5895), pp.1465-1468.
