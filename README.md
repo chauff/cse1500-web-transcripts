@@ -105,7 +105,7 @@ For each lecture we provide a range of materials:
 - **Required readings**: most of the required readings are book chapters of the web course book. The book introduces each technology from scratch. The lectures go beyond what is covered in the book and assume that you have read the corresponding book chapter(s) **before** the lecture.
 - **Recommended activities**: activities that we think will help you get a better grasp of the different web technologies. Activities are either programming exercises or podcasts (there are some great ones out there!).
 - **Recommended readings**: if you have trouble understanding one or more concepts introduced in the lectures, take a look at the recommended reading list; you will find here materials that cover the lecture content in a different manner.
-- **Relevant scientific publications**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here showcase a number of important scientific publications that contribute to our understanding of (the use of) web technologies.
+- **Relevant scientific publications**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here list a number of scientific publications that contribute to our understanding of (the use of) web technologies.
 
 ## Web lectures
 
