@@ -2,11 +2,19 @@
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
 
-Materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. **At the moment, only web topics are covered.** Work in progress.
+All materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
+
+**Only web topics are covered.** 
+
+Work in progress.
 
 ## Contact
 
 The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi[at]tudelft.nl`. *Warning: the mailbox will note be active before November 2018.*
+
+## Web technology course book
+
+The course book for the web technology part is [**Learning Web App Development**](https://www.oreilly.com/library/view/learning-web-app/9781449371388/) by Semmy Purewal. This book covers HTML, CSS, JavaScript and Node.js/Express - exactly the technologies we cover in this course. The book is written for learners without any prior knowledge in these technologies. 
 
 ## Required [REQ] and recommended [REC] tools
 
@@ -56,6 +64,8 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 In the past years, the web and database (DB) topics were interwoven (usually 1 lecture of web and 1 lecture of DB topics per week) and thus the existing midterm and final exams also contain questions on both topics. To study for the midterm and/or final **this year**, make sure to look at the midterm and final exams from the past together to find examples of all Web/DB question types.
 
+Exam topics are all topics covered in the lectures and the required readings. Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not tested in the exam.
+
 - [Midterm 2015/16](https://chauff.github.io/documents/webdb-2017-18/midterm2.pdf)
 - [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf)
 - [Midterm 2016/17](https://chauff.github.io/documents/webdb-2017-18/midterm1.pdf)
@@ -66,8 +76,6 @@ In the past years, the web and database (DB) topics were interwoven (usually 1 l
 There are six assignments in total.
 
 The first three assignments cover web technology topics.
-
-If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
 
 - [Assignment 1 (web)](Assignment-1.md)
 - [Assignment 2 (web)](Assignment-2.md)
@@ -90,9 +98,21 @@ and a game screen:
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
-## List of web lectures
+## Lecture material types
 
-**This is work in progress, lectures in a good draft status for 2018/19 are in bold.** The transcripts are an 2018/19 addition, the lectures slides are currently all from 2017/18.
+For each lecture we provide a range of materials:
+
+- **Required readings**: most of the required readings are book chapters of the web course book. The book introduces each technology from scratch. The lectures go beyond what is covered in the book and assume that you have read the corresponding book chapter(s) **before** the lecture.
+- **Recommended activities**: activities that we think will help you get a better grasp of the different web technologies. Activities are either programming exercises or podcasts (there are some great ones out there!).
+- **Recommended readings**: if you have trouble understanding one or more concepts introduced in the lectures, take a look at the recommended reading list; you will find here materials that cover the lecture content in a different manner.
+- **Relevant scientific papers**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here showcase a number of important scientific papers that contribute to our understanding of (the use of) web technologies.
+
+## Web lectures
+
+**Status update**: 
+- Transcripts of Lectures 1 to 7 are in a good draft status. Lecture 8 is work in progress.
+- Lecture slides are from the 2017/18 edition. Will be updated in the coming month.
+
 
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Topics: HTTP 1.1 request/response message, important HTTP headers, web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
@@ -106,7 +126,11 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/).
     - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users.
     - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/).
-  
+  - Relevant scientific papers:
+    - Ihm, S. and Pai, V.S., 2011. [Towards understanding modern web traffic](https://dl.acm.org/citation.cfm?id=2068845). In Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference (pp. 295-312). ACM.
+    - Naylor, D., Finamore, A., Leontiadis, I., Grunenberger, Y., Mellia, M., Munafò, M., Papagiannaki, K. and Steenkiste, P., 2014. [The cost of the S in HTTPS](https://dl.acm.org/citation.cfm?id=2674991). In Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies (pp. 133-140). ACM.
+    - Falaki, H., Lymberopoulos, D., Mahajan, R., Kandula, S. and Estrin, D., 2010. [A first look at traffic on smartphones](https://dl.acm.org/citation.cfm?id=1879176). In Proceedings of the 10th ACM SIGCOMM conference on Internet measurement (pp. 281-287). ACM.
+    
 - **Lecture 2** covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf))
   - Topics: web sites vs. web applications, Electron, web design basics, usability testing, HTML5 history, web standards, HTML forms
   - Required readings:
@@ -116,6 +140,9 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
     - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).
     - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected).
+  - Relevant scientific publications:
+    - Fernandez, A., Insfran, E. and Abrahão, S., 2011. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and Software Technology, 53(8), pp.789-817.
+    - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
   
 - **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
   - Required readings:
@@ -134,6 +161,10 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057).
     - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript.
     - [The State of JavaScript 2017](https://2017.stateofjs.com/).
+  - Relevant scientific papers:
+    - Charland, A. and Leroux, B., 2011. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Queue, 9(4), p. 20.
+    - Mowery, K., Bogenreif, D., Yilek, S. and Shacham, H., 2011. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). In Proceedings of W2SP (Vol. 2, No. 11).
+    - Ratanaworabhan, P., Livshits, B. and Zorn, B.G., 2010. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). WebApps, 10, pp.3-3.
 
 - **Lecture 4** ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **Node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with Node.js (`net`), web server creation (`http`), URLs for routing (`url`), Express framework (`express`), JSON, Ajax, WebSockets
   - Required readings:
@@ -143,6 +174,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended readings:
     - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451).
     - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).
+  - Relevant scientific papers:
+    - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp.1023-1044.
   
 - **Lecture 5** ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements, pseudo-classes, rendering engine, data/variables in CSS, element positioning (`float`, `position`, `display`), CSS media queries, CSS animations and transitions
   - Required readings:
@@ -154,6 +187,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
     - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
     - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
+  - Relevant scientific papers:
+    - Meyerovich, L.A. and Bodik, R., 2010, April. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web (pp. 711-720). ACM.
 
 - **Lecture 6** ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced Node.js**: Node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
   - Required readings: *none*
@@ -165,6 +200,9 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
     - An overview of [best practices in Node.js](https://github.com/i0natan/nodebestpractices).
     - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing).
+  - Relevant scientific papers:
+    - Fard, A.M. and Mesbah, A., 2013, September. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings/scam/2013/9999/00/06648192.pdf). In Source Code Analysis and Manipulation (SCAM), 2013 IEEE 13th International Working Conference on (pp. 116-125). IEEE.
+    - Nasehi, S.M., Sillito, J., Maurer, F. and Burns, C., 2012, September. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). In 2012 28th IEEE International Conference on Software Maintenance (ICSM) (pp. 25-34). IEEE.
 
 - **Lecture 7** ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, Evercookie, third-party cookies, client-side cookies, cookies and sessions in Express, third-party authentication
   - Required readings: *none*
@@ -172,6 +210,9 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
   - Recommended readings:
     - Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown.
     - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/).
+  - Relevant scientific papers:
+    - Roesner, F., Kohno, T. and Wetherall, D., 2012. [Detecting and defending against third-party tracking on the web](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final17.pdf). In Proceedings of the 9th USENIX conference on Networked Systems Design and Implementation (pp. 12-12). USENIX Association.
+    - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](http://www.profsandhu.com/journals/ic/ieeeic00.pdf). IEEE internet computing, 4(4), pp.36-44.
 
 - **Lecture 8** 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **web security**: web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
   - Required readings: *none*
@@ -188,3 +229,10 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
     - [Scientific paper on tracking](https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf).
     - [Capture the Flag](https://hacks.mozilla.org/2018/03/hands-on-web-security-capture-the-flag-with-owasp-juice-shop/).
     - [Who left open the Cookie Jar?](https://wholeftopenthecookiejar.eu/static/tpc-paper.pdf).
+  - Relevant scientific papers:
+    - Aggarwal, G., Bursztein, E., Jackson, C. and Boneh, D., 2010. [An Analysis of Private Browsing Modes in Modern Browsers](http://crypto.stanford.edu/~dabo/papers/privatebrowsing.pdf). In Proceedings of the 19th USENIX conference on Security. USENIX Association.
+    - Kieyzun, A., Guo, P.J., Jayaraman, K. and Ernst, M.D., 2009. [Automatic creation of SQL injection and cross-site scripting attacks](https://dl.acm.org/citation.cfm?id=1555036). In Proceedings of the 31st International Conference on Software Engineering (pp. 199-209). IEEE Computer Society.
+    - Von Ahn, L., Maurer, B., McMillen, C., Abraham, D. and Blum, M., 2008. [recaptcha: Human-based character recognition via web security measures](http://science.sciencemag.org/content/321/5895/1465). Science, 321(5895), pp.1465-1468.
+
+
+    
