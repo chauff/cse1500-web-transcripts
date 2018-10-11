@@ -109,10 +109,7 @@ For each lecture we provide a range of materials:
 
 ## Web lectures
 
-**Status update**: 
-- Transcripts of Lectures 1 to 7 are in a good draft status. Lecture 8 is work in progress.
-- Lecture slides are from the 2017/18 edition. Will be updated in the coming month.
-
+**Status update**: transcripts of Lectures 1 to 7 are in a good draft status. Lecture 8 is work in progress. Lecture slides are from the 2017/18 edition. Will be updated in the coming month.
 
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Topics: HTTP 1.1 request/response message, important HTTP headers, web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
