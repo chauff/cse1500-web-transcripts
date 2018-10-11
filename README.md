@@ -112,7 +112,6 @@ For each lecture we provide a range of materials:
 **Status update**: transcripts of Lectures 1 to 7 are in a good draft status. Lecture 8 is work in progress. Lecture slides are from the 2017/18 edition. Will be updated in the coming month.
 
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
-  - Topics: HTTP 1.1 request/response message, important HTTP headers, web caches, HTTP methods, telnet, IP addresses, polling, WebSockets
   - Required readings: *none*
   - Recommended activity:
     - Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
@@ -129,7 +128,6 @@ For each lecture we provide a range of materials:
     - Falaki, H., Lymberopoulos, D., Mahajan, R., Kandula, S. and Estrin, D., 2010. [A first look at traffic on smartphones](https://dl.acm.org/citation.cfm?id=1879176). In Proceedings of the 10th ACM SIGCOMM conference on Internet measurement (pp. 281-287). ACM.
     
 - **Lecture 2** covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf))
-  - Topics: web sites vs. web applications, Electron, web design basics, usability testing, HTML5 history, web standards, HTML forms
   - Required readings:
     - Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
     - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
