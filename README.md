@@ -141,7 +141,7 @@ For each lecture we provide a range of materials:
     - Fernandez, A., Insfran, E. and Abrahão, S., 2011. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and Software Technology, 53(8), pp.789-817.
     - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
   
-- **Lecture 3** ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)) on **JavaScript** (client-side): functions as first-class citizens, object creation, basic constructor, prototype-based constructor, module, WebConsole, scoping, events and the DOM
+- **Lecture 3** on client-side JavaScript ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf))
   - Required readings:
     - Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
@@ -154,7 +154,6 @@ For each lecture we provide a range of materials:
     - A good blog post on [why we need all those fancy tools for JavaScript development nowadays](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70).
     - [Blog post about recent research on JavaScript libraries](https://blog.acolyer.org/2018/06/20/conflictjs-finding-and-understanding-conflicts-between-javascript-libraries/).
     - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger).
-    - Jimmy Lin's [words](http://ceur-ws.org/Vol-2167/keynote1.pdf) on JavaScript ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
     - Basic algorithms and data structures knowledge still matter [today](https://twitter.com/mathias/status/1036626116654637057).
     - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript.
     - [The State of JavaScript 2017](https://2017.stateofjs.com/).
@@ -162,8 +161,9 @@ For each lecture we provide a range of materials:
     - Charland, A. and Leroux, B., 2011. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Queue, 9(4), p. 20.
     - Mowery, K., Bogenreif, D., Yilek, S. and Shacham, H., 2011. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). In Proceedings of W2SP (Vol. 2, No. 11).
     - Ratanaworabhan, P., Livshits, B. and Zorn, B.G., 2010. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). WebApps, 10, pp.3-3.
+    - Lin, J., 2018. [Computing without Servers, V8, Rocket Ships, and Other Batshi*t Crazy Ideas in Data Systems]((http://ceur-ws.org/Vol-2167/keynote1.pdf). In Proceedings of DESIRES. A quote ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
 
-- **Lecture 4** ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)) on **Node.js**: history, npm, event loop (single-threaded and highly parallel), watch a file for changes (`fs`), networking with Node.js (`net`), web server creation (`http`), URLs for routing (`url`), Express framework (`express`), JSON, Ajax, WebSockets
+- **Lecture 4** on Node.js ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf))
   - Required readings:
     - Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
@@ -174,7 +174,7 @@ For each lecture we provide a range of materials:
   - Relevant scientific papers:
     - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp.1023-1044.
   
-- **Lecture 5** ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)) on **CSS**: history, CSS3, pseudo-elements, pseudo-classes, rendering engine, data/variables in CSS, element positioning (`float`, `position`, `display`), CSS media queries, CSS animations and transitions
+- **Lecture 5** covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf))
   - Required readings:
     - Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
@@ -187,7 +187,7 @@ For each lecture we provide a range of materials:
   - Relevant scientific papers:
     - Meyerovich, L.A. and Bodik, R., 2010, April. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web (pp. 711-720). ACM.
 
-- **Lecture 6** ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)) on **advanced Node.js**: Node.js modules (`module.exports`, `require`), middleware, routing, regular expressions, templating with EJS
+- **Lecture 6** on advanced Node.js concepts ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf))
   - Required readings: *none*
   - Recommended activities:
     - An interactive ejs playground can be found [here](https://ionicabizau.github.io/ejs-playground/).
@@ -201,7 +201,7 @@ For each lecture we provide a range of materials:
     - Fard, A.M. and Mesbah, A., 2013, September. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings/scam/2013/9999/00/06648192.pdf). In Source Code Analysis and Manipulation (SCAM), 2013 IEEE 13th International Working Conference on (pp. 116-125). IEEE.
     - Nasehi, S.M., Sillito, J., Maurer, F. and Burns, C., 2012, September. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). In 2012 28th IEEE International Conference on Software Maintenance (ICSM) (pp. 25-34). IEEE.
 
-- **Lecture 7** ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)) on **cookies and sessions**: session vs persistent cookies, cookie fields, Evercookie, third-party cookies, client-side cookies, cookies and sessions in Express, third-party authentication
+- **Lecture 7** on cookies and sessions ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf))
   - Required readings: *none*
   - Recommended activities: *none*
   - Recommended readings:
@@ -211,7 +211,7 @@ For each lecture we provide a range of materials:
     - Roesner, F., Kohno, T. and Wetherall, D., 2012. [Detecting and defending against third-party tracking on the web](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final17.pdf). In Proceedings of the 9th USENIX conference on Networked Systems Design and Implementation (pp. 12-12). USENIX Association.
     - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](http://www.profsandhu.com/journals/ic/ieeeic00.pdf). IEEE internet computing, 4(4), pp.36-44.
 
-- **Lecture 8** 2017/18 ([PDF](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)) on **web security**: web application threats, attack due to a lack of data validation, OS command injection, SQL injection, broken session management, cross-site scripting (stored and reflected), insecure direct object references, security misconfiguration,  cross-site request forgery
+- **Lecture 8** on web security (2018/19 transcript, [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf))
   - Required readings: *none*
   - Recommended activities:
     - Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
