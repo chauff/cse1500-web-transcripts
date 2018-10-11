@@ -25,8 +25,9 @@ The course book for the web technology part is [**Learning Web App Development**
   - [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension (especially useful if a student team works mostly remotely);
   - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier;
   - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
-- [REQ] [Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one)
+- [REQ] [Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `root` password is `cse&(]]` (yes! those are not typos, this is the password).
 - [REQ] Two modern web browsers such as Chrome, Firefox, Edge, ...
+- [REQ] Telnet (for Assignment 1);
 - [REC] Browser developer tools ... those come built into all modern browsers; be sure to make yourself familiar with them. For Firefox, you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
 
 If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
