@@ -4,7 +4,7 @@
 
 All materials and resources of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
 
-**Only web topics are covered.** 
+**Only web topics are covered.**
 
 Work in progress.
 
@@ -14,7 +14,9 @@ The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi
 
 ## Web technology course book
 
-The course book for the web technology part is [**Learning Web App Development**](https://www.oreilly.com/library/view/learning-web-app/9781449371388/) by Semmy Purewal. This book covers HTML, CSS, JavaScript and Node.js/Express - exactly the technologies we cover in this course. The book is written for learners without any prior knowledge in these technologies. 
+The course book for the web technology part is [**Learning Web App Development**](https://www.oreilly.com/library/view/learning-web-app/9781449371388/) by Semmy Purewal. This book covers HTML, CSS, JavaScript and Node.js/Express - exactly the technologies we cover in this course. The book is written for learners without any prior knowledge in these technologies.
+
+![Web course book](img/RME-book.png)
 
 ## Required [REQ] and recommended [REC] tools
 
@@ -34,19 +36,21 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 ## Resources
 
-- [MDN](https://developer.mozilla.org/en-US/): Mozilla's resource site for developers.
-- [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/) are similar to MDN in spirit.
-- [Codepen](https://codepen.io/#) showcases many front-end experiments; if you are looking what is possible with CSS, this is the place for you.
+![MDN](img/RME-mdn.png) ![Google Fundamentals](img/RME-fundamentals.png)
+
+[MDN](https://developer.mozilla.org/en-US/): Mozilla's resource site for developers.
+
+[Google's Web Fundamentals](https://developers.google.com/web/fundamentals/) are similar to MDN in spirit.
 
 ## Course grading
 
-- Course grade:
-  - 40% midterm (covers all web technology lectures)
-  - 40% final exam (covers all database technology lectures)
-  - 20% assignments
-- Requirements: to pass, the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations.
-- Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover web programming topics and three cover database topics.
-- We have two assessment weeks: one before Christmas and one at the end of January. In the December assessment week **all** three web assignments are assessed in a single session; in the January assessment week **all** three database assignments are assessed in a single session. Each session can yield anything between 3x pass and 3x no-pass.
+![grading](img/RME-grading.png)
+
+**Passing requirements**: the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations.
+
+Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover web programming topics and three cover database topics. While the assignments together make up only 20% of the final grade and are not required, we strongly recommend to tackle the assignments - they cover a lot of exam materials in a practical manner!
+
+We have two assessment moments: one for the Web technology assignments and one for the Database technology assignments. The three Web assignments are assessed in a single session of your team's own choosing: you can book a timeslot for the Web assessment in weeks 2.3, 2.4, 2.5 or 2.6. The assessment is interview-based. The assessment session can yield anything between 3x pass and 3x no-pass. The grading is conducted per student, i.e. you and your partner may receive different pass/no-pass results.
 
 ## Course topics
 
