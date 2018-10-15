@@ -97,7 +97,8 @@ Hello World!
 [carriage return]
 ```
 
-With this code, we have just created a resource on the server called `put` which contains the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
+With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
+`PUT` though is not only able to modify an existing resource, it can also create a resource on the server. The status code in the response tells us whether a resourc was modified (`200 OK`) or created (`201 Create`). More information can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT)). If you try to replace `/put` in this exercise with another resource (e.g. `/myfile`) you will see an error: this server allows the modification of the resource accessible at `/put` but not the creation of a new resource.
 
 ### 2.1)
 
@@ -111,7 +112,7 @@ Let us now try to request a page, that is set up with HTTP basic authentication.
 
 ### 3.1)
 
-First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password. Reload the web page -­ what happens now?
+First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password (*it is just a coincidence that the actual username and password is the same as the URL path*). Reload the web page -­ what happens now?
 
 ### 3.2)
 
@@ -126,7 +127,8 @@ host:httpbin.org
 [carriage return]
 ```
 
-Then, use the `Authorization` field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g. [https://codebeautify.org/base64-encode](https://codebeautify.org/base64-encode). Remember that username and password should be combined as `username:password`.
+Which status code do you receive now? Next, use the `Authorization: Basic [base-64 encoded username/password string]` header field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g. https://codebeautify.org/base64-encode
+Remember that username and password need to be combined as `username:password` **before** they are encoded in base-64.
 
 Now close the TCP connection and start a new one, using again:
 
