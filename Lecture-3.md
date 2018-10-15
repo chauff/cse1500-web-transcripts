@@ -3,6 +3,7 @@ Table of Content
 - [JavaScript: the language of browser interactions](#javascript-the-language-of-browser-interactions)
     - [Learning goals](#learning-goals)
     - [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
+    - [Examples throughout the lectures](#examples-throughout-the-lectures)
     - [JavaScript's reputation](#javascripts-reputation)
     - [Scripting overview](#scripting-overview)
         - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
@@ -53,6 +54,14 @@ If you have already read Chapter 4 of the course book, you should know:
 You should have also learned about `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
 
 In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
+
+## Examples throughout the lectures
+
+A bit of context: the code examples throughout this course materials belong to one of three example applications:
+
+- A todo application.
+- A habbit tracker.
+- A two-player game.
 
 ## JavaScript's reputation
 
