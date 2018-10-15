@@ -1364,3 +1364,49 @@ main:fullscreen {
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
+
+1. What is the main purpose of a *CSS reset*?
+
+2. Consider the HTML page snippet below:
+
+```html
+<main>
+	<section id="s1" class="todos todosHome">
+		<p data-due="today" data-prio="urgent">
+			Do the dishes
+		</p>
+		<p data-due="tomorrow" data-prio="neutral">
+			Do the laundry
+		</p>
+	</section>
+	<section>
+		<p data-due="yesterday" data-prio="urgent">
+			Prepare for the midterm
+		</p>
+		<p data-due="tomorrow" data-prio="urgent">
+			Prepare for Q3
+		</p>
+	</section>
+</main>
+<footer>
+	<p class="copyright neutral todos">
+		Copyright 2018/19.
+	</p>
+</footer>
+```
+
+For brevity, only the content inside `<body>` is shown; you can assume code in the header that loads the corresponding CSS. Which CSS snippet will generate this presentation of the content:
+
+![Rendered-page](img/L5-ex1-test.png)
+
+3. Consider the HTML page snippet from Question 2 again. For all todo items, whose `data-prio` attribute is set to `urgent`, the string *Urgent!* should appear next to the item. How can this effect be achieved through CSS?
+
+4. What are the differences between CSS animations and CSS transitions?
+
+5. What is a rendering engine?
+
+6. Explain the possible values of the `position` attribute.
+
+7. Give three examples of pseudo-classes.
+
+8. Explain how data can be stored in CSS.
