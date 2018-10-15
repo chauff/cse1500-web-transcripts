@@ -71,7 +71,7 @@ fs.readFile('/etc/passwd', function(err, data) {
 })
 ```
 
-The method `readFile` takes two arguments: the path of the file to read and a **callback function**: the function to execute when the file reading operation has completed. The callback function has to arguments: an error object and a data object. If the file reading operation failed for some reason, we throw the error in this case, otherwise we print out the data to the console. Once the Node runtime encounters this code snippet, it will execute `fs.readFile(....)` and return immediately to execute the next line of code (this is called **non-blocking**). What happens to the file read operation? The Node runtime has access to a pool of I/O threads and once a thread has completed the file reading operation, an event is entered into the event loop to then execute the callback (in our case printing out the contents to the console). So, more accurately we should say that Node.js has a **single-threaded event loop** nature.
+The method `readFile` takes two parameters: the path of the file to read and a **callback function**: the function to execute when the file reading operation has completed. The callback function has two parameters: an error object and a data object. If the file reading operation failed for some reason, we throw the error in this case, otherwise we print out the data to the console. Once the Node runtime encounters this code snippet, it will execute `fs.readFile(....)` and return immediately to execute the next line of code (this is called **non-blocking**). What happens to the file read operation? The Node runtime has access to a pool of I/O threads and once a thread has completed the file reading operation, an event is entered into the event loop to then execute the callback (in our case printing out the contents to the console). So, more accurately we should say that Node.js has a **single-threaded event loop** nature.
 
 The Node runtime can also read file contents from disk in a **blocking** manner:
 
@@ -121,7 +121,7 @@ That's all. Store this code in a file of your choosing, e.g. `watching.js`, open
 Although the piece of code is small, it has a few interesting components:
 
 - Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides reusable functionality. The function `require()` usually returns a JavaScript object that in this case is our entry point to the file system.
-- You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) contains two arguments: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous and executed asynchronously.
+- You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) contains two parameters: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous and executed asynchronously.
 - As the filesystem access requires operating system specific code, the behaviour can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation (scroll to *Availability*).
 - Having started the script you will have noticed that the last line of code (*Now watching ...*) is executed immediately after the **setup** of the callback.
 
@@ -236,7 +236,7 @@ A few remarks on the code piece above:
 
 - We here utilize's Node's core [HTTP module](https://nodejs.org/api/http.html) which provides us with all necessary functionalities related to HTTP.
 - We create a **web server** with the call `http.createServer`.
-- The **callback** function we define has two arguments: an **HTTP request object** and an **HTTP response object**. The callback is executed when an HTTP request comes in.
+- The **callback** function we define has two parameters: an **HTTP request object** and an **HTTP response object**. The callback is executed when an HTTP request comes in.
 - Within the callback function we create an HTTP response (making use of the response object, which provides us with the necessary methods such as `writeHead` to write HTTP header information in JSON format) and sending it with the call to `res.end`.
 
 To make the code more modular, we can apply some refactoring, which shows off the function-as-parameter paradigm once more:
@@ -531,7 +531,7 @@ var main = function () {
 $(document).ready(main);
 ```
 
-Let's start at the bottom of this code snippet. In order to retrieve the list of TODOs from the server, we use `$.getJSON(url, function(data))`. This is jQuery's shorthand for making an HTTP GET request to `url` and executing the function specified as second parameter in the case of a successful request. When the request is successful, `data` will contain the data retrieved from the server. What do we do with that data then? To answer this question, we need to parse our function expression `addTodosToList`: we first locate in the DOM tree the unordered list placeholder which we gave the id `todo-list`; for every todo we received, we create a list element (`<li>`) with the corresponding text and append it to our `<ul>` element.
+Let's start at the bottom of this code snippet. In order to retrieve the list of TODOs from the server, we use `$.getJSON(url, function(data))`. This is jQuery's shorthand for making an HTTP GET request to `url` and executing the function specified as second argument in the case of a successful request. When the request is successful, `data` will contain the data retrieved from the server. What do we do with that data then? To answer this question, we need to parse our function expression `addTodosToList`: we first locate in the DOM tree the unordered list placeholder which we gave the id `todo-list`; for every todo we received, we create a list element (`<li>`) with the corresponding text and append it to our `<ul>` element.
 
 Without the use of jQuery, the `XMLHttpRequest` object leads to more clunky looking code, as this [MDN example](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started) shows.
 

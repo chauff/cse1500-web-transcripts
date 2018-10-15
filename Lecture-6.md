@@ -204,7 +204,7 @@ app.get("/round", function (req, res) {
 
 Middleware components are small, self-contained and reusable code pieces across applications. Imagine you have written an Express application with tens of different routes and now decide to log every single HTTP request coming in. You could add 2-3 lines of code to every route to achieve this logging OR you write a middleware logging component that gets called before any other route is called. How exactly this works in Express is discussed here.
 
-Middleware components take **three arguments**:
+Middleware components have **three parameters**:
 
 - an HTTP request object,
 - an HTTP response object, and,
@@ -322,7 +322,7 @@ This routing paradigm is a significant departure from the past, where **file-bas
 
 In terms of routes, we distinguish between request types (`GET /user` differs from `POST /user`) and request routes (`GET /user` differs from `GET /users`).
 
-**Route handlers are middleware**. So far, we have not introduced routes that include `next` as third parameter, but since they *are* middleware, we can indeed add `next` as third argument.
+**Route handlers are middleware**. So far, we have not introduced routes that include `next` as third argument, but since they *are* middleware, we can indeed add `next` as third argument.
 
 But when does it make sense? Let's look at the following code snippet:
 

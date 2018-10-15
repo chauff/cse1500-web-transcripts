@@ -671,7 +671,7 @@ Here, the function is **anonymous** (it does not have a name - it does not need 
 
 Going back to our `gameStatModule`, we immediately execute the function. What does this function contain? It contains a number of variables with function scope (`gamesStarted` and so on) as well as a return statement. This return statement contains the result of the function invocation. In this case, an *object literal* is returned and this object literal has two methods `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other "private" variables, all we will get is an `undefined` as the returned object does not contain those properties (though the returned object has access to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables.
 
-The encapsulating function can also contain arguments:
+The encapsulating function can also contain parameters (here: arguments `1, 1, 1`):
 
 ```javascript
 /* creating a module */
