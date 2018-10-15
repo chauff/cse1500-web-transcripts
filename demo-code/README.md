@@ -71,7 +71,7 @@ cd Web-Teaching/demo-code/node-file-watching-ex/
 node watching.js todos.txt
 ```
 
-If you now change the file `todos.txt` (which resides in the same folder as `watching.js`) in your favourite editor, you will see a `File changed!` message appear in the terminal. 
+If you now change the file `todos.txt` (which resides in the same folder as `watching.js`) in your favorite editor, you will see a `File changed!` message appear in the terminal.
 
 ## node-tcp-ex
 
@@ -92,7 +92,7 @@ Now open **another** terminal window (*while keeping the first one open*) and us
 telnet localhost 3000
 ```
 
-If everything went as intended, your client now shows the message `Now watching todos.txt for changes` and your server shows `Subscriber connected`. Alter the `todos.txt` file and then disconnect the client and observe the message(s) that appear. 
+If everything went as intended, your client now shows the message `Now watching todos.txt for changes` and your server shows `Subscriber connected`. Alter the `todos.txt` file and then disconnect the client and observe the message(s) that appear.
 
 ## node-web-ex
 
@@ -115,7 +115,7 @@ npm install
 node web.js
 ```
 
-Here, we actually do not provide a port number, as port `3000` is hardcoded into `web.js`. Now open your browser and try different URLs:
+Here, we actually do not provide a port number, as port `3000` is hard-coded into `web.js`. Now open your browser and try different URLs:
 
 - http://localhost:3000/
 - http://localhost:3000/greetme
@@ -136,6 +136,8 @@ node app.js 3000
 
 Now open your browser and access the following URL: http://localhost:3000/. The client initiates the WebSocket connection with the server and receives a corresponding response. You can see this happening clearly when opening the Network Monitor of the browser's web development tools.
 
+*Note: in `package.json` we have defined a `start` script this time, we could have also started the application with `npm start` instead of `node app.js 3000`. Both options are valid and result in the same behavior.*
+
 ## node-ajax-ex
 
 This Node.js script showcases the use of Ajax in the form of a toy todo application. The server has todo items stored in memory that can be retrieved by the client (`/todos`); the client can also send additional todo items to the server (`/addtodo`). Install and start the server as follows:
@@ -148,6 +150,8 @@ node app.js
 
 Now open your browser and access the following URL: http://localhost:3000/. You will see a list of todos (retrieved through an Ajax request).
 
+*Note: as in the previous example, we have defined a `start` script, so `node app.js` could have been replaced by `npm start`.*
+
 ## node-component-ex
 
 Install and run the server (which sends todos to the client when the client requests them with the correct username/password combination):
@@ -155,13 +159,13 @@ Install and run the server (which sends todos to the client when the client requ
 ```console
 cd Web-Teaching/demo-code/node-component-ex/
 npm install
-node app.js
+npm start
 ```
 
 Now open another terminal and use `curl`:
 
-- Request the list of todos without authorisation, i.e. `curl http://localhost:3000/todos` - you should see an `Unauthorized access` error.
-- Request the list of todos with the correct username and password (as hardcoded in our demonstration code): `curl --user user:password http://localhost:3000/todos`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
+- Request the list of todos without authorization, i.e. `curl http://localhost:3000/todos` - you should see an `Unauthorized access` error.
+- Request the list of todos with the correct username and password (as hard-coded in our demonstration code): `curl --user user:password http://localhost:3000/todos`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
 - Request the list of todos with an incorrect username/password combination: `curl --user test:test http://localhost:3000/todos`. You should receive a `Wrong username/password combination` error.
 
 ## node-sessions-ex
@@ -203,4 +207,3 @@ node app.js 3000
 ```
 
 Now open your browser and access the following URL: http://localhost:3000/todos.
-
