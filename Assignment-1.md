@@ -50,31 +50,29 @@ Hints:
 
 This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go, although for new Mac OS versions you might need to [install](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) telnet yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1.
 
-Use `telnet` to request the contents of the bread section of the recipe website `myrecipes.com/bread-recipes`.
+Use `telnet` to request the contents of the sports section of the Australian TV station website `abc.net.au/news/sport/`.
 
-**[TODO: check if the URL is still accessible]**
-
-Start your "conversation" with the web server by typing the following into the terminal:
+Start your *conversation* with the web server by typing the following into the terminal:
 
 ```console
-telnet myrecipes.com 80
+telnet abc.net.au 80
 ```
 
 ### 1.1)
 
-Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the recipes web page. Always use `HEAD` first to retrieve meta-­data about the resource.
+Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the sports page. Always use `HEAD` first to retrieve meta-­data about the resource.
 
 ### 1.2)
 
-Does the content correspond to what you see when accessing the page with your browser? To check, save the response to a file, use "html" as file ending and open it with your browser.
+Does the content correspond to what you see when accessing the page with your browser? To check, save the response to a file, use `.html` as file ending and open it with your browser.
 
 ### 1.3)
 
-What is the purpose of the ETag in the header information?
+What is the purpose of the `X-UA-Compatible` tag in the header information?
 
 ### 1.4)
 
-What do the different `Cache-Control` directives mean?
+What does the page's `Cache-Control` directive mean?
 
 ---
 
