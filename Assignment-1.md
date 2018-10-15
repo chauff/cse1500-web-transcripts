@@ -87,7 +87,7 @@ Below is an example of how to upload data to the server with `PUT`:
 ```console
 telnet httpbin.org 80
 
-PUT /myfile HTTP/1.1
+PUT /put HTTP/1.1
 host:httpbin.org
 Content-type:text/plain
 Content-length:12
@@ -97,17 +97,17 @@ Hello World!
 [carriage return]
 ```
 
-With this code, we have just created a file on the server called `myfile` which contains the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
+With this code, we have just created a resource on the server called `put` which contains the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
 
 ### 2.1)
 
-The `Content-­length` is exactly the number of characters (12) of `Hello World!`. What happens if the `Content-length` field is smaller or larger than the exact number of characters in the content?
+The `Content-­length` is exactly the number of characters (12 - we count the whitespace as well!) of `Hello World!`. What happens if the `Content-length` field is smaller or larger than the exact number of characters in the content?
 
 ---
 
 ## 3. Basic authentication
 
-Lets now try to request a page, that is set up with HTTP basic authentication.
+Let us now try to request a page, that is set up with HTTP basic authentication.
 
 ### 3.1)
 
