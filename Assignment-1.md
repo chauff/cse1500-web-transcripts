@@ -80,7 +80,7 @@ What does the page's `Cache-Control` directive mean?
 
 While `GET` and `HEAD` are request methods accepted by virtually all web servers, `PUT`, `POST` and `DELETE` are less often available, due to the implications these methods have on the server.
 
-To test your skills in uploading, deleting and posting data, we will make use of [http://httpbin.org/](http://httpbin.org/), a service designed to test HTTP messages.
+To test your skills in uploading data, we will make use of [http://httpbin.org/](http://httpbin.org/), a service designed to test HTTP messages.
 
 Below is an example of how to upload data to the server with `PUT`:
 
@@ -98,7 +98,7 @@ Hello World!
 ```
 
 With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
-`PUT` though is not only able to modify an existing resource, it can also create a resource on the server. The status code in the response tells us whether a resourc was modified (`200 OK`) or created (`201 Create`). More information can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT)). If you try to replace `/put` in this exercise with another resource (e.g. `/myfile`) you will see an error: this server allows the modification of the resource accessible at `/put` but not the creation of a new resource.
+`PUT` though is not only able to modify an existing resource, it can also create a resource on the server. The status code in the response tells us whether a resourc was modified (`200 OK`) or created (`201 Create`). More information can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT). If you try to replace `/put` in this exercise with another resource (e.g. `/myfile`) you will see an error: this server allows the modification of the resource accessible at `/put` but not the creation of a new resource.
 
 ### 2.1)
 
