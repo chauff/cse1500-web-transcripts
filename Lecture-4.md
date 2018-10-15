@@ -1,3 +1,23 @@
+Table of Content
+==
+- [Node.js: JavaScript on the server](#nodejs-javascript-on-the-server)
+    - [Learning goals](#learning-goals)
+    - [Introduction to Node.js](#introduction-to-nodejs)
+        - [Event-driven and non-blocking](#event-driven-and-non-blocking)
+    - [Node.js in examples](#nodejs-in-examples)
+        - [Watching a file for changes](#watching-a-file-for-changes)
+        - [Lowl-level networking with Node.js](#lowl-level-networking-with-nodejs)
+        - [Creating a Hello World! web server with Node.js](#creating-a-hello-world-web-server-with-nodejs)
+    - [Express](#express)
+        - [Greetings Express](#greetings-express)
+        - [A complete web application](#a-complete-web-application)
+    - [JSON: exchanging data between the client and server](#json-exchanging-data-between-the-client-and-server)
+    - [Ajax: dynamic updating on the client](#ajax-dynamic-updating-on-the-client)
+    - [WebSockets](#websockets)
+        - [A first WebSocket example](#a-first-websocket-example)
+        - [WebSockets for multi-player games](#websockets-for-multi-player-games)
+    - [Self-check](#self-check)
+
 # Node.js: JavaScript on the server
 
 ## Learning goals

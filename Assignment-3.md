@@ -1,4 +1,4 @@
-# Assignment 3 (2018/2019 edition)
+# Assignment 3
 
 In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.
 

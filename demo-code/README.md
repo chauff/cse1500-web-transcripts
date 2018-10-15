@@ -1,17 +1,31 @@
+Table of Content
+==
+- [Demo code](#demo-code)
+    - [balloons-game](#balloons-game)
+    - [node-file-watching-ex](#node-file-watching-ex)
+    - [node-tcp-ex](#node-tcp-ex)
+    - [node-web-ex](#node-web-ex)
+    - [node-express-ex](#node-express-ex)
+    - [node-websocket-ex](#node-websocket-ex)
+    - [node-ajax-ex](#node-ajax-ex)
+    - [node-component-ex](#node-component-ex)
+    - [node-sessions-ex](#node-sessions-ex)
+    - [node-cookies-ex](#node-cookies-ex)
+    - [node-ejs-ex](#node-ejs-ex)
+
 # Demo code
 
 This directory contains the demo game (`balloons-game`) and wireframe examples (`balloons-wireframes`).
 
-Each of the directories `node-XX-ex` contain a fully working toy example, showcasing a particular Node.js/Express concept. They are referred to and explained throughout the different web lectures. For each one, we detail how to install it here for completeness.
+Each of the directories `node-XX-ex` contain a fully working toy example, showcasing a particular Node.js/Express concept. They are referred to and explained throughout the different web lectures. For each one, installation and usage instructions are provided.
 
-Execute the following command in the terminal to download all source code examples:
+Execute the following command in the terminal to download all source code examples (as well as all lecture materials) at once:
 
 ```console
 git clone https://github.com/chauff/Web-Teaching.git
 ```
 
 **The following instructions to install and run the different scripts assume you are currently in the directory where the above line was executed.**
-
 
 ## balloons-game
 

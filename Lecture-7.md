@@ -1,3 +1,28 @@
+Table of Content
+==
+- [Cookies, sessions and third-party authentication](#cookies-sessions-and-third-party-authentication)
+    - [Learning goals](#learning-goals)
+    - [Introduction to cookies and sessions](#introduction-to-cookies-and-sessions)
+        - [Key facts about HTTP](#key-facts-about-http)
+        - [Cookies](#cookies)
+        - [Cookie basics](#cookie-basics)
+        - [Session vs. persistent cookies](#session-vs-persistent-cookies)
+        - [Cookie fields](#cookie-fields)
+        - [Cookie domain](#cookie-domain)
+    - [A first Node.js application](#a-first-nodejs-application)
+        - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
+    - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
+        - [Evercookie](#evercookie)
+        - [Third-party cookies](#third-party-cookies)
+    - [Client-side cookies](#client-side-cookies)
+        - [Cookies in JavaScript](#cookies-in-javascript)
+    - [Sessions](#sessions)
+    - [Third-party authentication](#third-party-authentication)
+        - [OAuth 2.0 roles](#oauth-20-roles)
+        - [Roles exemplified](#roles-exemplified)
+        - [Third-party authentication with Twitter](#third-party-authentication-with-twitter)
+    - [Self-check](#self-check)
+
 # Cookies, sessions and third-party authentication
 
 ## Learning goals
