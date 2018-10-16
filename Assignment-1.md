@@ -97,8 +97,9 @@ Hello World!
 [carriage return]
 ```
 
-With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. The service sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
-`PUT` though is not only able to modify an existing resource, it can also create a resource on the server. The status code in the response tells us whether a resourc was modified (`200 OK`) or created (`201 Create`). More information can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT). If you try to replace `/put` in this exercise with another resource (e.g. `/myfile`) you will see an error: this server allows the modification of the resource accessible at `/put` but not the creation of a new resource.
+With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. The server sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
+
+`PUT` though is not only able to modify an existing resource, it can also create a resource on the server. The status code in the response tells us whether a resource was modified (`200 OK`) or created (`201 Create`). More information can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT). If you try to replace `/put` in this exercise with another resource (e.g. `/myfile`) you will see a `503  Service Unavailable` error: this server allows the modification of the resource accessible at `/put` but not the creation of a new resource.
 
 ### 2.1)
 
@@ -112,7 +113,7 @@ Let us now try to request a page, that is set up with HTTP basic authentication.
 
 ### 3.1)
 
-First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password (*it is just a coincidence that the actual username and password is the same as the URL path*). Reload the web page -­ what happens now?
+First, open http://httpbin.org/basic-auth/user/passwd in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password (*it is just a coincidence that the actual username and password is the same as the URL path*). Reload the web page -­ what happens now?
 
 ### 3.2)
 
@@ -127,7 +128,7 @@ host:httpbin.org
 [carriage return]
 ```
 
-Which status code do you receive now? Next, use the `Authorization: Basic [base-64 encoded username/password string]` header field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g. https://codebeautify.org/base64-encode
+Which status code do you receive now? Next, use the `Authorization: Basic [base-64 encoded username/password string]` header field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g. https://codebeautify.org/base64-encode.
 Remember that username and password need to be combined as `username:password` **before** they are encoded in base-64.
 
 Now close the TCP connection and start a new one, using again:
@@ -136,35 +137,15 @@ Now close the TCP connection and start a new one, using again:
 telnet httpbin.org 80
 ````
 
-Request the same page -­ what happens? Is the behavior the same as reloading the page in the browser?
+Request the same page -­ what happens? Is the behavior the same as reloading the page in the browser? Explain why / why not.
 
 ---
 
 ## 4. Web programming project: board game app
 
-In this, and the upcoming two assignments, you will complete a web programming project. This year, this will be a traditional **board game** - you can choose between one of 9 games; at the end, your application will have the following minimal functionalities (you can opt to do more of course):
+In this, and the upcoming two assignments, you will complete a web programming project. This year, this is be a classic **board game**. You can choose from nine games:
 
-- The game is for 2-4 players and in 2D.
-- The game works in at least two major browsers (e.g. Firefox and Chrome).
-- It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of 1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
-- Upon entering your web application's URL, a **splash screen** will be shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), a brief description of how-to-play on your platform and a "Play" button (or something to that effect).
-- Upon pressing "Play" the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
-- Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
-- The splash and game screens need to look good (adhere to modern design standards); all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
-- Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players currently participating in the game.
-- Players see basic information about the ongoing game, e.g. the time passed since starting the game or number of lost/won pieces.
-- Players are able to play the game in fullscreen mode.
-- Players play the game with the mouse.
-- Once a player drops out of a game, the game is aborted; this is announced to all players currently active in the game.
-- Moves are animated (this can be as simple as changing a token's color) and have sound effects.
-
-The list above should tell you that you have considerable (artistic) freedom. In each assignment, you will be given a set of minimum requirements (e.g. here are the three types of CSS rules you need to employ in your code); you can of course do more than required.
-
-The only caveat is that no external libraries or frameworks are allowed, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the web course book; you can use it too, but are not required to.
-
-**Optionally**: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application, you can indeed incorporate existing libraries/frameworks (make sure to document clearly where in your code you employ it). The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent: while for the game of Ludo it would not be too difficult to come up with a number of rules to create a decent computer opponent, for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
-
-Here are your nine board game options to choose from:
+![Board games](img/A1-games.png)
 
 1. [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game)): 2-4 players
 2. [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
@@ -175,6 +156,28 @@ Here are your nine board game options to choose from:
 7. [Battleship](https://en.wikipedia.org/wiki/Battleship_(game)): 2 players
 8. [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
 9. [Backgammon](https://en.wikipedia.org/wiki/Backgammon): 2 players
+
+At the end of the three web assignments, your board game application will have the following functionalities:
+
+- The game is for 2-4 players and in 2D.
+- The game works in at least two major browsers (e.g. Firefox and Chrome).
+- It works well in a modern browser used on a laptop/desktop device, i.e. we are considering screen resolutions of ~1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
+- Upon entering your web application's URL, a **splash screen** is shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), a brief description of how-to-play on your platform and a *Play* button (or something to that effect).
+- Upon pressing *Play*, the user enters the **game screen** and waits for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
+- Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
+- The splash and game screens need to look good (adhere to modern design standards); all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
+- Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players participating in the game.
+- Players see basic information about the ongoing game, e.g. the time passed since starting the game or number of lost/won pieces.
+- Players are able to play the game in fullscreen mode.
+- Players play the game with the mouse.
+- Once a player drops out of a game, the game is aborted; this is announced to all players currently active in the game.
+- Moves are animated (this can be as simple as changing the color of a token/piece) and have sound effects.
+
+The list above should tell you that you have considerable (artistic) freedom. In each assignment, you are given a set of requirements (e.g. here are the three types of CSS rules you need to employ in your code).
+
+The caveat is that **no external libraries or frameworks are allowed**, apart from [jQuery](https://jquery.com/). We allow `jQuery` as it is used in the web course book; you can use it too, but are not required to.
+
+**Optionally**: if you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` and you want to keep improving your application by adding additional functionalities, you can indeed incorporate existing libraries/frameworks. Make sure to document clearly where in your code you employ them. The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent: while for the game of Ludo it would not be too difficult to come up with a number of rules to create a decent computer opponent, for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
 
 *If your team has a different idea and wants to implement another board game that has at least the functionalities listed above, please get explicit permission from the instructors before you start doing any work by emailing (cse1500-ewi@tudelft.nl) your team ID and a short description of the game you have in mind.*
 
@@ -188,21 +191,21 @@ Find **four** examples of your chosen board game (in 2D) that can be played onli
 
 ### 4.3)
 
-Which *game features* in the examples of 4.1) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
+Which *game features* in the examples of 4.2) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
 
 ---
 
 ## 5. Design your own board game app
 
-Having looked at at least four existing implementations of your chosen board game (4.1), you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet), start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface (i.e. not mobile). Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
+Having looked at at least four existing implementations of your chosen board game (Exercise 4.2), you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet) and the [demo code wireframes](demo-code/balloons-wireframes), start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
 ### 5.1)
 
-Create a design for the splash screen (entry page): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/).
+Create a design for the splash screen (also known as *entry page*): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/).
 
 ### 5.2)
 
-Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in 4.2).
+Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in Exercise 4.3).
 You have a lot of artistic freedom in designing the board and game information.
 
 ### 5.3)
@@ -211,4 +214,4 @@ Once you have completed the design of your app, head over to CSE1500's Brightspa
 
 ## 6. Your own board game app: HTML
 
-Similar to the course book, take your design as a starting point and create the respective **two HTML documents** (note that these documents should only contain HTML, no CSS or JavaScript). You can also check the `game.html` and `splash.html` files in `demo-code/balloons/public/` folder to get an idea on the expected content (and as stated before, ignore the few lines of code loading JavaScript files, this will come in Assignment 2).
+Similar to the course book, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. You can also check the `game.html` and `splash.html` files in the [demo game](demo-code/balloons-game/public) to get an idea on the expected content (ignore the few lines of code loading JavaScript and CSS files, this will come in Assignments 2 and 3).
