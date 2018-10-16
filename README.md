@@ -18,9 +18,11 @@ The course book for the web technology part is [**Learning Web App Development**
 
 ![Web course book](img/RME-book.png)
 
-## Required [REQ] and recommended [REC] tools
+## Recommended and required tools
 
-[REC] [Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support Node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. It als has a *Live Share* extension, which allows you to code in pairs without the need for tools like `git`. 
+### Recommended
+
+[Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support Node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. It als has a *Live Share* extension, which allows you to code in pairs without the need for tools like `git`. 
 
 ![Visual Studio Code](img/RME-vsc.png)
 
@@ -33,15 +35,17 @@ VS Code offers **many extensions**. You can find a guide on how to browse and in
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier;
 - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 
-[REQ] [Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `root` password is `cse&(]]` (yes! those are not typos, this is the password).
+**Browser developer tools**: they are built into all modern browsers; familiarize yourself with the developer tools of your favorite browser. For Firefox (my personal choice), you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
 
-[REQ] Two modern web browsers such as Chrome, Firefox, Edge, ...
+If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md).
 
-[REQ] Telnet (for Assignment 1): telnet is available by default in Linux distributions, Windows users and users of the most recent Mac OS versions need to install it manually. To test whether telnet is installed, open the terminal and type `telnet`.
+### Required 
 
-[REC] Browser developer tools ... those come built into all modern browsers; be sure to make yourself familiar with them. For Firefox, you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
+[Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `root` password is `cse&(]]` (yes! those are not typos, this is the password).
 
-If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md). While it is beyond the scope of this course to introduce tools like `git` in detail, we provide you with enough information to get started. You will learn more about these tools in later courses.
+Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
+
+Telnet (for Assignment 1): telnet is available by default in Linux distributions, Windows users and users of the most recent Mac OS versions need to install it manually. To test whether telnet is installed, open the terminal and type `telnet`.
 
 ## Resources
 
