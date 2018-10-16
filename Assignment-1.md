@@ -143,9 +143,13 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 
 ## 4. Web programming project: board game app
 
-In this, and the upcoming two assignments, you will complete a web programming project. This year, this is be a classic **board game**. You can choose from nine games:
+In this, and the upcoming two assignments, you will complete a web programming project. This year, this is be a classic **board game**.
 
 ![Board games](img/A1-games.png)
+
+*These images should serve as a first inspiration, you are by no means required to design your game board according to these examples.*
+
+You can choose from nine games:
 
 1. [Ludo](https://en.wikipedia.org/wiki/Ludo_(board_game)): 2-4 players
 2. [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
