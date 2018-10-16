@@ -4,11 +4,11 @@ The first part of this assignment gives you hands-­on experience in **HTTP**. I
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! Both team members **must contribute to the code** and **both team members must understand all parts of the code**. The assessment will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). If you use Visual Studio Code, an easy way of working together (while not needing to worry about file inconsistencies) is [Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare).
+Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). Use this assignment to set up a collaborative coding environment within your team. Assignment 2 will require extensive JavaScript programming that requires both team members to contribute.
 
 ### Overview of deliverables and upload procedure
 
-If you get lost in the assignment, use this overview of deliverables to get back on track!
+If you get lost within the assignment, use this overview of deliverables to get back on track!
 
 | **Task** | **Deliverables**                               |
 |------|----------------------------------------------------|
@@ -42,15 +42,15 @@ Hints:
 
 - To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.microsoft.com 80|tee out` will save all output to a file called `out`.
 
-- [carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when to press `<Enter>`.
+- [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when to press `<Enter>`.
 
-- Be aware of the **backspace key** when "telneting": while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key is forwarded to the server instead. In other words: **do not use the backspace key when telneting**.
+- Be aware of the **backspace key** when *telneting*: while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key is forwarded to the server instead. In other words: **do not use the backspace key when telneting**.
 
 ---
 
-This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, Mac OS), open a terminal and you are good to go, although for new Mac OS versions you might need to [install](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) telnet yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1.
+This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`).
 
-Use `telnet` to request the contents of the sports section of the Australian TV station website `abc.net.au/news/sport/`.
+Use `telnet` to request the contents of the sports news section of the Australian TV station ABC. The website URL is `abc.net.au/news/sport/`.
 
 Start your *conversation* with the web server by typing the following into the terminal:
 
@@ -60,7 +60,7 @@ telnet abc.net.au 80
 
 ### 1.1)
 
-Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the sports page. Always use `HEAD` first to retrieve meta-­data about the resource.
+Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the sports news page. Always use `HEAD` first to retrieve meta-­data about the resource.
 
 ### 1.2)
 
@@ -80,7 +80,7 @@ What does the page's `Cache-Control` directive mean?
 
 While `GET` and `HEAD` are request methods accepted by virtually all web servers, `PUT`, `POST` and `DELETE` are less often available, due to the implications these methods have on the server.
 
-To test your skills in uploading data, we will make use of [http://httpbin.org/](http://httpbin.org/), a service designed to test HTTP messages.
+To test your skills in uploading data, we will make use of http://httpbin.org/, a service designed to test HTTP messages.
 
 Below is an example of how to upload data to the server with `PUT`:
 

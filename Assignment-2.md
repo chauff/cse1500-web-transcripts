@@ -4,7 +4,7 @@ In this assignment you will build the backbone of your application. In the first
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code.
+Remember that this is a group assignment! Work efficiently as a team! Both team members **must contribute to the code** and **both team members must understand all parts of the code**. The group interview will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
 
 ### Overview of deliverables and upload procedure
 

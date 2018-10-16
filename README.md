@@ -47,7 +47,7 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
-Telnet (for Assignment 1): telnet is available by default in Linux distributions, Windows users and users of the most recent Mac OS versions need to install it manually. To test whether telnet is installed, open the terminal and type `telnet`.
+Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`).
 
 ## Resources
 
