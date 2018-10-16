@@ -143,7 +143,7 @@ Request the same page -­ what happens? Is the behavior the same as reloading th
 
 ## 4. Web programming project: board game app
 
-In this, and the upcoming two assignments, you will complete a web programming project. This year, this is be a classic **board game**.
+In this, and the upcoming two assignments, you will complete a web programming project. This year, this is the implementation of a classic **board game**.
 
 ![Board games](img/A1-games.png)
 
