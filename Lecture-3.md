@@ -1,5 +1,6 @@
 Table of Content
 ==
+- [Table of Content](#table-of-content)
 - [JavaScript: the language of browser interactions](#javascript-the-language-of-browser-interactions)
     - [Learning goals](#learning-goals)
     - [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
@@ -9,6 +10,10 @@ Table of Content
         - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
         - [`<script>`](#script)
         - [Activity](#activity)
+    - [Scoping and hoisting](#scoping-and-hoisting)
+        - [Scoping](#scoping)
+        - [Hoisting](#hoisting)
+        - [this](#this)
     - [JavaScript design patterns](#javascript-design-patterns)
         - [JavaScript objects](#javascript-objects)
         - [Object creation with `new`](#object-creation-with-new)
@@ -16,9 +21,6 @@ Table of Content
         - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
         - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
         - [Design pattern 3: Module](#design-pattern-3-module)
-            - [Scoping](#scoping)
-            - [Hoisting](#hoisting)
-            - [Finally](#finally)
     - [Events and the DOM](#events-and-the-dom)
         - [Document Object Model](#document-object-model)
             - [Example 1: document.getElementById](#example-1-documentgetelementbyid)
@@ -129,6 +131,166 @@ function my_func(x,y){
 
 my_func(5, toPrint);
 ```
+
+## Scoping and hoisting
+
+### Scoping
+
+Let's talk about **scoping**, that is *the context in which values and expressions are visible* in JavaScript. In contrast to other languages, JavaScript has very **limited** scoping:
+
+- `var` declared within a function: **local** scope;
+- `var` declared outside of a function: **global** scope;
+- no `var`: **global scope** (no matter where declared);
+- `let` was introduced in **ES6**: **block** scope;
+- `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
+
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to unintuitive behavior can be seen in the following code snippets.
+
+Imagine we want to print out the numbers 1 to 10. This is easy to achieve, e.g.:
+
+```javascript
+for (var i = 1; i <= 10; i++) {
+    console.log(i);
+}
+```
+
+Lets now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function (below: an **anonymous function**) after a delay (specified in milliseconds) you might expect the following piece of code to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
+
+```javascript
+for (var i = 1; i <= 10; i++) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000);
+}
+```
+
+When you run this code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Why is this? Well, first of all, what happens here is that `setTimeout` is executed ten times without delay - defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` (and then breaks as the `i<=10` condition is no longer fulfilled) which means `i` is `11` at the end of the `for` loop. As `i` has global scope, every single callback refers to the same variable. After a bit more time passes (reaching ~1 second) each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i` to console. Since `i` is `11` and all  we will get ten print outs of `11`.
+
+Let's fix the two issues (printing 11s instead of 1...10 and waiting a second between print outs one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** this was the established solution (you will find this construct in all kinds of older pieces of code):
+
+```javascript
+function fn(i) {
+    setTimeout(function() {
+        console.log(i);
+    }, 1000 * i);
+}
+  
+for (var i = 1; i <= 10; i++)
+    fn(i);
+```
+
+We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
+
+With the introduction of **ES6** and `let`, we no longer need this additional function construct - though you will find a lot of code still relies on those constructs - as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect:
+
+```javascript
+for (let i = 1; i <= 10; i++)
+    setTimeout( function() {
+        console.log(i)
+    }, 1000 * i)
+```
+
+Scoping is also important when it comes to larger programming projects: imagine that you are working on some complicated project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point or another your code would stop working. Here is a very simple `jQuery` to showcase this issue:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    //$ = "overwriting";
+    $("#b").click(function(){
+        $("#b").hide();
+    });
+});
+</script>
+</head>
+<body>
+
+<h1>Hide this button</h1>
+
+<button id="b">Hide me forever</button>
+
+</body>
+</html>
+```
+
+This code does exactly what we expect (hiding a button once we click it)). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
+
+Luckily, `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible.
+
+How is that achieved? Through the module pattern, which we come to towards the end of this lecture. 
+
+### Hoisting
+
+Hoisting is best explained with a concrete example. Consider this JavaScript code snippet. What kind of console output do you expect after executing this snippet?
+
+```javascript
+var x = six();
+
+//function declaration
+function six(){
+    return 6;
+}
+
+var y = seven();
+
+//function expression
+var seven = function(){
+    return 7;
+}
+
+console.log(x+" - "+y);
+```
+
+In both cases we seem to be executing a function before it is defined. You may either believe that the JavaScript runtime does not care about this and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function` and abort. Unfortunately, neither of these two options are true (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works, `var y = seven()`;` does not.
+
+The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed.
+
+In our example, the JavaScript runtime *hoists* the declaration of `six` is processed before the remaining code is executed.
+
+Once more:
+
+- Declarations are hoisted to the top.
+- Expressions are not hoisted.
+
+This is not only the case for functions, also variable declarations are hoisted. Consider this example:
+
+```javascript
+function f(){
+    x = 5;
+    y = 3;
+    console.log("writing from an IIFE");
+    var x;
+};
+f();
+console.log(x);
+console.log(y);
+```
+
+Variables `x` and `y` have global scope as they are not prefixed by `var` or `let` or `const`. And so the console output will be `5` and `3`.
+
+But what happens in this slightly changed piece of code?
+
+```javascript
+function f(){
+    a = 5;
+    b = 3;
+    console.log("writing from an IIFE");
+    var a, b;
+};
+f();
+console.log(a);
+console.log(b);
+```
+
+Now we will end up with a `ReferenceError: a is not defined` as the `var a` statement at the end of function `f` is **hoisted** to the top of the function - as `var a` is a declaration.
+
+### this
+
+One of the more confusing aspects about JavaScript as a language is the use of `this`. In Java, `this` refers to the current object, in JavaScript what `this` is referred to is dependent on *how* the function containing `this` was called. We also have the option to set the value of a function's `this` independent of how the function was called, using `bind`. [MDN has a whole page dedicated to this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), the popular You Don't Know JavaScript book series has [half a book](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes) dedicated to `this`. It is outside the scope of this class to go into the details of `this`, for now, remember that what `this` refers to depends on the manner of calling a function. We will come across a number of concrete examples in this and the following lectures that will give you an intuition of what `this` is about.  
+
 
 ## JavaScript design patterns
 
@@ -285,7 +447,7 @@ g1.setID(2);
 var g2 = Game("TWO"); //what does "this" refer to now?
 ```
 
-In this code snippet we created a new object assigned to variable `g1`, but for `g2` we forgot the keyword `new` and thus no object was created or assigned to `g2`. If you check what was assigned to `g2` you will find it to be `undefined` (the variable was declared but not defined). So, what happened to the line `this.id = id`? What did `this` refer to in this case? It turns out that without an object, in the browser context, `this` refers to the global `window` object (which represents the window in which the script is running). If you type `window.id` you will in fact find the property to exist and be `TWO`. Of course, this is not desired as you may accidentally overwrite important properties of the `window` object.
+In this code snippet we created a new object assigned to variable `g1`, but for `g2` we forgot the keyword `new` and thus no object was created or assigned to `g2`. If you check what was assigned to `g2` you will find it to be `undefined` (the variable was declared but not defined). So, what happened to the line `this.id = id`? What did `this` refer to in this case? It turns out that without an object, in the browser context, `this` refers to the global `window` object (which represents the window in which the script is running). If you type `window.id` you will in fact find the property to exist and hold the value of `TWO`. Of course, this is not desired as you may accidentally overwrite important properties of the `window` object.
 
 Lesson here: be sure to know when to use `new` and what `this` refers to when.
 
@@ -329,7 +491,7 @@ Before looking at prototype-based constructors, here is a quick summary of the b
   - Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
   - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
 
-The latter point may not be very obvious, but imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently overwrite important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works). There must be something else out there, and there is indeed. Let's move on to the next design pattern.
+The latter point may not be very obvious, but imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently overwrite important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works). 
 
 ### Design pattern 2: Prototype-based constructor
 
@@ -470,166 +632,11 @@ To finish off, here is a quick summary of the prototype-based constructor:
 
 ### Design pattern 3:  Module
 
-#### Scoping
-
-In order to tackle this last remaining issue above, we need to talk about **scoping** (i.e. the context in which values and expressions are visible) in JavaScript. In contrast to other languages, JavaScript has very **limited** scoping:
-
-- `var` declared within a function: **local** scope;
-- `var` declared outside of a function: **global** scope;
-- no `var`: **global scope** (no matter where declared);
-- `let` was introduced in **ES6**: **block** scope;
-- `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
-
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to unintuitive behavior can be seen in the following code snippets.
-
-Imagine we want to print out the numbers 1 to 10. This is easy to achieve, e.g.:
-
-```javascript
-for (var i = 1; i <= 10; i++) {
-    console.log(i);
-}
-```
-
-Lets now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function (below: an **anonymous function**) after a delay (specified in milliseconds) you might expect the following piece of code to print out the numbers 1 to 10 with each number appearing after roughly a second ([JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
-
-```javascript
-for (var i = 1; i <= 10; i++) {
-    setTimeout(function() {
-        console.log(i);
-    }, 1000);
-}
-```
-
-When you run this code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Why is this? Well, first of all, what happens here is that `setTimeout` is executed ten times without delay - defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` (and then breaks as the `i<=10` condition is no longer fulfilled) which means `i` is `11` at the end of the `for` loop. As `i` has global scope, every single callback refers to the same variable. After a bit more time passes (reaching ~1 second) each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i` to console. Since `i` is `11` and all  we will get ten print outs of `11`.
-
-Lets fix the two issues (printing 11s instead of 1...10 and waiting a ~second between print outs one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** this was the established solution (you will find this construct in all kinds of older pieces of code):
-
-```javascript
-function fn(i) {
-    setTimeout(function() {
-        console.log(i);
-    }, 1000 * i);
-}
-  
-for (var i = 1; i <= 10; i++)
-    fn(i);
-```
-
-We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
-
-With the introduction of **ES6** and `let`, we no longer need this additional function construct (though again, a lot of code still uses those constructs) as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as expected:
-
-```javascript
-for (let i = 1; i <= 10; i++)
-    setTimeout( function() {
-        console.log(i)
-    }, 1000 * i)
-```
-
-Scoping is also important when it comes to larger programming projects: imagine that you are working on some complicated project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point or another your code would stop working. Here is a very simple `jQuery` to showcase this issue:
-
-```html
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    //$ = "overwriting";
-    $("#b").click(function(){
-        $("#b").hide();
-    });
-});
-</script>
-</head>
-<body>
-
-<h1>Hide this button</h1>
-
-<button id="b">Hide me forever</button>
-
-</body>
-</html>
-```
-
-This code does exactly what we expect (hiding a button once we click it)). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
-
-Luckily, `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible.
-
-How is that achieved? Through the module pattern, which we come to very soon. It has the following goals:
+The module pattern has the following goals:
 
 - **Do not declare any global variables** or functions unless required.
 - Emulate **private/public** membership.
 - Expose only the **necessary** members to the public.
-
-#### Hoisting
-
-Hoisting is best explained with a concrete example. Consider this JavaScript code snippet. What kind of console output do you expect after executing this snippet?
-
-```javascript
-var x = six();
-
-//function declaration
-function six(){
-    return 6;
-}
-
-var y = seven();
-
-//function expression
-var seven = function(){
-    return 7;
-}
-
-console.log(x+" - "+y);
-```
-
-In both cases we seem to be executing a function before it is defined. You may either believe that the JavaScript runtime does not care about this and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function` and abort. Unfortunately, neither of these two options are true (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works, `var y = seven()`;` does not.
-
-The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed.
-
-In our example, the JavaScript runtime *hoists* the declaration of `six` is processed before the remaining code is executed.
-
-Once more:
-
-- Declarations are hoisted to the top.
-- Expressions are not hoisted.
-
-This is not only the case for functions, also variable declarations are hoisted. Consider this example:
-
-```javascript
-function f(){
-    x = 5;
-    y = 3;
-    console.log("writing from an IIFE");
-    var x;
-};
-f();
-console.log(x);
-console.log(y);
-```
-
-Variables `x` and `y` have global scope as they are not prefixed by `var` or `let` or `const`. And so the console output will be `5` and `3`.
-
-But what happens in this slightly changed piece of code?
-
-```javascript
-function f(){
-    a = 5;
-    b = 3;
-    console.log("writing from an IIFE");
-    var a, b;
-};
-f();
-console.log(a);
-console.log(b);
-```
-
-Now we will end up with a `ReferenceError: a is not defined` as the `var a` statement at the end of function `f` is **hoisted** to the top of the function - as `var a` is a declaration.
-
-#### Finally
-
-Ok, after this interlude of scoping and hoisting, let's finally come to our module pattern.
 
 Here is how the **module pattern** looks like:
 
@@ -757,7 +764,7 @@ The course book walks you through several examples of making a responsive UI con
 
 If you want to examine how existing web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML panel allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
 
-![Exploring events](img/L3-event-listeners.png) **[TODO: fix link]**
+![Exploring events](img/L3-event-listeners.png)
 
 ### Document Object Model
 
@@ -974,7 +981,12 @@ The best option is to use `this`:
           };
 
           function computeTimes() {
-            var times = parseInt(this.innerHTML);
+            /*
+             * this.innerHTML returns to us "N times", 
+             * parseInt() then strips out the " times" part 
+             * as it stops parsing at an invalid number character
+             */
+            var times = parseInt(this.innerHTML); 
             var input = parseFloat(document.getElementById("input").value);
             var res = times * input;
             alert("The result is " + res);
