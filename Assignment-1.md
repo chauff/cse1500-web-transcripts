@@ -147,7 +147,7 @@ In this, and the upcoming two assignments, you will complete a web programming p
 
 ![Board games](img/A1-games.png)
 
-*These images should serve as a first inspiration, you are by no means required to design your game board according to these examples.*
+*The images above should serve as a first inspiration, you are by no means required to design your game board according to these examples.*
 
 You can choose from nine games:
 
