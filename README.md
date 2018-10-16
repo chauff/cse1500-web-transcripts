@@ -123,7 +123,7 @@ For each lecture we provide a range of materials:
 
 ## Web lectures
 
-**Status update**: transcripts of Lectures 1 to 8 are online. Traffic light colors indicate how far along the draft is: ![#f03c15](https://placehold.it/15/f03c15/000000?text=+), ![#f6ec14](https://placehold.it/15/f6ec14/000000?text=+), ![#00cd00](https://placehold.it/15/00cd00/000000?text=+). The lecture slides are from the 2017/18 edition and will be updated in the coming month.
+**Status update**: transcripts of Lectures 1 to 8 are online. Traffic light colors indicate how far along the draft is: ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f6ec14](https://placehold.it/15/f6ec14/000000?text=+) ![#00cd00](https://placehold.it/15/00cd00/000000?text=+). The lecture slides are from the 2017/18 edition and will be updated in the coming month.
 
 - ![#00cd00](https://placehold.it/15/00cd00/000000?text=+) **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Required readings: *none*
@@ -153,7 +153,7 @@ For each lecture we provide a range of materials:
     - Fernandez, A., Insfran, E. and Abrahão, S., 2011. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and Software Technology, 53(8), pp.789-817.
     - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
   
-- ![#f6ec14](https://placehold.it/15/f6ec14/000000?text=+) **Lecture 3** on client-side JavaScript ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf))
+- ![#00cd00](https://placehold.it/15/00cd00/000000?text=+) **Lecture 3** on client-side JavaScript ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf))
   - Required readings:
     - Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
