@@ -120,6 +120,8 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 
 ## Lecture material types
 
+![materials](img/RME-materials.png)
+
 For each lecture we provide a range of materials:
 
 - **Required readings**: most of the required readings are book chapters of the web course book. The book introduces each technology from scratch. The lectures go beyond what is covered in the book and assume that you have read the corresponding book chapter(s) **before** the lecture.
