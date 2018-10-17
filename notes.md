@@ -2,8 +2,6 @@
 
 - [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
 - [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
-  - Text book: Introducing HTML5 (2012 edition)
-  - Includes material on the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API); can be taught in the *Cookies & Sessions* lecture
 - [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
 - [Web Programming Fundamentals /Stanford](http://web.stanford.edu/class/cs193x/)
 - [Creating Modern Web Applications /Brown](https://cs.brown.edu/courses/csci1320/index.html)
