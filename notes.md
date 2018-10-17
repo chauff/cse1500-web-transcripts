@@ -18,21 +18,7 @@
 - [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
 - [Javascript /UPenn](http://www.seas.upenn.edu/~cis197/)
 
-## Final project ideas
-
-- [Long list of sample apps](https://flaviocopes.com/sample-app-ideas/) with a good set of requirements
-- Use the [unsplash API](https://unsplash.com/developers) for high-quality and free images and the [Twitter API](https://developer.twitter.com/en/docs) for short texts and [fakeJSON](https://fakejson.com/) to mock JSOn responses
-- [Another list of Web app ideas](https://github.com/tastejs/awesome-app-ideas)
-- Etherpad clone
-- Board game app
-- Doodle clone (plan out a night, crowdsource date/time and location)
-- Flashcard apps
-  - [List of flashcard apps](https://en.wikipedia.org/wiki/List_of_flashcard_software)
-  - Good example: [Tinycards](https://tinycards.duolingo.com/)
-  - Good example: [Quizlet](https://quizlet.com/)
-
 ## Misc links
 - [faker.js](https://github.com/marak/Faker.js/)
 - [Good hoisting example](https://andy-carter.com/blog/variable-scope-in-modern-javascript)
 - [Windows 95 in an Electron app!](https://twitter.com/felixrieseberg/status/1032642127178547201); actual source [here](https://github.com/felixrieseberg/windows95)
-- ...
