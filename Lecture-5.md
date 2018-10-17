@@ -1,5 +1,5 @@
-Table of Content
-==
+# Table of Content <!-- omit in toc -->
+
 - [CSS: the language of web design](#css-the-language-of-web-design)
   - [Learning goals](#learning-goals)
   - [A word of warning](#a-word-of-warning)

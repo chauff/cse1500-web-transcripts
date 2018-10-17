@@ -1,5 +1,5 @@
-Table of Content
-==
+#Table of Content <!-- omit in toc -->
+
 - [HTML: the language of the web](#html-the-language-of-the-web)
     - [Learning goals](#learning-goals)
     - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
@@ -9,7 +9,7 @@ Table of Content
         - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
         - [Rule: If you cannot make it self-evident, make it self-explanatory](#rule-if-you-cannot-make-it-self-evident-make-it-self-explanatory)
         - [Expectations vs. reality: usability testing](#expectations-vs-reality-usability-testing)
-        - [Site navigation: the "trunk test"](#site-navigation-the-trunk-test)
+        - [Site navigation: the "trunk test"](#site-navigation-the-%22trunk-test%22)
         - [Entry page checklist](#entry-page-checklist)
     - [HTML5](#html5)
         - [Activity](#activity)

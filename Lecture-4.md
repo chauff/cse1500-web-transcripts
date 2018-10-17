@@ -1,5 +1,5 @@
-Table of Content
-==
+# Table of Content <!-- omit in toc -->
+
 - [Node.js: JavaScript on the server](#nodejs-javascript-on-the-server)
     - [Learning goals](#learning-goals)
     - [Introduction to Node.js](#introduction-to-nodejs)

@@ -1,5 +1,4 @@
-Table of Content
-==
+#Table of Content <!-- omit in toc -->
 
 - [HTTP: the language of Web communication](#http-the-language-of-web-communication)
     - [Web standards](#web-standards)
@@ -47,7 +46,7 @@ Table of Content
 
 ## Web standards
 
-A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium (also known as `W3C`): what are Web standards and what makes web standards so important?
+A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium, also known as **W3C**: what are Web standards and what makes web standards so important?
 
 ## Learning goals
 

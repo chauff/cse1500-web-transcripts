@@ -1,5 +1,5 @@
-Table of Content
-==
+# Table of Content <!-- omit in toc -->
+
 - [Taking a closer look at Node.js](#taking-a-closer-look-at-nodejs)
     - [Learning goals](#learning-goals)
     - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
