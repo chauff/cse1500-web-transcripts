@@ -154,4 +154,4 @@ As an alternative, make a screencast of your game and upload it to a video hosti
 
 Once you have deployed or videotaped your app, head over to CSE1500's :bulb: Brightspace, go to *Discussions* and the forum **DEPLOYED/VIDEOTAPED GAMES**. Add the URL of your deployed app or video.
 
-And now, it's time to play some games of your fellow study colleagues!
+:video_game: And now, it's time to play some games of your fellow study colleagues! :video_game:
