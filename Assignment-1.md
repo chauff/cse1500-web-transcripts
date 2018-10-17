@@ -24,21 +24,21 @@ If you get lost within the assignment, use this overview of deliverables to get 
 | 4.3  | Description of six game features                   |
 | 5.1  | Splash screen design (wireframe)                   |
 | 5.2  | Game screen design (wireframe)                     |
-| 5.3  | →→→ *upload 5.1/5.2 to Brightspace*                |
+| 5.3  | →→→ upload 5.1/5.2 to :bulb: Brightspace                |
 | 6  | Two html files                                     |
 
 All deliverable text/imagery (apart from 6.) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
 
 Submit your two html files in the form of a zipped folder.
 
-The PDF and code have to be uploaded by one of the team members to Brightspace under **Assignment 1** before the assessment session with the TAs.
+The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **Assignment 1** before the assessment session with the TAs.
 
 **To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.**
 
 ## 1. HTTP request messages: GET/HEAD
 
 ---
-Hints:
+:point_right: Hints:
 
 - To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.microsoft.com 80|tee out` will save all output to a file called `out`.
 
@@ -214,7 +214,7 @@ You have a lot of artistic freedom in designing the board and game information.
 
 ### 5.3)
 
-Once you have completed the design of your app, head over to CSE1500's Brightspace, go to *Discussions* and then the forum **BOARD GAME APP DESIGNS**. Create a thread with your team's name as subject/title (e.g. `CSE234`) and post your team's proposed splash screen and game screen. Feel free to also add a paragraph describing your choices.
+Once you have completed the design of your app, head over to CSE1500's :bulb: Brightspace, go to *Discussions* and then the forum **BOARD GAME APP DESIGNS**. Create a thread with your team's name as subject/title (e.g. `CSE234`) and post your team's proposed splash screen and game screen. Feel free to also add a paragraph describing your choices.
 
 ## 6. Your own board game app: HTML
 

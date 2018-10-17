@@ -27,7 +27,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 *Note: we expect a single source code submission, **not** one code submission per task!*
 
-The PDF and code has to be uploaded by one of the team members to Brightspace under **Assignment 2** before the assessment session with the TAs.
+The PDF and code has to be uploaded by one of the team members to :bulb: Brightspace under **Assignment 2** before the assessment session with the TAs.
 
 **To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and the client-server communication has to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that you pass, if your app does not (yet) deal with players aborting the game in the middle or making undesired moves. In addition, while we recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance does not impact your assessment.
 
@@ -132,7 +132,7 @@ Now that you have made your plan and decided on the use of the design patterns, 
 - Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` (besides the obligatory script loading tags) but instead reside in the corresponding `[appname]/public/javascripts` folder.
 
 ---
-Hints:
+:point_right: Hints:
 
 - You do not have to incorporate style elements yet (CSS), we will cover styling of HTML elements in the next assignment. If despite this, you choose to incorporate CSS, be aware that we have certain requirements for CSS, so if you want to use CSS already, [check the requirements](Assignment-3.md) to avoid duplicate work later on.
 - You can, but do not have to use ES6 features. Check http://es6-features.org if you are interested in what ES6 has to offer. The one feature of ES6 we recommend to use is `let`; the [scoping section of Lecture 3](Lecture-3.md#scoping) explains why this is the case.
@@ -246,7 +246,7 @@ Having seen and run the minimal WebSocket example, it is now time to implement c
 - The players communicate with each other (i.e. their moves) via WebSockets.
 
 ---
-Hints:
+:point_right: Hints:
 
 - You may want to share code between the client and server - the message types described above are a good candidate for code you do not want to duplicate. The solution is a particular design pattern, [described here](https://medium.com/@ShamreshKhan/how-to-share-client-side-and-server-side-js-code-cc04c3422497). If you add for instance `messages.js` to `myapp/public/javascripts` following that particular design pattern, you can add the following line to `app.js` to access it in your Node.js script as well: `var messages = require("./public/javascripts/messages");`.
 

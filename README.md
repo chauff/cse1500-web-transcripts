@@ -131,7 +131,7 @@ For each lecture we provide a range of materials:
 
 ## Web lectures
 
-**Status update**: transcripts of Lectures 1 to 8 are online. Traffic light colors indicate how far along the draft is: ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ![#f6ec14](https://placehold.it/15/f6ec14/000000?text=+) ![#00cd00](https://placehold.it/15/00cd00/000000?text=+). The lecture slides are from the 2017/18 edition and will be updated in the coming month.
+**Status update**: transcripts of Lectures 1 to 8 are online. Traffic light colors :traffic_light: indicate how far along the draft is. The lecture slides are from the 2017/18 edition and will be updated in the coming month.
 
 - ![#00cd00](https://placehold.it/15/00cd00/000000?text=+) **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Required readings: *none*

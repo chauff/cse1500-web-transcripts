@@ -16,12 +16,11 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.2  | CSS                                                |
 | 1.3  | CSS                                                |
 | 1.4  | CSS                                                |
-| 1.5  | →→→ *upload 1.1 / 1.2 to Brightspace*              |
+| 1.5  | →→→ upload 1.1 / 1.2 to :bulb: Brightspace             |
 | 2    | Source code                                        |
 | 3    | Source code                                        |
 | 4    | -                                                  |
-| 5.1 (optional) | -                                        |
-| 5.2 (optional) | →→→ *upload URL to Brightspace*          |
+| 5 (optional) | →→→ upload URL to :bulb: Brightspace          |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
@@ -53,7 +52,7 @@ First, work on your **splash screen** and style the page with CSS according to t
 - At least one CSS animation and one CSS transition.
 
 ---
-Hints:
+:point_right: Hints:
 
 - CSS examples are plentiful on the web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, prefer simpler CSS rules, often the same effect can be achieved in a myriad of ways.
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as [Sass](https://sass-lang.com/) exist. Do **not** use those, in this course we make use of *plain CSS*.
@@ -67,7 +66,7 @@ Next, tackle the CSS for your **game screen**. The look of the game screen shoul
 Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).
 
 ---
-Hint:
+:point_right: Hint:
 
 - In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
 
@@ -83,7 +82,7 @@ Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/
 
 ### 1.5)
 
-Once you have completed the CSS of your app, head over to CSE1500's Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
+Once you have completed the CSS of your app, head over to CSE1500's :bulb: Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your :bulb: Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
 
 *Feel free to browse your colleagues' designs and implementations and comment on them!*
 
@@ -124,15 +123,16 @@ Ensure that your code contains the necessary `package.json` file content to inst
 :fireworks: **Well done!** If you have reached this point, you have a fully functioning game.
 
 You now have three options:
-- Call it a day!
+
+- Be glad you made it and call it a day!
 - Deploy your game on a publicly accessible server and let others play it!
 - Make a screencast showing off your game!
 
 ## 5. Optional: game deployment / videotaping
 
- To make your game accessible to the public, it needs to be deployed somewhere - `locahost:3000` only goes so far. **This is an optional step.**
+ To make your game accessible to the public, it needs to be deployed somewhere - `locahost:3000` only goes so far. 
 
-For short-term deployments (a few minutes/hours), e.g. to let your fellow study colleagues play your game, [ngrok](https://ngrok.com/) is a quick and easy solution. You can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive app this way, as all traffic passes through ngrok servers!*
+For short-term deployments (a few minutes/hours), e.g. to show off your game quickly, [ngrok](https://ngrok.com/) is a quick and easy solution. You can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive app this way, as all traffic passes through ngrok servers!*
 
 That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs). 
 
@@ -150,12 +150,8 @@ git commit -n "First commit"
 
 *If you want to deploy your game elsewhere, feel free to do so*!
 
-As an alternative, make a screencast of your game and upload it to, e.g. YouTube.
+As an alternative, make a screencast of your game and upload it to a video hosting platform such as [vimeo](https://vimeo.com/upload) or [YouTube](https://www.youtube.com/).
 
-### 5.1)
+Once you have deployed or videotaped your app, head over to CSE1500's :bulb: Brightspace, go to *Discussions* and the forum **DEPLOYED/VIDEOTAPED GAMES**. Add the URL of your deployed app or video.
 
-Once you have deployed or videotaped your app, head over to CSE1500's Brightspace, go to *Discussions* and the forum **DEPLOYED/VIDEOTAPED GAMES**. Add the URL of your deployed app or video.
-
-### 5.2)
-
-Play some apps of your fellow study colleagues!
+And now, it's time to play some games of your fellow study colleagues!
