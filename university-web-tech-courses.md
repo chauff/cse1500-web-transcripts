@@ -15,8 +15,3 @@
 - [Web Programming /U Washington](https://courses.cs.washington.edu/courses/cse154/17au/lectures.shtml)
 - [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
 - [Javascript /UPenn](http://www.seas.upenn.edu/~cis197/)
-
-## Misc links
-- [faker.js](https://github.com/marak/Faker.js/)
-- [Good hoisting example](https://andy-carter.com/blog/variable-scope-in-modern-javascript)
-- [Windows 95 in an Electron app!](https://twitter.com/felixrieseberg/status/1032642127178547201); actual source [here](https://github.com/felixrieseberg/windows95)
