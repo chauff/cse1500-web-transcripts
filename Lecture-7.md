@@ -1,5 +1,5 @@
-# Table of Content <!-- omit in toc -->
-
+Table of Content <!-- omit in toc -->
+==
 - [Cookies, sessions and third-party authentication](#cookies-sessions-and-third-party-authentication)
     - [Learning goals](#learning-goals)
     - [Introduction to cookies and sessions](#introduction-to-cookies-and-sessions)

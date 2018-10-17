@@ -1,5 +1,5 @@
-# Table of Content <!-- omit in toc -->
-
+Table of Content <!-- omit in toc -->
+==
 - [JavaScript: the language of browser interactions](#javascript-the-language-of-browser-interactions)
     - [Learning goals](#learning-goals)
     - [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
