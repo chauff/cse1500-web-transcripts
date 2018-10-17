@@ -48,16 +48,17 @@ Table of Content <!-- omit in toc -->
 ## Web standards
 
 ![Web standards](img/L1-web.png)
+<sub>Image sourced from the linked video below.</sub>
 
 A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium, also known as **W3C**: what are Web standards and what makes web standards so important?
 
 ## Learning goals
 
-- Describe how web servers and clients interact with each other
-- Write HTTP messages that request web resources from web servers and understand the responses
-- Describe the different components of URLs and their purpose
-- Understand and employ basic HTTP authentication
-- Explain the difference between HTTP and HTTPS
+- Describe how web servers and clients interact with each other.
+- Write HTTP messages that request web resources from web servers and understand the responses.
+- Describe the different components of URLs and their purpose.
+- Understand and employ basic HTTP authentication.
+- Explain the difference between HTTP and HTTPS.
 
 ## World Wide Web vs. Internet
 
@@ -65,44 +66,56 @@ A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium, a
 
 The vision of the World Wide Web was already developed in the 1940s by Vannevar Bush, an American engineer who described his idea of a *memex* (a combination of memory and index) in the article [As We May Think](https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/). The web can simply be described as **a system of interconnected hypertext documents, available via the Internet**.
 
-In the 1960s, the first steps from vision to reality were made by DARPA, the *Defense Advanced Research Projects Agency* of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed in a way to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate.
+In the 1960s, the first steps from vision to reality were made by DARPA, the *Defense Advanced Research Projects Agency* of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate.
 
-It took about 30 years, before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee created the World Wide Web: he was the man who first successfully implemented client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure on the web development today, in fact, he is the current director of the Word Wide Web Consortium.
+It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure in the web community today, in fact, he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
 
-In the early days of the web, the "browser" looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, Lynx, which you can still use today:
+In the early days of the web, browsers looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, [Lynx](http://lynx.invisible-island.net/), which you can still use today (<sub>Image sourced from Lynx's Wikipedia page</sub>):
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Lynx-wikipedia.png" width="600">
 
-Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain competitive advantages. Instead of adhering to a shared standard (as today published by the Word Wide Web Consortium), different browsers implemented very different features and the label *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
+Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 
 ### Key aspects of the Internet
 
-The web is built on top of the Internet. The Internet describes the hardware layer: it is spanned from **interconnected computer networks around the globe that all communicate through one common standard**, the so-called TCP/IP protocol.
+The web is built on top of the Internet. The Internet describes the hardware layer: it is spanned from **interconnected computer networks around the globe that all communicate through one common standard**, the so-called TCP/IP protocol suite.
 The different sub-networks function autonomously, they do not depend on each other. There is not a single master - no machine or sub-network is in control of the whole network. It is very easy for machines or even entire sub-networks to join and leave the network without interrupting the flow of data among the remaining network.
-All devices interact with each other through agreed-upon open standards which are very easy to use as these standards are implemented in a wide range of open-source server and client software.
+All devices interact with each other through **agreed-upon open standards** which are easy to use. These standards are implemented in a wide range of open-source server and client software.
 
 To show how far we have come, [here](https://qz.com/860873/a-1973-map-of-the-internet-charted-by-darpa/) is the state of the Internet in 1973.
 
 ### Two important organizations
 
-The web and the Internet are not static, they are continuously in development. This development is led by two organizations: the **IETF** - the *Internet Engineering Task Force* - leads the development of the Internet. The **W3C** - the *World Wide Web Consortium* - leads the development of the web. The IETF to many is a less well-known (but equally important) organization than the W3C, and while you may not often come across the IETF acronym, you will time and again encounter the so-called RFCs. RFCs are **Request for Comments**, released by the IETF. They describe the Internet standards in detail. As an example, [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) is the document describing the Internet Message Format, aka email format, in about 50 pages.
+The web and the Internet are not static, they are continuously changing. This development is led by two organizations: 
+
+- The Internet Engineering Task Force (**IETF**) leads the development of the Internet. 
+- The World Wide Web Consortium (**W3C**) leads the development of the web. 
+
+To many, the IETF is a lesser known organization, and while you may not often come across the IETF acronym, you will time and again encounter so-called RFCs. RFCs are **Request for Comments**, released by the IETF. They describe the Internet standards in detail. As an example, [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) is the document describing the Internet Message Format, aka email format, in about 50 pages.
 
 ## HTTP messages
 
 - **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardized in 1997.
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
 
-HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol ("speedy protocol"); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). According to current estimates, about 30% of websites support HTTP/2. As HTTP/1.1 is still the dominant protocol type, we focus on it in our lecture.
+HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol (*speedy protocol*); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). According to current estimates, about 30% of websites support HTTP/2. As HTTP/1.1 is still the dominant protocol type, we focus on it in this lecture.
 
 ### Web servers and clients
 
-On the web, clients and servers communicate with each other through HTTP requests and responses. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your web browser is acting as the **client**. The **server** is your email provider.
-How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve thousands of client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, but also software programs or web cam gateways. As long as they are accessible through an identifier, they can be considered as web resources.
-The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file it will send it to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
+On the web, clients and servers communicate with each other through **HTTP requests** and **HTTP responses**. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your web browser is acting as the **client**. The **server** is your email provider.
+
+![HTTP request and response](img/L1-http-req-res.png)
+
+How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, but also software programs or web cam gateways. As long as they are accessible through an identifier, they can be considered as web resources.
+The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
 
 ### Network communication
 
-Where does HTTP fit into the **network stack**? A very common representation of the network stack is the ****OSI model**, the *Open Systems Interconnection model*. It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. zeros and ones that pass through the physical network, and ending at the **application layer**, were we end up with semantic units such as video segments and emails.
+Where does HTTP fit into the **network stack**? A very common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model* (<sub>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702)</sub>):
+
+![Zimmermann's OSI model](img/L1-OSI.png)
+
+ It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0's and 1's that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails.
 
 Many network protocols exist, to us only three are of importance:
 
