@@ -15,7 +15,7 @@ Table of Content <!-- omit in toc -->
         - [HTTP request message](#http-request-message)
         - [HTTP response message](#http-response-message)
     - [HTTP headers dissected](#http-headers-dissected)
-        - [Important entity header fields](#important-entity-header-fields)
+        - [Important header fields](#important-header-fields)
         - [Content-Type](#content-type)
         - [Content-Length](#content-length)
         - [Content-Encoding](#content-encoding)
@@ -70,9 +70,10 @@ In the 1960s, the first steps from vision to reality were made by DARPA, the *De
 
 It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure in the web community today, in fact, he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
 
-In the early days of the web, browsers looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, [Lynx](http://lynx.invisible-island.net/), which you can still use today (<sub>Image sourced from Lynx's Wikipedia page</sub>):
+In the early days of the web, browsers looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, [Lynx](http://lynx.invisible-island.net/), which you can still use today:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Lynx-wikipedia.png" width="600">
+<sub>Image sourced from Lynx's Wikipedia page</sub>
 
 Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 
@@ -111,32 +112,36 @@ The **client initiates the communication**, sending an **HTTP request** to the s
 
 ### Network communication
 
-Where does HTTP fit into the **network stack**? A very common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model* (<sub>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702)</sub>):
+Where does HTTP fit into the **network stack**? A very common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model*:
 
 ![Zimmermann's OSI model](img/L1-OSI.png)
+<sub>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702)</sub>
 
- It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0's and 1's that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails.
+ It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails.
 
 Many network protocols exist, to us only three are of importance:
 
-- the Internet Protocol (or IP),
-- the Transmission Control Protocol (or TCP),
-- and HTTP itself.
+- the Internet Protocol (**IP**),
+- the Transmission Control Protocol (**TCP**), and
+- the HyperText Transfer Protocol (**HTTP**).
 
-HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is the following: HTTP is **reliable**; the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
+HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is the following: HTTP is **reliable** (this property is inherited from TCP, which is reliable; IP is not reliable). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
 
 ### Activity
 
 Open your favorite browser and use its built-in **web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website.
 
+Here is a screenshot of Firefox's developer tools:
+
 ![Browser built-in web dev tools](img/L1-devtools.png)
 
-You can see several panels, for the different types of data that are downloaded or created when a web site loads. To load a seemingly simple site like [https://www.tudelft.nl/](https://www.tudelft.nl/), many different web resources are actually needed. The resource initially requested (`/`, i.e. the page residing at the URL you chose) links to a myriad of additional web resources, which are then automatically requested by the web browser as well, leading to a **cascade of resource requests**.
-Each resource is requested separately by your browser. How exactly is it requested? Through an HTTP request! And how exactly that looks you can view in the Headers tab (and not just the request header, but also the response header):
+You can see several panels, for the different types of data that are downloaded or created when a web site loads. To load a  site like [https://www.tudelft.nl/](https://www.tudelft.nl/), many different web resources are needed. The resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser as well, leading to a **cascade of resource requests**.
+Each resource is requested separately by the browser. 
+
+How exactly is it requested? Through an HTTP request! And how exactly that looks you can see in the Headers tab:
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
 
-You will also notice that the HTTP requests differ slightly between different types of web resources (e.g. image vs. HTML page).
 
 ### HTTP request message
 
@@ -144,7 +149,7 @@ You will also notice that the HTTP requests differ slightly between different ty
 
 Below is a typical HTTP request message:
 
-```bash
+```console
 GET / HTTP/1.1
 Host: www.tudelft.nl
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:31.0) Gecko/20100101 Firefox/31.0
@@ -156,7 +161,11 @@ Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 ```
 
 HTTP is a **plain text protocol** and **line-oriented**.
-The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. In the last line, you can see that in this request, a cookie is sent from the client to the server as well.
+The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  
+
+What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. 
+
+In the last line, you can see that in this request, a cookie is sent from the client to server as well.
 
 ### HTTP response message
 
@@ -164,7 +173,7 @@ The first line indicates what this message is about. In this case the keyword `G
 
 The server that received the HTTP request above now assembles the following response (note that `[..xx..]` indicates other message content we are not interested in at the moment):
 
-```bash
+```console
 HTTP/1.1 200 OK
 Date: Fri, 01 Aug 2014 13:35:55 GMT
 Content-Type: text/html; charset=utf-8
@@ -177,15 +186,15 @@ Server: TU Delft Web Server
 [..body..]
 ```
 
-The first line indicates the status of the response - in this case, the requested resource exists and the server sends back the status `200 OK`: everything is okay, the resource was found and is send to you.
-The response is then structured into **header fields**, in the format of `name:value`, and the **response body** which contains the actual content. The body is optional - if the requested resource is not found, an error status code without a body would be returned to the client.
-The header fields contain important information for the client to understand the data being sent, including the type of content, the length and so on. As you can see here, the server can also send cookies to the client in the header fields.
+The first line indicates the status of the response. In this case, the requested **resource exists** and the client is authorized to access it. Thus, the server sends back the status `200 OK`: everything is okay, the resource was found, you are allowed to receive it.
+The response is then structured into **response header fields** in the `name:value` format, and the **response body** which contains the actual content. The body is optional - if the requested resource is not found, an error status code without a body would be returned to the client.
+The header fields contain important information for the client to understand the data being sent, including the type of content, the length and so on. Without this information, the client would be unable to process the data in the correct manner. 
 
 ## HTTP headers dissected
 
-### Important entity header fields
+### Important header fields
 
-Many header fields exist, the most important ones (though to some extent this remains an arbitrary choice) are listed below:
+Many header fields exist, the most important ones (though to some extent this remains an arbitrary choice) are the following:
 
 | Header field     | Description                                         |
 |------------------|-----------------------------------------------------|
@@ -201,23 +210,21 @@ Many header fields exist, the most important ones (though to some extent this re
 | Allow            | Lists the legal request methods for the entity      |
 | **Connection & Upgrade**       | Protocol upgrade  |
 
-The bold header fields will be covered below. Let's briefly walk over the other fields:
+The bold header fields will be covered below in more detail. Let's briefly describe the other fields:
 
-- The `Content-Language` indicates the language the entity is in, which can be English, Dutch or any other language.
-- The `Content-Location` can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same web resource resides.
+- `Content-Language` indicates the language the resource (also known as entity) is in, which can be English, Dutch or any other language.
+- The `Content-Location` field can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same web resource resides.
 - `Content-Range` is important for entities that consist of multiple parts and are sent partially across different HTTP responses; without this information, the client would be unable to piece together the whole entity.
 - Finally, `Allow` indicates to the client what type of requests can be made for the entity in question; `GET` is only one of a number of methods, it may also be possible to alter or delete a web resource.
-
-Lets look at a few of these fields a bit more in detail.
 
 ### Content-Type
 
 **MIME** stands for *Multipurpose Internet Mail Extensions* and was designed to solve problems when moving messages between electronic mail systems; it worked well and was adopted by HTTP to label its content.
-**MIME types* determine how the client reacts - html is rendered, videos are played and so on.
+MIME **types** determine how the client reacts - html is rendered, videos are played and so on.
 The pattern is always the same: each MIME type has a **primary object type** and a **subtype**.
 Here are a few typical examples: `text/plain`, `text/html`, `image/jpeg`, `video/quicktime`, `application/vnd.ms-powerpoint`. As you can see in the `text/*` cases, the primary object type can have several subtypes.
 
-MIME types can be very diverse. Here is a list of the most and least popular MIME types found on a sample of a large-scale [web crawl](http://commoncrawl.org/) in 2014:
+Diverse MIME types exist. Here is a list of the most and least popular MIME types we found on a sample of a large-scale [web crawl](http://commoncrawl.org/) in 2014:
 
 | Most popular         | Least popular               |
 |----------------------|-----------------------------|
@@ -237,26 +244,30 @@ Among the least popular MIME types are application specific types such as `chemi
 
 ### Content-Length
 
-The content-length contains the size of the entity body in the message.
+This header field contains the size of the entity body in the message. It has two purposes:
 
-It has two purposes:
-
-1. to indicate to the client whether or not the entire message was received. If the message received is less than what was promised the client will make the same request again.
+1. To indicate to the client whether or not the entire message was received. If the message received is less than what was promised, the client should make the same request again.
 
 2. The header is also of importance for so-called *persistent connections*. Building up a TCP connection costs time. Instead of doing this for every single HTTP request/response cycle, we can reuse the same TCP connection for multiple HTTP request/response messages. For this to work though, it needs to be known when a particular HTTP message ends and when a new one starts.
 
 ### Content-Encoding
 
-Content is often encoded, and in particular **compressed**. The four common encodings are `gzip`, `compress`, `deflate` or `identity`, the latter indicates that no encoding should be used.
+Content is often encoded, and in particular **compressed**. The four common encodings are:
+
+- `gzip` 
+- `compress`
+- `deflate`
+- `identity` (this encoding indicates that no encoding should be used)
+  
 How do client and server negotiate acceptable encodings? If the server would send content in an encoding for which the client requires specific software to decode but does not have, the client receives a blob of data but is unable to interpret it. To avoid this situation, the client sends in the HTTP request a list of encodings it can deal with. This happens in the `Accept-Encoding` request header, e.g. `Accept-Encoding: gzip, deflate`.
 
-Why bother with encodings at all? If an image or video is compressed by the server before it is sent to the client, network bandwidth is saved. There is a **tradeoff** however: compressed content needs to be decompressed by the client, which increases the processing costs.
+But why bbother with encodings at all? If an image or video is compressed by the server before it is sent to the client, **network bandwidth is saved**. There is a **tradeoff**, however: compressed content needs to be decompressed by the client, which **increases the processing costs**.
 
 ### Content-MD5
 
 Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy. MD5 acts as a sanity check.
 
-MD5 stands for **message digest** and is an important data verification component: the message content is hashed into a 128 bit value. Once the client receives the HTTP response it computes the checksum of the content as well and compares it with the checksum in the header field. If there is a mismatch, the client assumes that the content is corrupted and requests the content again.
+MD5 stands for **message digest** and is an important data verification component: the message content is hashed into a 128 bit value. Once the client receives the HTTP response it computes the checksum of the content as well and compares it with the checksum in the header field. If there is a mismatch, the client should assume that the content has been corrupted along the way and thus it should request the content again.
 
 ### Expires
 
@@ -264,6 +275,8 @@ MD5 stands for **message digest** and is an important data verification componen
 But how does a web cache know for how long a web resource is valid? Imagine a web cache caching `nu.nl` from the origin server (i.e. the server hosting `nu.nl`) - this copy will quickly become stale and outdated. On the other hand, an RFC page that rarely changes may be valid in the cache for a long time.
 
 This is where the `Expires` header field comes in. It indicates to a web cache when a fetched resource is no longer valid and needs to be retrieved from the origin server.
+
+![Web cache](img/L1-webcache.png)
 
 ### Expires & Cache-Control
 
