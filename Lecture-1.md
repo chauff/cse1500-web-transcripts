@@ -14,7 +14,7 @@
     - [HTTP messages](#http-messages)
         - [Web servers and clients](#web-servers-and-clients)
         - [Network communication](#network-communication)
-        - [Activity](#activity)
+        - [:computer: Activity](#computer-activity)
         - [HTTP request message](#http-request-message)
         - [HTTP response message](#http-response-message)
     - [HTTP headers dissected](#http-headers-dissected)
@@ -119,6 +119,7 @@ The **client initiates the communication**, sending an **HTTP request** to the s
 Where does HTTP fit into the **network stack**? A very common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model*:
 
 ![Zimmermann's OSI model](img/L1-OSI.png)
+
 <sup>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702)</sup>
 
  It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails.
@@ -129,9 +130,9 @@ Many network protocols exist, to us only three are of importance:
 - the Transmission Control Protocol (**TCP**), and
 - the HyperText Transfer Protocol (**HTTP**).
 
-HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is the following: HTTP is **reliable** (this property is inherited from TCP, which is reliable; IP is not reliable). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
+HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property is inherited from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
 
-### Activity
+### :computer: Activity
 
 Open your favorite browser and use its built-in **web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website.
 
