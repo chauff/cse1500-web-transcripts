@@ -164,6 +164,8 @@ For each lecture we provide a range of materials:
   - Required readings:
     - Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
     - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
+  - Recommended activity:
+    - Listen to [this podcast](http://talkingcode.com/podcast/episode-11-tom-dale/) on modern web applications and the move from web sites to web apps and an almost *native* experience.
   - Recommended readings:
     - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
     - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).

@@ -1,4 +1,3 @@
-
 # HTML: the language of the Web <!-- omit in toc -->
 
 ## Table of Content <!-- omit in toc -->
@@ -55,7 +54,13 @@ Do web technologies also help you to create desktop apps? Indeed, they do! [Elec
 
 Electron itself uses [Node.js](https://nodejs.org/en/), the server-side JavaScript runtime we cover in a later lecture together with [Chromium](https://www.chromium.org/), an open-source web runtime (i.e. browser).
 
-The major benefit of Electron should be clear: instead of writing three separate desktop variants (one for each operating system) you only have to write and maintain one. New features are integrated in one application instead of three, which reduces feature delivery time. For these reasons, many well-known applications today are built on Electron, including [Visual Studio Code](https://code.visualstudio.com/) (the IDE we recommend you use), the Slack app, [Atom](https://atom.io/) and [many, many more](https://electronjs.org/apps). If you ever wanted to know how *Windows 95* looks like, there is an [Electron app for that as well](https://github.com/felixrieseberg/windows95). On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large.
+The major benefit of Electron should be clear: instead of writing three separate desktop variants (one for each operating system) you only have to write and maintain one. New features are integrated in one application instead of three, which reduces feature delivery time. For these reasons, many well-known applications today are built on Electron, including [Visual Studio Code](https://code.visualstudio.com/) (the IDE we recommend you use), the Slack app, [Atom](https://atom.io/) and [many, many more](https://electronjs.org/apps). 
+
+If you ever wanted to know how *Windows 95* looks like, there is an [Electron app for that as well](https://github.com/felixrieseberg/windows95). It looks like this:
+
+![Windows 95](img/L2-windows95.png)
+
+On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. More concretely, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](http://www.upenn.edu/computing/printout/archive/v12/5/win95.html).
 
 ## Web design basics
 
