@@ -134,18 +134,19 @@ HTTP is at the top of the stack, and TCP builds on top of IP. Important to know 
 
 ### :bangbang: Activity
 
-Open your favorite browser and use its built-in **web development tools** (all modern browsers have those) to see what is going on in terms of HTTP messages when loading a website.
+Open a modern browser and use its built-in **web development tools** to see what HTTP messages are exchanged when loading a web site. In this course, all tooling examples are based on Firefox's dev tools; very similar tooling exists for Chrome and Edge.
 
-Here is a screenshot of Firefox's developer tools:
+Firefox's developer tools look as follows:
 
 ![Browser built-in web dev tools](img/L1-devtools.png)
 
-You can see several panels, for the different types of data that are downloaded or created when a web site loads. To load a  site like [https://www.tudelft.nl/](https://www.tudelft.nl/), many different web resources are needed. The resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser as well, leading to a **cascade of resource requests**.
-Each resource is requested separately by the browser. 
+There are several panels, for the different types of data that are downloaded or created when a web site is being downloaded and rendered. The resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests**.
 
-How exactly is it requested? Through an HTTP request! And how exactly that looks you can see in the Headers tab:
+Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in the *Headers tab*:
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
+
+Let's dive into the details!
 
 ### HTTP request message
 
@@ -165,13 +166,13 @@ Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 HTTP is a **plain text protocol** and **line-oriented**.
 The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number (`1.1`) indicates the highest version of HTTP that an application supports.  
 
-What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, etc. 
+What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on.
 
-In the last line, you can see that in this request, a cookie is sent from the client to server as well.
+In the last line, you can see that in this request, a cookie is sent from the client to server.
 
 ### HTTP response message
 
-The server that received the HTTP request above now assembles the following response (note that `[..xx..]` indicates other message content we are not interested in at the moment):
+The server that received the above HTTP request now assembles the following response:
 
 ```console
 HTTP/1.1 200 OK
@@ -185,6 +186,8 @@ Server: TU Delft Web Server
 
 [..body..]
 ```
+
+Here, `[..xx..]` indicates other message content we are not interested in at the moment.
 
 The first line indicates the status of the response. In this case, the requested **resource exists** and the client is authorized to access it. Thus, the server sends back the status `200 OK`: everything is okay, the resource was found, you are allowed to receive it.
 The response is then structured into **response header fields** in the `name:value` format, and the **response body** which contains the actual content. The body is optional - if the requested resource is not found, an error status code without a body would be returned to the client.
@@ -210,17 +213,18 @@ Many header fields exist, the most important ones (though to some extent this re
 | Allow            | Lists the legal request methods for the entity      |
 | **Connection & Upgrade**       | Protocol upgrade  |
 
-The bold header fields will be covered below in more detail. Let's briefly describe the other fields:
+The header fields in bold **will** be covered below in more detail. Let's briefly describe the other fields:
 
 - `Content-Language` indicates the language the resource (also known as entity) is in, which can be English, Dutch or any other language.
 - The `Content-Location` field can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same web resource resides.
-- `Content-Range` is important for entities that consist of multiple parts and are sent partially across different HTTP responses; without this information, the client would be unable to piece together the whole entity.
-- Finally, `Allow` indicates to the client what type of requests can be made for the entity in question; `GET` is only one of a number of methods, it may also be possible to alter or delete a web resource.
+- `Content-Range` is vital for entities that consist of multiple parts and are sent partially across different HTTP responses; without this information, the client would be unable to piece together the whole entity.
+- `Allow` indicates to the client what type of requests can be made for the entity in question; `GET` is only one of a number of methods, it may also be possible to alter or delete a web resource.
 
 ### Content-Type
 
 **MIME** stands for *Multipurpose Internet Mail Extensions* and was designed to solve problems when moving messages between electronic mail systems; it worked well and was adopted by HTTP to label its content.
-MIME **types** determine how the client reacts - html is rendered, videos are played and so on.
+
+MIME **types** determine how the client reacts - html is rendered, videos are played, etc.
 The pattern is always the same: each MIME type has a **primary object type** and a **subtype**.
 Here are a few typical examples: `text/plain`, `text/html`, `image/jpeg`, `video/quicktime`, `application/vnd.ms-powerpoint`. As you can see in the `text/*` cases, the primary object type can have several subtypes.
 
@@ -238,7 +242,9 @@ Diverse MIME types exist. Here is a list of the most and least popular MIME type
 | application/pdf      | application/postscript      |
 | application/atom+xml | application/x-msdos-program |
 
-You should be able to recognise most of the popular types; `application/rss+xml` and `application/atom+xml` are two popular types of web feed standards. Note, that if a server does not include a specific MIME type the default setting becomes `unknown/unknown`.
+You should be able to recognise most of the popular types apart from `application/rss+xml` and `application/atom+xml` - those are two popular types of web feed standards.
+
+If a server does not include a specific MIME type the default setting becomes `unknown/unknown`.
 
 Among the least popular MIME types are application specific types such as `chemical/x-pdb` for protein databank data and others.
 
