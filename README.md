@@ -147,7 +147,7 @@ For each lecture we provide a range of materials:
 - **Lecture 1** covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf))
   - Required readings: *none*
   - Recommended activity:
-    - Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
+    - :headphones: Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
   - Recommended readings:
     - Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do).
     - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP).
@@ -165,7 +165,7 @@ For each lecture we provide a range of materials:
     - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
     - :warning: [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
   - Recommended activity:
-    - Listen to [this podcast](http://talkingcode.com/podcast/episode-11-tom-dale/) on modern web applications and the move from web sites to web apps and an almost *native* experience.
+    - :headphones: Listen to [this podcast](http://talkingcode.com/podcast/episode-11-tom-dale/) on modern web applications and the move from web sites to web apps and an almost *native* experience.
   - Recommended readings:
     - Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
     - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).
@@ -179,7 +179,7 @@ For each lecture we provide a range of materials:
     - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
     - [Interactive exercises for Lecture 3](nodeschool-exercises.md).
-    - Listen to this podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging).
+    - :headphones: Listen to this podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging).
   - Recommended readings:
     - [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
     - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects).
@@ -211,8 +211,8 @@ For each lecture we provide a range of materials:
   - Required readings:
     - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
-    - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS.
-    - Listen to [this podcast](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
+    - :tv: Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS.
+    - :headphones: Listen to [this podcast](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
   - Recommended readings:
     - Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
     - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
@@ -248,7 +248,7 @@ For each lecture we provide a range of materials:
 - :construction: **Lecture 8** on web security ([2018/19 transcript](Lecture-8.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf))
   - Required readings: *none*
   - Recommended activities:
-    - Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
+    - :headphones: Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
     - In a "star module" two years ago, two first-year students in TI1506 implemented [CrapStore](https://github.com/nielsdebruin/CrapStore), a Node.js based web app modeled after BadStore (discussed in class). Try it out if you want to test some basic web security issues.
   - Recommended readings:
     - If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html) (available for free). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).
