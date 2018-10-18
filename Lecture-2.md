@@ -177,15 +177,17 @@ The result of a usability test are a set of issues. Each of those issues should 
 
 ### Site navigation: the *trunk test*
 
-In order to determine whether a web site's navigation scheme is useful, Krug developed the "trunk test". Given a web site, pick a random page in it, print it and give it to a user who has never seen the site.
+In order to determine whether a web site's navigation scheme is useful, Krug developed the so-called *trunk test*. Given a web site, pick a random page in it, print it and give it to a user who has never seen the site.
 
 As quickly as possible, the user should find:
 
 - the name of the web site;
 - the name of the page she currently views;
 - major sections of the page;
-- possible navigation options at this point;
+- possible navigation options at this point; and
 - *You are here* indicators.
+
+If the user is not able to find those elements, the site navigation scheme is considered sub-optimal.
 
 ### Entry page checklist
 
@@ -196,7 +198,14 @@ The home page (or entry page) of a web application should answer a number of ess
 - Why **should** I be here?
 - What do they **have** here?
 
-Surprisingly many home pages are not able to answer these questions. Take for example the home page of [coffeecompany.nl](https://web.archive.org/web/20180810044705/http://coffeecompany.nl/) - it is not obvious that the core business here is a chain of small cafes. Another serial offender are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
+Surprisingly many home pages are not able to answer these questions. Take for example the home page of https://coffeecompany.nl/:
+
+![Coffeecompany](img/L2-coffeecompany.png)
+<sub>Screenshot taken October 18, 2018</sub>
+
+It is not obvious that the core business here is a chain of small cafes in the Netherlands. 
+
+Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
 ## HTML5
 
