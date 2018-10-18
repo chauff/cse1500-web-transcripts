@@ -1,40 +1,40 @@
-Table of Content <!-- omit in toc -->
-==
-- [JavaScript: the language of browser interactions](#javascript-the-language-of-browser-interactions)
-    - [Learning goals](#learning-goals)
-    - [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
-    - [Examples throughout the lectures](#examples-throughout-the-lectures)
-    - [JavaScript's reputation](#javascripts-reputation)
-    - [Scripting overview](#scripting-overview)
-        - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-        - [`<script>`](#script)
-        - [Activity](#activity)
-    - [Scoping and hoisting](#scoping-and-hoisting)
-        - [Scoping](#scoping)
-        - [Hoisting](#hoisting)
-        - [this](#this)
-    - [JavaScript design patterns](#javascript-design-patterns)
-        - [JavaScript objects](#javascript-objects)
-        - [Object creation with `new`](#object-creation-with-new)
-        - [Object literals](#object-literals)
-        - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
-        - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-        - [Design pattern 3: Module](#design-pattern-3-module)
-    - [Events and the DOM](#events-and-the-dom)
-        - [Document Object Model](#document-object-model)
-            - [Example 1: document.getElementById](#example-1-documentgetelementbyid)
-            - [Example 2: creating new nodes](#example-2-creating-new-nodes)
-            - [Example 3: `this`](#example-3-this)
-            - [Example 4: mouse events](#example-4-mouse-events)
-            - [Example 5: a crowdsourcing interface](#example-5-a-crowdsourcing-interface)
-            - [Example 6: a typing game](#example-6-a-typing-game)
-    - [Self-check](#self-check)
-
-# JavaScript: the language of browser interactions
+# JavaScript: the language of browser interactions <!-- omit in toc -->
 
 *This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
 Preview: in today's lecture we look at JavaScript as the language of browser interactions. In the next lecture we will look at Node.js, a server-side JavaScript runtime.
+
+## Table of Content <!-- omit in toc -->
+- [Learning goals](#learning-goals)
+- [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
+- [Examples throughout the lectures](#examples-throughout-the-lectures)
+- [JavaScript's reputation](#javascripts-reputation)
+- [Scripting overview](#scripting-overview)
+    - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
+    - [`<script>`](#script)
+    - [Activity](#activity)
+- [Scoping and hoisting](#scoping-and-hoisting)
+    - [Scoping](#scoping)
+    - [Hoisting](#hoisting)
+    - [this](#this)
+- [JavaScript design patterns](#javascript-design-patterns)
+    - [JavaScript objects](#javascript-objects)
+    - [Object creation with `new`](#object-creation-with-new)
+    - [Object literals](#object-literals)
+    - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
+    - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
+    - [Design pattern 3: Module](#design-pattern-3-module)
+- [Events and the DOM](#events-and-the-dom)
+    - [Document Object Model](#document-object-model)
+        - [Example 1: document.getElementById](#example-1-documentgetelementbyid)
+        - [Example 2: creating new nodes](#example-2-creating-new-nodes)
+        - [Example 3: `this`](#example-3-this)
+        - [Example 4: mouse events](#example-4-mouse-events)
+        - [Example 5: a crowdsourcing interface](#example-5-a-crowdsourcing-interface)
+        - [Example 6: a typing game](#example-6-a-typing-game)
+- [Self-check](#self-check)
+
+
 
 ## Learning goals
 

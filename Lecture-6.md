@@ -1,28 +1,26 @@
-Table of Content <!-- omit in toc -->
-==
-- [Taking a closer look at Node.js](#taking-a-closer-look-at-nodejs)
-    - [Learning goals](#learning-goals)
-    - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
-        - [A file-based module system](#a-file-based-module-system)
-        - [A first module example](#a-first-module-example)
-    - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
-    - [Middleware in Express](#middleware-in-express)
-        - [Logger component example](#logger-component-example)
-        - [Authorisation component example](#authorisation-component-example)
-        - [Components are configurable](#components-are-configurable)
-    - [Routing](#routing)
-        - [Routing paths and regular expressions](#routing-paths-and-regular-expressions)
-        - [Routing parameters](#routing-parameters)
-    - [Templating with EJS](#templating-with-ejs)
-        - [A first EJS example](#a-first-ejs-example)
-        - [EJS and user-defined functions](#ejs-and-user-defined-functions)
-        - [JavaScript within EJS templates](#javascript-within-ejs-templates)
-        - [Express and templates](#express-and-templates)
-    - [Self-check](#self-check)
+# Taking a closer look at Node.js <!-- omit in toc -->
 
-# Taking a closer look at Node.js
+In this lecture, we cover different aspects of Node.js that are important to be a productive web engineer.
 
-In this lecture, we cover different aspects of Node.js that are important to be a productive web developer.
+## Table of Content <!-- omit in toc -->
+- [Learning goals](#learning-goals)
+- [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
+    - [A file-based module system](#a-file-based-module-system)
+    - [A first module example](#a-first-module-example)
+- [Creating and using a (useful) module](#creating-and-using-a-useful-module)
+- [Middleware in Express](#middleware-in-express)
+    - [Logger component example](#logger-component-example)
+    - [Authorisation component example](#authorisation-component-example)
+    - [Components are configurable](#components-are-configurable)
+- [Routing](#routing)
+    - [Routing paths and regular expressions](#routing-paths-and-regular-expressions)
+    - [Routing parameters](#routing-parameters)
+- [Templating with EJS](#templating-with-ejs)
+    - [A first EJS example](#a-first-ejs-example)
+    - [EJS and user-defined functions](#ejs-and-user-defined-functions)
+    - [JavaScript within EJS templates](#javascript-within-ejs-templates)
+    - [Express and templates](#express-and-templates)
+- [Self-check](#self-check)
 
 ## Learning goals
 

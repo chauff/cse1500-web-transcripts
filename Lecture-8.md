@@ -1,21 +1,19 @@
-Table of Content <!-- omit in toc -->
-==
-- [Web security](#web-security)
-    - [Learning goals](#learning-goals)
-    - [Introduction](#introduction)
-    - [Six main threats](#six-main-threats)
-        - [Defacement](#defacement)
-        - [Data disclosure](#data-disclosure)
-        - [Data loss](#data-loss)
-        - [Denial of service](#denial-of-service)
-        - [Foot in the door](#foot-in-the-door)
-        - [Unauthorized access](#unauthorized-access)
-    - [Applications are vulnerable](#applications-are-vulnerable)
-    - [Injection](#injection)
-    - [OWASP Node goat project](#owasp-node-goat-project)
-    - [Self-check](#self-check)
+# Web security <!-- omit in toc -->
 
-# Web security
+## Table of Content <!-- omit in toc -->
+- [Learning goals](#learning-goals)
+- [Introduction](#introduction)
+- [Six main threats](#six-main-threats)
+    - [Defacement](#defacement)
+    - [Data disclosure](#data-disclosure)
+    - [Data loss](#data-loss)
+    - [Denial of service](#denial-of-service)
+    - [Foot in the door](#foot-in-the-door)
+    - [Unauthorized access](#unauthorized-access)
+- [Applications are vulnerable](#applications-are-vulnerable)
+- [Injection](#injection)
+- [OWASP Node goat project](#owasp-node-goat-project)
+- [Self-check](#self-check)
 
 ## Learning goals
 

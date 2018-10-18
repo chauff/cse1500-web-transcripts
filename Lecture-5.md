@@ -1,24 +1,22 @@
-Table of Content <!-- omit in toc -->
-==
-- [CSS: the language of web design](#css-the-language-of-web-design)
-  - [Learning goals](#learning-goals)
-  - [A word of warning](#a-word-of-warning)
-  - [A bit of context](#a-bit-of-context)
-  - [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
-  - [Pseudo-elements and pseudo-classes](#pseudo-elements-and-pseudo-classes)
-    - [Popular pseudo-classes](#popular-pseudo-classes)
-    - [Popular pseudo-elements](#popular-pseudo-elements)
-  - [Data in CSS](#data-in-css)
-  - [Element positioning](#element-positioning)
-    - [Float](#float)
-    - [Position](#position)
-  - [CSS media queries](#css-media-queries)
-  - [Animations and transitions](#animations-and-transitions)
-    - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
-  - [Browser-specific prefixes](#browser-specific-prefixes)
-  - [Self-check](#self-check)
+# CSS: the language of web design <!-- omit in toc -->
 
-# CSS: the language of web design
+## Table of Content <!-- omit in toc -->
+- [Learning goals](#learning-goals)
+- [A word of warning](#a-word-of-warning)
+- [A bit of context](#a-bit-of-context)
+- [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
+- [Pseudo-elements and pseudo-classes](#pseudo-elements-and-pseudo-classes)
+  - [Popular pseudo-classes](#popular-pseudo-classes)
+  - [Popular pseudo-elements](#popular-pseudo-elements)
+- [Data in CSS](#data-in-css)
+- [Element positioning](#element-positioning)
+  - [Float](#float)
+  - [Position](#position)
+- [CSS media queries](#css-media-queries)
+- [Animations and transitions](#animations-and-transitions)
+  - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
+- [Browser-specific prefixes](#browser-specific-prefixes)
+- [Self-check](#self-check)
 
 ## Learning goals
 
