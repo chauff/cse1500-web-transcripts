@@ -54,7 +54,7 @@
 
 <sup>Image sourced from the linked video below.</sup>
 
-A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium, also known as **W3C**: what are Web standards and what makes web standards so important?
+Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wide Web Consortium, also known as **W3C**: what are web standards and what makes web standards so important?
 
 ## Learning goals
 
@@ -119,7 +119,8 @@ The **client initiates the communication**, sending an **HTTP request** to the s
 Where does HTTP fit into the **network stack**? A very common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model*:
 
 ![Zimmermann's OSI model](img/L1-OSI.png)
-<sub>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702)</sub>
+
+<sup>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702)</sup>
 
  It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails.
 
