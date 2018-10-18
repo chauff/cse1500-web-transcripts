@@ -88,13 +88,11 @@ Here, it is not self-evident for the user how to act to achieve her goals and ma
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
-<sub>
 In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
-</sub>
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
-Similarly, there are established style standards of how to format a link (in the early years of the web blue underlined text was synonymous with a link and thus we are now stuck with the saying "10 blue links" as a synonym for web search results).
+Similarly, there are established style standards of how to format a link: in the early years of the web, blue underlined text was synonymous with a link and thus we are now stuck with the saying *10 blue links* as a synonym for web search results.
 
 Users should **not get lost within a web site**; provide users with information on where they are and on how they arrived at that point. Leave so-called **breadcrumbs** as ebay does:
 
