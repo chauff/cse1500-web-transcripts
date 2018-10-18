@@ -64,29 +64,33 @@ On the downside, such a cross-platform approach usually brings with it considera
 
 ## Web design basics
 
-Web design is not trivial. However, a few basic rules go a long way. Most of these principles may seem obvious, but are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much worth a read. In the following subsections we go over a number of Krug's rules.
+Web design is not trivial. However, a few basic rules go a long way. Most of these principles seem obvious, but in practice are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much worth a read. In the following sections we go over a number of Krug's rules.
 
 ### Rule: Don't make me think
 
-The way a web site/application (I tend to use the terms interchangeably in this lecture; the rules apply to both apps and sites) works should be self-evident; the user should not have to expend **cognitive effort** to understand what she can do next.
+The way a web site or web application (I tend to use the terms interchangeably here; the rules apply to both apps and sites) works should be self-evident; the user should not have to expend **cognitive effort** to understand what she can do.
 
-Consider this example of [ebay.com](https://www.ebay.com/) (September 10, 2018):
+Consider this example of [ebay.com](https://www.ebay.com/):
 
 ![ebay web site](img/L2-ebay.png)
+<sub>Screenshot taken on September 10, 2018</sub>
 
-Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and get dressed for the upcoming fall season.
+Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
 
-Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/) (February 8, 2014):
+Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/):
 
 ![koopplein web site](img/L2-koopplein.png)
+<sub>Screenshot taken February 8, 2014</sub>
 
-Here, it is not self-evident for the user how to act to achieve her goals and a few major questions are raised:
+Here, it is not self-evident for the user how to act to achieve her goals and major questions are raised:
 
 - How do I get to the offers?
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
+<sub>
 In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
+</sub>
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
