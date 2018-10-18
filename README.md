@@ -7,7 +7,7 @@ All materials and resources of the 2018/19 [Web and Database Technology course](
 
 **Only web topics are covered.**
 
-Overview:
+## Table of Content <!-- omit in toc -->
 - [Contact](#contact)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
@@ -27,7 +27,7 @@ Overview:
 
 The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi[at]tudelft.nl`. *Warning: the mailbox will note be active before November 2018.*
 
-## Web technology course book
+## Web technology course book 
 
 The course book for the web technology part is [**Learning Web App Development**](https://www.oreilly.com/library/view/learning-web-app/9781449371388/) by Semmy Purewal. This book covers HTML, CSS, JavaScript and Node.js/Express - exactly the technologies we cover in this course. The book is written for learners without any prior knowledge in these technologies.
 
