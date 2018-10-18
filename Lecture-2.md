@@ -9,7 +9,7 @@
     - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
     - [Rule: If you cannot make it self-evident, make it self-explanatory](#rule-if-you-cannot-make-it-self-evident-make-it-self-explanatory)
     - [Expectations vs. reality: usability testing](#expectations-vs-reality-usability-testing)
-    - [Site navigation: the "trunk test"](#site-navigation-the-%22trunk-test%22)
+    - [Site navigation: the *trunk test*](#site-navigation-the-trunk-test)
     - [Entry page checklist](#entry-page-checklist)
 - [HTML5](#html5)
     - [Activity](#activity)
@@ -88,17 +88,17 @@ Here, it is not self-evident for the user how to act to achieve her goals and ma
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
-In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
+**Good to know**: In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
 Similarly, there are established style standards of how to format a link: in the early years of the web, blue underlined text was synonymous with a link and thus we are now stuck with the saying *10 blue links* as a synonym for web search results.
 
-Users should **not get lost within a web site**; provide users with information on where they are and on how they arrived at that point. Leave so-called **breadcrumbs** as ebay does:
+Users should also **not get lost within a web site**. A site should provide users with information on where they are and on how they arrived at that point. Ebay for instance leaves so-called **breadcrumbs**:
 
 ![ebay web site](img/L2-ebay2.png)
 
-Lastly, it should be easy for the user to **distinguish different parts of a site** - e.g. advertisement vs. content. Here is an example from Google that does a poor job in this respect: it is not obvious on first sight that the first search result is indeed a sponsored search result (i.e. a paid advertisement) instead of a so-called "organic" search result:
+Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Here is an example from Google that does a poor job in this respect: it is not obvious on first sight that the first search result is indeed a paid advertisement instead of a so-called "organic" search result:
 
 ![google web site](img/L2-google.png)
 
@@ -114,69 +114,68 @@ It should be mentioned though that Google is not the only offender here, take th
 
 The rule does not have to be explained, here are two examples that should make things clear:
 
-ZDNet crawled on [March 31, 2001](https://web.archive.org/web/20010331202808/http://www4.zdnet.com:80/)
+ZDNet crawled on [March 31, 2001](https://web.archive.org/web/20010331202808/http://www4.zdnet.com:80/):
 
 ![ZDNet web site](img/L2-zdnet-2001.png)
 
-vs. ZDNet on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/)
+vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/):
 
 ![ZDNet web site](img/L2-zdnet-2014.png)
 
-While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming and expensive. It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
+While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive (). It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 
-Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world, it is wise to keep the mobile user in mind as well (a lot of scrolling is undesired).
+Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world where a lot of content is accessed [*mobile first*](https://mayvendev.com/blog/mobilefirst), it is also vital to keep the mobile user in mind as well who has to deal with a small screen, a touch-based interface and possibly many distractions while surfing the web.
 
-Avoid *happy talk* - text without any content for the sake of adding some text (e.g. a welcome message).
-
-A very good example of this rule is the following Surveymonkey [December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) entry page:
+A positive example of this rule is the following Surveymonkey ([December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) splash screen:
 
 ![Surveymonkey](img/L2-surveymonkey.png)
 
+Lastly, **avoid happy talk**, that is text without any content for the sake of adding some text (e.g. a welcome message).
+
+
 ### Expectations vs. reality: usability testing
 
-Our expectations of web users are often not grounded in reality. We may expect users to be **rational**, **attentive**, with a **clear goal** in mind.
+Our expectations of web users are often not grounded in reality. We may expect users to be **rational**, **attentive** and having a **clear goal** in mind.
 
 Instead, the average user:
 
 - quickly scans a web page (not even reading it);
-- decides within seconds whether or not a site is worth their attention;
+- decides within seconds whether or not a site is worth their attention (research on so-called *dwell time* has shown this [again](https://dl.acm.org/citation.cfm?id=1835513) and [again](https://dl.acm.org/citation.cfm?id=2835833));
 - clicks on the first link they find;
 - depends a lot on the browser's back button (and not all web applications can deal with it);
 - does not read instructions.
-
-Relevant scientific papers: [1](https://dl.acm.org/citation.cfm?id=1835513), [2](https://dl.acm.org/citation.cfm?id=2835833)
-
-A web application should be designed based on **user reality**. **Usability testing** is an important step to make a web application successful. Designing-testing-reviewing should be the development cycle:
+  
+A web application should be designed based on **user reality**. **Usability testing** is an important step to create a well-designed web application. The development cycle consists of *designing*-*testing*-*reviewing*:
 
 ![Web app development cycle](img/L2-cycle.png)
 
-In a **usability test**, a user is given a **typical task**, e.g.
+In a **usability test**, a user is given a **typical task**, such as:
 
-- How to create a user account;
-- How to retrieve a lost password;
-- How to change the credit card information;
-- How to delete a user account;
-- How to find an article in the archive;
-- How to edit a posting made in a forum;
-- How to start a game;
+- Create a user account.
+- Retrieve a lost password.
+- Change the current credit card information.
+- Delete a user account.
+- Find an article in the archive;.
+- Edit a posting made in a forum.
+- Start a game with three players.
 
-and her performance on the task is being recorded. Performance metrics depend on the task, it could be the **number of clicks** required to complete the task, the **time taken** or the **number of wrongly clicked elements**.
+While the user is busy with the task, her actions towards completing the task are being recorded. These actions are then translated into performance metrics. Performance metrics depend on the task, it could be the **number of clicks** required to complete the task, the **time taken** or the **number of wrongly clicked elements**.
 
-Testers should be a mix of target audience and average web users; 2-3 testers per iteration tend to be sufficient.
+Usability testers should be a mix of target audience and average web users; 2-3 testers per iteration tend to be sufficient.
 
-A typical usability setup looks as follows:
+A typical usability setup has the following roles:
 
-- **Participant** (tester): sits in front of the laptop/smartphone/...;
-- **Facilitator** sits next to her and guides her through the test;
-- **Observers** (developers, managers, etc.) watch the usability test.
+- The **participant** (our tester) sits in front of the device (laptop, mobile phone, tablet).
+- The **facilitator** sits next to her and guides her through the test.
+- The **observers** (developers of the app, managers, etc.) watch the usability test and discuss the tester's performance (and how to improve it) afterwards.
 
-This [blog post](https://asinthecity.com/2013/04/09/recording-mobile-device-usability-testing-sessions-guerrilla-style/) provides a good and practical overview of usability testing with mobile devices; for a quick look, consider this [participant and facilitator](https://benmelbourne.files.wordpress.com/2013/04/pop-up-mobile-usability-testing-lab-2.jpg) and this [observer](https://benmelbourne.files.wordpress.com/2013/04/pop-up-mobile-usability-testing-lab-5.jpg) setup.
+This [blog post](https://asinthecity.com/2013/04/09/recording-mobile-device-usability-testing-sessions-guerrilla-style/) provides a good practical overview of usability testing with mobile devices, and includes imagery of the [participant and facilitator setup](https://benmelbourne.files.wordpress.com/2013/04/pop-up-mobile-usability-testing-lab-2.jpg) and the [observer setup](https://benmelbourne.files.wordpress.com/2013/04/pop-up-mobile-usability-testing-lab-5.jpg).
 
-The result of a usability test will be a set of issues. Each of those issues should be assigned a **priority** (low, medium, high) and the next iteration of the development should focus on the high priority problems. No new issues should be added to the list until the most severe issues are fixed.
+The result of a usability test are a set of issues. Each of those issues should be assigned a **priority** (low, medium, high) and the next iteration of the development should focus on the high priority problems. No new issues should be added to the list until the most severe issues are fixed.
 
-### Site navigation: the "trunk test"
+### Site navigation: the *trunk test*
 
 In order to determine whether a web site's navigation scheme is useful, Krug developed the "trunk test". Given a web site, pick a random page in it, print it and give it to a user who has never seen the site.
 
