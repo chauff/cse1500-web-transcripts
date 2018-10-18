@@ -4,44 +4,49 @@
 
 ## Table of Content <!-- omit in toc -->
 
-- [Web standards](#web-standards)
-- [Learning goals](#learning-goals)
-- [World Wide Web vs. Internet](#world-wide-web-vs-internet)
-    - [A brief history of the web](#a-brief-history-of-the-web)
-    - [Key aspects of the Internet](#key-aspects-of-the-internet)
-    - [Two important organizations](#two-important-organizations)
-- [HTTP messages](#http-messages)
-    - [Web servers and clients](#web-servers-and-clients)
-    - [Network communication](#network-communication)
-    - [Activity](#activity)
-    - [HTTP request message](#http-request-message)
-    - [HTTP response message](#http-response-message)
-- [HTTP headers dissected](#http-headers-dissected)
-    - [Important header fields](#important-header-fields)
-    - [Content-Type](#content-type)
-    - [Content-Length](#content-length)
-    - [Content-Encoding](#content-encoding)
-    - [Content-MD5](#content-md5)
-    - [Expires](#expires)
-    - [Expires & Cache-Control](#expires--cache-control)
-    - [Last-Modified](#last-modified)
-    - [Connection & Upgrade](#connection--upgrade)
-    - [Status codes](#status-codes)
-- [HTTP methods](#http-methods)
-    - [Common HTTP methods](#common-http-methods)
-    - [Another activity](#another-activity)
-    - [From domain to IP address](#from-domain-to-ip-address)
-- [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
-    - [URL syntax: query](#url-syntax-query)
-    - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
-    - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
-    - [URL design restrictions](#url-design-restrictions)
-- [Authentication](#authentication)
-    - [User-related HTTP header fields](#user-related-http-header-fields)
-    - [Client-IP address tracking](#client-ip-address-tracking)
-    - [Fat URLs](#fat-urls)
-    - [HTTP basic authentication](#http-basic-authentication)
-- [Self-check](#self-check)
+- [HTTP: the language of Web communication](#http-the-language-of-web-communication)
+    - [Web standards](#web-standards)
+    - [Learning goals](#learning-goals)
+    - [World Wide Web vs. Internet](#world-wide-web-vs-internet)
+        - [A brief history of the web](#a-brief-history-of-the-web)
+        - [Key aspects of the Internet](#key-aspects-of-the-internet)
+        - [Two important organizations](#two-important-organizations)
+    - [HTTP messages](#http-messages)
+        - [Web servers and clients](#web-servers-and-clients)
+        - [Network communication](#network-communication)
+        - [Activity](#activity)
+        - [HTTP request message](#http-request-message)
+        - [HTTP response message](#http-response-message)
+    - [HTTP headers dissected](#http-headers-dissected)
+        - [Important header fields](#important-header-fields)
+        - [Content-Type](#content-type)
+        - [Content-Length](#content-length)
+        - [Content-Encoding](#content-encoding)
+        - [Content-MD5](#content-md5)
+        - [Expires](#expires)
+        - [Expires & Cache-Control](#expires--cache-control)
+        - [Last-Modified](#last-modified)
+        - [Connection & Upgrade](#connection--upgrade)
+        - [Status codes](#status-codes)
+    - [HTTP methods](#http-methods)
+        - [Common HTTP methods](#common-http-methods)
+        - [Another activity](#another-activity)
+        - [From domain to IP address](#from-domain-to-ip-address)
+    - [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
+        - [URL syntax: query](#url-syntax-query)
+        - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+        - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+        - [URL design restrictions](#url-design-restrictions)
+    - [Authentication](#authentication)
+        - [User-related HTTP header fields](#user-related-http-header-fields)
+        - [Client-IP address tracking](#client-ip-address-tracking)
+        - [Fat URLs](#fat-urls)
+        - [HTTP basic authentication](#http-basic-authentication)
+    - [Self-check](#self-check)
+
+# HTTP: the language of Web communication
+
+*Note: in practice, this material is taught in Lecture 1 and about half of Lecture 2.*
 
 ## Web standards
 
@@ -85,10 +90,10 @@ To show how far we have come, [here](https://qz.com/860873/a-1973-map-of-the-int
 
 ### Two important organizations
 
-The web and the Internet are not static, they are continuously changing. This development is led by two organizations: 
+The web and the Internet are not static, they are continuously changing. This development is led by two organizations:
 
-- The Internet Engineering Task Force (**IETF**) leads the development of the Internet. 
-- The World Wide Web Consortium (**W3C**) leads the development of the web. 
+- The Internet Engineering Task Force (**IETF**) leads the development of the Internet.
+- The World Wide Web Consortium (**W3C**) leads the development of the web.
 
 To many, the IETF is a lesser known organization, and while you may not often come across the IETF acronym, you will time and again encounter so-called RFCs. RFCs are **Request for Comments**, released by the IETF. They describe the Internet standards in detail. As an example, [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) is the document describing the Internet Message Format, aka email format, in about 50 pages.
 
@@ -140,10 +145,7 @@ How exactly is it requested? Through an HTTP request! And how exactly that looks
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
 
-
 ### HTTP request message
-
-<a name="http-request"></a>
 
 Below is a typical HTTP request message:
 
@@ -167,8 +169,6 @@ In the last line, you can see that in this request, a cookie is sent from the cl
 
 ### HTTP response message
 
-<a name="http-response"></a>
-
 The server that received the HTTP request above now assembles the following response (note that `[..xx..]` indicates other message content we are not interested in at the moment):
 
 ```console
@@ -186,7 +186,7 @@ Server: TU Delft Web Server
 
 The first line indicates the status of the response. In this case, the requested **resource exists** and the client is authorized to access it. Thus, the server sends back the status `200 OK`: everything is okay, the resource was found, you are allowed to receive it.
 The response is then structured into **response header fields** in the `name:value` format, and the **response body** which contains the actual content. The body is optional - if the requested resource is not found, an error status code without a body would be returned to the client.
-The header fields contain important information for the client to understand the data being sent, including the type of content, the length and so on. Without this information, the client would be unable to process the data in the correct manner. 
+The header fields contain important information for the client to understand the data being sent, including the type of content, the length and so on. Without this information, the client would be unable to process the data in the correct manner.
 
 ## HTTP headers dissected
 
@@ -252,7 +252,7 @@ This header field contains the size of the entity body in the message. It has tw
 
 Content is often encoded, and in particular **compressed**. The four common encodings are:
 
-- `gzip` 
+- `gzip`
 - `compress`
 - `deflate`
 - `identity` (this encoding indicates that no encoding should be used)
@@ -269,8 +269,8 @@ MD5 stands for **message digest** and is an important data verification componen
 
 ### Expires
 
-**Web caches** make up an important part of the Internet. They cache **popular copies** of web resources. This reduces the load on those servers that host these popular resources, reduces a network bottleneck and increases the responsiveness (the delay is decreased).
-But how does a web cache know for how long a web resource is valid? Imagine a web cache caching `nu.nl` from the origin server (i.e. the server hosting `nu.nl`) - this copy will quickly become stale and outdated. On the other hand, an RFC page that rarely changes may be valid in the cache for a long time.
+**Web caches** make up an important part of the Internet. They cache **popular copies** of web resources. This reduces the load on the original servers that host these popular resources, reduces network bottlenecks and increases the responsiveness (web resources are delivered with less delay).
+But how does a web cache know for how long a web resource is valid? Imagine a web cache caching `nytimes.com` from the origin server (i.e. the server hosting `nytimes.com`) - this copy will quickly become stale and outdated. On the other hand, an RFC page that rarely changes may be valid in the cache for a long time.
 
 This is where the `Expires` header field comes in. It indicates to a web cache when a fetched resource is no longer valid and needs to be retrieved from the origin server.
 
@@ -278,13 +278,13 @@ This is where the `Expires` header field comes in. It indicates to a web cache w
 
 ### Expires & Cache-Control
 
-There is another header that is similar to `Expires`: `Cache-Control`. They differ in the manner they indicate staleness to the web cache: `Expires` uses an **absolute expiration date**, e.g. December 1, 2021, while `Cache-Control` uses a **relative time**, e.g. 3600 seconds since being sent.
+There is another header that is similar to `Expires`: `Cache-Control`. They differ in the manner they indicate staleness to the web cache: `Expires` uses an **absolute expiration date**, e.g. *December 1, 2021*, while `Cache-Control` uses a **relative time**, e.g. *3600 seconds* since being sent.
 
-Enabling the origin server to fix in advance how quickly a cached version of a resource goes stale was an important design decision. The alternative would have been to solely rely on web caches to query the original server to determine whether or not the cached resources are out of date - this would be inefficient though as these kind of queries would have to happen very frequently.
+Enabling the origin server to fix in advance how quickly a cached version of a resource goes stale was an important design decision. The alternative would have been to solely rely on web caches to query the origin server to determine whether or not the cached resources are out of date - this would be inefficient though as these kind of enquiries would have to happen very frequently.
 
 ### Last-Modified
 
-A final header field we consider is `Last-Modified`. It contains the date when the web resource was last altered. There is no header field though that indicates **how much** the resource has changed. Even if only a whitespace was added to a plain text document, the `Last-Modified` header would change.
+The `Last-Modified` header field contains the date when the web resource was last altered. There is no header field though that indicates **how much** the resource has changed. Even if only a whitespace was added to a plain-text document, the `Last-Modified` header would change.
 
 It is often used in combination with `If-Modified-Since`. When web caches actively try to revalidate web resources they cache, they only want the web resource sent by the origin server if it has changed since the `Last-Modified` date. If nothing has changed, the origin server simply returns a `304 Not Modified` response; otherwise the updated web resource is sent to the web cache.
 
@@ -292,20 +292,22 @@ It is often used in combination with `If-Modified-Since`. When web caches active
 
 ### Connection & Upgrade
 
-An alternative title of this section could have been *Polling and WebSockets*.
-
 In HTTP/1.1 the client **always** initiates the conversation with the server via an HTTP request. For a number of use cases though this is a severe limitation. Take a look at these two examples from the New York Times website and Twitter respectively:
 
 ![New York Times live polling](img/L1-nytimes-example.png)
 
 ![Twitter update](img/L1-twitter-example.png)
 
-In both examples, the encircled numbers are updated "on the fly", without the user having to manually refresh the page. This can be achieved through **polling**: here, the client regularly sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response. An alternative to polling is **long polling**: here, the client sends an HTTP request as before, but this time the server holds the request open until new data is available before sending its HTTP response (once the response is sent, the client immediately sends another HTTP request that is kept open). While this avoids wasteful HTTP request/response pairs, it requires the backend to become significantly more complex: the backend is now responsible for ensuring the right data is sent to the right client and scaling becomes an issue.
+In both examples, the encircled numbers are updated *on the fly*, without the user having to manually refresh the page. 
 
-Both options are workarounds to the requirement of client-initiated HTTP request/response pairs. The IETF recognized early on that such solutions are not sufficient and in 2011 standardized the **WebSocket protocol** ([RFC 6455](https://tools.ietf.org/html/rfc6455)). The RFC abstract read as follows:
+This can be achieved through **polling**: the client **regularly** sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response.
 
-```
-"The WebSocket Protocol enables two-way communication between a client
+An alternative to polling is **long polling**: here, the client sends an HTTP request as before, but this time the server holds the request open until new data is available before sending its HTTP response. Once the response is sent, the client immediately sends another HTTP request that is kept open. While this avoids wasteful HTTP request/response pairs, it requires the backend to be significantly more complex: the backend is now responsible for ensuring the right data is sent to the right client and scaling becomes an issue.
+
+Both options are workarounds to the requirement of **client-initiated** HTTP request/response pairs. The IETF recognized early on that such solutions will not be sufficient in the future and in 2011 standardized the **WebSocket protocol** ([RFC 6455](https://tools.ietf.org/html/rfc6455)). The RFC abstract read as follows:
+
+```console
+The WebSocket Protocol enables two-way communication between a client
 running untrusted code in a controlled environment to a remote host
 that has opted-in to communications from that code.  The security
 model used for this is the origin-based security model commonly used
@@ -314,14 +316,18 @@ followed by basic message framing, layered over TCP.  The goal of
 this technology is to provide a mechanism for browser-based
 applications that need two-way communication with servers that does
 not rely on opening multiple HTTP connections (e.g., using
-XMLHttpRequest or <iframe>s and long polling)."
+XMLHttpRequest or <iframe>s and long polling).
 ```
 
-WebSockets finally enable **bidirectional communication** between client and server! The server no longer has to wait for an HTTP request to send data to a client, but can do so at any time - as long as both client and server agree to use the WebSocket protocol.
+WebSockets finally enable **bidirectional communication** between client and server! The server no longer has to wait for an HTTP request to send data to a client, but can do so *any time* - as long as both client and server agree to use the WebSocket protocol.
 
-Client and server agree to this new protocol as follows: the client initiates the upgrade by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
+Client and server agree to this new protocol as follows: the client initiates the protocol *upgrade* by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
 
-As a concrete example, you can consider the demo game of this course. It relies on WebSockets to enable bidirectional communication between client and server. The client sends the following HTTP headers to request the upgrade to the WebSocket protocol:
+As a concrete example, you can explore our [demo game](demo-code/balloons-game). It relies on WebSockets to enable bidirectional communication between client and server. The browser's network monitor allows you once more to investigate the protocol specifics:
+
+![Network monitor WebSockets](img/L1-websocket.png)
+
+The client sends the following HTTP headers to request the upgrade to the WebSocket protocol:
 
 ```console
 Host: localhost:3000
@@ -354,38 +360,40 @@ Lastly it is worth to mention that besides switching to the WebSocket protocol, 
 
 ### Status codes
 
-To finish off this part about HTTP header fields, we take a look at the response status codes. You have just read about the `304` status code, sent by the origin server in the response after a request from the web cache asking about an updated copy of a web resource.
+To finish off this part about HTTP header fields, we take a look at the **response status codes**. You have already seen the `304` status code, sent by the origin server in the response after a request from a web cache enquiring about an updated copy of a web resource.
 
-If you look at the [first HTTP response example](#http-response), you will see that the status code is a very prominent part of the HTTP response - it appears in the very first line of the response. In this case the status code is `200`.
+If you look at the [first HTTP response example](#http-response-message) again, you will see that the status code is a very prominent part of the HTTP response - it appears in the first line of the response. In this case the status code is `200`.
 
 Quite a few different status codes exist that provide the client with some level of information on what is going on. Response status codes can be classified into five categories:
 
 | Status codes         |                 |
 |----------------------|------------------------------|
-| 1XX                  | Informational (101 Switching Protocols)                |
-| 2XX                  | Success (200 OK)             |
+| 1XX                  | Informational                |
+| 2XX                  | Success             |
 | 3XX                  | Redirected                   |
-| 4XX                  | Client error (404 Not Found) |
+| 4XX                  | Client error |
 | 5XX                  | Server error                 |
 
-Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. As just seen status code `101` indicates the server switching to a protocol as requested by the client.
+Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. As just seen, status code `101` indicates the server switching to a protocol as requested by the client.
 
-Status code `200` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it).
+Status code `200 OK` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it).
 
-Status codes starting with 3 most often point to a redirect: a resource that was originally under URL `A` can now be found under URL `B`. These redirects are automatically resolved by the browser - you only notice a slightly longer loading time, otherwise redirects do not affect browser users.
+Status codes starting with 3 most often point to a redirect: a resource that was originally under URL `A` can now be found under URL `B`. These redirects are automatically resolved by the browser - you only notice a slightly longer loading time, otherwise redirects do not affect browser users. The network monitor shows you what exactly this delay amounts to:
+
+![Network monitor redirect](img/L1-redirect.png)
 
 Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the web resource or entity the client requests, does not exist on the server.
 Errors on the server side start with 5; one relatively common status code is `502: Bad gateway`.
 
 ## HTTP methods
 
-Recall the first line of the [HTTP request message](#http-request) above:
+Conisder the first line of our introductory [HTTP request message](#http-request-message) example:
 
-```bash
+```console
 GET / HTTP/1.1
 ```
 
-So far, we have only seen `GET` requests, i.e. requests to get access to some web resource. `GET` however is only one of multiple so-called **HTTP methods**.
+So far, we have only seen `GET` requests, i.e. requests to get access to some web resource. `GET` however is only one of a number of **HTTP methods**.
 
 ### Common HTTP methods
 
@@ -700,13 +708,13 @@ Here are a few questions you should be able to answer after having followed the 
     - URLs point to a web resource instead of a location.
 8. Which of the following statements about the hypertext transfer protocol are TRUE?
     - `HEAD` can be used to determine whether a given URL refers to an existing web resource.
-    - The HTTP header field `Last-Modified` is used in an HTTP request that informs the server of the client's latest version of a given web resource.
+    - The HTTP header field `Last-Modified` is used in an HTTP request that informs the server of the client's latest version of a given web resource.
     - The information retrieved via `HEAD` can also be retrieved via `GET`.
     - The `Content-Length` header is used in an HTTP request to inform the server which parts of a web resource a client wants to receive.
 9. Which of the following statements about web caches are TRUE?
     - Web caches increase the processing power of origin servers.
     - Web caches are the web's backup: they keep a copy of every resource on the web.
-    - Web caches rely on the `Content-Range` header field to determine when a copy becomes invalid.
+    - Web caches rely on the `Content-Range` header field to determine when a copy becomes invalid.
     - Web caches lead to reduced distance delay.
 10. Which of the following statements about IPv6 are FALSE?
     - IPv6 has approximately ten times as much address space available as IPv4.
