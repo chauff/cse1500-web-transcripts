@@ -162,8 +162,8 @@ For each lecture we provide a range of materials:
     
 - **Lecture 2** covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf))
   - Required readings:
-    - Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
-    - [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
+    - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
+    - :warning: [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
   - Recommended activity:
     - Listen to [this podcast](http://talkingcode.com/podcast/episode-11-tom-dale/) on modern web applications and the move from web sites to web apps and an almost *native* experience.
   - Recommended readings:
@@ -176,7 +176,7 @@ For each lecture we provide a range of materials:
   
 - **Lecture 3** on client-side JavaScript ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf))
   - Required readings:
-    - Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
+    - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
     - [Interactive exercises for Lecture 3](nodeschool-exercises.md).
     - Listen to this podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging).
@@ -198,7 +198,7 @@ For each lecture we provide a range of materials:
 
 - **Lecture 4** on Node.js ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf))
   - Required readings:
-    - Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
+    - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
     - [Interactive exercises for Lecture 4](nodeschool-exercises.md).
   - Recommended readings:
@@ -209,7 +209,7 @@ For each lecture we provide a range of materials:
   
 - **Lecture 5** covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf))
   - Required readings:
-    - Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
+    - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - Recommended activities:
     - Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS.
     - Listen to [this podcast](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
