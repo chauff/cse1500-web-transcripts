@@ -51,6 +51,7 @@
 ## Web standards
 
 ![Web standards](img/L1-web.png)
+
 <sub>Image sourced from the linked video below.</sub>
 
 A [video pitch](https://vimeo.com/110256895) by the World Wide Web Consortium, also known as **W3C**: what are Web standards and what makes web standards so important?
