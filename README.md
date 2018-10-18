@@ -1,4 +1,5 @@
-# CSE1500: Web and Database Technology
+CSE1500: Web and Database Technology <!-- omit in toc -->
+==
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
 
@@ -6,7 +7,21 @@ All materials and resources of the 2018/19 [Web and Database Technology course](
 
 **Only web topics are covered.**
 
-Work in progress.
+Overview:
+- [Contact](#contact)
+- [Web technology course book](#web-technology-course-book)
+- [Tooling](#tooling)
+  - [Recommended](#recommended)
+  - [Required](#required)
+- [Course grading](#course-grading)
+- [Course topics](#course-topics)
+- [Sample exams](#sample-exams)
+- [Assignments](#assignments)
+- [Demo application](#demo-application)
+- [Interactive web technology exercises](#interactive-web-technology-exercises)
+- [Web development resources](#web-development-resources)
+- [Lecture material types](#lecture-material-types)
+- [Web lectures](#web-lectures)
 
 ## Contact
 
@@ -18,7 +33,7 @@ The course book for the web technology part is [**Learning Web App Development**
 
 ![Web course book](img/RME-book.png)
 
-## Recommended and required tools
+## Tooling
 
 ### Recommended
 
@@ -49,14 +64,6 @@ Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project
 
 Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`).
 
-## Resources
-
-![MDN](img/RME-mdn.png) ![Google Fundamentals](img/RME-fundamentals.png)
-
-[MDN](https://developer.mozilla.org/en-US/): Mozilla's resource site for developers.
-
-[Google's Web Fundamentals](https://developers.google.com/web/fundamentals/) are similar to MDN in spirit.
-
 ## Course grading
 
 ![grading](img/RME-grading.png)
@@ -73,12 +80,12 @@ We have two assessment moments: one for the Web technology assignments and one f
 - Week 2.2: (L3) JavaScript and (L4) Node.js
 - Week 2.3: (L5) CSS and (L6) Node.js (advanced topics)
 - Week 2.4: (L7) Cookies & sessions and (L8) web security
-- Week 2.5: midterm on December 13 (*the midterm only covers web technology topics*)
+- Week 2.5: DB topics; **midterm on December 13** (*the midterm only covers web technology topics*)
 - Week 2.6: DB topics
 - Week 2.7: DB topics
 - Week 2.8: DB topics
 - Week 2.9: DB topics
-- Week 2.10: _no lectures_ this week; final exam on February 1 (*the final exam only covers DB topics*)
+- Week 2.10: _no lectures_ this week; **final exam on February 1** (*the final exam only covers DB topics*)
 
 ## Sample exams
 
@@ -101,9 +108,9 @@ The first three assignments cover web technology topics.
 - [Assignment 2 (web)](Assignment-2.md)
 - [Assignment 3 (web)](Assignment-3.md)
 
-## Demo app
+## Demo application
 
-A demo board game app (a word guesser) [is available](https://github.com/chauff/Web-Teaching/tree/master/demo-code) as well. If you are stuck on how to go about implementing something, the source code of this app can help you to get unstuck. Is has been implemented along the lines of the assignments.
+A demo board game application (a word guesser) [is available](https://github.com/chauff/Web-Teaching/tree/master/demo-code) as well. If you are stuck on how to go about implementing something, the source code of this app can help you to get unstuck. Is has been implemented along the lines of the assignments.
 
 The demo app, just as listed in this year's board game project, consists of two screens, a splash screen:
 
@@ -117,6 +124,12 @@ and a game screen:
 
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
+
+## Web development resources
+
+The practical assignments of this work often require looking up Web development specifics. Two good resources, in general, for Web engineering are [Mozilla's MDN portal](https://developer.mozilla.org/en-US/) and [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).
+
+![MDN](img/RME-mdn.png) ![Google Fundamentals](img/RME-fundamentals.png)
 
 ## Lecture material types
 
