@@ -34,8 +34,6 @@ Preview: in today's lecture we look at JavaScript as the language of browser int
         - [Example 6: a typing game](#example-6-a-typing-game)
 - [Self-check](#self-check)
 
-
-
 ## Learning goals
 
 - Employ JavaScript objects.
@@ -47,32 +45,42 @@ Preview: in today's lecture we look at JavaScript as the language of browser int
 
 If you have already read Chapter 4 of the course book, you should know:
 
-- the basics of JavaScript,
-- how to include JavaScript in your web application,
-- how to declare variables and functions, etc.,
-- what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is.
-
-You should have also learned about `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
+- the basics of JavaScript;
+- how to include JavaScript in your web application;
+- how to declare and use variables and functions;
+- what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
+- the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
 
 In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
 
 ## Examples throughout the lectures
 
-A bit of context: the code examples throughout this course materials belong to one of three example applications:
+The code examples throughout these course materials tend to based on three different example applications:
 
-- A todo application.
-- A habbit tracker.
-- A two-player game.
+- A todo application as introduced in the web course book.
+- A habbit tracker application as students had to implement in the 2017/18 edition of this course.
+- A board game application as needs to be implemented for the 2018/19 edition of this course. 
+
+As the course material has been developed over time, you will get a glimpse of each of those applications.
 
 ## JavaScript's reputation
 
-Until fairly recently JavaScript was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in 2017](https://octoverse.github.com/). Over the past decade, the tooling, frameworks and libraries that have become available for JavaScript (browser built-in dev tools, build tools, testing frameworks, UI frameworks, ...) have vastly improved. In addition, the **JavaScript runtime environments** are highly efficient and a number of them co-exist: [V8](https://developers.google.com/v8/) is Google's JavaScript engine, [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox) and [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
+In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in in the last five years](https://octoverse.github.com/projects) (also interesting, TypeScript, which compiles into JavaScript claimed rank #7):
 
-JavaScript tracks ECMAScript, the scripting-language specification standardized by Ecma International. While JavaScript is the most popular implementation of the standard, other implementations (or dialects) exist as well, e.g. ActionScript.
+![Top languages on GitHub](img/L3-github.png)
+<sub>Top languages over time (as measured by contributors) on GitHub.</sub>
+
+Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browser built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. In addition, the **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully: 
+
+- [V8](https://developers.google.com/v8/) is Google's JavaScript engine,
+- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and 
+- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
+
+JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations (or dialects) exist as well, e.g. ActionScript.
 
 JavaScript is a language in flux.
 
-One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, etc. These names refer to different version of ECMAScript (ES for short) which is currently in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard required a long-standing effort: "the completion of the sixth edition is the culmination of a fifteen year effort" ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
+One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
