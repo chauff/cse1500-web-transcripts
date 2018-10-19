@@ -454,7 +454,7 @@ Try out the following examples yourself (everything indented is returned by the 
 **Use `HEAD` to get information about the page**
 
 ```console
-$ telnet microsoft.com 80
+telnet microsoft.com 80
     Trying 134.170.185.46
     Connected to microsoft.com
     Escape character is ‘^]’
@@ -470,7 +470,7 @@ host:microsoft.com
 **Use `HEAD` to see what is at the moved location**
 
 ```console
-$ telnet www.microsoft.com 80
+telnet www.microsoft.com 80
     Trying 134.170.185.46
     Connected to microsoft.com
     Escape character is ‘^]’
@@ -486,7 +486,7 @@ host:www.microsoft.com
 **Use `GET` to retrieve the content**
 
 ```console
-$ telnet www.microsoft.com 80
+telnet www.microsoft.com 80
 GET / HTTP/1.1
 host:www.microsoft.com
 [line feed]
@@ -498,7 +498,7 @@ Check out Microsoft's message that is returned here; investigate what a *User-Ag
 **Use `GET` to retrieve content from another path**
 
 ```console
-$ telnet www.microsoft.com 80
+telnet www.microsoft.com 80
     Trying 134.170.185.46
     Connected to microsoft.com
     Escape character is ‘^]’
@@ -572,7 +572,7 @@ https://duckduckgo.com/html?q=delft
 This is an example of a URL pointing to the Duckduckgo website that - as part of the URL - contains the `q=delft` query. This query component is passed to the application accessed at  the web server - in this case, Duckduckgo's search system and returned to you is a list of search results for the query `delft`. This syntax is necessary to enable interactive application.
 By convention we use `name=value` to pass application variables. If an application expects several variables, e.g. not only the search string but also the number of expected search results, we combine them with an `&`: `name1=value1&name2=value2& ...`.
 
-<a name="answer">Answer: All URLs are valid.</a>[Return to the URL section.](#uniform-resource-locators-urls)
+<a name="answer">Answer: All URLs are valid.</a> [Return to the URL section.](#uniform-resource-locators-urls)
 
 ### Schemes: more than just HTTP(S)
 
