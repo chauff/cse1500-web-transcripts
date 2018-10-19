@@ -12,8 +12,6 @@
     - [Site navigation: the *trunk test*](#site-navigation-the-trunk-test)
     - [Entry page checklist](#entry-page-checklist)
 - [HTML5](#html5)
-    - [Activity](#activity)
-    - [Overview](#overview)
     - [The move towards HTML5](#the-move-towards-html5)
     - [Who decides the HTML standard](#who-decides-the-html-standard)
 - [Self-check](#self-check)
@@ -209,38 +207,15 @@ Another serial offender of the entry page checklist are university home pages as
 
 ## HTML5
 
-### Activity
-
-If you have completed the required readings, you should be able to fill in the `???` entries in the HTML `<form>` snippet below which takes a user's search query as input and sends it off to Google. The rendered form looks as follows:
-
-![Google search bar](img/L2-search.png)
-
-```html
-<!doctype html>
-<html>
-    <head>
-        <title>My First Search Form</title>
-    </head>
-    <body>
-        <form action="http://www.google.com/search" method="???" target="_blank">
-            <input name="q" type="???" />
-            <input type="submit" value="???"/>
-        </form>
-    </body>
-</html>
-```
-
-### Overview
-
 HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich web content**:
 
 - **Core HTML5**: mark up content;
 - **CSS**: control the appearance of marked-up content;
 - client-side **JavaScript**: manipulate the contents of HTML documents and respond to user interactions.
 
-Modern web application development requires knowledge of all three technologies. *In practice, it also requires a whole set of additional frameworks and technologies to go from prototype code to production code, such as build tools, transpilers, code coverage tools and so on. Even "just" for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70). We will introduce a few of those things throughout this course.*
+Modern web application development requires knowledge of all three technologies. In practice, it also requires a whole set of additional frameworks and tools to go from prototype code to production code, such as build tools, transpilers, code coverage tools and so on. Even for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70) alone. We will introduce a few of those tools throughout the practical assignments.
 
-Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 as an XML 1.0 application and stands for **Extensible HyperText Markup Language**. It looks as follows (straight from the [W3C XHTML recommendation](https://www.w3.org/TR/xhtml1/)):
+Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 as an XML 1.0 application and stands for **Extensible HyperText Markup Language**. It looks as follows (taken straight from the [W3C XHTML recommendation](https://www.w3.org/TR/xhtml1/)):
 
 ```html
 <?xml version="1.0" encoding="UTF-8"?>
@@ -259,26 +234,36 @@ Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 
 
 XHTML was designed to make processing of web pages **easier for machines** by having a very strict set of rules. The problem though was that (X)HTML is written by developers, not machines and it turned out to be too much hassle to write valid XHTML. Moreover, browsers were and are able to render invalid XHTML pages properly (so why even try to write valid XHTML?) and thus XHTML was eventually abandoned in favor of HTML5, which is not only less strict but also added a host of new features to the language.
 
-With the host of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to their own non-standardized features). A good resource to check which browser versions support which HTML5 feature (and to what extent) is [caniuse.com](http://caniuse.com/).
+With this introduction of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to implementing their own non-standardized features). A good resource to check which browser versions support which HTML5 feature and to what extent is https://caniuse.com/. 
+
+As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form):
+
+![HTML5 form support](img/L2-html5-form.png)
+
+We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices - depending on their target population (and the most popular browsers among the target population), certain HTML5 features should (not) be employed.
 
 ### The move towards HTML5
 
-The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <plaintext> <listing> <p> <h1> <address> <hp1> <dl> <dt> <ul>`. JavaScript was created within 10 days (*which explains many of the JavaScript quirks*) in May 1995 by [Brendan Eich](https://twitter.com/BrendanEich) (a co-founder of Mozilla who is also behind the browser [brave](https://brave.com/), developed to block out ads and trackers) at the time at Netscape; this was the beginning of client-side **dynamic** scripting for the browser.
+The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <plaintext> <listing> <p> <h1> <address> <hp1> <dl> <dt> <ul>`. JavaScript was created within 10 days (*which explains many JavaScript quirks*) in May 1995 by [Brendan Eich](https://twitter.com/BrendanEich), a co-founder of Mozilla who today is behind the browser [Brave](https://brave.com/). At the time, Eich worked at Netscape, which offered Netscape Navigator, a dominant browser in those years. It was the beginning of client-side **dynamic** scripting for the browser.
 
-**Plugins** (the most famous being Adobe Flash in 1996) were created to go beyond what at the time was possible with HTML. HTML5 was a drive to return rich content **directly** into the browser, without the need for plugins or addons.
+**Plugins** were created to go beyond what at the time was possible with HTML. Probably the most famous plugin remains Adobe Flash, which was introduced in 1996. HTML5 is a drive to return rich content **directly** into the browser, without the need for plugins or addons.
 
-HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentation, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **Semantic HTML** is quite different from the vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/).
+HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. As a guideline, when creating an HTML document, it is always best to select the **most specific** element to represent your content (instead of only using `<div>`'s). Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentation, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **semantic HTML** is quite different from the grand vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/):
 
-As a guideline, when creating an HTML document, it is always best to select the **most specific** element to represent your content (instead of only using `<div>`'s).
+```
+The Semantic Web is a Web of data — of dates and titles and part numbers and chemical properties and any other data one might conceive of.
+```
 
 ### Who decides the HTML standard
 
-HTML is widely used, which makes standardisation a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (including Microsoft, Google, Mozilla, Nokia, Baidu, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required (taken from the [W3C Recommendation Track Process](https://www.w3.org/2018/Process-20180201/#maturity-levels) document):
+HTML is widely used, which makes standardisation a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (Microsoft, Google, Mozilla, Nokia, Baidu, Yandex, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required:
 
 1. **Working Draft**: *a document that W3C has published for review by the community, including W3C Members, the public, and other technical organizations.*
 2. **Candidate Recommendation**: *a document that W3C believes has been widely reviewed and satisfies the Working Group's technical requirements. W3C publishes a Candidate Recommendation to gather implementation experience.*
 3. **Proposed Recommendation**: *a mature technical report that, after wide review for technical soundness and implementability, W3C has sent to the W3C Advisory Committee for final endorsement.*
 4. **W3C Recommendation**: *a specification or set of guidelines that, after extensive consensus-building, has received the endorsement of W3C Members and the Director. W3C recommends the wide deployment of its Recommendations. Note: W3C Recommendations are similar to the standards published by other organizations.*
+
+<sub>Source: [W3C Recommendation Track Process](https://www.w3.org/2018/Process-20180201/#maturity-levels).</sub>
 
 Sloppily one could say that the W3C standardizes what the browser vendors have agreed upon and have chosen to implement (or will implement).
 
