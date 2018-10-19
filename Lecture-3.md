@@ -47,10 +47,9 @@ If you have already read Chapter 4 of the course book, you should know:
 
 - the basics of JavaScript;
 - how to include JavaScript in your web application;
-- how to declare and use variables and functions;
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
 - the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
-
+  
 In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
 
 ## Examples throughout the lectures
@@ -58,46 +57,57 @@ In this lecture we built upon chapter 4 and cover a number of important JavaScri
 The code examples throughout these course materials tend to based on three different example applications:
 
 - A todo application as introduced in the web course book.
-- A habbit tracker application as students had to implement in the 2017/18 edition of this course.
+- A habit tracker application as students had to implement in the 2017/18 edition of this course.
 - A board game application as needs to be implemented for the 2018/19 edition of this course. 
 
 As the course material has been developed over time, you will get a glimpse of each of those applications.
 
 ## JavaScript's reputation
 
-In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in in the last five years](https://octoverse.github.com/projects) (also interesting, TypeScript, which compiles into JavaScript claimed rank #7):
+In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in in the last five years](https://octoverse.github.com/projects) ([TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript claimed rank #7):
 
 ![Top languages on GitHub](img/L3-github.png)
-<sub>Top languages over time (as measured by contributors) on GitHub.</sub>
 
-Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browser built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. In addition, the **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully: 
+<sub>Top languages over time (as measured by number of contributors) on GitHub.</sub>
+
+Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on.
+
+In addition, today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
 - [V8](https://developers.google.com/v8/) is Google's JavaScript engine,
 - [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and 
 - [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
 
-JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations (or dialects) exist as well, e.g. ActionScript.
+JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
 
 JavaScript is a language in flux.
 
-One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
+One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard (a good overview is provided at http://es6-features.org/) and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
-In this course we do include very few **ES6** features, as we have only a few lectures to cover the material. If you want to dive into the depth of JavaScript, check out the free [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
+In this course we include very few **ES6** features, as we have only a few lectures to cover client/server-side JavaScript. The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; this is a useful limitation. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
 
-In this course we cover *plain JavaScript*, but it is also worthwhile to know that [MANY](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
+In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
-Here is one example of what TypeScript (the 11th most popular language on GitHub as of [2017](https://octoverse.github.com/)) offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain type on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you know what you want the type to be (for instance function parameters), so it is good to give this knowledge to the compiler to avoid errors. TypeScript (as the name suggests, TypeScript enables static type checking) allows you to do that, so you can catch errors early on!
+Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge to the compiler to catch errors (e.g. functions called with wrong parameters) early on. TypeScript allows you to do that, by **enabling static type checking**.
 
 ## Scripting overview
 
 ### Server-side vs. client-side scripting
 
-**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client (usually an HTML document). The client thus has to trust the server. Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly increase the server's load. As the client often only receives an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML.
+**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client - often an HTML document. The client thus has to trust the server's computations (there is no possibility to validate the code that ran on the server). Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly **increase the server's load**. As clients often only receive an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML.
 
-**Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code (and [this](https://twitter.com/atoker/status/796176641600974851) may happen). Having the clients execute the scripts **reduces the load on the web server**, though all data necessary for the script (which could be megabytes of data) need to be downloaded and processed by the client.
+**Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code. A famous example of the uproar such code digging can cause is the NYTimes jitter: a jitter was introduced to a gauge dial in order to convey the uncertainty around election forecasting. This jitter though was not based on data (e.g. as new election data comes in), but instead a visualization design choice. Thi
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Looking for trends in <a href="https://twitter.com/nytimes?ref_src=twsrc%5Etfw">@nytimes</a>&#39;s presidential forecast needle? Don&#39;t look too hard - the bounce is random jitter from your PC, not live data <a href="https://t.co/pwcV6epee7">pic.twitter.com/pwcV6epee7</a></p>&mdash; Alp Toker (@atoker) <a href="https://twitter.com/atoker/status/796176641600974851?ref_src=twsrc%5Etfw">November 9, 2016</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+[NYTimes jitter](https://twitter.com/atoker/status/796176641600974851)
+
+, but  readers considered it though as  This jitter though was , where the needle quivered to reflect the uncertainty around the forecast may happen). Having the clients execute the scripts **reduces the load on the web server**, though all data necessary for the script (which could be megabytes of data) need to be downloaded and processed by the client.
 
 ### `<script>`
 
