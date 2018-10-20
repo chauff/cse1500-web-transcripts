@@ -171,9 +171,11 @@ The scopes of values and expressions depend on *where* and *how* they are declar
 - `let` was introduced in **ES6**: **block** scope;
 - `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
 
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global. That this leads to unintuitive behavior can be seen in the following code snippets.
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global.
 
-Imagine we want to print out the numbers 1 to 10. This is easy to achieve, e.g.:
+Having only two scopes available results in some unexpected code behavior, which can be especially confusing for JavaScript beginners. Let's look at one popular example.
+
+Imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript, just like in any other language:
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -181,7 +183,7 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-Lets now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function (below: an **anonymous function**) after a delay (specified in milliseconds) you might expect the following piece of code to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
+Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
