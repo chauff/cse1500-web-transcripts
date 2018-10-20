@@ -434,13 +434,19 @@ var paramModule = {
 };
 ```
 
-:point_up: The function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is an alternative for `console.log`, especially for objects and arrays, as it displays tabular data as a table:
+The function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is an alternative for `console.log`, especially for objects and arrays, as it displays tabular data as a table:
 
 ![console.table](img/L3-console-table.png)
 
-Another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single argument that is a string, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single string argument, you can use assertions (one to check the number of arguments provided and one to check whether the argument is of type string) to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner.
+<sub>Screenshot of Firefox's Web Console.</sub>
 
-Back to object literals ... what happens if we need 1000 objects of this kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
+Another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
+
+![console.assert](img/L3-console-assert.png)
+
+<sub>Screenshot of Firefox's Web Console.</sub>
+
+Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
 
 ### Design pattern I: Basic constructor
 
