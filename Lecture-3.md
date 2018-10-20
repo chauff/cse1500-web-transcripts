@@ -122,7 +122,7 @@ In other words, interactivity based on the DOM should only start **after** the D
 
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
-Executing the following JavaScript code snippet yields what output?
+Executing the JavaScript code snippet below yields what output?
 
 ```javascript
 function giveMe(x){
@@ -135,7 +135,7 @@ var giveMe5 = giveMe(5);
 console.log( giveMe5(10) );
 ```
 
-Executing the following JavaScript code snippet yields what output?
+Executing the JavaScript code snippet below yields what output?
 
 ```javascript
 function toPrint(x){
@@ -152,6 +152,8 @@ my_func(5, toPrint);
 <sub>To assess your answers, run the code snippets' in the browser's Web Console.</sub>
 
 ## Scoping and hoisting
+
+<sub>Note: at times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text.</sub>
 
 ### Scoping
 
@@ -193,9 +195,11 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-When you run this code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Why is this? Well, first of all, what happens here is that `setTimeout` is executed ten times without delay - defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` (and then breaks as the `i<=10` condition is no longer fulfilled) which means `i` is `11` at the end of the `for` loop. As `i` has global scope, every single callback refers to the same variable. After a bit more time passes (reaching ~1 second) each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i` to console. Since `i` is `11` and all  we will get ten print outs of `11`.
+:point_up: When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself!
 
-Let's fix the two issues (printing 11s instead of 1...10 and waiting a second between print outs one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** this was the established solution (you will find this construct in all kinds of older pieces of code):
+Her is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
+
+Let's fix the two issues (printing 11s instead of 1...10 and waiting a second *between print outs* one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet was the established solution (you will find this construct in all kinds of code bases):
 
 ```javascript
 function fn(i) {
@@ -208,9 +212,9 @@ for (var i = 1; i <= 10; i++)
     fn(i);
 ```
 
-We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
+:point_up: We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
 
-With the introduction of **ES6** and `let`, we no longer need this additional function construct - though you will find a lot of code still relies on those constructs - as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect:
+With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect :point_down: :
 
 ```javascript
 for (let i = 1; i <= 10; i++)
