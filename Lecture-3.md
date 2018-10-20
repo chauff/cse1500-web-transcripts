@@ -135,7 +135,7 @@ var giveMe5 = giveMe(5);
 console.log( giveMe5(10) );
 ```
 
-Executing the JavaScript code snippet :point_up: yields what output?
+Executing the JavaScript code snippet :point_down: yields what output?
 
 ```javascript
 function toPrint(x){
@@ -175,7 +175,7 @@ Before **ES6** there was no **block scope**, we only had two scopes available: l
 
 Having only two scopes available results in some unexpected code behavior, which can be especially confusing for JavaScript beginners. Let's look at one popular example.
 
-Imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript, just like in any other language:
+Imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript, just like in any other language :point_down: :
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -183,7 +183,7 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
+Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code :point_down: to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -193,11 +193,9 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-:point_up: When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself!
+:point_up: When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Here is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
 
-Her is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
-
-Let's fix the two issues (printing 11s instead of 1...10 and waiting a second *between print outs* one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet was the established solution (you will find this construct in all kinds of code bases):
+Let's fix the two issues (printing 11s instead of 1...10 and waiting a second *between print outs* one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet :point_down: was the established solution:
 
 ```javascript
 function fn(i) {
@@ -210,9 +208,9 @@ for (var i = 1; i <= 10; i++)
     fn(i);
 ```
 
-:point_up: We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
+:point_up: You will find this construct in all kinds of code bases. We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
 
-With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect :point_down: :
+With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect :point_down::
 
 ```javascript
 for (let i = 1; i <= 10; i++)
