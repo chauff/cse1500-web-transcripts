@@ -1021,11 +1021,11 @@ Important to note here is that there are often methods available for DOM element
 
 #### Example 3: `this`
 
-Event handlers are bound to the attached element's objects and the handler function "knows" which element it is listening to (`this`). This simplifies programming as a function can serve different objects.
+Event handlers are bound to the attached element's objects and the handler function "knows" which element it is listening to (the element pointed to by `this`). This simplifies programming as a function can serve different objects.
 
-Imagine you want to create a simple multiplication app that has one text input box and three buttons. A click on a button multiplies the number found in the input with a fixed number (unique per button).
+Imagine you want to create a multiplication app that has one text input box and three buttons, each with an arbitrary number on it. A click on a button multiplies the number found in the input with the button's number.
 
-We can of course write three different functions and then separately attach each of them to the correct button:
+We could write three different functions and then separately attach each of them to the correct button :point_down::
 
 ```javascript
 document.getElementById("button10").onclick = computeTimes10;
@@ -1033,7 +1033,7 @@ document.getElementById("button23").onclick = computeTimes23;
 document.getElementById("button76").onclick = computeTimes76;
 ```
 
-This is tedious, error prone and not maintainable (what if you need a hundred buttons next). We could also be tempted to use the following construct:
+This is tedious, error prone and not maintainable (what if you need a hundred buttons). We could also be tempted to use the following construct :point_down::
 
 ```javascript
 document.getElementById("button10").onclick = computeTimes(10);
@@ -1041,9 +1041,9 @@ document.getElementById("button23").onclick = computeTimes(23);
 document.getElementById("button76").onclick = computeTimes(76);
 ```
 
-but this will not work either, as in this case the execution of each line of code will immediately execute the `computeTimes` function instead of attaching it to the click event.
+but this will not work either, as in this case :point_up: the JavaScript runtime will parse each line will immediately execute the `computeTimes` function instead of attaching it to the click event.
 
-The best option is to use `this`:
+The best option to avoid code duplication is the use of `this` :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -1051,7 +1051,6 @@ The best option is to use `this`:
     <head>
         <title>Example 3</title>
         <script>
-          /* JavaScript */
           window.onload = function() {
             document.getElementById("button10").onclick = computeTimes;
             document.getElementById("button23").onclick = computeTimes;
@@ -1060,11 +1059,11 @@ The best option is to use `this`:
 
           function computeTimes() {
             /*
-             * this.innerHTML returns to us "N times", 
-             * parseInt() then strips out the " times" part 
+             * this.innerHTML returns to us "N times",
+             * parseInt() then strips out the " times" suffix
              * as it stops parsing at an invalid number character
              */
-            var times = parseInt(this.innerHTML); 
+            var times = parseInt(this.innerHTML);
             var input = parseFloat(document.getElementById("input").value);
             var res = times * input;
             alert("The result is " + res);
@@ -1081,9 +1080,7 @@ The best option is to use `this`:
 </html>
 ```
 
-Depending on which button was clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here a lazy way of stripping out the "times" text, forcing a conversion to type `number`.
-
-Note that in global code or regular functions (not bound to an object), `this` refers to the global `window` object.
+:point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here a lazy way of stripping out the " times" string suffix, forcing a conversion to type `number`.
 
 #### Example 4: mouse events
 
