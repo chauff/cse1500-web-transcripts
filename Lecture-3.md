@@ -843,6 +843,8 @@ If you want to examine how web applications make use of events, the browser deve
 
 ![Exploring events](img/L3-event-listeners.png)
 
+<sub>Screenshot of Firefox's Web Console.</sub>
+
 ### Document Object Model
 
 The DOM is our entry point to interactive web applications. It allows use to:
@@ -860,8 +862,8 @@ The DOM is our entry point to interactive web applications. It allows use to:
   - Change the size of a paragraph
   - Change the background color of a web application
 
-In the remainder of this lecture, you will see a number of simple event-based examples that add an interactive element to a web page.
-These examples are simple and self-contained. This means that all necessary code is contained within a single code snippet (even though by now you are aware that in a real coding project there should be a strict separation between HTML, JavaScript and CSS, the latter will be introduced in a later lecture).
+We will now walk through a number of examples that add an interactive element to a web application.
+These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
 
 #### Example 1: document.getElementById
 
