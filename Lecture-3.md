@@ -313,7 +313,8 @@ Now we will end up with a `ReferenceError: a is not defined` as the `var a` decl
 In Java, `this` refers to the current object, **in JavaScript what `this` refers to is dependent on *how* the function containing `this` was called**. We also have the option to set the value of a function's `this` independent of how the function was called, using the [`bind` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind). Here is a concrete example of this behaviour :point_down::
 
 ```javascript
-//Assume execution in the browser's Web Console
+//Assume execution in the browser's Web Console, so that we
+//know the global window object exists (it is provided by the browser).
 
 //property of the global `window` variable
 //can also be accessed as window.h
@@ -347,7 +348,7 @@ boundPrintHabit(); // this.h = "Music"
 
 ```javascript
 function(){
-        console.log(this.h);
+    console.log(this.h);
 }
 ```
 
@@ -361,22 +362,22 @@ to be different each time, as each time, `this` refers to a different object. We
 
 ## JavaScript design patterns
 
-*"Design patterns are reusable solutions to commonly occurring problems in software design."* This quote is on the first page of Addy Osmani's [book on JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/) (available under CC). A basic example of a reusable solution is one for object creation. Instead of everyone of us trying to figure out how to create objects, we use well-known recipes (a.k.a. design patterns) that were developed over time and apply them.
-There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Maybe also worth knowing that besides **design patterns**, there exist also **anti-patterns**, that are programming recipes which are popular but ineffective at tackling a recurring problem.
+*"Design patterns are reusable solutions to commonly occurring problems in software design."* This quote is on the first page of Addy Osmani's popular [book on JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/). A basic example of a reusable solution is one for object creation. Instead of everyone trying to figure out how to create objects, we use well-known **recipes** (a.k.a. design patterns) that were developed over time and apply them.
+There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Besides **design patterns**, there also exist **anti-patterns**, that are programming recipes which are popular but ineffective at tackling a recurring problem.
 
 ### JavaScript objects
 
-The web course book focuses on what JavaScript to place where, it does not emphasize object principles. We do this here. One vital notion in JavaScript is the fact that **functions are first-class citizens** of the language. What does that mean? Well, it means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable**.
+In JavaScript, **functions are first-class citizens** of the language. This means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable**. This is quite a difference to Java for example, where functions cannot be passed around.
 
-The object-oriented programming paradigm is based on a set of cooperating objects (each one able to send/receive "messages" and process data) instead of a collections of functions or a set of commands. The goal of OOP is to assign every object a distinct role, in order to improve code maintainability.
+The object-oriented programming paradigm is based on a set of cooperating objects (each one able to send/receive "messages" and process data) instead of a collections of functions or a set of commands. The goal of object-oriented design is to assign every object a distinct role, in order to improve code maintainability.
 
-In JavaScript, **functions are also objects**. Apart from functions, JavaScript also comes with a number of built-in objects: Strings, arrays and objects specific to the fact that JavaScript was developed to add interaction to HTML. One example is the `document` object, which only makes sense in the context of an HTML page. Note, that the `document` object is not part of core JavaScript (the language is defined independently of the browser context), however when we discuss client-side scripting we do mean JavaScript in the browser. The browser is the host application in this case and provides the `document` object.
+In JavaScript, **functions are also objects**. Apart from functions, JavaScript also comes with a number of other built-in objects: Strings, arrays and objects specific to the fact that JavaScript was developed to add interaction to HTML. One example is the `document` object, which only makes sense in the context of an HTML page. Note, that the `document` object is not part of core JavaScript (the language is defined independently of the browser context), however when we discuss client-side scripting we do mean JavaScript in the browser. The browser is the host application in this case and provides the `document` object.
 
-JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use  the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at other developers' code).
+JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at other developers' code).
 
 ### Object creation with `new`
 
-Let's start with the creation of objects. Here you see one way of creating objects in JavaScript:
+Let's start with the creation of objects. Here you see one way of creating objects in JavaScript :point_down::
 
 ```javascript
 var game = new Object();
@@ -395,15 +396,13 @@ game["printID"](); // prints out "1"
 game.printID(); //prints out "1"
 ```
 
- We first create an empty object with the `new` notation that we can then assign name/value pairs. Here, `id`, `player` and so on are the object's **properties** and their name must be a valid JavaScript identifier (basically a string that does not start with a number). Note, that `printID` is also an object property, although it is often also referred to as a method (because we define a function here). As you see here, JavaScript makes it easy to add methods, by assigning a function to the property of an object.
+:point_up: We first create an empty object with `new Object()` that we can then assign name/value pairs. Here, `id`, `player1`, etc. are the object's **properties** and their name must be a valid JavaScript identifier (basically a string that does not start with a number). Note, that `printID` is also an object property, although it is often also referred to as a method because we define a function as part of an object. As seen here, JavaScript makes it easy to add methods, by assigning a function to the property of an object.
 
- Here you also see the use of `this` for the first time. You should be familiar with it from Java, this refers to the current object. Although ... as with many things in JavaScript, it is not quite as simple. If you take a look at the very successful [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) book series, you will find half a book dedicated to `this` in JavaScript.
-
-We have two ways to set and access an object's properties: either through the bracket notation (`[name]`) or the dot notation (`.name`). It usually does not matter which notation to use, the exception here being property names with whitespaces. Property names that contain whitespaces must be set and accessed through the bracket notation (as in the example above for `game["won lost"]`, the alternative `game.won lost` or `game."won lost"` will lead to a `SyntaxError`).
+We have two ways to set and get an object's properties: either through the bracket notation (`[name]`) or the dot notation (`.name`). It usually does not matter which notation to use, the exception here being property names with whitespaces. Property names that contain whitespaces must be set and accessed through the bracket notation (as in the example above for `game["won lost"]`, the alternative `game.won lost` or `game."won lost"` will lead to a `SyntaxError`).
 
 ### Object literals
 
-There is a second way to create objects and that is via **object literals**. An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces (`{}`).
+There is a second way to create objects and that is via **object literals**. An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces :point_down::
 
 ```javascript
 var game = {
@@ -417,9 +416,9 @@ var game = {
 };
 ```
 
-This time, `"won lost"` is a valid property name, but only if enclosed in quotation marks. Instead of remembering when whitespaces are allowed, it is best to avoid them at all when assigning property names.
+This time, `"won lost"` is a valid property name, but only if enclosed in quotation marks. *Instead of remembering when whitespaces are allowed, it is best to avoid them at all when assigning property names.*
 
-Object literals can be complex, they can contain objects themselves:
+Object literals can be complex, they can contain objects themselves :point_down::
 
 ```javascript
 var paramModule = {
@@ -429,13 +428,17 @@ var paramModule = {
         maxGames: 100,
         maxGameLength: 30
     },
-    printParams : function(){
+    printParams: function(){
         console.table(this.Param);
     }
 };
 ```
 
-The function `console.table` is an alternative for `console.log`, especially for objects and arrays, as it [displays tabular data as a table](https://developer.mozilla.org/en-US/docs/Web/API/Console/table). Although `console.log` is slowing loosely in popularity in its use (due to the ever improving browser developer tools available) it is still one of the most commonly used debugging techniques. Another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single argument that is a string, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single string argument, you can use assertions (one to check the number of arguments provided and one to check whether the argument is of type string) to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner.
+:point_up: The function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is an alternative for `console.log`, especially for objects and arrays, as it displays tabular data as a table:
+
+![console.table](img/L3-console-table.png)
+
+Another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single argument that is a string, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single string argument, you can use assertions (one to check the number of arguments provided and one to check whether the argument is of type string) to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner.
 
 Back to object literals ... what happens if we need 1000 objects of this kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
 
