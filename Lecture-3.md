@@ -105,14 +105,16 @@ Here is one example of what TypeScript offers: JavaScript is a **dynamic languag
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Looking for trends in <a href="https://twitter.com/nytimes?ref_src=twsrc%5Etfw">@nytimes</a>&#39;s presidential forecast needle? Don&#39;t look too hard - the bounce is random jitter from your PC, not live data <a href="https://t.co/pwcV6epee7">pic.twitter.com/pwcV6epee7</a></p>&mdash; Alp Toker (@atoker) <a href="https://twitter.com/atoker/status/796176641600974851?ref_src=twsrc%5Etfw">November 9, 2016</a></blockquote>
 
-and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-york-times-forecast-dial-had-a-fake-twitch-jitter.html), [2](https://www.theverge.com/2016/11/8/13571216/new-york-times-election-forecast-jitter-needle)). A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client.
+and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-york-times-forecast-dial-had-a-fake-twitch-jitter.html), [2](https://www.theverge.com/2016/11/8/13571216/new-york-times-election-forecast-jitter-needle)). 
+
+A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client.
 
 ### `<script>`
 
 The placement of the `<script>` tag is an often discussed issue (1000+ upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this lecture, we follow the course book argument (page 98):
 
 *"We place the `<script>` tags in the `<body>` element: the browser displays the page in a **top-down fashion**, **creating the DOM elements as it comes across them**.
-By placing the `<script>` tags at the end, the JavaScript files will be one of the last things the page loads. Because JavaScript files often take time to load, we do that last so that the user will get visual feedback from the other elements as fast as possible."* 
+By placing the `<script>` tags at the end, the JavaScript files will be one of the last things the page loads. Because JavaScript files often take time to load, we do that last so that the user will get visual feedback from the other elements as fast as possible."*
 
 In other words, interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, `jQuery`'s [`document.ready`](http://learn.jquery.com/using-jquery-core/document-ready/) function is a useful utility.
 
@@ -120,7 +122,7 @@ In other words, interactivity based on the DOM should only start **after** the D
 
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
-1. Executing the following JavaScript code snippet yields what output?
+Executing the following JavaScript code snippet yields what output?
 
 ```javascript
 function giveMe(x){
@@ -133,7 +135,7 @@ var giveMe5 = giveMe(5);
 console.log( giveMe5(10) );
 ```
 
-2. Executing the following JavaScript code snippet yields what output?
+Executing the following JavaScript code snippet yields what output?
 
 ```javascript
 function toPrint(x){
@@ -158,6 +160,8 @@ Scoping is the **context in which values and expressions are visible**. In contr
 - local;
 - global;
 - block (since **ES6**).
+
+A *block* is used to group a number of statements together with a pair of curly brackets `{...}`.
 
 The scopes of values and expressions depend on *where* and *how* they are declared:
 
