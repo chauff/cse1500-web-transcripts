@@ -219,29 +219,26 @@ for (let i = 1; i <= 10; i++)
     }, 1000 * i)
 ```
 
-Scoping is also important when it comes to larger programming projects: imagine that you are working on some complicated project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point or another your code would stop working. Here is a very simple `jQuery` to showcase this issue:
+Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. Here is a toy `jQuery` example to showcase this issue :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    //$ = "overwriting";
-    $("#b").click(function(){
-        $("#b").hide();
-    });
-});
-</script>
-</head>
-<body>
-
-<h1>Hide this button</h1>
-
-<button id="b">Hide me forever</button>
-
-</body>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            //$ = "overwriting";
+            $("#b").click(function(){
+                $("#b").hide();
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <h1>Hide this button</h1>
+        <button id="b">Hide me forever</button>
+    </body>
 </html>
 ```
 
