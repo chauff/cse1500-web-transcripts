@@ -456,7 +456,7 @@ First, let's quickly recap what classes in Java offer us:
 - we define constructors that define how to initialize a new object;
 - we define methods (public, protected, private).
 
-Here is a **Java** example:
+Here is a **Java** example :point_down::
 
 ```java
 public class Game {
@@ -477,19 +477,17 @@ public class Game {
 }
 ```
 
-And here is how we do the same in JavaScript:
+And here is how we do the same in JavaScript :point_down::
 
 ```javascript
 function Game( id){
     this.id = id;
-
     this.getID = function(){ return this.id; };
-
     this.setID = function(id){ this.id = id; };
 }
 ```
 
-We use functions as **constructors** and rely on `this`. We rely on the keyword `new` to initialize a new object similar to what you have already seen before:
+We use functions as **constructors** and rely on `this`. We rely on the keyword `new` to initialize a new object similar to what you have already seen before :point_down::
 
 ```javascript
 var g1 = new Game(1);
@@ -499,19 +497,17 @@ g1.setID(2);
 var g2 = new Game(3);
 ```
 
-An object constructor in JavaScript is just a **normal function**. When the `new` keyword appears the JavaScript runtime executes two steps:
+**In JavaScript, an object constructor is just a normal function**. When the `new` keyword appears, the JavaScript runtime executes two steps:
 
-1. A new anonymous empty object is created and used as `this`.
-2. The new object is **returned** at the end of the function.
+1. A new anonymous empty object is created and `this` refers to it.
+2. The new object is **returned** at the end of the function (though no `return` statement exists).
 
-A common error is to forget the `new` keyword. The JavaScript runtime will not alert you to this mistake, in fact, the JavaScript runtime will simply execute the function as-is. Let's take a look at what happens when you copy and paste the following code into your browser's [Web Console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) (the link points to Firefox's dev tools, feel free to use any major browser though):
+A common error is to forget the `new` keyword. The JavaScript runtime will not alert you to this mistake, in fact, the JavaScript runtime will simply execute the function as-is. Let's take a look at what happens when you copy and paste the following code into your browser's Web Console :point_down::
 
 ```javascript
 function Game( id){
     this.id = id;
-
     this.getID = function(){ return this.id; };
-
     this.setID = function(id){ this.id = id; };
 }
 
@@ -523,20 +519,16 @@ g1.setID(2);
 var g2 = Game("TWO"); //what does "this" refer to now?
 ```
 
-In this code snippet we created a new object assigned to variable `g1`, but for `g2` we forgot the keyword `new` and thus no object was created or assigned to `g2`. If you check what was assigned to `g2` you will find it to be `undefined` (the variable was declared but not defined). So, what happened to the line `this.id = id`? What did `this` refer to in this case? It turns out that without an object, in the browser context, `this` refers to the global `window` object (which represents the window in which the script is running). If you type `window.id` you will in fact find the property to exist and hold the value of `TWO`. Of course, this is not desired as you may accidentally overwrite important properties of the `window` object.
+:point_up: In this code snippet we created a new object assigned to variable `g1`, but for `g2` we forgot the keyword `new` and thus no object was created or assigned to `g2`. If you check what was assigned to `g2` you will find it to be `undefined` (the variable was declared but not defined). So, what happened to the line `this.id = id`? What did `this` refer to in this case? It turns out that without an object, in the browser context, `this` refers to the global `window` object (which represents the window in which the script is running). If you type `window.id` you will find the property to exist and hold the value of `TWO`. Of course, this is not desired as you may accidentally overwrite important properties of the `window` object.
 
 Lesson here: be sure to know when to use `new` and what `this` refers to when.
 
-Another interesting feature of JavaScript is the possibility to add new properties and methods **on the fly**, after object creation. In Java, once we have written our class and instantiated objects from the class, we cannot rewrite the class blueprint to affect the already created objects. JavaScript is a **prototype-based language** and here we can actually change our objects on the fly.
-
-Here is an example:
+Another interesting feature of JavaScript is the possibility to add new properties and methods **on the fly**, after object creation. In Java, once we have written our class and instantiated objects from the class, we cannot rewrite the class blueprint to affect the already created objects. JavaScript is a **prototype-based language** and here we can actually change our objects on the fly :point_down::
 
 ```javascript
 function Game( id){
     this.id = id;
-
     this.getID = function(){ return this.id; };
-
     this.setID = function(id){ this.id = id; };
 }
 
@@ -546,18 +538,16 @@ g1.player1 = "Alice";
 var g2 = new Game("2");
 g2.player1 = "Bob";
 
-g1.printPlayer = function(){ console.log(this.player1); } //we add a method!
+g1.printPlayer = function(){ console.log(this.player1); } //we add a method on the fly!
 g1.printPlayer(); //prints out "Alice"
 
-g2.printPlayer(); //TypeError: g2.printPlayer is not a function
+g2.printPlayer(); //TypeError: g2.printPlayer is not a function (method was added to g1 alone!)
 
 g1.hasOwnProperty("printPlayer"); //true
 g2.hasOwnProperty("printPlayer"); //false
 
 g1.toString(); //"[object Object]" (we never defined it, but it is there)
 ```
-
-The last line of this code snippet is also of interest: objects come with **default methods**, and so the natural question should be, where do these methods come from? The answer is **prototype chaining** .
 
 Before looking at prototype-based constructors, here is a quick summary of the basic constructor:
 
@@ -567,11 +557,11 @@ Before looking at prototype-based constructors, here is a quick summary of the b
   - Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
   - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
 
-The latter point may not be very obvious, but imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently overwrite important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works). 
+We have already touched upon the drawback of the last issue: imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently "overwrite" important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works).
 
 ### Design pattern 2: Prototype-based constructor
 
-The key to understand JavaScript is to understand **prototype chaining**. Objects have a **secret pointer** to another object - the object's prototype. And thus, when creating for instance an object with a basic constructor as seen before, the properties of the constructor's prototype are also accessible in the new object. If a property is not defined in the object, the **prototype chain** is followed:
+The last line of the code snippet above :point_up: shows that objects come with **default methods**, and so the natural question should be, where do these methods come from? The answer is **prototype chaining**. Objects have a **secret pointer** to another object - the object's prototype. And thus, when creating for instance an object with a basic constructor as seen before, the properties of the constructor's prototype are also accessible in the new object. If a property is not defined in the object, the **prototype chain** is followed:
 
 ![Prototype chain](img/L3-prototypechain.png)
 
