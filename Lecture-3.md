@@ -28,7 +28,7 @@
 - [Events and the DOM](#events-and-the-dom)
     - [Document Object Model](#document-object-model)
         - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
-        - [Example 2: creating new nodes](#example-2-creating-new-nodes)
+        - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
         - [Example 3: `this`](#example-3-this)
         - [Example 4: mouse events](#example-4-mouse-events)
         - [Example 5: a crowdsourcing interface](#example-5-a-crowdsourcing-interface)
@@ -931,7 +931,7 @@ document.getElementById("b").onclick = sayHello;
 
 As another exercise, add a second `<input>` element with the **same id** and see what happens. And lastly, try for yourself to replace `<input>` with a `<span>` element. You can no longer use `.value` but instead need to rely on a different property ([hint](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)).
 
-#### Example 2: creating new nodes
+#### :bangbang: Example 2: creating new nodes
 
 HTML tags and content can be added dynamically in two steps:
 
@@ -939,7 +939,7 @@ HTML tags and content can be added dynamically in two steps:
 
 :two: Add the new node to the document as a **child of an existing node**.
 
-To achieve step two, a number of methods are available to every DOM element:
+To achieve step :two:, a number of methods are available to every DOM element:
 
 | Name                   | Description                                                              |
 |------------------------|--------------------------------------------------------------------------|
@@ -948,7 +948,7 @@ To achieve step two, a number of methods are available to every DOM element:
 | `removeChild(node)`      |  removes the given node from this node's child list                      |
 | `replaceChild(new, old)` | replaces the old node with the new one                                   |
 
-Lets look at how this works in practice:
+Let's look at how this works in practice :point_down: (again, try out the code for yourself):
 
 ```html
 <!DOCTYPE html>
@@ -966,7 +966,6 @@ Lets look at how this works in practice:
               li.innerHTML = 'List element ' + (ul.childElementCount+1) +' ';
               ul.appendChild(li);
             };
-
         </script>
     </head>
 
@@ -977,17 +976,16 @@ Lets look at how this works in practice:
 </html>
 ```
 
-Note here, that the HTML part initally contains an empty `<ul>` element. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then starting adding children to it.
+:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it.
 
-We can of course also remove elements:
+We can of course also remove elements :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Example 2</title>
+        <title>Example 2 (Removal)</title>
         <script>
-          /* JavaScript */
           window.onload = function() {
             document.getElementById("bRemoveF").onclick = removeFirstChild;
             document.getElementById("bRemoveL").onclick = removeLastChild;
@@ -1019,11 +1017,11 @@ We can of course also remove elements:
 </html>
 ```
 
-Important to note here is that there are often methods available for DOM elements which look similar, but are leading to quite different behaviour. Case in point: in the above example we used `ul.firstElementChild` and `ul.lastElementChild`. Instead, we could have also used `ul.firstChild` and `ul.lastChild`. And this will work to - at least with every second click, as those methods also keep track of a node's children that are comments or text nodes, instead of just `li` nodes as we intend with our code.
+Important to note here is that there are often methods available for DOM elements which look similar, but are leading to quite different behaviors. Case in point: in the example :point_up: we used `ul.firstElementChild` and `ul.lastElementChild`. Instead, we could have also used `ul.firstChild` and `ul.lastChild`. And this will work to - *at least with every second click*, as those methods also keep track of a node's children that are comments or text nodes, instead of just `li` nodes as we intend with our code.
 
 #### Example 3: `this`
 
-We have already discussed `this` to some extent, it refers to the current object. Event handlers are bound to the attached element's objects and the handler function "knows" which element it is listening to (`this`). This simplifies programming as a function can serve different objects.
+Event handlers are bound to the attached element's objects and the handler function "knows" which element it is listening to (`this`). This simplifies programming as a function can serve different objects.
 
 Imagine you want to create a simple multiplication app that has one text input box and three buttons. A click on a button multiplies the number found in the input with a fixed number (unique per button).
 
