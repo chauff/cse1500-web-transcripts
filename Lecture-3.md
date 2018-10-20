@@ -242,11 +242,9 @@ Scoping is also important when it comes to larger programming projects: imagine 
 </html>
 ```
 
-:point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
+:point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
 
-Luckily, `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible.
-
-How is that achieved? Through the module pattern, which we come to towards the end of this lecture. 
+`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3-module).
 
 ### Hoisting
 
