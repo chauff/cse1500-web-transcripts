@@ -2,7 +2,7 @@
 
 *This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
-Preview: in today's lecture we look at JavaScript as the language of browser interactions. In the next lecture we will look at Node.js, a server-side JavaScript runtime.
+*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text.*
 
 ## Table of Content <!-- omit in toc -->
 
@@ -122,7 +122,7 @@ In other words, interactivity based on the DOM should only start **after** the D
 
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
-Executing the JavaScript code snippet below yields what output?
+Executing the JavaScript code snippet :point_down: yields what output?
 
 ```javascript
 function giveMe(x){
@@ -135,7 +135,7 @@ var giveMe5 = giveMe(5);
 console.log( giveMe5(10) );
 ```
 
-Executing the JavaScript code snippet below yields what output?
+Executing the JavaScript code snippet :point_up: yields what output?
 
 ```javascript
 function toPrint(x){
@@ -152,8 +152,6 @@ my_func(5, toPrint);
 <sub>To assess your answers, run the code snippets' in the browser's Web Console.</sub>
 
 ## Scoping and hoisting
-
-<sub>Note: at times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text.</sub>
 
 ### Scoping
 
