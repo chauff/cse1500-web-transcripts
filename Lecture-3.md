@@ -27,7 +27,7 @@
     - [Design pattern 3: Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
     - [Document Object Model](#document-object-model)
-        - [Example 1: document.getElementById](#example-1-documentgetelementbyid)
+        - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
         - [Example 2: creating new nodes](#example-2-creating-new-nodes)
         - [Example 3: `this`](#example-3-this)
         - [Example 4: mouse events](#example-4-mouse-events)
@@ -865,9 +865,9 @@ The DOM is our entry point to interactive web applications. It allows use to:
 We will now walk through a number of examples that add an interactive element to a web application.
 These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
 
-#### Example 1: document.getElementById
+#### :bangbang: Example 1: document.getElementById
 
-Example 1 is as simple as possible: a page with two elements, a button and a text box. A click on the button will show `Hello World!` in the text box. We can include all necessary code in a single HTML file:
+Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box.
 
 ```html
 <!DOCTYPE html>
@@ -885,7 +885,7 @@ Example 1 is as simple as possible: a page with two elements, a button and a tex
 </html>
 ```
 
-This is of course not ideal as we are writting JavaScript code in the middle of HTML elements, a slight refactoring gets us to this improved version:
+This code :point_up: is of course not ideal as we are writting JavaScript code in the middle of HTML elements, so let us refactor to achieve a bit better code separation :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -915,7 +915,7 @@ This is of course not ideal as we are writting JavaScript code in the middle of 
 </html>
 ```
 
-Better! Although everything is still in a single file, we have now moved all JavaScript code within `<script>` tags. Be sure to check out what happens if the snippet
+Although all code is still in a single file, we have now moved all JavaScript code within `<script>` tags. Try the code out yourself! Be sure to check out what happens if the snippet :point_down::
 
 ```javascript
 window.onload = function() {
@@ -923,7 +923,7 @@ window.onload = function() {
 };
 ```
 
-is replaced just by:
+is replaced just by :point_down::
 
 ```javascript
 document.getElementById("b").onclick = sayHello;
@@ -935,8 +935,9 @@ As another exercise, add a second `<input>` element with the **same id** and see
 
 HTML tags and content can be added dynamically in two steps:
 
-1. Create a DOM node.
-2. Add the new node to the document as a **child of an existing node**.
+:one: Create a DOM node.
+
+:two: Add the new node to the document as a **child of an existing node**.
 
 To achieve step two, a number of methods are available to every DOM element:
 
