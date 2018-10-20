@@ -14,7 +14,7 @@
     - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
     - [`<script>`](#script)
     - [:bangbang: Activity](#bangbang-activity)
-- [Scoping and hoisting](#scoping-and-hoisting)
+- [Scoping, hoisting and this](#scoping-hoisting-and-this)
     - [Scoping](#scoping)
     - [Hoisting](#hoisting)
     - [this](#this)
@@ -151,7 +151,9 @@ my_func(5, toPrint);
 
 <sub>To assess your answers, run the code snippets' in the browser's Web Console.</sub>
 
-## Scoping and hoisting
+## Scoping, hoisting and this
+
+We now cover three JavaScript principles that are often confusing for JavaScript novices.
 
 ### Scoping
 
@@ -248,7 +250,7 @@ Scoping is also important when it comes to larger programming projects: imagine 
 
 ### Hoisting
 
-Hoisting is best explained with a concrete example. Consider this JavaScript code snippet :point_down:. What kind of console output do you expect after executing this snippet?
+[Hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting) is best explained with a concrete example. Consider this JavaScript code snippet :point_down:. What kind of console output do you expect after executing this snippet?
 
 ```javascript
 var x = six();
@@ -308,8 +310,54 @@ Now we will end up with a `ReferenceError: a is not defined` as the `var a` decl
 
 ### this
 
-One of the more confusing aspects about JavaScript as a language is the use of `this`. In Java, `this` refers to the current object, in JavaScript what `this` is referred to is dependent on *how* the function containing `this` was called. We also have the option to set the value of a function's `this` independent of how the function was called, using `bind`. [MDN has a whole page dedicated to this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), the popular You Don't Know JavaScript book series has [half a book](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes) dedicated to `this`. It is outside the scope of this class to go into the details of `this`, for now, remember that what `this` refers to depends on the manner of calling a function. We will come across a number of concrete examples in this and the following lectures that will give you an intuition of what `this` is about.  
+In Java, `this` refers to the current object, **in JavaScript what `this` refers to is dependent on *how* the function containing `this` was called**. We also have the option to set the value of a function's `this` independent of how the function was called, using the [`bind` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind). Here is a concrete example of this behaviour :point_down::
 
+```javascript
+//Assume execution in the browser's Web Console
+
+//property of the global `window` variable
+//can also be accessed as window.h
+var h = "Sports";
+
+function habit(s){
+    this.h = s;
+    this.printHabit = function(){
+        console.log(this.h);
+    }
+}
+
+//CASE 1
+//Creating a new object and calling the object's printHabit() function
+var habitObj = new habit("Reading");
+habitObj.printHabit(); // this.h = "Reading"
+
+//CASE 2
+//Copying the printHabit function;
+//printHabit is now a property of the global window object
+var printHabit = habitObj.printHabit;
+printHabit(); // this.h = "Sports"
+
+//CASE 3
+//Fixing 'this' of the printHabit function
+var boundPrintHabit = printHabit.bind({h: "Music"});
+boundPrintHabit(); // this.h = "Music"
+```
+
+:point_up: If you execute this code in the browser's Web Console, you will observe the output of the `printHabit` function, originally defined inside the `habit` function :point_down::
+
+```javascript
+function(){
+        console.log(this.h);
+}
+```
+
+to be different each time, as each time, `this` refers to a different object. We called the function in three different ways:
+
+- CASE 1: as a method of an object;
+- CASE 2: as a property of the global `window` object;
+- CASE 3: as a bound function.
+
+ We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes).
 
 ## JavaScript design patterns
 
