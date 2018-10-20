@@ -5,6 +5,7 @@
 Preview: in today's lecture we look at JavaScript as the language of browser interactions. In the next lecture we will look at Node.js, a server-side JavaScript runtime.
 
 ## Table of Content <!-- omit in toc -->
+
 - [Learning goals](#learning-goals)
 - [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
 - [Examples throughout the lectures](#examples-throughout-the-lectures)
@@ -12,7 +13,7 @@ Preview: in today's lecture we look at JavaScript as the language of browser int
 - [Scripting overview](#scripting-overview)
     - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
     - [`<script>`](#script)
-    - [Activity](#activity)
+    - [:bangbang: Activity](#bangbang-activity)
 - [Scoping and hoisting](#scoping-and-hoisting)
     - [Scoping](#scoping)
     - [Hoisting](#hoisting)
@@ -48,6 +49,7 @@ If you have already read Chapter 4 of the course book, you should know:
 - the basics of JavaScript;
 - how to include JavaScript in your web application;
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
+- the DOM;
 - the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
   
 In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
@@ -107,18 +109,18 @@ and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-
 
 ### `<script>`
 
-The placement of the `<script>` tag is an often discussed issue (100+ upvotes for [this question](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup) on Stack Overflow ...). We go with the course book argument in this course:
+The placement of the `<script>` tag is an often discussed issue (1000+ upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this lecture, we follow the course book argument (page 98):
 
 *"We place the `<script>` tags in the `<body>` element: the browser displays the page in a **top-down fashion**, **creating the DOM elements as it comes across them**.
-By placing the `<script>` tags at the end, the JavaScript files will be one of the last things the page loads. Because JavaScript files often take time to load, we do that last so that the user will get visual feedback from the other elements as fast as possible."* (p. 98)
+By placing the `<script>` tags at the end, the JavaScript files will be one of the last things the page loads. Because JavaScript files often take time to load, we do that last so that the user will get visual feedback from the other elements as fast as possible."* 
 
-Once more: interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, [`jQuery`'s `document.ready` function is your friend](http://learn.jquery.com/using-jquery-core/document-ready/).
+In other words, interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, `jQuery`'s [`document.ready`](http://learn.jquery.com/using-jquery-core/document-ready/) function is a useful utility.
 
-### Activity
+### :bangbang: Activity
 
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
-1. Executing this JavaScript code snippet yields what output?
+1. Executing the following JavaScript code snippet yields what output?
 
 ```javascript
 function giveMe(x){
@@ -131,7 +133,7 @@ var giveMe5 = giveMe(5);
 console.log( giveMe5(10) );
 ```
 
-2. Executing this JavaScript code snippet yields what output?
+2. Executing the following JavaScript code snippet yields what output?
 
 ```javascript
 function toPrint(x){
@@ -145,11 +147,19 @@ function my_func(x,y){
 my_func(5, toPrint);
 ```
 
+<sub>To assess your answers, run the code snippets' in the browser's Web Console.</sub>
+
 ## Scoping and hoisting
 
 ### Scoping
 
-Let's talk about **scoping**, that is *the context in which values and expressions are visible* in JavaScript. In contrast to other languages, JavaScript has very **limited** scoping:
+Scoping is the **context in which values and expressions are visible**. In contrast to other languages, JavaScript has very few scopes:
+
+- local;
+- global;
+- block (since **ES6**).
+
+The scopes of values and expressions depend on *where* and *how* they are declared:
 
 - `var` declared within a function: **local** scope;
 - `var` declared outside of a function: **global** scope;
