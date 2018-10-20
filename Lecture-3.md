@@ -740,7 +740,9 @@ console.log( gameStatModule.getNumGamesStarted() ); //prints out "1"
 console.log( gameStatModule.gamesStarted ); //prints out "undefined"
 ```
 
-In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)). An IIFE itself is also a design pattern, it looks as follows :point_down::
+In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)). 
+
+An IIFE itself is also a design pattern, it looks as follows :point_down::
 
 ```javascript
 (function () {
@@ -748,11 +750,11 @@ In this code snippet :point_up:, we are defining a variable `gameStatModule` whi
 })();
 ```
 
-:point_up: Tthe function is **anonymous** (it does not have a name - it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to it immediate execution (the brackets surrounding the function are not strictly necessary, but they are commonly used).
+:point_up: The function is **anonymous** (it does not have a name and it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to its immediate execution. The brackets surrounding the function are not strictly necessary, but they are commonly used.
 
-Going back to our `gameStatModule`, we immediately execute the function. What does this function contain? It contains a number of variables with function scope (`gamesStarted` and so on) as well as a return statement. This return statement contains the result of the function invocation. In this case, an *object literal* is returned and this object literal has two methods `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other "private" variables, all we will get is an `undefined` as the returned object does not contain those properties (though the returned object has access to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables.
+Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) series, half a book is dedicated to closures.
 
-The encapsulating function can also contain parameters (here: arguments `1, 1, 1`):
+The encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
 
 ```javascript
 /* creating a module */
@@ -794,13 +796,11 @@ gameStatModule.decrGamesStarted();
 Summarizing the module pattern:
 
 - Advantages:
-  - Encapsulation is achieved;
+  - **Encapsulation is achieved**;
   - Object members are either public or private;
 - Issues:
-  - Changing the type of membership (public/private) takes effort (unlike in Java where a 'private' simply becomes 'public').
-  - Methods added on the fly later cannot access 'private' members (as seen in the last code snippet).
-
-Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) series, a whole book is dedicated to scopes and closures.
+  - Changing the type of membership (public/private) takes effort (unlike in Java).
+  - Methods added on the fly later cannot access emulated private members (as seen in the last code snippet).
 
 ## Events and the DOM
 
