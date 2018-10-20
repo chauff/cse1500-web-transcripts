@@ -29,10 +29,10 @@
     - [Document Object Model](#document-object-model)
         - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
         - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
-        - [Example 3: `this`](#example-3-this)
-        - [Example 4: mouse events](#example-4-mouse-events)
-        - [Example 5: a crowdsourcing interface](#example-5-a-crowdsourcing-interface)
-        - [Example 6: a typing game](#example-6-a-typing-game)
+        - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
+        - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
+        - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
+        - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -1019,7 +1019,7 @@ We can of course also remove elements :point_down::
 
 Important to note here is that there are often methods available for DOM elements which look similar, but are leading to quite different behaviors. Case in point: in the example :point_up: we used `ul.firstElementChild` and `ul.lastElementChild`. Instead, we could have also used `ul.firstChild` and `ul.lastChild`. And this will work to - *at least with every second click*, as those methods also keep track of a node's children that are comments or text nodes, instead of just `li` nodes as we intend with our code.
 
-#### Example 3: `this`
+#### :bangbang: Example 3: `this`
 
 Event handlers are bound to the attached element's objects and the handler function "knows" which element it is listening to (the element pointed to by `this`). This simplifies programming as a function can serve different objects.
 
@@ -1082,7 +1082,7 @@ The best option to avoid code duplication is the use of `this` :point_down::
 
 :point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here a lazy way of stripping out the " times" string suffix, forcing a conversion to type `number`.
 
-#### Example 4: mouse events
+#### :bangbang: Example 4: mouse events
 
 A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, ...) and some are defined as a series of simpler mouse events, e.g.
 
@@ -1097,7 +1097,7 @@ A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, .
     n-1. `mousemove`
     n. `mouseup`
 
-Here is an example of `mouseover` and `mouseout`: a timer starts as long as the mouse hovers over an element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
+Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer starts and remains active as long as the mouse pointer hovers over the button element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
 
 ```html
 <!DOCTYPE html>
@@ -1139,17 +1139,19 @@ Here is an example of `mouseover` and `mouseout`: a timer starts as long as the 
 
     <body>
       <button style="width:500px" id="b1">0</button>
+      <br>
       <button style="width:500px" id="b10">0</button>
+      <br>
       <button style="width:500px" id="b100">0</button>
     </body>
 </html>
 ```
 
-Mouse events can be tricky, the more complex ones are not consistently implemented across browsers.
+*Mouse events can be tricky, the more complex ones are not consistently implemented across browsers.*
 
-#### Example 5: a crowdsourcing interface
+#### :bangbang: Example 5: a crowdsourcing interface
 
-Here is another event that can be useful, especially for text-heavy interfaces: `onselect`. We here have an interface with a read-only text that the user can select passages in. If enough passages have been selected, the user can submit the answers.
+Here is another event that can be useful, especially for text-heavy interfaces: `onselect`. Here :point_down:, we have an interface with a read-only text that the user can select passages in. If enough passages have been selected, the user can submit the selected passages:
 
 ```html
 <!DOCTYPE html>
@@ -1215,9 +1217,9 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
 </html>
 ```
 
-#### Example 6: a typing game
+#### :bangbang: Example 6: a typing game
 
-The last example is a typing game: given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keypress` event type. We start the timer with `setInterval` (incrementing once per second), which returns a handle that we can later pass to `clearInterval` to stop the associated callback from executing (thus stopping the clock).
+The last example is a typing game :point_down:. Given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keypress` event type. We start the timer with `setInterval` (incrementing once per second), which returns a handle that we can later pass to `clearInterval` to stop the associated callback from executing (thus stopping the clock).
 
 In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those line on the `.style` properties.
 
@@ -1303,16 +1305,16 @@ In this example we do do make slight use of CSS (to flash a red background and a
 </html>
 ```
 
-To conclude this lecture, here is an overview of important keyboard and text events:
+To conclude this DOM section, here is an overview of important keyboard and text events:
 
 | Event    | Description                                                                           |
 |----------|---------------------------------------------------------------------------------------|
-| blur     | element loses keyboard focus                                                          |
-| focus    | element gains keyboard focus                                                          |
-| keydown  |   user presses key while element has keyboard focus                                   |
-| keypress |  user presses and releases key while element has keyboard focus (a problematic event) |
-| keyup    |  user releases key while element has keyboard focus                                   |
-| select   | user selects text in an element                                                       |
+| `blur`     | element loses keyboard focus                                                          |
+| `focus`    | element gains keyboard focus                                                          |
+| `keydown`  |   user presses key while element has keyboard focus                                   |
+| `keypress` |  user presses and releases key while element has keyboard focus (a problematic event) |
+| `keyup`    |  user releases key while element has keyboard focus                                   |
+| `select`   | user selects text in an element                                                       |
 
 ## Self-check
 
