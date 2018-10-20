@@ -635,7 +635,7 @@ The prototype chaining allows us to set up **inheritance through prototyping**. 
 1. Create a new constructor.
 2. Redirect the prototype.
 
-Lets assume we want to inherit from `Game` to create a more specialized variant: `TwoPlayerGame`:
+Let's assume we want to inherit from `Game` to create a more specialized two-player game variant :point_down::
 
 ```javascript
 function Game(id){
@@ -650,7 +650,6 @@ Game.prototype.setID = function(id){ this.id = id; };
 function TwoPlayerGame(id, p1, p2){
     /*
      * call(...) calls a function with a given this value and arguments.
-     * More information here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
      */
     Game.call(this, id);
     this.p1 = p1;
@@ -667,17 +666,17 @@ console.log( TPGame.getID() ); //prints out "1"
 console.log( TPGame.p1 ); //prints out "Alice"
 ```
 
-Why do we need to redirect the prototype? Remember the prototype chain ... when we make the call to `TPGame.getID()` the JavaScript runtime finds `getID()` to not be a method `TPGame`. So it attempts to walk up the prototype chain and in order to make `Game` part of the `TPGame` prototype chain we have to manually set it.
+:point_up: Why do we need to redirect the prototype? Recall the prototype chain: when we make the call to `TPGame.getID()` the JavaScript runtime finds `getID()` to not be a property of `TPGame`. So it attempts to walk up the prototype chain and in order to make `Game` part of the `TPGame` prototype chain we have to manually set it.
 
-Why do we have to also set the `constructor` property? You will see if you run this piece of code (*note: [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) is a good extension for VSC to try out these kind of snippets*) and remove the line:
+Why do we have to also set the `constructor` property? You will see if you run this piece of code and remove the line :point_down::
 
 ```javascript
 TwoPlayerGame.prototype.constructor = TwoPlayerGame;
 ```
 
-the code still works as expected. Why do we even add this line? If we do not add this line, then the `constructor` of `TwoPlayerGame.prototype` will be `Game` (check it out for yourself). With this extra line of code we "hand-wire" the correct constructor (which for `TwoPlayerGame.prototype` should be `TwoPlayerGame`). You can think of this as making sure the wiring is correct, even if your code does not rely on this wiring.
+the code still works as expected. Why do we even add this line? If we do not add this line, then the `constructor` of `TwoPlayerGame.prototype` will be `Game` (check it out for yourself). With this extra line of code we "hand-wire" the correct constructor (which for `TwoPlayerGame.prototype` should be `TwoPlayerGame`). You can think of this as making sure the wiring is correct, even if your code does not rely on this wiring at the moment.
 
-Here is one example where it does indeed matter whether whether this wiring is correct:
+Here is one example where it does indeed matter whether whether this wiring is correct :point_down::
 
 ```javascript
 function Game() {};
@@ -695,13 +694,15 @@ console.log( o instanceof TwoPlayerGame ); //prints out "false" as long as the c
 
 As a rule of thumb: when using prototypical inheritance, always set up both the `prototype` and `prototype.constructor`; in this manner the wiring is correct, no matter how you will use the inheritance chain later on.
 
-To finish off, here is a quick summary of the prototype-based constructor:
+To finish off, here is a summary of the prototype-based constructor:
 
 - Advantages:
   - **Inheritance is easy** to achieve;
   - **Objects share functions**;
 - Issue:
   - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
+
+We now tackle the remaining issue in the next design pattern.
 
 ### Design pattern 3:  Module
 
@@ -711,7 +712,7 @@ The module pattern has the following goals:
 - Emulate **private/public** membership.
 - Expose only the **necessary** members to the public.
 
-Here is how the **module pattern** looks like:
+We start with a concrete example of the **module pattern** :point_down::
 
 ```javascript
 /* creating a module */
@@ -739,7 +740,7 @@ console.log( gameStatModule.getNumGamesStarted() ); //prints out "1"
 console.log( gameStatModule.gamesStarted ); //prints out "undefined"
 ```
 
-In this code snippet, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked (also known as [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) ). An IIFE itself is also a design pattern, it looks as follows:
+In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)). An IIFE itself is also a design pattern, it looks as follows :point_down::
 
 ```javascript
 (function () {
@@ -747,7 +748,7 @@ In this code snippet, we are defining a variable `gameStatModule` which is assig
 })();
 ```
 
-Here, the function is **anonymous** (it does not have a name - it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to it immediate execution (the brackets surrounding the function are not strictly necessary, but they are commonly used).
+:point_up: Tthe function is **anonymous** (it does not have a name - it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to it immediate execution (the brackets surrounding the function are not strictly necessary, but they are commonly used).
 
 Going back to our `gameStatModule`, we immediately execute the function. What does this function contain? It contains a number of variables with function scope (`gamesStarted` and so on) as well as a return statement. This return statement contains the result of the function invocation. In this case, an *object literal* is returned and this object literal has two methods `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other "private" variables, all we will get is an `undefined` as the returned object does not contain those properties (though the returned object has access to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables.
 
