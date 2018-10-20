@@ -549,15 +549,17 @@ g2.hasOwnProperty("printPlayer"); //false
 g1.toString(); //"[object Object]" (we never defined it, but it is there)
 ```
 
-Before looking at prototype-based constructors, here is a quick summary of the basic constructor:
+Here is a quick summary of the basic constructor:
 
 - Advantage: very easy to use
 - Issues:
-  - Not obvious how to use **inheritance**;
-  - Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
-  - All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
+    1. Not obvious how to use **inheritance**;
+    2. Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
+    3. All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
 
-We have already touched upon the drawback of the last issue: imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently "overwrite" important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works).
+We tackle issues 1. and 2. with the next design pattern.
+
+We have already touched upon the drawback of the third issue: imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently "overwrite" important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works).
 
 ### Design pattern 2: Prototype-based constructor
 
