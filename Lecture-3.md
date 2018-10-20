@@ -839,7 +839,7 @@ The course book walks you through several examples of making a responsive UI con
 
 :four: Attach the function to the event **on** the control.
 
-If you want to examine how existing web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML panel allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
+If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
 
 ![Exploring events](img/L3-event-listeners.png)
 
