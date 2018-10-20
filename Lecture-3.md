@@ -804,7 +804,7 @@ Summarizing the module pattern:
 
 ## Events and the DOM
 
-Having read chapter 4 of the course book, you should be familiar with code such as this:
+Having read chapter 4 of the course book, you should be familiar with code such as this :point_down: (the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) applies to functions or entire scripts and is a manner of cutting down on potential silent errors):
 
 ```javascript
 var main = function () {
@@ -827,14 +827,17 @@ The course book makes extensive use of `jQuery` (a big time saver in practice). 
 - `document.querySelector` (returns the first element within the DOM tree that matches the selector)
 - `document.querySelectorAll` (returns all elements that match)
 
-The code snippet above also shows off the **callback principle**, which you come across in all of JavaScript: we define here what hapens *when* an event fires (in this case the event is the click on a button).
+The code snippet :point_up: also shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens *when* an event fires**. In the example above, the event is the click on a button.
 
-The course book walks you through several examples of making a responsive UI control. Here is a short step-by-step guide:
+The course book walks you through several examples of making a responsive UI control. Here is a step-by-step guide:
 
-1. Pick a control, e.g. a `button`.
-2. Pick an event, e.g. a `click`.
-3. Write a JavaScript function: what should happen when the event occurs, e.g. an `alert` message may appear.
-4. Attach the function to the event **on** the control.
+:one: Pick a control, e.g. a `button`.
+
+:two: Pick an event, e.g. a `click`.
+
+:three: Write a JavaScript function: what should happen when the event occurs, e.g. an `alert` message may appear.
+
+:four: Attach the function to the event **on** the control.
 
 If you want to examine how existing web applications make use of events, the browser developer tools will help you once more. On Firefox, the HTML panel allows you to explore which events are attached to which controls and with a click on the event itself, you can dig into the callback function as seen here:
 
