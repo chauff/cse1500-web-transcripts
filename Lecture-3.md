@@ -175,7 +175,7 @@ Before **ES6** there was no **block scope**, we only had two scopes available: l
 
 Having only two scopes available results in some unexpected code behavior, which can be especially confusing for JavaScript beginners. Let's look at one popular example.
 
-Imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript, just like in any other language :point_down: :
+Imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript :point_down::
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -242,7 +242,7 @@ Scoping is also important when it comes to larger programming projects: imagine 
 </html>
 ```
 
-This code does exactly what we expect (hiding a button once we click it)). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
+:point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. The code is broken and we end up with the error: `TypeError: $ is not a function`.
 
 Luckily, `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible.
 
