@@ -563,15 +563,15 @@ We have already touched upon the drawback of the third issue: imagine you are us
 
 ### Design pattern 2: Prototype-based constructor
 
-The last line of the code snippet above :point_up: shows that objects come with **default methods**, and so the natural question should be, where do these methods come from? The answer is **prototype chaining**. Objects have a **secret pointer** to another object - the object's prototype. And thus, when creating for instance an object with a basic constructor as seen before, the properties of the constructor's prototype are also accessible in the new object. If a property is not defined in the object, the **prototype chain** is followed:
+The last line of the code snippet above :point_up: shows that objects come with **default methods**, and so the natural question should be, where do these methods come from? The answer is **prototype chaining**. Objects have a **secret pointer** to another object - the object's prototype. And thus, when creating for instance an object with a basic constructor as just seen, **the properties of the constructor's prototype are also accessible in the new object**. If a property is not defined in the object, the **prototype chain** is followed:
 
 ![Prototype chain](img/L3-prototypechain.png)
 
-Here, `name.__proto__` points to the object that is next in the lookup chain to resolve property names. As always though, things are not quite as simple and over time JavaScript runtimes have evolved in their implementation of [__proto__](http://2ality.com/2015/09/proto-es6.html). Normally, it is not necessary to manually "walk up" the prototype chain, instead the JavaScript runtime does the work for you.
+Here, `name.__proto__` points to the object that is next in the lookup chain to resolve property names. As always though, things are not quite as simple and over time JavaScript runtimes have evolved in their implementation of [__proto__](http://2ality.com/2015/09/proto-es6.html). Normally, it is not necessary to manually *walk up* the prototype chain, instead the JavaScript runtime does the work for you.
 
-So, why is this important and how can you make use of this knowledge? Recall, that one of the issues in the basic constructor is that *objects do not share functions*. Clearly, often we want objects to share functions and if a function changes that change should be reflected in all objects that have this property/method.
+So, why is this important and how can you make use of this knowledge? Recall, that one of the issues in the basic constructor is that **objects do not share functions**. Often we do want objects to share functions and if a function changes that change should be reflected in all objects that have this property/method.
 
-This is what the prototype-based constructor provides. Let's first look at an example:
+This is exactly what the prototype-based constructor provides. Let's look at an example :point_down::
 
 ```javascript
 function Game( id){
@@ -584,24 +584,29 @@ Game.prototype.setID = function(id){ this.id = id; };
 
 //using it
 var g1 = new Game("1");
-g1.setID("2"); //works
+g1.setID("2"); //that works!
 
 var g2 = new Game("2");
-g2.setID(3); //works
+g2.setID(3); //that works too!
 
-//what happens now?
+//g1 and g2 now point to different setID properties
+//g2 follows the prototype chain
+//g1 has  property setID
 g1["setID"] = function(id){
-    console.assert(typeof(id)=="number", "Expecting a number");
-    this.id = id;
+    this.id = "ID"+id;
 }
+g1.setID(4);
+
+console.log(g1.getID()); //ID4
+console.log(g2.getID()); //3
 ```
 
-All we have to do to make properties available to all objects is to use the `.prototype` property to walk up the prototype chain and assign a property to `Game.prototype`.
-When the two game objects are crated and `setID()` is called, the JavaScript runtime walks up the prototype chain and "finds" the **first** property that matches the desired property name.
+:point_up: All we have to do to make properties available to all objects is to use the `.prototype` property to walk up the prototype chain and assign a property to `Game.prototype`.
+When the two game objects are created and `setID()` is called, the JavaScript runtime walks up the prototype chain and "finds" the **first** property that matches the desired property name.
 
-This explanation should also answer the last question posed in the code snippet: what happens if a property is also defined as property of the object **as well as** as property of the prototype? The JavaScript runtime stops at the first part of the chain where the property is found and this means that `g1.setID` and `g2.setID` now refer to different pieces of code.
+This explanation should also answer the following question: what happens if a property is defined as property of the object **as well as** as property of the prototype? The JavaScript runtime stops as soon as the property is found in the chain and this means that `g1.setID` and `g2.setID` now refer to different pieces of code.
 
-Changes made to the prototype are also reflected in existing objects:
+Changes made to the prototype are also reflected in existing objects :point_down::
 
 ```javascript
 function Game( id){
