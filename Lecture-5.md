@@ -1,13 +1,14 @@
 # CSS: the language of web design <!-- omit in toc -->
 
 ## Table of Content <!-- omit in toc -->
+
 - [Learning goals](#learning-goals)
 - [A word of warning](#a-word-of-warning)
-- [A bit of context](#a-bit-of-context)
+- [Context](#context)
 - [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
-- [Pseudo-elements and pseudo-classes](#pseudo-elements-and-pseudo-classes)
-  - [Popular pseudo-classes](#popular-pseudo-classes)
-  - [Popular pseudo-elements](#popular-pseudo-elements)
+- [Pseudo-classes](#pseudo-classes)
+  - [nth-child(X) and nth-of-type(X)](#nth-childx-and-nth-of-typex)
+- [Pseudo-elements](#pseudo-elements)
 - [Data in CSS](#data-in-css)
 - [Element positioning](#element-positioning)
   - [Float](#float)
@@ -24,61 +25,36 @@
 - Employ pseudo-classes and pseudo-elements;
 - Employ CSS variables and data access/creation facilities;
 - Write CSS media queries;
-- Create basic CSS-based animations.
+- Create CSS-based animations.
 
 ## A word of warning
 
 ![Tweet](img/L5-tweet.png)
 
-This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) sums up a lot of CSS experiences - some things are incredible easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish, will cost you a lot of time.
+This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish, will cost you a lot of time.
 
-## A bit of context
+## Context
 
-In essence, the CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered as a victim of the browser wars - which led to years of inactivity in the standard's refinement:
+The CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered as a victim of the browser wars - which led to years of inactivity in the standard's refinement:
 
 - **CSS1** became a W3C recommendation in 1996. It had support for fonts, colors, alignment, margins, ids and classes.
 - Two years later, **CSS2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS3. However, the browser support for CSS 2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS 2.1.
 - In 2011, **CSS2.1** became a W3C recommendation which fixed errors and added support for features already widely implemented in major browsers.
-- Work on **CSS3** began already in 1998, was put on hold, and is now back in full swing with browser vendors today eager to implement the newest standards. CSS became so complex and agreeing on a standard for the entire language became so tedious that after CSS 2 the monolithic nature of the standard was given up. Instead, we now have **CSS modules**, which each progress at an individual pace. The current status of those modules is available at [https://www.w3.org/Style/CSS/current-work](https://www.w3.org/Style/CSS/current-work). Many of those modules are in *Working Draft* status, while some have already reached level 4 (the level number indicates how many revisions of the module have taken place). It is worthwhile to browse through at least one CSS module draft in order to get an idea of the complexity of the standardization work. One of the modules in working draft status is [CSS Animations Level 1](https://www.w3.org/TR/css-animations-1/) which - not surprisingly - describes the standard for CSS-based animations. Despite this being a *Working Draft*, CSS animations are already supported by all major browsers.
+- Work on **CSS3** began already in 1998, was put on hold, and is now back in full swing with browser vendors today pushing to implement the newest standards. CSS became so complex and agreeing on a standard for the entire language became so tedious that after CSS 2 the monolithic nature of the standard was given up. Instead, we now have **CSS modules**, which each progress at an individual pace. The current state of those modules is available at [https://www.w3.org/Style/CSS/current-work](https://www.w3.org/Style/CSS/current-work). Many of those modules are in *Working Draft* status, while some have already reached level 4 (the level number indicates how many revisions of the module have taken place).
 
-Any CSS module developed after CSS 2.1 can be considered as CSS3. There will not be a monolithic CSS 4, instead the different modules of the CSS specification will each continue to develop at their own pace.
+Any CSS module developed after CSS 2.1 can be considered as CSS3. There will not be a monolithic CSS4, instead the different modules of the CSS specification will each continue to develop at their own pace.
 
-Today, it is not possible to make use of the latest CSS features and to expect them to work across all major browsers. Instead, which features to use should be based on:
+It is not possible to make use of the very latest CSS features and to expect them to work across all major browsers. Instead, which features to use should be based on:
 
 - the intended user base (will tell us something about the most popular browsers in use);
 - the mode of usage (smartphone vs. touch screen vs ...);
-- the type of web application (are 3D animations necessary);
+- the type of web application (are 3D animations necessary, etc.).
 
-When building web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (that includes CSS3) functionality in browsers that do not natively support them.
+When building web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (that includes CSS3) functionalities in browsers that do not natively support them.
 
 ## Take-aways of book chapter 3
 
-If you have already read Chapter 3 of the course book, you should be able to answer the following question.
-
-What is the result of applying the CSS below?
-
-- The text within the paragraph `<p class="last">...</p>` will appear green.
-- The text within `<span>...</span>` appearing right after a paragraph `<p>...</p>` will appear gray.
-- The text within `<span>...</span>` appearing within a paragraph `<p>...</p>` will appear gray.
-- The background of the rendered page will appear yellow.
-
-```css
-body {
-    background-color: #ffff00;
-    width: 800px;
-    margin: auto;
-}
-h1 {
-    color: maroon;
-}
-p span {
-    color: gray;
-    border: 1px solid gray;
-}
-p#last {
-    color: green;
-}
-```
+Having read Chapter 3 of the course book, you should be able to style HTML elements with basic CSS.
 
 You have also read about the three types of style sheets:
 
@@ -90,11 +66,19 @@ with the user's style sheet overriding the other two and the author's style shee
 
 Style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
 
-You know that in the code snippet above, `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to style both.
+You know that in the following code snippet :point_down::
+
+```css
+body {
+  background-color: #ffff00;
+}
+```
+
+`body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
 
 Lastly, you read about `!important` which overrides all other declarations.
 
-## Pseudo-elements and pseudo-classes
+## Pseudo-classes
 
 A **pseudo-class** is a keyword added to a **selector** that indicates *a particular state or type* of the corresponding element. Pseudo-classes allow styling according to (among others) **document external** factors such as mouse movements and user browsing history.
 
@@ -107,18 +91,18 @@ selector:pseudo-class {
 }
 ```
 
-### Popular pseudo-classes
+In the following sections we cover some of the more popular pseudo-classes.
 
-In this section we cover some of the more popular pseudo-classes.
+### nth-child(X) and nth-of-type(X)
 
 We start with:
 
 - `nth-child(X)` is any element that is the Xth **child element** of its parent;
 - `nth-of-type(X)` is any element that is the Xth **sibling** of its type.
 
-In both cases, `X` can be an int or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing.
+In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing.
 
-In this example both pseudo-classes are showcased:
+In this example both pseudo-classes are showcased :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -137,7 +121,6 @@ In this example both pseudo-classes are showcased:
         </style>
     </head>
     <body>
-
         <main> <!-- parent of the <h2> and <p>'s -->
             <h2>Todos</h2>
             <p>Today's todos</p>    <!-- p sibling, also the second child of <main> -->
@@ -321,7 +304,7 @@ Important to know here is, that the selector `e1 e2` selects all `<e2>` elements
 
 `e1 e2` is not the only possible element combination as selector. Most commonly used are:
 
-| Selector | Despcription                                            |
+| Selector | Description                                            |
 |----------|---------------------------------------------------------|
 | e1       | Selects all `<e1>` elements                               |
 | e1 e2    | Selects all `<e2>` elements within `<e1>`                   |
@@ -435,7 +418,7 @@ This example does not only show off these four pseudo-classes, but also a number
 - We see here how to include **unicode characters**: when the deadline number is valid, we choose to display a checkmark. This checkmark could be an image, but here we chose to use a character, specifically unicode character [U+2714](http://graphemica.com/%E2%9C%94).
 - The pseudo-element `::after` makes a first appearance, together with the `content` property. We discuss those next.
 
-### Popular pseudo-elements
+## Pseudo-elements
 
 A **pseudo-element** creates an abstractions about the document tree *beyond* those specified by the document language; it provides access to an element's sub-part.
 
