@@ -409,9 +409,13 @@ app.use(express.static(__dirname + "/static"));
 Having all the pieces in place (knowledge of HTML, client-side JavaScript, Node.js scripting), we can now write a complete web application. A good development strategy is the following:
 
 :one: Develop the client-side code (HTML, JavaScript and CSS - the latter we will cover in one of the next lectures);
+
 :two: Place all client-side files into a directory (e.g. `/static`) **on the server**;
+
 :three: Write the **server code** using Express;
+
 :four: Set Express' static file path to the directory created in step :two:;
+
 :five: Add interactivity between client and server.
 
 Here is an example of a concrete folder structure for a todo application:
