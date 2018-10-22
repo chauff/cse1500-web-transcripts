@@ -286,13 +286,12 @@ In the example above we did not actually sent an HTTP response back, but you kno
 
 ### :bangbang: Authorisation component example
 
-In the [second application example](demo-code/node-component-ex), we add an authorisation component to a simple Todo application back-end: only clients with the **correct username and password** (i.e. authorised users) should be able to receive the list of todos when requesting them. We achieve this by adding a middleware component that is activated for every single HTTP request and determines whether the HTTP request contains an authorization header (if not, access is denied) and if the provided username and password combination is the desired one. Before we dive into the code details, let's first install and start the application:
+In the [node-component-ex](demo-code/node-component-ex) example application, we add an authorisation component to a simple Todo application back-end: only clients with the **correct username and password** (i.e. authorised users) should be able to receive the list of todos when requesting them. We achieve this by adding a middleware component that is activated for every single HTTP request and determines:
 
-```
-git clone ...
-npm install
-npm start
-```
+- whether the HTTP request contains an authorization header (if not, access is denied);
+- and whether the provided username and password combination is the correct one.
+
+Before we dive into the code details, install and start the server as explained [here](https://github.com/chauff/Web-Teaching/tree/master/demo-code#node-component-ex). Take a look at `app.js` before proceeding.
 
 Once the server is started, open another terminal and use `curl` (a command line tool that provides us with a convenient way to include username and password as you will see in a second):
 
@@ -300,7 +299,7 @@ Once the server is started, open another terminal and use `curl` (a command line
 - Request the list of todos with the correct username and password (as hardcoded in our demonstration code): `curl --user user:password http://localhost:3000/todos`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
 - Request the list of todos with an incorrect username/password combination: `curl --user test:test http://localhost:3000/todos`. You should receive a `Wrong username/password combination` error.
 
-Having found out who our code works, let us look at the authorization component, it is just a few lines of code (here we define an anynymous function directly as argument to `app.use`):
+Having found out how the code works, let us look at the authorization component. We here define it as an anynymous function as argument to `app.use` :point_down::
 
 ```javascript
 app.use(function (req, res, next) {
@@ -308,12 +307,15 @@ app.use(function (req, res, next) {
     if (!auth) {
         return next(new Error("Unauthorized access!"));
     }
+
+    //extract username and password
     var parts = auth.split(' ');
     var buf = new Buffer(parts[1], 'base64');
     var login = buf.toString().split(':');
     var user = login[0];
     var password = login[1];
 
+    //compare to 'correct' username/password combination
     //hardcoded for demonstration purposes
     if (user === "user" && password === "password") {
         next();
@@ -324,11 +326,11 @@ app.use(function (req, res, next) {
 });
 ```
 
-This code snippet first determines whether an authorization header was included in the HTTP request (accessible at `req.headers.authorization`). If no header was sent, we pass an error to the `next()` function, for Express to catch and process, i.e. sending the appropriate HTTP response. If an authorization header is present, we now manually parse out the username and password and determine whether they match `user` and `password` respectively. If they match, `next()` is called and the next middleware component processes the request, which in our `app.js` file is `app.get("/todos",...)`.
+:point_up: This code snippet first determines whether an authorization header was included in the HTTP request (accessible at `req.headers.authorization`). If no header was sent, we pass an error to the `next()` function, for Express to catch and process, i.e. sending the appropriate HTTP response. If an authorization header is present, we now extract the username and password and determine whether they match `user` and `password` respectively. If they match, `next()` is called and the next middleware component processes the request, which in our `app.js` file is `app.get("/todos",...)`.
 
 ### Components are configurable
 
-One of the design goals of middleware is **reusability** across applications: once we define a logger or an authorization component, we should be able to use it in a wide range of applications without additional engineering effort. Reusable code usually has parameters that can be set. To make this happen, we can wrap the original middleware function in a *setup function* which takes the function parameters as input:
+One of the design goals of middleware is **reusability** across applications: once we define a logger or an authorization component, we should be able to use it in a wide range of applications without additional engineering effort. Reusable code usually has parameters that can be set. To make this happen, we can wrap the original middleware function in a *setup function* which takes the function parameters as input :point_down::
 
 ```javascript
 function setup(options) {
@@ -344,13 +346,13 @@ app.use( setup({ param1 : 'value1' }) );
 
 Routing is the mechanism by which requests are routed to the code that handles them. The routes are specified by a URL and HTTP method (most often `GET` or `POST`). You have employed routes already - every time you wrote `app.get()` you specified a so-called **route handler** and wrote code that should be executed when that route (or URL) is called.
 
-This routing paradigm is a significant departure from the past, where **file-based** routing was commonly employed. In file-file based routing, we access files on the server by their actual name, e.g. if you have a web application with your contact details, you typically would write those details in a file `contact.html` and a client would access that information through a URL that ends in `contact.html`. Modern web applications are not based on file-based routing, as is evident by the fact URLs these days do not contain file endings anymore (such as `.html` or `.asp`).
+This routing paradigm is a significant departure from the past, where **file-based** routing was commonly employed. In file-based routing, we access files on the server by their actual name, e.g. if you have a web application with your contact details, you typically would write those details in a file `contact.html` and a client would access that information through a URL that ends in `contact.html`. Modern web applications are not based on file-based routing, as is evident by the fact URLs these days do not contain file endings (such as `.html` or `.asp`) anymore.
 
-In terms of routes, we distinguish between request types (`GET /user` differs from `POST /user`) and request routes (`GET /user` differs from `GET /users`).
+In terms of routes, we distinguish between request **types** (`GET /user` differs from `POST /user`) and request **routes** (`GET /user` differs from `GET /users`).
 
 **Route handlers are middleware**. So far, we have not introduced routes that include `next` as third argument, but since they *are* middleware, we can indeed add `next` as third argument.
 
-But when does it make sense? Let's look at the following code snippet:
+Let's look at an example where this makes sense :point_down::
 
 ```javascript
 //clients requests todos
@@ -369,7 +371,7 @@ app.get("/todos", function (req, res,next) {
 });
 ```
 
-Here, we define two route handlers for the same route `/todos`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
+:point_up: We here define two route handlers for the same route `/todos`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
 If `next` was used, the dispatcher will move on to the second route handler and here, we do not call `next`, but instead simply send a response to the client.
 What we have done here is to hardcode so-called *A/B testing*. Imagine you have an application and two data schemas and you aim to learn which schema your users prefer. Half of the clients making requests will receive schema A and half will receive schema B.
 
