@@ -7,7 +7,7 @@
 - [Context](#context)
 - [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
 - [Pseudo-classes](#pseudo-classes)
-  - [nth-child(X) and nth-of-type(X)](#nth-childx-and-nth-of-typex)
+  - [:bangbang: nth-child(X) and nth-of-type(X)](#bangbang-nth-childx-and-nth-of-typex)
 - [Pseudo-elements](#pseudo-elements)
 - [Data in CSS](#data-in-css)
 - [Element positioning](#element-positioning)
@@ -21,48 +21,48 @@
 
 ## Learning goals
 
-- Position and style HTML elements according to a given design of a web application;
-- Employ pseudo-classes and pseudo-elements;
-- Employ CSS variables and data access/creation facilities;
-- Write CSS media queries;
+- Position and style HTML elements according to a given design of a web application.
+- Employ pseudo-classes and pseudo-elements.
+- Employ CSS variables and data access/creation facilities.
+- Write CSS media queries.
 - Create CSS-based animations.
 
 ## A word of warning
 
 ![Tweet](img/L5-tweet.png)
 
-This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish, will cost you a lot of time.
+The [tweet](https://twitter.com/iamdevloper/status/936199543099621376) sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish, will cost you a lot of time.
 
 ## Context
 
-The CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered as a victim of the browser wars - which led to years of inactivity in the standard's refinement:
+The CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered a victim of the browser wars - which led to years of inactivity in the standard's refinement:
 
 - **CSS1** became a W3C recommendation in 1996. It had support for fonts, colors, alignment, margins, ids and classes.
-- Two years later, **CSS2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS3. However, the browser support for CSS 2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS 2.1.
+- Two years later, **CSS2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS3. However, the browser support for CSS2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS2.1.
 - In 2011, **CSS2.1** became a W3C recommendation which fixed errors and added support for features already widely implemented in major browsers.
-- Work on **CSS3** began already in 1998, was put on hold, and is now back in full swing with browser vendors today pushing to implement the newest standards. CSS became so complex and agreeing on a standard for the entire language became so tedious that after CSS 2 the monolithic nature of the standard was given up. Instead, we now have **CSS modules**, which each progress at an individual pace. The current state of those modules is available at [https://www.w3.org/Style/CSS/current-work](https://www.w3.org/Style/CSS/current-work). Many of those modules are in *Working Draft* status, while some have already reached level 4 (the level number indicates how many revisions of the module have taken place).
+- Work on **CSS3** began already in 1998, was put on hold, and is now back in full swing with browser vendors pushing to implement the newest standards. CSS became so complex and agreeing on a standard for the entire language became so tedious that after CSS2 the monolithic nature of the standard was given up. Instead, we now have **CSS modules**, which each progress at an individual pace. The current state of those modules is available at [https://www.w3.org/Style/CSS/current-work](https://www.w3.org/Style/CSS/current-work). Many of those modules are in *Working Draft* status, while some have already reached level 4 - the *level number* indicates how many revisions of the module have taken place.
 
-Any CSS module developed after CSS 2.1 can be considered as CSS3. There will not be a monolithic CSS4, instead the different modules of the CSS specification will each continue to develop at their own pace.
+Any CSS module developed after CSS2.1 can be considered as CSS3. There will not be a monolithic CSS4, instead the different modules of the CSS specification will each continue to develop at their own pace.
 
-It is not possible to make use of the very latest CSS features and to expect them to work across all major browsers. Instead, which features to use should be based on:
+Be aware, that it is not possible to make use of the very latest CSS features and to expect them to work across all major browsers. Instead, which features to use should be based on:
 
 - the intended user base (will tell us something about the most popular browsers in use);
 - the mode of usage (smartphone vs. touch screen vs ...);
 - the type of web application (are 3D animations necessary, etc.).
 
-When building web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (that includes CSS3) functionalities in browsers that do not natively support them.
+When building web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (which includes CSS3) functionalities in browsers that do not natively support them.
 
 ## Take-aways of book chapter 3
 
-Having read Chapter 3 of the course book, you should be able to style HTML elements with basic CSS.
+Having read Chapter 3 of the course book, you should be able to style HTML elements with CSS.
 
-You have also read about the three types of style sheets:
+You have also learned about three types of style sheets:
 
 - the browser's style sheet;
 - the author's style sheet;
-- the user's style sheet;
+- the user's style sheet.
 
-with the user's style sheet overriding the other two and the author's style sheet overriding the browser's.
+The user's style sheet overrides the other two and the author's style sheet overrides the browser's.
 
 Style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
 
@@ -76,13 +76,15 @@ body {
 
 `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
 
-Lastly, you read about `!important` which overrides all other declarations.
+Lastly, you know about `!important` which overrides all other declarations.
+
+In this lecture, we move beyond the course book chapter and highlight a number of more advanced CSS concepts.
 
 ## Pseudo-classes
 
 A **pseudo-class** is a keyword added to a **selector** that indicates *a particular state or type* of the corresponding element. Pseudo-classes allow styling according to (among others) **document external** factors such as mouse movements and user browsing history.
 
-They are used as follows:
+They are used as follows :point_down::
 
 ```css
 selector:pseudo-class {
@@ -91,57 +93,87 @@ selector:pseudo-class {
 }
 ```
 
-In the following sections we cover some of the more popular pseudo-classes.
+Imagine you have a list of twenty todo items and you want to alternate the todo items' background color (to make it easier to read them). Two simple ways to go about this are:
 
-### nth-child(X) and nth-of-type(X)
+- You can "hardcode" the CSS rule of every element, ending up with twenty rules. This is not maintainable.
+- You write two CSS rules (one per background color), assign each to a class and then alternate in the todo items class assignment. Better, than the first option, but the redundancy remains.
 
-We start with:
+Ideally, we only create two CSS rules and solve the rest (alternate assignment of background colors) with pseudo-classes. And that's exactly what we can do with the first two pseudo-classes we introduce next.
+
+### :bangbang: nth-child(X) and nth-of-type(X)
 
 - `nth-child(X)` is any element that is the Xth **child element** of its parent;
 - `nth-of-type(X)` is any element that is the Xth **sibling** of its type.
 
-In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing.
+In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Instead of `2n` and `2n+`1 we can also use `even` and `odd` as shortcuts.
 
-In this example both pseudo-classes are showcased :point_down::
+If we are aiming at the first and/or last child or sibling element, we can also use a different set of pseudo-classes (shortcuts):
+
+| Pseudo-class   | Equivalent to        |
+|----------------|----------------------|
+| `:first-child`   | `:nth-child(1)`        |
+| `:last-child`    | `:nth-last-child(1)`   |
+| `:first-of-type` | `:nth-of-type(1)`      |
+| `:last-of-type`  | `:nth-last-of-type(1)` |
+
+In the following example both pseudo-classes (`nth-child` and `nth-of-type`) are showcased :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
         <style>
-            p:nth-child(2){
-                color: red;
+            li {
+                list-style: none;
+                padding: 15px;
             }
-            p:nth-of-type(2){
-                background-color: #00ff00;
+            li:nth-of-type(2n){
+                background-color: gold;
             }
-            div {
-                color: #00ff00;
+            li:nth-of-type(2n+1){
+                background-color: yellow;
+            }
+            li:nth-child(1){
+                font-weight: bold;
+            }
+            li:last-child{
+                color: blue;
             }
         </style>
     </head>
     <body>
-        <main> <!-- parent of the <h2> and <p>'s -->
-            <h2>Todos</h2>
-            <p>Today's todos</p>    <!-- p sibling, also the second child of <main> -->
-            <p>Tomorrow's todos</p> <!-- p sibling -->
-            <p>Saturday's todos</p> <!-- p sibling -->
-            <p>Sunday's todos</p>   <!-- p sibling -->
-        </main>
+        <ul>
+            <li>Create an Easychair instance</li>
+            <li>Send call for papers to mailing lists</li>
+            <li>Create a conference website</li>
+            <li>Book the venue</li>
+            <li>Find PC chairs</li>
+            <li>Find PC members</li>
+            <li>Book hotel rooms</li>
+            <li>Design program</li>
+        </ul>
     </body>
 </html>
 ```
 
-The rendering will show `Today's todos` with a red font (it is the 2. child of `<main>`) and `Tomorrow's todos` with a green background color (`#00ff00`) as that is the second element of type `<p>` among the sibling group.
+This piece of code is rendered as follows:
 
-If we are aiming at the first and/or last child or sibling element, we can also use a different set of pseudo-classes:
+![CSS pseudo-class](img/L5-pseudo-classes.png)
 
-| Pseudo-class   | Equivalent to        |
-|----------------|----------------------|
-| :first-child   | :nth-child(1)        |
-| :last-child    | :nth-last-child(1)   |
-| :first-of-type | :nth-of-type(1)      |
-| :last-of-type  | :nth-last-of-type(1) |
+<sub>Firefox browser tab with an open [Style Editor](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor).</sub>
+
+The `li:nth-of-type(2n)` rule says that even list elements have a `gold` background, odd list elements (`2n+1`) have a yellow background. The screenshot above also shows off Firefox's Style Editor: it allows you to not only inspect the CSS, but to also:
+
+- switch off the CSS (with a click on the "eye" symbol on the left);
+- hover over a CSS rule to see what part of the rendering it affects (the screenshot was taken when the mouse hovered over `li:nth-child(1)`);
+- **change the CSS** in the editor and view the immediate effect of those changes.
+
+The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the style editor is closed.
+
+
+
+
+
 
 One of the often voiced complaints about CSS used to be the lack of variable support (and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/)) - in the example above, we set the same value of `#00ff00;` on two properties. If we now decide to change that color value, we would have to manually walk over all style sheets and alter it. Clearly, variables (i.e. *entities containing specific values that can be reused*) would be very helpful.
 
