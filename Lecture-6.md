@@ -15,6 +15,7 @@
 - [Routing](#routing)
     - [Routing paths and regular expressions](#routing-paths-and-regular-expressions)
     - [Routing parameters](#routing-parameters)
+    - [Organizing routes](#organizing-routes)
 - [Templating with EJS](#templating-with-ejs)
     - [A first EJS example](#a-first-ejs-example)
     - [EJS and user-defined functions](#ejs-and-user-defined-functions)
@@ -463,9 +464,11 @@ app.get('/todos/:type/:level', function (req, res, next) {
 });
 ```
 
-We here do not only use the importance type for our todos, but also partition them according to their due date (today/tomorrow). Our route handler now contains two routing parameters, `:type` and `:level`. Both are accessible through the HTTP request object. And as in the previous example, we use the two parameters to access the contents of the `todoTypes` object. If the two parameters do not match any properties of the `todoTypes` object, we call `next()` and otherwise, we send the requested response.
+:point_up: We do not only use the importance type for our todos, but also partition them according to their due date. The route handler now contains two routing parameters, `:type` and `:level`. Both are accessible through the HTTP request object. We now use the two parameters to access the contents of the `todoTypes` object. If the two parameters do not match properties of `todoTypes`, we call `next()` and otherwise, send the requested response.
 
-Lastly, a word on how to organize your routes. Adding routes to the main application file becomes unwieldy as the codebase grows. Based on the knowledge of this lecture, you can now move routes into a separate module. All you need to do is to pass the `app` instance into the module (here: `routes.js`) as an argument:
+### Organizing routes
+
+Lastly, a word on how to organize your routes. Adding routes to the main application file becomes unwieldy as the codebase grows. Based on the knowledge of this lecture, you can move routes into a separate module. All you need to do is to pass the `app` instance into the module (here: `routes.js`) as an argument :point_down::
 
 ```javascript
 /* routes.js */
@@ -484,7 +487,7 @@ require('./routes.js')(app);
 //...
 ```
 
-`routes.js` is our route module where we assign a function to `module.exports` which contains the routes. In our application `app.js` we add the routes to our application through the `require` function and passing `app` in as an argument.
+:point_up: `routes.js` is a route module in which we assign a function to `module.exports` which contains the routes. In `app.js` we add the routes to our application through the `require` function and passing `app` in as an argument.
 
 ## Templating with EJS
 
