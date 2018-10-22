@@ -224,7 +224,6 @@ For each lecture we provide a range of materials:
   - Required readings: *none*
   - Recommended activities:
     - An interactive ejs playground can be found [here](https://ionicabizau.github.io/ejs-playground/).
-    - An interactive playground for Express routes and regular expression is available [here](http://forbeslindesay.github.io/express-route-tester/).
   - Recommended readings:
     - To learn more about ejs, take a look at its [GitHub repository](https://github.com/mde/ejs).
     - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).

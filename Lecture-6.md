@@ -371,11 +371,11 @@ app.get("/todos", function (req, res,next) {
 });
 ```
 
-:point_up: We here define two route handlers for the same route `/todos`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
-If `next` was used, the dispatcher will move on to the second route handler and here, we do not call `next`, but instead simply send a response to the client.
+:point_up: We define two route handlers for the same route `/todos`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
+If `next` was used, the dispatcher will move on to the second route handler and here, we do not call `next`, but instead send a response to the client.
 What we have done here is to hardcode so-called *A/B testing*. Imagine you have an application and two data schemas and you aim to learn which schema your users prefer. Half of the clients making requests will receive schema A and half will receive schema B.
 
-We can also provide multiple handlers in a single `app.get()` call as you see here:
+We can also provide multiple handlers in a single `app.get()` call :point_down::
 
 ```javascript
 //A-B-C testing
@@ -388,7 +388,7 @@ app.get('/todos',
         res.json(todosA);
     },
     function(req,res, next){
-        if (Math.random() < 0.5) {
+        if (Math.random() < 0.66) {
             return next();
         }
         console.log("Todos in schema B returned");
@@ -401,11 +401,13 @@ app.get('/todos',
 );
 ```
 
-This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/todos`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important here to understand when to call `next` and why in this setting we have to use a return statement - without a return statement, the function's code would be continued to be executed.
+:point_up: This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/todos`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important to understand *when* to call `next` and *why* in this setting we have to use a `return` statement - without it, the function's code would be continued to be executed.
 
 ### Routing paths and regular expressions
 
-When you specify a path (like `/todos`) in your route, the path is eventually converted into a **regular expression** by Express. A regular expression is a sequence of chars Regular expressions are very powerful. They allow you to specify matching patterns instead of hard-code all potential routes. Unfortunately, Express only supports a subset of the standard regex meta-characters: `+ ? * ( ) []` which are used as follows:
+When we specify a path (like `/todos`) in a route, the path is eventually converted into a **regular expression** by Express. A regular expression is a sequence of characters. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/todos`, `/toodos`, `/todo`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
+
+Express supports a **subset** of the standard regex meta-characters, namely: `+ ? * ( ) []`. They are used in the following manner:
 
 | Character | Description                                      | Regex    | Matched expressions |
 |-----------|--------------------------------------------------|----------|---------------------|
@@ -417,7 +419,7 @@ When you specify a path (like `/todos`) in your route, the path is eventually co
 
 ### Routing parameters
 
-Apart from regular expressions, routing parameters can be employed to enable **variable input** as part of the route. Consider the following code snippet:
+Apart from regular expressions, routing parameters can be employed to enable **variable input** as part of the route. Consider the following code snippet :point_down::
 
 ```javascript
 var todoTypes = {
@@ -435,11 +437,9 @@ app.get('/todos/:type', function (req, res, next) {
 });
 ```
 
-We here have defined an object `todoTypes` which contains `important`, `urgent` and `unimportant` todos. We can hardcode routes, for example `/todos/important` to return only the important todos, `/todos/urgent` to return the urgent todos only and `/todos/unimportant` to return the unimportant todos. This is not a maintainable solution though (think about objects with hundreds of properties...).
+:point_up: We have defined an object `todoTypes` which contains `important`, `urgent` and `unimportant` todos. We can hardcode routes, for example `/todos/important` to return only the important todos, `/todos/urgent` to return the urgent todos only and `/todos/unimportant` to return the unimportant todos. This is not a maintainable solution though (just think about objects with hundreds of properties). Instead, we create a single route that, dependent on a **routing parameter**, serves different todos. This is achieved in the code snippet shown here. The **routing parameter type** (indicated with a starting colon `:`) will match any string that does not contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `type`, we access it as `req.params.type`. The code snippet checks whether the route parameter matches a proprty of the `todoTypes` object and if it does, the correct todo list is returned in an HTTP response. If the parameter does not match any property of the `todoTypes` object, we make a call to next and move on the next route handler - e.g. a 404 page.
 
-Instead, we would like to write a single route that, dependent on a **routing parameter**, serves different todos. This is achieved in the code snippet shown here. The routing parameter type (indicated with a starting colon `:`) will match any string that does not contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `type`, we access it with `req.params.type`. What this piece of code is doing is to check whether the route parameter matches a proprty of the `todoTypes` object and if it is, the correct todo list is returned to the client. If the parameter does not match any property of our `todoTypes` object, we make a call to next and move on the next route handler - e.g. a 404 page specific to your application.
-
-Routing parameters can have various levels of nesting as shown next:
+Routing parameters can have various levels of nesting :point_down::
 
 ```javascript
 var todoTypes = {
