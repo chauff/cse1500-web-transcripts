@@ -8,6 +8,10 @@
 - [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
 - [Pseudo-classes](#pseudo-classes)
   - [:bangbang: nth-child(X) and nth-of-type(X)](#bangbang-nth-childx-and-nth-of-typex)
+  - [:bangbang: root](#bangbang-root)
+  - [:bangbang: hover and active](#bangbang-hover-and-active)
+  - [:bangbang: enabled and disabled](#bangbang-enabled-and-disabled)
+  - [:bangbang: not](#bangbang-not)
 - [Pseudo-elements](#pseudo-elements)
 - [Data in CSS](#data-in-css)
 - [Element positioning](#element-positioning)
@@ -95,19 +99,19 @@ selector:pseudo-class {
 
 Imagine you have a list of twenty todo items and you want to alternate the todo items' background color (to make it easier to read them). Two simple ways to go about this are:
 
-- You can "hardcode" the CSS rule of every element, ending up with twenty rules. This is not maintainable.
-- You write two CSS rules (one per background color), assign each to a class and then alternate in the todo items class assignment. Better, than the first option, but the redundancy remains.
+- You can *hardcode* the CSS rule of every element, ending up with twenty rules. This is not maintainable.
+- You write two CSS rules (one per background color), assign each to a class and then alternate in the todo items class assignment. Better than the first option, but the redundancy remains.
 
-Ideally, we only create two CSS rules and solve the rest (alternate assignment of background colors) with pseudo-classes. And that's exactly what we can do with the first two pseudo-classes we introduce next.
+Ideally, we only create two CSS rules and solve the rest (alternate assignment of background colors) with pseudo-classes. And that's exactly what we can do with the two pseudo-classes we introduce next.
 
 ### :bangbang: nth-child(X) and nth-of-type(X)
 
-- `nth-child(X)` is any element that is the Xth **child element** of its parent;
-- `nth-of-type(X)` is any element that is the Xth **sibling** of its type.
+- [`nth-child(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) is any element that is the Xth **child element** of its parent;
+- [`nth-of-type(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type) is any element that is the Xth **sibling** of its type.
 
-In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Instead of `2n` and `2n+`1 we can also use `even` and `odd` as shortcuts.
+In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Instead of `2n` and `2n+1` we can also use `even` and `odd` as shortcuts. If we want to start counting elements in reverse order, we can use the analogous `nth-last-child(X)` and `nth-last-of-type(X)` pseudo-classes.
 
-If we are aiming at the first and/or last child or sibling element, we can also use a different set of pseudo-classes (shortcuts):
+If we are aiming at the first and/or last child or sibling element, we also have additional shortcut pseudo-classes:
 
 | Pseudo-class   | Equivalent to        |
 |----------------|----------------------|
@@ -134,10 +138,10 @@ In the following example both pseudo-classes (`nth-child` and `nth-of-type`) are
                 background-color: yellow;
             }
             li:nth-child(1){
-                font-weight: bold;
+                color: tomato;
             }
             li:last-child{
-                color: blue;
+                color: tomato;
             }
         </style>
     </head>
@@ -156,28 +160,23 @@ In the following example both pseudo-classes (`nth-child` and `nth-of-type`) are
 </html>
 ```
 
-This piece of code is rendered as follows:
+This piece of code is rendered with alternating background colors as was our goal (try it out for yourself!). If we open Firefox's [Style Editor](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor) we now see the following:
 
 ![CSS pseudo-class](img/L5-pseudo-classes.png)
 
-<sub>Firefox browser tab with an open [Style Editor](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor).</sub>
-
-The `li:nth-of-type(2n)` rule says that even list elements have a `gold` background, odd list elements (`2n+1`) have a yellow background. The screenshot above also shows off Firefox's Style Editor: it allows you to not only inspect the CSS, but to also:
+The Style Editor allows us to not only inspect the CSS, but to also:
 
 - switch off the CSS (with a click on the "eye" symbol on the left);
 - hover over a CSS rule to see what part of the rendering it affects (the screenshot was taken when the mouse hovered over `li:nth-child(1)`);
 - **change the CSS** in the editor and view the immediate effect of those changes.
 
-The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the style editor is closed.
+The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the Style Editor is closed.
 
+### :bangbang: root
 
+One of the often voiced complaints about CSS used to be the lack of variable support (and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/)) - in the example above :point_up:, we set the same color value of `tomato` in two CSS rules (if you are interested in why we have such a seemingly random collection of color names on the web, [head over to this Wikipedia overview](https://en.wikipedia.org/wiki/X11_color_names)). If we now decide to change that color value, we would have to manually walk over all style sheets and alter it. Clearly, variables (i.e. *entities containing specific values that can be reused*) would be very helpful.
 
-
-
-
-One of the often voiced complaints about CSS used to be the lack of variable support (and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/)) - in the example above, we set the same value of `#00ff00;` on two properties. If we now decide to change that color value, we would have to manually walk over all style sheets and alter it. Clearly, variables (i.e. *entities containing specific values that can be reused*) would be very helpful.
-
-In fact, since 2015/2016 (yes! it took that long), [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) are supported in all major browsers. Here is how they work:
+In fact, since 2015/2016 (*yes, it took that long*), [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) are supported in all major browsers. Here is how they work :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -185,38 +184,51 @@ In fact, since 2015/2016 (yes! it took that long), [CSS variables](https://devel
     <head>
         <style>
             :root {
-                --main-color: #00ff00;
+                --highlight-color: tomato;
             }
-            p:nth-child(2){
-                color: red;
+            li {
+                list-style: none;
+                padding: 15px;
             }
-            p:nth-of-type(2){
-                background-color: var(--main-color);
+            li:nth-of-type(2n){
+                background-color: gold;
             }
-            div {
-                color: var(--main-color);
+            li:nth-of-type(2n+1){
+                background-color: yellow;
+            }
+            li:nth-child(1){
+                color: var(--highlight-color);
+            }
+            li:last-child{
+                color: var(--highlight-color);
             }
         </style>
     </head>
     <body>
-
-        <main> <!-- parent of the <h2> and <p>'s -->
-            <h2>Todos</h2>
-            <p>Today's todos</p>    <!-- p sibling, also the second child of <main> -->
-            <p>Tomorrow's todos</p> <!-- p sibling -->
-            <p>Saturday's todos</p> <!-- p sibling -->
-            <p>Sunday's todos</p>   <!-- p sibling -->
-        </main>
+        <ul>
+            <li>Create an Easychair instance</li>
+            <li>Send call for papers to mailing lists</li>
+            <li>Create a conference website</li>
+            <li>Book the venue</li>
+            <li>Find PC chairs</li>
+            <li>Find PC members</li>
+            <li>Book hotel rooms</li>
+            <li>Design program</li>
+        </ul>
     </body>
 </html>
 ```
 
-In this example, we want to create a number of so-called global CSS variables, i.e. they should be available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality.
+:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality.
 
-In the beginning we mentioned as one of the document external factors mouse movements that we can make our elements react to. Two popular pseudo-classes in this category are `:hover` and `:active`:
+### :bangbang: hover and active
+
+In the beginning we mentioned mouse movements as one of the document external factors that we can make our elements react to. Two popular pseudo-classes in this category are `:hover` and `:active`:
 
 - `:hover` is a selector that becomes active when a mouseover on the element occurs.
 - `:active` is a selector that becomes active when the element is currently *being active* (usually that means clicked).
+
+Here is a simple example :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -252,14 +264,16 @@ In the beginning we mentioned as one of the document external factors mouse move
 </html>
 ```
 
-While this may seem not very impressive, `:hover` can also easily employed to create image galleries (preview vs. full image) as well as pure CSS dropdown menus (hide the menu items apart from the "header" and only reveal them when the mouse hovers over the header).
+While this toy example is not very impressive, `:hover` can easily be employed to create image galleries (preview vs. full image) as well as pure CSS dropdown menus (hide the menu items apart from the header and only reveal them when the mouse hovers over the header).
 
-Particularly important for games may be the pseudo-classes `:enabled` and `:disabled`; imagine a game item that is only available sometimes (in our demo game for instance once a letter has been clicked once it is no longer possible to click/select it again). And of course this information should be visually conveyed to the user:
+### :bangbang: enabled and disabled
+
+Particularly important for board game applications such as those in our assignments may be the pseudo-classes `:enabled` and `:disabled`. Imagine a game item that is only available sometimes; in our demo game for instance, once a letter has been clicked it is no longer possible to select it again. And of course this information should be visually conveyed to the user:
 
 - `:enabled` is an element that can be clicked or selected.
 - `:disabled` is an element that cannot be clicked or selected.
 
-An example:
+An example :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -306,7 +320,9 @@ An example:
 </html>
 ```
 
-Here you can see that it is possible to combine pseudo-classes, in this case we use `button:enabled:active` and define a style that an enabled **and** active button should have. Once the button is disabled, its style will not change anymore, no matter the mouse movements.
+:point_up: Here you can see that it is possible to combine pseudo-classes, in this case we use `button:enabled:active` and define a style that an enabled **and** active button should have. Once the button is disabled, its style will not change anymore, no matter the mouse movements.
+
+### :bangbang: not
 
 `:not(X)` is a pseudo-class that matches all elements that are not represented by selector X. Let's look at this example:
 
