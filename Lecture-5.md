@@ -15,6 +15,8 @@
   - [:bangbang: Selector combinations](#bangbang-selector-combinations)
   - [:bangbang: valid and invalid](#bangbang-valid-and-invalid)
 - [Pseudo-elements](#pseudo-elements)
+  - [:bangbang: first-letter and first-line](#bangbang-first-letter-and-first-line)
+  - [:bangbang: before and after](#bangbang-before-and-after)
 - [Data in CSS](#data-in-css)
 - [Element positioning](#element-positioning)
   - [Float](#float)
@@ -492,7 +494,7 @@ The rendered output with an invalid and valid deadline respectively looks as fol
 
 - **Attribute selectors** (e.g. `input[type=number]`) allow us to select specific types of `<input>` elements.
 - The [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) element can be associated with an `<input>` element when the latter's `id` attribute is the same as the `<label>`'s `for` attribute. This is particularly useful when labels are used as captions for user interface elements: a click on the label text will then activate the interface element (e.g. a checkbox). Here, we make use of the label to signal a valid or invalid input.
-- We see here how to include **unicode characters**: when the deadline number is valid, we choose to display a :white_check_mark: (this image is a [GitHub Markdown emoji](https://gist.github.com/rxaviers/7360908) btw). This checkmark could be an image, but here we chose to use a character, specifically unicode character [U+2714](http://graphemica.com/%E2%9C%94).
+- We see here how to include **unicode characters**: when the deadline number is valid, we choose to display a checkmark, similar to :white_check_mark: (this image is a [GitHub Markdown emoji](https://gist.github.com/rxaviers/7360908) btw). This checkmark could indeed be an image, but here we chose to use a character, specifically unicode character [U+2714](http://graphemica.com/%E2%9C%94).
 - The pseudo-element `::after` makes a first appearance, together with the `content` property. We discuss those next.
 
 ## Pseudo-elements
@@ -501,7 +503,9 @@ A **pseudo-element** creates an abstractions about the document tree *beyond* th
 
 In order to distinguish pseudo-classes and pseudo-elements, the `::` notation was introduced in the specification, though browsers also accept the one-colon notation.
 
-So, what are abstractions that go beyond what is specified in the document language? Two popular examples are the `::first-letter` and the `::first-line` pseudo-elements; they do exactly what the names suggests, enabling you to style the first letter and line respectively without sticking a `<span>` around them:
+### :bangbang: first-letter and first-line
+
+So, what are abstractions that go beyond what is specified in the document language? Two popular examples are the `::first-letter` and the `::first-line` pseudo-elements; they do exactly what the names suggests, enabling you to style the first letter and line respectively. Without those pseudo-elements, you would have to wrap the first letter in a `<span>` element and find a clever way of computing what exactly the first line of a piece of text is (to again, wrap it in a `<span>` element). Let's look at an example :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -533,7 +537,15 @@ So, what are abstractions that go beyond what is specified in the document langu
 </html>
 ```
 
-The example also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale you font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional "tuning" for different devices is required.
+The browser renders this code as follows:
+
+![CSS first-line](img/L5-tobe.png)
+
+When you open this example in your own browser, change the size of the browser window - the first line, no matter how long or small, will always be rendered in grey.
+
+The example :point_up: also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale the font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional *tuning* for different devices is required.
+
+### :bangbang: before and after
 
 Adding (cosmetic) content right before and after an element is achieved (not surprisingly) through:
 
