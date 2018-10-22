@@ -84,6 +84,8 @@ Lastly, you know about `!important` which overrides all other declarations.
 
 In this lecture, we move beyond the course book chapter and highlight a number of more advanced CSS concepts.
 
+:bangbang: We strongly suggest to start with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor can do!
+
 ## Pseudo-classes
 
 A **pseudo-class** is a keyword added to a **selector** that indicates *a particular state or type* of the corresponding element. Pseudo-classes allow styling according to (among others) **document external** factors such as mouse movements and user browsing history.
