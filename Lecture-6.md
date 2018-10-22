@@ -4,7 +4,7 @@
 - [Learning goals](#learning-goals)
 - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
     - [A file-based module system](#a-file-based-module-system)
-    - [A first module example](#a-first-module-example)
+    - [:bangbang: A first module example](#bangbang-a-first-module-example)
 - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
 - [Middleware in Express](#middleware-in-express)
     - [Logger component example](#logger-component-example)
@@ -47,9 +47,9 @@ While it is beyond the scope of this course to dive into the details of the npm 
 
 ### A file-based module system
 
-In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this ability for free. When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in [Lecture 3](Lecture-3.md)).
+In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in [Lecture 3](Lecture-3.md)).
 
-The module system works as follows: each Node.js file can access its so-called module definition through the module variable. The module variable is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or its alias `exports` is used as we will see in a second:
+The module system works as follows: each Node.js file can access its so-called **module definition** through the `module` object. The module object is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or its alias `exports` is used as we will see in a second. The `module` object looks as follows :point_down::
 
 ```javascript
 module {
@@ -66,17 +66,19 @@ module {
 }
 ```
 
- Finally, once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
+To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it is empty bar a single line).
+
+Once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
 Here is a graphical overview of the connection between `require` and `module.exports`:
 
 ![Modules](img/L6-module.png)
 
-An application uses the `require` function to import module code. The module itself populates the `module.exports` variable to make certain parts of the code base in the module available to the outside world. Whatever was assigned to `module.exports` (or `exports`) is then returned to the application when the application calls `require()`.
+An application uses the `require` function to import module code. The module itself populates the `module.exports` variable to make certain parts of the code base in the module available to the outside world. Whatever was assigned to `module.exports` (or its alias `exports`) is then returned to the application when the application calls `require()`.
 
-### A first module example
+### :bangbang: A first module example
 
-Since we work with modules, let's consider files `foo.js`:
+Let's consider files `foo.js` :point_down::
 
 ```javascript
 var fooA = 1;
@@ -86,22 +88,32 @@ module.exports = function() {
 };
 ```
 
-and `bar.js`:
+and `bar.js` :point_down::
 
 ```javascript
 var foo = require('./foo');
-foo();
-require('./foo')(); //Hi from foo!
-console.log(foo); //[Function]
-console.log(foo.toString()); //function () {console.log("Hi from foo!");}
-console.log(fooA); //ReferenceError
-console.log(module.exports); //{}
+foo();                      //CASE 1: Hi from foo!
+require('./foo')();         //CASE 2: Hi from foo!
+console.log(foo);           //CASE 3: [Function]
+console.log(foo.toString());//CASE 4: function () {console.log("Hi from foo!");}
+console.log(fooA);          //CASE 5: ReferenceError
+console.log(module.exports);//CASE 6: {}
 
 ```
 
-Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality. In our `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. Which of the two assignments will our application bar end up with? In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js`; you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
+:point_up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`). 
 
-Node.js runs the referenced JavaScript file (here `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing foo.js? It is the function we defined in line 3. As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned. We can call the returned function and this results in *Hi from foo!* as you would expect. We can also combine lines 1 and 2 into a single line, as seen in line 3 with the same result. If we print out the variable `foo`, we learn that it is a function. Using the `toString()` function prints out the content of the function. Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. Finally, we can also look at the `module.exports` variable of `bar.js` - remember this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
+- In the `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. *Which of the two assignments will our application `bar` end up with?*
+- In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js`; you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
+
+Node.js runs the referenced JavaScript file (here: `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing `foo.js`? It is the function we defined in line 3. As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned:
+
+- **CASE** :one: We can call the returned function and this results in *Hi from foo!* as you would expect.
+- **CASE** :two: We can also combine lines 1 and 2 into a single line with the same result.
+- **CASE** :three: If we print out the variable `foo`, we learn that it is a function.
+- **CASE** :four: Using the `toString()` function prints out the content of the function.
+- **CASE** :five: Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error.
+- **CASE 6** :six: Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
 
 This setup also explains why **`require` is blocking**, i.e. once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return; this is in contrast to the usual *asynchronous* nature of Node.js functions.
 
