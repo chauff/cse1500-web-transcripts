@@ -24,7 +24,10 @@
 - [CSS media queries](#css-media-queries)
 - [Animations and transitions](#animations-and-transitions)
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
+  - [:bangbang: Animations](#bangbang-animations)
+  - [:bangbang: Transitions](#bangbang-transitions)
 - [Browser-specific prefixes](#browser-specific-prefixes)
+  - [Rendering engines have bugs too!](#rendering-engines-have-bugs-too)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -1210,13 +1213,13 @@ Here is a concrete example of how media queries enable a **responsive design** :
 </html>
 ```
 
-:point_up: Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature to test the behaviour of the media queries.
+Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature to test the behaviour of the media queries.
 
 ![Responsive design mode](img/L5-responsive.png)
 
 ## Animations and transitions
 
-In general, CSS styles (states) are defined by the user, the **rendering engine** takes care of the transition between styles. A rendering engine (also known as *browser engine* or *layout engine*) is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time (especially when using CSS animations and transitions):
+In general, CSS styles (states) are defined by the developer. The **rendering engine** takes care of the transition between styles. A rendering engine - also known as *browser engine* or *layout engine* - is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time, especially when using CSS animations and transitions:
 
 | Engine   | Browsers                                |
 |----------|-----------------------------------------|
@@ -1226,38 +1229,33 @@ In general, CSS styles (states) are defined by the user, the **rendering engine*
 | `WebKit`   | Safari, older versions of Google Chrome |
 | `Blink`    | Google Chrome, Opera                    |
 
-Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
-
-After a quick detour to rendering engines, let's get back to animations and transitions.
-
-**Animations** consist of
+**Animations** consist of:
 
 - an animation style (e.g. `linear`);
 - a number of **keyframes** that act as transition waypoints.
 
-**Transitions** are animations with a simpler syntax. They consist of
-
-- exactly two states: start and end state.
+**Transitions** are animations with a simpler syntax. They consist of exactly **two states**: start and end state.
 
 ### CSS vs. JavaScript animations
 
 There are several advantages to using CSS-based instead of JavaScript-based animations:
 
-- CSS is relatively easy to use (no need to learn the intricate details of JavaScript).
+- CSS is relatively easy to use and debugging them is easier than debugging JavaScript code.
 - The rendering engines are optimized for CSS-based animations; there is no need to optimize your JavaScript code.
 - CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
 
-Here is a first animation example, adapted from [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq):
+### :bangbang: Animations
+
+Here is a first animation example - TU Delft rendered as a neon sign, adapted from [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq) :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
-        <!-- Loading a specific font: https://fonts.google.com/specimen/Monoton -->
+    <!-- Loading a specific font: https://fonts.google.com/specimen/Monoton -->
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 
     <style>
-
       body{
         background: black;
       }
@@ -1275,22 +1273,23 @@ Here is a first animation example, adapted from [this CodePen example](https://c
         text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A;
       }
 
-            /*
-             * Instead of linear, also try out `ease-in`, `ease-out`, `steps(10)`.
-             */
+      /*
+       * Instead of linear, also try out `ease-in`, `ease-out`, `steps(10)`.
+       */
       .flicker-slow{
         animation: flicker 3s linear infinite;
       }
 
       .flicker-fast{
         animation: flicker 1s linear infinite;
-            }
-            /*
-             * The above short-hand can be replaced by the
-             * following animation properties:
-             */
-            /*
-            .flicker-slow{
+      }
+      /*
+       * The above short-hand can be replaced by the
+       * following animation properties:
+       */
+
+      /*
+      .flicker-slow{
         animation-name: flicker;
         animation-duration: 3s;
         animation-timing-function: linear;
@@ -1302,8 +1301,8 @@ Here is a first animation example, adapted from [this CodePen example](https://c
         animation-duration: 1s;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
-            }
-            */
+      }
+      */
 
       @keyframes flicker {
         0%, 30%, 33%, 55%, 100% {
@@ -1324,12 +1323,16 @@ Here is a first animation example, adapted from [this CodePen example](https://c
 </html>
 ```
 
-The example contains a number of interesting points:
+It renders as follows:
+
+![TU Delft neon sign](img/L5-tudelft.png)
+
+The example :point_up: contains a number of interesting points:
 
 - It is easy to load additional fonts. A popular free font service is [Google Fonts](https://fonts.google.com/); more information on how to use it is available from [MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts#Using_an_online_font_service).
 - The CSS property [`text-shadow`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow) adds - as the name suggests - shadow to text. Importantly, a list of shadows can be added in a comma-separated list which are applied front-to-back (the first shadow is on top). Shadows can be defined in a number of ways, we here stick to a single one: `offset-x offset-y blur-radius color`.
-- The [`animation`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation) property is a short-hand property that combines a number of `animation-*` properties in one line. Specifically in our example `animation: flicker 3s linear infinite` refers to the keyframes (`flicker` - the `animation-name`), the duration of one animation cycle (3 seconds - the `animation-duration`), the `animation-timing-function` (`linear` means that the animation moves from start to end in a constant rate) and the `animation-iteration-count` (here: `infinite`, i.e. the animation never stops). We defined here two types of flickers: a slow flicker (3 seconds to complete a cycle) and a fast flicker (1 second to complete the cycle). Different letters of our `TU Delft` string are assigned to differnt "flicker classes".
-- The [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) control the intermediate steps in a CSS animation. In order to achieve flickering we simply change change the opacity of the text string. In one animation cycle, we repeatedly move from an opacity of `.99` to `.3` and back. Specifically, we define 8 waypoints of our animation (with either opacity of `.99` or `.3`): `0%, 30%, 31%, 33%, 50%, 55%, 56%, 100%`. The rendering engine is then responsible to turn this code into an actual animation that resembles flickering.
+- The [`animation`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation) property is a short-hand property that combines a number of `animation-*` properties in one line. Specifically in our example `animation: flicker 3s linear infinite` refers to the keyframes (`flicker` - the `animation-name`), the duration of one animation cycle (3 seconds - the `animation-duration`), the `animation-timing-function` (`linear` means that the animation moves from start to end in a constant rate) and the `animation-iteration-count` (here: `infinite`, i.e. the animation never stops). We defined here two types of flickers: a slow flicker (3 seconds to complete a cycle) and a fast flicker (1 second to complete the cycle). Different letters of our `TU Delft` string are assigned to different *flicker classes*.
+- The [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) control the intermediate steps in a CSS animation. In order to achieve flickering we change the opacity of the text string. In one animation cycle, we repeatedly move from an opacity of `.99` to `.3` and back. Specifically, we define 8 waypoints of our animation (with either opacity of `.99` or `.3`): `0%, 30%, 31%, 33%, 50%, 55%, 56%, 100%`. The rendering engine is then responsible to turn this code into an actual animation that resembles flickering.
 
 To summarize, for us the most important animation properties are the following:
 
@@ -1342,7 +1345,7 @@ To summarize, for us the most important animation properties are the following:
 | `animation-duration`        | The duration of a single animation cycle in seconds (s) or milliseconds (ms).                                                      |
 | `animation-timing-function` | Specifies how a CSS animation progresses between waypoints (common  choices are `linear`, `ease-in`, `ease-out`, `steps(N)`).              |
 
-Let's look at a second example, which shows a slightly different way to define keyframe waypoints: instead of `0%` the start state can also be defined with `from`, while the end state (`100%`) can be defined with `to` (and these two can also be mixed with other waypoints such as `50%`):
+Let's look at a second example :point_down:, which shows a slightly different way to define keyframe waypoints: instead of `0%` the start state can also be defined with `from`, while the end state (`100%`) can be defined with `to` (and these two can also be mixed with other waypoints such as `50%`). This animation slides TU Delft's letters in place, with different letters moving at different speeds:
 
 ```html
 <!DOCTYPE html>
@@ -1407,14 +1410,24 @@ Let's look at a second example, which shows a slightly different way to define k
 </html>
 ```
 
-The animation's start state is defined through the [`transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) property, which allows us to rotate, scale, skew and translate an element: at the start of the animation, the elements are moved ([`translate`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate)) from their original position to a position that is 1000 pixels "down". The end state of the animation moves the elements to position 0/0 again. While this may seem to move all letter elements to the same position, the `float:left` property ensures that the letters appear next to each other as intended.
+:point_up: The animation's start state is defined through the [`transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) property, which allows us to rotate, scale, skew and translate an element: at the start of the animation, the elements are moved ([`translate`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate)) from their original position to a position that is 1000 pixels down. The end state of the animation moves the elements to position 0/0 again. While this may seem to move all letter elements to the same position, the `float:left` property ensures that the letters appear next to each other as intended.
 
-Finally, a word on **CSS transitions**. Transitions are animations with only two states (a start state and an end state). We actually have been using transitions all this time already, e.g. when defining `:hover`, `:active` - the transition in this case is from the original element style to the hover style. We can make use the [`transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) property to control the animation between the start and end state. The example below shows off what the impact of `transition` is: we define two boxes which, when being hovered over, change their rotation by 70 degrees. `#box1` has no `transition` property, which makes the style change instanteneous. On the other hand, `#box2` has the `transition` property which determines how fast in this case the transition for different properties takes place and we see a smooth animation when hovering.
+### :bangbang: Transitions
+
+Transitions are animations with only two states (a start state and an end state).
+
+We actually have been using transitions all this time already, e.g. when defining `:hover`. In this case, the transition is from the original element style to the hover style. 
+
+We can make use of the [`transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) property to control the animation between the start and end state. The example below :point_down: shows off what the impact of `transition` is: we define two boxes which, when being hovered over, change their rotation by 70 degrees.
+
+- `#box1` has no `transition` property, which makes the style change instanteneous;
+- `#box2` has the `transition` property which determines how fast the transition for different properties takes place and we see a smooth animation when hovering.
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
       #box1 {
         width: 100px;
         height: 100px;
@@ -1423,7 +1436,7 @@ Finally, a word on **CSS transitions**. Transitions are animations with only two
 
       #box1:hover {
         transform: rotate(70deg);
-        background-color: black;
+        background-color: darkgreen;
       }
 
       #box2 {
@@ -1441,7 +1454,6 @@ Finally, a word on **CSS transitions**. Transitions are animations with only two
   </head>
   <body>
     <div id="box1">
-
     </div>
 
     <div id="box2">
@@ -1450,7 +1462,7 @@ Finally, a word on **CSS transitions**. Transitions are animations with only two
 </html>
 ```
 
-Once again, the line `transition: width 2s, height 2s, background-color 2s, transform 2s` is a short-hand for the `transition-property` (the CSS property to which a transition should be applied) and the `transition-duration` (the seconds or milliseconds until the transition is complete). As seen here, we can define multiple transition properties in one line.
+:point_up: The line `transition: width 2s, height 2s, background-color 2s, transform 2s` is a short-hand for the `transition-property` (the CSS property to which a transition should be applied) and the `transition-duration` (the seconds or milliseconds until the transition is complete). As seen here, we can define multiple transition properties in one line.
 
 ## Browser-specific prefixes
 
@@ -1467,7 +1479,11 @@ main:fullscreen {
 } /* W3C proposal */
 ```
 
- This approach has now been deprecated and although the vendor-specific prefixed properties still work (even Firefox recognizes `-webkit-*` properties today ...), the use of such properties should be avoided.
+This approach has now been deprecated and although the vendor-specific prefixed properties still work, the use of such properties should be avoided.
+
+### Rendering engines have bugs too!
+
+Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
 
 ## Self-check
 
@@ -1517,4 +1533,6 @@ For brevity, only the content inside `<body>` is shown; you can assume code in t
 
 7. Give three examples of pseudo-classes.
 
-8. Explain how data can be stored in CSS.
+8. Explain how data can be stored in CSS and what the advantages/disadvantages are.
+   
+9. Explain the difference between CSS animations and transitions.
