@@ -740,7 +740,9 @@ var template = '<% if(user){
     if(user.age>=18){
         console.log("(adult)");
     }
-    else {console.log("(minor)");}
+    else {
+        console.log("(minor)");
+    }
 } %>';
 var context = {user: 'Tom', age:26, address:'Mekelweg 4'};
 ejs.render(template, context);
