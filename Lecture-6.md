@@ -730,20 +730,3 @@ var context = {
 };
 console.log(ejs.render(template, context));
 ```
-
-6. What is the console output after executing this code snippet?
-
-```javascript
-var ejs = require('ejs');
-var template = '<% if(user){
-    console.log("Hi "+user);
-    if(user.age>=18){
-        console.log("(adult)");
-    }
-    else {
-        console.log("(minor)");
-    }
-} %>';
-var context = {user: 'Tom', age:26, address:'Mekelweg 4'};
-ejs.render(template, context);
-```
