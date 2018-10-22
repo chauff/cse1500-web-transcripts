@@ -27,7 +27,7 @@
   - [:bangbang: Animations](#bangbang-animations)
   - [:bangbang: Transitions](#bangbang-transitions)
 - [Browser-specific prefixes](#browser-specific-prefixes)
-  - [Rendering engines have bugs too!](#rendering-engines-have-bugs-too)
+- [Rendering engines have bugs too!](#rendering-engines-have-bugs-too)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -1481,7 +1481,7 @@ main:fullscreen {
 
 This approach has now been deprecated and although the vendor-specific prefixed properties still work, the use of such properties should be avoided.
 
-### Rendering engines have bugs too!
+## Rendering engines have bugs too!
 
 Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
 
