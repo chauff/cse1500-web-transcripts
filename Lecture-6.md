@@ -5,6 +5,8 @@
 - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
     - [A file-based module system](#a-file-based-module-system)
     - [:bangbang: A first module example](#bangbang-a-first-module-example)
+    - [:bangbang: `require` is blocking](#bangbang-require-is-blocking)
+    - [:bangbang: module.exports vs. exports](#bangbang-moduleexports-vs-exports)
 - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
 - [Middleware in Express](#middleware-in-express)
     - [Logger component example](#logger-component-example)
@@ -81,11 +83,11 @@ An application uses the `require` function to import module code. The module its
 Let's consider files `foo.js` :point_down::
 
 ```javascript
-var fooA = 1;
-module.exports = "Hello!";
-module.exports = function() {
-    console.log("Hi from foo!");
-};
+var fooA = 1;                       //LINE 1
+module.exports = "Hello!";          //LINE 2
+module.exports = function() {       //LINE 3
+    console.log("Hi from foo!");    //LINE 4
+};                                  //LINE 5
 ```
 
 and `bar.js` :point_down::
@@ -101,23 +103,27 @@ console.log(module.exports);//CASE 6: {}
 
 ```
 
-:point_up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`). 
+:point_up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`).
 
-- In the `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. *Which of the two assignments will our application `bar` end up with?*
-- In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js`; you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
+- In the `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. Which of the two assignments will our application `bar` end up with?
+- In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js` - you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
 
-Node.js runs the referenced JavaScript file (here: `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing `foo.js`? It is the function we defined in line 3. As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned:
+Node.js runs the referenced JavaScript file :point_up: (here: `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing `foo.js`? It is the function we defined in line 3.
+
+As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned:
 
 - **CASE** :one: We can call the returned function and this results in *Hi from foo!* as you would expect.
 - **CASE** :two: We can also combine lines 1 and 2 into a single line with the same result.
 - **CASE** :three: If we print out the variable `foo`, we learn that it is a function.
 - **CASE** :four: Using the `toString()` function prints out the content of the function.
 - **CASE** :five: Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error.
-- **CASE 6** :six: Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
+- **CASE** :six: Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
 
-This setup also explains why **`require` is blocking**, i.e. once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return; this is in contrast to the usual *asynchronous* nature of Node.js functions.
+### :bangbang: `require` is blocking
 
-Here is another example:
+This module setup also explains why `require` is **blocking**: once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return. This is in contrast to the usual *asynchronous* nature of Node.js functions.
+
+Let's now consider what happens if a module is imported more than once :point_down::
 
 ```javascript
 var t1 = new Date().getTime();
@@ -129,10 +135,11 @@ var foo2 = require('./foo');
 console.log(new Date().getTime() - t2); // approx 0
 ```
 
-For this example, it is also important to know that `module.exports` is **cached**. The first time an application calls `require(foo.js)` the file `foo.js` is read from disk, but in subsequent calls to `require(foo.js)` the **in-memory object is returned**. What does this mean in practice? We call require twice for the file `foo.js`, storing the return value in `foo1` and `foo2` respectively. We also log how long require blocks further code execution. The first time we `require(foo)`, this will take a few milliseconds as the file is actually read from disk. The second time we call `require(foo)` though, this time will drop to near zero, as the cached in-memory object is returned.
+:point_up: Here, we execute `require('./foo')` twice and log both times the time it takes for `require` to return. The first time the line `require(foo.js)` is executed, the file `foo.js` is read from disk (this takes some time, at least a few milliseconds). In subsequent calls to `require(foo.js)`, however, the **in-memory object is returned** (takes less than a millisecond). Thus, `module.exports` is **cached**.
 
-As mentioned before, every Node.js file has access to `module.exports`. If a file does not assign anything to it, it will be an empty object, but it is **always** present.
-We also stated before that instead of `module.exports` we can also use `exports`. If you look up what the difference between the two is, you will find a lot of articles and questions on the web. Do not be confused, it is rather simple: `exports` is just an **alias** of `module.exports`. This means that the following two code snippets are equivalent:
+### :bangbang: module.exports vs. exports
+
+Every Node.js file has access to `module.exports`. If a file does not assign anything to it, it will be an empty object, but it is **always** present. Instead of `module.exports` we can use `exports` as `exports` is an **alias** of `module.exports`. This means that the following two code snippets are equivalent :point_down::
 
 ```javascript
 module.exports.foo = function () {
@@ -154,7 +161,7 @@ exports.bar = function () {
 };
 ```
 
-In the first snippet, we use `module.exports` to make two functions (`foo` and `bar`) accessible to the outside world. In the second snippet, we use `exports` to do exactly the same. Note that in these two examples, we do **not** *assign* something to `exports` directly, i.e. we do not write `exports = function ....`. This is in fact not possible, if you directly assign a function or object to `exports`, then its reference to `module.exports` will be **broken**. Thus, you can only assign directly to `module.exports`, for instance if you only want to make a single function accessible to the outside world.
+:point_up: In the first snippet, we use `module.exports` to make two functions (`foo` and `bar`) accessible to the outside world. In the second snippet, we use `exports` to do exactly the same. Note that in these two examples, **we do not assign something to `exports` directly**, i.e. we do not write `exports = function ....`. This is in fact **not possible**: if you directly assign a function or object to `exports`, then its reference to `module.exports` will be **broken**. You can only **assign directly** to `module.exports`, for instance, if you only want to make a single function accessible.
 
 ## Creating and using a (useful) module
 
