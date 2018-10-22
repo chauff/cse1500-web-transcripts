@@ -9,8 +9,8 @@
     - [:bangbang: module.exports vs. exports](#bangbang-moduleexports-vs-exports)
 - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
 - [Middleware in Express](#middleware-in-express)
-    - [Logger component example](#logger-component-example)
-    - [Authorisation component example](#authorisation-component-example)
+    - [:bangbang: Logger example](#bangbang-logger-example)
+    - [:bangbang: Authorisation component example](#bangbang-authorisation-component-example)
     - [Components are configurable](#components-are-configurable)
 - [Routing](#routing)
     - [Routing paths and regular expressions](#routing-paths-and-regular-expressions)
@@ -33,7 +33,7 @@
 
 So far, we have organized all server-side code in a single file, which is only a feasible solution for small projects. In larger projects, this quickly ends in unmaintainable code, especially when working in a team.
 
-These issues were recognized early on by the creators of Node.js. For this reason, they introduced the concept of **modules**. **A Node.js module is a single file and all code contained in it**.
+These issues were recognized early on by the creators of Node.js. For this reason, they introduced the concept of **modules**. **A Node.js module is (1) a single file or (2) a directory of files and all code contained in it**.
 
 By default, *no code in a module is accessible to other modules*. Any property or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. This is [Express' page on npm](https://www.npmjs.com/package/express):
 
@@ -142,6 +142,7 @@ console.log(new Date().getTime() - t2); // approx 0
 Every Node.js file has access to `module.exports`. If a file does not assign anything to it, it will be an empty object, but it is **always** present. Instead of `module.exports` we can use `exports` as `exports` is an **alias** of `module.exports`. This means that the following two code snippets are equivalent :point_down::
 
 ```javascript
+//SNIPPET 1
 module.exports.foo = function () {
     console.log('foo called');
 };
@@ -152,6 +153,7 @@ module.exports.bar = function () {
 ```
 
 ```javascript
+//SNIPPET 2
 exports.foo = function () {
     console.log('foo called');
 };
@@ -165,12 +167,12 @@ exports.bar = function () {
 
 ## Creating and using a (useful) module
 
-In the example above, `foo.js` is a module we created. Not a very sensible one, but still, it is a module. Modules can be either:
+In the example above :point_up:, `foo.js` is a module we created. Not a very sensible one, but still, it is a module. Modules can be either:
 
-- a single file, or,
-- a directory of files, one of which is `index.js`.
+- a **single file**, or,
+- a **directory of files**, one of which is `index.js`.
 
-A module can contain other modules (that's what `require` is for) and should have a specific purpose. For instance, we can create a grade rounding module whose functionality is the rounding of grades in the Dutch grading system:
+A module can contain other modules (that's what `require` is for) and should have a specific purpose. For instance, we can create a *grade rounding module* whose functionality is the rounding of grades in the Dutch grading system :point_down::
 
 ```javascript
 /* not exposed */
@@ -191,7 +193,7 @@ exports.roundGradeDown = function(grade) {
 }
  ```
 
-We can use the grading module in an Express application as follows:
+We can use the grading module in an Express application as follows :point_down::
 
 ```javascript
 var express = require("express");
@@ -209,7 +211,7 @@ app.get("/round", function (req, res) {
     var grade = ( query["grade"]!=undefined) ? query["grade"] : "0";
 
     //accessing module functions
-    res.send("Rounding up: " + grading.roundGradeUp(grade) +", and down: "+ grading.roundGradeDown(grade));
+    res.send("UP: " + grading.roundGradeUp(grade) +", DOWN: "+ grading.roundGradeDown(grade));
 });
 ```
 
@@ -230,15 +232,15 @@ Middleware components have a number of abilities:
 - End the request-response cycle.
 - Call the next middleware function in the middleware stack.
 
-As a concrete example, imagine an Express application with a POST route `/user/addHabit`:
+As a concrete example, imagine an Express application with a POST route `/user/addHabit` :point_down::
 
 ![Middleware components](img/L6-middleware.png)
 
-The first middleware to be called is the logging component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete.
+:point_up: The first middleware to be called is the logging component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete.
 
-### Logger component example
+### :bangbang: Logger example
 
-Here is a first concrete code example of a simple logger component. Our goal is to create a logger that records every single HTTP request made to our application as well as the URL of the request. We need to write a function that accepts the HTTP request and response objects as arguments and next as callback function. Here, we actually write two functions to showcase the use of several middleware components:
+Our goal is to create a logger that records every single HTTP request made to our application as well as the URL of the request. We need to write a function that accepts the HTTP request and response objects as arguments and `next` as callback function. Here, we write two functions to showcase the use of several middleware components :point_down::
 
 ```javascript
 var express = require('express');
@@ -261,17 +263,28 @@ app.use(delimiter);
 app.listen(3001);
 ```
 
-Importantly, `next()` enables us to move on to the next middleware component while `app.use(...)` registers the middleware component with the dispatcher. Try out this code for yourself and see what happens if:
+The server's console output will look something like this:
+
+```console
+Mon Oct 22 2018 21:37:13 GMT+0200 (CEST)	GET	/
+-----------------
+Mon Oct 22 2018 21:37:23 GMT+0200 (CEST)	GET	/greetme
+-----------------
+Mon Oct 22 2018 21:37:25 GMT+0200 (CEST)	GET	/hello
+-----------------
+```
+
+:point_up: Importantly, `next()` enables us to move on to the next middleware component while `app.use(...)` registers the middleware component with the dispatcher. Try out this code for yourself and see what happens if:
 
 - `app.use` is removed;
 - the order of the middleware components is switched, i.e. we first add `app.use(delimiter)` and then `app.use(logger)`;
 - in one or both of the middleware components the `next()` call is removed.
 
-You will observe different behaviours of the application when testing it in the browser that make clear how the middleware components interact with each other and how they should be used in an Express application.
+You will observe different behaviours of the application that make clear how the middleware components interact with each other and how they should be used in an Express application.
 
-In the example above we did not actually sent an HTTP response back, but you know how to write such a code snippet yourself. So far, none of our routes have contained `next` for a simple reason: all our routes ended with an HTTP response being sent and this completes the request-response cycle; there is no need for a `next()` call.
+In the example above we did not actually sent an HTTP response back, but you know how to write such a code snippet yourself. So far, none of our routes have contained `next` for a simple reason: all our routes ended with an HTTP response being sent and this completes the request-response cycle; in this case there is no need for a `next()` call.
 
-### Authorisation component example
+### :bangbang: Authorisation component example
 
 In the [second application example](demo-code/node-component-ex), we add an authorisation component to a simple Todo application back-end: only clients with the **correct username and password** (i.e. authorised users) should be able to receive the list of todos when requesting them. We achieve this by adding a middleware component that is activated for every single HTTP request and determines whether the HTTP request contains an authorization header (if not, access is denied) and if the provided username and password combination is the desired one. Before we dive into the code details, let's first install and start the application:
 
