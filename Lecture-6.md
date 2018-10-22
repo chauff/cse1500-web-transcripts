@@ -17,7 +17,7 @@
     - [Routing parameters](#routing-parameters)
     - [Organizing routes](#organizing-routes)
 - [Templating with EJS](#templating-with-ejs)
-    - [A first EJS example](#a-first-ejs-example)
+    - [:bangbang: A first EJS example](#bangbang-a-first-ejs-example)
     - [EJS and user-defined functions](#ejs-and-user-defined-functions)
     - [JavaScript within EJS templates](#javascript-within-ejs-templates)
     - [Express and templates](#express-and-templates)
@@ -473,10 +473,13 @@ Lastly, a word on how to organize your routes. Adding routes to the main applica
 ```javascript
 /* routes.js */
 module.exports = function(app){
-    .get('/', function(req,res){
+
+    /* Route 1 */
+    app.get('/', function(req,res){
         res.send(...);
     }))
-    //...
+
+    /* Route 2, ... */
 };
 ```
 
@@ -491,19 +494,29 @@ require('./routes.js')(app);
 
 ## Templating with EJS
 
-When we started our journey with Node.js and Express, you learned that writing HTML in this manner:
+When we started our journey with Node.js and Express, we discussed that writing HTML in this manner :point_down::
 
 ![HTML mixed-in](img/L6-html-manually.png)
 
-is a poor choice, as the code quickly becomes unmaintainable, hard to debug and generally a pain to work with. One approach to solve this problem is the use of Ajax: our HTML code is *blank* in the sense that it does not contain any user-specific data. The HTML and JavaScript (and other resources) are sent to the client and the client makes an Ajax request to retrieve the user-specific data from the server-side. With **templating we are able to directly send HTML with user-specific data to the client** and thus removing one request-response cycle.
+is a poor choice, as the code quickly becomes unmaintainable, hard to debug and generally a pain to work with.
+
+One approach to solve this problem is the use of **Ajax**: the HTML code is *blank* in the sense that it does not contain any user-specific data. The HTML and JavaScript (and other resources) are sent to the client and the client makes an Ajax request to retrieve the user-specific data from the server-side. 
+
+With **templating, we are able to directly send HTML with user-specific data to the client** and thus remove the extra request-response cycle that Ajax requires.
 
 ![templating](img/L6-templating.png)
 
-With templates, our goal is to write as little HTML by hand as possible. Instead, we create an HTML template void of any data, add data and from that generate a rendered HTML view in the end. This approach keeps the code clean and separates the logic from the presentation markup.
+With templates, our goal is to write as little HTML by hand as possible. Instead, 
 
-This concept exists in several languages and even for Node.js alone, several template engines exist. In this course, you will learn the basics of **EJS** - *Embedded JavaScript* - a relatively straightforward template engine and language. Different incompatible versions of EJS exist, we are using [version 2](https://github.com/mde/ejs), the most recent one, in this course. Templates fit naturally into the *Model-View-Controller* paradigm which is designed to keep logic, data and presentation separate.
+- we create a **HTML template** void of any data,
+- add data, and
+- from template+data generate a rendered HTML view.
 
-### A first EJS example
+This approach keeps the code clean and separates the coding logic from the presentation markup. Templates fit naturally into the *Model-View-Controller* paradigm which is designed to keep logic, data and presentation separate.
+
+This concept exists in several languages and even for Node.js alone, several template engines exist. In this course, we teach the basics of **EJS** [version 2](https://github.com/mde/ejs) - *Embedded JavaScript* - a relatively straightforward template engine and language.
+
+### :bangbang: A first EJS example
 
 ```javascript
 var ejs = require('ejs');
