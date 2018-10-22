@@ -31,23 +31,23 @@ In this lecture, we cover different aspects of Node.js that are important to be 
 
 ## Organization and reusability of Node.js code
 
-So far, we have used a rather simple way to write Node.js code: all server-side code is organized in a single file, which is only a feasible solution for very small projects. In larger projects this quickly ends in unmaintainable code:
+So far, we have organized all server-side code in a single file, which is only a feasible solution for small projects. In larger projects, this quickly ends in unmaintainable code, as:
 
 - Debugging is cumbersome.
 - Team-work is cumbersome.
 - Programming is cumbersome.
 
-These issues were recognized early on by the creators of Node.js and they introduced the concept of **modules**. A Node.js module is a single file and all code contained in it.
+These issues were recognized early on by the creators of Node.js and they introduced the concept of **modules**. **A Node.js module is a single file and all code contained in it**.
 
-By default, *no code in a module is accessible to other modules*. Any variable or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. When you look at npm modules, such as Express:
+By default, *no code in a module is accessible to other modules*. Any variable or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. This is Express' page on npm:
 
 ![Express npm](img/L6-express.png)
 
-you will see that modules often dependent on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 27,000 other modules.
+You see here that modules often depend on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 27,000 other modules.
 
- You already know how to install such modules, e.g. `npm install —save alexa-sdk`. You can also use the command line to search for modules to install, e.g. `npm search alexa`.
+ You already know how to install modules, e.g. `npm install —save alexa-sdk`. You can also use the command line to search for modules to install, e.g. `npm search alexa`.
 
-While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern web for half a day or so can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
+While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern web for half a day can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
 
 ### A file-based module system
 
