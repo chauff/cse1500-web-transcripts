@@ -17,9 +17,9 @@
 - [Pseudo-elements](#pseudo-elements)
   - [:bangbang: first-letter and first-line](#bangbang-first-letter-and-first-line)
   - [:bangbang: before and after](#bangbang-before-and-after)
-- [Data attributes](#data-attributes)
+- [:bangbang: Data attributes](#bangbang-data-attributes)
 - [Element positioning](#element-positioning)
-  - [Float](#float)
+  - [:bangbang: Float](#bangbang-float)
   - [Position](#position)
 - [CSS media queries](#css-media-queries)
 - [Animations and transitions](#animations-and-transitions)
@@ -578,7 +578,7 @@ Here is one extreme example of this concept, where all document *content* is del
 
 This is a poor choice admittedly as [accessibility](https://www.w3.org/standards/webdesign/accessibility) is close to zero. The document appears as content-less to a **screen reader**, a form of assistive technology that most commonly makes use of a text-to-speech engine to translate a HTML document into speech.
 
-## Data attributes
+## :bangbang: Data attributes
 
 As just seen, CSS does not only describe the style, it *can* carry data too. There are issues though:
 
@@ -712,20 +712,24 @@ This example :point_up: also showcases the use of the [`cursor`](https://develop
 
 ## Element positioning
 
-One of the most confusing aspects in CSS are the myriad of ways to achieve element positioning (MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what exists). Due to our limited time, we will only consider three CSS properties used for element positioning:
+One of the more complex aspects of CSS are the myriad of ways to achieve element positioning (MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what options exists). We here consider three CSS properties used for element positioning:
 
 - [`float`](https://developer.mozilla.org/en-US/docs/Web/CSS/float) defines how an element floats in the containing element (which in turn determines how other elements flow around it);
 - [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) defines how an element is positioned in a document;
 - [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) defines the display type of an element.
 
-Let's also define two additional concepts, that stem from HTML4 - while HTML5 has more categories with more complex interactions, for our three elements above, the following two notions are sufficient:
+Let's also define two additional concepts, that stem from HTML4:
 
 - **Block-level elements** are surrounded by line-breaks. They can contain block-level and inline elements. **The width is determined by their containing element.** Examples of block-level elements are `<main>` or `<p>`.
 - **Inline elements** can be placed within block-level or inline elements. They can contain other inline elements. **The width is determined by their content.** Examples are `<span>` or `<a>`.
 
-### Float
+Note: While HTML5 has categories with more complex interactions, for the three properties listed above, the block-level and inline notions are sufficient.
 
-By default, elements *flow*. Their order is determined by the order of their appearance in the HTML document. Toggling the `<main>` element's width between `auto` and `400px` (and manually resizing the browser window) shows off the difference between block-level and inline elements.
+### :bangbang: Float
+
+By default, elements *flow*. Their order is determined by the order of their appearance in the HTML document.
+
+In order to understand what exactly this means, experiment with the following code :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -793,21 +797,31 @@ By default, elements *flow*. Their order is determined by the order of their app
 </html>
 ```
 
-With the `float` property, we can change this default flow. `float:left` (or `float:right`) takes an element **out of the flow**; it is then moved to the **leftmost** (or rightmost) possible position **in the containing element** - which is either the element edge or another float. In addition, if an element should not float, we can use `float: none`.
+Admittedly, the resulting rendering is not looking great:
 
-Try out the effects of `float` by using one after the other:
+![CSS float](img/L5-float.png)
+
+However, it serves a purpose: it helps us to understand how the different elements appear within their parent element.
+
+:point_up: Try out the following code variations (remember, that you can make these changes directly in the *Style Editor* of your browser):
+
+- Manually resize the browser window to explore how the block-level and inline elements render at different window sizes.
+- In the `*{...}` we have employed a CSS reset, by setting both `margin` and `padding` to `0`. Remove those two lines of code.
+- Replace `main { width: 400px; }` with `main { width: auto; }` and once more manually resize the browser window.
+
+Let's now explore the use of `float`. With the `float` property, we can change the default flow. `float:left` (or `float:right`) takes an element **out of the flow**; it is then moved to the **leftmost** (or rightmost) possible position **in the containing element** - which is either the element edge or another float. In addition, if an element should not float, we can use `float: none`.
+
+Try out the effects of `float` on the code example :point_up: by using one after the other:
 
 - `a {float: right}`
 - `a {float: left}`
 - `a {float: none}`
 
-in the above example. Remember, that you can make these changes directly in the *Style Editor* of your browser!
-
-If needed, we can also reset the flow the the value `clear` (either to reset the `left`, `right` or `both` sides of the flow). The canonical example for flow resetting are web page layouts that have **sidebars**, something like this:
+If needed, we can also reset the flow the the value `clear`, either to reset the `left`, `right` or `both` sides of the flow. The canonical example for flow resetting are web page layouts that have **sidebars**, such as this one:
 
 ![Sidebars](img/L5-sidebars.png)
 
-Here, we have two sidebars that each *float* to the left and right of the main content respectively. The footer should appear below both sidebars. Try out the HTML below to see the effect of both `float` and `clear`.
+Here, we have two sidebars that each *float* to the left and right of the main content respectively. The footer should appear below both sidebars. Try out the HTML below to see the effect of both `float` and `clear`: remove the commenting of one CSS rule at a time.
 
 ```html
 <!DOCTYPE html>
@@ -832,6 +846,10 @@ Here, we have two sidebars that each *float* to the left and right of the main c
      * #nav1 {
      *  float: right;
      * }
+     */
+
+    /* Floating to the sides */
+    /*
      * #nav2 {
      *  float: left;
      * }
@@ -848,7 +866,6 @@ Here, we have two sidebars that each *float* to the left and right of the main c
      *  clear: right;
      * }
      */  
-
     </style>
   </head>
   <body>
