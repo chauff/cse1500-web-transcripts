@@ -1,6 +1,4 @@
-# Taking a closer look at Node.js <!-- omit in toc -->
-
-In this lecture, we cover different aspects of Node.js that are important to be a productive web engineer.
+# Advanced Node.js <!-- omit in toc -->
 
 ## Table of Content <!-- omit in toc -->
 - [Learning goals](#learning-goals)
@@ -31,21 +29,19 @@ In this lecture, we cover different aspects of Node.js that are important to be 
 
 ## Organization and reusability of Node.js code
 
-So far, we have organized all server-side code in a single file, which is only a feasible solution for small projects. In larger projects, this quickly ends in unmaintainable code, as:
+So far, we have organized all server-side code in a single file, which is only a feasible solution for small projects. In larger projects, this quickly ends in unmaintainable code, especially when working in a team.
 
-- Debugging is cumbersome.
-- Team-work is cumbersome.
-- Programming is cumbersome.
+These issues were recognized early on by the creators of Node.js. For this reason, they introduced the concept of **modules**. **A Node.js module is a single file and all code contained in it**.
 
-These issues were recognized early on by the creators of Node.js and they introduced the concept of **modules**. **A Node.js module is a single file and all code contained in it**.
-
-By default, *no code in a module is accessible to other modules*. Any variable or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. This is Express' page on npm:
+By default, *no code in a module is accessible to other modules*. Any property or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. This is [Express' page on npm](https://www.npmjs.com/package/express):
 
 ![Express npm](img/L6-express.png)
 
-You see here that modules often depend on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 27,000 other modules.
+<sub>Screenshot taken on October 15, 2018.</sub>
 
- You already know how to install modules, e.g. `npm install —save alexa-sdk`. You can also use the command line to search for modules to install, e.g. `npm search alexa`.
+:point_up: You see here that modules often depend on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 27,000 other modules.
+
+ You already know how to install modules, e.g. `npm install winston` installs one of the most popular [Node loggers](https://www.npmjs.com/package/winston). You can also use the command line to search for modules to install, e.g. `npm search winston`.
 
 While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern web for half a day can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
 
