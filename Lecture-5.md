@@ -17,7 +17,7 @@
 - [Pseudo-elements](#pseudo-elements)
   - [:bangbang: first-letter and first-line](#bangbang-first-letter-and-first-line)
   - [:bangbang: before and after](#bangbang-before-and-after)
-- [Data in CSS](#data-in-css)
+- [Data attributes](#data-attributes)
 - [Element positioning](#element-positioning)
   - [Float](#float)
   - [Position](#position)
@@ -543,18 +543,18 @@ The browser renders this code as follows:
 
 When you open this example in your own browser, change the size of the browser window - the first line, no matter how long or small, will always be rendered in grey.
 
-The example :point_up: also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale the font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional *tuning* for different devices is required.
+The code example :point_up: also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale the font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional *tuning* for different devices is required.
 
 ### :bangbang: before and after
 
-Adding (cosmetic) content right before and after an element is achieved (not surprisingly) through:
+As already seen in the [HTML form example](#bangbang-valid-and-invalid), adding (cosmetic) content right before and after an element is achieved through:
 
-- `::after`
 - `::before`
+- `::after`
 
 in combination with the `content` property.
 
-Here is one extreme example of this concept, where all document *content* is delegated to the stylesheet:
+Here is one extreme example of this concept, where all document *content* is delegated to the stylesheet :point_down: (the unicode characters [201C](http://unicode.org/cldr/utility/character.jsp?a=201C) and [201D](https://unicode.org/cldr/utility/character.jsp?a=201D&B1=Show) are quotation marks):
 
 ```html
 <!DOCTYPE html>
@@ -576,25 +576,27 @@ Here is one extreme example of this concept, where all document *content* is del
 </html>
 ```
 
-This is a poor choice admittedly as [accessibility](https://www.w3.org/standards/webdesign/accessibility) is close to zero. The document for appears as content-less to a screen reader, a form of assistive technology that most commonly makes use of a text-to-speech engine to translate a HTML document into speech.
+This is a poor choice admittedly as [accessibility](https://www.w3.org/standards/webdesign/accessibility) is close to zero. The document appears as content-less to a **screen reader**, a form of assistive technology that most commonly makes use of a text-to-speech engine to translate a HTML document into speech.
 
-Let's dive into the idea of storing data in CSS in the next section in more detail.
+## Data attributes
 
-## Data in CSS
-
-CSS does not only describe the style, it *can* carry data too. There are issues though:
+As just seen, CSS does not only describe the style, it *can* carry data too. There are issues though:
 
 - Data is distributed across HTML and CSS files.
 - CSS is conventionally not used to store data.
 - Content is not part of the DOM (leading to the just described accessibility problem).
 
-Here is another example of storing data in CSS:
+Here is another example of storing data in CSS :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
     <style>
+    * {
+      font-family: monospace;
+    }
+
     p::after {
       background-color: gold;
       border: 1px solid;
@@ -627,15 +629,24 @@ Here is another example of storing data in CSS:
 </html>
 ```
 
-Instead of storing data directly in CSS, a better way is to *make use of data stored in HTML elements*. This is achieved through so-called **data attributes**: attributes on any HTML element that start with `data-`. CSS can access those data attributes with the [`attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/attr) function: it retrieves the value of the selected element and data attribute.
+This is rendered as follows:
 
-Rewriting the example above with `data-` attributes removes the data from CSS and reduces the amount of CSS rule duplication:
+![CSS data due](img/L5-due.png)
+
+Instead of storing data directly in CSS, a better way is to *make use of data stored in HTML elements*. This is achieved through so-called **data attributes**: attributes on any HTML element that are prefixed with `data-`.
+
+CSS can access those data attributes with the [`attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/attr function: it retrieves the value of the selected element and data attribute.
+
+Rewriting the example above with `data-` attributes removes the data from CSS and reduces the amount of CSS rule duplication :point_down: (the rendering remains the same):
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
     <style>
+    * {
+      font-family: monospace;
+    }
     p::after {
       background-color: gold;
       border: 1px solid;
@@ -647,7 +658,6 @@ Rewriting the example above with `data-` attributes removes the data from CSS an
     p::after {
       content: "due " attr(data-due);
     }
-
     </style>
   </head>
   <body>
@@ -661,7 +671,7 @@ Rewriting the example above with `data-` attributes removes the data from CSS an
 </html>
 ```
 
-A canonical example for `data-` attributes are tooltips:
+A canonical example for `data-` attributes are tooltips :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -698,7 +708,7 @@ A canonical example for `data-` attributes are tooltips:
 </html>
 ```
 
-This example also showcases the use of the [`cursor`](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) property - here, hovering over the list items results in a help icon. Note, that `cursor: none` results in no cursor being rendered, though this should be used with care as it tends to confuse users. The `position`, `bottom` and `left` properties will be discussed next (in short: they determine the placement of the tooltip).
+This example :point_up: also showcases the use of the [`cursor`](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) property. Hovering over the list items results in a help icon. Note, that `cursor: none` results in no cursor being rendered, though this should be used with care as it tends to confuse users. The `position`, `bottom` and `left` properties will be discussed next (in short: they determine the placement of the tooltip).
 
 ## Element positioning
 
