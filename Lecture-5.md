@@ -554,7 +554,7 @@ As already seen in the [HTML form example](#bangbang-valid-and-invalid), adding 
 
 in combination with the `content` property.
 
-Here is one extreme example of this concept, where all document *content* is delegated to the stylesheet :point_down: (the unicode characters [201C](http://unicode.org/cldr/utility/character.jsp?a=201C) and [201D](https://unicode.org/cldr/utility/character.jsp?a=201D&B1=Show) are quotation marks):
+Here is one extreme example of this concept, where all document *content* is delegated to the style sheet :point_down: (the unicode characters [201C](http://unicode.org/cldr/utility/character.jsp?a=201C) and [201D](https://unicode.org/cldr/utility/character.jsp?a=201D&B1=Show) are quotation marks):
 
 ```html
 <!DOCTYPE html>
@@ -1131,7 +1131,7 @@ So far, we have covered the basics of CSS but largely ignored the fact that in t
 - when **viewing** a web application on a large screen :computer: all available information should be presented;
 - when using **text-to-speech** devices :sound:, non-essential information should be removed.
 
-**CSS media queries** enable the use of **device-dependent** (i.e. media-type dependent) stylesheets. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
+**CSS media queries** enable the use of **device**/**media-type dependent** style sheets. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
 
 | Value         | Description                               |
 |---------------|-------------------------------------------|
@@ -1140,20 +1140,19 @@ So far, we have covered the basics of CSS but largely ignored the fact that in t
 | `media screen` |  Suitable for screens.                    |
 | `media speech` | Suitable for speech synthesizers.         |
 
-Media queries are specified as so-called [at-rules](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule), that start with an `@` and instruct CSS how to behave. We will not only encounter at-rules for media queries, but also when discussing CSS animations.
+Media queries are specified as so-called [at-rules](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule), that start with an `@` and instruct CSS how to behave. We will not only encounter at-rules for media queries, but also when discussing CSS animations later on.
 
-Here is a concrete example of how media queries enable a *responsive design*; use your browser's responsive design mode and *Print as PDF* feature to test the behaviour of the media queries:
+Here is a concrete example of how media queries enable a **responsive design** :point_down::
 
 ```html
 <!DOCTYPE html>
   <head>
 
-    <!-- We can link a stylesheet conditional on the media attribute -->
+    <!-- We can link a style sheet conditional on the media attribute -->
     <!-- Example of a logical or (,) in the media query -->
     <link rel="stylesheet" media="screen and (min-width: 800px), (min-width: 3000px)" href="large-device.css">
 
     <style>
-
       * {
         padding: 10px;
       }
@@ -1207,11 +1206,13 @@ Here is a concrete example of how media queries enable a *responsive design*; us
         Paragraph 4
       </p>  
     </main>
-
-
   </body>
 </html>
 ```
+
+:point_up: Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature to test the behaviour of the media queries.
+
+![Responsive design mode](img/L5-responsive.png)
 
 ## Animations and transitions
 
