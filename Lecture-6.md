@@ -735,7 +735,7 @@ console.log(ejs.render(template, context));
 
 ```javascript
 var ejs = require('ejs');
-var template = '<% if(user) {
+var template = '<% if(user){
     console.log("Hi "+user);
     if(user.age>=18){
         console.log("(adult)");
