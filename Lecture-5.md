@@ -12,6 +12,8 @@
   - [:bangbang: hover and active](#bangbang-hover-and-active)
   - [:bangbang: enabled and disabled](#bangbang-enabled-and-disabled)
   - [:bangbang: not](#bangbang-not)
+  - [:bangbang: Selector combinations](#bangbang-selector-combinations)
+  - [:bangbang: valid and invalid](#bangbang-valid-and-invalid)
 - [Pseudo-elements](#pseudo-elements)
 - [Data in CSS](#data-in-css)
 - [Element positioning](#element-positioning)
@@ -84,7 +86,7 @@ Lastly, you know about `!important` which overrides all other declarations.
 
 In this lecture, we move beyond the course book chapter and highlight a number of more advanced CSS concepts.
 
-:bangbang: We strongly suggest to start with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor can do!
+:bangbang: **We strongly suggest to work with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor can do!**
 
 ## Pseudo-classes
 
@@ -326,7 +328,7 @@ An example :point_down::
 
 ### :bangbang: not
 
-`:not(X)` is a pseudo-class that matches all elements that are not represented by selector X. Let's look at this example:
+`:not(X)` is a pseudo-class that matches all elements that are not represented by selector `X`. Let's look at at :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -350,7 +352,9 @@ An example :point_down::
 </html>
 ```
 
-Important to know here is, that the selector `e1 e2` selects all `<e2>` elements inside `<e1>` elements. The `:not` selector is a short form for `*:not` with `*` being the universal selector (selecting all elements). Altogether our CSS rule says that any element within `<main>` that does not have class attribute `.todo` is assigned an orange font color.
+:point_up: Important to know here is, that the selector `e1 e2` selects **all `<e2>` elements inside `<e1>` elements**. The `:not` selector is a short form for `*:not` with `*` being the **universal selector** (selecting all elements). Altogether our CSS rule says that any element within `<main>` that does not have class attribute `.todo` is assigned an orange font color.
+
+### :bangbang: Selector combinations
 
 `e1 e2` is not the only possible element combination as selector. Most commonly used are:
 
@@ -362,59 +366,76 @@ Important to know here is, that the selector `e1 e2` selects all `<e2>` elements
 | e1>e2    | Selects all `<e2>` elements that have `<e1>` as parent      |
 | e1+e2    | Selects all `<e2>` elements that follow `<e1>` immmediately |
 
-An example should make the differences between them clear:
+An example should make the differences between them clear :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
     <style>
+
+      /* select all p elements within div */
       div p {
         background-color:black;
         color: white;
       }
+      /* select all main and all footer elements */
       main, footer {
         background-color:yellow;
       }
+      /* select all p elements that have div as parent */
       div > p {
         font-weight: bold;
       }
+      /* select all p elements that follow div immediately */
       div + p {
         color: red;
       }
     </style>
   </head>
+  
   <body>
     <main>
+
       <div class="today">
+
         <div class="urgent">
           <p>Shopping</p>
           <p>Sports</p>
         </div>
-        <p>Go to class</p>
+
+        <p>Go to class</p>  <!-- follows directly after a <div></div> -->
+
       </div>
+
       <div class="tomorrow">
+
         <p>Go to class</p>
 
         <div class="urgent">
           <p>Organising the holidays</p>
         </div>
+
       </div>
+
     </main>
+
     <footer>
-      CSS example 2018.
+      <p>CSS example 2018.</p> <!-- a <p> element not inside a <div> -->
     </footer>
   </body>
 </html>
 ```
 
-Note, that your browser's *style editor* does not only allow you to inspect the CSS rules, but also see which rules apply to what part of the page (when hovering over a rule). You can edit the rules on the fly as well, which makes it a very useful tool for debugging your CSS. Here is a screenshot from Firefox's style editor:
+The rendering of the above code looks as follows:
 
-![Firefox's style editor](img/L5-style-editor.png)
+![CSS selector combinations](img/L5-selector-combinations.png)
 
-Let's move on to four more pseudo-classes, that are particularly useful for the styling of HTML forms: `:in-range` and `:out-of-range` as well as `:valid` and `:invalid`. The latter two can be employed for any `<input>` element, while `:in-range` and `:out-of-range` apply specifically to `<input type="number">`. Input elements are valid if their value adheres to the input type (a number for `type=number`, an email for [`type=email`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email), etc.) and potential additional limitations due to attribute settings (e.g. `min`, `max` and `maxlength`).
+### :bangbang: valid and invalid
 
-Here is an example:
+Let's move on to two more pseudo-classes, that are particularly useful for the styling of HTML forms: `:valid` and `:invalid`. Defining different styles for acceptable and non-acceptable input (e.g. if we have a grade form, only numbers from 0 to 10 are valid) makes it easy for users to see what is wrong. Although we can also use client-side JavaScript to check an input's validity, if we can do so with a CSS rule, that is preferred (less code to write for the developer, fewer opportunities to introduce bugs).
+
+`:valid` and :`invalid` can be employed as pseudo-classes of any `<input>` element. Input elements are valid if their value adheres to the input type (a number for `type=number`, an email for [`type=email`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email), etc.) and potential additional limitations due to attribute settings such as `min` or `max` as seen in this example :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -424,28 +445,30 @@ Here is an example:
       input[type=text] {
         border: 0px;
         width: 150px;
+        background-color: lightgrey;
+        border: 2px solid grey;
       }
 
       input[type=number]{
-        width: 100px;
+        width: 40px;
       }
 
-      input:in-range {
+      input[type=number]:valid {
         background-color: rgba(0, 255, 0, 0.25);
           border: 2px solid green;
       }
 
-      input:out-of-range {
+      input[type=number]:invalid {
         background-color: rgba(255, 0, 0, 0.25);
           border: 2px solid red;
       }
 
-      input:in-range + label::after {
+      input[type=number]:valid + label::after {
         content: "\2714";
         color: green;
       }
 
-      input:out-of-range + label::after {
+      input[type=number]:invalid + label::after {
         content: " (invalid)";
         color: red;
       }
@@ -453,19 +476,23 @@ Here is an example:
   </head>
   <body>
     <main>
-      <input type="text" placeholder="add your todo" />
-      <input id="dl" type="number" min="1" max="30" placeholder="Days to deadline" />
+      <input type="text" placeholder="Add your todo" />
+      <input id="dl" type="number" min="1" max="30" step="1" placeholder="Days" required />
       <label for="deadline1"> </label>
     </main>
   </body>
 </html>
 ```
 
-This example does not only show off these four pseudo-classes, but also a number of other CSS features:
+The rendered output with an invalid and valid deadline respectively looks as follows:
+
+![CSS valid / invalid](img/L5-valid-invalid.png)
+
+:point_up: This example does not only show off these four pseudo-classes, but also a number of other CSS features:
 
 - **Attribute selectors** (e.g. `input[type=number]`) allow us to select specific types of `<input>` elements.
-- The [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) element can be associated with an `<input>` element when the latter's `id` attribute is the same as the `<label>`'s `for` attribute. This is particularly useful when labels are used as captions for a user interface elements: a click on the label text will then activate the interface element (e.g. a checkbox). Here, we make use of the label to signal a valid or invalid input.
-- We see here how to include **unicode characters**: when the deadline number is valid, we choose to display a checkmark. This checkmark could be an image, but here we chose to use a character, specifically unicode character [U+2714](http://graphemica.com/%E2%9C%94).
+- The [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) element can be associated with an `<input>` element when the latter's `id` attribute is the same as the `<label>`'s `for` attribute. This is particularly useful when labels are used as captions for user interface elements: a click on the label text will then activate the interface element (e.g. a checkbox). Here, we make use of the label to signal a valid or invalid input.
+- We see here how to include **unicode characters**: when the deadline number is valid, we choose to display a :white_check_mark: (this image is a [GitHub Markdown emoji](https://gist.github.com/rxaviers/7360908) btw). This checkmark could be an image, but here we chose to use a character, specifically unicode character [U+2714](http://graphemica.com/%E2%9C%94).
 - The pseudo-element `::after` makes a first appearance, together with the `content` property. We discuss those next.
 
 ## Pseudo-elements
