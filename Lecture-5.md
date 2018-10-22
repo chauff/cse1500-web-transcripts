@@ -20,7 +20,7 @@
 - [:bangbang: Data attributes](#bangbang-data-attributes)
 - [Element positioning](#element-positioning)
   - [:bangbang: Float](#bangbang-float)
-  - [Position](#position)
+  - [:bangbang: Position](#bangbang-position)
 - [CSS media queries](#css-media-queries)
 - [Animations and transitions](#animations-and-transitions)
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
@@ -817,11 +817,11 @@ Try out the effects of `float` on the code example :point_up: by using one after
 - `a {float: left}`
 - `a {float: none}`
 
-If needed, we can also reset the flow the the value `clear`, either to reset the `left`, `right` or `both` sides of the flow. The canonical example for flow resetting are web page layouts that have **sidebars**, such as this one:
+If needed, we can also reset the flow the the value `clear`, either to reset the `left`, `right` or `both` sides of the flow. The canonical example for flow resetting are web page layouts that have **sidebars**, such as this one :point_down::
 
 ![Sidebars](img/L5-sidebars.png)
 
-Here, we have two sidebars that each *float* to the left and right of the main content respectively. The footer should appear below both sidebars. Try out the HTML below to see the effect of both `float` and `clear`: remove the commenting of one CSS rule at a time.
+Here, we have two sidebars that each *float* to the left and right of the main content respectively. The footer should appear below both sidebars. Try out the HTML below :point_down: to see the effect of both `float` and `clear`: remove the commenting of one CSS rule at a time.
 
 ```html
 <!DOCTYPE html>
@@ -905,23 +905,29 @@ Here, we have two sidebars that each *float* to the left and right of the main c
 </html>
 ```
 
-### Position
+### :bangbang: Position
 
-The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements (in contrast to `float` which is meets our demands for coarse-grained positioning). Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
+The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements. This is in contrast to `float`, which is meets our demands for coarse-grained positioning. Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
 
-The `position` attribute has a number of possible values:
+The `position` property has a number of possible values:
 
 | Value             | Description                                                                        |
 |-------------------|------------------------------------------------------------------------------------|
 | `position:static`   | the default                                                                            |
-| `position:relative` |  the element is adjusted on the fly, other elements are not affected               |
-| `position:absolute` |  the element is taken out of the normal flow (no space is reserved for it)         |
+| `position:relative` |  the element is adjusted on the fly, other elements are **not** affected               |
+| `position:absolute` |  the element is taken out of the normal flow (**no space is reserved for it**)         |
 | `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (=the area currently being viewed) |
 | `position:sticky`   | in-between `relative` and `fixed`                                                      |
 
 Important to know when using the `position` property is the direction of the CSS coordinate system: the top-left corner is `(0,0)`. The y-axis extends **downwards**. The x-axis extends to the **right**.
 
-Let's walk through each of the position values in turn, starting with `relative`: here, the movement of the element is **relative** to its original position. The horizontal offset from the original position is set through properties `left` and `right`, the vertical offset is controlled through `top` and `bottom`.
+Let's walk through each of the position values in turn, starting with `relative`, where the movement of the element is **relative** to an element's original position. The horizontal offset from the original position is set through properties `left` and `right`, the vertical offset is controlled through `top` and `bottom`.
+
+For the `position` property, we use a stack of eggs and reposition one or more eggs at a time. The original stack looks like this:
+
+![CSS position egg stack](img/L5-eggs.png)
+
+The following code uses relative positioning :point_down: to reposition two of the four eggs:
 
 ```html
 <!DOCTYPE html>
@@ -963,7 +969,9 @@ Let's walk through each of the position values in turn, starting with `relative`
 </html>
 ```
 
-If we change the positioning of some of our little eggs to `position:absolute`, we now see that they are taken out of the normal flow and no space is reserved for them. The positioning of those elements is now relative to the nearest ancestor or the window itself (in our case it is the window).
+![Relative positioning](img/L5-eggs-relative.png)
+
+:point_down: If we change the positioning of some eggs to `position:absolute`, we now see that **they are taken out of the normal flow** and **no space** is reserved for them. The positioning of those elements is now relative to the *nearest ancestor* or the window itself (in our case it is the window itself):
 
 ```html
 <!DOCTYPE html>
@@ -1004,7 +1012,9 @@ If we change the positioning of some of our little eggs to `position:absolute`, 
 </html>
 ```
 
-The `position:fixed` value is similar to `position:absolute`, but now the containing element is the **viewport**, i.e. the area of the document that is visible in the browser. This means that elements with `position:fixed` remain visible. Here is an example (you need to minimize the window until you need to scroll down to see all of our four eggs to achieve a visible effect):
+![Absolute positioning](img/L5-eggs-absolute.png)
+
+:point_down: The `position:fixed` value is similar to `position:absolute`, but now the containing element is the **viewport**, i.e. the area of the document that is visible in the browser. This means that elements with `position:fixed` remain visible. Here is an example (you need to minimize the window until you need to scroll down to see all of the four eggs to achieve a visible effect):
 
 ```html
 <!DOCTYPE html>
@@ -1039,7 +1049,7 @@ The `position:fixed` value is similar to `position:absolute`, but now the contai
 </html>
 ```
 
-Finally, we cover the `display` property, which enables us to change the element type at will (block-level to inline and vice versa) at will and *hide* elements from view. The latter is likely to be most useful to us:
+Lastly, we cover the `display` property, which enables us to change the element type at will (block-level to inline and vice versa) at will and *hide* elements from view. The latter is likely to be most useful to us:
 
 | Value          | Description                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------|
@@ -1047,7 +1057,7 @@ Finally, we cover the `display` property, which enables us to change the element
 | `display:block`  |  The element is rendered with a   block element box.                                          |
 | `display:none`   |  The element (and its descendents) are hidden from view; no space is reserved in the layout.  |
 
-Once more, an example is sufficient to highlight the use of each of these values:
+Once more, an example is sufficient to highlight the use of each of these values - uncomment the CSS rules one at a time:
 
 ```html
 <!DOCTYPE html>
@@ -1114,12 +1124,12 @@ Once more, an example is sufficient to highlight the use of each of these values
 
 ## CSS media queries
 
-So far, we have covered the basics of CSS but ignored - largely - the fact that in today's multi-device world, we are designing web applications for vastly different screen sizes. Different devices should be served different styles, e.g.
+So far, we have covered the basics of CSS but largely ignored the fact that in today's **multi-device** world, we are designing web applications for vastly different screen sizes. Different devices should be served different styles:
 
-- when **printing** a web application's screen, the information printed should be the essentials (no ads, no sidebars, etc.);
-- when **viewing** a web application on a small screen, non-essential information (e.g. a footer) should be removed;
-- when **viewing** a web application on a large screen all available information should be presented;
-- when using **text-to-speech** devices, non-essential information should be removed.
+- when **printing** a web application's screen :fax:, the information printed should be the essentials (no ads, no sidebars, etc.);
+- when **viewing** a web application on a small screen :iphone:, non-essential information (e.g. a footer) should be removed;
+- when **viewing** a web application on a large screen :computer: all available information should be presented;
+- when using **text-to-speech** devices :sound:, non-essential information should be removed.
 
 **CSS media queries** enable the use of **device-dependent** (i.e. media-type dependent) stylesheets. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
 
