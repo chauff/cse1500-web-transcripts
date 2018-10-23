@@ -389,11 +389,11 @@ Here are a few questions you should be able to answer after having followed the 
 
 1. The browser B currently has no stored cookies. A user starts up B today and accesses `http://tudelft.nl/`. In the response, the server sends five cookies to B as seen below. B crashes 10 minutes later and the user restarts B. How many of those cookies are accessible to the user with client-side JavaScript (i.e. `document.cookie`) after the restart of B?
 
-- Set-Cookie: sid=fd332d; Expires=Fri, 01-Aug-2016 21:47:38 GMT; Path=/; Domain=tudelft.nl
-- Set-Cookie: font=courier; Path=/; Domain=tudelft.nl
-- Set-Cookie: fsize=10; Expires=Thu, 01-Jan-2023 00:00:01 GMT; Path=/; Domain=tudelft.nl
-- Set-Cookie: view=mobile; Path=/; Domain=tudelft.nl; secure; HttpOnly
-- Set-Cookie: last_access=-2; Path=/; Domain=tudelft.nl
+    - Set-Cookie: sid=fd332d; Expires=Fri, 01-Aug-2016 21:47:38 GMT; Path=/; Domain=tudelft.nl
+    - Set-Cookie: font=courier; Path=/; Domain=tudelft.nl
+    - Set-Cookie: fsize=10; Expires=Thu, 01-Jan-2023 00:00:01 GMT; Path=/; Domain=tudelft.nl
+    - Set-Cookie: view=mobile; Path=/; Domain=tudelft.nl; secure; HttpOnly
+    - Set-Cookie: last_access=-2; Path=/; Domain=tudelft.nl
 
 2. Which of the following statements about signed cookies is correct?
 
