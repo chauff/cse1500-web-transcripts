@@ -30,7 +30,7 @@
 - Decide for a given usage scenario whether cookies or sessions are suitable.
 - Explain and implement cookie usage.
 - Explain and implement session usage.
-- Implement third-party authentication.
+- Explain third-party authentication.
 
 ## Recall the HTTP lecture
 
