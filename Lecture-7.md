@@ -87,9 +87,13 @@ This opens up a line of attack: a server that is trusting all cookies it receive
 In fact, [RFC6265](https://tools.ietf.org/html/rfc6265) contains a stern warning about the use of cookies:
 
 ```console
-This document defines the HTTP Cookie and Set-Cookie header fields. These header fields can be used by HTTP servers to store state (called cookies) at HTTP user agents, letting the servers maintain a stateful session over the mostly stateless HTTP protocol.
+This document defines the HTTP Cookie and Set-Cookie header fields. These header
+fields can be used by HTTP servers to store state (called cookies) at HTTP user
+agents, letting the servers maintain a stateful session over the mostly stateless
+HTTP protocol.
 ...
-Although cookies have many historical infelicities that degrade their security and privacy the Cookie and Set-Cookie header fields are widely used on the Internet.
+Although cookies have many historical infelicities that degrade their security and
+privacy the Cookie and Set-Cookie header fields are widely used on the Internet.
 ```
 
 Overall, security and privacy are not strong points of cookies and as long as we are aware of this and do not try to transmit sensitive or compromising information within cookies, the potential risks are limited. This RFC excerpt also tells us how cookies are sent and received: in the HTTP header fields `Set-Cookie` and in `Cookie` respectively. Let's take a closer look.
