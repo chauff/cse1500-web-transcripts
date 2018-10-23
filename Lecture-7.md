@@ -362,13 +362,15 @@ The **access token** referred to in the resource server role is a string denotin
 
 ### Roles exemplified
 
-Let's consider this specific example:
+Let's consider this specific example: an end-user (resource owner) can grant a printing service (client) access to her protected photos stored at a photo-sharing service (resource server), without sharing her username and password with the printing service :point_down::
 
 ![OAuth2 example 1](img/L7-oauth2-1.png)
 
-An end-user (resource owner) can grant a printing service (client) access to her protected photos stored at a photo-sharing service (resource server), without sharing her username and password with the printing service. Instead, she authenticates directly with a server trusted by the photo-sharing service(authorization server), which issues the printing service delegation-specific credentials (access token).
+:point_down: She authenticates directly with a server trusted by the photo-sharing service(authorization server), which issues the printing service delegation-specific credentials (access token).
 
 ![OAuth2 example 1](img/L7-oauth2-2.png)
+
+The mapping between the entities and OAuth 2.0 roles is as follows :point_down::
 
 ![OAuth2 example 1](img/L7-oauth2-3.png)
 
