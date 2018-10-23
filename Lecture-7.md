@@ -22,7 +22,7 @@
 - [Third-party authentication](#third-party-authentication)
     - [OAuth 2.0 roles](#oauth-20-roles)
     - [Roles exemplified](#roles-exemplified)
-    - [Third-party authentication with Twitter](#third-party-authentication-with-twitter)
+    - [Express](#express)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -301,20 +301,17 @@ Let's now turn to sessions. Sessions make use of cookies. Sessions improve upon 
 
 However, we still have the problem that without cookies, the server cannot tell HTTP requests from different clients apart. So, sessions are a compromise or hybrid between cookies and server-side saved data.
 
-Let's look at how they work:
+Let's describe how sessions work on a todo web application example:
 
 ![Sessions](img/L7-sessions.png)
 
-A client visits a web site for the first time, sending an HTTP `GET` request to retrieve some todos. The server checks the HTTP request and does not find any cookies, so the server randomly generates a session ID and returns it in a cookie to the client. This is the piece of information that will identify the client in future requests to the server. Any future requests from the client then contain a cookie with that session ID. The server uses the session ID to look up information about the client, usually stored in a database. This enables servers to store as much information as necessary, without hitting a limit on the number of cookies or the maximum size of a cookie.
+:point_up: A client visits a web application for the first time, sending an HTTP `GET` request to retrieve some todos. The server checks the HTTP request and does not find any cookies, so the server randomly generates a session ID and returns it in a cookie to the client. This is the piece of information that will identify the client in future requests to the server. The server uses the session ID to look up information about the client, usually stored in a database. This enables servers to store as much information as necessary, without hitting a limit on the number of cookies or the maximum size of a cookie.
 
 For this process to be robust, the session IDs need to be generated at random. If we simply increment a session counter for each new client that makes a request we will end up with a very insecure application. Malicious users can snoop around by randomly changing the session ID in their cookie. Of course, this can partially be mitigated by using signed cookies, but it is much safer to not let clients guess a valid session ID at all.
 
 To conclude this section, we discuss how to make use of sessions in Node.js/Express. Sessions are easy to set up, through the use of another middleware component: `express-session`. The most common use cause of sessions is authentication, i.e. the task of verifying a user's identity.
 
-Note that with sessions, we do not have to use the request object for retrieving the value
-and the response object for setting the value: all actions are performed on the request object.
-
-Let's look at [node-sessions-ex](demo-code/node-sessions-ex) for a working toy example. Install and run the code before continuing.
+Let's look at [node-sessions-ex](demo-code/node-sessions-ex) for a working toy example. Install, run and explore the code before continuing.
 
 ![Session code example](img/L7-node-sessions-ex.png)
 
@@ -324,16 +321,21 @@ To set up the usage of sessions in Express, we need two middleware components: `
 :point_up: We define one route, called `/countMe`, that determines for a client making an HTTP request, how many requests the client has already made. Once the session middleware is enabled, session variables can be accessed on the session object which itself is a property of the request object - `req.session`. This is the first course of action: accessing the client's session object.
 If that session object has a property `views`, we know that the client has been here before. We increment the `views` count and send an HTTP response to the client, informing it about how often the client has been here and when the last visit was. Then we set the property `lastVisit` to the current date and are done.
 If `session.views` does not exist, we create the `views` and `lastVisit` properties and set them accordingly, returning a *This is your first visit* as content in the HTTP response.
+Finally, it is worth noting that all session-related actions are performed on the `request` object.
 
 ## Third-party authentication
 
-The final topic of this lecture is third-party authentication. This is a topic easily complex enough to cover a whole lecture, so here we show you how to add third-party authentication to your own application, but do not dive into great detail of the authentication protocol.
+The final topic of this lecture is third-party authentication. This is a topic easily complex enough to cover a whole lecture, so here we introduce the principles of third-party authentication, but do not dive into great detail of the authentication protocol.
 
-Even if you are not aware of the name, you will have used third-party authentication already. In many web applications that require a login, we are given the choice of either creating a username/password or by signing up through a third party such as Facebook, Google or Twitter. Here you see an example of how to join [Quora](https://www.quora.com/), with Facebook and Google acting as third-party authenticators:
+Even if you are not aware of the name, you will have used third-party authentication already. In many web applications that require a login, we are given the choice of either creating a username/password or by signing up through a third party such as Facebook, Google or Twitter. Below is a login screen of [Quora](https://www.quora.com/), with Facebook and Google acting as third-party authenticators:
 
 ![Joining Quora](img/L7-quora.png)
 
-Third-party authentication has become prevalent across the web, because **authentication**, i.e. the task of verifying a user's identity, is hard to do right. If an application implements its own authentication scheme, it has to ensure that the information (username, password, email) are stored safely and securely and not accessible to any unwanted party. Users tend to reuse logins and password and even if a web application does not contain sensitive information, if the username/passwords are stolen, users might have used the same username/password combination for important and sensitive web applications such as bank portals, insurance portals, etc. To avoid these issues, we *out-source* authentication to large companies that have the resources and engineering power to guarantee safe and secure storage of credentials. If an application makes use of third-party authentication, it **never has access to any sensitive user credentials**.
+Third-party authentication has become prevalent across the web, because **authentication**, i.e. the task of verifying a user's identity, is hard to do right.
+
+If an application implements its own authentication scheme, it has to ensure that the information (username, password, email) are stored safely and securely and not accessible to any unwanted party. Users tend to reuse logins and password and even if a web application does not contain sensitive information, if the username/passwords are stolen, users might have used the same username/password combination for important and sensitive web applications such as bank portals, insurance portals, etc.
+
+To avoid these issues, application developers *out-source* authentication to large companies that have the resources and engineering power to guarantee safe and secure storage of credentials. If an application makes use of third-party authentication, it **never has access to any sensitive user credentials**.
 
 There are two drawbacks though:
 
@@ -369,7 +371,7 @@ Let's consider this specific example: an end-user (resource owner) can grant a p
 
 ![OAuth2 example 1](img/L7-oauth2-1.png)
 
-:point_down: She authenticates directly with a server trusted by the photo-sharing service(authorization server), which issues the printing service delegation-specific credentials (access token).
+:point_down: The user authenticates directly with a server trusted by the photo-sharing service(authorization server), which issues the printing service delegation-specific credentials (access token):
 
 ![OAuth2 example 1](img/L7-oauth2-2.png)
 
@@ -377,13 +379,53 @@ The mapping between the entities and OAuth 2.0 roles is as follows :point_down::
 
 ![OAuth2 example 1](img/L7-oauth2-3.png)
 
-### Third-party authentication with Twitter
+### Express
 
-This final section of the lecture is very practical: we will walk through the steps of adding Twitter-based third-party authentication to your application, i.e. we want to achieve a `Sign in with your Twitter account` functionality.
-
-1. Head to [https://apps.twitter.com/](https://apps.twitter.com/) and create and **app**.
-2. ..
+To incorporate third-party authentication in an Express application, incorporate an authentication middleware component that is OAuth 2.0 compatible. A popular choice of middleware is [passport](https://www.npmjs.com/package/passport), which incorporates a range of authentication protocols across a number of third-party authenticators.
 
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
+
+1. The browser B currently has no stored cookies. A user starts up B today and accesses `http://tudelft.nl/`. In the response, the server sends five cookies to B as seen below. B crashes 10 minutes later and the user restarts B. How many of those cookies are accessible to the user with client-side JavaScript (i.e. `document.cookie`) after the restart of B?
+
+- Set-Cookie: sid=fd332d; Expires=Fri, 01-Aug-2016 21:47:38 GMT; Path=/; Domain=tudelft.nl
+- Set-Cookie: font=courier; Path=/; Domain=tudelft.nl
+- Set-Cookie: fsize=10; Expires=Thu, 01-Jan-2023 00:00:01 GMT; Path=/; Domain=tudelft.nl
+- Set-Cookie: view=mobile; Path=/; Domain=tudelft.nl; secure; HttpOnly
+- Set-Cookie: last_access=-2; Path=/; Domain=tudelft.nl
+
+2. Which of the following statements about signed cookies is correct?
+
+- A signed cookie enables the server to issue an encrypted value to the client, that cannot be decrypted by the client.
+- A signed cookie enables the server to verify that the issued cookie is returned by the client unchanged, without having to store the original issued cookie on the server.
+- The value of a signed cookie is encrypted with HMAC to avoid man-in-the-middle attacks. The client can decrypt the value with a previously negotiated key.
+- The value of a signed cookie is always created by the client. The signed attribute indicates to the server that the cookie was generated by the client.
+
+3. Which of the following statements about first & third-party cookies are correct (several correct answers possible)?
+
+- Third-party cookies originate from the same domain as first-party cookies.
+- Third-party cookies and first-party cookies are stored in the same cookie storage within the browser.
+- Besides the secure and signed flag (available to first-party cookies), third-party cookies can in addition set the persistent flag.
+- A single cookie can be a first-party cookie and a third-party cookie – depending on the URL the browser requests.
+
+4. Which of the following statements correctly describe the roles in the OAuth 2.0 authorization framework (several correct answers possible)?
+
+- The resource owner grants access to a protected resource.
+- The resource server hosts the protected resource and is capable of accepting and responding to protected resource requests using access tokens.
+- The authorization server issues access tokens to the resource owner after successfully authenticating the client and obtaining authorization.
+- The authorization server makes a protected resource request on behalf of the client and with its authorization.
+
+5. What does a signed cookie protect against?
+
+- Server-side data tampering: it allows the client to recognize if the cookie value has been changed by the server.
+- Client-side tampering: it allows the server to recognize if the cookie value has been changed by the client.
+- Third-party access: the cookie is signed with its origin domain and the browser will only return the cookie to a server from the same domain.
+- Access of the cookie value by a client that does not have a valid SSL certificate.
+
+6. A session-based system authenticates a user to a Web application to provide access to one or more restricted resources. To increase security, an authentication token should .. (multiple correct answers possible)?
+
+- act as a replacement for a user’s credentials once a session is established
+- use a non-persistent cookie
+- use a persistent cookie
+- be base-64 encoded
