@@ -8,9 +8,10 @@
 - [Cookie security](#cookie-security)
 - [Cookies vs. sessions](#cookies-vs-sessions)
 - [Cookie flow](#cookie-flow)
-- [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
-- [Cookie fields](#cookie-fields)
-    - [Cookie domain](#cookie-domain)
+- [Cookies in more detail](#cookies-in-more-detail)
+    - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
+    - [Cookie fields](#cookie-fields)
+    - [Cookie field 'Domain'](#cookie-field-domain)
 - [:bangbang: A first Node.js application](#bangbang-a-first-nodejs-application)
     - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
 - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
@@ -60,6 +61,12 @@ A server-side application creating cookies should use as few cookies as possible
 
 Once you start looking more closely at cookies servers send to clients, you are likely to find cookies with keys like `__utma`, `__utmb` or `__utmz` over and over again. These are [Google Analytics cookies](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage), one of the most popular toolkits that web developers use to track their web applications' access and usage patterns.
 
+A question we have not yet considered is what actually can be stored in cookies. Cookies are versatile. They act as the **server's short term memory**; the server determines what to store in a cookie, typical examples being:
+
+- the history of a user's page views,
+- the setting of HTML form elements (which can also be done fully on the client-side as we will see later), or,
+- the user's UI preferences which the server can use to personalize an application's appearance.
+
 ## Viewing cookies in the browser
 
 Cookies are **not hidden** from the user, they are stored *in the clear* and can be viewed. Users can also delete and disallow cookies.
@@ -106,25 +113,17 @@ Cookies and sessions are closely related. **Sessions make use of cookies**. The 
 
 ## Cookie flow
 
-Below, on the right we have our server-side application and on the left our browser (the client), which contains a cookie store:
+In this section, we cover the cookie flow between client and server. Consider the graphic below. On the right we have our server-side application and on the left our browser (the client), which contains a cookie store.
 
 ![Cookie basics](img/L7-cookie-basics.png)
 
-At the first visit of a web application, the client sends an HTTP request not containing a cookie. The server sends an HTTP response to the client including a cookie. Cookies are **encoded in HTTP headers**. At each subsequent HTTP request made to the same server-side application, the browser returns all cookies that were sent from that application. Cookies are actually **bound to a site domain name**, they are only sent back on requests to this specific site - a security feature of the browser.
-
-As we will see in a moment, we also have the ability for even more fine-grained control over when to return cookies from client to server.
+At the first visit to a web application, the client sends an HTTP request not containing a cookie. The server sends an HTTP response to the client including a cookie. Cookies are **encoded in HTTP headers**. At each subsequent HTTP request made to the same server-side application, the browser returns all cookies that were sent from that application. Cookies are actually **bound to a site domain name**, they are only sent back on requests to this specific site - a security feature of the browser. As we will see in a moment, we also have the ability for even more fine-grained control over when to return cookies from client to server.
 
 Servers usually only send a cookie once, unless the key/value pair has changed. While it would be quite tedious to create and manage cookies by hand, modern web frameworks have designated methods to develop web applications that make use of cookies.
 
-A question we have not yet considered is what actually can be stored in cookies. Cookies are versatile. They act as the **server's short term memory**; the server determines what to store in a cookie, typical examples being:
+## Cookies in more detail
 
-- the history of a user's page views,
-- the setting of HTML form elements (which can also be done fully on the client-side as we will see later), or,
-- the user's UI preferences which the server can use to personalize an application's appearance.
-
-Depending on their purpose, cookies can have different lifetimes, as we discuss next.
-
-## Transient vs. persistent cookies
+### Transient vs. persistent cookies
 
 Cookies can either be transient or persistent.
 
@@ -132,7 +131,7 @@ Cookies can either be transient or persistent.
 
 **Persistent cookies** on the other hand remain intact after the browser is closed, they are **stored on disk**. They do have a maximum age and are send back from client to server only as long as they are **valid**, that is they have not yet exceeded their maximum age.
 
-## Cookie fields
+### Cookie fields
 
 Cookies consist of seven components, of which only the first one is a required component:
 
@@ -150,7 +149,7 @@ Cookies consist of seven components, of which only the first one is a required c
 
 :seven: `Signed` flag: signed cookies allow the server to check whether the cookie value has been tampered with by the client. Let's assume a cookie value `monster`, the signed cookie value is then `s%3Amonster.TdcGYBnkcvJsd0%2FNcE2L%2Bb8M55geOuAQt48mDZ6RpoU`. The server signs the cookie by **appending** a base-64 encoded *Hash Message Authentication Code* (HMAC) to the value. Note that the value is still readable, signed cookies offer **no privacy**, they make cookies though robust against tampering. The server stores a *secret* (a non-guessable string) that is required to compute the HMAC. For a cookie that is returned to the server, the server recomputes the HMAC of the value and only if the computed HMAC value matches the HMAC returned to the server, does the server consider the cookie value as untampered. Unless the server has an easily guessable secret string (such as the default secret string), this ensures no tampering.
 
-### Cookie domain
+### Cookie field 'Domain'
 
 Cookie fields are generally easy to understand. There is only one field which requires a more in-depth explanation and that is the `Domain` field.
 
@@ -189,7 +188,7 @@ and check the the cookies sent and received with the browser's dev tools.
 
 Since cookies can be modified by a malicious user we need to be able to verify that the returned cookie was created by our application server. That is what the `Signed` flag is for. To make cookies secure, a **cookie secret** is necessary. The cookie secret is a string that is known to the server and used to compute a hash before they are sent to the client. The secret is ideally a random string.
 
-It is a common practice to externalize third-party credentials, such as the cookie secret, database passwords, and API tokens (Twitter, Facebook, etc.). Not only does this ease maintenance (by making it easy to locate and update credentials), it also allows you to omit the credentials file from your version control system. This is especially critical for open source repositories hosted on platforms such as GitHub. In [demo-code/node-cookies-ex](demo-code/node-cookies-ex), the credentials are stored in `credentials.js` (which for demo purposes is actually under version control): it is a module that exports an object, which contains the `cookieSecret` property, but could also contain database logins and passwords, third-party authentication tokens and so on :point_down::
+It is a common practice to externalize third-party credentials, such as the cookie secret, database passwords, and API tokens. Not only does this ease maintenance (by making it easy to locate and update credentials), it also allows you to omit the credentials file from your version control system. This is especially critical for open source repositories hosted on platforms such as GitHub. In [demo-code/node-cookies-ex](demo-code/node-cookies-ex), the credentials are stored in `credentials.js` (which for demo purposes is actually under version control): it is a module that exports an object, which contains the `cookieSecret` property, but could also contain database logins and passwords, third-party authentication tokens and so on :point_down::
 
 ```javascript
 module.exports = {
@@ -197,10 +196,10 @@ module.exports = {
 };
 ```
 
-The demo example does two things:
+The demo example has two routes:
 
-- send cookies to a client that requests them through route `/sendMeCookies`);
-- list all cookies sent by the client on the server through route `/ListAllCookies`.
+- `/sendMeCookies`: send cookies to a client that requests them;
+- `/listAllCookies`: lists all cookies sent by the client to the server.
 
 This is the annotated code of `app.js` :point_down::
 
