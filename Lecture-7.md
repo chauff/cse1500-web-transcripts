@@ -74,7 +74,7 @@ Firefox's developer tools are helpful to inspect what is being sent over the net
 
 ![Viewing cookies in the browser](img/L7-cookies-browser.png)
 
-<sub>Screenshot taken October 10, 2018.</sub>
+<sub>Screenshot taken October 10, 2018. Overview of cookies sent/received when accessing https://www.bol.com</sub>
 
 As the name suggests, *Response Cookies* are cookies that are appearing in an HTTP response (cookies sent by the server) and *Request Cookies* are cookies appearing in an HTTP request (cookies sent from client to server). Note, that the client does not send client-generated cookies to the server, the client only *returns* cookies to the server that the server sent to the client beforehand.
 
