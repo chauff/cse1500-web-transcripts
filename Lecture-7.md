@@ -12,13 +12,12 @@
     - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
     - [Cookie fields](#cookie-fields)
     - [Cookie field 'Domain'](#cookie-field-domain)
-- [:bangbang: A first Node.js application](#bangbang-a-first-nodejs-application)
-    - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
+- [:bangbang: A Node.js application](#bangbang-a-nodejs-application)
+- [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
 - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
-    - [Evercookie](#evercookie)
     - [Third-party cookies](#third-party-cookies)
+    - [Evercookie](#evercookie)
 - [Client-side cookies](#client-side-cookies)
-    - [Client-side cookies](#client-side-cookies)
 - [:bangbang: Sessions](#bangbang-sessions)
 - [Third-party authentication](#third-party-authentication)
     - [OAuth 2.0 roles](#oauth-20-roles)
@@ -174,17 +173,16 @@ todos.my_site.nl
 serverA.admin.todos.my_site.nl
 ```
 
-## :bangbang: A first Node.js application
+## :bangbang: A Node.js application
 
 How can we make use of cookies in our server-side application? Do Node.js and Express support the usage of cookies? Yes they do! In fact, dedicated **middleware** makes the usage of cookies with Express easy.
 
 The example application [demo-code/node-cookies-ex](demo-code/node-cookies-ex) shows off a minimal cookie example. Install, run and explore its codebase before continuing. Once the server is started, try out the following URLs:
 
-- http://localhost:3000/sendMeCookies
-- http://localhost:3000/ListAllCookies
-- http://localhost:3000/sendMeCookies
+- http://localhost:3000/sendMeCookies (sends cookies to a client that requests them)
+- http://localhost:3000/listAllCookies (lists all cookies sent by the client to the server)
 
-and check the the cookies sent and received with the browser's dev tools.
+and explore the the cookies sent and received with the browser's dev tools.
 
 Since cookies can be modified by a malicious user we need to be able to verify that the returned cookie was created by our application server. That is what the `Signed` flag is for. To make cookies secure, a **cookie secret** is necessary. The cookie secret is a string that is known to the server and used to compute a hash before they are sent to the client. The secret is ideally a random string.
 
@@ -196,20 +194,15 @@ module.exports = {
 };
 ```
 
-The demo example has two routes:
-
-- `/sendMeCookies`: send cookies to a client that requests them;
-- `/listAllCookies`: lists all cookies sent by the client to the server.
-
-This is the annotated code of `app.js` :point_down::
+Let's look at the annotated code of `app.js` :point_down::
 
 ![Node.js code example](img/L7-node-cookies-ex.png)
 
-The route `/sendMeCookies` sends cookies from the server to the client, one of which is signed. Signing is as simple as setting the `signed` property to `true`. Cookies the client sends back to the server appear in the HTTP request object and can be accessed through `req.cookies`. Here, a distinction is made between signed and unsigned cookies - you can only be sure that the signed cookies have not been tampered with.
+:point_up: The route `/sendMeCookies` sends cookies from the server to the client, one of which is signed. Signing is as simple as setting the `signed` property to `true`. Cookies the client sends back to the server appear in the HTTP request object and can be accessed through `req.cookies`. Here, a distinction is made between signed and unsigned cookies - you can only be sure that the signed cookies have not been tampered with.
 
-### Accessing and deleting cookies in Express
+## Accessing and deleting cookies in Express
 
-To conclude this section, we take a look at how to access the value of and how to delete cookies. Both are simple operations. To access a cookie value, append the cookie key to `req.cookies` or `req.signedCookies` :point_down::
+Besides creating cookies, we also need to be able to access and delete them. Both are simple operations. To access a cookie value, append the cookie key to `req.cookies` or `req.signedCookies` :point_down::
 
 ```javascript
 var val = req.signedCookies.signed_choco;
@@ -221,64 +214,70 @@ In order to delete a cookie we call the function `clearCookie` in the HTTP **res
 res.clearCookie('chocolate');
 ```
 
-:point_up: In order to clear a cookie, the server sends the cookie to the client with an expiration date **in the past**. This informs the browser that this cookie has become invalid and the browser deletes the cookie from its cookie storage.
+If we dig into the Express code, in particular [response.js](https://github.com/expressjs/express/blob/master/lib/response.js), we find `clearCookie` to be defined as follows:
+
+```javascript
+res.clearCookie = function clearCookie(name, options) {
+  var opts = merge({ expires: new Date(1), path: '/' }, options);
+
+  return this.cookie(name, '', opts);
+};
+```
+
+:point_up: This means, that, in order to clear a cookie, the server sends the cookie to the client with an expiration date **in the past**. This informs the browser that this cookie has become invalid and the browser deletes the cookie from its cookie storage. In order to delete a cookie successfully, not only the name has match but also the cookie domain and path.
 
 ## A more pessimistic view on cookies
 
-While cookies have many beneficial uses, they are also often associated with user tracking. You have just learned that cookies are exclusively returned from client to the server that initially sent the cookie. Let's now see how that is sufficient to track users across web portals.
-
-As you saw in [node-cookies-ex](demo-code/node-cookies-ex), cookies are easy to create, use and delete. The last aspects though only holds for *plain cookies*, i.e. little pieces of information that use the standard cookie infrastructure, HTTP and browsers offer to send and store cookies.
-
-### Evercookie
-
-Storing little pieces of information *somewhere* in the browser can actually be done in many different browsers if you know the technologies within the browser well - more places than you may actually imagine.
-
-[Evercookie](https://github.com/samyk/evercookie) is a JavaScript API that does exactly that. It produces extremely persistent cookies that are not stored in the browser's standard cookie store, but elsewhere. Evercookie uses several types of storage mechanisms that are available in the browser and if a user tries to delete the cookies, it will recreate them using each mechanism available. Note: *this is a tool which should **not** be used for any type of web application used in production, it is however a very good educational tool to learn about different components of the browser.* Lets take a look what exactly Evercookie exploits.
-
 ### Third-party cookies
 
-When we discuss user tracking, third-party cookies need to be mentioned as well. Tracking occurs through the concept of third-party cookies.
+While cookies have many beneficial uses, they are also often associated with user tracking. Tracking occurs through the concept of third-party cookies.
 
 We distinguish two types of cookies:
 
-- first-party cookies, and,
-- third-party cookies.
+- **first-party** cookies, and,
+- **third-party** cookies.
 
 First-party cookies are cookies that belong to the same domain that is shown in the browser's address bar (or that belong to the sub domain of the domain in the address bar).
-Third-party cookies are cookies that belong to domains *different* from the one shown in the address bar.
+Third-party cookies are cookies that belong to domains *different* from the one shown in the browser's address bar.
 
-Web portals can feature content from third-party domains (such as banner ads), which opens up the potential for tracking the user's browsing history.
+Web portals can feature content from third-party domains (such as banner ads), which opens up the potential for tracking users' browsing history.
 
 Consider this example:
 
 ![Third-party cookies](img/L7-third-party-cookies.png)
 
-Here, we suppose a user visits `x.org`. The server replies to the HTTP request, using `Set-Cookie` to send a cookie to the client. This is a first-party cookie. `x.org` also contains an advert from `ads.agency.com`, which the browser loads as well. In the corresponding HTTP response, the server `ads.agency.com` also sends a cookie to the client, this time belonging to the advert's domain (`ads.agency.com`). This is our third-party cookie.
-This by itself is not a problem. However, our global ad agency is used by many different websites, and thus, when the user visits other websites, those may also contain adverts from `ads.agency.com`. Eventually, all cookies from the domain `ads.agency.com` will be sent back to the advertiser when loading any of their ads or when visiting their website. The ad agency can then use these cookies to build up a browsing history of the user across all the websites that have ads from that advertiser.
+Here, we suppose a user visits `x.org`. The server replies to the HTTP request, using `Set-Cookie` to send a cookie to the client. This is a first-party cookie. `x.org` also contains an advert from `ads.agency.com`, which the browser loads as well. In the corresponding HTTP response, the server `ads.agency.com` also sends a cookie to the client, this time belonging to the advert's domain (`ads.agency.com`). This is a third-party cookie.
+This by itself is not a problem. However, the global ad agency is used by many different websites, and thus, when the user visits other websites, those may also contain adverts from `ads.agency.com`. Eventually, all cookies from the domain `ads.agency.com` will be sent back to the advertiser when loading any of their ads or when visiting their website. The ad agency can then use these cookies to build up a browsing history of the user across all the websites that show their ads.
 
-Thus, **third-party cookies are not any different to first-party cookies**, however since ads are usually controlled by only a few global companies, armed with these cookies the ad agencies can build up a pretty complete browsing history of many web users.
+Thus, technologically **third-party cookies are not different from first-party cookies**.
+
+### Evercookie
+
+As seen in [node-cookies-ex](demo-code/node-cookies-ex), cookies are easy to create, use and delete. The last aspects though only holds for *plain cookies*, i.e. little pieces of information that use the standard cookie infrastructure of the HTTP protocol and the browser.
+
+Storing small pieces of information *somewhere* in the browser can actually be accomplished in many different ways if one knows the technologies within the browser well - cookies can be stored in local storage, session storage, IndxedDB and so on. These components are all part of the regular browser software. Covering them is beyond the scope of this lecture, just be aware that all those components can be misused.
+
+[Evercookie](https://github.com/samyk/evercookie) is a JavaScript API that does exactly that. It produces extremely persistent cookies that are not stored in the browser's standard cookie store, but elsewhere. Evercookie uses several types of storage mechanisms that are available in the browser and if a user tries to delete any of the cookies, it will recreate them using each mechanism available. Note: *this is a tool which should **not** be used for any type of web application used in production, it is however a very good educational tool to learn about different components of the browser.*
 
 ## Client-side cookies
 
 So far, we have looked at cookies that are created by a server-side application, sent to clients in response to HTTP requests and then returned to the server in subsequent requests.
 We thus have an exchange of information between the client and server. Now, we look at  so-called client-side cookies, that are cookies which are created by the client itself and also only used by the client.
 
-### Client-side cookies
+To set a client-side cookie, usually JavaScript is employed. A standard use case is a web form, which the user partially filled in but did not submit yet. Often it is advantageous to keep track of the information already filled in and to refill the form with that data when the user revisits the form. In this case, keeping track of the form data can be done with client-side cookies (i.e. cookies that never leave the client).
 
-To set a client-side cookie, usually JavaScript is employed. A standard use case is a web form, which the user partially filled in but did not submit yet. Often it is advantageous to keep track of the information already filled in and to refill the form with that data when the user revisits the form. In this case, keeping track of the form data can be done with client-side cookies.
-
-The code snippet below :point_down: shows how client-side cookies can be set through JavaScript:
+This code snippet :point_down: shows how client-side cookies can be set through JavaScript:
 
 ```javascript
 //set TWO(!) cookies
-document.cookie = "name1=value1";
-document.cookie = "name2=value2; expires=Fri, 24-Jan-2019 12:45:00 GMT";
+document.cookie = "name1=value1";                                           //LINE 1
+document.cookie = "name2=value2; expires=Fri, 24-Jan-2019 12:45:00 GMT";    //LINE 2
 
 //delete a cookie by RESETTING the expiration date
-document.cookie = "name2=value2; expires=Fri, 24-Jan-1970 12:45:00 GMT";
+document.cookie = "name2=value2; expires=Fri, 24-Jan-1970 12:45:00 GMT";    //LINE 3
 ```
 
-:point_up: To set a cookie we assign a name/value to `document.cookie`. `document.cookie` is a string containing a semicolon-separated list of all cookies. Each time we make a call to it, we can only assign a single cookie. Thus after code line 3, we have not replaced the existing cookie, we have added a second cookie to `document.cookie`. In line 3 you can also see how to set the different cookie fields.
+:point_up: To set a cookie we assign a name/value to `document.cookie`. `document.cookie` is a string containing a semicolon-separated list of all cookies. Each time we make a call to it, we can only assign a single cookie. Thus, LINE 2 does not replace the existing cookie, instead we have added a second cookie to `document.cookie`. The cookie added in LINE 3 showcases how to set the different cookie fields.
 Deleting a cookie requires us to set the expiration date to a **date in the past**; assigning an empty string to `document.cookie` will **not** have any effect.
 
 The fact that cookies are appended one after the other in `document.cookie` also means that we cannot access a cookie by its name. Instead, the string returned by `document.cookie` has to be parsed, by first splitting the cookies into separate strings based on the semicolon and then determining field name and field value by splitting on `=` :point_down::
