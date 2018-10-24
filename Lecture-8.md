@@ -27,7 +27,8 @@
 Web applications are an attractive target for *attackers* (also known as *malicious users*) for several reasons:
 
 - Web applications are open to attack from **different angles** as they rely on various software systems to run: an attacker can go after the **web server** hosting the web application, the **web browser** displaying the application, the **web application** itself if it is programmed without security in mind and of course the **user** is also a point of attack.
-- Successfully attacking a web application with thousands or millions of users offers a lot of potential gain. - "Hacking" today does not require expert knowledge, as easy-to-use automated tools are available that test servers and applications for known vulnerabilities (e.g. [Wapiti](http://wapiti.sourceforge.net/), [w3af](http://w3af.org/)).
+- Successfully attacking a web application with thousands or millions of users offers a lot of potential gain.
+- "Hacking" today does not require expert knowledge, as easy-to-use automated tools are available that test servers and applications for known vulnerabilities (e.g. [Wapiti](http://wapiti.sourceforge.net/), [w3af](http://w3af.org/)).
 
 When developing a web application, it is useful to ask yourself *how can it be attacked?* and secure yourself against those attacks. While web applications are relatively easy to develop thanks to the tooling available today, they are difficult to secure as that step requires substantial technological understanding on the part of the developer.
 
