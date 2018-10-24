@@ -152,11 +152,18 @@ The application NodeGoat implements is an *Employee Retirement Savings Managemen
 
 Apart from providing a vulnerable application, NodeGoat also provides a helpful [tutorial](http://nodegoat.herokuapp.com/tutorial) on the implemented vulnerabilities, how to execute attacks and, importantly, how to mitigate them.
 
-In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of NodeGoat. Some of them will be introduced in more detail than others.
-
 ## OWASP Top 10 in practice
 
+In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of NodeGoat. Some of them will be introduced in more detail than others.
+
 ### Injection
+
+Exploiting unchecked input
+Parameter manipulation of HTML forms
+URL manipulation  (remember: URLs often contain parameters)
+Hidden HTML field manipulation
+HTTP header manipulation
+Cookie manipulation
 
 ### Broken authentication
 
