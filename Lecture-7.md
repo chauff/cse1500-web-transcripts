@@ -78,9 +78,9 @@ Firefox's developer tools are helpful to inspect what is being sent over the net
 
 As the name suggests, *Response Cookies* are cookies that are appearing in an HTTP response (cookies sent by the server) and *Request Cookies* are cookies appearing in an HTTP request (cookies sent from client to server). Note, that the client does not send client-generated cookies to the server, the client only *returns* cookies to the server that the server sent to the client beforehand.
 
-When developing web applications, we recommend the use of Google Chrome, as Chrome's dev tools provide an elaborate Application tab, which makes debugging cookie settings easy:
+When developing web applications, use Firefox's Storage Inspector dev tool tab, which makes debugging cookie settings easy:
 
-![Chrome dev tools cookies](img/L7-chrome-cookies.png)
+![Storage dev tools cookies](img/L7-storage.png)
 
 <sub>Screenshot taken October 23, 2018. Overview of cookies sent to the client when accessing https://www.volkskrant.nl</sub>
 

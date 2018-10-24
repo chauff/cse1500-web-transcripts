@@ -224,11 +224,13 @@ An attacker can exploit broken authentication and session management functions t
 #### NodeGoat
 
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. On the left-hand side, click on *Contributions*.
-4. To explore the effect of different inputs, try out a few numbers and strings in the three *New Payroll Contribution Percent* form fields.
-5. In one of the form fields, now fill in `process.exit()` and click `Submit`.
-6. You should now see an application error.
+2. Open the browser's dev tools, in particular the Storage Inspector that allows you to view the cookies stored by the client.
+3. Login with `user1` (user) and `User1_123` (password).
+4. Check the cookie value of `connect.sid`.
+5. Close the browser tab.
+6. Open a new browser tab and access http://nodegoat.herokuapp.com/. No login should be required.
+7. Head to the Storage Inspector and delete the session cookie.
+8. Access http://nodegoat.herokuapp.com/. A login should be required.
 
 #### How to avoid it
 
