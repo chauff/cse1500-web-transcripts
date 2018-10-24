@@ -11,9 +11,12 @@
     - [Foot in the door](#foot-in-the-door)
     - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
+- [NodeGoat](#nodegoat)
 - [Injection](#injection)
-- [OWASP Node goat project](#owasp-node-goat-project)
-    - [Express](#express)
+- [Broken authentication](#broken-authentication)
+- [XSS](#xss)
+- [CSRF](#csrf)
+- [Web security in Node.js/Express](#web-security-in-nodejsexpress)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -117,7 +120,7 @@ The only category not covered so far is *Insecure transport*. This refers to the
 
 ![NodeGoat not secure](img/L8-browser-warning.png)
 
-In addition it is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on the header field](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
+It is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on `Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
 
 ```console
 You log into a free WiFi access point at an airport and start surfing the web, visiting your
@@ -132,27 +135,29 @@ to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
 
+## NodeGoat
+
+One of the best ways of learning about web security is to actually try out a few of the introduced techniques in an actual web application that is vulnerable. As we covered Node.js/Express, most useful to us is a vulnerable web application that was written in Node.js/Express.
+
+The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose, it provides an "*environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js*". OWASP stands for [Open Web Application Security Project](https://www.owasp.org); OWASP is an organization whose mission is to improve software security. And creating a vulnerable application to showcase the worst security issues, is one way to train software engineers in web security.
+
+The application NodeGoat implements is an *Employee Retirement Savings Management* system called RetireEasy - you already saw a glimpse of it in the previous section.
+
+Apart from providing a vulnerable application, NodeGoat also provides a helpful [tutorial](http://nodegoat.herokuapp.com/tutorial) on the implemented vulnerabilities, how to execute attacks and, importantly, how to mitigate them.
+
+In the following sections, we will discuss a number of vulnerabilities on the example of NodeGoat.
+
 ## Injection
 
-Hypertext Markup Language (HTML) injection, also sometimes referred to as virtual defacement, is an attack on a user made possible by an injection vulnerability in a web application. When an application does not properly handle user supplied data, an attacker can supply valid HTML, typically via a parameter value, and inject their own content into the page.
+## Broken authentication
 
-This attack is typically used in conjunction with some form of social engineering, as the attack is exploiting a code-based vulnerability and a user's trust.
+## XSS
 
-## OWASP Node goat project
+## CSRF
 
-One of the best ways of learning about web security is to actually try out a few of the introduced techniques in an actual web application that is vulnerable. The [NodeGoat](https://github.com/OWASP/NodeGoat) project was designed specifically for this purpose, it provides an "*environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js*".
+## Web security in Node.js/Express
 
-In this section, I will provide a few hints of how to find exploits in this project that are relevant to the concepts taught in this class.
-
-The demo application of the NodeGoat project is available here: [http://nodegoat.herokuapp.com/login](http://nodegoat.herokuapp.com/login). At the top right, you find hints at what to do at each stage:
-
-![NodeGoat](img/L8-nodegoat.png)
-
-First of all, "*login using the form below*".
-
-### Express
-
-[Helmet](https://www.npmjs.com/package/helmet) - "Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!"
+A popular package to secure Express-based applications is [Helmet](https://www.npmjs.com/package/helmet). It acts as middleware in Express applications and sets HTTP headers according to best security practices.
 
 ## Self-check
 
