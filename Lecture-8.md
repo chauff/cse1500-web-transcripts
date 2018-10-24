@@ -17,6 +17,8 @@
         - [NodeGoat](#nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Broken authentication](#broken-authentication)
+        - [NodeGoat](#nodegoat)
+        - [How to avoid it](#how-to-avoid-it)
     - [XSS](#xss)
     - [Direct object references](#direct-object-references)
     - [Misconfiguration](#misconfiguration)
@@ -203,7 +205,40 @@ var validator = require('validator');
 var isEmail = validator.isEmail('while(1)'); //false
 ```
 
+As stated earlier, `eval()` should be avoided at all costs.
+
 ### Broken authentication
+
+Recall that in order to establish *sessions*, cookies are used. A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
+
+![Session](img/L8-sessions.png)
+
+An attacker can exploit broken authentication and session management functions to impersonate a user. In the latter case, the attacker only needs to acquire knowledge of a user's session cookie ID. This can happen under several conditions:
+
+- Using **URL rewriting** to store session IDs. Imagine the following scenario: a bookshop supports URL rewriting and includes the session ID in the URL, e.g. http://mybookshop.nl/sale/sid=332frew3FF?basket=B342;B109. An authenticated user of the site (who has stored her credit card information on the site) wants to let her friends know about her buying two books. She e-mails the link without realizing that she is giving away her session ID. When her friends use the link they will use her session and are thus able to use her credit card to buy products.
+- **Storing a session ID in a cookie without informing the user**. A user may use a public computer to access a web application that requires authentication. Instead of logging out, the user simply closes the browser tab (this does NOT delete a session cookie!). An attacker uses the same browser and application a few minutes later - the original user will still be authenticated.
+- **Session ID are sent via HTTP** instead of HTTPS. In this case, an attacker can listen to the network traffic and simply read out the session ID. The attacker can then access the application without requiring the user's login/password.
+- **Session IDs are static instead of being rotated**. If session IDs are not regularly changed, they are more easily guessable.
+- **Session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can can wait for a user with valuable information to pass by.
+
+#### NodeGoat
+
+1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
+2. Login with `user1` (user) and `User1_123` (password).
+3. On the left-hand side, click on *Contributions*.
+4. To explore the effect of different inputs, try out a few numbers and strings in the three *New Payroll Contribution Percent* form fields.
+5. In one of the form fields, now fill in `process.exit()` and click `Submit`.
+6. You should now see an application error.
+
+#### How to avoid it
+
+- Good authentication and session management is difficult - avoid if possible an implementation from scratch.
+- Ensure that the session ID is **never send over the network unencrypted**.
+- Session IDs should not be visible in URLs.
+- Generate a new session ID on login and **avoid reuse**.
+- Session IDs should have a timeout and be invalidated on the server after the user ends the session.
+- Conduct a sanity check on HTTP header fields (refer, user agent, etc.).
+- Ensure that users' login data is stored securely.
 
 ### XSS
 
