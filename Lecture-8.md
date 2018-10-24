@@ -3,7 +3,7 @@
 ## Table of Content <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Introduction](#introduction)
-- [Six main threats](#six-main-threats)
+- [Threat categories](#threat-categories)
     - [Defacement](#defacement)
     - [Data disclosure](#data-disclosure)
     - [Data loss](#data-loss)
@@ -30,14 +30,14 @@ Web applications are an attractive target for *attackers* (also known as *malici
 - Successfully attacking a web application with thousands or millions of users offers a lot of potential gain.
 - "Hacking" today does not require expert knowledge, as easy-to-use automated tools are available that test servers and applications for known vulnerabilities (e.g. [Wapiti](http://wapiti.sourceforge.net/), [w3af](http://w3af.org/)).
 
-When developing a web application, it is useful to ask yourself *how can it be attacked?* and secure yourself against those attacks. While web applications are relatively easy to develop thanks to the tooling available today, they are difficult to secure as that step requires substantial technological understanding on the part of the developer.
+When developing a web application, it is useful to ask yourself **how can it be attacked?** and secure yourself against those attacks. While web applications are relatively easy to develop thanks to the tooling available today, they are difficult to secure as that step requires substantial technological understanding on the part of the developer.
 
 Large-scale web portals such as Facebook have partially "outsourced" the finding of security issues to so-called *white hat hackers* - people interested in security issues that earn money from testing companies' defenses and pointing them towards specific security issues. [Facebook, for example, has paid out millions in *bug bounties* by 2016](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/), while [Google paid 36K to a single bug hunter](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html) once.
 Bug bounty programs are run to this day by, among others, [Facebook](https://www.facebook.com/whitehat), [Google](https://www.google.com/about/appsecurity/reward-program/), [PayPal](https://www.paypal.com/us/webapps/mpp/security-tools/reporting-security-issues), [Quora](https://engineering.quora.com/Security-Bug-Bounty-Program), [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/) and [Microsoft](https://www.microsoft.com/en-us/msrc/bounty).
 
-## Six main threats
+## Threat categories
 
-There are several threats that web applications face.
+There are a number of overarching threat categories, we introduce each of them with a concrete example security incidence.
 
 ### Defacement
 
