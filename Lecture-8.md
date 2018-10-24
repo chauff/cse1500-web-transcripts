@@ -10,7 +10,7 @@
     - [Denial of service](#denial-of-service)
     - [Foot in the door](#foot-in-the-door)
     - [Unauthorized access](#unauthorized-access)
-- [Applications are vulnerable](#applications-are-vulnerable)
+- [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
 - [Injection](#injection)
 - [OWASP Node goat project](#owasp-node-goat-project)
     - [Express](#express)
@@ -82,9 +82,11 @@ In this threat type, attackers can use functions of a web application they shoul
 
 An example here is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web while it should have only been accessible from the internal Instagram network.  
 
-## Applications are vulnerable
+## Most frequent vulnerabilities
 
-In order to effectively secure a web application we need to know what the most frequent security issues are. Let's turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) to answer this question. For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. The most important **software security issues** for web and mobile applications are the following (p. 56 of the report, reported as percentage of scanned applications):
+In order to effectively secure a web application, it helps to know what the most frequent security issues are. Let's turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) to answer this question. For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. We here go over some of the most important findings concerning web applications.
+
+The most important **software security issues** for web and mobile applications are the following (p. 56 of the report, reported as percentage of scanned applications):
 
 ![Web and mobile security](img/L8-security-report-1.png)
 
