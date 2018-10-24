@@ -92,6 +92,7 @@ Let's turn to the [Cyber security risk report 2016 published by HPE](https://www
 The most important **software security issues** for web and mobile applications are the following, reported as *percentage of scanned applications*:
 
 ![Web and mobile security](img/L8-security-report-1.png)
+
 <sub>Figure taken from page 56, CSRHPE.</sub>
 
 :point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server mis-configurations, improper file settings, sample files and outdated software versions. The third category to mention is *Input validation and representation* which covers issues such as cross-site scripting (we cover this later in this lecture) and SQL injection (covered in a DB lecture), which is present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
@@ -99,13 +100,18 @@ The most important **software security issues** for web and mobile applications 
 If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as *percentage of applications* and *median vulnerability count*:
 
 ![Top 10 vulnerabilities](img/L8-security-report-2.png)
+
 <sub>Figure taken from page 57, CSRHPE.</sub>
 
-:point_up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically *Cookie Security: cookie not sent over SSL* and *Cookie Security: HTTPOnly not set*. The vulnerability *Privacy violation: autocomplete* should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent form with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields. Lastly, we will also discuss the *Hidden field* vulnerability later in this lecture - it provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted (for instance, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the page). However,as with any data sent to the browser, with a bit of knowledge about the web developer tools available in browsers, the user can easily change the hidden field values, making them a vulnerability.
+:point_up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically *Cookie Security: cookie not sent over SSL* and *Cookie Security: HTTPOnly not set*. The vulnerability *Privacy violation: autocomplete* should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
 
-Taking a slightly higher-level view, the top five violated security categories across all scanned applications were the following (p. 59 of the report, reported are the percentage of applications violating a category):
+:point_up: Lastly, let's discuss the *Hidden field* vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability of the server does not validate the correctness of the returned value.
+
+Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as *percentage of applications violating a category*:
 
 ![Top 5 violated security categories](img/L8-security-report-3.png)
+
+<sub>Figure taken from page 59, CSRHPE.</sub>
 
 The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example:
 
