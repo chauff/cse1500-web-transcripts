@@ -12,10 +12,17 @@
     - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
 - [NodeGoat](#nodegoat)
-- [Injection](#injection)
-- [Broken authentication](#broken-authentication)
-- [XSS](#xss)
-- [CSRF](#csrf)
+- [OWASP Top 10 in practice](#owasp-top-10-in-practice)
+    - [Injection](#injection)
+    - [Broken authentication](#broken-authentication)
+    - [XSS](#xss)
+    - [Direct object references](#direct-object-references)
+    - [Misconfiguration](#misconfiguration)
+    - [Sensitive data](#sensitive-data)
+    - [Access controls](#access-controls)
+    - [CSRF](#csrf)
+    - [Insecure components](#insecure-components)
+    - [Redirects](#redirects)
 - [Web security in Node.js/Express](#web-security-in-nodejsexpress)
 - [Self-check](#self-check)
 
@@ -145,15 +152,29 @@ The application NodeGoat implements is an *Employee Retirement Savings Managemen
 
 Apart from providing a vulnerable application, NodeGoat also provides a helpful [tutorial](http://nodegoat.herokuapp.com/tutorial) on the implemented vulnerabilities, how to execute attacks and, importantly, how to mitigate them.
 
-In the following sections, we will discuss a number of vulnerabilities on the example of NodeGoat.
+In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of NodeGoat. Some of them will be introduced in more detail than others.
 
-## Injection
+## OWASP Top 10 in practice
 
-## Broken authentication
+### Injection
 
-## XSS
+### Broken authentication
 
-## CSRF
+### XSS
+
+### Direct object references
+
+### Misconfiguration
+
+### Sensitive data
+
+### Access controls
+
+### CSRF
+
+### Insecure components
+
+### Redirects
 
 ## Web security in Node.js/Express
 
