@@ -467,16 +467,16 @@ Keep in mind to sanitize, validate and validate once more.
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
 
 1. Consider the following list of abilities a malicious user (the attacker) may have who managed to intercept all of your network traffic. Which of these abilities are needed to steal session cookies?
-    1. The attacker can eavesdrop (read all your HTTP requests).
-    2. The attacker can inject additional HTTP requests with your source address.
-    3. The attacker can modify HTTP requests.
-    4. The attacker can drop HTTP requests.
+    - The attacker can eavesdrop (read all your HTTP requests).
+    - The attacker can inject additional HTTP requests with your source address.
+    - The attacker can modify HTTP requests.
+    - The attacker can drop HTTP requests.
 
 2. As a Web application user, what makes you most likely to fall victim to a CSRF attack?
-    1. Using a Web application that is not relying on SSL/TLS.
-    2. Using the "keep me logged in" option offered by Web applications.
-    3. Using a Web application with weak encryption.
-    4. Using the browser’s "remember this password" option when logging into a Web application.
+    - Using a Web application that is not relying on SSL/TLS.
+    - Using the "keep me logged in" option offered by Web applications.
+    - Using a Web application with weak encryption.
+    - Using the browser’s "remember this password" option when logging into a Web application.
 
 3. What does the *same-origin policy* refer to (recall [Lecture 4](Lecture-4.md), in particular Ajax)? How is this related to web security?
 
