@@ -28,6 +28,7 @@
     - [Security misconfiguration](#security-misconfiguration)
         - [How to avoid it](#how-to-avoid-it)
     - [Sensitive data](#sensitive-data)
+        - [How to avoid it](#how-to-avoid-it)
     - [Access controls](#access-controls)
     - [CSRF](#csrf)
     - [Insecure components](#insecure-components)
@@ -346,7 +347,21 @@ Rely on automated scanner tools to check Web servers for the most common types o
 
 ### Sensitive data
 
+If a Web application does not use HTTPS for all authenticated routes (HTTPS is needed to protect the session cookie), a malicious user can monitor the network traffic and steal the user's session cookie.
+
+If a Web application relies on outdated encryption strategies to secure sensitive data, it is just a matter of time until the encryption is broken.
+
+#### How to avoid it
+
+- All sensitive data should be encrypted across the network and when stored.
+- Only store the necessary sensitive data and discard it as soon as possible (e.g. credit card numbers).
+- Use strong encryption algorithms (a constantly changing target).
+- Disable autocompletion on HTML forms collecting sensitive data.
+- Disable caching for pages containing sensitive data.
+
 ### Access controls
+
+
 
 ### CSRF
 

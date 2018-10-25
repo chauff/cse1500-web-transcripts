@@ -264,6 +264,3 @@ For each lecture we provide a range of materials:
     - Kieyzun, A., Guo, P.J., Jayaraman, K. and Ernst, M.D., 2009. [Automatic creation of SQL injection and cross-site scripting attacks](https://dl.acm.org/citation.cfm?id=1555036). In Proceedings of the 31st International Conference on Software Engineering (pp. 199-209). IEEE Computer Society.
     - Von Ahn, L., Maurer, B., McMillen, C., Abraham, D. and Blum, M., 2008. [recaptcha: Human-based character recognition via web security measures](http://science.sciencemag.org/content/321/5895/1465). Science, 321(5895), pp.1465-1468.
     - Acar, G., Eubank, C., Englehardt, S., Juarez, M., Narayanan, A. and Diaz, C., 2014. [The web never forgets: Persistent tracking mechanisms in the wild](https://www.ftc.gov/system/files/documents/public_comments/2015/10/00064-98109.pdf). In Proceedings of the 2014 ACM SIGSAC Conference on Computer and Communications Security (pp. 674-689). ACM.
-
-
-    
