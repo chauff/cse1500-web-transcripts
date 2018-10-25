@@ -401,6 +401,7 @@ If the victim access the website that is under the attacker's control (e.g. beca
 4. Now save the following HTML document:
 
 ```html
+<!doctype html>
 <html lang="en">
     <head>
     </head>
