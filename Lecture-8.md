@@ -14,16 +14,16 @@
 - [NodeGoat](#nodegoat)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
     - [Injection](#injection)
-        - [NodeGoat](#nodegoat)
+        - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Broken authentication](#broken-authentication)
-        - [NodeGoat](#nodegoat)
+        - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [XSS](#xss)
-        - [NodeGoat](#nodegoat)
+        - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Direct object references](#direct-object-references)
-        - [NodeGoat](#nodegoat)
+        - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Security misconfiguration](#security-misconfiguration)
         - [How to avoid it](#how-to-avoid-it)
@@ -32,10 +32,12 @@
     - [Access controls](#access-controls)
         - [How to avoid it](#how-to-avoid-it)
     - [CSRF](#csrf)
-        - [NodeGoat](#nodegoat)
+        - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Insecure components](#insecure-components)
-    - [Redirects](#redirects)
+    - [Unvalidated Redirects](#unvalidated-redirects)
+        - [How to avoid it](#how-to-avoid-it)
+- [Summary](#summary)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -193,7 +195,7 @@ Web applications that do not validate their input are also attackable, if they i
 
 `eval()` in fact is so dangerous that [it should never be used](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#Do_not_ever_use_eval!).
 
-#### NodeGoat
+#### :bangbang: NodeGoat
 
 1. To try out this attack, head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
 2. Login with `user1` (user) and `User1_123` (password).
@@ -229,7 +231,7 @@ An attacker can exploit broken authentication and session management functions t
 - **Session IDs are static instead of being rotated**. If session IDs are not regularly changed, they are more easily guessable.
 - **Session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can can wait for a user with valuable information to pass by.
 
-#### NodeGoat
+#### :bangbang: NodeGoat
 
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
 2. Open the browser's dev tools, in particular the Storage Inspector that allows you to view the cookies stored by the client.
@@ -278,7 +280,7 @@ http://myforum.nl/search?q=Let+me+…
 http://myforum.nl/search?q=<script>…
 ```
 
-#### NodeGoat
+#### :bangbang: NodeGoat
 
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
 2. Login with `user1` (user) and `User1_123` (password).
@@ -315,7 +317,7 @@ Here, we use the routing parameter `:type` as key of the `todoTypes` object. Oft
 
 Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' todo lists in this manner.
 
-#### NodeGoat
+#### :bangbang: NodeGoat
 
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
 2. Login with `user1` (user) and `User1_123` (password).
@@ -386,7 +388,7 @@ Here is an example scenario: imagine a Web application that allows users to tran
 
 If the victim access the website that is under the attacker's control (e.g. because the attacker send the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place, if the web application, the user it authenticated to, does not defend against a CSRF attack (this occurs when the web application cannot distinguish between a forged and legitimate request).
 
-#### NodeGoat
+#### :bangbang: NodeGoat
 
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
 2. Login with `user1` (user) and `User1_123` (password).
@@ -431,7 +433,25 @@ Going back to our example, if a user is accessing a *Win an iPAD* web site and a
 
 ### Insecure components
 
-### Redirects
+Vulnerabilities of software libraries and frameworks are continuously being discovered and patched. An application that is not patched when a vulnerability becomes known is a candidate for exploitation. It is important to be aware of the dependencies of one's Node.js application and install security patches quickly when they become available. 
+
+Not only the application itself needs to be kept up-to-date. The server's operating system also needs to be continuously patched, as well as any other software used to support the web server (e.g. Redis, MongoDB, Nginx).
+
+### Unvalidated Redirects
+
+Let's cite OWASP one last time: *"An attacker links to an unvalidated redirect and tricks victims into clicking it. Victims are more likely to click on it, since the link is to a valid site."*
+
+Here is an example scenario: imagine a web application includes a page called `redirect`. An attacker uses a malicious URL that redirects users to her own site for phishing, e.g. `http://www.mygame.nl/redirect?url=www.malicious-url.com`. The user, when seeing this URL in an email or message forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`.
+
+#### How to avoid it
+
+This attack can be avoided by disallowing redirects and forwards in a web application. When redirects have to be included, users should not be allowed to redirect via URL parameters (as was possible in the phishing example above). The user-provided redirects need to be validated (does the user have access rights to the target page?).
+
+## Summary
+
+Overall, as we have just seen, web applications offer many angles of attack. Securing a Web application requires extensive knowledge in different areas. When securing a web application, start with defending against the most frequent vulnerabilities.
+
+Keep in mind to sanitize, validate and validate once more.
 
 ## Self-check
 
@@ -442,7 +462,7 @@ Here are a few questions you should be able to answer after having followed the 
     2. The attacker can inject additional HTTP requests with your source address.
     3. The attacker can modify HTTP requests.
     4. The attacker can drop HTTP requests.
-   
+
 2. As a Web application user, what makes you most likely to fall victim to a CSRF attack?
     1. Using a Web application that is not relying on SSL/TLS.
     2. Using the "keep me logged in" option offered by Web applications.
