@@ -25,13 +25,13 @@
     - [Direct object references](#direct-object-references)
         - [NodeGoat](#nodegoat)
         - [How to avoid it](#how-to-avoid-it)
-    - [Misconfiguration](#misconfiguration)
+    - [Security misconfiguration](#security-misconfiguration)
+        - [How to avoid it](#how-to-avoid-it)
     - [Sensitive data](#sensitive-data)
     - [Access controls](#access-controls)
     - [CSRF](#csrf)
     - [Insecure components](#insecure-components)
     - [Redirects](#redirects)
-- [Web security in Node.js/Express](#web-security-in-nodejsexpress)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -326,7 +326,23 @@ Consider a user who accesses her list of todos using the following URL `http://m
 - Use of objects should always include an authorization subroutine.
 - Avoid exposing object IDs, keys and filenames to users.
 
-### Misconfiguration
+### Security misconfiguration
+
+Web application engineering requires extensive knowledge of system administration and the entire Web development stack.
+Issues can arise everywhere (Web server, database, application framework, operating system, etc.):
+
+- Default accounts and passwords remain set.
+- Resources may be publicly accessible that should not be.
+- The root user can log in via SSH (this allows remote access).
+- Security patches are not applied on time.
+
+#### How to avoid it
+
+Install the latest stable version of Node.js and Express. Install security updates.
+
+A popular package to secure Express-based applications is [Helmet](https://www.npmjs.com/package/helmet). It acts as middleware in Express applications and sets HTTP headers according to best security practices.
+
+Rely on automated scanner tools to check Web servers for the most common types of security misconfigurations.
 
 ### Sensitive data
 
@@ -338,9 +354,6 @@ Consider a user who accesses her list of todos using the following URL `http://m
 
 ### Redirects
 
-## Web security in Node.js/Express
-
-A popular package to secure Express-based applications is [Helmet](https://www.npmjs.com/package/helmet). It acts as middleware in Express applications and sets HTTP headers according to best security practices.
 
 ## Self-check
 
