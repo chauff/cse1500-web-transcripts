@@ -441,7 +441,7 @@ Not only the application itself needs to be kept up-to-date. The server's operat
 
 Let's cite OWASP one last time: *"An attacker links to an unvalidated redirect and tricks victims into clicking it. Victims are more likely to click on it, since the link is to a valid site."*
 
-Here is an example scenario: imagine a web application includes a page called `redirect`. An attacker uses a malicious URL that redirects users to her own site for phishing, e.g. `http://www.mygame.nl/redirect?url=www.malicious-url.com`. The user, when seeing this URL in an email or message forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`.
+Here is an example scenario: imagine a web application includes a route called `redirect`. That route takes a URL as parameter and redirects to the URL. Once an attacker finds a route that enables such redirects, the attacker creates a malicious URL that redirects users to her own site for phishing, e.g. `http://www.mygame.nl/redirect?url=www.malicious-url.com`. The user, when seeing this URL in an email or message forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`. Instead of `mygame.nl` it leads to `www.malicious-url.com` which the attacker has under control. If the user does not check the address bar anymore, she will remain under the belief to be on `mygame.nl` - and if she is asked to reenter her credit card information, she may just do that.
 
 #### How to avoid it
 
