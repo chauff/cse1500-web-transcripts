@@ -71,14 +71,16 @@ The way a web site or web application (I tend to use the terms interchangeably h
 Consider this example of [ebay.com](https://www.ebay.com/):
 
 ![ebay web site](img/L2-ebay.png)
-<sub>Screenshot taken on September 10, 2018</sub>
+
+<sup>Screenshot taken on September 10, 2018</sup>
 
 Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
 
 Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/):
 
 ![koopplein web site](img/L2-koopplein.png)
-<sub>Screenshot taken February 8, 2014</sub>
+
+<sup>Screenshot taken February 8, 2014</sup>
 
 Here, it is not self-evident for the user how to act to achieve her goals and major questions are raised:
 
@@ -199,7 +201,8 @@ The home page (or entry page) of a web application should answer a number of ess
 Surprisingly many home pages are not able to answer these questions. Take for example the home page of https://coffeecompany.nl/:
 
 ![Coffeecompany](img/L2-coffeecompany.png)
-<sub>Screenshot taken October 18, 2018</sub>
+
+<sup>Screenshot taken October 18, 2018</sup>
 
 It is not obvious that the core business here is a chain of small cafes in the Netherlands. 
 
@@ -264,7 +267,7 @@ HTML is widely used, which makes standardisation a slow process. Many different 
 3. **Proposed Recommendation**: *a mature technical report that, after wide review for technical soundness and implementability, W3C has sent to the W3C Advisory Committee for final endorsement.*
 4. **W3C Recommendation**: *a specification or set of guidelines that, after extensive consensus-building, has received the endorsement of W3C Members and the Director. W3C recommends the wide deployment of its Recommendations. Note: W3C Recommendations are similar to the standards published by other organizations.*
 
-<sub>Source: [W3C Recommendation Track Process](https://www.w3.org/2018/Process-20180201/#maturity-levels).</sub>
+<sup>Source: [W3C Recommendation Track Process](https://www.w3.org/2018/Process-20180201/#maturity-levels).</sup>
 
 Informally, one could say that the W3C standardizes what the browser vendors have agreed upon and have chosen to implement or chosen to implement in the near future.
 
@@ -275,7 +278,8 @@ As of August 2018, [HTML5.3](https://www.w3.org/TR/html53/) has a *Working Draft
 In rare cases, features added to a web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner (by adding a manifest file to a site containing no more than a few lines of text), but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favor of another set of technologies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is [still supported by all major browsers](https://caniuse.com/#search=appcache):
 
 ![AppCache](img/L2-appcache.png)
-<sub>Screenshot taken on August 31, 2018.</sub>
+
+<sup>Screenshot taken on August 31, 2018.</sup>
 
 The W3C writes the following about the AppCache: *This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead.*
 

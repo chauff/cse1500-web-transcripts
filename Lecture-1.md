@@ -1,52 +1,47 @@
 # HTTP: the language of Web communication <!-- omit in toc -->
 
-*Note: in practice, this material is taught in Lecture 1 and about half of Lecture 2.*
+*Note: this material is taught in Lecture 1 and about half of Lecture 2.*
 
 ## Table of Content <!-- omit in toc -->
 
-- [HTTP: the language of Web communication](#http-the-language-of-web-communication)
-    - [Web standards](#web-standards)
-    - [Learning goals](#learning-goals)
-    - [World Wide Web vs. Internet](#world-wide-web-vs-internet)
-        - [A brief history of the web](#a-brief-history-of-the-web)
-        - [Key aspects of the Internet](#key-aspects-of-the-internet)
-        - [Two important organizations](#two-important-organizations)
-    - [HTTP messages](#http-messages)
-        - [Web servers and clients](#web-servers-and-clients)
-        - [Network communication](#network-communication)
-        - [:bangbang: Activity](#bangbang-activity)
-        - [HTTP request message](#http-request-message)
-        - [HTTP response message](#http-response-message)
-    - [HTTP headers dissected](#http-headers-dissected)
-        - [Well-known header fields](#well-known-header-fields)
-        - [Content-Type](#content-type)
-        - [Content-Length](#content-length)
-        - [Content-Encoding](#content-encoding)
-        - [Content-MD5](#content-md5)
-        - [Expires](#expires)
-        - [Expires & Cache-Control](#expires--cache-control)
-        - [Last-Modified](#last-modified)
-        - [Connection & Upgrade](#connection--upgrade)
-        - [Status codes](#status-codes)
-    - [HTTP methods](#http-methods)
-        - [Common HTTP methods](#common-http-methods)
-        - [:bangbang: Activity](#bangbang-activity)
-        - [From domain to IP address](#from-domain-to-ip-address)
-    - [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
-        - [URL syntax: query](#url-syntax-query)
-        - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
-        - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
-        - [URL design restrictions](#url-design-restrictions)
-    - [Authentication](#authentication)
-        - [User-related HTTP header fields](#user-related-http-header-fields)
-        - [Client-IP address tracking](#client-ip-address-tracking)
-        - [Fat URLs](#fat-urls)
-        - [HTTP basic authentication](#http-basic-authentication)
-    - [Self-check](#self-check)
-
-# HTTP: the language of Web communication
-
-*Note: in practice, this material is taught in Lecture 1 and about half of Lecture 2.*
+- [Web standards](#web-standards)
+- [Learning goals](#learning-goals)
+- [World Wide Web vs. Internet](#world-wide-web-vs-internet)
+    - [A brief history of the web](#a-brief-history-of-the-web)
+    - [Key aspects of the Internet](#key-aspects-of-the-internet)
+    - [Two important organizations](#two-important-organizations)
+- [HTTP messages](#http-messages)
+    - [Web servers and clients](#web-servers-and-clients)
+    - [Network communication](#network-communication)
+    - [:bangbang: Activity](#bangbang-activity)
+    - [HTTP request message](#http-request-message)
+    - [HTTP response message](#http-response-message)
+- [HTTP headers dissected](#http-headers-dissected)
+    - [Well-known header fields](#well-known-header-fields)
+    - [Content-Type](#content-type)
+    - [Content-Length](#content-length)
+    - [Content-Encoding](#content-encoding)
+    - [Content-MD5](#content-md5)
+    - [Expires](#expires)
+    - [Expires & Cache-Control](#expires--cache-control)
+    - [Last-Modified](#last-modified)
+    - [Connection & Upgrade](#connection--upgrade)
+    - [Status codes](#status-codes)
+- [HTTP methods](#http-methods)
+    - [Common HTTP methods](#common-http-methods)
+    - [:bangbang: Activity](#bangbang-activity)
+    - [From domain to IP address](#from-domain-to-ip-address)
+- [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
+    - [URL syntax: query](#url-syntax-query)
+    - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+    - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+    - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+    - [User-related HTTP header fields](#user-related-http-header-fields)
+    - [Client-IP address tracking](#client-ip-address-tracking)
+    - [Fat URLs](#fat-urls)
+    - [HTTP basic authentication](#http-basic-authentication)
+- [Self-check](#self-check)
 
 ## Web standards
 
@@ -77,7 +72,8 @@ It took about 30 years before the Internet was opened to the public (in the late
 In the early days of the web, browsers looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, [Lynx](http://lynx.invisible-island.net/), which you can still use today:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Lynx-wikipedia.png" width="600">
-<sub>Image sourced from Lynx's Wikipedia page</sub>
+
+<sup>Image sourced from Lynx's Wikipedia page</sup>
 
 Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 

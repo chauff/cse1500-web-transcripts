@@ -70,7 +70,7 @@ In the early years of JavaScript, it was considered more of a toy language. Toda
 
 ![Top languages on GitHub](img/L3-github.png)
 
-<sub>Top languages over time (as measured by number of contributors) on GitHub.</sub>
+<sup>Top languages over time (as measured by number of contributors) on GitHub.</sup>
 
 Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on.
 
@@ -149,7 +149,7 @@ function my_func(x,y){
 my_func(5, toPrint);
 ```
 
-<sub>To assess your answers, run the code snippets' in the browser's Web Console.</sub>
+<sup>To assess your answers, run the code snippets' in the browser's Web Console.</sup>
 
 ## Scoping, hoisting and this
 
@@ -438,13 +438,13 @@ The function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/
 
 ![console.table](img/L3-console-table.png)
 
-<sub>Screenshot of Firefox's Web Console.</sub>
+<sup>Screenshot of Firefox's Web Console.</sup>
 
 Another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
 
 ![console.assert](img/L3-console-assert.png)
 
-<sub>Screenshot of Firefox's Web Console.</sub>
+<sup>Screenshot of Firefox's Web Console.</sup>
 
 Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
 
@@ -843,7 +843,7 @@ If you want to examine how web applications make use of events, the browser deve
 
 ![Exploring events](img/L3-event-listeners.png)
 
-<sub>Screenshot of Firefox's Web Console.</sub>
+<sup>Screenshot of Firefox's Web Console.</sup>
 
 ### Document Object Model
 

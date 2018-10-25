@@ -40,7 +40,7 @@ By default, *no code in a module is accessible to other modules*. Any property o
 
 ![Express npm](img/L6-express.png)
 
-<sub>Screenshot taken on October 15, 2018.</sub>
+<sup>Screenshot taken on October 15, 2018.</sup>
 
 :point_up: You see here that modules often depend on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 27,000 other modules.
 
