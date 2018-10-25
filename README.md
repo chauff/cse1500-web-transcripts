@@ -246,19 +246,17 @@ For each lecture we provide a range of materials:
     - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](http://www.profsandhu.com/journals/ic/ieeeic00.pdf). IEEE internet computing, 4(4), pp.36-44.
     - Franken, G., Van Goethem, T. and Joosen, W., 2018. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168.
 
-- :construction: **Lecture 8** on web security ([2018/19 transcript](Lecture-8.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf))
+- **Lecture 8** on web security ([2018/19 transcript](Lecture-8.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf))
   - Required readings: *none*
   - Recommended activities:
     - :headphones: Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
-    - In a "star module" two years ago, two first-year students in TI1506 implemented [CrapStore](https://github.com/nielsdebruin/CrapStore), a Node.js based web app modeled after BadStore (discussed in class). Try it out if you want to test some basic web security issues.
+    - The [OWASP Juice Shop](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) is a more advanced Node.js/Express application that is intentionally insecure to train your web security skills.
   - Recommended readings:
     - :closed_book: If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).
     - [Stanford's CS155](https://crypto.stanford.edu/cs155/): Computer and Network Security course has a number of lectures on web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf)).
     - CERN's [web security lecture](https://indico.cern.ch/event/242207/) contains a lot of the material covered in class.
     - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) provides an extensive list of practical tips, best practices and further readings on the topic.
     - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d).
-    - [Deployment of the app on Heroku and securing it with Helmet](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment).
-    - [Capture the Flag](https://hacks.mozilla.org/2018/03/hands-on-web-security-capture-the-flag-with-owasp-juice-shop/).
   - Relevant scientific publications:
     - Aggarwal, G., Bursztein, E., Jackson, C. and Boneh, D., 2010. [An Analysis of Private Browsing Modes in Modern Browsers](http://crypto.stanford.edu/~dabo/papers/privatebrowsing.pdf). In Proceedings of the 19th USENIX conference on Security. USENIX Association.
     - Kieyzun, A., Guo, P.J., Jayaraman, K. and Ernst, M.D., 2009. [Automatic creation of SQL injection and cross-site scripting attacks](https://dl.acm.org/citation.cfm?id=1555036). In Proceedings of the 31st International Conference on Software Engineering (pp. 199-209). IEEE Computer Society.

@@ -130,11 +130,15 @@ You now have three options:
 
 ## 5. Optional: game deployment / videotaping
 
- To make your game accessible to the public, it needs to be deployed somewhere - `locahost:3000` only goes so far. 
+### Short-term deployment
+
+To make your game accessible to the public, it needs to be deployed somewhere - `locahost:3000` only goes so far.
 
 For short-term deployments (a few minutes/hours), e.g. to show off your game quickly, [ngrok](https://ngrok.com/) is a quick and easy solution. You can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive app this way, as all traffic passes through ngrok servers!*
 
-That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs). 
+### Production deployment
+
+That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 Deploy your app in Heroku according to the instructions linked above, but first make these changes:
 
@@ -148,7 +152,9 @@ git add .
 git commit -n "First commit"
 ```
 
-*If you want to deploy your game elsewhere, feel free to do so*!
+*If you want to deploy your game elsewhere, feel free to do so*! MDN has a good [article](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment) on deploying a Node.js/Express application to production.
+
+### Videotaping
 
 As an alternative, make a screencast of your game and upload it to a video hosting platform such as [vimeo](https://vimeo.com/upload) or [YouTube](https://www.youtube.com/).
 
