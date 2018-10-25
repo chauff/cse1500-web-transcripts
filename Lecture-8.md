@@ -16,6 +16,7 @@
     - [Injection](#injection)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
+        - [SQL injection](#sql-injection)
     - [Broken authentication](#broken-authentication)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
@@ -50,18 +51,18 @@
 
 Web applications are an attractive target for *attackers* (also known as *malicious users*) for several reasons:
 
-- Web applications are open to attack from **different angles** as they rely on various software systems to run: an attacker can go after the **web server** hosting the web application, the **web browser** displaying the application, the **web application** itself if it is programmed without security in mind and of course the **user** is also a point of attack.
+- Web applications are open to attack from **different angles** as they rely on various software systems to run: an attacker can go after the **web server** hosting the web application, the **web browser** displaying the application and the **web application** itself. The **user**, of course, is also a point of attack.
 - Successfully attacking a web application with thousands or millions of users offers a lot of potential gain.
 - "Hacking" today does not require expert knowledge, as easy-to-use automated tools are available that test servers and applications for known vulnerabilities (e.g. [Wapiti](http://wapiti.sourceforge.net/), [w3af](http://w3af.org/)).
 
 When developing a web application, it is useful to ask yourself **how can it be attacked?** and secure yourself against those attacks. While web applications are relatively easy to develop thanks to the tooling available today, they are difficult to secure as that step requires substantial technological understanding on the part of the developer.
 
-Large-scale web portals such as Facebook have partially "outsourced" the finding of security issues to so-called *white hat hackers* - people interested in security issues that earn money from testing companies' defenses and pointing them towards specific security issues. [Facebook, for example, has paid out millions in *bug bounties* by 2016](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/), while [Google paid 36K to a single bug hunter](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html) once.
+Large-scale web portals such as Facebook have partially "outsourced" the finding of security issues to so-called *white hat hackers* - people interested in security issues that earn money from testing companies' defenses and pointing them towards specific security issues. [By 2016, Facebook, for example, had paid out millions in *bug bounties*](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/), while [Google paid 36K to a single bug hunter](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html) once.
 Bug bounty programs are run to this day by, among others, [Facebook](https://www.facebook.com/whitehat), [Google](https://www.google.com/about/appsecurity/reward-program/), [PayPal](https://www.paypal.com/us/webapps/mpp/security-tools/reporting-security-issues), [Quora](https://engineering.quora.com/Security-Bug-Bounty-Program), [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/) and [Microsoft](https://www.microsoft.com/en-us/msrc/bounty).
 
 ## Threat categories
 
-There are a number of overarching threat categories, we introduce each of them with a concrete example security incidence.
+There are a number of overarching threat categories, we introduce each of them with a concrete security incidence.
 
 ### Defacement
 
@@ -79,7 +80,7 @@ Beside defacement, no damage was done. Despite this, the attack was a cause for 
 
 ### Data disclosure
 
-Data disclosure is a threat that is recurrently in the news, when a large company has to admit data disclosure - the most recent example (as of 10/2018) being [Facebook's security breach of 50 million user accounts](https://www.nytimes.com/2018/09/28/technology/facebook-hack-data-breach.html).
+Data disclosure is a threat that is recurrently in the news, when a large company has to admit once again that some of their user data was accessible to malicious users - the most recent example (as of 10/2018) being [Facebook's security breach of 50 million user accounts](https://www.nytimes.com/2018/09/28/technology/facebook-hack-data-breach.html).
 
 A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plaintext, making them an easy target to exploit.
 
@@ -87,7 +88,7 @@ A less well-known example is a [2015 attack against VTech](http://www.computerwo
 
 This threat is the most devastating for organizations that do not have proper backups in place: attackers are deleting data from servers they infiltrate.
 
-Code Spaces ([snapshot of their splash page in 2014](https://web.archive.org/web/20140219025823/http://www.codespaces.com:80/)) used to be a company providing secure hosting options and project management services for companies. Until the day the [*Murder in the Amazon cloud*](http://www.infoworld.com/article/2608076/data-center/murder-in-the-amazon-cloud.html) happened - the title of the article is not an exaggeration. Code Spaces was built on Amazon Web Services (AWS), one of the major cloud computing platform provider used by many companies due to their low cost. Services on demand tend to be much cheaper than running and maintaining one's own hardware. AWS has an easy to use interface to spin up servers---a Web interface that has (of course) an authentication step built-in. An attacker managed to get access to this interface and threatened to shut down the servers and delete the data snapshots (literally possible with a click of a button) unless a ransom was paid. The company did not pay and tried to get access to their control panel back, but by that time the attacker had already deleted almost all resources. As Code Spaces had decided to run the servers **and their backups** from the same AWS account, they were all vulnerable at once. The company clients' data was gone and [Code Spaces shut down](https://web.archive.org/web/20140625045902/http://www.codespaces.com/).
+Code Spaces ([snapshot of their splash page in 2014](https://web.archive.org/web/20140219025823/http://www.codespaces.com:80/)) used to be a company providing secure hosting options and project management services for companies. Until the day the [*Murder in the Amazon cloud*](http://www.infoworld.com/article/2608076/data-center/murder-in-the-amazon-cloud.html) happened - the title of the article is not an exaggeration. Code Spaces was built on Amazon Web Services (AWS), one of the major cloud computing platform providers used by many companies due to their low cost. Services on demand tend to be much cheaper and easier to work with than running and maintaining one's own hardware. AWS has an easy to use interface to spin up servers - a Web interface that has (of course) an authentication step built-in. An attacker managed to get access to this interface and threatened to shut down the servers and delete the data snapshots (literally possible with a click of a button) unless a ransom was paid. The company did not pay and tried to regain control of their AWS control panel. By the time this was achieved, the attacker had already deleted almost all resources. As Code Spaces had decided to run the servers **and their backups** from the same AWS account, they were all vulnerable at once. The company clients' data was gone and [Code Spaces shut down](https://web.archive.org/web/20140625045902/http://www.codespaces.com/).
 
 ### Denial of service
 
@@ -97,9 +98,9 @@ To showcase this threat we use a 2015 Steam store attack, which is extensively d
 
 ### Foot in the door
 
-The most difficult component of a system to secure are its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the system to attackers---this is the foot in the door, from there, attackers try to infiltrate other internal systems.
+The most difficult component of a system to secure are its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the secured system to attackers - this is the foot in the from there. Once in, attackers try to infiltrate other internal systems.
 
-A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague (who knows whom can often be inferred from public appearances, the staff overview on websites, public documents, etc.) and requesting access to a low-level security system. Often, access is simply granted by the unsuspecting user, despite policies to the contrary.
+A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who knows whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is simply granted by the unsuspecting user, despite policies to the contrary.
 
 ### Unauthorized access
 
@@ -158,11 +159,11 @@ sort of man-in-the-middle attack.
 
 ## NodeGoat
 
-One of the best ways of learning about web security is to actually try out a few of the introduced techniques in an actual web application that is vulnerable. As we covered Node.js/Express, most useful to us is a vulnerable web application that was written in Node.js/Express.
+One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we covered Node.js/Express, most useful to us is a vulnerable web application that was written in Node.js/Express.
 
-The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose, it provides an "*environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js*". OWASP stands for [Open Web Application Security Project](https://www.owasp.org); OWASP is an organization whose mission is to improve software security. And creating a vulnerable application to showcase the worst security issues, is one way to train software engineers in web security.
+The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose. It provides an *"environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues, is one way to train software engineers in web security.
 
-The application NodeGoat implements is an *Employee Retirement Savings Management* system called RetireEasy - you already saw a glimpse of it in the previous section.
+The NodeGoat project implements an *Employee Retirement Savings Management* system called RetireEasy - we already saw a glimpse of it in the previous section.
 
 Apart from providing a vulnerable application, NodeGoat also provides a helpful [tutorial](http://nodegoat.herokuapp.com/tutorial) on the implemented vulnerabilities, how to execute attacks and, importantly, how to mitigate them.
 
@@ -172,17 +173,17 @@ In the following sections, we will discuss the OWASP Top 10 vulnerabilities (der
 
 ### Injection
 
-Injection attacks exploit the fact that input is interpreted by the server without any checks. A malicious user can create input that lead to unintended command executions on the server-side.
+Injection attacks exploit the fact that input is interpreted by the server without any checks. A malicious user can create input that leads to unintended command executions on the server.
 
 Input for injection attacks can be created via:
 
 - Parameter manipulation of HTML forms (e.g. input fields are filled with JavaScript code);
-- URL manipulation (remember: URLs often contain parameters);
+- URL parameter manipulation;
 - HTTP header manipulation;
-- Hidden HTML field manipulation;
+- Hidden form field manipulation;
 - Cookie manipulation.
 
-Command executions on the server can take multiple forms, we first consider **OS command injection**:
+Injection attacks on the server can take multiple forms, we first consider **OS command injection**:
 
 ![OS command injection](img/L8-os-command-injection.png)
 
@@ -217,9 +218,13 @@ var isEmail = validator.isEmail('while(1)'); //false
 
 As stated earlier, `eval()` should be avoided at all costs.
 
+#### SQL injection
+
+One important injection type is missing in the above list: **SQL injections**. They will be covered in the database part of this course.
+
 ### Broken authentication
 
-Recall that in order to establish *sessions*, cookies are used. A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
+Recall that in order to establish *sessions*, cookies are used ([Lecture 7](Lecture-7.md)). A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
 
 ![Session](img/L8-sessions.png)
 
@@ -256,7 +261,7 @@ An attacker can exploit broken authentication and session management functions t
 
 XSS stands for **cross-site scripting**.
 
-*XSS flaws occur when an application includes user supplied data in a page sent to the browser without properly validating or escaping that content.* (OWASP)
+*"XSS flaws occur when an application includes user supplied data in a page sent to the browser without properly validating or escaping that content."* (OWASP)
 
 The browser executes JavaScript code all the time; this code is **not** checked by anti-virus software. The browser's sandbox is the main line of defense.
 
@@ -395,7 +400,7 @@ If the victim access the website that is under the attacker's control (e.g. beca
 3. Click *Profile* and check the current *Bank Account* and *Bank Routing* numbers. 
 4. Now save the following HTML document:
 
-``html
+```html
 <html lang="en">
     <head>
     </head>
@@ -441,7 +446,11 @@ Not only the application itself needs to be kept up-to-date. The server's operat
 
 Let's cite OWASP one last time: *"An attacker links to an unvalidated redirect and tricks victims into clicking it. Victims are more likely to click on it, since the link is to a valid site."*
 
-Here is an example scenario: imagine a web application includes a route called `redirect`. That route takes a URL as parameter and redirects to the URL. Once an attacker finds a route that enables such redirects, the attacker creates a malicious URL that redirects users to her own site for phishing, e.g. `http://www.mygame.nl/redirect?url=www.malicious-url.com`. The user, when seeing this URL in an email or message forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`. Instead of `mygame.nl` it leads to `www.malicious-url.com` which the attacker has under control. If the user does not check the address bar anymore, she will remain under the belief to be on `mygame.nl` - and if she is asked to reenter her credit card information, she may just do that.
+Here is an example scenario: imagine a web application includes a route called `redirect`. That route takes a URL as parameter and redirects to the URL. Once an attacker finds a route that enables such redirects, the attacker creates a malicious URL that redirects users to her own site for phishing, e.g.
+
+`http://www.mygame.nl/redirect?url=www.malicious-url.com`. 
+
+The user, when seeing this URL in an email or message forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`. Instead of `mygame.nl` it leads to `www.malicious-url.com` which the attacker has under control. If the user does not check the address bar anymore, she will remain under the belief to be on `mygame.nl` - and if she is asked to reenter her credit card information, she may just do that.
 
 #### How to avoid it
 
@@ -468,3 +477,25 @@ Here are a few questions you should be able to answer after having followed the 
     2. Using the "keep me logged in" option offered by Web applications.
     3. Using a Web application with weak encryption.
     4. Using the browser’s "remember this password" option when logging into a Web application.
+
+3. What does the *same-origin policy* refer to (recall [Lecture 4](Lecture-4.md), in particular Ajax)? How is this related to web security?
+
+4. Which attack type does this scenarios describe: An attacker sends a browser request to a benign Web site using the credentials of another user (the victim).
+
+5. Which attack type does this scenarios describe: A vulnerability exists if an attacker can inject scripting code into pages generated by a Web application.
+
+6. You have written a Web application with a server-side component (a Node.js script). The Web app requires a number of cookies (all set by the server-side component) to function properly. To minimize the chance of attack you have an idea: you develop a secret function F that computes for each cookie value a checksum. F is only known to you (the owner of the Web application); F cannot be guessed. Initially when each cookie is created, the checksum is appended to the cookie value. When clients send existing cookies back to the server, your server-side component recomputes the checksum of the cookie value (without taking the appended checksum into account) - if the computed checksum is at least as large as the one sent back with the cookie, your application accepts the cookie as valid and non-malicious. Against which attack does this setup protect the Web application?
+
+7. Which of the following approaches is not suitable for an attacker to attempt the injection of malicious data into a server-side application?
+    - URL parameter manipulation
+    - Hidden HTML field manipulation
+    - Cookie manipulation
+  
+8. What does a signed cookie protect against?
+
+9.  Which of the following approaches is most likely to secure an application against cross-site request
+forgery?
+    - Use of state-of-the-art encryption algorithms to store the data on the server.
+    - Use of reauthentication and CAPTCHA mechanisms.
+    - Avoiding the use of direct object references; the use of objects should include an authorization subroutine.
+    - Validating all user input and escaping generated output.
