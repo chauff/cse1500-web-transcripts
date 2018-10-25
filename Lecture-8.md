@@ -20,6 +20,8 @@
         - [NodeGoat](#nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [XSS](#xss)
+        - [NodeGoat](#nodegoat)
+        - [How to avoid it](#how-to-avoid-it)
     - [Direct object references](#direct-object-references)
     - [Misconfiguration](#misconfiguration)
     - [Sensitive data](#sensitive-data)
@@ -243,6 +245,45 @@ An attacker can exploit broken authentication and session management functions t
 - Ensure that users' login data is stored securely.
 
 ### XSS
+
+XSS stands for **cross-site scripting**.
+
+*XSS flaws occur when an application includes user supplied data in a page sent to the browser without properly validating or escaping that content.* (OWASP)
+
+The browser executes JavaScript code all the time; this code is **not** checked by anti-virus software. The browser's sandbox is the main line of defense.
+
+XSS attacks come in two flavours: stored XSS and reflected XSS.
+
+**Stored XSS**: the injected script is **permanently stored on the target server** (e.g. in a database or text file). The victim retrieves the malicious script from the server, when she requests the stored information. This attack is also known as **persistent or Type-I** XSS.
+
+A common example :point_down: of stored XSS are forum posts: if a malicious user is able to add a comment to a page that is not validated by the server, the comment can contain JavaScript code. The next user (victim) that views the forum posts receives the forum data from the server, which now includes the malicious code. This code is then executed by the victim's browser.
+
+```console
+http://myforum.nl/add_comment?c=Let+me+…
+http://myforum.nl/add_comment?c=<script>…
+```
+
+In a **reflected XSS** attack (also known as **non-persistent or Type-II** attack), the injected script is not stored on the server; instead, it is *reflected* off the target server. A victim may for instance receive an email with a tainted link that contains malicious URL parameters.
+
+In the example :point_down: the tainted URL contains JavaScript code as query. An unsuspecting user (the victim) may receive this URL in an email and trust it, because she trusts http://myforum.nl. The malicious code is reflected off the server and ends up in the victim's browser.
+
+```console
+http://myforum.nl/search?q=Let+me+…
+http://myforum.nl/search?q=<script>…
+```
+
+#### NodeGoat
+
+1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
+2. Login with `user1` (user) and `User1_123` (password).
+3. Click *Profile* on the left-hand tab.
+4. In the *First Name* field, type `<script>alert("Hello there!")</script>`
+5. Click *Submit*. You should now see an alert dialogue.
+6. Head to the top-right corner and check the profile by clicking on the *Profile* link. Again, the alert dialogue pops up as the code has been stored on the server. This is thus a stored XSS attack.
+
+#### How to avoid it
+
+As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g. escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
 
 ### Direct object references
 
