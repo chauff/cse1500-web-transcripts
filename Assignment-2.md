@@ -29,7 +29,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The PDF and code has to be uploaded by one of the team members to :bulb: Brightspace under **Assignment 2** before the assessment session with the TAs.
 
-**To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and the client-server communication has to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that you pass, if your app does not (yet) deal with players aborting the game in the middle or making undesired moves. In addition, while we recommended to fix the issues ESLint (or any other linter you use) complains about, linter compliance does not impact your assessment.
+**To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and the client-server communication has to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that you pass, if your app does not (yet) deal with players aborting the game in the middle or making undesired moves. In addition, while we recommended to fix the issues [ESLint](https://eslint.org/) (or any other linter you use) complains about, linter compliance does not impact your assessment.
 
 ## 1. Boilerplate code
 
@@ -39,7 +39,7 @@ We will use it to set up the code structure of our game application.
 
 First of all, create a directory for this course and `cd` into it.
 
-Then, install the necessary npm package `express-generator`. You can use one of two installation types: global or local installation. We recommend the global installation, as `express-generator` will be used from the command line, is useful for many Node.js projects and should thus be accessible from any directory (in line with [npm guidelines](https://docs.npmjs.com/getting-started/installing-npm-packages-globally)). Packages that are only useful for the current project you are working on should be installed locally.
+Then, install the necessary npm package `express-generator`. You can use one of two installation types: global or local installation. We recommend the global installation, as `express-generator` will be used from the command line, is useful for many [Node.js](https://nodejs.org/) projects and should thus be accessible from any directory (in line with [npm guidelines](https://docs.npmjs.com/getting-started/installing-npm-packages-globally)). Packages that are only useful for the current project you are working on should be installed locally.
 
 For a **local** installation (i.e. the package is installed in a folder in the current directory), use:
 
@@ -90,7 +90,7 @@ Your terminal should show something like this:
    create : myapp/bin/www
 ```
 
-We use `ejs` as our view engine - you will hear more about it in a later lecture. When you now look at your working directory, you should see a folder `myapp` that contains the boilerplate setup. As part of it, a `package.json` file was generated, which contains a list of dependencies that your project requires. You will *not* yet find a `node_modules` folder with the npm packages the project requires.
+We use [ejs](http://ejs.co/) as our view engine - you will hear more about it in a later lecture. When you now look at your working directory, you should see a folder `myapp` that contains the boilerplate setup. As part of it, a `package.json` file was generated, which contains a list of dependencies that your project requires. You will *not* yet find a `node_modules` folder with the npm packages the project requires.
 
 In order to install those, `cd` into the `myapp` directory and execute `npm install`. Now, `node_modules` is created and populated with the required packages. The Node environment will install all packages listed in `package.json`.
 
@@ -129,7 +129,7 @@ Now that you have made your plan and decided on the use of the design patterns, 
 - Once a player makes a move, the validity of the move is checked and invalid moves are rejected.
 - Reduce the redundancy in the code as much as possible (improves code maintainability).
 - Create as few global variables as possible (improves code maintainability).
-- Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` (besides the obligatory script loading tags) but instead reside in the corresponding `[appname]/public/javascripts` folder.
+- Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` (besides the obligatory script loading tags) but instead reside in the corresponding `myapp/public/javascripts` folder.
 
 ---
 :point_right: Hints:
@@ -138,7 +138,7 @@ Now that you have made your plan and decided on the use of the design patterns, 
 - You can, but do not have to use ES6 features. Check http://es6-features.org if you are interested in what ES6 has to offer. The one feature of ES6 we recommend to use is `let`; the [scoping section of Lecture 3](Lecture-3.md#scoping) explains why this is the case.
 - Be mindful of the time you have for your implementation. Go for the fast solution if one is available, and move on to the next item to implement instead of being hung up on one feature for too long. For example, the [word guessing demo game](demo-code/balloons-game) requires player 1 to enter a word that player 2 has to guess. There are different ways to ask the player to provide a word, the simplest is the use of [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt). Unarguably there are visually more appealing solutions, however, this requires only one line of code, and is sufficient for our project. When you have time left, you can always go back to a feature and improve it.
 - When you test your code's functionality, test it in two browsers. If it works in one, but not the other, check the browser's [Web Console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) output; you will learn quickly whether you used a feature in your code that only one of your chosen browsers supported.
-- JavaScript is a dynamic language, important to remember when debugging.
+- JavaScript is a dynamic language, keep this in mind when you are debugging.
 - The browser development tools are extremely helpful to debug client-side JavaScript. Use them.
 - Do not be afraid to use place-holders (e.g. in our demo game, we start off with a fixed string to guess).
 - You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is expected. For instance, for now you may want to check the validity of players' moves on the client-side (which is fine), but you may later decide to move this functionality to the server-side.
@@ -175,8 +175,6 @@ This is all the code you need for your server-side for now. Save the file, and s
 node app.js 3000
 ```
 
-or start the server via VSC's Debug panel - a configuration file `launch.json` will be created with configurable parameters.
-
 Here, `3000` is the port number, you can safely use integers above 1024. Just make sure that no other application binds to the same port. Then, open your browser and use the following URLs (change the port number if you used a different one):
 
 - http://localhost:3000/game.html
@@ -184,9 +182,9 @@ Here, `3000` is the port number, you can safely use integers above 1024. Just ma
 
 If you see the two HTML files, then, congratulations, you have successfully implemented your first Node.js server!
 
-You can also use `npm start`. This command runs an arbitrary command specified in `package.json`'s `start` property. By default this property contains `"start": "nodejs ./bin/www"`. Replace this line by `"start": "nodejs app.js"` in order to execute your program entry point which, in this case, is `app.js`.
+You can also use `npm start`. This command runs an arbitrary command specified in `package.json`'s `start` property. By default this property contains `"start": "nodejs ./bin/www"`. Replace this line by `"start": "nodejs app.js"` in order to execute your program entry point which, in this case, is `app.js`. Since we require your submission to be runnable with `npm start`, please make sure you have followed these steps! 
 
-If instead of the command line you can also start your server from within VSC. Use the debug panel; a `launch.json` file will be generated for you, which needs to be updated with program specific property values. As an example, for the demo game, my `launch.json` file looks follows:
+Instead of using the command line, you can also start your server from within VSC. Use the debug panel; a `launch.json` file will be generated for you, which needs to be updated with program specific property values. As an example, for the demo game, my `launch.json` file looks follows:
 
 ```console
 {
@@ -208,7 +206,7 @@ If instead of the command line you can also start your server from within VSC. U
 
 ### 3.2) Your first routes
 
-In the next step, let's make our two html files available with modern web tech, i.e. routes:
+In the next step, let's make our two HTML files available with modern web tech, i.e. routes:
 
 URLs ending in  `*.html` are considered old-fashioned, modern web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. If you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute. Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
 
@@ -220,11 +218,11 @@ Before you are implementing the client-server communication via WebSockets, it i
 
 For example, your game may have different types of players (in the demo game, we have two types of players, a *word creator* and a *word guesser*) and the type of player a client corresponds to, should be communicated to each client. The moves need to be communicated between clients, facilitated by the server (the **word guesser** wants to send the character guessed to the **word creator**). Who won the game may be important for the server to log and here one player type may be responsible for communicating this to the server; and so on.
 
-Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need depends on your chosen game to implement. As a concrete example, in the demo game, all message types are listed in [messages.js](demo-code/balloons-game/public/javascripts/messages.js).
+Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need, depends on your chosen game to implement. As a concrete example, in the demo game, all message types are listed in [messages.js](demo-code/balloons-game/public/javascripts/messages.js).
 
 ### 3.4) WebSockets: a minimum viable examples
 
-Let us now connect our gamers to each other. Time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws), one of the most popular WebSocket implementations for Node.js.
+Let us now connect our gamers to each other: time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws), one of the most popular WebSocket implementations for Node.js.
 
 First, let's install it (the `--save` option ensures that the dependency gets added to your `package.json` file):
 
@@ -262,4 +260,4 @@ Ensure that your app works as intended in two major browsers.
 
 We suggest you check the ESLint (or any other linter) output: it should help you to spot easy-to-make mistakes, which in turn should help you write better code. 
 
-Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
+Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires, should be described in an accompanying `README` file.
