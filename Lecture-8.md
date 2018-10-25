@@ -372,6 +372,18 @@ Use of functions should always include an authorization subroutine.
 
 ### CSRF
 
+CSRF stands for **Cross-Site Request Forgery**.
+
+In the words of OWASP: *"An attacker creates forged HTTP requests and tricks a victim into submitting them via image tags, XSS, or numerous other techniques. If the user is authenticated, the attack succeeds."*
+
+Here is an example scenario: imagine a Web application that allows users to transfer funds from their accounts to other accounts: `http://mygame.nl/transferFunds?amount=100&to=342432` (the URL contains the amount and which account to send it to). The victim is already authenticated. An attacker constructs a request to transfer funds to her own account and embeds it in an image request stored on a site under her control:
+
+```html
+<img src="http://mygame.nl/transferFunds?amount=1000&to=666" width="0" height="0" />
+```
+
+If the victim access the website that is under the attacker's control, the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will take place.
+
 ### Insecure components
 
 ### Redirects
