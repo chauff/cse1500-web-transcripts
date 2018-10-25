@@ -23,6 +23,8 @@
         - [NodeGoat](#nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Direct object references](#direct-object-references)
+        - [NodeGoat](#nodegoat)
+        - [How to avoid it](#how-to-avoid-it)
     - [Misconfiguration](#misconfiguration)
     - [Sensitive data](#sensitive-data)
     - [Access controls](#access-controls)
@@ -286,6 +288,43 @@ http://myforum.nl/search?q=<script>…
 As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g. escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
 
 ### Direct object references
+
+Web applications often make use of direct object references when generating a HTTP response. We have already seen this in a code snippet in [Lecture 6](Lecture-6.md):
+
+```javascript
+var todoTypes = {
+    important: ["TI1506","OOP","Calculus"],
+    urgent: ["Dentist","Hotel booking"],
+    unimportant: ["Groceries"],
+};
+
+app.get('/todos/:type', function (req, res, next) {
+    var todos = todoTypes[req.params.type];
+    if (!todos) {
+        return next(); // will eventually fall through to 404
+    }
+    res.send(todos);
+});
+```
+
+Here, we use the routing parameter `:type` as key of the `todoTypes` object. Often, applications do not verify whether a user requesting a particular route is authorized to access the target object. This leads to so-called *insecure direct object references*. A malicious user can test different routes to determine whether this issue exists.
+
+Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' todo lists in this manner.
+
+#### NodeGoat
+
+1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
+2. Login with `user1` (user) and `User1_123` (password).
+3. Click *Allocations* on the left-hand tab.
+4. Check the URL, it should be http://nodegoat.herokuapp.com/allocations/2.
+5. Check the name of the *Asset Allocations*, it should be *boo*.
+6. Now change the URL of step (4) by replacing the `/2` with `/3` or `/4`. You should now see the *Asset Allocations* of a different users, without requiring any login data.
+
+#### How to avoid it
+
+- Avoid the use of direct object references (indirect is better).
+- Use of objects should always include an authorization subroutine.
+- Avoid exposing object IDs, keys and filenames to users.
 
 ### Misconfiguration
 
