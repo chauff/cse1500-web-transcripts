@@ -32,6 +32,7 @@
     - [Access controls](#access-controls)
         - [How to avoid it](#how-to-avoid-it)
     - [CSRF](#csrf)
+        - [How to avoid it](#how-to-avoid-it)
     - [Insecure components](#insecure-components)
     - [Redirects](#redirects)
 - [Self-check](#self-check)
@@ -384,10 +385,17 @@ Here is an example scenario: imagine a Web application that allows users to tran
 
 If the victim access the website that is under the attacker's control, the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will take place.
 
+#### How to avoid it
+
+Use an unpredictable token (unique per session) in the HTTP request which cannot (easily) be reconstructed by an attacker.
+
+Use reauthentication and (re)CAPTCHA mechanisms:
+
+![Captcha](img/L8-captcha.png)
+
 ### Insecure components
 
 ### Redirects
-
 
 ## Self-check
 
@@ -398,3 +406,9 @@ Here are a few questions you should be able to answer after having followed the 
     2. The attacker can inject additional HTTP requests with your source address.
     3. The attacker can modify HTTP requests.
     4. The attacker can drop HTTP requests.
+   
+2. As a Web application user, what makes you most likely to fall victim to a CSRF attack?
+    1. Using a Web application that is not relying on SSL/TLS.
+    2. Using the "keep me logged in" option offered by Web applications.
+    3. Using a Web application with weak encryption.
+    4. Using the browser’s "remember this password" option when logging into a Web application.
