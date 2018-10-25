@@ -30,6 +30,7 @@
     - [Sensitive data](#sensitive-data)
         - [How to avoid it](#how-to-avoid-it)
     - [Access controls](#access-controls)
+        - [How to avoid it](#how-to-avoid-it)
     - [CSRF](#csrf)
     - [Insecure components](#insecure-components)
     - [Redirects](#redirects)
@@ -361,7 +362,13 @@ If a Web application relies on outdated encryption strategies to secure sensitiv
 
 ### Access controls
 
+A malicious user, who is authorized to access a Web application (e.g. a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g. from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
+This attack is similar to [Direct object references](#direct-object-references). A malicious user tests a range of target URLs that should require authentication. This is especially easy for large Web frameworks which come with a number of default routes enabled.
+
+#### How to avoid it
+
+Use of functions should always include an authorization subroutine.
 
 ### CSRF
 
