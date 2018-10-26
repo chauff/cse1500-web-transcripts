@@ -19,7 +19,7 @@ The database materials are not included here!
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
-- [Twitter accounts to follow.](#twitter-accounts-to-follow)
+- [Twitter accounts to follow](#twitter-accounts-to-follow)
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [Web lectures](#web-lectures)
@@ -126,9 +126,9 @@ and a game screen:
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
-## Twitter accounts to follow.
+## Twitter accounts to follow
 
-Twitter is a great resource to hear the latest and greatest about the web stack. This is a list of accounts I recommend to follow:
+Twitter is a great resource to hear the latest and greatest about the web stack. Here is a list of accounts we recommend to follow:
 - [Franziska Hinkelmann](https://twitter.com/fhinkel), working on Node.js at Google
 - [Lin Clark](https://twitter.com/linclark) creates very good and elaborate code cartoons at Mozilla
 - [V8](https://twitter.com/v8js), Google's JavaScript engine
