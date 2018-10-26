@@ -125,6 +125,24 @@ and a game screen:
 Students who do not have a lot of prior knowledge often struggle to get started.
 Here is a [list of useful interactive exercises](nodeschool-exercises.md) and how they match up with each lecture. Each of these exercises is small, taking just a few minutes (sometimes less than a minute) to solve.
 
+## Twitter accounts to follow.
+
+Twitter is a great resource to hear the latest and greatest about the web stack. This is a list of accounts I recommend to follow:
+- [Franziska Hinkelmann](https://twitter.com/fhinkel), engineer working on Node.js at Google
+- [Lin Clark](https://twitter.com/linclark) makes very good code cartoons and works at Mozilla
+- [V8](https://twitter.com/v8js), Google's JavaScript engine
+- [JavaScript Daily](https://twitter.com/JavaScriptDaily), does exactly as the name suggests
+- [AmsterdamJS](https://twitter.com/amsterdamjs), local JavaScript community
+- [Node.js](https://twitter.com/nodejs) (of course)
+- [Axel Rauschmeyer](https://twitter.com/rauschma), a JavaScript book author
+- [Addy Osmani](https://twitter.com/addyosmani), a Googler working on Google Chrome (well known for his JavaScript design patterns book)
+- [Wes Bos](https://twitter.com/wesbos), a well-known instructor of the web stack
+- [Mozilla Hacks](https://twitter.com/mozhacks), official Mozilla accounts for web developers
+- [Visual Studio Code](https://twitter.com/code)
+- [JavaScript Conference Series](https://twitter.com/jsconf) - look out for their conference talks, usually posted on YouTube
+- [Chrome DevTools](https://twitter.com/ChromeDevTools), tips and tricks of the dev tool trade
+- [Syntax](https://twitter.com/syntaxfm), podcasts for web developers
+
 ## Web development resources
 
 The practical assignments of this work often require looking up Web development specifics. Two good resources, in general, for Web engineering are [Mozilla's MDN portal](https://developer.mozilla.org/en-US/) and [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).
