@@ -1,5 +1,9 @@
 # Node.js: JavaScript on the server <!-- omit in toc -->
 
+:point_right: [Overview of all Lecture 4 materials](README.md#lecture-4)
+
+*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
+
 ## Table of Content <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Introduction to Node.js](#introduction-to-nodejs)

@@ -1,5 +1,7 @@
 # HTML: the language of the Web <!-- omit in toc -->
 
+:point_right: [Overview of all Lecture 2 materials](README.md#lecture-2)
+
 ## Table of Content <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)

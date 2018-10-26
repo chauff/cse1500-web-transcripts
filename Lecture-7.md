@@ -1,5 +1,9 @@
 # Cookies, sessions and third-party authentication <!-- omit in toc -->
 
+:point_right: [Overview of all Lecture 7 materials](README.md#lecture-7)
+
+*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
+
 ## Table of Content <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Recall the HTTP lecture](#recall-the-http-lecture)

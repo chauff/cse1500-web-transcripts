@@ -1,5 +1,7 @@
 # JavaScript: the language of browser interactions <!-- omit in toc -->
 
+:point_right: [Overview of all Lecture 3 materials](README.md#lecture-3)
+
 *This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
 *At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
