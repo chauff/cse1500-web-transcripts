@@ -92,7 +92,6 @@ host:httpbin.org
 Content-type:text/plain
 Content-length:12
 [carriage return]
-[carriage return]
 Hello World!
 [carriage return]
 ```
