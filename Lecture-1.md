@@ -1,6 +1,6 @@
 # HTTP: the language of Web communication <!-- omit in toc -->
 
-*Note: this material is taught in Lecture 1 and about half of Lecture 2.*
+[Overview of all Lecture 1 materials](Readme.md#lecture-1)
 
 ## Table of Content <!-- omit in toc -->
 
