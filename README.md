@@ -131,7 +131,7 @@ Here is a [list of useful interactive exercises](nodeschool-exercises.md) and ho
 Twitter is a great resource to hear the latest and greatest about the web stack. Here is a list of accounts we recommend to follow
 
 - [Franziska Hinkelmann](https://twitter.com/fhinkel), working on Node.js at Google
-- [Lin Clark](https://twitter.com/linclark) creates very good and elaborate code cartoons at Mozilla
+- [Lin Clark](https://twitter.com/linclark) makes technical challenges accessible to the wider public for Mozilla
 - [V8](https://twitter.com/v8js), Google's JavaScript engine
 - [JavaScript Daily](https://twitter.com/JavaScriptDaily), does exactly as the name suggests
 - [AmsterdamJS](https://twitter.com/amsterdamjs), local JavaScript community
