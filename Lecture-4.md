@@ -7,6 +7,7 @@
 ## Table of Content <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Introduction to Node.js](#introduction-to-nodejs)
+    - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
     - [Event-driven and non-blocking](#event-driven-and-non-blocking)
 - [Node.js in examples](#nodejs-in-examples)
     - [:bangbang: Watching a file for changes](#bangbang-watching-a-file-for-changes)
@@ -53,6 +54,15 @@ Node.js is by now a well-established platform; the most important milestones bet
 - 2017: Node becomes a **first-class citizen of V8**. This means that no V8 code change is allowed to break Node.
 
 Node.js is widely used today, in [Stack Overflow's 2017 developer survey](https://insights.stackoverflow.com/survey/2017) Node.js was the most popular framework in the *Frameworks, Libraries, and Other Technologies* section. If you want to know more about how the V8 engine and Node.js fit together, watch [this keynote by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
+
+### Node.js vs. client-side JavaScript
+
+Mariko Kosaka, another Googler, created this image to compare client-side JavaScript and Node.js:
+
+![Node.js vs client-side JS](img/L4-nodejs-clientjs.png)
+<sup>Source: <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What IS Node.js 🤔❓❓<br><br>(Proposal to stop calling server side JavaScript✨) <a href="https://t.co/IhPt8UHnPN">pic.twitter.com/IhPt8UHnPN</a></p>&mdash; Mariko Kosaka (@kosamari) <a href="https://twitter.com/kosamari/status/837650274672082944?ref_src=twsrc%5Etfw">March 3, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></sup>
+
 
 ### Event-driven and non-blocking
 
