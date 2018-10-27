@@ -60,8 +60,8 @@ Node.js is widely used today, in [Stack Overflow's 2017 developer survey](https:
 Mariko Kosaka, another Googler, created this image to compare client-side JavaScript and Node.js:
 
 ![Node.js vs client-side JS](img/L4-nodejs-clientjs.png)
-<sup>Source: <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What IS Node.js 🤔❓❓<br><br>(Proposal to stop calling server side JavaScript✨) <a href="https://t.co/IhPt8UHnPN">pic.twitter.com/IhPt8UHnPN</a></p>&mdash; Mariko Kosaka (@kosamari) <a href="https://twitter.com/kosamari/status/837650274672082944?ref_src=twsrc%5Etfw">March 3, 2017</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></sup>
+
+Image source: <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What IS Node.js 🤔❓❓<br><br>(Proposal to stop calling server side JavaScript✨) <a href="https://t.co/IhPt8UHnPN">pic.twitter.com/IhPt8UHnPN</a></p>&mdash; Mariko Kosaka (@kosamari) <a href="https://twitter.com/kosamari/status/837650274672082944?ref_src=twsrc%5Etfw">March 3, 2017</a></blockquote>
 
 
 ### Event-driven and non-blocking
