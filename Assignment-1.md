@@ -89,9 +89,9 @@ PUT /put HTTP/1.1
 host:httpbin.org
 Content-type:text/plain
 Content-length:12
-[carriage return]
+<carriage return>
 Hello World!
-[carriage return]
+<carriage return>
 ```
 
 With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. The server sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
@@ -121,8 +121,7 @@ telnet httpbin.org 80
 
 HEAD /basic-auth/user/passwd HTTP/1.1
 host:httpbin.org
-[carriage return]
-[carriage return]
+<carriage return>
 ```
 
 Which status code do you receive now? Next, use the `Authorization: Basic [base-64 encoded username/password string]` header field to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g. https://codebeautify.org/base64-encode.
@@ -134,7 +133,7 @@ Now close the TCP connection and start a new one, using again:
 telnet httpbin.org 80
 ````
 
-Request the same page -­ what happens? Is the behavior the same as reloading the page in the browser? Explain why / why not.
+Request the same page - what happens? Is the behavior the same as reloading the page in the browser? Explain why / why not.
 
 ---
 
