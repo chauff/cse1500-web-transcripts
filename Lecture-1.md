@@ -445,7 +445,7 @@ One tool to practice HTTP request writing is `telnet`. Telnet is a protocol defi
 
 Software that implements the client-side part of the protocol is also called telnet. Telnet **opens a TCP connection to a web server** (this requires a port number, for now just take this information as-is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a web client and all returned data is displayed in the terminal.
 
-Try out the following examples yourself (everything indented is returned by the server and does not have to be typed out; `[carriage return]` indicates when/how often to press `<Enter>`):
+Try out the following examples yourself. Every line of the protocol is completed with a carriage return (i.e. press `<Enter>`). The protocol also has *empty lines*, those are indicated below with a `<carriage return>` tag (again, just press `<Enter>`). **All indented lines are returned by the server and do not have to be typed out.**
 
 **Use `HEAD` to get information about the page**
 
@@ -456,8 +456,7 @@ telnet microsoft.com 80
     Escape character is ‘^]’
 HEAD / HTTP/1.1
 host:microsoft.com
-[carriage return]
-[carriage return]
+<carriage return>
     HTTP/1.1 301 Moved Permanently
     [...]
     Location: http://www.microsoft.com
@@ -472,8 +471,7 @@ telnet www.microsoft.com 80
     Escape character is ‘^]’
 HEAD / HTTP/1.1
 host:www.microsoft.com
-[carriage return]
-[carriage return]
+<carriage return>
     HTTP/1.1 200 OK
     [...]
     Content-Type: text/html
@@ -485,8 +483,7 @@ host:www.microsoft.com
 telnet www.microsoft.com 80
 GET / HTTP/1.1
 host:www.microsoft.com
-[line feed]
-[line feed]
+<carriage return>
 ```
 
 Check out Microsoft's message that is returned here; investigate what a *User-Agent string* is.
@@ -500,8 +497,7 @@ telnet www.microsoft.com 80
     Escape character is ‘^]’
 GET /en/us/default.aspx?redir=true HTTP/1.1
 host:www.microsoft.com
-[line feed]
-[line feed]
+<carriage return>
     HTTP/1.1 301 Moved Permanently
     Location: http://www.microsoft.com/en-us/default.aspx?redir=true
 ```
