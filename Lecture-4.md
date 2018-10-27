@@ -57,7 +57,7 @@ Node.js is widely used today, in [Stack Overflow's 2017 developer survey](https:
 
 ### Node.js vs. client-side JavaScript
 
-[Mariko Kosaka](https://twitter.com/kosamari), another Googler, created this image to compare client-side JavaScript and Node.js:
+[Mariko Kosaka](https://twitter.com/kosamari), another Googler, shared this image to compare client-side JavaScript and Node.js on Twitter:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What IS Node.js 🤔❓❓<br><br>(Proposal to stop calling server side JavaScript✨) <a href="https://t.co/IhPt8UHnPN">pic.twitter.com/IhPt8UHnPN</a></p>&mdash; Mariko Kosaka (@kosamari) <img src="https://pbs.twimg.com/media/C5_ue1TWYAA0C1R.jpg">March 3, 2017</blockquote>
 
