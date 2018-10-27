@@ -50,7 +50,7 @@ The PDF and code have to be uploaded by one of the team members to :bulb: Bright
 
 This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`).
 
-Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: `weer.nl/regenradar/nederland`. Start your *conversation* with the web server by typing the following into the terminal:
+Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal:
 
 ```console
 telnet weer.nl 80
