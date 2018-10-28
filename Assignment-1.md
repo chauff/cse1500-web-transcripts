@@ -4,7 +4,11 @@ The first part of this assignment gives you hands-­on experience in **HTTP**. I
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). Use this assignment to set up a collaborative coding environment within your team. Assignment 2 will require extensive JavaScript programming that requires both team members to contribute.
+Remember that this is a group assignment!
+
+Enroll yourself into a group on Brightspace: head to **Collaboration>>Groups** and self-enroll into an available group; we have set up 500 groups in total. Pick a group and let your team member know the group name (e.g. *CSE1 88*), so both of you enroll into the same group.
+
+Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). Use this assignment to set up a collaborative coding environment within your team. Assignment 2 will require extensive JavaScript programming that requires both team members to contribute.
 
 ### Overview of deliverables and upload procedure
 
