@@ -27,7 +27,8 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 *Note: we expect a single source code submission, **not** one code submission per task!*
 
-The PDF and code has to be uploaded by one of the team members to :bulb: Brightspace under **Assignment 2** before the assessment session with the TAs.
+The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uplodated to the same directory!
+Make sure to name your files with an **A2** prefix!
 
 **To pass this assignment, you must have completed 2.1/2.2/3.3. Your application needs to include the required client/server components and the client-server communication has to be based on WebSockets. You pass if your app can deal with players executing the game as intended.** This means that you pass, if your app does not (yet) deal with players aborting the game in the middle or making undesired moves. In addition, while we recommended to fix the issues [ESLint](https://eslint.org/) (or any other linter you use) complains about, linter compliance does not impact your assessment.
 

@@ -26,9 +26,8 @@ This assignment requires you to finalize your application's source code and thus
 
 Submit your code in the form of a zipped folder. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
-*Note: we expect a single source code submission, **not** one code submission per task!*
-
-The code has to be uploaded by one of the team members to Brightspace under **Assignment 3** before the assessment session with the TAs.
+The code has to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uplodated to the same directory!
+Make sure to name your files with an **A3** prefix!
 
 **To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in Assignment 2) **AND with players trying to make invalid moves.** 
 
