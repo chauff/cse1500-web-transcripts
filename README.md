@@ -89,7 +89,7 @@ We have two assessment moments: one for the Web technology assignments and one f
 - Week 2.2: (L3) JavaScript and (L4) Node.js
 - Week 2.3: (L5) CSS and (L6) Node.js (advanced topics)
 - Week 2.4: (L7) Cookies & sessions and (L8) web security
-- Week 2.5: DB topics; **midterm on December 13** (*the midterm only covers web technology topics*)
+- Week 2.5: **no lectures**, **midterm on December 13** (the midterm covers all web technology lectures)
 - Week 2.6: DB topics
 - Week 2.7: DB topics
 - Week 2.8: DB topics
