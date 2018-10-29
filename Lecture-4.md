@@ -86,7 +86,7 @@ fs.readFile('/etc/passwd', function(err, data) {
 The Node runtime can also read file contents from disk in a **blocking** manner :point_down::
 
 ```javascript
-let data = fs.readFileSync('/etc/password');
+let data = fs.readFileSync('/etc/passwd');
 ```
 
 :point_up: The Node runtime will wait until the file read is complete, return the file content in the `data` variable and then continue with the next line of code. If the file to read is large, this operation will take time and nothing else is executed in the meantime (because the code is **blocking**).
