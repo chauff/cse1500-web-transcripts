@@ -94,7 +94,7 @@ We have two assessment moments: one for the Web technology assignments and one f
 - Week 2.7: DB topics
 - Week 2.8: DB topics
 - Week 2.9: DB topics
-- Week 2.10: _no lectures_ this week; **final exam on February 1** (*the final exam only covers DB topics*)
+- Week 2.10: **no lectures**, **final exam on February 1** (the final exam covers all DB lectures)
 
 ## Sample exams
 
