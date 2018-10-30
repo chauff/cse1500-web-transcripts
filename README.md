@@ -11,30 +11,31 @@ The database materials are not included here!
 - [Contact](#contact)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
-  - [Recommended](#recommended)
-  - [Required](#required)
+    - [Recommended](#recommended)
+    - [Required](#required)
 - [Course grading](#course-grading)
 - [Course topics](#course-topics)
 - [Sample exams](#sample-exams)
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
+- [Werkcolleges](#werkcolleges)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [Web lectures](#web-lectures)
-  - [Lecture 1](#lecture-1)
-  - [Lecture 2](#lecture-2)
-  - [Lecture 3](#lecture-3)
-  - [Lecture 4](#lecture-4)
-  - [Lecture 5](#lecture-5)
-  - [Lecture 6](#lecture-6)
-  - [Lecture 7](#lecture-7)
-  - [Lecture 8](#lecture-8)
+    - [Lecture 1](#lecture-1)
+    - [Lecture 2](#lecture-2)
+    - [Lecture 3](#lecture-3)
+    - [Lecture 4](#lecture-4)
+    - [Lecture 5](#lecture-5)
+    - [Lecture 6](#lecture-6)
+    - [Lecture 7](#lecture-7)
+    - [Lecture 8](#lecture-8)
 
 ## Contact
 
-The responsible instructors (A. Bozzon, C. Hauff) can be reached at `cse1500-ewi[at]tudelft.nl`. *Warning: the mailbox will note be active before November 2018.*
+The responsible instructors (Associate Professors [Claudia Hauff](https://chauff.github.io/) and [Alessandro Bozzon](http://www.wis.ewi.tudelft.nl/bozzon/)) can be reached at `cse1500-ewi[at]tudelft.nl`.
 
 ## Web technology course book 
 
@@ -128,6 +129,20 @@ The demo app, just as listed in this year's board game project, consists of two 
 and a game screen:
 
 <img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-game-CSS-completed.png" alt="splash screen" width="600px">
+
+## Werkcolleges
+
+We also offer **5** optional werkcolleges (instruction lessons) that are intended for students **without prior programming experience**. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
+
+The werkcolleges are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
+
+- Week 2.3: JavaScript
+- Week 2.4: Web application development in Node.js/Express
+- Week 2.5: Sample web technology exam questions
+- Week 2.7: Querying in SQL
+- Week 2.8: *to be determined*
+
+Check your timetables for the concrete times! Ech werkcollege is given three times in the assigned week, once per cluster.
 
 ## Interactive web technology exercises
 
