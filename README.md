@@ -90,12 +90,12 @@ We have two assessment moments: one for the Web technology assignments and one f
 - Week 2.2: (L3) JavaScript and (L4) Node.js
 - Week 2.3: (L5) CSS and (L6) Node.js (advanced topics)
 - Week 2.4: (L7) Cookies & sessions and (L8) web security
-- Week 2.5: DB topics; **midterm on December 13** (*the midterm only covers web technology topics*)
-- Week 2.6: DB topics
-- Week 2.7: DB topics
-- Week 2.8: DB topics
-- Week 2.9: DB topics
-- Week 2.10: _no lectures_ this week; **final exam on February 1** (*the final exam only covers DB topics*)
+- Week 2.5: **no lectures**, **midterm on December 13** (the midterm covers all web technology lectures)
+- Week 2.6: (L9) Introduction to databases and (L10) data models
+- Week 2.7: (L11) RDBMS - SQL DML 1 and (L12) RDBMS - SQL DML 2
+- Week 2.8: (L13) RDBMS - SQL DDL and (L14) NoSQL introduction, key-value stores
+- Week 2.9: (L15) NoSQL document stores and (L16) NoSQL graph stores
+- Week 2.10: **no lectures**, **final exam on February 1** (the final exam covers all DB lectures)
 
 ## Sample exams
 
