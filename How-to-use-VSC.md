@@ -21,7 +21,6 @@ _Note: this information is provided to help you work in pairs efficiently during
 
 We now introduce both options and finish the tutorial with a quick look at VSC's debugging abilities.
 
-
 ## Collaborating via Git+GitHub
 
 ### Git
