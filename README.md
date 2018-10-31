@@ -142,7 +142,7 @@ The werkcolleges are given by [Assistant Prof. Julian Urbano](https://julian-urb
 - Week 2.7: Querying in SQL
 - Week 2.8: *to be determined*
 
-Check your timetables for the concrete times! Ech werkcollege is given three times in the assigned week, once per cluster.
+Check your timetables for the concrete times! While each lecture is only given once (in the auditorium), each werkcollege is given three times a week - once for each of the three clusters. Check your timetable for your cluster's timeslot!
 
 ## Interactive web technology exercises
 
