@@ -3,7 +3,7 @@ CSE1500: Web and Database Technology <!-- omit in toc -->
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
 
-The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here.
+The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
 
 The database materials are not included here!
 
@@ -19,6 +19,8 @@ The database materials are not included here!
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
 - [Werkcolleges](#werkcolleges)
+- [Shared labs](#shared-labs)
+- [Office hours](#office-hours)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
 - [Web development resources](#web-development-resources)
@@ -143,6 +145,14 @@ The werkcolleges are given by [Assistant Prof. Julian Urbano](https://julian-urb
 - Week 2.8: *to be determined*
 
 Check your timetables for the concrete times! While each lecture is only given once (in the auditorium), each werkcollege is given three times a week - once for each of the three clusters. Check your timetable for your cluster's timeslot!
+
+## Shared labs
+
+Starting in week 1, there will be shared labs - similar to the setup of Q1. As all three web assignments have already been released, you can start working on them immediately.
+
+## Office hours
+
+For the web technology part, there will be **two** office hours per week (starting in week 1, ending in week 5): on **Mondays** and **Thursdays**, Claudia Hauff will be at the shared lab for the first hour (13:45-14:45).
 
 ## Interactive web technology exercises
 
