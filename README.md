@@ -228,7 +228,7 @@ This lecture covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2
   - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
   - :warning: [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
 - Recommended activity:
-  - :headphones: Listen to [this podcast](http://talkingcode.com/podcast/episode-11-tom-dale/) on modern web applications and the move from web sites to web apps and an almost *native* experience.
+  - :headphones: Listen to [this podcast with Tom Dale](http://talkingcode.com/podcast/episode-11-tom-dale/) discussing modern web applications and the move from web sites to web apps and an almost *native* experience.
 - Recommended readings:
   - :closed_book: Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
   - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).
@@ -245,7 +245,7 @@ This lecture covers client-side JavaScript ([2018/19 transcript](Lecture-3.md), 
   - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
 - Recommended activities:
   - [Interactive exercises for Lecture 3](nodeschool-exercises.md).
-  - :headphones: Listen to this podcast on [debugging](https://syntax.fm/show/047/how-to-get-better-at-debugging).
+  - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
   - [JavaScript30](https://javascript30.com/): 30 day vanilla JS coding challenges
 - Recommended readings:
   - :closed_book: [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
@@ -284,8 +284,9 @@ This lecture covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](ht
 - Required readings:
   - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
 - Recommended activities:
-  - :tv: Watch [this YouTube video from CSSConf](https://www.youtube.com/watch?v=cYGOv2ToZjY) covering the long (and painful) history of CSS.
-  - :headphones: Listen to [this podcast](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
+  - :tv: Watch [this talk by Rachel Andrew](https://www.youtube.com/watch?v=cYGOv2ToZjY) to learn more about the long (and painful) history of CSS.
+  - :tv: Watch [this talk by Mandy Michael](https://youtu.be/5qgUC_z8syw) on text effects in CSS. Data attributes and pseudo-elements are a powerful combination!
+  - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
 - Recommended readings:
   - :closed_book: Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
   - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
