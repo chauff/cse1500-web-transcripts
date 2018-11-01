@@ -114,6 +114,8 @@ Exam topics are all topics covered in the lectures and the required readings. Co
 
 There are six assignments in total.
 
+Assignments are worked on in **teams of 2 students**. *We do not allow larger teams; we do not allow teams of 1*.
+
 The first three assignments cover web technology topics.
 
 - [Assignment 1 (web)](Assignment-1.md)
