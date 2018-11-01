@@ -148,7 +148,7 @@ Check your timetables for the concrete times! While each lecture is only given o
 
 ## Shared labs
 
-Starting in week 1, there will be shared labs - similar to the setup of Q1. As all three web assignments have already been released, you can start working on them immediately.
+Starting in week 2.1, there will be shared labs - similar to the setup of Q1. As all three web assignments have already been released, you can start working on them immediately.
 
 ## Office hours
 
