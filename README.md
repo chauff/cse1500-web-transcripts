@@ -49,7 +49,7 @@ The course book for the web technology part is [**Learning Web App Development**
 
 ### Recommended
 
-[Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support Node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. It als has a *Live Share* extension, which allows you to code in pairs without the need for tools like `git`. 
+[Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support Node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. It als has a *Live Share* extension, which allows you to code in pairs without the need for tools like `git`.
 
 ![Visual Studio Code](img/RME-vsc.png)
 
@@ -88,7 +88,7 @@ We have two assessment moments: one for the Web technology assignments and one f
 
 ## Course topics
 
-- Week 2.1: (Lecture L1) HTTP and (L2) HTML5
+- Week 2.1: (Lecture 1) HTTP and (L2) HTML5
 - Week 2.2: (L3) JavaScript and (L4) Node.js
 - Week 2.3: (L5) CSS and (L6) Node.js (advanced topics)
 - Week 2.4: (L7) Cookies & sessions and (L8) web security
@@ -138,7 +138,7 @@ and a game screen:
 
 ## Werkcolleges
 
-We also offer **5** optional werkcolleges (instruction lessons) that are intended for students **without prior programming experience**. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
+We also offer **5** optional werkcolleges (instruction lessons) that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
 
 The werkcolleges are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
 
@@ -199,9 +199,11 @@ For each lecture we provide a range of materials:
 - **Recommended readings**: these may be tweets, blog posts or book chapters that help you understand some of the introduced concepts better; again, do not attempt to read all of the materials.
 - **Relevant scientific publications**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here list a number of scientific publications that contribute to our understanding of (the use of) web technologies.
 
+*If you are interested in knowing what other universities teach in terms of web technologies, take a look at [this list of university courses on web technology courses](university-web-tech-courses.md).*
+
 ## Web lectures
 
-**Status update**: transcripts of Lectures 1 to 8 are online. The lecture slides are from the 2017/18 edition and will be updated in the coming month.
+**Status update**: transcripts of Lectures 1 to 8 are online. The lecture slides are from the 2017/18 edition and will be updated in the following weeks.
 
 ### Lecture 1
 
