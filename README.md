@@ -199,7 +199,7 @@ For each lecture we provide a range of materials:
 - **Recommended readings**: these may be tweets, blog posts or book chapters that help you understand some of the introduced concepts better; again, do not attempt to read all of the materials.
 - **Relevant scientific publications**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here list a number of scientific publications that contribute to our understanding of (the use of) web technologies.
 
-*If you are interested in knowing what other universities teach in terms of web technologies, take a look at [this list of university courses on web technology courses](university-web-tech-courses.md).*
+*If you are interested in knowing what other universities teach in terms of web technologies, take a look at [this list of courses with a web focus](university-web-tech-courses.md).*
 
 ## Web lectures
 
