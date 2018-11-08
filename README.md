@@ -11,8 +11,8 @@ The database materials are not included here!
 - [Contact](#contact)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
-    - [Recommended](#recommended)
-    - [Required](#required)
+  - [Recommended](#recommended)
+  - [Required](#required)
 - [Course grading](#course-grading)
 - [Course topics](#course-topics)
 - [Sample exams](#sample-exams)
@@ -26,14 +26,14 @@ The database materials are not included here!
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [Web lectures](#web-lectures)
-    - [Lecture 1](#lecture-1)
-    - [Lecture 2](#lecture-2)
-    - [Lecture 3](#lecture-3)
-    - [Lecture 4](#lecture-4)
-    - [Lecture 5](#lecture-5)
-    - [Lecture 6](#lecture-6)
-    - [Lecture 7](#lecture-7)
-    - [Lecture 8](#lecture-8)
+  - [Lecture 1](#lecture-1)
+  - [Lecture 2](#lecture-2)
+  - [Lecture 3](#lecture-3)
+  - [Lecture 4](#lecture-4)
+  - [Lecture 5](#lecture-5)
+  - [Lecture 6](#lecture-6)
+  - [Lecture 7](#lecture-7)
+  - [Lecture 8](#lecture-8)
 
 ## Contact
 
@@ -88,16 +88,18 @@ We have two assessment moments: one for the Web technology assignments and one f
 
 ## Course topics
 
-- Week 2.1: (Lecture 1) HTTP and (L2) HTML5
-- Week 2.2: (L3) JavaScript and (L4) Node.js
-- Week 2.3: (L5) CSS and (L6) Node.js (advanced topics)
-- Week 2.4: (L7) Cookies & sessions and (L8) web security
-- Week 2.5: **no lectures**, **midterm on December 13** (the midterm covers all web technology lectures)
-- Week 2.6: (L9) Introduction to databases and (L10) data models
-- Week 2.7: (L11) RDBMS - SQL DML 1 and (L12) RDBMS - SQL DML 2
-- Week 2.8: (L13) RDBMS - SQL DDL and (L14) NoSQL introduction, key-value stores
-- Week 2.9: (L15) NoSQL document stores and (L16) NoSQL graph stores
-- Week 2.10: **no lectures**, **final exam on February 1** (the final exam covers all DB lectures)
+| Week | Monday                    | Thursday                | Friday     |
+|------|---------------------------|-------------------------|------------|
+| 2.1  | HTTP                      | HTML5                   | ---        |
+| 2.2  | JavaScript                | Node.js                 | ---        |
+| 2.3  | CSS                       | Node.js (advanced)      | ---        |
+| 2.4  | Cookies and sessions      | Web security            | ---        |
+| 2.5  | ---                       | **Midterm exam**                 | ---        |
+| 2.6  | Introduction to databases | Data models             | ---        |
+| 2.7  | RDBMS: SQL DML 1          | RDBMS: SQL DML 2        | ---        |
+| 2.8  | RDBMS: SQL DDL            | NoSQL: key-value stores | ---        |
+| 2.9  | NoSQL: document stores    | NoSQL: graph stores     | ---        |
+| 2.10 | ---                       | ---                     | **Final exam** |
 
 ## Sample exams
 
