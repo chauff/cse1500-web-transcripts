@@ -273,7 +273,7 @@ MD5 acts as a sanity check.
 
 MD5 stands for **message digest** and is an important data verification component: the message content is hashed into a 128 bit value (the checksum). *Hashing* simply means that data of arbitrary size is mapped to data of fixed size in a deterministic manner. Once the client receives the HTTP response it computes the checksum of the content as well and compares it with the checksum in the header field. If there is a mismatch, the client should assume that the content has been corrupted along the way and thus it should request the content again.
 
-`Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)), although it has been removed the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
+`Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
 
 ```
 The Content-MD5 header field has been removed because it was inconsistently implemented with respect to partial responses.
