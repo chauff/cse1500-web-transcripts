@@ -675,7 +675,7 @@ To conclude, the HTTP headers `From`, `Referer` and `User-Agent` are not suitabl
 
 ### Client-IP address tracking
 
-The second option we have to authenticate users is client IP address tracking, either extracted from the HTTP header field `Client-IP` or the underlying TCP connection. This would provide us with an ideal way to authenticate users **IF** every user would be assigned a distinct IP address that rarely or never changes.
+We can also authenticate users via client IP address tracking, either extracted from the HTTP header field `Client-IP` or the underlying TCP connection. This would provide us with an ideal way to authenticate users **IF** every user would be assigned a distinct IP address that rarely or never changes.
 
 However ... we know that IP addresses are assigned to machines, not users. Internet service providers do not assign a unique IP to each one of their users, they dynamically assign IP addresses to users from a common address pool. A user's IP address can thus change any day.
 
