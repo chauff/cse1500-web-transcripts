@@ -276,7 +276,8 @@ MD5 stands for **message digest** and is an important data verification componen
 `Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
 
 ```
-The Content-MD5 header field has been removed because it was inconsistently implemented with respect to partial responses.
+The Content-MD5 header field has been removed because it was inconsistently 
+implemented with respect to partial responses.
 ```
 
 This shows that once something is established (and entered protocol implementations), it is almost impossible to "take back" as the web has no centralized authority that can force it's participating entities to adhere to a specific standard version and update its implementations accordingly. We will see this time and again in this course, especially once we start discussing the JavaScript language!
