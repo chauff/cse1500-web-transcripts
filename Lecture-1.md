@@ -448,6 +448,8 @@ Software that implements the client-side part of the protocol is also called tel
 
 Try out the following examples yourself. Every line of the protocol is completed with a carriage return (i.e. press `<Enter>`). The protocol also has *empty lines*, those are indicated below with a `<carriage return>` tag (again, just press `<Enter>`). **All indented lines are returned by the server and do not have to be typed out.**
 
+In order to close a telnet session, enter the telnet prompt (press `Ctrl` + `]`) and then use the `quit` command.
+
 **Use `HEAD` to get information about the page**
 
 ```console
