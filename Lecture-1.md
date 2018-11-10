@@ -56,8 +56,7 @@ Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wi
 - Describe how web servers and clients interact with each other.
 - Write HTTP messages that request web resources from web servers and understand the responses.
 - Describe the different components of URLs and their purpose.
-- Understand and employ basic HTTP authentication.
-- Explain the difference between HTTP and HTTPS.
+- Understand and employ HTTP authentication.
 
 ## World Wide Web vs. Internet
 
@@ -736,6 +735,24 @@ This by itself is not critical, as long as users are aware of this. However, use
 Overall, basic authentication is the best of the four authentication options discussed; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalization and access control within a friendly environment such as an intranet.
 
 In the wild, i.e. the general web, basic authentication should only be used in combination with secure HTTP (most popular variant being https with URL scheme `https`) to avoid sending the username/password combination in the clear across the network. Here, request and response data are encrypted before being sent across the network.
+
+## Secure HTTP
+
+So far we have seen *lightweight authentication* approaches. Those are not useful for bank transactions or confidential data. Secure HTTP should provide:
+
+- Server authentication (client is sure to talk to the right server)
+- Client authentication (server is sure to talk to the right client)
+- Integrity (client and server are sure their data is intact)
+- Encryption
+- Efficiency
+- Adaptability (to the current state of the art in encryption)
+
+**HTTPS** is the most popular secure form of HTTP. The URL scheme is `https` instead of `http:`. Now, request and response data are **encrypted** before being sent across the network. In the layered network architecture, an additional layer is introduced: the Secure Socket Layer (SSL):
+
+![HTTPS](img/L1-https.png)
+
+Note, that client and server have to **negotiate** the cryptographic protocol to use (the most secure protocol both sides can handle). The encryption employed is only as secure as the weaker side allows: if the server has the latest encryption protocols enabled but the client has not been updated in years, a weak encryption will be the result.
+
 
 ## Self-check
 
