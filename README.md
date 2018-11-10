@@ -3,7 +3,7 @@ CSE1500: Web and Database Technology <!-- omit in toc -->
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
 
-The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. We expect 900 students in the course; the course setup reflects that.
+The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. We have ~900 students in the course; the course setup reflects that.
 
 The database materials are not included here!
 
@@ -11,8 +11,8 @@ The database materials are not included here!
 - [Contact](#contact)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
-  - [Recommended](#recommended)
-  - [Required](#required)
+    - [Recommended](#recommended)
+    - [Required](#required)
 - [Course grading](#course-grading)
 - [Course topics](#course-topics)
 - [Sample exams](#sample-exams)
@@ -26,14 +26,14 @@ The database materials are not included here!
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [Web lectures](#web-lectures)
-  - [Lecture 1](#lecture-1)
-  - [Lecture 2](#lecture-2)
-  - [Lecture 3](#lecture-3)
-  - [Lecture 4](#lecture-4)
-  - [Lecture 5](#lecture-5)
-  - [Lecture 6](#lecture-6)
-  - [Lecture 7](#lecture-7)
-  - [Lecture 8](#lecture-8)
+    - [Lecture 1](#lecture-1)
+    - [Lecture 2](#lecture-2)
+    - [Lecture 3](#lecture-3)
+    - [Lecture 4](#lecture-4)
+    - [Lecture 5](#lecture-5)
+    - [Lecture 6](#lecture-6)
+    - [Lecture 7](#lecture-7)
+    - [Lecture 8](#lecture-8)
 
 ## Contact
 
@@ -205,11 +205,11 @@ For each lecture we provide a range of materials:
 
 ## Web lectures
 
-**Status update**: transcripts of Lectures 1 to 8 are online. The lecture slides are from the 2017/18 edition and will be updated in the following weeks.
+**Status update**: transcripts of Lectures 1 to 8 are online. Lectures slides will be added as the course weeks progress.
 
 ### Lecture 1
 
-The lecture covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-http.pdf)).
+The lecture covers HTTP ([transcript](Lecture-1.md), [course intro slides](slides/cse1500-intro.pdf) and [lecture slides](slides/cse1500-lecture1.pdf)).
   
 - Required readings: *none*
 - Recommended activity:
@@ -228,7 +228,7 @@ The lecture covers HTTP ([2018/19 transcript](Lecture-1.md), [2017/18 slides](ht
 
 ### Lecture 2
 
-This lecture covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-html5.pdf)).
+This lecture covers web design and HTML5 ([transcript](Lecture-2.md)).
 
 - Required readings:
   - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -245,7 +245,7 @@ This lecture covers web design and HTML5 ([2018/19 transcript](Lecture-2.md), [2
   
 ### Lecture 3
 
-This lecture covers client-side JavaScript ([2018/19 transcript](Lecture-3.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-javascript.pdf)).
+This lecture covers client-side JavaScript ([transcript](Lecture-3.md)).
 
 - Required readings:
   - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -271,7 +271,7 @@ This lecture covers client-side JavaScript ([2018/19 transcript](Lecture-3.md), 
 
 ### Lecture 4
 
-This lecture covers Node.js ([2018/19 transcript](Lecture-4.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs.pdf)).
+This lecture covers Node.js ([transcript](Lecture-4.md)).
 
 - Required readings:
   - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -285,7 +285,7 @@ This lecture covers Node.js ([2018/19 transcript](Lecture-4.md), [2017/18 slides
   
 ### Lecture 5
 
-This lecture covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-css3.pdf)).
+This lecture covers CSS ([transcript](Lecture-5.md)).
   
 - Required readings:
   - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -302,7 +302,7 @@ This lecture covers CSS ([2018/19 transcript](Lecture-5.md), [2017/18 slides](ht
 
 ### Lecture 6
 
-This lecture covers advanced Node.js concepts ([2018/19 transcript](Lecture-6.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-nodejs-continued.pdf)).
+This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md)).
 
 - Required readings: *none*
 - Recommended activities:
@@ -318,7 +318,7 @@ This lecture covers advanced Node.js concepts ([2018/19 transcript](Lecture-6.md
 
 ### Lecture 7
 
-This lecture covers cookies and sessions ([2018/19 transcript](Lecture-7.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-cookies-sessions.pdf)).
+This lecture covers cookies and sessions ([transcript](Lecture-7.md)).
 
 - Required readings: *none*
 - Recommended activities: *none*
@@ -332,7 +332,7 @@ This lecture covers cookies and sessions ([2018/19 transcript](Lecture-7.md), [2
 
 ### Lecture 8 
 
-This lecture covers web security topics ([2018/19 transcript](Lecture-8.md), [2017/18 slides](https://chauff.github.io/documents/webdb-2017-18/web-security.pdf)).
+This lecture covers web security topics ([transcript](Lecture-8.md)).
 
 - Required readings: *none*
 - Recommended activities:
