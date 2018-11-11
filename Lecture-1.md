@@ -106,7 +106,7 @@ On the web, clients and servers communicate with each other through **HTTP reque
 
 ![HTTP request and response](img/L1-http-req-res.png)
 
-How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, but also software programs or web cam gateways. As long as they are accessible through an identifier, they can be considered as web resources.
+How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources** that is any kind of content with an identity on the web. This can be static files, web services, but also dynamically generated content. As long as they are accessible through an identifier, they can be considered as web resources.
 The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
 
 ### Network communication
