@@ -63,7 +63,7 @@ telnet weer.nl 80
 
 ### 1.1)
 
-Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the sports news page. Always use `HEAD` first to retrieve meta-­data about the resource.
+Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the Dutch rainfall radar page. Always use `HEAD` first to retrieve meta-­data about the resource.
 
 ### 1.2)
 
