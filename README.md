@@ -158,7 +158,7 @@ Starting in week 2.1, there will be shared labs - similar to the setup of Q1. As
 
 ## Office hours
 
-For the web technology part, there will be **two** office hours per week (starting in week 2.1, ending in week 2.5): on **Mondays** and **Thursdays**, Claudia Hauff will be at the shared lab for the first hour (13:45-14:45).
+For the web technology part, there will be **two** office hours per week (starting in week 2.1, ending in week 2.5). On **Mondays** and **Thursdays**, Claudia Hauff will be at the shared lab: 14:45-15:45 (Monday) and 13:45-14:45 (Thursday).
 
 ## Interactive web technology exercises
 
