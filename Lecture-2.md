@@ -70,21 +70,21 @@ Web design is not trivial. However, a few basic rules go a long way. Most of the
 
 The way a web site or web application (I tend to use the terms interchangeably here; the rules apply to both apps and sites) works should be self-evident; the user should not have to expend **cognitive effort** to understand what she can do.
 
-Consider this example of [ebay.com](https://www.ebay.com/):
+Consider this example of [ebay.com](https://www.ebay.com/) :point_down:
 
 ![ebay web site](img/L2-ebay.png)
 
 <sup>Screenshot taken on September 10, 2018</sup>
 
-Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
+:point_up: Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
 
-Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/):
+Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/) :point_down:
 
 ![koopplein web site](img/L2-koopplein.png)
 
 <sup>Screenshot taken February 8, 2014</sup>
 
-Here, it is not self-evident for the user how to act to achieve her goals and major questions are raised:
+:point_up: It is not self-evident for the user how to act to achieve her goals and major questions are raised:
 
 - How do I get to the offers?
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
@@ -100,27 +100,27 @@ Users should also **not get lost within a web site**. A site should provide user
 
 ![ebay web site](img/L2-ebay2.png)
 
-Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Here is an example from Google that does a poor job in this respect: it is not obvious on first sight that the first search result is indeed a paid advertisement instead of a so-called "organic" search result:
+Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Here :point_down: is an example from Google that does a poor job in this respect. It is not obvious on first sight that the first search result is indeed a paid advertisement instead of a so-called "organic" search result:
 
-![google web site](img/L2-google.png)
+![Google web site recent](img/L2-google.png)
 
-A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot more forthcoming when it came to notifying its users about advertisements:
+A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot more forthcoming when it came to notifying its users about advertisements :point_down:
 
-![google web site](img/L2-google2.png)
+![Google web site 2013](img/L2-google2.png)
 
-It should be mentioned though that Google is not the only offender here, take this example from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
+It should be mentioned though that Google is not the only offender here, take this example :point_down: from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
 
-![google web site](img/L2-twitter.png)
+![Twitter web site](img/L2-twitter.png)
 
 ### Rule: Minimize noise and clutter
 
-The rule does not have to be explained, here are two examples that should make things clear:
+The rule does not have to be explained, here are two examples that should make things clear :point_down:
 
 ZDNet crawled on [March 31, 2001](https://web.archive.org/web/20010331202808/http://www4.zdnet.com:80/):
 
 ![ZDNet web site](img/L2-zdnet-2001.png)
 
-vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/):
+vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/) :point_down:
 
 ![ZDNet web site](img/L2-zdnet-2014.png)
 
@@ -130,7 +130,7 @@ While it is not hard to go back to very old web designs and find faults in them,
 
 Self-explanatory sites require users to expend a small amount of cognitive effort. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world where a lot of content is accessed [*mobile first*](https://mayvendev.com/blog/mobilefirst), it is also vital to keep the mobile user in mind as well who has to deal with a small screen, a touch-based interface and possibly many distractions while surfing the web.
 
-A positive example of this rule is the following Surveymonkey ([December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) splash screen:
+A positive example of this rule is the following Surveymonkey ([December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) splash screen :point_down:
 
 ![Surveymonkey](img/L2-surveymonkey.png)
 
