@@ -200,13 +200,13 @@ The home page (or entry page) of a web application should answer a number of ess
 - Why **should** I be here?
 - What do they **have** here?
 
-Surprisingly many home pages are not able to answer these questions. Take for example the home page of https://coffeecompany.nl/:
+Surprisingly many home pages are not able to answer these questions. Take for example this entry page:
 
 ![Coffeecompany](img/L2-coffeecompany.png)
 
 <sup>Screenshot taken October 18, 2018</sup>
 
-It is not obvious that the core business here is a chain of small cafes in the Netherlands. 
+What is the core business of this company? 
 
 Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
