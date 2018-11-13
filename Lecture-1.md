@@ -666,7 +666,7 @@ The HTTP header fields we have seen so far were only a few of all possible ones.
 
 All of the shown header fields are request header fields, i.e. sent from the client to the server.
 
-The first three header fields contain information about the user such as the her email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
+The first three header fields contain information about the user such as an email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
 
 In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by web crawlers; in case they break a web server due to too much crawling, the owner of the web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device-specific customization, but not more. The `Referer` is similarly crude: it can tell us something about a user's interests but does not enable us to uniquely identify a user.
 
