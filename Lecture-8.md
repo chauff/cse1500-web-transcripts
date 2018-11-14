@@ -247,7 +247,7 @@ An attacker can exploit broken authentication and session management functions t
 #### :bangbang: NodeGoat
 
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Open the browser's dev tools. In particular, the Storage Inspector (under Application tab in Chrome) allows you to view the cookies stored by the client.
+2. Open the browser's dev tools. In particular, the **Storage Inspector** allows you to view the cookies stored by the client.
 3. Login with `user1` (user) and `User1_123` (password).
 4. Check the cookie value of `connect.sid`.
 5. Close the browser tab.
