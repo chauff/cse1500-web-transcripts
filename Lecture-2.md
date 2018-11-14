@@ -124,7 +124,7 @@ vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/2014083123512
 
 ![ZDNet web site](img/L2-zdnet-2014.png)
 
-While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive (__TEXT_IS_MISSING__). It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
+While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 
