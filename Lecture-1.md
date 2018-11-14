@@ -407,7 +407,7 @@ Status codes in the three hundred range most often point to a redirect: a resour
 
 ![Network monitor redirect](img/L1-redirect.png)
 
-Here, status code `301 Moved Permanently` indicates that the resource at http://volkskrant.nl has been moved elsewhere for good. The `Location` header tells us the new location (http://volkskrant.nl).
+Here, status code `301 Moved Permanently` indicates that the resource at http://volkskrant.nl has been moved elsewhere for good. The `Location` header tells us the new location (https://volkskrant.nl).
 
 Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the web resource or entity the client requests, does not exist on the server.
 
