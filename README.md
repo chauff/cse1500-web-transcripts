@@ -214,6 +214,7 @@ The lecture covers HTTP ([transcript](Lecture-1.md), [course intro slides](slide
 - Required readings: *none*
 - Recommended activity:
   - :headphones: Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
+  - :tv: A [short video](https://www.youtube.com/watch?v=fXUni9WrUuw) (in Dutch) by CWI (Centrum Wiskunde & Informatica) to celebrate 30 years since the Netherlands was connected to the public Internet!
 - Recommended readings:
   - :closed_book: Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do).
   - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP).
