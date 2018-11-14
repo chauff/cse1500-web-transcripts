@@ -259,14 +259,14 @@ Content is often encoded, and in particular **compressed**. The four common enco
 - `compress`
 - `deflate`
 - `identity` (this encoding indicates that no encoding should be used)
-  
+
 How do client and server negotiate acceptable encodings? If the server would send content in an encoding for which the client requires specific software to decode but does not have, the client receives a blob of data but is unable to interpret it. To avoid this situation, the client sends in the HTTP request a list of encodings it can deal with. This happens in the `Accept-Encoding` request header, e.g. `Accept-Encoding: gzip, deflate`.
 
 But why bother with encodings at all? If an image or video is compressed by the server before it is sent to the client, **network bandwidth is saved**. There is a **tradeoff**, however: compressed content needs to be decompressed by the client, which **increases the processing costs**.
 
 ### Content-MD5
 
-Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy (rankings of the worst software bugs in history exist, [here is one from WIRED in 2005](https://www.wired.com/2005/11/historys-worst-software-bugs/)). 
+Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy (rankings of the worst software bugs in history exist, [here is one from WIRED in 2005](https://www.wired.com/2005/11/historys-worst-software-bugs/)).
 
 MD5 acts as a sanity check.
 
@@ -275,7 +275,7 @@ MD5 stands for **message digest** and is an important data verification componen
 `Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
 
 ```
-The Content-MD5 header field has been removed because it was inconsistently 
+The Content-MD5 header field has been removed because it was inconsistently
 implemented with respect to partial responses.
 ```
 
@@ -321,7 +321,7 @@ In HTTP/1.1 the client **always** initiates the conversation with the server via
 
 ![Twitter update](img/L1-twitter-example.png)
 
-In both examples, the encircled numbers are updated *on the fly*, without the user having to manually refresh the page. 
+In both examples, the encircled numbers are updated *on the fly*, without the user having to manually refresh the page.
 
 This can be achieved through **polling**: the client **regularly** sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP request (depending on the chosen update frequency) that always lead to the same HTTP response.
 
@@ -399,7 +399,7 @@ Different status codes exist that provide the client with some level of informat
 | `4xx`                  | Client error |
 | `5xx`                  | Server error                 |
 
-Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server. 
+Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server.
 
 Status code `200 OK` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it).
 
@@ -415,7 +415,7 @@ Errors on the server side start with 5; one relatively common status code is `50
 
 ## HTTP methods
 
-Conisder the first line of our introductory [HTTP request message](#http-request-message) example:
+Consider the first line of our introductory [HTTP request message](#http-request-message) example:
 
 ```console
 GET / HTTP/1.1
@@ -435,7 +435,7 @@ The following are the most common HTTP methods:
 - `OPTIONS` is helpful to determine what kind of methods a server supports and finally
 - `DELETE` can be used to remove documents from a web server
 
-This is not an exhaustive list of methods and not all servers enable or implement all the methods shown here. 
+This is not an exhaustive list of methods and not all servers enable or implement all the methods shown here.
 
 ### :bangbang: Activity
 
@@ -648,7 +648,7 @@ But of course, this is not how today's web works: servers **do** identify device
 - user login;
 - fat URLs.
 
-If you already know a bit more about web development you will miss in this list cookies and sessions. We cover these concepts in [Lecture 7](Lecture-7.md). 
+If you already know a bit more about web development you will miss in this list cookies and sessions. We cover these concepts in [Lecture 7](Lecture-7.md).
 
 We now cover each of the four identification options listed above in turn.
 
@@ -664,9 +664,9 @@ The HTTP header fields we have seen so far were only a few of all possible ones.
 | `Client-IP`           | Client's IP address         |
 | `Authorization`        | Username and password       |
 
-All of the shown header fields are request header fields, i.e. sent from the client to the server. 
+All of the shown header fields are request header fields, i.e. sent from the client to the server.
 
-The first three header fields contain information about the user such as the her email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
+The first three header fields contain information about the user such as an email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
 
 In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by web crawlers; in case they break a web server due to too much crawling, the owner of the web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device-specific customization, but not more. The `Referer` is similarly crude: it can tell us something about a user's interests but does not enable us to uniquely identify a user.
 
