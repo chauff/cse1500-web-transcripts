@@ -747,7 +747,7 @@ So far we have seen *lightweight authentication* approaches. Those are not usefu
 - Efficiency
 - Adaptability (to the current state of the art in encryption)
 
-**HTTPS** is the most popular secure form of HTTP. The URL scheme is `https` instead of `http:`. Now, request and response data are **encrypted** before being sent across the network. In the layered network architecture, an additional layer is introduced: the Secure Socket Layer (SSL):
+**HTTPS** is the most popular secure form of HTTP. The URL scheme is `https` instead of `http`. Now, request and response data are **encrypted** before being sent across the network. In the layered network architecture, an additional layer is introduced: the Secure Socket Layer (SSL):
 
 ![HTTPS](img/L1-https.png)
 
