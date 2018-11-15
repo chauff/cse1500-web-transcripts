@@ -28,7 +28,7 @@ If you get lost within the assignment, use this overview of deliverables to get 
 | 4.3  | Description of six game features                   |
 | 5.1  | Splash screen design (wireframe)                   |
 | 5.2  | Game screen design (wireframe)                     |
-| 5.3  | →→→ upload 5.1/5.2 to :bulb: Brightspace                |
+| 5.3  | →→→ upload 5.1/5.2 to :bulb: Brightspace forum               |
 | 6  | Two html files                                     |
 
 All deliverable text/imagery (apart from 6.) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
