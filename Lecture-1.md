@@ -550,7 +550,7 @@ From back to front:
 - `<query>`: Parameters passed to gateway resources, i.e. applications [identified by the path] such as search engines.
 - `<params>`: Additional input parameters applications may require to access a resource on the server correctly. Can be set per path segment.
 - `<path>`: the local path to the resource
-- `<port>`: the port on which the server is expecting requests for the resource
+- `<port>`: the port on which the server is expecting requests for the resource (ports enable multiplexing: multiple services are available on one location)
 - `<host>`: domain name (host name) or numeric IP address of the server
 - `<user>:<password>`: the username/password (may be necessary to access a resource)
 - `<scheme>`: determines the protocol to use when connecting to the server.
