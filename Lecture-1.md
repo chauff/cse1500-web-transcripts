@@ -631,7 +631,7 @@ characters that are allowed in host name labels (letters, digits, and
 hyphens).
 ```
 
-The cyrillic URL example above transforms into the following ASCII URL: `http//:xn—80aealotwbjpid2k.xn—p1ai`. A URL already in ASCII format remains the same after Punycode encoding.
+The cyrillic URL example above transforms into the following ASCII URL: `http://xn--80aealotwbjpid2k.xn--p1ai/`. A URL already in ASCII format remains the same after Punycode encoding.
 
 One word of caution though: **mixed scripts** (i.e. using different alphabets in a single URL) are a potential security issue! Consider the following URL: https://рayрal.com. It looks like https://paypal.com, the well-known e-payment website. It is not! Notice that the Russian letter *r* looks very much like a latin *p* and a potential attacker can use this knowledge to create a fake paypal website (to gather credit card information) and lead users on with the malicious, but on first sight correctly looking paypal URL.
 
