@@ -53,7 +53,12 @@ Make sure to name your files with an **A1** prefix!
 
 ---
 
-This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`).
+This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. 
+
+If you are a Windows user: `telnet` is not available by default. For running the `telnet` command, you can use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`). You can also use an alternative like Putty. Hints for running Putty:
+- Use the "Raw" connection type (not "Telnet").
+- For "Close window on exit", use "Never".
+- It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the Putty session (which you start using the "Open" button).
 
 Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal:
 
