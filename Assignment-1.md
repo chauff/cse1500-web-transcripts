@@ -1,6 +1,6 @@
 # Assignment 1
 
-The first part of this assignment gives you hands-­on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application**.
+The first part of this assignment gives you hands-on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application** (which you will further develop in assignments 2 and 3).
 
 ## 0. Preliminaries
 
@@ -60,7 +60,8 @@ If you are a Windows user: `telnet` is not available by default. For running the
 - For "Close window on exit", use "Never".
 - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the Putty session (which you start using the "Open" button).
 
-Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal:
+**Exercise**:
+Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
 
 ```console
 telnet weer.nl 80
