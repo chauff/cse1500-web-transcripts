@@ -35,7 +35,7 @@ All deliverable text/imagery (apart from 6.) must be included in a single PDF fi
 
 Submit your two html files in the form of a zipped folder.
 
-The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uplodated to the same directory! 
+The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uploaded to the same directory! 
 Make sure to name your files with an **A1** prefix!
 
 **To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.**
@@ -53,9 +53,10 @@ Make sure to name your files with an **A1** prefix!
 
 ---
 
-This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. 
+This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`). The Virtual Machine can be downloaded using the following magnet link:
+`magnet:?xt=urn:btih:83a92d258af74cb6b22d3e64ce26c38f6ca57416&dn=TUD-CSE-2018-2019.ova&tr=udp%3A%2F%2Ftracker.open-internet.nl%3A6969%2Fannounce`.
 
-If you are a Windows user: `telnet` is not available by default. For running the `telnet` command, you can use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`). You can also use an alternative like Putty. Hints for running Putty:
+If you are a Windows user: `telnet` is not available by default. To run the `telnet` command, you can use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`). You can also use an alternative like Putty. Hints for running Putty:
 - Use the "Raw" connection type (not "Telnet").
 - For "Close window on exit", use "Never".
 - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the Putty session (which you start using the "Open" button).
