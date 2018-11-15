@@ -1,6 +1,6 @@
 # Assignment 1
 
-The first part of this assignment gives you hands-­on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application**.
+The first part of this assignment gives you hands-on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application** (which you will further develop in assignments 2 and 3).
 
 ## 0. Preliminaries
 
@@ -56,7 +56,13 @@ Make sure to name your files with an **A1** prefix!
 This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`). The Virtual Machine can be downloaded using the following magnet link:
 `magnet:?xt=urn:btih:83a92d258af74cb6b22d3e64ce26c38f6ca57416&dn=TUD-CSE-2018-2019.ova&tr=udp%3A%2F%2Ftracker.open-internet.nl%3A6969%2Fannounce`.
 
-Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal:
+If you are a Windows user: `telnet` is not available by default. To run the `telnet` command, you can use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `root` password is `cse&(]]`). You can also use an alternative like Putty. Hints for running Putty:
+- Use the "Raw" connection type (not "Telnet").
+- For "Close window on exit", use "Never".
+- It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the Putty session (which you start using the "Open" button).
+
+**Exercise**:
+Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
 
 ```console
 telnet weer.nl 80
