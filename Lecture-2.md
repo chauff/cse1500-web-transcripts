@@ -206,7 +206,7 @@ Surprisingly many home pages are not able to answer these questions. Take for ex
 
 <sup>Screenshot taken October 18, 2018</sup>
 
-What is the core business of this company?
+What is the core business of this company? This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
 
 Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
