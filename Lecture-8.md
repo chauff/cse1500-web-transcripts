@@ -427,8 +427,7 @@ If the victim access the website that is under the attacker's control (e.g. beca
 
 and open it in a new browser tab. This is the attacker's site.
 
-5. Click the *Win* button.
-6. Reload the *Profile* page and you should now see bank account and bank routing numbers set to `2`.
+5. Click the *Win* button. You are now redirected. On the *Profile* page you should now see bank account and bank routing numbers set to `2`.
 
 #### How to avoid it
 
