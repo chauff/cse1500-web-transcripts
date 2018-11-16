@@ -79,6 +79,8 @@ Does the content correspond to what you see when accessing the page with your br
 
 What is the purpose of the `X-UA-Compatible` or the `X-Cache` tag in the header information (you should have seen one of the two or both - if you saw both, pick one to explain)?
 
+*Note: 1.3) amended November 16, 2018*
+
 ### 1.4)
 
 What does the page's `Cache-Control` directive mean?
