@@ -35,7 +35,7 @@ All deliverable text/imagery (apart from 6.) must be included in a single PDF fi
 
 Submit your two html files in the form of a zipped folder.
 
-The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uploaded to the same directory! 
+The PDF and code have to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uploaded to the same directory!
 Make sure to name your files with an **A1** prefix!
 
 **To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.**
@@ -106,6 +106,8 @@ Content-length:12
 Hello World!
 <carriage return>
 ```
+
+*Reminder: [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets indicates when an empty line is expected. Press `<Enter>` to add it.*
 
 With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. The server sends back in the response the data just uploaded -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
 
