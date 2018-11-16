@@ -70,11 +70,11 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 ### Required 
 
-[Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `student` password is `pwd` and the `root` password (for installing new software etc.) is `cse&(]]` (yes! those are not typos, this is the password).
+[Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `student` password is `pwd` and the `root` password (for installing new software etc.) is `cse&(]]` (yes! those are not typos, this is the password). If you follow this course as a non-first year student, [check out this information page on the virtual machine](https://github.com/chauff/Web-Teaching/blob/master/virtual-machine-initialization.md).
 
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
-Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1 (the `student` password is `pwd`). You can also use alternatives to telnet like Putty (see instructions at [Assignment 1](Assignment-1.md)).
+Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1. You can also use Windows alternatives to telnet such as Putty.
 
 ## Course grading
 
