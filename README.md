@@ -86,6 +86,19 @@ Assignments are done in **pairs of two students** and are graded by student assi
 
 We have two assessment moments: one for the Web technology assignments and one for the Database technology assignments. The three Web assignments are assessed in a single session of your team's own choosing: you can book a timeslot for the Web assessment in weeks 2.3, 2.4, 2.5 or 2.6. The assessment is interview-based. The assessment session can yield anything between 3x pass and 3x no-pass. The grading is conducted per student, i.e. you and your partner may receive different pass/no-pass results.
 
+The table below shows how the number of passes (maximum 6: 3x web and 3x database) are converted to the assignment grade:
+
+| Number of passes | Grade |
+|------------------|-------|
+| 6                | 10.0  |
+| 5                | 8.3   |
+| 4                | 6.7   |
+| 3                | 5.0   |
+| 2                | 3.3   |
+| 1                | 1.7   |
+| 0                | 0.0   |
+
+
 ## Course topics
 
 | Week | Monday                    | Thursday                | Friday     |

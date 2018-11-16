@@ -16,11 +16,11 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.2  | CSS                                                |
 | 1.3  | CSS                                                |
 | 1.4  | CSS                                                |
-| 1.5  | →→→ upload 1.1 / 1.2 to :bulb: Brightspace             |
+| 1.5  | →→→ upload 1.1 / 1.2 to :bulb: Brightspace forum            |
 | 2    | Source code                                        |
 | 3    | Source code                                        |
 | 4    | -                                                  |
-| 5 (optional) | →→→ upload URL to :bulb: Brightspace          |
+| 5 (optional) | →→→ upload URL to :bulb: Brightspace forum         |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
