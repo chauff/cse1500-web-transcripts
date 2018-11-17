@@ -8,11 +8,10 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/Assignment-1.md">Assignment 1</a>
-      <a href="/Assignment-2.md">Assignment 2</a>
+      <a href="./Assignment-1.md">Assignment 1</a>
+      <a href="./Assignment-2.md">Assignment 2</a>
     </div>
-  </div>
-</div> 
+   </div>
   </div>
 
 </html>
