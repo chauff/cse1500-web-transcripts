@@ -8,9 +8,9 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="./Assignment-1.md">Assignment 1</a>
-      <a href="./Assignment-2.md">Assignment 2</a>
-      <a href="./Assignment-3.md">Assignment 3</a>
+      <a href="./Assignment-1.html">Assignment 1</a>
+      <a href="./Assignment-2.html">Assignment 2</a>
+      <a href="./Assignment-3.html">Assignment 3</a>
     </div>
    </div>
   <div class="dropdown">
@@ -18,14 +18,14 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="./Lecture-1.md">Lecture 1</a>
-      <a href="./Lecture-2.md">Lecture 2</a>
-      <a href="./Lecture-3.md">Lecture 3</a>
-      <a href="./Lecture-4.md">Lecture 4</a>
-      <a href="./Lecture-5.md">Lecture 5</a>
-      <a href="./Lecture-6.md">Lecture 6</a>
-      <a href="./Lecture-7.md">Lecture 7</a>
-      <a href="./Lecture-8.md">Lecture 8</a>
+      <a href="./Lecture-1.html">Lecture 1</a>
+      <a href="./Lecture-2.html">Lecture 2</a>
+      <a href="./Lecture-3.html">Lecture 3</a>
+      <a href="./Lecture-4.html">Lecture 4</a>
+      <a href="./Lecture-5.html">Lecture 5</a>
+      <a href="./Lecture-6.html">Lecture 6</a>
+      <a href="./Lecture-7.html">Lecture 7</a>
+      <a href="./Lecture-8.html">Lecture 8</a>
     </div>
    </div>
   </div>
