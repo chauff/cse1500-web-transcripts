@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 3</title>
+        <script>
+          window.onload = function() {
+            document.getElementById("button10").onclick = computeTimes;
+            document.getElementById("button23").onclick = computeTimes;
+            document.getElementById("button76").onclick = computeTimes;
+          };
+
+          function computeTimes() {
+            /*
+             * this.innerHTML returns to us "N times",
+             * parseInt() then strips out the " times" suffix
+             * as it stops parsing at an invalid number character
+             */
+            var times = parseInt(this.innerHTML);
+            var input = parseFloat(document.getElementById("input").value);
+            var res = times * input;
+            alert("The result is " + res);
+          }
+        </script>
+    </head>
+
+    <body>
+        <input type="text" id="input">
+        <button id="button10">10 times</button>
+        <button id="button23">23 times</button>
+        <button id="button76">76 times</button>
+    </body>
+</html>

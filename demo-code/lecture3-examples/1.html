@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 1</title>
+        <script>
+            /* we define the function */
+            function sayHello() {
+              var tb = document.getElementById("out");
+              tb.value = 'Hello World';
+            };
+
+            /* we attach a function to a button's click event
+             * after the DOM finished loading
+             */
+            window.onload = function() {
+                document.getElementById("b").onclick = sayHello;
+            };
+        </script>
+    </head>
+
+    <body>
+        <button id="b">Say Hello World</button>
+        <input id="out" type="text">
+    </body>
+</html>
