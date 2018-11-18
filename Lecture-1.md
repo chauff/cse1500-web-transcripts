@@ -2,7 +2,7 @@
 
 :point_right: [Overview of all Lecture 1 materials](README.md#lecture-1)
 
-## Table of Content <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 
 - [Web standards](#web-standards)
 - [Learning goals](#learning-goals)
