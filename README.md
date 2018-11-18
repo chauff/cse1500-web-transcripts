@@ -46,7 +46,7 @@
       <a href="./virtual-machine-initialization.html">Virtual machine setup</a>
     </div>
    </div>
-   <a href="https://github.com/chauff/Web-Teaching/tree/master/slides>Lecture Slides">Lecture Slides</a>
+   <a href="https://github.com/chauff/Web-Teaching/tree/master/slides">Lecture Slides</a>
    <a href="https://github.com/chauff/Web-Teaching/tree/master/demo-code">Demo Code</a>
   </div>
 
