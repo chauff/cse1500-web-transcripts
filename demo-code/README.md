@@ -1,4 +1,4 @@
-Table of Content
+Table of Contents
 ==
 - [Demo code](#demo-code)
     - [balloons-game](#balloons-game)
