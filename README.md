@@ -28,6 +28,26 @@
       <a href="./Lecture-8.html">Lecture 8</a>
     </div>
    </div>
+  <div class="dropdown">
+    <button class="dropbtn">Extra reading
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./nodeschool-exercises.html">Nodeschool Exercises</a>
+      <a href="./university-web-tech-courses.html">Web Tech Courses</a>
+    </div>
+   </div>
+  <div class="dropdown">
+    <button class="dropbtn">Setting up
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./How-to-use-VSC.html">Visual studio code</a>
+      <a href="./virtual-machine-initialization.html">Virtual machine setup</a>
+    </div>
+   </div>
+   <a href=https://github.com/chauff/Web-Teaching/tree/master/slides>Lecture Slides</a>
+   <a href=https://github.com/chauff/Web-Teaching/tree/master/demo-code>Demo Code</a>
   </div>
 
 </html>
