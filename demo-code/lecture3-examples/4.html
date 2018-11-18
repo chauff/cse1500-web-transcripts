@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 4</title>
+        <script>
+          window.onload = function() {
+            document.getElementById("b1").onmouseover = mouseover;
+            document.getElementById("b1").onmouseout = mouseout;
+
+            document.getElementById("b10").onmouseover = mouseover;
+            document.getElementById("b10").onmouseout = mouseout;
+
+            document.getElementById("b100").onmouseover = mouseover;
+            document.getElementById("b100").onmouseout = mouseout;
+          };
+
+          var intervals = {};
+
+          function updateNum(button){
+            var num = parseInt(button.innerHTML);
+            num = num + 1;
+            button.innerHTML = num;
+          }
+
+          function mouseover() {
+            var incr = parseInt(this.id.substr(1));
+            intervals[this.id] = setInterval(updateNum, 1000/incr, this);
+          };
+
+          function mouseout()
+          {
+            clearInterval(intervals[this.id]);
+            this.innerHTML = "0";
+          }
+        </script>
+    </head>
+
+    <body>
+      <button style="width:500px" id="b1">0</button>
+      <br>
+      <button style="width:500px" id="b10">0</button>
+      <br>
+      <button style="width:500px" id="b100">0</button>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example 5</title>
+        <script>
+          window.onload = function() {
+            document.getElementById("ta").onselect = updateNuggets;
+          };
+
+          function updateNuggets() {
+            var n1 = document.getElementById('n1').value;
+            var n2 = document.getElementById('n2').value;
+            var n3 = document.getElementById('n3').value;
+
+            var selected = null;
+            var myTextArea = document.getElementById('ta');
+            if (myTextArea.selectionStart != undefined)
+            {
+              var p1 = myTextArea.selectionStart;
+              var p2 = myTextArea.selectionEnd;
+              selected = myTextArea.value.substring(p1, p2);
+            }
+
+            //if the selected phrase is already in a nugget, remove it
+            if(selected==n1) {document.getElementById('n1').value = "";}
+            else if(selected==n2){document.getElementById('n2').value = "";}
+            else if(selected==n3){document.getElementById('n3').value = "";}
+            //if the first nugget is empty, add it
+            else if(n1.length==0){document.getElementById('n1').value = selected;}
+            //if the second nugget is empty, add it
+            else if(n2.length==0){document.getElementById('n2').value = selected;}
+            //third nugget is treated differently, as now the button becomes unhidden
+            else if(n3.length==0)
+            {
+              document.getElementById('n3').value = selected;
+              document.getElementById('b').hidden = false;
+            }
+            else {
+              alert('You have selected three information nuggets. Either unselect one or manually empty text box.');
+            }
+          }
+        </script>
+    </head>
+
+    <body>
+      <form>
+          <p><em>Task: Write or mark the 3 most important information nuggets</em>
+            <br>
+
+            <textarea id="ta" cols="50" rows="5" readonly>"Hobey Baker (1892-1918) was an American amateur athlete of the early twentieth century, widely regarded by his contemporaries as one of the best athletes of his time."
+            </textarea>
+            <br>
+
+            <label>Nugget 1: <input type="text" id="n1" autocomplete="off"></label>
+            <br>
+            <label>Nugget 2: <input type="text" id="n2" autocomplete="off"></label><br>
+            <label>Nugget 3: <input type="text" id="n3" autocomplete="off"></label><br>
+            <button hidden="hidden" id="b">Submit Answers</button><br>
+        </form>
+    </body>
+</html>
