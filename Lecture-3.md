@@ -742,7 +742,7 @@ console.log( gameStatModule.getNumGamesStarted() ); //prints out "1"
 console.log( gameStatModule.gamesStarted ); //prints out "undefined"
 ```
 
-In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)). 
+In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* (or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)). 
 
 An IIFE itself is also a design pattern, it looks as follows :point_down::
 
