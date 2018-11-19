@@ -66,7 +66,7 @@ game.prototype.setStatus = function (w) {
         this.gameState = w;
         console.log("[STATUS] %s", this.gameState);
     } else {
-        throw new Error("Impossible status change from %s to %s", this.gameState, w);
+        console.error(new Error("Impossible status change from %s to %s", this.gameState, w));
     }
 };
 
@@ -76,7 +76,7 @@ game.prototype.setWord = function (w) {
     // two possible options for the current game state:
     // 1 JOINT, 2 JOINT
     if (this.gameState !== "1 JOINT" && this.gameState !== "2 JOINT") {
-        throw new Error("Trying to set word, but game status is %s", this.gameState);
+        console.error(new Error("Trying to set word, but game status is %s", this.gameState));
     }
     this.wordToGuess = w;
 };
@@ -93,7 +93,7 @@ game.prototype.addPlayer = function (p) {
     console.assert(p instanceof Object, "addPlayer: Expecting an object (WebSocket), got a %s", typeof p);
 
     if (this.gameState !== "0 JOINT" && this.gameState !== "1 JOINT") {
-        throw new Error("Invalid call to addPlayer, current state is %s", this.gameState);
+        console.error(new Error("Invalid call to addPlayer, current state is %s", this.gameState));
     }
 
     /*
