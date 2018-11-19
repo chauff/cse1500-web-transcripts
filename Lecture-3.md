@@ -867,6 +867,8 @@ The DOM is our entry point to interactive web applications. It allows use to:
 We will now walk through a number of examples that add an interactive element to a web application.
 These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
 
+They strongly overlap with what is discussed in the required reading (Chapter 4 of the course book) of this lecture. Take it as a reminder of what is covered in the book chapter.
+
 #### :bangbang: Example 1: document.getElementById
 
 Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box.
