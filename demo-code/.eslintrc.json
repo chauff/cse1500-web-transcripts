@@ -1,0 +1,19 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "no-console": "off",
+        "no-prototype-builtins": "off",
+        "no-param-reassign": "off",
+        "max-len": "off",
+        "no-alert": "off",
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "no-plusplus": "off",
+        "guard-for-in": "off",
+        "func-names": "off",
+        "no-restricted-syntax": "off",
+        "indent": ["error", 4],
+        "quotes": ["error", "double"],
+        "import/no-unresolved": 0
+    }
+}

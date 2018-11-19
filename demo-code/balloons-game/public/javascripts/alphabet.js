@@ -1,11 +1,10 @@
-const USED = -1; //letter has been used, not available anymore
-const AVAIL = 1; //letter has not been used yet
+const USED = -1; // letter has been used, not available anymore
+const AVAIL = 1; // letter has not been used yet
 
 function Alphabet() {
-
     this.letters = undefined;
 
-    this.initialize = function(){
+    this.initialize = function () {
         this.letters = {
             A: AVAIL,
             B: AVAIL,
@@ -32,60 +31,60 @@ function Alphabet() {
             W: AVAIL,
             X: AVAIL,
             Y: AVAIL,
-            Z: AVAIL
+            Z: AVAIL,
         };
     };
 
-    //is it a valid letter?
-    this.isLetter = function(letter){
+    // is it a valid letter?
+    this.isLetter = function (letter) {
         console.assert(typeof letter === "string", "Single string expected");
         return this.letters.hasOwnProperty(letter);
     };
 
-    //is it an available letter?
-    this.isLetterAvailable = function(letter){
+    // is it an available letter?
+    this.isLetterAvailable = function (letter) {
         console.assert(typeof letter === "string", "Single string expected");
-        return (this.isLetter(letter) && this.letters[letter]==AVAIL);
+        return (this.isLetter(letter) && this.letters[letter] === AVAIL);
     };
 
-    this.makeLetterUnAvailable = function(letter){
+    this.makeLetterUnAvailable = function (letter) {
         console.assert(typeof letter === "string", "Single string expected");
-        if( this.isLetter(letter)){
+        if (this.isLetter(letter)) {
             this.letters[letter] = USED;
 
-            //visually switch off the UI element by simply adding a classname
+            // visually switch off the UI element by simply adding a classname
             document.getElementById(letter).className += " alphabetUsed";
         }
     };
 
-    //does the letter appear in the word?
-    this.isLetterIn = function(letter, word){
+    // does the letter appear in the word?
+    this.isLetterIn = function (letter, word) {
         console.assert(typeof letter === "string", "String expected");
         console.assert(typeof word === "string", "String expected");
 
-        if( !this.isLetter(letter) || !this.isLetterAvailable(letter)){
+        if (!this.isLetter(letter) || !this.isLetterAvailable(letter)) {
             return false;
         }
-        return (word.indexOf(letter)>=0);
+        return (word.indexOf(letter) >= 0);
     };
 
-    //letter locations in the word
-    this.getLetterInWordIndices = function(letter, word){
+    // letter locations in the word
+    this.getLetterInWordIndices = function (letter, word) {
         console.assert(typeof letter === "string", "String expected");
         console.assert(typeof word === "string", "String expected");
 
-        var res = [];
-        
-        if(!this.isLetterIn(letter, word)){
+        const res = [];
+
+        if (!this.isLetterIn(letter, word)) {
             console.log("Letter [%s] is not in target word [%s]!", letter, word);
             return res;
         }
-        
-        for(let i=0; i<word.length; i++){
-            if(word.charAt(i) == letter){
+
+        for (let i = 0; i < word.length; i++) {
+            if (word.charAt(i) === letter) {
                 res.push(i);
             }
         }
-        return res;       
+        return res;
     };
 }

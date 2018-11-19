@@ -1,9 +1,9 @@
-var fs = require('fs');
+const fs = require("fs");
 
-var file = process.argv[2];
+const file = process.argv[2];
 
-fs.watch(file, function () {
-	console.log("File changed!");
+fs.watch(file, () => {
+    console.log("File changed!");
 });
 
-console.log("Now watching " + file);
+console.log(`Now watching ${file}`);

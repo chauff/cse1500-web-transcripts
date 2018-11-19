@@ -1,13 +1,13 @@
-var http = require("http");
+const http = require("http");
 
-var port = process.argv[2];
+const port = process.argv[2];
 
-var server = http.createServer(function (req, res) {
+const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Hello World!");
     console.log("HTTP response sent");
-})
+});
 
-server.listen(port, function () {
-    console.log("Listening on port " + port);
+server.listen(port, () => {
+    console.log(`Listening on port ${port}`);
 });

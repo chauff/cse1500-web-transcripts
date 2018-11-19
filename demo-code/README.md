@@ -207,3 +207,11 @@ node app.js 3000
 ```
 
 Now open your browser and access the following URL: http://localhost:3000/todos.
+
+## ESLint
+
+To execute the style fixer, execute the command:
+
+```console
+node ".\node_modules\eslint\bin\eslint" .\demo-code\**\*.js --fix
+```
