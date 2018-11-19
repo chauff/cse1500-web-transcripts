@@ -1,4 +1,4 @@
-Table of Content
+Table of Contents
 ==
 
 - [How to use VSC](#how-to-use-vsc)
