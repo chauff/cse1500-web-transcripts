@@ -7,7 +7,7 @@ The **Web technology materials and resources** of the 2018/19 [Web and Database 
 
 The database materials are not included here!
 
-## Table of Content <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 - [Contact](#contact)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
