@@ -53,7 +53,7 @@ If you have already read Chapter 4 of the course book, you should know:
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
 - the DOM;
 - the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
-  
+
 In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
 
 ## Examples throughout the lectures
@@ -62,7 +62,7 @@ The code examples throughout these course materials tend to based on three diffe
 
 - A todo application as introduced in the web course book.
 - A habit tracker application as students had to implement in the 2017/18 edition of this course.
-- A board game application as needs to be implemented for the 2018/19 edition of this course. 
+- A board game application as needs to be implemented for the 2018/19 edition of this course.
 
 As the course material has been developed over time, you will get a glimpse of each of those applications.
 
@@ -79,7 +79,7 @@ Vital to JavaScript's rise from toy language to serious contender is the availab
 In addition, today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
 - [V8](https://developers.google.com/v8/) is Google's JavaScript engine,
-- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and 
+- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and
 - [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
 
 JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
@@ -107,7 +107,7 @@ Here is one example of what TypeScript offers: JavaScript is a **dynamic languag
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Looking for trends in <a href="https://twitter.com/nytimes?ref_src=twsrc%5Etfw">@nytimes</a>&#39;s presidential forecast needle? Don&#39;t look too hard - the bounce is random jitter from your PC, not live data <a href="https://t.co/pwcV6epee7">pic.twitter.com/pwcV6epee7</a></p>&mdash; Alp Toker (@atoker) <a href="https://twitter.com/atoker/status/796176641600974851?ref_src=twsrc%5Etfw">November 9, 2016</a></blockquote>
 
-and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-york-times-forecast-dial-had-a-fake-twitch-jitter.html), [2](https://www.theverge.com/2016/11/8/13571216/new-york-times-election-forecast-jitter-needle)). 
+and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-york-times-forecast-dial-had-a-fake-twitch-jitter.html), [2](https://www.theverge.com/2016/11/8/13571216/new-york-times-election-forecast-jitter-needle)).
 
 A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client.
 
@@ -207,7 +207,7 @@ function fn(i) {
         console.log(i);
     }, 1000 * i);
 }
-  
+
 for (var i = 1; i <= 10; i++)
     fn(i);
 ```
@@ -742,7 +742,7 @@ console.log( gameStatModule.getNumGamesStarted() ); //prints out "1"
 console.log( gameStatModule.gamesStarted ); //prints out "undefined"
 ```
 
-In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* (or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)). 
+In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* (or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)).
 
 An IIFE itself is also a design pattern, it looks as follows :point_down::
 
