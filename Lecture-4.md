@@ -173,7 +173,7 @@ Finally, let's quickly walk through the steps to run this script from within VSC
 
 ![Debug panel](img/L4-debug.png)
 
-### Low-level networking with Node.js
+### :bangbang: Low-level networking with Node.js
 
 As already mentioned, Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number (if you don't know what these two concepts refer to, have a look at [Lecture 1](Lecture-1.md) again).
 
@@ -229,7 +229,7 @@ To start this script (let's assume it is saved as `tcp.js`), we now require two 
 node tcp.js todos.txt 3000
 ```
 
-Any port number between 1023 and 65536 is a good one (ports 1 to 1023 are *system ports*), as long as no other program has already bound to it. If you try to use the same port as another program, Node will throw an `EADDRINUSE` error (which means *Error: address is in use!*). A very typical port number you find in code examples is `3000`, though once more, the concrete port number chosen does not matter.
+Any port number between 1024 and 65536 is a good one (ports 1 to 1023 are *system ports*), as long as no other program has already bound to it. If you try to use the same port as another program, Node will throw an `EADDRINUSE` error (which means *Error: address is in use!*). A very typical port number you find in code examples is `3000`, though once more, the concrete port number chosen does not matter.
 
 Ok, we just started the server. It is now waiting for clients/subscribers on port `3000`. The next obvious question is how to start up clients. For this exercise, we will use telnet (you should already be familiar with it). Open another terminal (the server has to keep running of course) and type :point_down::
 
