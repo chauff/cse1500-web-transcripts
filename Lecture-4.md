@@ -181,7 +181,7 @@ TCP socket connections have **two endpoints**:
 
 :one: **binds** to a numbered port;
 
-:two: **connects** to a part.
+:two: **connects** to a port.
 
 An analogous example of TCP socket connections are phone lines: One phone *binds* to a phone number. Another phone tries to call that phone. If the call is answered, a connection is established.
 
