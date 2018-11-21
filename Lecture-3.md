@@ -6,7 +6,7 @@
 
 *At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
 
-## Table of Content <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 
 - [Learning goals](#learning-goals)
 - [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
@@ -272,7 +272,7 @@ var seven = function(){
 console.log(x+" - "+y);
 ```
 
-In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven()`;` does not.
+In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
 
 The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. In our example, the JavaScript runtime *hoists* the declaration of `six`; it is processed before the remaining code is executed.
 
@@ -742,7 +742,7 @@ console.log( gameStatModule.getNumGamesStarted() ); //prints out "1"
 console.log( gameStatModule.gamesStarted ); //prints out "undefined"
 ```
 
-In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)).
+In this code snippet :point_up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an *Immediately Invoked Function Expression* (or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)).
 
 An IIFE itself is also a design pattern, it looks as follows :point_down::
 
@@ -866,6 +866,8 @@ The DOM is our entry point to interactive web applications. It allows use to:
 
 We will now walk through a number of examples that add an interactive element to a web application.
 These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
+
+They strongly overlap with what is discussed in the required reading (Chapter 4 of the course book) of this lecture. Take it as a reminder of what is covered in the book chapter.
 
 #### :bangbang: Example 1: document.getElementById
 
