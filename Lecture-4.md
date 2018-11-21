@@ -11,7 +11,7 @@
     - [Event-driven and non-blocking](#event-driven-and-non-blocking)
 - [Node.js in examples](#nodejs-in-examples)
     - [:bangbang: Watching a file for changes](#bangbang-watching-a-file-for-changes)
-    - [Low-level networking with Node.js](#low-level-networking-with-nodejs)
+    - [:bangbang: Low-level networking with Node.js](#bangbang-low-level-networking-with-nodejs)
     - [:bangbang: Creating a Hello World! web server with Node.js](#bangbang-creating-a-hello-world-web-server-with-nodejs)
 - [Express](#express)
     - [:bangbang: Greetings Express](#bangbang-greetings-express)
