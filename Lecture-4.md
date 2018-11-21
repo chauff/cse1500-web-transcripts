@@ -79,7 +79,7 @@ fs.readFile('/etc/passwd', function(err, data) {
 })
 ```
 
-<sup>The documentation it does not actually say `function(err, data)` but `(err, data) =>` instead; this is just a syntactic shortcut called an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) introduced in ES6.</sup>
+<sup>In the documentation it does not actually say `function(err, data)` but `(err, data) =>` instead; this is just a syntactic shortcut called an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) introduced in ES6.</sup>
 
 :point_up: The method `readFile` takes two parameters: the path of the file to read and a **callback function**: the function to execute when the file reading operation has completed. The callback function has two parameters: an error object and a data object. If the file reading operation failed for some reason, we throw the error, otherwise we print out the data to the console. Once the Node runtime encounters this code snippet, it will execute `fs.readFile(....)` and return immediately to execute the next line of code (this is called **non-blocking**). What happens to the file read operation? The Node runtime has access to a pool of I/O threads and once a thread has completed the file reading operation, an event is entered into the event loop to then execute the callback (in our case printing out the contents to the console).
 
@@ -315,14 +315,14 @@ function simpleHTTPResponder(req, res) {
     var uParts = url.parse(req.url, true);
 
     //implemented path
-    if( uParts.pathname == "/greetme"){
+    if (uParts.pathname == "/greetme"){
         res.writeHead(200, { "Content-Type": "text/plain" });
 
         //parse the query
         var query = uParts.query;
         var name = "Anonymous";
 
-        if( query["name" != undefined]){
+        if (query["name"] != undefined){
             name = query["name"];
         }
 
@@ -415,9 +415,9 @@ var htmlSuffix = "</h1></body></html>";
 app.get("/greetme", function(req, res){
     var query = url.parse(req.url, true).query;
 
-    var name = ( query["name"]!=undefined) ? query["name"] : "Anonymous";
+    var name = (query["name"] != undefined) ? query["name"] : "Anonymous";
 
-    res.send(htmlPrefix+"Greetings "+name+htmlSuffix);
+    res.send(htmlPrefix + "Greetings " + name + htmlSuffix);
 })
 
 app.get("/goodbye", function(req, res){
@@ -479,7 +479,7 @@ When designing your own application, it is important to have a good understandin
 
 ## JSON: exchanging data between the client and server
 
-JSON stands for *JavaScript Object Notation* and is a format that transmits data in human-readable text. It consists of attribute value pairs and array data types. 
+JSON stands for *JavaScript Object Notation* and is a format that transmits data in human-readable text. It consists of attribute value pairs and array data types.
 
 Here is an example of a Twitter message in JSON format (taken from [Twitter's documentation](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json.html) :point_down::
 
@@ -529,7 +529,7 @@ With JSON being a de facto data exchange standard, Express has a dedicated respo
 
 ## Ajax: dynamic updating on the client
 
-Ajax stands for **Asynchronous JavaScript and XML**. XML is in the name, and in the name only. XML is not commonly used as Ajax data exchange format anymore (JSON is!). 
+Ajax stands for **Asynchronous JavaScript and XML**. XML is in the name, and in the name only. XML is not commonly used as Ajax data exchange format anymore (JSON is!).
 
 Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web page. Ajax is not a language. Ajax is also not a product. You see examples of this technology every day; if you stay long enough on the Twitter homepage, you will see a message such as *See 1 new tweet*, which appears without a complete reload of the page. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we now see a continous stream of request/response message pairs - every few seconds the browser sends a request to Twitter's servers to check for new tweets to load:
 
@@ -612,7 +612,7 @@ In practice, implementing Ajax calls correctly can be frustrating, mostly due to
 
 The same-origin policy is fulfilled when the **protocol, port and host** are the same for two pages. Important for debugging: Ajax **cannot** be executed from a web page opened locally from disk (e.g. if you head to your browser and open `file:///Users/claudia/GitHub/Web-Teaching/demo-code/node-ajax-ex/client/index.html`).
 
-There are ways around Ajax' same-origin policy, some of which have been collected in this [Stack Overflow thread](https://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy). As in all scenarios and usages of web technologies, the interaction between technologies and the availability of all kinds of web technologies makes it possible to "misuse" a technology for another purpose to circumvent a perceived restriction or shortcoming. 
+There are ways around Ajax' same-origin policy, some of which have been collected in this [Stack Overflow thread](https://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy). As in all scenarios and usages of web technologies, the interaction between technologies and the availability of all kinds of web technologies makes it possible to "misuse" a technology for another purpose to circumvent a perceived restriction or shortcoming.
 
 Overall, despite there being possibilities to enable Ajax across origins, it is not recommended and using Ajax as-is does not allow it.
 
@@ -869,11 +869,11 @@ f(function(n)){
     - An Ajax request is not sent via HTTP, but instead via atp, the Ajax transfer protocol.
     - An Ajax request always has to be sent as part of an HTML `<form>`.
     - An Ajax request is never sent to a web server, the reply is generated by the browser cache.
-  
+
 5. Imagine building a chat application using Ajax (under HTTP/1.1). How is the browser notified of new messages to display?
     - Ajax allows the server to push HTTP responses to the client.
     - The browser has to poll the server for message updates in short time intervals.
-  
+
 6. What is the purpose of browser built-in web APIs?
 
 7. In what situations should WebSockets be preferred over Ajax?
