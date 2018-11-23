@@ -580,7 +580,7 @@ To make templates even more flexible, we can incorporate JavaScript in the templ
 
 ![EJS and JavaScript](img/L6-ejs-js.png)
 
- :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.foreach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to pass over the array and print out the title and release data. The `<%` scriptlet tags are used for **control-flow purposes**.
+ :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to iterate over the array and print out the title and release date. The `<%` scriptlet tags are used for **control-flow purposes**.
 
 ### :bangbang: Express and templates
 
