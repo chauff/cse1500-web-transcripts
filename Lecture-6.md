@@ -73,7 +73,7 @@ module {
 }
 ```
 
-To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it is empty bar a single line).
+To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it just prints a single line).
 
 Once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
