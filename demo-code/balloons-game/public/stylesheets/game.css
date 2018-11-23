@@ -29,7 +29,7 @@
 }
 
 .alphabetDisabled {
-    border: 0px;
+    border: 2px solid #bbb;
     background-color: transparent;
     box-shadow: none;
 }
