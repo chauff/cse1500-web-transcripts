@@ -859,9 +859,9 @@ function f(done){
     })
 }
 
-f(function(n)){
+f(function(n){
     console.log(n);
-}
+});
 ```
 
 4. How does an Ajax request appear to a web server?
