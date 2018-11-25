@@ -232,7 +232,7 @@ In fact, since 2015/2016 (*yes, it took that long*), [CSS variables](https://dev
 </html>
 ```
 
-:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality.
+:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality. Non-global CSS variables can be added in the same manner to any element.
 
 ### :bangbang: hover and active
 
