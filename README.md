@@ -11,8 +11,8 @@ The database materials are not included here!
 - [Contact](#contact)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
-  - [Recommended](#recommended)
-  - [Required](#required)
+    - [Recommended](#recommended)
+    - [Required](#required)
 - [Course grading](#course-grading)
 - [Course topics](#course-topics)
 - [Sample exams](#sample-exams)
@@ -26,14 +26,14 @@ The database materials are not included here!
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [Web lectures](#web-lectures)
-  - [Lecture 1](#lecture-1)
-  - [Lecture 2](#lecture-2)
-  - [Lecture 3](#lecture-3)
-  - [Lecture 4](#lecture-4)
-  - [Lecture 5](#lecture-5)
-  - [Lecture 6](#lecture-6)
-  - [Lecture 7](#lecture-7)
-  - [Lecture 8](#lecture-8)
+    - [Lecture 1](#lecture-1)
+    - [Lecture 2](#lecture-2)
+    - [Lecture 3](#lecture-3)
+    - [Lecture 4](#lecture-4)
+    - [Lecture 5](#lecture-5)
+    - [Lecture 6](#lecture-6)
+    - [Lecture 7](#lecture-7)
+    - [Lecture 8](#lecture-8)
 
 ## Contact
 
@@ -299,7 +299,7 @@ This lecture covers Node.js ([transcript](Lecture-4.md) and [lecture slides](sli
   
 ### Lecture 5
 
-This lecture covers CSS ([transcript](Lecture-5.md)).
+This lecture covers CSS ([transcript](Lecture-5.md) and [lecture slides](slides/cse1500-lecture5.pdf)).
   
 - Required readings:
   - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).

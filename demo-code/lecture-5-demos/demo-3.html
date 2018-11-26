@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+  <head>
+    <style>
+
+      * {
+        border-style: solid;
+
+        /* Try out what happens when the following two lines
+         * are removed ("CSS reset")
+        */
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        border-color: orange;
+      }
+
+      main {
+        border-color: grey;
+      }
+
+      span {
+        border-color: green;
+      }
+
+      a {
+        border-color: red;
+      }
+
+      p {
+        border-color: blue;
+      }
+
+      /* Block-level vs. inline elements:
+       * use `width: auto` as alternative
+       */
+      main {
+        width: 400px;
+      }
+
+      /* element floating (use left/right/none) */
+      /* a {
+       *  float: left;
+       * }
+       */
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>
+        This is a paragraph containing <a href="#">a link</a>.
+      </p>
+      <p>
+        This is another paragraph
+        <span>
+          with a span and a <a href="#">link in the span</a>.
+        </span>
+      </p>
+    </main>
+  </body>
+</html>
