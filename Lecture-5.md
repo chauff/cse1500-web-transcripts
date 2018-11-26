@@ -232,7 +232,7 @@ In fact, since 2015/2016 (*yes, it took that long*), [CSS variables](https://dev
 </html>
 ```
 
-:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality.
+:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality. Non-global CSS variables can be added in the same manner to any element.
 
 ### :bangbang: hover and active
 
@@ -385,12 +385,12 @@ An example should make the differences between them clear :point_down::
 
       /* select all p elements within div */
       div p {
-        background-color:black;
+        background-color: black;
         color: white;
       }
       /* select all main and all footer elements */
       main, footer {
-        background-color:yellow;
+        background-color: yellow;
       }
       /* select all p elements that have div as parent */
       div > p {
@@ -642,7 +642,7 @@ This is rendered as follows:
 
 Instead of storing data directly in CSS, a better way is to *make use of data stored in HTML elements*. This is achieved through so-called **data attributes**: attributes on any HTML element that are prefixed with `data-`.
 
-CSS can access those data attributes with the [`attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/attr function: it retrieves the value of the selected element and data attribute.
+CSS can access those data attributes with the [`attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/attr) function: it retrieves the value of the selected element and data attribute.
 
 Rewriting the example above with `data-` attributes removes the data from CSS and reduces the amount of CSS rule duplication :point_down: (the rendering remains the same):
 
@@ -914,7 +914,7 @@ Here, we have two sidebars that each *float* to the left and right of the main c
 
 ### :bangbang: Position
 
-The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements. This is in contrast to `float`, which is meets our demands for coarse-grained positioning. Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
+The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements. This is in contrast to `float`, which  meets our demands for coarse-grained positioning. Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
 
 The `position` property has a number of possible values:
 
@@ -1088,7 +1088,7 @@ Once more, an example is sufficient to highlight the use of each of these values
        * span {
        *  border-color: red;
        * }
-      */
+       */
 
       /*  
        * span {
