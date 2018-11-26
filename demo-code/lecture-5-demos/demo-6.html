@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+        width: 900px;
+        margin: 100px auto;
+      }
+
+      .box {
+        width: auto;
+        height: 100px;
+        background-color: #00a6d6;
+        margin: 0 auto;
+        float: left;
+        font-size: 100px;
+        padding: 20px;
+        color: white;
+        text-shadow: 3px 3px 2px black;
+      }
+
+      @keyframes move {
+        from {
+          transform: translate(0px, 1000px)
+        }
+
+        to   {
+          transform: translate(0px, 0px)
+        }
+      }
+
+      #box1, #box7 {
+        animation: move 1s;
+      }
+
+      #box2, #box8 {
+        animation: move 4s;
+      }
+
+      #box3, #box6 {
+        animation: move 2s;
+      }
+
+      #box4, #box5 {
+        animation: move 3s;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="box" id="box1">T</div>
+      <div class="box" id="box2">U</div>
+      <div class="box" id="box3">&nbsp;&nbsp;</div>
+      <div class="box" id="box4">D</div>
+      <div class="box" id="box5">E</div>
+      <div class="box" id="box6">L</div>
+      <div class="box" id="box7">F</div>
+      <div class="box" id="box8">T</div>
+  </body>
+</html>

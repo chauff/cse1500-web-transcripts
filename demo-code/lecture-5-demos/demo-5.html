@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Loading a specific font: https://fonts.google.com/specimen/Monoton -->
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+
+    <style>
+      body{
+        background: black;
+      }
+
+      .neon{
+        font-family: 'Monoton', cursive; /* referencing the loaded font */
+        font-size: 150px;
+        color: #00A6D6;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 400;
+        letter-spacing: 10px;
+        text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A;
+      }
+
+      /*
+       * Instead of linear, also try out `ease-in`, `ease-out`, `steps(10)`.
+       */
+      .flicker-slow{
+        animation: flicker 3s linear infinite;
+      }
+
+      .flicker-fast{
+        animation: flicker 1s linear infinite;
+      }
+      /*
+       * The above short-hand can be replaced by the
+       * following animation properties:
+       */
+
+      /*
+      .flicker-slow{
+        animation-name: flicker;
+        animation-duration: 3s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      .flicker-fast{
+        animation-name: flicker;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      */
+
+      @keyframes flicker {
+        0%, 30%, 33%, 55%, 100% {
+            opacity: .99;
+        }
+
+        31%, 50%, 56% {
+          opacity: 0.3;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="neon">
+      TU <span class="flicker-slow">D</span>E<span class="flicker-fast">L</span><span class="flicker-slow">F</span>T
+    </h1>
+  </body>
+</html>
