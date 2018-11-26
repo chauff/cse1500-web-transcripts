@@ -6,7 +6,13 @@ var sessions = require("express-session");
 var app = express();
 
 app.use(cookies(credentials.cookieSecret));
-app.use(sessions(credentials.cookieSecret));
+var sessionConfiguration = {
+	// Code is slightly adjusted to avoid deprecation warnings when running the code.
+	secret: credentials.cookieSecret,
+	resave: false,
+	saveUninitialized: true,
+};
+app.use(sessions(sessionConfiguration));
 http.createServer(app).listen(3001);
 
 app.get("/countMe", function (req, res) {
