@@ -105,7 +105,7 @@ app.get('/', (req, res) => {
 })
 ```
 
-*Note: in the lexture we covered Ajax, which is an alternative approach to templating for our use case of presenting game statistics. Both technologies are relevant in practice, it is important to understand both of them.*
+*Note: in the lecture we covered Ajax, which is an alternative approach to templating for our use case of presenting game statistics. Both technologies are relevant in practice, it is important to understand both of them.*
 
 ## 3. Cookies
 
@@ -133,11 +133,11 @@ You now have three options:
 
 To make your game accessible to the public, it needs to be deployed somewhere - `locahost:3000` only goes so far.
 
-For short-term deployments (a few minutes/hours), e.g. to show off your game quickly, [ngrok](https://ngrok.com/) is a quick and easy solution. You can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive app this way, as all traffic passes through ngrok servers!*
+For short-term deployments (a few minutes/hours), e.g. to show off your game quickly, [ngrok](https://ngrok.com/) is a quick and easy solution. You can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive apps this way, as all traffic passes through ngrok servers!*
 
 ### Production deployment
 
-That though is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
+ngrok is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
 Deploy your app in Heroku according to the instructions linked above, but first make these changes:
 
