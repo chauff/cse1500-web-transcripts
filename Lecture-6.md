@@ -73,7 +73,7 @@ module {
 }
 ```
 
-To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it is empty bar a single line).
+To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it just prints a single line).
 
 Once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
@@ -580,7 +580,7 @@ To make templates even more flexible, we can incorporate JavaScript in the templ
 
 ![EJS and JavaScript](img/L6-ejs-js.png)
 
- :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.foreach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to pass over the array and print out the title and release data. The `<%` scriptlet tags are used for **control-flow purposes**.
+ :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to iterate over the array and print out the title and release date. The `<%` scriptlet tags are used for **control-flow purposes**.
 
 ### :bangbang: Express and templates
 
