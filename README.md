@@ -120,7 +120,7 @@ In the past years, the web and database (DB) topics were interwoven (usually 1 l
 
 Exam topics are all topics covered in the lectures and the required readings. Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not tested in the exam.
 
-- [Midterm 2015/16](https://chauff.github.io/documents/webdb-2017-18/midterm2.pdf) ([with answers](https://chauff.github.io/documents/webdb-2017-18/midterm2-answers.pdf))
+- [Midterm 2015/16](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2.pdf) ([with answers](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2-answers.pdf))
 - [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf) ([with answers](https://chauff.github.io/documents/webdb-2017-18/final2-answers.pdf))
 - [Midterm 2016/17](https://chauff.github.io/documents/webdb-2017-18/midterm1.pdf)
 - [Final 2016/117](https://chauff.github.io/documents/webdb-2017-18/final1.pdf)
