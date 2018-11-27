@@ -228,7 +228,7 @@ res.clearCookie = function clearCookie(name, options) {
 };
 ```
 
-:point_up: This means, that, in order to clear a cookie, the server sends the cookie to the client with an expiration date **in the past**. This informs the browser that this cookie has become invalid and the browser deletes the cookie from its cookie storage. In order to delete a cookie successfully, not only the name has match but also the cookie domain and path.
+:point_up: This means, that, in order to clear a cookie, the server sends the cookie to the client with an expiration date **in the past**. This informs the browser that this cookie has become invalid and the browser deletes the cookie from its cookie storage. In order to delete a cookie successfully, not only the name has to match but also the cookie domain and path.
 
 ## A more pessimistic view on cookies
 
@@ -259,7 +259,7 @@ Thus, technologically **third-party cookies are not different from first-party c
 
 As seen in [node-cookies-ex](demo-code/node-cookies-ex), cookies are easy to create, use and delete. The last aspects though only holds for *plain cookies*, i.e. little pieces of information that use the standard cookie infrastructure of the HTTP protocol and the browser.
 
-Storing small pieces of information *somewhere* in the browser can actually be accomplished in many different ways if one knows the technologies within the browser well - cookies can be stored in local storage, session storage, IndxedDB and so on. These components are all part of the regular browser software. Covering them is beyond the scope of this lecture, just be aware that all those components can be misused.
+Storing small pieces of information *somewhere* in the browser can actually be accomplished in many different ways if one knows the technologies within the browser well - cookies can be stored in local storage, session storage, IndexedDB and so on. These components are all part of the regular browser software. Covering them is beyond the scope of this lecture, just be aware that all those components can be misused.
 
 [Evercookie](https://github.com/samyk/evercookie) is a JavaScript API that does exactly that. It produces extremely persistent cookies that are not stored in the browser's standard cookie store, but elsewhere. Evercookie uses several types of storage mechanisms that are available in the browser and if a user tries to delete any of the cookies, it will recreate them using each mechanism available. Note: *this is a tool which should **not** be used for any type of web application used in production, it is however a very good educational tool to learn about different components of the browser.*
 
@@ -313,7 +313,7 @@ Let's describe how sessions work on a todo web application example:
 
 For this process to be robust, the session IDs need to be generated at random. If we simply increment a session counter for each new client that makes a request we will end up with a very insecure application. Malicious users can snoop around by randomly changing the session ID in their cookie. Of course, this can partially be mitigated by using signed cookies, but it is much safer to not let clients guess a valid session ID at all.
 
-To conclude this section, we discuss how to make use of sessions in Node.js/Express. Sessions are easy to set up, through the use of another middleware component: `express-session`. The most common use cause of sessions is authentication, i.e. the task of verifying a user's identity.
+To conclude this section, we discuss how to make use of sessions in Node.js/Express. Sessions are easy to set up, through the use of another middleware component: `express-session`. The most common use case of sessions is authentication, i.e. the task of verifying a user's identity.
 
 Let's look at [node-sessions-ex](demo-code/node-sessions-ex) for a working toy example. Install, run and explore the code before continuing.
 
@@ -413,7 +413,7 @@ Here are a few questions you should be able to answer after having followed the 
     - Besides the secure and signed flag (available to first-party cookies), third-party cookies can in addition set the persistent flag.
     - A single cookie can be a first-party cookie and a third-party cookie – depending on the URL the browser requests.
 
-4. Which of the following statements correctly describe the roles in the OAuth 2.0 authorization framework (several correct answers possible)?
+4. Which of the following statements correctly describes the roles in the OAuth 2.0 authorization framework (several correct answers possible)?
 
     - The resource owner grants access to a protected resource.
     - The resource server hosts the protected resource and is capable of accepting and responding to protected resource requests using access tokens.

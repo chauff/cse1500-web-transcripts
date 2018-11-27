@@ -157,9 +157,16 @@ function AlphabetBoard(gs){
     };
 }
 
+function disableAlphabetButtons() {
+    var alphabet = document.getElementById("alphabet");
+    var letterDivs = alphabet.getElementsByTagName("div");
+    for (i = 0; i < letterDivs.length; i++) {
+        letterDivs.item(i).className += " alphabetDisabled";
+    }
+}
+
 //set everything up, including the WebSocket
 (function setup(){
-
     var socket = new WebSocket(Setup.WEB_SOCKET_URL);
 
     /*
@@ -190,6 +197,9 @@ function AlphabetBoard(gs){
 
             //if player type is A, (1) pick a word, and (2) sent it to the server
             if (gs.getPlayerType() == "A") {
+
+                disableAlphabetButtons();
+
                 sb.setStatus(Status["player1Intro"]);
                 let validWord = -1;
                 let promptString = Status["prompt"];
@@ -242,6 +252,7 @@ function AlphabetBoard(gs){
             ab.initialize();
             vw.setWord(gs.getVisibleWordArray());
         }
+
 
         //Player A: wait for guesses and update the board ...
         if( incomingMsg.type == Messages.T_MAKE_A_GUESS && gs.getPlayerType()=="A"){
