@@ -580,8 +580,8 @@ In order to see the difference between the two types of tags, go back to Node's 
 
 ```javascript
 var ejs = require('ejs');
-var template = '<%- message %>';        //ESCAPED
-//var template = ‘<%= message %>';      //UNESCAPED
+var template = '<%- message %>';        //UNESCAPED
+//var template = ‘<%= message %>';      //ESCAPED
 var context = {message: "<script>alert('hi!');</script>"};
 console.log(ejs.render(template, context));
 ```
