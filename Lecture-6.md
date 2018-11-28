@@ -560,6 +560,8 @@ To start the REPL, simply type `node` in the terminal and the Node shell becomes
 
 If you receive an `Error: Cannot find module 'ejs'` error after the `var ejs = require('ejs');` line, exit the shell (to do so, type `.exit`) and install the `ejs` module. To do this, run `npm install ejs` and then go back to the REPL.
 
+If you want to avoid the constant `Undefined` messages on the REPL (which are simply the return values of the commands entered), start the REPL with `node -e "require('repl').start({ignoreUndefined:true})"`. 
+
 ```javascript
 var ejs = require('ejs');
 var template = '<%= message %>'; //<%= outputs the value into the template (HTML escaped)
