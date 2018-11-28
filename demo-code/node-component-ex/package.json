@@ -2,13 +2,13 @@
     "name": "node-component-ex",
     "version": "0.1.0",
     "dependencies": {
-      "express": "^4",
-      "cookie-parser": "^1",
-      "express-session": "^1"
+        "express": "^4",
+        "cookie-parser": "^1",
+        "express-session": "^1"
     },
     "scripts": {
         "start": "node app.js"
     },
     "author": "Claudia Hauff",
     "license": "MIT"
-  }
+}
