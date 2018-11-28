@@ -17,7 +17,7 @@
     - [:bangbang: Authorisation component example](#bangbang-authorisation-component-example)
     - [Components are configurable](#components-are-configurable)
 - [Routing](#routing)
-    - [Routing paths and regular expressions](#routing-paths-and-regular-expressions)
+    - [Routing paths and string patterns](#routing-paths-and-string-patterns)
     - [Routing parameters](#routing-parameters)
     - [Organizing routes](#organizing-routes)
 - [Templating with EJS](#templating-with-ejs)
@@ -408,11 +408,11 @@ app.get('/todos',
 
 :point_up: This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/todos`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important to understand *when* to call `next` and *why* in this setting we have to use a `return` statement - without it, the function's code would be continued to be executed.
 
-### Routing paths and regular expressions
+### Routing paths and string patterns
 
-When we specify a path (like `/todos`) in a route, the path is eventually converted into a **regular expression** by Express. A regular expression is a sequence of characters. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/todos`, `/toodos`, `/todo`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
+When we specify a path (like `/todos`) in a route, the path is eventually converted into a **regular expression** (short: regex) by Express. Regular expressions are patterns to match character combinations in strings. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/todos`, `/toodos`, `/todo`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
 
-Express supports a **subset** of the standard regex meta-characters, namely: `+ ? * ( ) []`. They are used in the following manner:
+Express distinguishes three different types of route paths: strings, string patterns and regular expressions. So far, we have employed just strings to set route paths. String patterns are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. They are used in the following manner:
 
 | Character | Description                                      | Regex    | Matched expressions |
 |-----------|--------------------------------------------------|----------|---------------------|
@@ -421,6 +421,18 @@ Express supports a **subset** of the standard regex meta-characters, namely: `+ 
 | *         | zero or more occurrences of any char (wildcard)  | ab*cd    | abcd, ab1234cd, …   |
 | […]       | match anything inside for one character position | ab[cd]?e | abe, abce, abde     |
 | (…)       | boundaries                                       | ab(cd)?e | abe, abcde          |
+
+It is important to realize that the use of `*` in Express' string patterns is quite unique. In most other languages/frameworks, whenever `*` is mentioned in relation to regular expressions, it refers to zero or more occurrences of the preceding element. In Express' string patterns, `*` is a wildcard.
+
+These meta-characters can be combined as seen here :point_down:
+
+```javascript
+app.get('/user(name)?s+', function(req,res){
+	res.send(…)
+});
+```
+
+:point_up: Note, that the pattern above is called a **string pattern** (it is surrounded by quotation marks). Beyond string patterns, we have regular expressions that contain many more options to create complex patterns (e.g. patterns that end in a particular suffix or patterns matching all numbers with three digits or .... the options are endless). In this course, we stick to string patterns only.
 
 ### Routing parameters
 
