@@ -1,15 +1,15 @@
 {
-    "name": "node-ejs-ex",
-    "version": "0.1.0",
-    "dependencies": {
-      "express": "^4",
-      "cookie-parser": "^1",
-      "express-session": "^1",
-      "ejs": "^2"
-    },
-    "scripts": {
-        "start": "node app.js 3000"
-    },
-    "author": "Claudia Hauff",
-    "license": "MIT"
-  }
+  "name": "node-ejs-ex",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "^4",
+    "cookie-parser": "^1",
+    "express-session": "^1",
+    "ejs": "^2"
+  },
+  "scripts": {
+    "start": "node app.js 3000"
+  },
+  "author": "Claudia Hauff",
+  "license": "MIT"
+}

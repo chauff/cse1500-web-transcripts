@@ -316,7 +316,7 @@ This lecture covers CSS ([transcript](Lecture-5.md) and [lecture slides](slides/
 
 ### Lecture 6
 
-This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md)).
+This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md) and [lecture slides](slides/cse1500-lecture6.pdf)).
 
 - Required readings: *none*
 - Recommended activities:

@@ -571,7 +571,7 @@ console.log(ejs.render(template, context));
 
 :point_up: Here, we first make the EJS object available via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello template!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called *scriptlet tag* to indicate the start of an element to be replaced with data as well as an ending tag `%>`.
 
-Ther are two types of scriptlet tags that output values:
+Ther are two types of scriptlet tags that **output values**:
 
 - `<%= ... %>` outputs the value into the template in **HTML escaped** form.
 - `<%- ... %>` outputs the value into the template in **unescaped** form. This enables cross-site scripting attacks, which we will discuss in [Lecture 8](Lecture-8.md).
@@ -612,9 +612,21 @@ console.log(ejs.render(template, context));
 
 To make templates even more flexible, we can incorporate JavaScript in the template, using the `<%` scriptlet tag :point_down::
 
-![EJS and JavaScript](img/L6-ejs-js.png)
+```javascript
+var ejs = require('ejs');
 
- :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to iterate over the array and print out the title and release date. The `<%` scriptlet tags are used for **control-flow purposes**.
+var template = "<% if(movies.length>2){movies.forEach(function(m){console.log(m.title)})} %>";
+
+var context = {'movies': [
+  {title:'The Hobbit', release:2014},
+  {title:'X-Men', release:2016},
+  {title:'Superman V', release:2014}
+]};
+
+ejs.render(template, context);
+```
+
+ :point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to iterate over the array and print out the title and release date if our array has more than two elements (admittedly, not a very sensible example but it shows off the main principle). The `<%` scriptlet tags are used for **control-flow purposes**. If you replace the opening scriptlet tag with `<%-` or `<%=` (try it!), you will end up with an error.
 
 ### :bangbang: Express and templates
 
