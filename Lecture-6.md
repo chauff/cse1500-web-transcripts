@@ -412,7 +412,7 @@ app.get('/todos',
 
 When we specify a path (like `/todos`) in a route, the path is eventually converted into a **regular expression** (short: regex) by Express. Regular expressions are patterns to match character combinations in strings. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/todos`, `/toodos`, `/todo`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
 
-Express distinguishes three different types of route paths: strings, string patterns and regular expressions. So far, we have employed just strings to set route paths. String patterns are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. Regular expressions contain the full range of common regex functionalities, allowing you to create arbitrarily complex patterns (if you are curious, take a look at the complexity of regular expressions to [validate email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression)).
+Express distinguishes three different types of route paths: strings, string patterns and regular expressions. So far, we have employed just strings to set route paths. String patterns are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. Regular expressions contain the full range of common regex functionalities (routes defined through regular expressions are enclosed in `/ /`, not `' '`), allowing you to create arbitrarily complex patterns. If you are curious how complex regular expressions can become, take a look at the size of regular expressions to [validate email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression).
 
 Express' string pattern meta-characters have the following interpretations:
 
@@ -453,8 +453,6 @@ In order to test your own string patterns, you can set up a simple server-side s
  ```
 
  Once a string pattern is coded, you can simply open the browser, and test different routes, receiving a *Yes!* for a matching route and a *No!* for a non-matching route. 
-
-:point_up: Note, that the pattern above is called a **string pattern** (it is surrounded by quotation marks). Beyond string patterns, we have regular expressions that contain many more options to create complex patterns (e.g. patterns that end in a particular suffix or patterns matching all numbers with three digits or .... the options are endless). In this course, we stick to string patterns only.
 
 ### Routing parameters
 
