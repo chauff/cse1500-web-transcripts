@@ -432,6 +432,26 @@ app.get('/user(name)?s+', function(req,res){
 });
 ```
 
+In order to test your own string patterns, you can set up a simple server-side script such as the following :point_down:
+
+```javascript
+ var express = require("express");
+ 
+ var app = express();
+ 
+ app.get('/user(name)?s+',function(req, res){
+     res.send("Yes!");
+ });
+ 
+ app.get('*', function(req,res){
+     res.send("No!");
+ });
+ 
+ app.listen(3001);
+ ```
+
+ Once a string pattern is coded, you can simply open the browser, and test different routes, receiving a *Yes!* for a matching route and a *No!* for a non-matching route. 
+
 :point_up: Note, that the pattern above is called a **string pattern** (it is surrounded by quotation marks). Beyond string patterns, we have regular expressions that contain many more options to create complex patterns (e.g. patterns that end in a particular suffix or patterns matching all numbers with three digits or .... the options are endless). In this course, we stick to string patterns only.
 
 ### Routing parameters
