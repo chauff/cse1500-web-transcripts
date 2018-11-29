@@ -1,4 +1,4 @@
-## List of university-level courses with a Web focus
+# List of university-level courses with a Web focus
 
 - [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
 - [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
