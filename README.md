@@ -137,7 +137,7 @@ The first three assignments cover web technology topics.
 - [Assignment 2 (web)](Assignment-2.md)
 - [Assignment 3 (web)](Assignment-3.md)
 
-**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview will last 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The team can choose an assessment timeslot during the shared lab sessions starting in week 2.3. The last week for getting assessed on the web assignments is week 2.6. The assessment rubric is available [here](rubric.md).
+**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview will last 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The team can choose an assessment timeslot during the shared lab sessions starting in week 2.3. The last week for getting assessed on the web assignments is week 2.6. The assessment rubric is available [here](Rubric.md).
 
 ## Demo application
 
