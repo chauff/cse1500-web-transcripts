@@ -183,7 +183,7 @@ Here, `3000` is the port number, you can safely use integers above 1024. Just ma
 
 If you see the two HTML files, then, congratulations, you have successfully implemented your first Node.js server!
 
-You can also use `npm start`. This command runs an arbitrary command specified in `package.json`'s `start` property. By default this property contains `"start": "nodejs ./bin/www"`. Replace this line by `"start": "nodejs app.js"` in order to execute your program entry point which, in this case, is `app.js`. Since we require your submission to be runnable with `npm start`, please make sure you have followed these steps! 
+You can also use `npm start`. This command runs an arbitrary command specified in `package.json`'s `start` property. By default this property contains `"start": "node ./bin/www"`. Replace this line by `"start": "node app.js"` in order to execute your program entry point which, in this case, is `app.js`. Since we require your submission to be runnable with `npm start`, please make sure you have followed these steps! 
 
 Instead of using the command line, you can also start your server from within VSC. Use the debug panel; a `launch.json` file will be generated for you, which needs to be updated with program specific property values. As an example, for the demo game, my `launch.json` file looks follows:
 
