@@ -18,7 +18,7 @@ The database materials are not included here!
 - [Sample exams](#sample-exams)
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
-- [Werkcolleges](#werkcolleges)
+- [Werkcolleges / Tutorials](#werkcolleges--tutorials)
 - [Shared labs](#shared-labs)
 - [Office hours](#office-hours)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
@@ -137,7 +137,7 @@ The first three assignments cover web technology topics.
 - [Assignment 2 (web)](Assignment-2.md)
 - [Assignment 3 (web)](Assignment-3.md)
 
-**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview will last 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The team can choose an assessment timeslot during the shared lab sessions starting in week 2.3. The last week for getting assessed on the web assignments is week 2.6.
+**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview will last 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The team can choose an assessment timeslot during the shared lab sessions starting in week 2.3. The last week for getting assessed on the web assignments is week 2.6. The assessment rubric is available [here](rubric.md).
 
 ## Demo application
 
@@ -151,9 +151,9 @@ and a game screen:
 
 <img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-game-CSS-completed.png" alt="splash screen" width="600px">
 
-## Werkcolleges
+## Werkcolleges / Tutorials
 
-We also offer **5** optional werkcolleges (instruction lessons) that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
+We also offer **5** optional werkcolleges (instruction lessons or tutorials) that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
 
 The werkcolleges are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
 
