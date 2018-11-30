@@ -332,7 +332,7 @@ This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md) and [l
 
 ### Lecture 7
 
-This lecture covers cookies and sessions ([transcript](Lecture-5.md) and [lecture slides](slides/cse1500-lecture7.pdf)).
+This lecture covers cookies and sessions ([transcript](Lecture-7.md) and [lecture slides](slides/cse1500-lecture7.pdf)).
 
 - Required readings: *none*
 - Recommended activities: *none*
