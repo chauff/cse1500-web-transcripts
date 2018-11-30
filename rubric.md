@@ -24,7 +24,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 
 - The student is able to answer most of the TA's questions correctly.
 - The board game design is available on the Brightspace forum. The deliverables are uploaded to Brightspace.
-- The splash / board game design fulfils most of the board game requirements (listed in A1).
+- The splash / board game design fulfils most of the board game requirements (listed in [Assignment 1](Assignment-1.md)).
 
 ## Assignment 2
 
