@@ -36,7 +36,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 - Explain the data structure(s) used to keep track of the game state on the server.
 - How was it made possible for several players to play games at the same time?
 - If `jQuery` was used on the client-side ... what does `$` refer to? 
-- Discuss the design pattern(s) chosen for the game.
+- Discuss the design pattern(s) (we discussed three in class) chosen for the game.
 - Show off the messages client and server exchange to communicate the game state and discuss advantages/disadvantages.
 
 ### Passing requirements
