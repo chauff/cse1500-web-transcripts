@@ -1231,7 +1231,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Example 5</title>
+        <title>Example 6</title>
         <script>
           window.onload = function() {
             document.getElementById("typed").onkeypress = checkTextAtKeyPress;
