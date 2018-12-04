@@ -13,7 +13,7 @@ var sessionConfiguration = {
 	saveUninitialized: true,
 };
 app.use(sessions(sessionConfiguration));
-http.createServer(app).listen(3001);
+http.createServer(app).listen(3000);
 
 app.get("/countMe", function (req, res) {
 	var session = req.session;
