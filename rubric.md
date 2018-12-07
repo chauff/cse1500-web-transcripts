@@ -6,8 +6,6 @@ A single assessment session is held per group for the three web assignments. Eve
 
 The rubric below contains example questions/tasks for each assignment as well as an overview of the requirements to achieve a pass. To answer the questions, students can always consult their notes and code. Any Brightspace uploads that did not happen before the assessment can still be executed during the assessment session.
 
-*The rubric is a work in progress, slight changes are possible.*
-
 ## Assignment 1
 
 ### Possible questions / tasks
