@@ -42,6 +42,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 - The student is able to answer most of the TA's questions correctly.
 - The required client-side and server-side components are implemented.
 - The communication is based on WebSockets.
+- One of the three design patterns discussed in class is used at least once.
 - The deliverables are uploaded to Brightspace.
 - The game works as intended: players are randomly paired, valid moves can be executed.
 
