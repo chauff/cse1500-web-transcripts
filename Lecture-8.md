@@ -496,6 +496,8 @@ Here are a few questions you should be able to answer after having followed the 
     - URL parameter manipulation
     - Hidden HTML field manipulation
     - Cookie manipulation
+    - HTML tag manipulation
+    - HTTP response header manipulation
   
 8. What does a signed cookie protect against?
 
