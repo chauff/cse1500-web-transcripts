@@ -556,7 +556,7 @@ Here is a quick summary of the basic constructor:
 - Advantage: very easy to use
 - Issues:
     1. Not obvious how to use **inheritance**;
-    2. Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
+    2. Objects **do not share** functions that are added "on the fly"(`g2` did not have a `printPlayer` method, but `g1` had);
     3. All members are **public** and **any piece of code can be accessed/changed/deleted** (which makes for less than great code maintainability).
 
 We tackle issues 1. and 2. with the next design pattern.
@@ -571,7 +571,7 @@ The last line of the code snippet above :point_up: shows that objects come with 
 
 Here, `name.__proto__` points to the object that is next in the lookup chain to resolve property names. As always though, things are not quite as simple and over time JavaScript runtimes have evolved in their implementation of [__proto__](http://2ality.com/2015/09/proto-es6.html). Normally, it is not necessary to manually *walk up* the prototype chain, instead the JavaScript runtime does the work for you.
 
-So, why is this important and how can you make use of this knowledge? Recall, that one of the issues in the basic constructor is that **objects do not share functions**. Often we do want objects to share functions and if a function changes that change should be reflected in all objects that have this property/method.
+So, why is this important and how can you make use of this knowledge? Recall, that one of the issues in the basic constructor is that **objects do not share functions that are added on the fly**. Often we do want objects to share functions and if a function changes that change should be reflected in all objects that have this property/method.
 
 This is exactly what the prototype-based constructor provides. Let's look at an example :point_down::
 
@@ -1403,7 +1403,7 @@ console.log( A(3)(4)(5) );
 - Objects share functions.
 - All members are public.
 - An object constructor looks like a normal function.
-- Prexing a call to a function with the keyword `new` indicates to the JavaScript runtime that the function should behave like a constructor.
+- Prefexing a call to a function with the keyword `new` indicates to the JavaScript runtime that the function should behave like a constructor.
 
 6. What is the output on the web console when running the following piece of JavaScript in the browser?
 
@@ -1474,7 +1474,7 @@ deal1.details.getPrice();
 9. In a prototype version of one of our applications, we want to implement functionality in JavaScript that retrieves details of local deals from the server when a user clicks on a deal. The code below contains a first implementation of this functionality. What is the main issue of this code?
 - Reloading the web page *n* times will lead to *n* listeners being attached to the same list item.
 - No event listeners will be attached to click events on list items.
-- The JavaScript code will be executed before teh DOM tree is loaded, the event listeners will be attached to the `window` object instead of the list items.
+- The JavaScript code will be executed before the DOM tree is loaded, the event listeners will be attached to the `window` object instead of the list items.
 - The method `document.getElementsByTagName()` does not exist leading to an error in the script.
 
 ```html
