@@ -1403,7 +1403,7 @@ console.log( A(3)(4)(5) );
 - Objects share functions.
 - All members are public.
 - An object constructor looks like a normal function.
-- Prefexing a call to a function with the keyword `new` indicates to the JavaScript runtime that the function should behave like a constructor.
+- Prefixing a call to a function with the keyword `new` indicates to the JavaScript runtime that the function should behave like a constructor.
 
 6. What is the output on the web console when running the following piece of JavaScript in the browser?
 
