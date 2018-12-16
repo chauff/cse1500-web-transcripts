@@ -3,12 +3,13 @@ CSE1500: Web and Database Technology <!-- omit in toc -->
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
 
-The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. We have ~900 students in the course; the course setup reflects that.
+The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. ~900 students follow the course, the course setup reflects that.
 
 The database materials are not included here!
 
-## Table of Contents <!-- omit in toc -->
-- [Contact](#contact)
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Responsible instructors](#responsible-instructors)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
   - [Recommended](#recommended)
@@ -18,9 +19,8 @@ The database materials are not included here!
 - [Sample exams](#sample-exams)
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
-- [Werkcolleges / Tutorials](#werkcolleges--tutorials)
+- [Tutorial sessions](#tutorial-sessions)
 - [Shared labs](#shared-labs)
-- [Office hours](#office-hours)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
 - [Web development resources](#web-development-resources)
@@ -35,9 +35,9 @@ The database materials are not included here!
   - [Lecture 7](#lecture-7)
   - [Lecture 8](#lecture-8)
 
-## Contact
+## Responsible instructors
 
-The responsible instructors (Associate Professors [Claudia Hauff](https://chauff.github.io/) and [Alessandro Bozzon](http://www.wis.ewi.tudelft.nl/bozzon/)) can be reached at `cse1500-ewi[at]tudelft.nl`.
+The responsible instructors are Associate Professors [Claudia Hauff](https://chauff.github.io/) and [Alessandro Bozzon](http://www.wis.ewi.tudelft.nl/bozzon/).
 
 ## Web technology course book 
 
@@ -62,7 +62,7 @@ VS Code offers **many extensions**. You can find a guide on how to browse and in
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier;
 - finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea; [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 
-If you need to be convinced abut why Visual Studio Code is a great IDE to use, check out [this podcast](https://syntax.fm/show/012/why-is-everyone-switching-to-vs-code) by Wes Bos and Scott Tolinski on this very topic.
+If you need to be convinced about why Visual Studio Code is a great IDE to use, check out [this podcast](https://syntax.fm/show/012/why-is-everyone-switching-to-vs-code) by Wes Bos and Scott Tolinski on this very topic.
 
 **Browser developer tools**: they are built into all modern browsers; familiarize yourself with the developer tools of your favorite browser. For Firefox (my personal choice), you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
 
@@ -70,7 +70,7 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 ### Required 
 
-[Node.js](https://nodejs.org/en/), version 8.12 or higher (i.e. the latest stable one). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `student` password is `pwd` and the `root` password (for installing new software etc.) is `cse&(]]` (yes! those are not typos, this is the password). If you follow this course as a non-first year student, [check out this information page on the virtual machine](https://github.com/chauff/Web-Teaching/blob/master/virtual-machine-initialization.md).
+The latest stable version of [Node.js](https://nodejs.org/en/). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `student` password is `pwd` and the `root` password (for installing new software etc.) is `cse&(]]` (yes! those are not typos, this is the password). If you follow this course as a non-first year student, [check out this information page on the virtual machine](https://github.com/chauff/Web-Teaching/blob/master/virtual-machine-initialization.md).
 
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
@@ -84,7 +84,7 @@ Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older ver
 
 Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover web programming topics and three cover database topics. While the assignments together make up only 20% of the final grade and are not required, we strongly recommend to tackle the assignments - they cover a lot of exam materials in a practical manner!
 
-We have two assessment moments: one for the Web technology assignments and one for the Database technology assignments. The three Web assignments are assessed in a single session of your team's own choosing: you can book a timeslot for the Web assessment in weeks 2.3, 2.4, 2.5 or 2.6. The assessment is interview-based. The assessment session can yield anything between 3x pass and 3x no-pass. The grading is conducted per student, i.e. you and your partner may receive different pass/no-pass results.
+We have two assessment moments: one for the Web technology assignments and one for the Database technology assignments. The assessment is interview-based. The assessment session can yield anything between 3x pass and 3x no-pass. The grading is conducted per student.
 
 The table below shows how the number of passes (maximum 6: 3x web and 3x database) are converted to the assignment grade:
 
@@ -118,7 +118,7 @@ The table below shows how the number of passes (maximum 6: 3x web and 3x databas
 
 In the past years, the web and database (DB) topics were interwoven (usually 1 lecture of web and 1 lecture of DB topics per week) and thus the existing midterm and final exams also contain questions on both topics. To study for the midterm and/or final **this year**, make sure to look at the midterm and final exams from the past together to find examples of all Web/DB question types.
 
-Exam topics are all topics covered in the lectures and the required readings. Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not tested in the exam.
+Exam topics are all topics covered in the lectures and the required readings. Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not exam material.
 
 - [Midterm 2015/16](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2.pdf) ([with answers](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2-answers.pdf))
 - [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf) ([with answers](https://chauff.github.io/documents/webdb-2017-18/final2-answers.pdf))
@@ -137,11 +137,11 @@ The first three assignments cover web technology topics.
 - [Assignment 2 (web)](Assignment-2.md)
 - [Assignment 3 (web)](Assignment-3.md)
 
-**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview will last 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The team can choose an assessment timeslot during the shared lab sessions starting in week 2.3. The last week for getting assessed on the web assignments is week 2.6. The assessment rubric is available [here](rubric.md).
+**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric is available [here](rubric.md).
 
 ## Demo application
 
-A demo board game application (a word guesser) [is available](https://github.com/chauff/Web-Teaching/tree/master/demo-code) as well. If you are stuck on how to go about implementing something, the source code of this app can help you to get unstuck. Is has been implemented along the lines of the assignments.
+A demo board game application (a word guesser) [is available](https://github.com/chauff/Web-Teaching/tree/master/demo-code) as well. It has has been implemented along the lines of the assignments.
 
 The demo app, just as listed in this year's board game project, consists of two screens, a splash screen:
 
@@ -151,27 +151,24 @@ and a game screen:
 
 <img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-game-CSS-completed.png" alt="splash screen" width="600px">
 
-## Werkcolleges / Tutorials
+## Tutorial sessions
 
-We also offer **5** optional werkcolleges (instruction lessons or tutorials) that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each lesson will demonstrate basic concepts through a set of short interactive exercises. These lessons are meant to reinforce lecture content, they do not introduce novel concepts.
+We offer **5** optional tutorial sessions that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each tutorial demonstrates basic concepts through a set of short interactive exercises. These tutorials are meant to reinforce lecture content, they do not introduce novel concepts.
 
-The werkcolleges are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
+The tutorials are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
 
 - Week 2.3: JavaScript
 - Week 2.4: Web application development in Node.js/Express
 - Week 2.5: Sample web technology exam questions
 - Week 2.7: Querying in SQL
-- Week 2.8: *to be determined*
+- Week 2.8: Querying in SQL II
+- Week 2.9: MongoDB / Neo4J
 
-Check your timetables for the concrete times! While each lecture is only given once (in the auditorium), each werkcollege is given three times a week - once for each of the three clusters. Check your timetable for your cluster's timeslot!
+Each tutorial is given three times a week. Check your timetable for your cluster's timeslot!
 
 ## Shared labs
 
-Starting in week 2.1, there will be shared labs - similar to the setup of Q1. As all three web assignments have already been released, you can start working on them immediately.
-
-## Office hours
-
-For the web technology part, there will be **two** office hours per week (starting in week 2.1, ending in week 2.5). On **Mondays** and **Thursdays**, Claudia Hauff will be at the shared lab: 14:45-15:45 (Monday) and 13:45-14:45 (Thursday).
+Starting in week 2.1, there will be shared labs - similar to the setup of Q1. All three web assignments have been released at the start of the course, you can start working on them immediately.
 
 ## Interactive web technology exercises
 
@@ -217,8 +214,6 @@ For each lecture we provide a range of materials:
 *If you are interested in knowing what other universities teach in terms of web technologies, take a look at [this list of courses with a web focus](university-web-tech-courses.md).*
 
 ## Web lectures
-
-**Status update**: transcripts of Lectures 1 to 8 are online. Lectures slides will be added as the course weeks progress.
 
 ### Lecture 1
 
