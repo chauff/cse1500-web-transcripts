@@ -115,7 +115,7 @@ The table below shows how the number of passes (maximum 6: 3x web and 3x databas
 
 ## Sample exams
 
-In the past years, the web and database (DB) topics were interwoven (usually 1 lecture of web and 1 lecture of DB topics per week) and thus the existing midterm and final exams also contain questions on both topics. To study for the midterm and/or final **this year**, make sure to look at the midterm and final exams from the past together to find examples of all Web/DB question types.
+Until (and including) the 2017/18 edition, the web and database (DB) topics were interwoven (usually 1 lecture of web and 1 lecture of DB topics per week) and thus for most years, the midterm and final exams also contain questions on both topics. 
 
 Exam topics are all topics covered in the lectures and the required readings. Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not exam material.
 
@@ -123,6 +123,7 @@ Exam topics are all topics covered in the lectures and the required readings. Co
 - [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf) ([with answers](https://chauff.github.io/documents/webdb-2017-18/final2-answers.pdf))
 - [Midterm 2016/17](https://chauff.github.io/documents/webdb-2017-18/midterm1.pdf)
 - [Final 2016/117](https://chauff.github.io/documents/webdb-2017-18/final1.pdf)
+- [Midterm 2018/19](exams/midterm-cse1500-201819.pdf) ([with answers](exams/midterm-cse1500-201819-solutions.pdf))
 
 ## Assignments
 
