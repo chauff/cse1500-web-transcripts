@@ -109,8 +109,8 @@ The table below shows how the number of passes (maximum 6: 3x web and 3x databas
 | 2.5  | ---                       | **Midterm exam**                 | ---        |
 | 2.6  | Introduction to databases | Data models             | ---        |
 | 2.7  | RDBMS: SQL DML 1          | RDBMS: SQL DML 2        | ---        |
-| 2.8  | RDBMS: SQL DDL            | NoSQL: key-value stores | ---        |
-| 2.9  | NoSQL: document stores    | NoSQL: graph stores     | ---        |
+| 2.8  | NoSQL: document stores            | NoSQL: graph stores | ---        |
+| 2.9  | NoSQL: key-value stores    |SQL/NoSQL (advanced)     | ---        |
 | 2.10 | ---                       | ---                     | **Final exam** |
 
 ## Sample exams
