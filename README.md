@@ -153,7 +153,7 @@ and a game screen:
 
 ## Tutorial sessions
 
-We offer **5** optional tutorial sessions that are intended for students **without prior programming experience** - 3 covering web topics and 2 covering database topics. Each tutorial demonstrates basic concepts through a set of short interactive exercises. These tutorials are meant to reinforce lecture content, they do not introduce novel concepts.
+We offer **6** optional tutorial sessions that are intended for students **without prior programming experience** - 3 covering web topics and 3 covering database topics. Each tutorial demonstrates basic concepts through a set of short interactive exercises. These tutorials are meant to reinforce lecture content, they do not introduce novel concepts.
 
 The tutorials are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
 
