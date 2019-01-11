@@ -69,11 +69,11 @@ If you are new to team programming, and want to use VSC's features efficiently, 
 
 ### Required 
 
-The latest stable version of [Node.js](https://nodejs.org/en/). If you are a Windows user, you may want to use the virtual machine from the Q1 2018/19 Computer Organisation course and install Node.js yourself; the `student` password is `pwd` and the `root` password (for installing new software etc.) is `cse&(]]` (yes! those are not typos, this is the password). If you follow this course as a non-first year student, [check out this information page on the virtual machine](https://github.com/chauff/Web-Teaching/blob/master/virtual-machine-initialization.md).
+The latest stable version of [Node.js](https://nodejs.org/en/). 
 
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
-Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use the Virtual Machine provided to you in Q1. You can also use Windows alternatives to telnet such as Putty.
+Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use a Virtual Machine. You can also use Windows alternatives to telnet such as Putty.
 
 ## Course grading
 
@@ -153,22 +153,17 @@ and a game screen:
 
 ## Tutorial sessions
 
-We offer **6** optional tutorial sessions that are intended for students **without prior programming experience** - 3 covering web topics and 3 covering database topics. Each tutorial demonstrates basic concepts through a set of short interactive exercises. These tutorials are meant to reinforce lecture content, they do not introduce novel concepts.
+We offer optional tutorial sessions that are intended for students **without prior programming experience** - 3 cover web topics. Each tutorial demonstrates basic concepts through a set of short interactive exercises. These tutorials are meant to reinforce lecture content, they do not introduce novel concepts.
 
-The tutorials are given by [Assistant Prof. Julian Urbano](https://julian-urbano.info/) and Frank Mulder (teaching team CS). The following topics are covered:
+The following topics are covered:
 
 - Week 2.3: JavaScript
 - Week 2.4: Web application development in Node.js/Express
 - Week 2.5: Sample web technology exam questions
-- Week 2.7: Querying in SQL
-- Week 2.8: Querying in SQL II
-- Week 2.9: MongoDB / Neo4J
-
-Each tutorial is given three times a week. Check your timetable for your cluster's timeslot!
 
 ## Shared labs
 
-Starting in week 2.1, there will be shared labs - similar to the setup of Q1. All three web assignments have been released at the start of the course, you can start working on them immediately.
+Starting in week 2.1, there are shared labs. All three web assignments have been released at the start of the course, you can start working on them immediately.
 
 ## Interactive web technology exercises
 
