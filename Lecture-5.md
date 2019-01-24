@@ -180,7 +180,7 @@ This piece of code is rendered with alternating background colors as was our goa
 The Style Editor allows us to not only inspect the CSS, but to also:
 
 - switch off the CSS (with a click on the "eye" symbol on the left);
-- hover over a CSS rule to see what part of the rendering it affects (the screenshot was taken when the mouse hovered over `li:nth-child(1)`);
+- hover over a CSS rule to see what part of the rendering it affects (the screenshot was taken when the mouse hovered over `li:last-child`);
 - **change the CSS** in the editor and view the immediate effect of those changes.
 
 The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the Style Editor is closed.
