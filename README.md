@@ -18,8 +18,6 @@ The database materials are not included here!
 - [Sample exams](#sample-exams)
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
-- [Tutorial sessions](#tutorial-sessions)
-- [Shared labs](#shared-labs)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
 - [Web development resources](#web-development-resources)
@@ -150,20 +148,6 @@ The demo app, just as listed in this year's board game project, consists of two 
 and a game screen:
 
 <img src="https://raw.githubusercontent.com/chauff/Web-Teaching/master/img/A3-game-CSS-completed.png" alt="splash screen" width="600px">
-
-## Tutorial sessions
-
-We offer optional tutorial sessions that are intended for students **without prior programming experience** - 3 cover web topics. Each tutorial demonstrates basic concepts through a set of short interactive exercises. These tutorials are meant to reinforce lecture content, they do not introduce novel concepts.
-
-The following topics are covered:
-
-- Week 2.3: JavaScript
-- Week 2.4: Web application development in Node.js/Express
-- Week 2.5: Sample web technology exam questions
-
-## Shared labs
-
-Starting in week 2.1, there are shared labs. All three web assignments have been released at the start of the course, you can start working on them immediately.
 
 ## Interactive web technology exercises
 
