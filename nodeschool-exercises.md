@@ -1,12 +1,12 @@
 # Overview of interactive web programming exercises
 
-One of the issues beginning web developers face is the deluge of materials that are "out there" on the web. It is easy to be overwhelmed, not just by the amount of material, but also the fast pace of new standards, new frameworks and new languages. In this course, we only have a few weeks to teach you the basics of web programming. For this reason, below we have listed a number of interactive exercises from a single source: [nodeschool.io](https://nodeschool.io/). These "exercise bundles" are themselves implemented as node.js packages! So, you will use `node` to learn `node`!
+One of the issues beginning web developers face is the deluge of materials that are "out there" on the web. It is easy to be overwhelmed, not just by the amount of material, but also the fast pace of new standards, new frameworks and new languages. In this course, we only have a few weeks to teach you the basics of web programming. For this reason, below we have listed a number of interactive exercises from a single source: [nodeschool.io](https://nodeschool.io/). These "exercise bundles" are themselves implemented as Node.js packages! So, you will use `node` to learn `node`!
 
 Nodeschool offers a long list of self-guided tutorials and exercises; we have matched them up to our lectures. A ● indicates that this concept is taught in class, a ◐ indicates that this is useful knowledge (especially towards completing your assignments) but not required. If a row has no mark at all, then this exercise can safely be skipped.
 
 A nice side effect of the nodeschool.io exercises is the fact that they all require you to use the terminal - in itself a useful exercise.
 
-These are largely introductory exercises, each one takes no longer than 3-4 minutes to read up upon and solve (some less than a minute). They will help you to get started if you have never programmed in JavaScript and/or node.js before this course. They do not only introduce language features, but also how to use the node package manger `npm`, how to debug node.js programs and so on.
+These are largely introductory exercises, each one takes no longer than 3-4 minutes to read up upon and solve (some less than a minute). They will help you to get started if you have never programmed in JavaScript and/or Node.js before this course. They do not only introduce language features, but also how to use the node package manger `npm`, how to debug Node.js programs and so on.
 
 **Note**: _We do not require you to go through these exercises, they are supposed to help you get started on your assignments._
 
