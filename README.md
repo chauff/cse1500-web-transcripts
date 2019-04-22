@@ -122,6 +122,7 @@ Exam topics are all topics covered in the lectures and the required readings. Co
 - [Midterm 2016/17](https://chauff.github.io/documents/webdb-2017-18/midterm1.pdf)
 - [Final 2016/117](https://chauff.github.io/documents/webdb-2017-18/final1.pdf)
 - [Midterm 2018/19](exams/midterm-cse1500-201819.pdf) ([with answers](exams/midterm-cse1500-201819-solutions.pdf))
+- [Midterm Resit 2018/19](exams/midterm-resit-cse1500-201819.pdf) ([with answers](exams/midterm-resit-cse1500-201819-solutions.pdf))
 
 ## Assignments
 
