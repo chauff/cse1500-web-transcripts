@@ -45,6 +45,7 @@
 - [Summary](#summary)
 - [Self-check](#self-check)
 
+
 ## Learning goals
 
 - Describe the most common security issues in web applications.

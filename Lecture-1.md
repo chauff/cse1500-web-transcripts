@@ -41,6 +41,7 @@
     - [Client-IP address tracking](#client-ip-address-tracking)
     - [Fat URLs](#fat-urls)
     - [HTTP basic authentication](#http-basic-authentication)
+- [Secure HTTP](#secure-http)
 - [Self-check](#self-check)
 
 ## Web standards

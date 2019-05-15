@@ -34,6 +34,7 @@
 - [Rendering engines have bugs too!](#rendering-engines-have-bugs-too)
 - [Self-check](#self-check)
 
+
 ## Learning goals
 
 - Position and style HTML elements according to a given design of a web application.
