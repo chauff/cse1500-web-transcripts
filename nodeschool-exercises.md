@@ -10,6 +10,7 @@ These are largely introductory exercises, each one takes no longer than 3-4 minu
 
 **Note**: _We do not require you to go through these exercises, they are supposed to help you get started on your assignments._
 
+
 ## Where to start
 
 1. Make sure to have `node` and `npm` installed.

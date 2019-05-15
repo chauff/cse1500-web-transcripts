@@ -194,6 +194,8 @@ For each lecture we provide a range of materials:
 
 ## Web lectures
 
+All lecture transcripts and assigments (which were developed in Markdown) were automatically converted to PDF format, for those preferring PDFs. You cann find them in the [generatedPDFs](generatedPDFs/) folder here on GitHub.
+
 ### Lecture 1
 
 The lecture covers HTTP ([transcript](Lecture-1.md), [course intro slides](slides/cse1500-intro.pdf) and [lecture slides](slides/cse1500-lecture1.pdf)).

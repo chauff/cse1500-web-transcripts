@@ -1,6 +1,7 @@
 Table of Contents
 ==
 
+- [Table of Contents](#table-of-contents)
 - [How to use VSC](#how-to-use-vsc)
     - [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
         - [Git](#git)

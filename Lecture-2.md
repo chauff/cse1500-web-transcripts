@@ -18,7 +18,6 @@
     - [Who decides the HTML standard](#who-decides-the-html-standard)
 - [Self-check](#self-check)
 
-
 ## Learning goals
 
 - Apply web design principles during the design stage of a web app.
