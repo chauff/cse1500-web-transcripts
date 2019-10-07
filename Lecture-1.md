@@ -730,6 +730,22 @@ As just mentioned, the username/password combination are encoded by the client, 
 
 For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`.
 
+CSS can also be encoded in base-64 but in most cases this will not be necessary.
+
+How to convert a string to base-64 step-by-step?  
+Assume we want to convert the string `.class{color:blue;}`
+1. First you must ensure that the string length is a **multiple of 3**. If it's not, you should add padding to make the length a multiple of 3. The "=" sign is used to represent padding, so now the string becomes:  
+`.class{color:blue;}==`
+2. Convert the [ascii](https://upload.wikimedia.org/wikipedia/commons/7/7b/Ascii_Table-nocolor.svg) characters to their corresponding decimals:  
+`46 99 108 97 115 115 123 99 111 108 111 114 58 98 108 117 101 59 125`
+3. Convert the decimals  to 8-bit binary representation.
+4. Seperate the result in 6-bit groups:  
+`001011 100110 001101 101100 011000 010111 001101 110011 011110 110110 001101 101111 011011 000110 111101 110010 001110 100110 001001 101100 011101 010110 010100 111011 011111 010011 110100 111101`
+5. Convert binary to decimal:  
+`11 38 13 44 24 23 13 51 30 54 13 47 27 6 61 50 14 38 9 44 29 22 20 59 31 19 52 61`
+6. Covert the decimal characters to base-64 using a [base-64 chart](https://en.wikipedia.org/wiki/Base64#Base64_table):  
+`LmNsYXNze2NvbG9yOmJsdWU7fQ==`
+
 It has to be emphasized once more that encoding has nothing to do with encryption. The username and password sent via basic authentication can be decoded trivially, they are sent over the network *in the clear*.
 This by itself is not critical, as long as users are aware of this. However, users tend to be lazy, they tend to reuse the same or similar login/password combinations for a wide range of websites of highly varying criticality. Even though the username/password for site `A` may be worthless to an attacker, if the user only made a slight modification to her usual username/password combination to access site `B`, let's say her online bank account, the user will be in trouble.
 
