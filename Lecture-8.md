@@ -101,9 +101,11 @@ An attacker managed to get access to this interface and threatened to shut down 
 
 ### Denial of service
 
-Denial of service (DoS) attacks make web applications unavailable for legitimate users.
+Denial of service (DoS) is a type of Disruption attack that makes web applications unavailable for legitimate users.
 
 To showcase this threat we use a 2015 Steam store attack, which is extensively described in a [Steam post](https://store.steampowered.com/news/19852/). A signature of a DoS attack is the abnormal traffic increase - in this case, the Steam store had to deal with a 2000% increase in traffic. Steam had a defense against a DoS attack in place to minimize the impact on Steam's servers; however, the defense (caching rules of additional web caches) was imperfect and incorrectly cached web traffic was shown to authenticated users, which means that some users saw other people's account page.
+
+A variant of DoS attack is a Distributed Denial of Service (DDoS) attack where multiple systems flood a targeted system. Typically, an attacker recruits multiple vulnerable machines (or bots) available of the Internet to join a *Botnet* for DDoS attacks. In 2016, a major DDoS attack was carried out by the infamous [Mirai botnet](https://www.csoonline.com/article/3258748/the-mirai-botnet-explained-how-teen-scammers-and-cctv-cameras-almost-brought-down-the-internet.html), which composed of a number of IoT devices that were available on the Internet with default passwords.    
 
 ### Foot in the door
 
