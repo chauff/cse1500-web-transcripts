@@ -15,7 +15,7 @@
     - [Foot in the door](#foot-in-the-door)
     - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
-- [NodeGoat](#nodegoat)
+- [JuiceShop](#juiceshop)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
     - [Injection](#injection)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
@@ -166,15 +166,15 @@ to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
 
-## NodeGoat
+## JuiceShop
 
-One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we covered Node.js/Express, most useful to us is a vulnerable web application that was written in Node.js/Express.
+One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we have covered JavaScript/Node.js, a vulnerable web application that is written in JavaScript/Node.js will be most useful to us.
 
-The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose. It provides an *"environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
+The [OWASP Juice Shop Tool project](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) was designed specifically for this purpose. It is the most modern and sophisticated insecure web application written purely in JavaScript (using Node.js/Express/Angular) and *"encompasses vulnerabilities from the entire OWASP Top 10 along with many other security flaws found in real-world applications"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
 
-The NodeGoat project implements an *Employee Retirement Savings Management* system called RetireEasy - we already saw a glimpse of it in the previous section.
+The Juice Shop project is a realistic online juice shop - we already saw a glimpse of it in the previous section. It features a number of web application vulnerabilities as security challenges with varying difficulties. 
 
-Apart from providing a vulnerable application, NodeGoat also provides a helpful [tutorial](http://nodegoat.herokuapp.com/tutorial) on the implemented vulnerabilities, how to execute attacks and, importantly, how to mitigate them.
+Additionally, it comes with a companion guide called [Pwning OWASP Juice Shop](https://leanpub.com/juice-shop), which explains the vulnerabilities found in Juice Shop and a step-by-step solution guide for exploiting each vulnerability.
 
 ## OWASP Top 10 in practice
 
