@@ -92,6 +92,9 @@ body {
 
 `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
 
+*Note*: In this example color is represented by its hex value. The most common color formats in CSS are *color name, hex value, rgb value.*  
+Example: Green color can be represented by its name `green`, its hex value `#008000` and its rgb value `rgb(0, 128, 0)`. A nice tool to quickly convert between different color formats can be found [here](https://convertingcolors.com/).
+
 Lastly, you know about `!important` which overrides all other declarations.
 
 In this lecture, we move beyond the course book chapter and highlight a number of more advanced CSS concepts.
