@@ -34,7 +34,8 @@
         - [How to avoid it](#how-to-avoid-it)
     - [Sensitive data](#sensitive-data)
         - [How to avoid it](#how-to-avoid-it)
-    - [Access controls](#access-controls)
+    - [Broken Access controls](#broken-access-controls)
+        - [:bangbang: Juice Shop](#bangbang-juiceshop)
         - [How to avoid it](#how-to-avoid-it)
     - [CSRF](#csrf)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
@@ -378,11 +379,21 @@ If a Web application relies on outdated encryption strategies to secure sensitiv
 - Disable autocompletion on HTML forms collecting sensitive data.
 - Disable caching for pages containing sensitive data.
 
-### Access controls
+### Broken Access controls
 
 A malicious user, who is authorized to access a Web application (e.g. a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g. from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
 This attack is similar to [Direct object references](#direct-object-references). A malicious user tests a range of target URLs that should require authentication. This is especially easy for large Web frameworks which come with a number of default routes enabled.
+
+#### :bangbang: Juice Shop
+
+1. Go to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/#/.
+Login with `jim@juice-sh.op` (user) and `ncc-1701` (password). This is a typical user account. 
+3. Add some items to Jim's basket.
+4. Next, go to https://tud-juice-shop.herokuapp.com/#/basket where you will see the items placed in basket.
+5. Right click on the page and click on Inspect. Go to the *Application* tab, and then *Session Storage*. 
+6. You will see a token with name `bid` and the value `2`. 
+7. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, it is called *Horizontal Privilege Escalation*.
 
 #### How to avoid it
 
