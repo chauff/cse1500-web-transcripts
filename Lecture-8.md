@@ -22,7 +22,7 @@
         - [How to avoid it](#how-to-avoid-it)
         - [SQL injection](#sql-injection)
     - [Broken authentication](#broken-authentication)
-        - [:bangbang: Juice Shop](#bangbang-juiceshop)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [XSS](#xss)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
