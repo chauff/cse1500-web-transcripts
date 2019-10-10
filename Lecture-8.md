@@ -18,7 +18,7 @@
 - [NodeGoat](#nodegoat)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
     - [Injection](#injection)
-        - [:bangbang: Juice Shop](#bangbang-juiceshop)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
         - [SQL injection](#sql-injection)
     - [Broken authentication](#broken-authentication)
