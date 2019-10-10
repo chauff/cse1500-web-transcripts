@@ -40,6 +40,8 @@
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Insecure components](#insecure-components)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
+        - [How to avoid it](#how-to-avoid-it)
     - [Unvalidated Redirects](#unvalidated-redirects)
         - [How to avoid it](#how-to-avoid-it)
 - [Summary](#summary)
@@ -447,7 +449,24 @@ Going back to our example, if a user is accessing a *Win an iPAD* web site and a
 
 Vulnerabilities of software libraries and frameworks are continuously being discovered and patched. An application that is not patched when a vulnerability becomes known is a candidate for exploitation. It is important to be aware of the dependencies of one's Node.js application and install security patches quickly when they become available. 
 
-Not only the application itself needs to be kept up-to-date. The server's operating system also needs to be continuously patched, as well as any other software used to support the web server (e.g. Redis, MongoDB, Nginx).
+Not only the application itself needs to be kept up-to-date, the server's operating system also needs to be continuously patched, as well as any other software used to support the web server (e.g. Redis, MongoDB, Nginx).
+
+In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vulnerability) was discovered in many open source archiving libraries. The problem arises from missing validation of archives while decompressing. As a result, any compressed archive containing file names with relative paths (e.g. ../file.txt) go unchecked, and while decompressing the file is placed at its relative address which can be outside the archive directory. Attackers can use this vulnerability to move their own versions of critical libraries to the `/root` folder, or in an attempt to overwrite existing files.
+
+#### :bangbang: Juice Shop
+1. Create a file called `legal.md` containing string `"Hello World!"`. 
+2. Compress it into an archive with name `zipslip.zip`.
+3. Open the archive (e.g., using 7Zip) and rename `legal.md` to `../../ftp/legal.md`. Typically operating systems don't allow file names containing `/ or \`, but no such rule applies to files present inside an archive.
+4. Now, head over to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/.
+5. Log in as `jim@juice-sh.op` (user) and `ncc-1701` (password).
+6. Go to complaints page at https://tud-juice-shop.herokuapp.com/#/complain
+7. Write your complain, attach `zipslip.zip`, and click `Submit`.
+8. Now, if you visit https://juice-shop.herokuapp.com/ftp/legal.md, you will see the contents of your version of `legal.md`.
+
+#### How to avoid it
+
+- Always use latest versions of libraries
+- Keep a look out for [potential vulnerabiltiies](https://www.cvedetails.com/) in open source software, and patch them asap.
 
 ### Unvalidated Redirects
 
