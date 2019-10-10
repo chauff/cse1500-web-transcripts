@@ -31,7 +31,7 @@
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Security misconfiguration](#security-misconfiguration)
-        - [:bangbang: Juice Shop](#bangbang-juiceshop)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [Sensitive data](#sensitive-data)
         - [How to avoid it](#how-to-avoid-it)
