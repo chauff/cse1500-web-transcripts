@@ -35,7 +35,7 @@
     - [Sensitive data](#sensitive-data)
         - [How to avoid it](#how-to-avoid-it)
     - [Broken Access controls](#broken-access-controls)
-        - [:bangbang: Juice Shop](#bangbang-juiceshop)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [CSRF](#csrf)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
