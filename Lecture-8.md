@@ -25,7 +25,7 @@
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [XSS](#xss)
-        - [:bangbang: Juice Shop](#bangbang-juiceshop)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [Direct object references](#direct-object-references)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
