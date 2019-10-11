@@ -22,7 +22,7 @@
         - [How to avoid it](#how-to-avoid-it)
         - [SQL injection](#sql-injection)
     - [Broken authentication](#broken-authentication)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [XSS](#xss)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
@@ -252,20 +252,29 @@ An attacker can exploit broken authentication and session management functions t
 - **Session IDs are static instead of being rotated**. If session IDs are not regularly changed, they are more easily guessable.
 - **Session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can wait for a user with valuable information to pass by.
 
-#### :bangbang: NodeGoat
+#### :bangbang: Juice Shop
 
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Open the browser's dev tools. In particular, the **Storage Inspector** allows you to view the cookies stored by the client.
-3. Login with `user1` (user) and `User1_123` (password).
-4. Check the cookie value of `connect.sid`.
-5. Close the browser tab.
-6. Open a new browser tab and access http://nodegoat.herokuapp.com/. No login should be required.
-7. Head to the Storage Inspector and delete the session cookie.
-8. Access http://nodegoat.herokuapp.com/. A login should be required.
+1. Head to Juice Shop's installation: https://juice-shop.herokuapp.com/#/login.
+2. Open the browser's dev tools (right-click, Inspect, on Google Chrome). In particular, go to **Application** tab, find the **Storage** section. It allows you to view the cookies stored by the client.
+3. Login with `admin@juice-sh.op` (user) and `admin123` (password). 
+4. In the `Cookies` tab, you will see a new cookie `token` added.
+5. Copy the value of `token` (which will be a long random looking string). 
+6. *Experiment 1*
+    - Close the browser tab.
+    - Open a new browser tab and access http://nodegoat.herokuapp.com/. No login should be required.
+7. *Experiment 2*
+    - Open a new Incognito window and go to http://nodegoat.herokuapp.com/. 
+    - Go to the `Cookies` tab. No `token` cookie should be present.
+    - Write click on the white pane and choose `Add new`.
+    - Type `token` as `Name` and paste the value of cookie in `Value`.
+    - Refresh the browser window. You will now be logged in as `admin@juice-sh.op`.
+8. *Experiment 3*
+    - Head to the `Cookies` tab and delete the session cookie `token`.
+    - In a few seconds (or after a tab refresh), a login should be required again.
 
 #### How to avoid it
 
-- Good authentication and session management is difficult - avoid if possible an implementation from scratch.
+- Good authentication and session management is difficult - avoid, if possible, an implementation from scratch.
 - Ensure that the session ID is **never sent over the network unencrypted**.
 - Session IDs should not be visible in URLs.
 - Generate a new session ID on login and **avoid reuse**.
