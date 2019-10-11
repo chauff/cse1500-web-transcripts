@@ -203,7 +203,7 @@ Surprisingly many home pages are not able to answer these questions. Take for ex
 
 ![Coffeecompany](img/L2-coffeecompany.png)
 
-<sup>Screenshot taken October 18, 2018</sup>
+<sup>Screenshot taken October 11, 2019</sup>
 
 What is the core business of this company? This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
 
