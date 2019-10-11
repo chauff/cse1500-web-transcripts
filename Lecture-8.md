@@ -67,11 +67,11 @@ Bug bounty programs are run to this day by, among others, [Facebook](https://www
 
 ## Threat categories
 
-There are a number of overarching threat categories, we introduce each of them with a concrete security incidence.
+There are a number of overarching categories for threats against web applications. We introduce each of them with a concrete security incident.
 
 ### Defacement
 
-Website defacement is an attack against a website that changes the visual appearance of a site.
+Website defacement is an attack against a website that changes the visual appearance of a site. It can be an act of hacktivism (socio-politically motivated), revenge, or simply internet trolling.  
 
 A famous example here is CERN, [which in 2008 had one of its portals defaced by a Greek hacker group](https://astroengine.com/2008/09/16/greek-hackers-invade-lhc-nothing-much-happens/). This benevolent looking  page:
 
@@ -82,6 +82,9 @@ became this one:
 ![CERN web page hacked](img/L8-cern-2.png)
 
 Beside defacement, no damage was done. Despite this, the attack was a cause for concern as the "hacked" web server formed part of the monitoring systems for some of the Large Hadron Collider detector hardware.
+
+Another recent example from 2015 is a [defacement attack against Lenovo](https://www.cbronline.com/it-network/lizard-squad-claim-attack-on-lenovo-days-after-superfish-4520823/) (a famous computer manufacturer) which was accused of shipping laptops with vulnerable adware
+installed by Superfish. A hacking group that goes by the name *Lizard Squad* replaced Lenovo's website with a slideshow of bored teenagers while some High School musicals played in the background.  
 
 ### Data disclosure
 
