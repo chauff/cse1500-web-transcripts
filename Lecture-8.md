@@ -25,7 +25,7 @@
         - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [XSS](#xss)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [Direct object references](#direct-object-references)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
@@ -310,14 +310,19 @@ http://myforum.nl/search?q=Let+me+…
 http://myforum.nl/search?q=<script>…
 ```
 
-#### :bangbang: NodeGoat
+#### :bangbang: Juice Shop
 
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. Click *Profile* on the left-hand tab.
-4. In the *First Name* field, type `<script>alert("Hello there!")</script>`. Also fill the *bank routing #* field with a random value since it is mandatory.
-5. Click *Submit*. You should now see an alert dialogue.
-6. Head to the top-right corner and check the profile by clicking on the *Profile* link. Again, the alert dialogue pops up as the code has been stored on the server. This is thus a stored XSS attack.
+1. Head to Juice Shop's installation at https://juice-shop.herokuapp.com/#/. 
+2. Type `<iframe src="javascript:alert('Hello World!')">`in the Search field on the top-right corner and press Enter. You should see an alert dialog. This is a typical XSS attack.
+3. In the next example, you will see that sometimes it is easy to bypass server defenses if they are not configured properly.
+4. Login as `admin@juice-sh.op` (user) and `admin123` (password).
+5. Go to the profile page at https://juice-shop.herokuapp.com/profile.
+6. Since this is a globally accessible website, chances are that someone has already attempted to do an XSS attack. Hence, you *might* see an alert dialog when you go to the `/profile` page.
+7. In the Username, type `<script>alert('Hello World!')</script>` and click `Set Username`. Typically, this should be enough for an XSS attack.
+8. You will see under the profile picture, the username `lert('Hello World!')`, while in the input field `lert('Hello World!')</script>` remains. The server does some kind of input sanitization (or cleanup), so the attack doesn't succeed. However, if you look closely, the sanitization is not done properly as some part of the attack code remains. So, how can we bypass this sanitization?
+9. Apparently, the sanitizer looks for this pattern: `<(.)*>.` (starts with < sign, anything can be placed between <>, and one character after it) and removes the string found. So the attack code becomes ineffective.
+10. Typing `<<x>xscript>alert('Hello World!')</script>` bypasses the sanitizer as it effectively removes `<x>x` and turns the username into `<script>alert('Hello World!')</script>`, which is valid JS code.
+11. Now, when you go back to the https://juice-shop.herokuapp.com/profile page, the alert dialogue pops up again as the code has been stored on the server. This is thus a *Stored XSS attack*.
 
 #### How to avoid it
 
