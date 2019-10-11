@@ -254,9 +254,9 @@ An attacker can exploit broken authentication and session management functions t
 5. Copy the value of `token` (which will be a long random looking string). 
 6. *Experiment 1*
     - Close the browser tab.
-    - Open a new browser tab and access http://nodegoat.herokuapp.com/. No login should be required.
+    - Open a new browser tab and access https://juice-shop.herokuapp.com/. No login should be required.
 7. *Experiment 2*
-    - Open a new Incognito window and go to http://nodegoat.herokuapp.com/. 
+    - Open a new Incognito window and go to https://juice-shop.herokuapp.com/. 
     - Go to the `Cookies` tab. No `token` cookie should be present.
     - Write click on the white pane and choose `Add new`.
     - Type `token` as `Name` and paste the value of cookie in `Value`.
