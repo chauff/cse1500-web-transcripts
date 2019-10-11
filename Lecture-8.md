@@ -27,6 +27,9 @@
     - [XSS](#xss)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
+    - [Improper Input Validation](#improper-input-validation)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
+        - [How to avoid it](#how-to-avoid-it)
     - [Direct object references](#direct-object-references)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
@@ -307,6 +310,25 @@ http://myforum.nl/search?q=<script>…
 
 As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g. escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
 
+
+### Improper Input Validation
+
+When user input is not checked or incorrectly validated, the web application may start behaving in unexpected ways. An attacker can craft an input that alters the application's control flow, cause it to crash, or even execute arbitrary user-provided code.
+
+Improper input validation is often the root cause of other vulnerabilities, e.g. [Injection](#injection) and [XSS](#xss) attacks.
+
+#### :bangbang: Juice Shop
+1. Head over to Juice Shop's installation and attempt to register as a new user: https://tud-juice-shop.herokuapp.com/#/register.
+2. Fill the registration form. You will observe that the `Repeat Password` field gives an error until the passwords are a complete match.
+3. Now, go back to the `Password` field and change it.
+4. You will see that the `Repeat Password` does not raise any error, and you can register with mismatching passwords. 
+
+#### How to avoid it
+- User input should always be validated (e.g. is this really an email?, do the passwords match?, are the conditions met for enabling certain functionality?)
+- User input should always be sanitized (e.g. by stripping out potential JavaScript code elements).
+- A server that generates output based on user data should escape it (e.g. escaping <script> leads to `&lt;script&gt;`), so that the browser does not execute it.
+- These steps **should** occur on the server-side, as a malicious user can always circumvent client-side validation/sanitation steps.
+    
 ### Direct object references
 
 Web applications often make use of direct object references when generating a HTTP response. We have already seen this in a code snippet in [Lecture 6](Lecture-6.md):
