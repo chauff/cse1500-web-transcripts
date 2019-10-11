@@ -30,7 +30,8 @@
     - [Security misconfiguration](#security-misconfiguration)
         - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
-    - [Sensitive data](#sensitive-data)
+    - [Sensitive data exposure](#sensitive-data-exposure)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [Broken Access controls](#broken-access-controls)
         - [:bangbang: Juice Shop](#bangbang-juice-shop)
@@ -354,16 +355,27 @@ A popular package to secure Express-based applications is [Helmet](https://www.n
 
 Rely on automated scanner tools to check Web servers for the most common types of security misconfigurations.
 
-### Sensitive data
+### Sensitive data exposure
 
 If a Web application does not use HTTPS for all authenticated routes (HTTPS is needed to protect the session cookie), a malicious user can monitor the network traffic and steal the user's session cookie.
 
 If a Web application relies on outdated encryption strategies to secure sensitive data, it is just a matter of time until the encryption is broken.
 
+In addition, if sensitive documents can be accessed without authorization, or user data is backed up but is still placed on the server, all attackers need to do is look for such forgotten resources. 
+
+#### :bangbang: Juice Shop
+
+1. Head over to Juice Shop's installation at https://tud-juice-shop.herokuapp.com
+2. Access the side menu and click on *About Us*.
+3. Follow the link on text `Check out our boring terms of use if you are interested in such lame stuff`.
+4. You will see that the page is served by FTP (File Transfer Protocol). FTP is used for transmitting files between computers connected to the Internet. A typical user must be logged in to the FTP server in case it contains sensitive files. However, in this case, Anonymous FTP is used so anyone can access the files.
+5. Let's go one level up to see what files are available on this server using https://juice-shop.herokuapp.com/ftp/.
+6. `acquisitions.md` is a confidential document stating Juice Shop's plans for the coming years, which is readily available for anyone to access.
+
 #### How to avoid it
 
 - All sensitive data should be encrypted across the network and when stored.
-- Only store the necessary sensitive data and discard it as soon as possible (e.g. credit card numbers).
+- Only store the necessary sensitive data and discard it as soon as possible (e.g. credit card numbers, backups).
 - Use strong encryption algorithms (a constantly changing target).
 - Disable autocompletion on HTML forms collecting sensitive data.
 - Disable caching for pages containing sensitive data.
