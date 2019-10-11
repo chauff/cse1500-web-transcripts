@@ -18,7 +18,7 @@
 - [JuiceShop](#juiceshop)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
     - [Injection](#injection)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
         - [SQL injection](#sql-injection)
     - [Broken authentication](#broken-authentication)
@@ -183,7 +183,7 @@ Additionally, it comes with a companion guide called [Pwning OWASP Juice Shop](h
 
 ## OWASP Top 10 in practice
 
-In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of NodeGoat. Some of them will be introduced in more detail than others.
+In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of Juice Shop. Some of them will be introduced in more detail than others.
 
 ### Injection
 
@@ -210,14 +210,16 @@ Web applications that do not validate their input are also attackable, if they i
 
 `eval()` in fact is so dangerous that [it should never be used](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#Do_not_ever_use_eval!).
 
-#### :bangbang: NodeGoat
+#### :bangbang: Juice Shop
 
-1. To try out this attack, head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. On the left-hand side, click on *Contributions*.
-4. To explore the effect of different inputs, try out a few numbers and strings in the three *New Payroll Contribution Percent* form fields.
-5. In one of the form fields, now fill in `process.exit()` and click `Submit`.
-6. You should now see an application error.
+1. To try out this attack, head to Juice Shop installation at https://juice-shop.herokuapp.com/
+2. You can access the user reviews using the backend API `/rest/products/{id}/reviews`.
+3. To see the first customer's review, go to: https://juice-shop.herokuapp.com/rest/products/1/reviews. You will see the review in JSON format.
+4. Try out a few other values for `{id}`.
+5. This indicates that the `{id}` is processed by the server as a user input. Let's see if we can execute commands using it.
+6. Replace `{id}` with `sleep(2000)` and press Enter. You will observe that the server takes roughly 2 seconds to respond. This is because the `sleep(x)` command takes an integer as input that makes the program sleep for `x` ms.
+7. To avoid real Denial of Service attacks, the Juice Shop will sleep for a maximum of 2 seconds. 
+8. **Dangerous**: If you replace `{id}` with `process.exit()`, the application will crash and will need to be redeployed. Be **VERY** careful with this because you, including your fellow students, won't be able to access Juice Shop for the next 10 minutes!
 
 #### How to avoid it
 
@@ -234,7 +236,7 @@ As stated earlier, `eval()` should be avoided at all costs.
 
 #### SQL injection
 
-One important injection type is missing in the above list: **SQL injections**. They will be covered in the database part of this course.
+One important injection type is missing in the above list: **SQL injections**. They will be covered in *CSE1505 Information and Data Management*.
 
 ### Broken authentication
 
