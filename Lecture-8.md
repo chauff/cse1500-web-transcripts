@@ -28,6 +28,7 @@
         - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [Security misconfiguration](#security-misconfiguration)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [Sensitive data](#sensitive-data)
         - [How to avoid it](#how-to-avoid-it)
@@ -336,6 +337,14 @@ Issues can arise everywhere (Web server, database, application framework, operat
 - Resources may be publicly accessible that should not be.
 - The root user can log in via SSH (this allows remote access).
 - Security patches are not applied on time.
+- Error handling is not done properly causing application to crash abruptly.
+
+#### :bangbang: Juice Shop
+1. Go to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/#/
+2. There are multiple security misconfigurations in Juice Shop:
+    - You can access admin account by `admin@juice-sh.op` (user) and an easily guessable `admin123` (password).
+    - Visit https://tud-juice-shop.herokuapp.com/rest/qwertz to see an error that was not properly handled by the developers.
+    - Visit https://tud-juice-shop.herokuapp.com/profile while *not logged in* to see an illegal activity error. The proper way to deal with such errors is to show a customized error message, otherwise a lot of unnecessary and sensitive information also gets published.
 
 #### How to avoid it
 
