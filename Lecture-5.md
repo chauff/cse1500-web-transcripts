@@ -1727,11 +1727,13 @@ Here is a concrete example of how media queries enable a **responsive design** :
 </html>
 ```
 
-Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature (or even better: the **Print media simulation** button in the Developer Tools of Firefox :point_down:) to test the behaviour of the media queries.
+Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature (or even better: the **Print media simulation** button in the Developer Tools of Firefox) to test the behaviour of the media queries.
 
 ![Responsive design mode](img/L5-responsive.png)
+
+Button for activating the **Print media simulation** page mode on Firefox.  
 ![Responsive design mode](img/L5-printmedia.png)
-<sup>Button for activating the **Print media simulation** page mode</sup>
+
 
 ## Animations and transitions
 
