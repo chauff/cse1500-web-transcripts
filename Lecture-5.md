@@ -247,74 +247,35 @@ Here is a simple example :point_down::
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        :root {
-            --highlight-color: tomato;
-        }
-        li {
-            list-style: none;
-            padding: 15px;
-        }
-        li:nth-of-type(2n){
-            background-color: gold;
-        }
-        li:nth-of-type(2n+1){
-            background-color: yellow;
-        }
-        li:nth-child(1){
-            color: var(--highlight-color);
-        }
-        li:last-child{
-            color: var(--highlight-color);
-        }
+    <head>
+        <style>
+            button {
+                background: white;
+                color: darkgray;
+                width: 100px;
+                padding: 5px;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid darkgray;
+            }
 
-        /* ----- New CSS code starts here ----- */
+            button:hover {
+                color: white;
+                background: darkgray;
+            }
 
-        button {
-            background: white;
-            color: darkgray;
-            width: 100px;
-            padding: 5px;
-            margin-left: 40px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid darkgray;
-
-        }
-
-        button:hover {
-            color: white;
-            background: darkgray;
-        }
-
-        button:active {
-            border: 1px dashed;
-            border-color: black;
-        }
-        
-        /* ----- End of new CSS code ----- */
-
-    </style>
-</head>
-<body>
-<!-- New HTML code starts here -->
-<button>Add Todo</button>
-<!-- End of new HTML code -->
-<ul>
-    <li>Create an Easychair instance</li>
-    <li>Send call for papers to mailing lists</li>
-    <li>Create a conference website</li>
-    <li>Book the venue</li>
-    <li>Find PC chairs</li>
-    <li>Find PC members</li>
-    <li>Book hotel rooms</li>
-    <li>Design program</li>
-</ul>
-</body>
+            button:active {
+                border: 1px dashed;
+                border-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <button>Add Todo</button>
+        </main>
+    </body>
 </html>
-
 ```
 
 While this toy example is not very impressive, `:hover` can easily be employed to create image galleries (preview vs. full image) as well as pure CSS dropdown menus (hide the menu items apart from the header and only reveal them when the mouse hovers over the header).
@@ -331,85 +292,45 @@ An example :point_down::
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- New JS code starts here -->
-    <script>
-        function disable(el){
-            document.getElementById(el.id).disabled = true;
-        }
-    </script>
-    <!-- New JS code ends here --> 
-    <style>
-        :root {
-            --highlight-color: tomato;
-        }
-        li {
-            list-style: none;
-            padding: 15px;
-        }
-        li:nth-of-type(2n){
-            background-color: gold;
-        }
-        li:nth-of-type(2n+1){
-            background-color: yellow;
-        }
-        li:nth-child(1){
-            color: var(--highlight-color);
-        }
-        li:last-child{
-            color: var(--highlight-color);
-        }
+    <head>
+        <script>
+            function disable(el){
+                document.getElementById(el.id).disabled = true;
+            }
+        </script>
+        <style>
+            button {
+                background: white;
+                color: darkgray;
+                width: 100px;
+                padding: 5px;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid darkgray;
+            }
 
-        button {
-            background: white;
-            color: darkgray;
-            width: 100px;
-            padding: 5px;
-            margin-left: 40px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid darkgray;
+            button:enabled:hover {
+                color: white;
+                background: darkgray;
+            }
 
-        }
+            button:enabled:active {
+                border: 1px dashed;
+                border-color: black;
+            }
 
-        /* ----- New CSS code starts here ----- */
-
-        button:enabled:hover {
-            color: white;
-            background: darkgray;
-        }
-
-        button:enabled:active {
-            border: 1px dashed;
-            border-color: black;
-        }
-
-        button:disabled {
-            background: #ddd;
-            color: #aaa;
-            border: 1px solid #bbb;
-        }
-
-        /* ----- End of new CSS code ----- */
-
-    </style>
-</head>
-<body>
-<!-- New HTML code starts here -->
-<button id="b" onclick="disable(this)">Add Todo</button>
-<!-- End of new HTML code -->
-<ul>
-    <li>Create an Easychair instance</li>
-    <li>Send call for papers to mailing lists</li>
-    <li>Create a conference website</li>
-    <li>Book the venue</li>
-    <li>Find PC chairs</li>
-    <li>Find PC members</li>
-    <li>Book hotel rooms</li>
-    <li>Design program</li>
-</ul>
-</body>
+            button:disabled {
+                background: #ddd;
+                color: #aaa;
+                border: 1px solid #bbb;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <button id="b" onclick="disable(this)">Add Todo</button>
+        </main>
+    </body>
 </html>
 ```
 
@@ -422,90 +343,22 @@ An example :point_down::
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <script>
-        function disable(el){
-            document.getElementById(el.id).disabled = true;
-        }
-    </script>
+  <head>
     <style>
-        :root {
-            --highlight-color: tomato;
-        }
-        li {
-            list-style: none;
-            padding: 15px;
-        }
-        li:nth-of-type(2n){
-            background-color: gold;
-        }
-        li:nth-of-type(2n+1){
-            background-color: yellow;
-        }
-        li:nth-child(1){
-            color: var(--highlight-color);
-        }
-        li:last-child{
-            color: var(--highlight-color);
-        }
-
-        button {
-            background: white;
-            color: darkgray;
-            width: 100px;
-            padding: 5px;
-            margin-left: 40px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid darkgray;
-
-        }
-
-
-
-        button:enabled:hover {
-            color: white;
-            background: darkgray;
-        }
-
-        button:enabled:active {
-            border: 1px dashed;
-            border-color: black;
-        }
-
-        button:disabled {
-            background: #ddd;
-            color: #aaa;
-            border: 1px solid #bbb;
-        }
-
-        /* ----- New CSS code starts here ----- */
-
-        li:not(.completed){
-            background-color: lightsalmon;
-        }
-
-        /* ----- End of new CSS code ----- */
-
+      main :not(.todo){
+        color: orange;
+      }
     </style>
-</head>
-<body>
-
-<button id="b" onclick="disable(this)">Add Todo</button>
-
-<ul>
-    <!-- NEW: First two elements have class `completed` -->
-    <li class="completed">Create an Easychair instance</li>
-    <li class="completed">Send call for papers to mailing lists</li>
-    <li>Create a conference website</li>
-    <li>Book the venue</li>
-    <li>Find PC chairs</li>
-    <li>Find PC members</li>
-    <li>Book hotel rooms</li>
-    <li>Design program</li>
-</ul>
-</body>
+  </head>
+  <body>
+    <main>
+      <h2>Todos</h2>
+      <p class="firsttodo">Today's todos</p>
+      <p class="todo">Tomorrow's todos</p>
+      <p class="todo">Saturday's todos</p>
+      <p>Sunday's todos</p>
+    </main>
+  </body>
 </html>
 ```
 
@@ -597,159 +450,47 @@ Let's move on to two more pseudo-classes, that are particularly useful for the s
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <script>
-        function disable(el){
-            document.getElementById(el.id).disabled = true;
-        }
-    </script>
+  <head>
     <style>
-        :root {
-            --highlight-color: tomato;
-        }
-        ul{
-            padding: 0;
-        }
-        li {
-            list-style: none;
-            padding: 15px;
-        }
-        li:nth-of-type(2n){
-            background-color: gold;
-        }
-        li:nth-of-type(2n+1){
-            background-color: yellow;
-        }
-        li:nth-child(1){
-            color: var(--highlight-color);
-        }
-        li:last-child{
-            color: var(--highlight-color);
-        }
+      input[type=text] {
+        border: 0px;
+        width: 150px;
+        background-color: lightgrey;
+        border: 2px solid grey;
+      }
 
-        li:not(.completed){
-            background-color: lightsalmon;
-        }
+      input[type=number]{
+        width: 40px;
+      }
 
-        button {
-            background: white;
-            color: darkgray;
-            width: 100px;
-            padding: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid darkgray;
+      input[type=number]:valid {
+        background-color: rgba(0, 255, 0, 0.25);
+          border: 2px solid green;
+      }
 
-        }
+      input[type=number]:invalid {
+        background-color: rgba(255, 0, 0, 0.25);
+          border: 2px solid red;
+      }
 
-        button:enabled:hover {
-            color: white;
-            background: darkgray;
-        }
+      input[type=number]:valid + label::after {
+        content: "\2714";
+        color: green;
+      }
 
-        button:enabled:active {
-            border: 1px dashed;
-            border-color: black;
-        }
-
-        button:disabled {
-            background: #ddd;
-            color: #aaa;
-            border: 1px solid #bbb;
-        }
-
-        main {
-
-            margin: 40px;
-        }
-
-        input[type=text] {
-            width: 150px;
-            background-color: lightgray;
-            border: 2px solid grey;
-            font-size: 16px;
-            padding: 6px;
-            margin-bottom: 20px;
-        }
-
-        input[type=number]{
-            width: 40px;
-            padding: 6px;
-            font-size: 16px;
-        }
-
-        input[type=number]:valid {
-            background-color: rgba(0, 255, 0, 0.25);
-            border: 2px solid green;
-        }
-
-        input[type=number]:invalid {
-            background-color: rgba(255, 0, 0, 0.25);
-            border: 2px solid red;
-        }
-
-        input[type=number]:valid + label::after {
-            content: "\2714";
-            color: green;
-        }
-
-        input[type=number]:invalid + label::after {
-            content: " (invalid)";
-            color: red;
-        }
-
-        /* ----- New CSS code starts here ----- */
-
-        h2::first-letter {
-            color: red;
-        }
-
-        p::first-line {
-            color: gray;
-            font-size: 125%;
-        }
-
-        /* ----- End of new CSS code ----- */
-
+      input[type=number]:invalid + label::after {
+        content: " (invalid)";
+        color: red;
+      }
     </style>
-</head>
-<body>
-<main>
-
-    <!-- New HTML: Title and intro text for our TODO application -->
-
-    <h2>CSE1500 TODO application</h2>
-
-    <p>
-        Welcome to the CSE1500 TODO application <br>
-        You can add, edit or delete your TODOs here! <br>
-        Below you can find all of your current TODOs <br>
-        ...
-    </p>
-
-    <!-- End of new HTML -->
-
-    <div>
-        <input type="text" placeholder="Todo Title" />
-        <input id="dl" type="number" min="1" max="30" step="1" placeholder="Days" required />
-        <label></label>
-    </div>
-
-    <button id="b" onclick="disable(this)">Add Todo</button>
-
-    <ul>
-        <li class="completed">Create an Easychair instance</li>
-        <li class="completed">Send call for papers to mailing lists</li>
-        <li>Create a conference website</li>
-        <li>Book the venue</li>
-        <li>Find PC chairs</li>
-        <li>Find PC members</li>
-        <li>Book hotel rooms</li>
-        <li>Design program</li>
-    </ul>
-</main>
-</body>
+  </head>
+  <body>
+    <main>
+      <input type="text" placeholder="Add your todo" />
+      <input id="dl" type="number" min="1" max="30" step="1" placeholder="Days" required />
+      <label for="deadline1"> </label>
+    </main>
+  </body>
 </html>
 ```
 
@@ -777,160 +518,30 @@ So, what are abstractions that go beyond what is specified in the document langu
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <script>
-        function disable(el){
-            document.getElementById(el.id).disabled = true;
-        }
-    </script>
+  <head>
     <style>
-        :root {
-            --highlight-color: tomato;
-        }
-        ul{
-            padding: 0;
-        }
-        li {
-            list-style: none;
-            padding: 15px;
-        }
-        li:nth-of-type(2n){
-            background-color: gold;
-        }
-        li:nth-of-type(2n+1){
-            background-color: yellow;
-        }
-        li:nth-child(1){
-            color: var(--highlight-color);
-        }
-        li:last-child{
-            color: var(--highlight-color);
-        }
+    p::first-line {
+      color: gray;
+      font-size: 125%;
+    }
 
-        li:not(.completed){
-            background-color: lightsalmon;
-        }
-
-        button {
-            background: white;
-            color: darkgray;
-            width: 100px;
-            padding: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid darkgray;
-
-        }
-
-        button:enabled:hover {
-            color: white;
-            background: darkgray;
-        }
-
-        button:enabled:active {
-            border: 1px dashed;
-            border-color: black;
-        }
-
-        button:disabled {
-            background: #ddd;
-            color: #aaa;
-            border: 1px solid #bbb;
-        }
-
-        main {
-
-            margin: 40px;
-        }
-
-        input[type=text] {
-            width: 150px;
-            background-color: lightgray;
-            border: 2px solid grey;
-            font-size: 16px;
-            padding: 6px;
-            margin-bottom: 20px;
-        }
-
-        input[type=number]{
-            width: 40px;
-            padding: 6px;
-            font-size: 16px;
-        }
-
-        input[type=number]:valid {
-            background-color: rgba(0, 255, 0, 0.25);
-            border: 2px solid green;
-        }
-
-        input[type=number]:invalid {
-            background-color: rgba(255, 0, 0, 0.25);
-            border: 2px solid red;
-        }
-
-        input[type=number]:valid + label::after {
-            content: "\2714";
-            color: green;
-        }
-
-        input[type=number]:invalid + label::after {
-            content: " (invalid)";
-            color: red;
-        }
-
-        /* ----- New CSS code starts here ----- */
-
-        h2::first-letter {
-            color: red;
-        }
-
-        p::first-line {
-            color: gray;
-            font-size: 125%;
-        }
-
-        /* ----- End of new CSS code ----- */
-
+    p::first-letter {
+      font-size: 200%;
+    }
     </style>
-</head>
-<body>
-<main>
-
-    <!-- New HTML: Title and intro text for our TODO application -->
-
-    <h2>CSE1500 TODO application</h2>
-
+  </head>
+  <body>
     <p>
-        Welcome to the CSE1500 TODO application <br>
-        You can add, edit or delete your TODOs here! <br>
-        Below you can find all of your current TODOs <br>
-        ...
+      To be or not to be, that is the question -
     </p>
 
-    <!-- End of new HTML -->
-
-    <div>
-        <input type="text" placeholder="Todo Title" />
-        <input id="dl" type="number" min="1" max="30" step="1" placeholder="Days" required />
-        <label></label>
-    </div>
-
-    <button id="b" onclick="disable(this)">Add Todo</button>
-
-    <ul>
-        <!-- NEW: First two elements have class `completed` -->
-        <li class="completed">Create an Easychair instance</li>
-        <li class="completed">Send call for papers to mailing lists</li>
-        <li>Create a conference website</li>
-        <li>Book the venue</li>
-        <li>Find PC chairs</li>
-        <li>Find PC members</li>
-        <li>Book hotel rooms</li>
-        <li>Design program</li>
-    </ul>
-</main>
-</body>
+    <p>
+      Whether 'tis nobler in the mind to suffer <br>
+      The slings and arrows of outrageous fortune, <br>
+      Or to take arms against a sea of troubles, <br>
+      ...
+    </p>
+  </body>
 </html>
 ```
 
@@ -956,166 +567,20 @@ Here is one extreme example of this concept, where all document *content* is del
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <script>
-        function disable(el){
-            document.getElementById(el.id).disabled = true;
-        }
-    </script>
+  <head>
     <style>
-        :root {
-            --highlight-color: tomato;
-        }
-        ul{
-            padding: 0;
-        }
-        li {
-            list-style: none;
-            padding: 15px;
-        }
-        li:nth-of-type(2n){
-            background-color: gold;
-        }
-        li:nth-of-type(2n+1){
-            background-color: yellow;
-        }
-        li:nth-child(1){
-            color: var(--highlight-color);
-        }
-        li:last-child{
-            color: var(--highlight-color);
-        }
+    cite::before {
+      content: "\201CTo be, or ";
+    }
 
-        li:not(.completed){
-            background-color: lightsalmon;
-        }
-
-        button {
-            background: white;
-            color: darkgray;
-            width: 100px;
-            padding: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid darkgray;
-
-        }
-
-        button:enabled:hover {
-            color: white;
-            background: darkgray;
-        }
-
-        button:enabled:active {
-            border: 1px dashed;
-            border-color: black;
-        }
-
-        button:disabled {
-            background: #ddd;
-            color: #aaa;
-            border: 1px solid #bbb;
-        }
-
-        main {
-
-            margin: 40px;
-        }
-
-        input[type=text] {
-            width: 150px;
-            background-color: lightgray;
-            border: 2px solid grey;
-            font-size: 16px;
-            padding: 6px;
-            margin-bottom: 20px;
-        }
-
-        input[type=number]{
-            width: 40px;
-            padding: 6px;
-            font-size: 16px;
-        }
-
-        input[type=number]:valid {
-            background-color: rgba(0, 255, 0, 0.25);
-            border: 2px solid green;
-        }
-
-        input[type=number]:invalid {
-            background-color: rgba(255, 0, 0, 0.25);
-            border: 2px solid red;
-        }
-
-        input[type=number]:valid + label::after {
-            content: "\2714";
-            color: green;
-        }
-
-        input[type=number]:invalid + label::after {
-            content: " (invalid)";
-            color: red;
-        }
-
-        h2::first-letter {
-            color: red;
-        }
-
-        p::first-line {
-            color: gray;
-            font-size: 125%;
-        }
-
-        /* ----- New CSS code starts here ----- */
-
-        li::before {
-            content: "TODO:  ";
-        }
-
-        li::after {
-            content: ".";
-        }
-
-        /* ----- End of new CSS code ----- */
-
+    cite::after {
+      content: "not to be ... \201D";
+    }
     </style>
-</head>
-<body>
-<main>
-
-    <h2>CSE1500 TODO application</h2>
-
-    <p>
-        Welcome to the CSE1500 TODO application <br>
-        You can add, edit or delete your TODOs here! <br>
-        Below you can find all of your current TODOs <br>
-        ...
-    </p>
-
-    <!-- End of new HTML -->
-
-    <div>
-        <input type="text" placeholder="Todo Title" />
-        <input id="dl" type="number" min="1" max="30" step="1" placeholder="Days" required />
-        <label></label>
-    </div>
-
-    <button id="b" onclick="disable(this)">Add Todo</button>
-
-    <ul>
-        <!-- NEW: First two elements have class `completed` -->
-        <li class="completed">Create an Easychair instance</li>
-        <li class="completed">Send call for papers to mailing lists</li>
-        <li>Create a conference website</li>
-        <li>Book the venue</li>
-        <li>Find PC chairs</li>
-        <li>Find PC members</li>
-        <li>Book hotel rooms</li>
-        <li>Design program</li>
-    </ul>
-</main>
-</body>
+  </head>
+  <body>
+    <cite></cite>
+  </body>
 </html>
 ```
 
@@ -1132,33 +597,44 @@ As just seen, CSS does not only describe the style, it *can* carry data too. The
 Here is another example of storing data in CSS :point_down::
 
 ```html
-<style>
-li#t1::after {
-    content: "- due 10/12/2018";
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    * {
+      font-family: monospace;
+    }
 
-li#t2::after {
-    content: "- due 12/12/2018";
-}
+    p::after {
+      background-color: gold;
+      border: 1px solid;
+      font-size: 70%;
+      padding: 2px;
+      margin-left: 50px;
+    }
 
-li#t3::after {
-    content: "- due 13/12/2018";
-}
-</style>
+    p#t1::after {
+      content: "due 10/12/2018";
+    }
 
-<ul>
-    <!-- NEW: Three of the elements have unique IDs -->
-    <li class="completed">Create an Easychair instance</li>
-    <li class="completed">Send call for papers to mailing lists</li>
-    <li id="t1">Create a conference website</li>
-    <li id="t2">Book the venue</li>
-    <li id="t3">Find PC chairs</li>
-    <li>Find PC members</li>
-    <li>Book hotel rooms</li>
-    <li>Design program</li>
-</ul>
+    p#t2::after {
+      content: "due 12/12/2018";
+    }
 
-
+    p#t3::after {
+      content: "due 13/12/2018";
+    }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2>Todos</h2>
+      <p id="t1">Walk the dogs </p>
+      <p id="t2">Wash the fiat </p>
+      <p id="t3">House cleaning</p>
+    </main>
+  </body>
+</html>
 ```
 
 This is rendered as follows:
@@ -1172,57 +648,72 @@ CSS can access those data attributes with the [`attr()`](https://developer.mozil
 Rewriting the example above with `data-` attributes removes the data from CSS and reduces the amount of CSS rule duplication :point_down: (the rendering remains the same):
 
 ```html
-<style>
-li::after {
-    content: "- due " attr(data-due);
-}
-</style>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    * {
+      font-family: monospace;
+    }
+    p::after {
+      background-color: gold;
+      border: 1px solid;
+      font-size: 70%;
+      padding: 2px;
+      margin-left: 50px;
+    }
 
-<ul>
-    <!-- NEW: Three of the elements have unique IDs -->
-    <li class="completed">Create an Easychair instance</li>
-    <li class="completed">Send call for papers to mailing lists</li>
-    <li data-due="10/12/2018">Create a conference website</li>
-    <li data-due="12/12/2018">Book the venue</li>
-    <li data-due="13/12/2018">Find PC chairs</li>
-    <li>Find PC members</li>
-    <li>Book hotel rooms</li>
-    <li>Design program</li>
-</ul>
+    p::after {
+      content: "due " attr(data-due);
+    }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2>Todos</h2>
+      <p id="t1" data-due="10/12/2018" data-level="urgent">Walk the dogs </p>
+      <p id="t2" data-due="12/12/2018">Wash the fiat </p>
+      <p id="t3" data-due="13/12/2018">House cleaning</p>
+    </main>
+  </body>
+</html>
 ```
 
 A canonical example for `data-` attributes are tooltips :point_down::
 
 ```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    li {
+      cursor: help;
+    }
 
-<style>
-li {
-  cursor: help;
-}
-
-li:hover::after{
-  background-color: rgba(10,10,10,0.7);
-  color: gold;
-  border: 1px dashed;
-  padding: 5px;
-  font-size: 60%;
-  content: attr(data-due);
-  position: relative;
-  bottom: 15px;
-  left: 5px;
-}
-</style>
-
-<ul>
-    <li class="completed">Create an Easychair instance</li>
-    <li class="completed">Send call for papers to mailing lists</li>
-    <li data-due="10/12/2018">Create a conference website</li>
-    <li data-due="12/12/2018">Book the venue</li>
-    <li data-due="13/12/2018">Find PC chairs</li>
-    <li>Find PC members</li>
-    <li>Book hotel rooms</li>
-    <li>Design program</li>
-</ul>
+    li:hover::after{
+      background-color: rgba(10,10,10,0.7);
+      color: gold;
+      border: 1px dashed;
+      padding: 5px;
+      font-size: 60%;
+      content: attr(data-name);
+      position: relative;
+      bottom: 15px;
+      left: 5px;
+    }
+    </style>
+  </head>
+  <body>
+    <main>
+      <ul>
+        <li data-name="Cascading Style Sheets">CSS</li>
+        <li data-name="HyperText Markup Language">HTML</li>
+        <li data-name="HyperText Transfer Protocol">HTTP</li>
+        <li data-name="HyperText Transfer Protocol Secure">https</li>
+      </ul>
+    </main>
+  </body>
+</html>
 ```
 
 This example :point_up: also showcases the use of the [`cursor`](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) property. Hovering over the list items results in a help icon. Note, that `cursor: none` results in no cursor being rendered, though this should be used with care as it tends to confuse users. The `position`, `bottom` and `left` properties will be discussed next (in short: they determine the placement of the tooltip).
@@ -1734,7 +1225,6 @@ Use your browser's responsive design mode :point_down: and the browser's *Print 
 Button for activating the **Print simulation** mode on Firefox. :point_down:
 
 ![Responsive design mode](img/L5-printmedia.png)
-
 
 ## Animations and transitions
 
