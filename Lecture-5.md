@@ -1731,7 +1731,8 @@ Use your browser's responsive design mode :point_down: and the browser's *Print 
 
 ![Responsive design mode](img/L5-responsive.png)
 
-Button for activating the **Print media simulation** page mode on Firefox.  
+Button for activating the **Print media simulation** page mode on Firefox. :point_down:
+
 ![Responsive design mode](img/L5-printmedia.png)
 
 
