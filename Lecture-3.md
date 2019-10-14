@@ -25,7 +25,7 @@
     - [Object literals](#object-literals)
     - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
     - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-    - [Design pattern 3: Module](#design-pattern-3-module)
+    - [Design pattern 3: Module](#design-pattern-3--module) 
 - [Events and the DOM](#events-and-the-dom)
     - [Document Object Model](#document-object-model)
         - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
@@ -247,7 +247,7 @@ Scoping is also important when it comes to larger programming projects: imagine 
 
 :point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
 
-`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3-module).
+`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3--module).
 
 ### Hoisting
 
