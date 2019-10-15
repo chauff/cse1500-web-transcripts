@@ -34,6 +34,12 @@
         - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
         - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
         - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
+- [Some ES6 concepts](#some-es6-concepts)
+  - [Variable definition](#variable-definition)
+  - [Arrow functions](#arrow-functions)
+  - [Map, Reduce and Filter](#map-reduce-and-filter)
+  - [Default function arguments](#default-function-arguments)
+  - [Template strings](#template-strings)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -1319,6 +1325,107 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
 
+## Some ES6 concepts
+
+This section contains optional (non-exam) content.
+
+### Variable definition
+`var` has two scopes : global scope and function scope.
+
+ES6 introduces two new keywords that allow us to define variables :
+- `let` has a block scope
+- `const` is used to define read-only variable (its value is a constant and the identifier cannot be reassigned)
+
+### Arrow functions
+
+Arrow functions are a new and more concise syntax to write functions.
+```javascript
+//Regular function
+const addition = function (a,b){
+  return a + b;
+}
+//Arrow function (ES6 syntax)
+const addition = (a,b) => {return a+b};
+```
+In an arrow function, `this` does not represent the object calling the function (as in a regular function) but rather the object that defined the function. (In short, arrow function don't have their own `this` and `this` corresponds to `this` in the global scope)
+
+Arrow functions are often used for array manipulation (see the section "map, reduce, filter" below) and can sometimes turn a several-lines regular function into a one-line function. Still, they cannot always replace regular functions, notably, when an implicit binding of `this` is needed.
+
+### Map, Reduce and Filter
+
+Map, reduce and filter are array functions introduced by ES6.
+
+The **map** method cycles through an array, applies a function on each element and returns the new array.
+
+```javascript
+//Multiply each item of an array by 2
+//Without map (Before ES6)
+for(let i = 0;i<oldArray.length;i++){
+  newArray[i] = oldArray[i] * 2;
+}
+//With map (ES6 syntax)
+let newArray = oldArray.map(x=>x*2)
+```
+The **reduce** method cycles through an array, applies a method on each element in order to reduce the array to a single value.
+
+```javascript
+//Find the sum of an array
+//Without reduce (Before ES6)
+for(let i = 0;i<arr.length;i++){
+  sum += arr[i];
+}
+//With reduce (ES6 syntax)
+sum = arr.reduce((a,b)=>{return a+b});
+```
+The **filter** method cycles through the order and output a new filtered array containing only the items meeting a certain condition.
+
+```javascript
+//Only get the even values of an array
+//Without filter (before ES6)
+for(var i = 0;i<oldArray.length;i++){
+  if(arr[i]%2==0){
+    newArray.push(arr[i])
+  }
+}
+//With filter (ES6 syntax)
+let newArray = oldArray.filter((a)=>a%2==0)
+```
+
+### Default function arguments
+Since ES6, assigning default values to a function's parameters is possible.
+```javascript
+function foo(a,b = 1){
+  ...
+}
+```
+
+The default value is used when an argument is either `undefined` or omitted. It is also possible to call the above function without arguments as they will then be considered by either their default values (if specified) or as `undefined`.
+
+### Template strings
+
+Template literals allow us to plug variables in strings in a more readable way.
+
+```javascript
+var version = "ES6"
+var a = "This does not use " + version + "syntax";
+var b = "This uses ${version} syntax";
+```
+### Object destructuring
+
+Object destructuring allow us to extract properties of an object without having to do it one-by-one for each property.
+
+```javascript
+var game = {
+  player1 : "name1",
+  player2 : "name2",
+  ...
+}
+//Before ES6
+var player1 = game.player1;
+var player2 = game.player2;
+//With ES6
+var {player1, player2} = game
+```
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
