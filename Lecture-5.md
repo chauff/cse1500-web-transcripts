@@ -1154,6 +1154,7 @@ Here is a concrete example of how media queries enable a **responsive design** :
 
 ```html
 <!DOCTYPE html>
+<html>
   <head>
 
     <!-- We can link a style sheet conditional on the media attribute -->
@@ -1221,6 +1222,24 @@ Here is a concrete example of how media queries enable a **responsive design** :
 Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature to test the behaviour of the media queries.
 
 ![Responsive design mode](img/L5-responsive.png)
+
+Another useful media feature is `prefers-color-scheme`, it allows us to create dark or light themes based on what the user requested.
+Here is an example of how you can use `prefers-color-scheme` :point_down::
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body{
+    background-color: white;
+    color:black;
+  }
+}
+```
 
 ## Animations and transitions
 
