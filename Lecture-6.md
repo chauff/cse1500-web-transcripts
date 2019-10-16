@@ -50,6 +50,8 @@ By default, *no code in a module is accessible to other modules*. Any property o
 :point_up: You see here that modules often depend on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 27,000 other modules.
 
  You already know how to install modules, e.g. `npm install winston` installs one of the most popular [Node loggers](https://www.npmjs.com/package/winston). You can also use the command line to search for modules to install, e.g. `npm search winston`.
+ 
+ Keep in mind that because of the usually high number of dependencies that every module needs, your `node_modules` folder can quickly grow in size. [Bundlephobia](https://bundlephobia.com/) is a useful tool which allows you to see how much space does a node module take, and the size of each of it's dependencies.
 
 While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern web for half a day can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
 
