@@ -113,8 +113,10 @@ Node.js is an ever-growing framework notably thanks to its contributors.
 Some areas that need contributions the most include:
 - Documentation (enhancing and adding documentations)
 - Guides (documentations to help end-users with real-world use cases)
-- Node.js collection (central community resource for content around Node.js) 
+- Node.js collection (central community resource for content around Node.js)
 - Automating (a variety of works needs to be automated)
+
+If you are interested in contributing, check [this](https://dev.to/azure/start-contributing-to-nodejs-in-the-new-year-3dlh) !
 ## Node.js in examples
 
 Let's now walk through a number of Node.js code examples that increase in complexity and lead us towards server-side scripting for web applications. Along the way, we introduce important Node runtime concepts. As always, we recommend that you try out all code examples yourself. We assume you have Node.js already installed on your machine.
