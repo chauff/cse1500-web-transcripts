@@ -107,6 +107,14 @@ Node's focus on making so-called **I/O bound programs** (that is, programs const
 
 As the typical web application is indeed I/O bound, Node.js has become a popular choice of server-side framework. Another positive side effect of Node is the *reuse* of the language: instead of learning JavaScript for the client-side and PHP (or another language) for the server-side part of an application, we restrict ourselves to a single language and can even *share code* between client and server efficiently.
 
+## Contributing to Node.js
+
+Node.js is an ever-growing framework notably thanks to its contributors.
+Some areas that need contributions the most include:
+- Documentation (enhancing and adding documentations)
+- Guides (documentations to help end-users with real-world use cases)
+- Node.js collection (central community resource for content around Node.js) 
+- Automating (a variety of works needs to be automated)
 ## Node.js in examples
 
 Let's now walk through a number of Node.js code examples that increase in complexity and lead us towards server-side scripting for web applications. Along the way, we introduce important Node runtime concepts. As always, we recommend that you try out all code examples yourself. We assume you have Node.js already installed on your machine.
