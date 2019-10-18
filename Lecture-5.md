@@ -32,6 +32,7 @@
   - [:bangbang: Transitions](#bangbang-transitions)
 - [Browser-specific prefixes](#browser-specific-prefixes)
 - [Rendering engines have bugs too!](#rendering-engines-have-bugs-too)
+- [CSS Debugging](#css-debugging)
 - [Self-check](#self-check)
 
 
@@ -1489,6 +1490,12 @@ This approach has now been deprecated and although the vendor-specific prefixed 
 ## Rendering engines have bugs too!
 
 Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
+
+## CSS Debugging
+
+A quick word about CSS debugging - in Firefox Developer Edition, you can detect which CSS properties have an effect on the current element. :point_down: 
+
+![CSS Debugging example](img/L5-debugging.png)
 
 ## Self-check
 
