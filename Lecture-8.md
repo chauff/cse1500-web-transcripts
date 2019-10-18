@@ -8,19 +8,19 @@
 - [Learning goals](#learning-goals)
 - [Introduction](#introduction)
 - [Threat categories](#threat-categories)
-    - [Defacement](#defacement)
-    - [Data disclosure](#data-disclosure)
-    - [Data loss](#data-loss)
-    - [Denial of service](#denial-of-service)
-    - [Foot in the door](#foot-in-the-door)
-    - [Unauthorized access](#unauthorized-access)
+  - [Defacement](#defacement)
+  - [Data disclosure](#data-disclosure)
+  - [Data loss](#data-loss)
+  - [Denial of service](#denial-of-service)
+  - [Foot in the door](#foot-in-the-door)
+  - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
 - [NodeGoat](#nodegoat)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
-    - [Injection](#injection)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
-        - [How to avoid it](#how-to-avoid-it)
-        - [SQL injection](#sql-injection)
+  - [Injection](#injection)
+    - [:bangbang: NodeGoat](#bangbang-nodegoat)
+    - [How to avoid it](#how-to-avoid-it)
+    - [SQL injection](#sql-injection)
     - [Broken authentication](#broken-authentication)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
         - [How to avoid it](#how-to-avoid-it)
@@ -306,6 +306,14 @@ http://myforum.nl/search?q=<script>…
 #### How to avoid it
 
 As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g. escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
+**DOMPurify** is a good tool for sanitizing HTML code. It's written in JavaScript and supports all modern browsers. When used, DOMPurify removes all "dangerous" html code in a given string, and therefore you can use it to protect your website from XSS attacks. You can play with DOMPurify via this [link](https://cure53.de/purify), or install it using the instructions from their [repository](https://github.com/cure53/DOMPurify).
+Here is a code example for DOMPurify :
+   ```javascript
+   var dirty = '<script> alert("I am dangerous"); </script> Hi';
+
+   var clean = DOMPurify.sanitize(dirty);
+   ```
+   After execution, the variable `clean` will contain only **"Hi"**, DOMPurify will remove the `<script>` tag to prevent an XSS attack. 
 
 ### Direct object references
 
