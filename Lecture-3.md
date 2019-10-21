@@ -79,7 +79,7 @@ In addition, today's **JavaScript runtime environments** are highly efficient an
 
 - [V8](https://developers.google.com/v8/) is Google's JavaScript engine,
 - [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and
-- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
+- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime. In december 2018, Microsoft has announced that [they will adopt chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser) and thus they will use V8. The final version should be released around spring 2020.
 
 JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
 
@@ -95,6 +95,14 @@ In this course we cover *plain JavaScript*, but it is also worthwhile to know th
 The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
 Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge to the compiler to catch errors (e.g. functions called with wrong parameters) early on. TypeScript allows you to do that, by **enabling static type checking**.
+
+### JS engines compilers
+
+Javascript is an interpreted language, therefore a browser can read a javascript code line-by-line and run the program. However, all modern engines use **just-in-time (JIT) compilation** (the compilation happens at run-time).
+They compile javascript into **bytecode** and then optimize it to improve overall performance.
+
+Some javascript engines (e.g., V8) also have a **lazy compilation mechanism** (among others optimization mechanisms). Some functions ([IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)) are first compiled and the other functions are skipped (the engine only records the name of the function and the location of its source code).
+These functions are then compiled at run-time.
 
 ## Scripting overview
 
