@@ -7,7 +7,7 @@ Table of Contents
         - [Git](#git)
         - [GitHub](#github)
         - [Local vs. remote repository](#local-vs-remote-repository)
-        - [VSC ...](#vsc)
+        - [VSC ...](#vsc-)
     - [Live Share](#live-share)
     - [Debugging Node.js scripts](#debugging-nodejs-scripts)
 
