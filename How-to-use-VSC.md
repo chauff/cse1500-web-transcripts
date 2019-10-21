@@ -51,6 +51,9 @@ Now you can add your partners to the repository, so all of you can work together
 
 The menu that appears on the left has an entry *Collaborators*: click on it and add your partners.
 
+### Octotree  
+[Octotree](https://www.octotree.io/) is a chrome extension that makes it easy to view code on Github. It creates a tree view of the whole project on the left or right side of the browser.
+
 ### Local vs. remote repository
 
 The repository created on GitHub is considered as the **remote repository** - all team members contribute code to this remote repository. Every team member also has a **local repository**, the repository residing on a team member's physical machine. When a team member makes code changes, these are first recorded in the **local repository** and then in a second step recorded in the **remote repository**.
