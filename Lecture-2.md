@@ -209,6 +209,11 @@ What is the core business of this company? This is the homepage of a Dutch cafe 
 
 Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
+### Design Systems not Pages  
+The Internet now is much more than just a collection of pages. The term *page* itself is old-fashioned and conceptually wrong. It goes back to the era where businesses built their online presence just by uploading their brochures on a website. Even today you will hear very often phrases like "I just want a 5-page website, "how much will a simple homepage cost", or "how long will it take to migrate our 30,000 page journal to this new fancy CMS"?  
+The page metaphor has served its purpose to help users familiarize with this new medium called the Internet, but it's not enough.  Publishing content for the Web used to be trivial, as desktops were the only devices connected to it. Nowadays content is consumed by a variety of devices like smarphones, netbooks, notebooks, tablets, ebook-readers, smartwatches, TVs, game consoles, cars etc. Soon with the explosion of IOT(Internet Of Things) any device you could imagine will consume content.  
+So this *page* idea is pretty much dead. Instead you should focus on making your systems **modular** so that your content can be sent anywhere. Because users will expect it to be everywhere. When you design a web experience it's better to focus on designing [Systems Of Components](http://atomicdesign.bradfrost.com/chapter-1/)
+
 ## HTML5
 
 HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich web content**:
