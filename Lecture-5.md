@@ -1493,7 +1493,9 @@ Rendering engines do a lot of heavy lifting, and can also be attacked. [This Git
 
 ## CSS Debugging
 
-A quick word about CSS debugging - in Firefox Developer Edition, you can detect which CSS properties have an effect on the current element. :point_down: 
+The dev tools are really helpful when it comes to debug CSS. Take a look at the [documentation](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS) ! (This a Firefox doc but the core features are roughly the same in all browsers)
+
+Some browsers even have additional dev tool features. For example, in Firefox Developer Edition, you can detect which CSS properties have an effect on the current element. :point_down: 
 
 ![CSS Debugging example](img/L5-debugging.png)
 
