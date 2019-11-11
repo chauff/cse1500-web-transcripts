@@ -239,8 +239,8 @@ This lecture covers web design and HTML5 ([transcript](Lecture-2.md) and [lectur
 - Relevant scientific publications:
   - Fernandez, A., Insfran, E. and Abrahão, S., 2011. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and Software Technology, 53(8), pp.789-817.
   - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
-  - Mathur, A., Acar, G., Friedman, M., Lucherini, E., Mayer, J., Ghetty, M., Narayanan, A., 2019 [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/), ACM Human-Computer Interaction, Vol. 3, CSCW, Article 81, 2019.
-  
+  - Mathur, A., Acar, G., Friedman, M., Lucherini, E., Mayer, J., Ghetty, M. and Narayanan, A., 2019. [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/), ACM Human-Computer Interaction, Vol. 3, CSCW, Article 81.
+
 ### Lecture 3
 
 This lecture covers client-side JavaScript ([transcript](Lecture-3.md) and [lecture slides](slides/cse1500-lecture3.pdf)).
