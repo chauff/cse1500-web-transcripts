@@ -680,7 +680,7 @@ the code still works as expected. Why do we even add this line? If we do not add
 Here is one example where it does indeed matter whether whether this wiring is correct :point_down::
 
 ```javascript
-function Game() {};
+function Game() {}
 function TwoPlayerGame() {}
 
 TwoPlayerGame.prototype = Object.create(Game.prototype);
@@ -900,7 +900,7 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
             function sayHello() {
               var tb = document.getElementById("out");
               tb.value = 'Hello World';
-            };
+            }
 
             /* we attach a function to a button's click event
              * after the DOM finished loading
@@ -968,7 +968,7 @@ Let's look at how this works in practice :point_down: (again, try out the code f
               var li = document.createElement('li');
               li.innerHTML = 'List element ' + (ul.childElementCount+1) +' ';
               ul.appendChild(li);
-            };
+            }
         </script>
     </head>
 
@@ -997,7 +997,7 @@ We can of course also remove elements :point_down::
           function removeLastChild() {
             var ul = document.getElementById('u');
             ul.removeChild(ul.lastElementChild);
-          };
+          }
 
           function removeFirstChild() {
             var ul = document.getElementById('u');
@@ -1130,7 +1130,7 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
           function mouseover() {
             var incr = parseInt(this.id.substr(1));
             intervals[this.id] = setInterval(updateNum, 1000/incr, this);
-          };
+          }
 
           function mouseout()
           {
@@ -1269,7 +1269,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
                     var t = parseInt(document.getElementById(timerLog).innerHTML);
                     t = t + 1;
                     document.getElementById(timerLog).innerHTML = t +" seconds";
-                ;}, 1000);
+                }, 1000);
 
               }
 
