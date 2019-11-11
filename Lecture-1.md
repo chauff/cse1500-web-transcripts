@@ -75,6 +75,14 @@ In the early days of the web, browsers looked nothing like they do today; one of
 
 <sup>Image sourced from Lynx's Wikipedia page</sup>
 
+![](img/L1-lynx-google.png)
+
+<sup>google.com displayed on Lynx</sup>
+
+![](img/L1-lynx-amazon.png)
+
+<sup>amazon.com displayed on Lynx</sup>
+
 Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 
 ### Key aspects of the Internet
