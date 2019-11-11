@@ -73,7 +73,7 @@ In the early years of JavaScript, it was considered more of a toy language. Toda
 
 <sup>Top languages over time (as measured by number of contributors) on GitHub.</sup>
 
-Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on.
+Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in [multiple paradigms](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93).
 
 In addition, today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
