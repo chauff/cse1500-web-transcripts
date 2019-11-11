@@ -6,7 +6,8 @@ CSE1500: Web and Database Technology <!-- omit in toc -->
 The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
 
 ```diff
-- We are currently updating the materials for the 2019/20 edition. None of the material has been finalized yet for 2019/20!
+- We are currently updating the materials for the 2019/20 edition. 
+- None of the material has been finalized yet for 2019/20!
 ```
 
 The database materials are not included here!
