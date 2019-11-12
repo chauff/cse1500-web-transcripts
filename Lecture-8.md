@@ -8,12 +8,13 @@
 - [Learning goals](#learning-goals)
 - [Introduction](#introduction)
 - [Threat categories](#threat-categories)
-  - [Defacement](#defacement)
-  - [Data disclosure](#data-disclosure)
-  - [Data loss](#data-loss)
-  - [Denial of service](#denial-of-service)
-  - [Foot in the door](#foot-in-the-door)
-  - [Unauthorized access](#unauthorized-access)
+    - [Defacement](#defacement)
+    - [Data disclosure](#data-disclosure)
+    - [Data loss](#data-loss)
+    - [Denial of service](#denial-of-service)
+    - [Foot in the door](#foot-in-the-door)
+    - [Backdoors](#backdoors)
+    - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
 - [NodeGoat](#nodegoat)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
@@ -112,6 +113,12 @@ A variant of a DoS attack is a *Distributed Denial of Service* (DDoS) attack whe
 The most difficult component of a system to secure is its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the secured system to attackers - this is the foot in the door from there. Once in, attackers try to infiltrate other internal systems.
 
 A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who knows whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is simply granted by the unsuspecting user, despite policies to the contrary.
+
+### Backdoors
+
+After an attacker has gained access to a website, they typically want to maintain their presence by installing a *Backdoor*. A Backdoor is a piece of code or a vulnerability that allows an attacker to gain a foothold in a website without being noticed. In many cases, the backdoors seem benign and are hidden deep within the website code so even after a thorough clean-up of an infected website, there is a chance that the backdoor remains. 
+
+In 2016, a [Dutch software developer was arrested](https://www.bleepingcomputer.com/news/security/dutch-developer-added-backdoor-to-websites-he-built-phished-over-20-000-users/) for installing a backdoor in a website he had built for a client. As it turned out, he used the backdoor to access 20,000 clients' login credentials. He used them to conduct online purchases and to break into their other social media accounts since people often reuse the same credentials. 
 
 ### Unauthorized access
 
