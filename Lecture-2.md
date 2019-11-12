@@ -7,15 +7,15 @@
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
 - [Electron](#electron)
 - [Web design basics](#web-design-basics)
-    - [Rule: Don't make me think](#rule-dont-make-me-think)
-    - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
-    - [Rule: If you cannot make it self-evident, make it self-explanatory](#rule-if-you-cannot-make-it-self-evident-make-it-self-explanatory)
-    - [Expectations vs. reality: usability testing](#expectations-vs-reality-usability-testing)
-    - [Site navigation: the *trunk test*](#site-navigation-the-trunk-test)
-    - [Entry page checklist](#entry-page-checklist)
+  - [Rule: Don't make me think](#rule-dont-make-me-think)
+  - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
+  - [Rule: If you cannot make it self-evident, make it self-explanatory](#rule-if-you-cannot-make-it-self-evident-make-it-self-explanatory)
+  - [Expectations vs. reality: usability testing](#expectations-vs-reality-usability-testing)
+  - [Site navigation: the *trunk test*](#site-navigation-the-trunk-test)
+  - [Entry page checklist](#entry-page-checklist)
 - [HTML5](#html5)
-    - [The move towards HTML5](#the-move-towards-html5)
-    - [Who decides the HTML standard](#who-decides-the-html-standard)
+  - [The move towards HTML5](#the-move-towards-html5)
+  - [Who decides the HTML standard](#who-decides-the-html-standard)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -53,7 +53,7 @@ Do web technologies also help you to create desktop apps? Indeed, they do! [Elec
 
 Electron itself uses [Node.js](https://nodejs.org/en/), the server-side JavaScript runtime we cover in a later lecture together with [Chromium](https://www.chromium.org/), an open-source web runtime (i.e. browser).
 
-The major benefit of Electron should be clear: instead of writing three separate desktop variants (one for each operating system) you only have to write and maintain one. New features are integrated in one application instead of three, which reduces feature delivery time. For these reasons, many well-known applications today are built on Electron, including [Visual Studio Code](https://code.visualstudio.com/) (the IDE we recommend you use), the Slack app, [Atom](https://atom.io/) and [many, many more](https://electronjs.org/apps).
+The major benefit of Electron should be clear: instead of writing three separate desktop variants (one for each operating system) you only have to write and maintain one. New features are integrated in one application instead of three, which reduces feature delivery time. For these reasons, many well-known applications today are built on Electron, including [Visual Studio Code](https://code.visualstudio.com/) (the IDE we recommend you to use), the [Slack](https://slack.com) app, [Atom](https://atom.io/) and [many, many more](https://electronjs.org/apps).
 
 If you ever wanted to know how *Windows 95* looks like, there is an [Electron app for that as well](https://github.com/felixrieseberg/windows95). It looks like this:
 
