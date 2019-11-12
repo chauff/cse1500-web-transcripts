@@ -484,6 +484,15 @@ Here is an example scenario: imagine a web application includes a route called `
 
 The user, when seeing this URL in an email or message forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`. Instead of `mygame.nl` it leads to `www.malicious-url.com` which the attacker has under control. If the user does not check the address bar anymore, she will remain under the belief to be on `mygame.nl` - and if she is asked to reenter her credit card information, she may just do that.
 
+#### :bangbang: Juice Shop
+1. Head over to Juice Shop's installation at https://juice-shop.herokuapp.com/
+2. Log in as `jim@juice-sh.op` (user) and `ncc-1701` (password).
+3. Go to payment options at https://juice-shop.herokuapp.com/#/payment/shop (Typically, you can reach here by following the procedure for *checking out*)
+4. Observe that you cannot pay using crypto currency. This used to be a feature but Juice Shop's developers decided to remove it since it was not profitable. However, they were not very good at removing this functionality.
+5. Right click, *Inspect* and view the contents of `main-es2015.js`. 
+6. Let's see if Juice Shop is vulnerable to unvalidated redirects. Search for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash`, `Ether`.
+6. Hence, if you were to click on `Pay with Bitcoin` (*now unavailable*), you will be redirected to Blockchain's website without any warning: https://tud-juice-shop.herokuapp.com/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm. The attacker can just as easily add her own malicious link to the URL after `redirect?to=`.
+
 #### How to avoid it
 
 This attack can be avoided by disallowing redirects and forwards in a web application. When redirects have to be included, users should not be allowed to redirect via URL parameters (as was possible in the phishing example above). The user-provided redirects need to be validated (does the user have access rights to the target page?).
