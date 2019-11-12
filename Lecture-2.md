@@ -73,7 +73,7 @@ Consider this example of [ebay.com](https://www.ebay.com/) :point_down:
 
 ![ebay web site](img/L2-ebay.png)
 
-<sup>Screenshot taken on September 10, 2018</sup>
+<sup>Screenshot taken on October 11, 2019</sup>
 
 :point_up: Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
 
@@ -203,7 +203,7 @@ Surprisingly many home pages are not able to answer these questions. Take for ex
 
 ![Coffeecompany](img/L2-coffeecompany.png)
 
-<sup>Screenshot taken October 18, 2018</sup>
+<sup>Screenshot taken October 11, 2019</sup>
 
 What is the core business of this company? This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
 
@@ -280,7 +280,7 @@ In rare cases, features added to a web standard can also be removed again, the [
 
 ![AppCache](img/L2-appcache.png)
 
-<sup>Screenshot taken on August 31, 2018.</sup>
+<sup>Screenshot taken on October 11, 2019.</sup>
 
 The W3C writes the following about the AppCache: *This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead.*
 
