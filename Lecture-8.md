@@ -18,31 +18,31 @@
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
 - [NodeGoat](#nodegoat)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
-    - [Injection](#injection)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
-        - [How to avoid it](#how-to-avoid-it)
-        - [SQL injection](#sql-injection)
-    - [Broken authentication](#broken-authentication)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
-        - [How to avoid it](#how-to-avoid-it)
-    - [XSS](#xss)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
-        - [How to avoid it](#how-to-avoid-it)
-    - [Direct object references](#direct-object-references)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
-        - [How to avoid it](#how-to-avoid-it)
-    - [Security misconfiguration](#security-misconfiguration)
-        - [How to avoid it](#how-to-avoid-it)
-    - [Sensitive data](#sensitive-data)
-        - [How to avoid it](#how-to-avoid-it)
-    - [Access controls](#access-controls)
-        - [How to avoid it](#how-to-avoid-it)
-    - [CSRF](#csrf)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
-        - [How to avoid it](#how-to-avoid-it)
-    - [Insecure components](#insecure-components)
-    - [Unvalidated Redirects](#unvalidated-redirects)
-        - [How to avoid it](#how-to-avoid-it)
+  - [Injection](#injection)
+    - [:bangbang: NodeGoat](#bangbang-nodegoat)
+    - [How to avoid it](#how-to-avoid-it)
+    - [SQL injection](#sql-injection)
+  - [Broken authentication](#broken-authentication)
+    - [:bangbang: NodeGoat](#bangbang-nodegoat-1)
+    - [How to avoid it](#how-to-avoid-it-1)
+  - [XSS](#xss)
+    - [:bangbang: NodeGoat](#bangbang-nodegoat-2)
+    - [How to avoid it](#how-to-avoid-it-2)
+  - [Direct object references](#direct-object-references)
+    - [:bangbang: NodeGoat](#bangbang-nodegoat-3)
+    - [How to avoid it](#how-to-avoid-it-3)
+  - [Security misconfiguration](#security-misconfiguration)
+    - [How to avoid it](#how-to-avoid-it-4)
+  - [Sensitive data](#sensitive-data)
+    - [How to avoid it](#how-to-avoid-it-5)
+  - [Access controls](#access-controls)
+    - [How to avoid it](#how-to-avoid-it-6)
+  - [CSRF](#csrf)
+    - [:bangbang: NodeGoat](#bangbang-nodegoat-4)
+    - [How to avoid it](#how-to-avoid-it-7)
+  - [Insecure components](#insecure-components)
+  - [Unvalidated Redirects](#unvalidated-redirects)
+    - [How to avoid it](#how-to-avoid-it-8)
 - [Summary](#summary)
 - [Self-check](#self-check)
 
@@ -86,7 +86,7 @@ Beside defacement, no damage was done. Despite this, the attack was a cause for 
 
 ### Data disclosure
 
-Data disclosure is a threat that is recurrently in the news, when a large company has to admit once again that some of their user data was accessible to malicious users - the most recent example (as of 10/2018) being [Facebook's security breach of 50 million user accounts](https://www.nytimes.com/2018/09/28/technology/facebook-hack-data-breach.html).
+Data disclosure is a threat that is recurrently in the news, when a large company fails to protect sensitive or confedential information from users who shouldn't have access to it - the most recent example (as of 09/2019) being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
 
 A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plaintext, making them an easy target to exploit.
 
@@ -102,9 +102,11 @@ An attacker managed to get access to this interface and threatened to shut down 
 
 ### Denial of service
 
-Denial of service (DoS) attacks make web applications unavailable for legitimate users.
+Denial of service (DoS) is a type of Disruption attack that makes web applications unavailable for legitimate users.
 
 To showcase this threat we use a 2015 Steam store attack, which is extensively described in a [Steam post](https://store.steampowered.com/news/19852/). A signature of a DoS attack is the abnormal traffic increase - in this case, the Steam store had to deal with a 2000% increase in traffic. Steam had a defense against a DoS attack in place to minimize the impact on Steam's servers; however, the defense (caching rules of additional web caches) was imperfect and incorrectly cached web traffic was shown to authenticated users, which means that some users saw other people's account page.
+
+A variant of a DoS attack is a *Distributed Denial of Service* (DDoS) attack where multiple systems flood a targeted system. Typically, an attacker recruits multiple vulnerable machines (or bots) to join a *Botnet* for DDoS attacks. In 2016, a major DDoS attack was carried out by the [Mirai botnet](https://www.csoonline.com/article/3258748/the-mirai-botnet-explained-how-teen-scammers-and-cctv-cameras-almost-brought-down-the-internet.html), which was composed of a number of IoT devices that were available on the Internet with default passwords.    
 
 ### Foot in the door
 
