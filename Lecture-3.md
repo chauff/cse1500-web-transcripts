@@ -12,28 +12,28 @@
 - [Examples throughout the lectures](#examples-throughout-the-lectures)
 - [JavaScript's reputation](#javascripts-reputation)
 - [Scripting overview](#scripting-overview)
-    - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-    - [`<script>`](#script)
-    - [:bangbang: Activity](#bangbang-activity)
+  - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
+  - [`<script>`](#script)
+  - [:bangbang: Activity](#bangbang-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
-    - [Scoping](#scoping)
-    - [Hoisting](#hoisting)
-    - [this](#this)
+  - [Scoping](#scoping)
+  - [Hoisting](#hoisting)
+  - [this](#this)
 - [JavaScript design patterns](#javascript-design-patterns)
-    - [JavaScript objects](#javascript-objects)
-    - [Object creation with `new`](#object-creation-with-new)
-    - [Object literals](#object-literals)
-    - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
-    - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-    - [Design pattern 3: Module](#design-pattern-3-module)
+  - [JavaScript objects](#javascript-objects)
+  - [Object creation with `new`](#object-creation-with-new)
+  - [Object literals](#object-literals)
+  - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
+  - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
+  - [Design pattern 3: Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
-    - [Document Object Model](#document-object-model)
-        - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
-        - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
-        - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
-        - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
-        - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
-        - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
+  - [Document Object Model](#document-object-model)
+    - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
+    - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
+    - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
+    - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
+    - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
+    - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -73,7 +73,7 @@ In the early years of JavaScript, it was considered more of a toy language. Toda
 
 <sup>Top languages over time (as measured by number of contributors) on GitHub.</sup>
 
-Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on.
+Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in [multiple programming paradigms](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93).
 
 In addition, today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
@@ -680,7 +680,7 @@ the code still works as expected. Why do we even add this line? If we do not add
 Here is one example where it does indeed matter whether whether this wiring is correct :point_down::
 
 ```javascript
-function Game() {};
+function Game() {}
 function TwoPlayerGame() {}
 
 TwoPlayerGame.prototype = Object.create(Game.prototype);
@@ -900,7 +900,7 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
             function sayHello() {
               var tb = document.getElementById("out");
               tb.value = 'Hello World';
-            };
+            }
 
             /* we attach a function to a button's click event
              * after the DOM finished loading
@@ -968,7 +968,7 @@ Let's look at how this works in practice :point_down: (again, try out the code f
               var li = document.createElement('li');
               li.innerHTML = 'List element ' + (ul.childElementCount+1) +' ';
               ul.appendChild(li);
-            };
+            }
         </script>
     </head>
 
@@ -997,7 +997,7 @@ We can of course also remove elements :point_down::
           function removeLastChild() {
             var ul = document.getElementById('u');
             ul.removeChild(ul.lastElementChild);
-          };
+          }
 
           function removeFirstChild() {
             var ul = document.getElementById('u');
@@ -1130,7 +1130,7 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
           function mouseover() {
             var incr = parseInt(this.id.substr(1));
             intervals[this.id] = setInterval(updateNum, 1000/incr, this);
-          };
+          }
 
           function mouseout()
           {
@@ -1269,7 +1269,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
                     var t = parseInt(document.getElementById(timerLog).innerHTML);
                     t = t + 1;
                     document.getElementById(timerLog).innerHTML = t +" seconds";
-                ;}, 1000);
+                }, 1000);
 
               }
 
