@@ -28,14 +28,12 @@
     - [XSS](#xss)
         - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
-    - [Direct object references](#direct-object-references)
-        - [:bangbang: NodeGoat](#bangbang-nodegoat)
-        - [How to avoid it](#how-to-avoid-it)
     - [Security misconfiguration](#security-misconfiguration)
         - [How to avoid it](#how-to-avoid-it)
     - [Sensitive data](#sensitive-data)
         - [How to avoid it](#how-to-avoid-it)
-    - [Access controls](#access-controls)
+    - [Broken Access controls](#broken-access-controls)
+        - [:bangbang: Juice Shop](#bangbang-juice-shop)
         - [How to avoid it](#how-to-avoid-it)
     - [CSRF](#csrf)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
@@ -331,44 +329,6 @@ http://myforum.nl/search?q=<script>…
 
 As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g. escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
 
-### Direct object references
-
-Web applications often make use of direct object references when generating a HTTP response. We have already seen this in a code snippet in [Lecture 6](Lecture-6.md):
-
-```javascript
-var todoTypes = {
-    important: ["TI1506","OOP","Calculus"],
-    urgent: ["Dentist","Hotel booking"],
-    unimportant: ["Groceries"],
-};
-
-app.get('/todos/:type', function (req, res, next) {
-    var todos = todoTypes[req.params.type];
-    if (!todos) {
-        return next(); // will eventually fall through to 404
-    }
-    res.send(todos);
-});
-```
-
-Here, we use the routing parameter `:type` as key of the `todoTypes` object. Often, applications do not verify whether a user requesting a particular route is authorized to access the target object. This leads to so-called *insecure direct object references*. A malicious user can test different routes to determine whether this issue exists.
-
-Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' to-do lists in this manner.
-
-#### :bangbang: NodeGoat
-
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. Click *Allocations* on the left-hand tab.
-4. Check the URL, it should be http://nodegoat.herokuapp.com/allocations/2.
-5. Check the name of the *Asset Allocations*, it should be the *last name* you entered, e.g., *boo*.
-6. Now change the URL of step (4) by replacing the `/2` with `/3` or `/4`. You should now see the *Asset Allocations* of a different users, without requiring any login data.
-
-#### How to avoid it
-
-- Avoid the use of direct object references (indirect is better).
-- Use of objects should always include an authorization subroutine.
-- Avoid exposing object IDs, keys and filenames to users.
 
 ### Security misconfiguration
 
@@ -402,15 +362,47 @@ If a Web application relies on outdated encryption strategies to secure sensitiv
 - Disable autocompletion on HTML forms collecting sensitive data.
 - Disable caching for pages containing sensitive data.
 
-### Access controls
+### Broken Access controls
 
 A malicious user, who is authorized to access a Web application (e.g. a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g. from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
-This attack is similar to [Direct object references](#direct-object-references). A malicious user tests a range of target URLs that should require authentication. This is especially easy for large Web frameworks which come with a number of default routes enabled.
+Web applications often make use of Direct Object References when generating a HTTP response. We have already seen this in a code snippet in [Lecture 6](Lecture-6.md):
+
+```javascript
+var todoTypes = {
+    important: ["TI1506","OOP","Calculus"],
+    urgent: ["Dentist","Hotel booking"],
+    unimportant: ["Groceries"],
+};
+
+app.get('/todos/:type', function (req, res, next) {
+    var todos = todoTypes[req.params.type];
+    if (!todos) {
+        return next(); // will eventually fall through to 404
+    }
+    res.send(todos);
+});
+```
+
+Here, we use the routing parameter `:type` as key of the `todoTypes` object. Often, applications do not verify whether a user requesting a particular route is authorized to access the target object. This leads to so-called *insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large Web frameworks which come with a number of default routes enabled.
+
+Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' to-do lists in this manner.
+
+#### :bangbang: Juice Shop
+
+1. Go to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/#/.
+Login with `jim@juice-sh.op` (user) and `ncc-1701` (password). This is a typical user account. 
+3. Add some items to Jim's basket.
+4. Next, go to https://tud-juice-shop.herokuapp.com/#/basket where you will see the items placed in basket.
+5. Right click on the page and click on Inspect. Go to the *Application* tab, and then *Session Storage*. 
+6. You will see a token with name `bid` and the value `2`. 
+7. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, it is called *Horizontal Privilege Escalation*.
 
 #### How to avoid it
 
-Use of functions should always include an authorization subroutine.
+- Use of functions should always include an authorization subroutine.
+- Avoid the use of direct object references (indirect is better).
+- Avoid exposing object IDs, keys and filenames to users.
 
 ### CSRF
 
