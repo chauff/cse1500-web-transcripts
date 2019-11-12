@@ -85,7 +85,7 @@ Beside defacement, no damage was done. Despite this, the attack was a cause for 
 
 ### Data disclosure
 
-Data disclosure is a threat that is recurrently in the news, when a large company has to admit once again that some of their user data was accessible to malicious users - the most recent example (as of 10/2018) being [Facebook's security breach of 50 million user accounts](https://www.nytimes.com/2018/09/28/technology/facebook-hack-data-breach.html).
+Data disclosure is a threat that is recurrently in the news, when a large company fails to protect sensitive or confedential information from users who shouldn't have access to it - the most recent example (as of 09/2019) being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
 
 A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plaintext, making them an easy target to exploit.
 
