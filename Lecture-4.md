@@ -266,7 +266,7 @@ var server = http.createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Hello World!");
     console.log("HTTP response sent");
-})
+});
 
 server.listen(port, function () {
     console.log("Listening on port " + port);
@@ -348,7 +348,7 @@ The code showcases how to make use of another core Node module, the [url module]
 Start the server (by now you know how) and try different URLs in the browser (adapt the port number if necessary):
 
 - `localhost:3000`
-- `localhsot:3000/greetme`
+- `localhost:3000/greetme`
 - `localhost:3000/greetme?name=Claudia`
 - `localhost:3000/hello`
 - `localhost:3001` (try out what happens if you change the port!)
@@ -667,7 +667,7 @@ Let's look at the client-side :point_down::
             var socket = new WebSocket("ws://localhost:3000");
             socket.onmessage = function(event){
                 document.getElementById("hello").innerHTML = event.data;
-            }
+            };
 
             socket.onopen = function(){
                 socket.send("Hello from the client!");
