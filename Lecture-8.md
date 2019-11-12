@@ -13,9 +13,10 @@
     - [Data loss](#data-loss)
     - [Denial of service](#denial-of-service)
     - [Foot in the door](#foot-in-the-door)
+    - [Backdoors](#backdoors)
     - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
-- [NodeGoat](#nodegoat)
+- [JuiceShop](#juiceshop)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
     - [Injection](#injection)
         - [:bangbang: Juice Shop](#bangbang-juice-shop)
@@ -85,7 +86,7 @@ Beside defacement, no damage was done. Despite this, the attack was a cause for 
 
 ### Data disclosure
 
-Data disclosure is a threat that is recurrently in the news, when a large company has to admit once again that some of their user data was accessible to malicious users - the most recent example (as of 10/2018) being [Facebook's security breach of 50 million user accounts](https://www.nytimes.com/2018/09/28/technology/facebook-hack-data-breach.html).
+Data disclosure is a threat that is recurrently in the news, when a large company fails to protect sensitive or confedential information from users who shouldn't have access to it - the most recent example (as of 09/2019) being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
 
 A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plaintext, making them an easy target to exploit.
 
@@ -101,15 +102,23 @@ An attacker managed to get access to this interface and threatened to shut down 
 
 ### Denial of service
 
-Denial of service (DoS) attacks make web applications unavailable for legitimate users.
+Denial of service (DoS) is a type of Disruption attack that makes web applications unavailable for legitimate users.
 
 To showcase this threat we use a 2015 Steam store attack, which is extensively described in a [Steam post](https://store.steampowered.com/news/19852/). A signature of a DoS attack is the abnormal traffic increase - in this case, the Steam store had to deal with a 2000% increase in traffic. Steam had a defense against a DoS attack in place to minimize the impact on Steam's servers; however, the defense (caching rules of additional web caches) was imperfect and incorrectly cached web traffic was shown to authenticated users, which means that some users saw other people's account page.
+
+A variant of a DoS attack is a *Distributed Denial of Service* (DDoS) attack where multiple systems flood a targeted system. Typically, an attacker recruits multiple vulnerable machines (or bots) to join a *Botnet* for DDoS attacks. In 2016, a major DDoS attack was carried out by the [Mirai botnet](https://www.csoonline.com/article/3258748/the-mirai-botnet-explained-how-teen-scammers-and-cctv-cameras-almost-brought-down-the-internet.html), which was composed of a number of IoT devices that were available on the Internet with default passwords.    
 
 ### Foot in the door
 
 The most difficult component of a system to secure is its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the secured system to attackers - this is the foot in the door from there. Once in, attackers try to infiltrate other internal systems.
 
 A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who knows whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is simply granted by the unsuspecting user, despite policies to the contrary.
+
+### Backdoors
+
+After an attacker has gained access to a website, they typically want to maintain their presence by installing a *Backdoor*. A Backdoor is a piece of code or a vulnerability that allows an attacker to gain a foothold in a website without being noticed. In many cases, the backdoors seem benign and are hidden deep within the website code so even after a thorough clean-up of an infected website, there is a chance that the backdoor remains. 
+
+In 2016, a [Dutch software developer was arrested](https://www.bleepingcomputer.com/news/security/dutch-developer-added-backdoor-to-websites-he-built-phished-over-20-000-users/) for installing a backdoor in a website he had built for a client. As it turned out, he used the backdoor to access 20,000 clients' login credentials. He used them to conduct online purchases and to break into their other social media accounts since people often reuse the same credentials. 
 
 ### Unauthorized access
 
@@ -166,15 +175,15 @@ to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
 
-## NodeGoat
+## JuiceShop
 
-One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we covered Node.js/Express, most useful to us is a vulnerable web application that was written in Node.js/Express.
+One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we have covered JavaScript/Node.js, a vulnerable web application that is written in JavaScript/Node.js will be most useful to us.
 
-The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose. It provides an *"environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
+The [OWASP Juice Shop Tool project](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) was designed specifically for this purpose. It is the most modern and sophisticated insecure web application written purely in JavaScript (using Node.js/Express/Angular) and *"encompasses vulnerabilities from the entire OWASP Top 10 along with many other security flaws found in real-world applications"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
 
-The NodeGoat project implements an *Employee Retirement Savings Management* system called RetireEasy - we already saw a glimpse of it in the previous section.
+The Juice Shop project is a realistic online juice shop - we already saw a glimpse of it in the previous section. It features a number of web application vulnerabilities as security challenges with varying difficulties. 
 
-Apart from providing a vulnerable application, NodeGoat also provides a helpful [tutorial](http://nodegoat.herokuapp.com/tutorial) on the implemented vulnerabilities, how to execute attacks and, importantly, how to mitigate them.
+Additionally, it comes with a companion guide called [Pwning OWASP Juice Shop](https://leanpub.com/juice-shop), which explains the vulnerabilities found in Juice Shop and a step-by-step solution guide for exploiting each vulnerability.
 
 ## OWASP Top 10 in practice
 
