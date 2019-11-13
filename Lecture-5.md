@@ -1219,7 +1219,8 @@ Here is a concrete example of how media queries enable a **responsive design** :
 </html>
 ```
 
-Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature to test the behaviour of the media queries.
+Use your browser's responsive design mode :point_down: to test the behaviour of the media queries.
+For `@media print` you can use the **Print simulation** mode in the Developer Tools of Firefox, or alternatively, the browser's *Print as PDF* feature.
 
 ![Responsive design mode](img/L5-responsive.png)
 
@@ -1240,6 +1241,7 @@ Here is an example of how you can use `prefers-color-scheme` :point_down::
   }
 }
 ```
+
 
 ## Animations and transitions
 
