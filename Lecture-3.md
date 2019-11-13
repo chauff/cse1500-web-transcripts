@@ -20,26 +20,28 @@
   - [Hoisting](#hoisting)
   - [this](#this)
 - [JavaScript design patterns](#javascript-design-patterns)
-    - [JavaScript objects](#javascript-objects)
-    - [Object creation with `new`](#object-creation-with-new)
-    - [Object literals](#object-literals)
-    - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
-    - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-    - [Design pattern 3: Module](#design-pattern-3--module) 
+  - [JavaScript objects](#javascript-objects)
+  - [Object creation with `new`](#object-creation-with-new)
+  - [Object literals](#object-literals)
+  - [Object copying](#object-copying)
+  - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
+  - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
+  - [Design pattern 3: Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
   - [Document Object Model](#document-object-model)
-        - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
-        - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
-        - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
-        - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
-        - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
-        - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
+    - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
+    - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
+    - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
+    - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
+    - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
+    - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
 - [Some ES6 concepts](#some-es6-concepts)
   - [Variable definition](#variable-definition)
   - [Arrow functions](#arrow-functions)
   - [Map, Reduce and Filter](#map-reduce-and-filter)
   - [Default function arguments](#default-function-arguments)
   - [Template strings](#template-strings)
+  - [Object destructuring](#object-destructuring)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -81,11 +83,15 @@ In the early years of JavaScript, it was considered more of a toy language. Toda
 
 Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in [multiple programming paradigms](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93).
 
-In addition, today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
+Today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
 - [V8](https://developers.google.com/v8/) is Google's JavaScript engine,
 - [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and
-- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime. In december 2018, Microsoft has announced that [they will adopt chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser) and thus they will use V8. The final version should be released around spring 2020.
+- [Chakra](https://github.com/Microsoft/ChakraCore) is/was Microsoft's JavaScript runtime. In December 2018, Microsoft has announced that [they will adopt chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser) and thus they will use V8. The final version should be released around spring 2020.
+
+Javascript is an interpreted language, therefore a browser can read a javascript code line-by-line and run the program. However, all modern engines use **just-in-time (JIT) compilation** (the compilation happens at run-time). They compile javascript into **bytecode** and then optimize it to improve overall performance.
+
+Some javascript engines (e.g., V8) also have a **lazy compilation mechanism** (among others optimization mechanisms). Some functions ([IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)) are first compiled and the other functions are skipped (the engine only records the name of the function and the location of its source code). These functions are then compiled at run-time.
 
 JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
 
@@ -95,67 +101,12 @@ One of the confusing aspects about JavaScript today are the naming conventions, 
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
-In this course we include few **ES6** features (there is [a section](#some-es6-concepts) covering some below), as we have only a few lectures to cover client/server-side JavaScript. The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; this is a useful limitation. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
+In this course we include very few **ES6** features (there is [a section](#some-es6-concepts) covering some below), as we have only a limited number of lectures to cover client/server-side JavaScript. The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; **this is a useful limitation**. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
 
 In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
 Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge to the compiler to catch errors (e.g. functions called with wrong parameters) early on. TypeScript allows you to do that, by **enabling static type checking**.
-
-
-### JS engines compilers
-
-Javascript is an interpreted language, therefore a browser can read a javascript code line-by-line and run the program. However, all modern engines use **just-in-time (JIT) compilation** (the compilation happens at run-time).
-They compile javascript into **bytecode** and then optimize it to improve overall performance.
-
-Some javascript engines (e.g., V8) also have a **lazy compilation mechanism** (among others optimization mechanisms). Some functions ([IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)) are first compiled and the other functions are skipped (the engine only records the name of the function and the location of its source code).
-These functions are then compiled at run-time.
-
-## Javascript Functions  
-A function is a small program destined to perform a particular task.  
-#### Types of functions
-1. Function Declaration: defines a named function.  
-	```javascript
-	function add(a, b){
-	  return a + b;
-	}
-	```  
-2. Function Expression: defines a named or anonymous function. An anonymous function is a function that has no name.  
-	 ```javascript
-	let add = function(a, b) {
-	  return a + b;
-	}
-	``` 
-	:point_up: anonymous function  assigned to variable add.  
-	**Function Declarations are [hoisted](#scoping-hoisting-and-this), function expressions are not.**  
-3. Arrow Function: is just a shorter syntax for writing function expressions   
-    Without brackets: 
-	```javascript
-	const add(a,b) => a + b;
-	``` 
-	Or with brackets:
-	```javascript
-	const add(a,b) => {
-	  a + b;
-	}
-	```
-4. Generator Function:  returns a [`Generator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator "The Generator object is returned by a generator function and it conforms to both the iterable protocol and the iterator protocol.") object.  
-	```javascript
-	function *() {
-	  yield i;
-	  yield i + 10;
-	}
-	``` 
-#### Functions vs Methods  
-Methods are functions that belong to objects.
-```javascript
-number.add(otherNumber) // add is a method
-a = add(x,y) // add is a function 
-``` 
-
-#### Keep in mind
-- Functions are Objects, Objects are not Functions.
-- A function without a return statement, will always return **undefined**.
 
 
 ## Scripting overview
