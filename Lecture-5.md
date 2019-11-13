@@ -1154,6 +1154,7 @@ Here is a concrete example of how media queries enable a **responsive design** :
 
 ```html
 <!DOCTYPE html>
+<html>
   <head>
 
     <!-- We can link a style sheet conditional on the media attribute -->
@@ -1223,9 +1224,24 @@ For `@media print` you can use the **Print simulation** mode in the Developer To
 
 ![Responsive design mode](img/L5-responsive.png)
 
-Button for activating the **Print simulation** mode on Firefox. :point_down:
+Another useful media feature is `prefers-color-scheme`, it allows us to create dark or light themes based on what the user requested.
+Here is an example of how you can use `prefers-color-scheme` :point_down::
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
 
-![Responsive design mode](img/L5-printmedia.png)
+@media (prefers-color-scheme: light) {
+  body{
+    background-color: white;
+    color:black;
+  }
+}
+```
+
 
 ## Animations and transitions
 
