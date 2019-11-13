@@ -92,6 +92,9 @@ body {
 
 `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
 
+*Note*: In this example color is represented by its hex value. The most common color formats in CSS are *color name, hex value, rgb value.*  
+Example: Green color can be represented by its name `green`, its hex value `#008000` and its rgb value `rgb(0, 128, 0)`. A nice tool to quickly convert between different color formats can be found [here](https://convertingcolors.com/).  
+
 Lastly, you know about `!important` which overrides all other declarations.
 
 In this lecture, we move beyond the course book chapter and highlight a number of more advanced CSS concepts.
@@ -1154,6 +1157,7 @@ Here is a concrete example of how media queries enable a **responsive design** :
 
 ```html
 <!DOCTYPE html>
+<html>
   <head>
 
     <!-- We can link a style sheet conditional on the media attribute -->
@@ -1218,9 +1222,29 @@ Here is a concrete example of how media queries enable a **responsive design** :
 </html>
 ```
 
-Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature to test the behaviour of the media queries.
+Use your browser's responsive design mode :point_down: to test the behaviour of the media queries.
+For `@media print` you can use the **Print simulation** mode in the Developer Tools of Firefox, or alternatively, the browser's *Print as PDF* feature.
 
 ![Responsive design mode](img/L5-responsive.png)
+
+Another useful media feature is `prefers-color-scheme`, it allows us to create dark or light themes based on what the user requested.
+Here is an example of how you can use `prefers-color-scheme` :point_down::
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body{
+    background-color: white;
+    color:black;
+  }
+}
+```
+
 
 ## Animations and transitions
 

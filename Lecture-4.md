@@ -107,6 +107,16 @@ Node's focus on making so-called **I/O bound programs** (that is, programs const
 
 As the typical web application is indeed I/O bound, Node.js has become a popular choice of server-side framework. Another positive side effect of Node is the *reuse* of the language: instead of learning JavaScript for the client-side and PHP (or another language) for the server-side part of an application, we restrict ourselves to a single language and can even *share code* between client and server efficiently.
 
+## Contributing to Node.js
+
+Node.js is an ever-growing framework notably thanks to its contributors.
+Some areas that need contributions the most include:
+- Documentation (enhancing and adding documentations)
+- Guides (documentations to help end-users with real-world use cases)
+- Node.js collection (central community resource for content around Node.js)
+- Automating (a variety of works needs to be automated)
+
+If you are interested in contributing, check [this](https://dev.to/azure/start-contributing-to-nodejs-in-the-new-year-3dlh) !
 ## Node.js in examples
 
 Let's now walk through a number of Node.js code examples that increase in complexity and lead us towards server-side scripting for web applications. Along the way, we introduce important Node runtime concepts. As always, we recommend that you try out all code examples yourself. We assume you have Node.js already installed on your machine.
@@ -266,7 +276,7 @@ var server = http.createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Hello World!");
     console.log("HTTP response sent");
-})
+});
 
 server.listen(port, function () {
     console.log("Listening on port " + port);
@@ -348,7 +358,7 @@ The code showcases how to make use of another core Node module, the [url module]
 Start the server (by now you know how) and try different URLs in the browser (adapt the port number if necessary):
 
 - `localhost:3000`
-- `localhsot:3000/greetme`
+- `localhost:3000/greetme`
 - `localhost:3000/greetme?name=Claudia`
 - `localhost:3000/hello`
 - `localhost:3001` (try out what happens if you change the port!)
@@ -667,7 +677,7 @@ Let's look at the client-side :point_down::
             var socket = new WebSocket("ws://localhost:3000");
             socket.onmessage = function(event){
                 document.getElementById("hello").innerHTML = event.data;
-            }
+            };
 
             socket.onopen = function(){
                 socket.send("Hello from the client!");
