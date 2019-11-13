@@ -1,3 +1,58 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head> 
+ <div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">Assignments
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./Assignment-1.html">Assignment 1</a>
+      <a href="./Assignment-2.html">Assignment 2</a>
+      <a href="./Assignment-3.html">Assignment 3</a>
+    </div>
+   </div>
+  <div class="dropdown">
+    <button class="dropbtn">Lecture Transcripts
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./Lecture-1.html">Lecture 1</a>
+      <a href="./Lecture-2.html">Lecture 2</a>
+      <a href="./Lecture-3.html">Lecture 3</a>
+      <a href="./Lecture-4.html">Lecture 4</a>
+      <a href="./Lecture-5.html">Lecture 5</a>
+      <a href="./Lecture-6.html">Lecture 6</a>
+      <a href="./Lecture-7.html">Lecture 7</a>
+      <a href="./Lecture-8.html">Lecture 8</a>
+    </div>
+   </div>
+  <div class="dropdown">
+    <button class="dropbtn">Extra reading
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./nodeschool-exercises.html">Nodeschool Exercises</a>
+      <a href="./university-web-tech-courses.html">Web Tech Courses</a>
+    </div>
+   </div>
+  <div class="dropdown">
+    <button class="dropbtn">Setting up
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./How-to-use-VSC.html">Visual studio code</a>
+      <a href="./virtual-machine-initialization.html">Virtual machine setup</a>
+    </div>
+   </div>
+   <a href="https://github.com/chauff/Web-Teaching/tree/master/slides">Lecture Slides</a>
+   <a href="https://github.com/chauff/Web-Teaching/tree/master/demo-code">Demo Code</a>
+  </div>
+
+</html>
+
+
 CSE1500: Web and Database Technology <!-- omit in toc -->
 ==
 
