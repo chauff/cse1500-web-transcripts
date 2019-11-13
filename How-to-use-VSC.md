@@ -7,7 +7,7 @@ Table of Contents
         - [Git](#git)
         - [GitHub](#github)
         - [Local vs. remote repository](#local-vs-remote-repository)
-        - [VSC ...](#vsc)
+        - [VSC ...](#vsc-)
     - [Live Share](#live-share)
     - [Debugging Node.js scripts](#debugging-nodejs-scripts)
 
@@ -50,6 +50,9 @@ Now you can add your partners to the repository, so all of you can work together
 ![VSC GitHub settings](img/VSC-github-settings.png)
 
 The menu that appears on the left has an entry *Collaborators*: click on it and add your partners.
+
+### Octotree  
+[Octotree](https://www.octotree.io/) is a chrome extension that makes it easy to view code on Github. It creates a tree view of the whole project on the left or right side of the browser.
 
 ### Local vs. remote repository
 
