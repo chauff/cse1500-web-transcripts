@@ -96,6 +96,53 @@ The three most well-known of such languages are [CoffeeScript](https://coffeescr
 
 Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge to the compiler to catch errors (e.g. functions called with wrong parameters) early on. TypeScript allows you to do that, by **enabling static type checking**.
 
+## Javascript Functions  
+A function is a small program destined to perform a particular task.  
+#### Types of functions
+1. Function Declaration: defines a named function.  
+	```javascript
+	function add(a, b){
+	  return a + b;
+	}
+	```  
+2. Function Expression: defines a named or anonymous function. An anonymous function is a function that has no name.  
+	 ```javascript
+	let add = function(a, b) {
+	  return a + b;
+	}
+	``` 
+	:point_up: anonymous function  assigned to variable add.  
+	**Function Declarations are [hoisted](#scoping-hoisting-and-this), function expressions are not.**  
+3. Arrow Function: is just a shorter syntax for writing function expressions   
+    Without brackets: 
+	```javascript
+	const add(a,b) => a + b;
+	``` 
+	Or with brackets:
+	```javascript
+	const add(a,b) => {
+	  a + b;
+	}
+	```
+4. Generator Function:  returns a [`Generator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator "The Generator object is returned by a generator function and it conforms to both the iterable protocol and the iterator protocol.") object.  
+	```javascript
+	function *() {
+	  yield i;
+	  yield i + 10;
+	}
+	``` 
+#### Functions vs Methods  
+Methods are functions that belong to objects.
+```javascript
+number.add(otherNumber) // add is a method
+a = add(x,y) // add is a function 
+``` 
+
+#### Keep in mind
+- Functions are Objects, Objects are not Functions.
+- A function without a return statement, will always return **undefined**.
+
+
 ## Scripting overview
 
 ### Server-side vs. client-side scripting
