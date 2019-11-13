@@ -8,14 +8,15 @@
 - [Learning goals](#learning-goals)
 - [Introduction](#introduction)
 - [Threat categories](#threat-categories)
-    - [Defacement](#defacement)
-    - [Data disclosure](#data-disclosure)
-    - [Data loss](#data-loss)
-    - [Denial of service](#denial-of-service)
-    - [Foot in the door](#foot-in-the-door)
-    - [Unauthorized access](#unauthorized-access)
+  - [Defacement](#defacement)
+  - [Data disclosure](#data-disclosure)
+  - [Data loss](#data-loss)
+  - [Denial of service](#denial-of-service)
+  - [Foot in the door](#foot-in-the-door)
+  - [Backdoors](#backdoors)
+  - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
-- [NodeGoat](#nodegoat)
+- [JuiceShop](#juiceshop)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
     - [Injection](#injection)
         - [:bangbang: NodeGoat](#bangbang-nodegoat)
@@ -68,11 +69,11 @@ Bug bounty programs are run to this day by, among others, [Facebook](https://www
 
 ## Threat categories
 
-There are a number of overarching threat categories, we introduce each of them with a concrete security incidence.
+There are a number of overarching categories for threats against web applications. We introduce each of them with a concrete security incident.
 
 ### Defacement
 
-Website defacement is an attack against a website that changes the visual appearance of a site.
+Website defacement is an attack against a website that changes the visual appearance of a site. It can be an act of hacktivism (socio-politically motivated), revenge, or simply internet trolling.  
 
 A famous example here is CERN, [which in 2008 had one of its portals defaced by a Greek hacker group](https://astroengine.com/2008/09/16/greek-hackers-invade-lhc-nothing-much-happens/). This benevolent looking  page:
 
@@ -84,9 +85,12 @@ became this one:
 
 Beside defacement, no damage was done. Despite this, the attack was a cause for concern as the "hacked" web server formed part of the monitoring systems for some of the Large Hadron Collider detector hardware.
 
+Another recent example from 2015 is a [defacement attack against Lenovo](https://www.cbronline.com/it-network/lizard-squad-claim-attack-on-lenovo-days-after-superfish-4520823/) (a famous computer manufacturer) which was accused of shipping laptops with vulnerable adware
+installed by Superfish. A hacking group that goes by the name *Lizard Squad* replaced Lenovo's website with a slideshow of bored teenagers while some High School musicals played in the background.  
+
 ### Data disclosure
 
-Data disclosure is a threat that is recurrently in the news, when a large company has to admit once again that some of their user data was accessible to malicious users - the most recent example (as of 10/2018) being [Facebook's security breach of 50 million user accounts](https://www.nytimes.com/2018/09/28/technology/facebook-hack-data-breach.html).
+Data disclosure is a threat that is recurrently in the news, when a large company fails to protect sensitive or confedential information from users who shouldn't have access to it - the most recent example (as of 09/2019) being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
 
 A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plaintext, making them an easy target to exploit.
 
@@ -102,15 +106,23 @@ An attacker managed to get access to this interface and threatened to shut down 
 
 ### Denial of service
 
-Denial of service (DoS) attacks make web applications unavailable for legitimate users.
+Denial of service (DoS) is a type of Disruption attack that makes web applications unavailable for legitimate users.
 
 To showcase this threat we use a 2015 Steam store attack, which is extensively described in a [Steam post](https://store.steampowered.com/news/19852/). A signature of a DoS attack is the abnormal traffic increase - in this case, the Steam store had to deal with a 2000% increase in traffic. Steam had a defense against a DoS attack in place to minimize the impact on Steam's servers; however, the defense (caching rules of additional web caches) was imperfect and incorrectly cached web traffic was shown to authenticated users, which means that some users saw other people's account page.
+
+A variant of a DoS attack is a *Distributed Denial of Service* (DDoS) attack where multiple systems flood a targeted system. Typically, an attacker recruits multiple vulnerable machines (or bots) to join a *Botnet* for DDoS attacks. In 2016, a major DDoS attack was carried out by the [Mirai botnet](https://www.csoonline.com/article/3258748/the-mirai-botnet-explained-how-teen-scammers-and-cctv-cameras-almost-brought-down-the-internet.html), which was composed of a number of IoT devices that were available on the Internet with default passwords.    
 
 ### Foot in the door
 
 The most difficult component of a system to secure is its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the secured system to attackers - this is the foot in the door from there. Once in, attackers try to infiltrate other internal systems.
 
 A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who knows whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is simply granted by the unsuspecting user, despite policies to the contrary.
+
+### Backdoors
+
+After an attacker has gained access to a website, they typically want to maintain their presence by installing a *Backdoor*. A Backdoor is a piece of code or a vulnerability that allows an attacker to gain a foothold in a website without being noticed. In many cases, the backdoors seem benign and are hidden deep within the website code so even after a thorough clean-up of an infected website, there is a chance that the backdoor remains. 
+
+In 2016, a [Dutch software developer was arrested](https://www.bleepingcomputer.com/news/security/dutch-developer-added-backdoor-to-websites-he-built-phished-over-20-000-users/) for installing a backdoor in a website he had built for a client. As it turned out, he used the backdoor to access 20,000 clients' login credentials. He used them to conduct online purchases and to break into their other social media accounts since people often reuse the same credentials. 
 
 ### Unauthorized access
 
@@ -130,7 +142,7 @@ The most important **software security issues** for web and mobile applications 
 
 <sup>Figure taken from page 56, CSRHPE.</sup>
 
-:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is *Input validation and representation* which covers issues such as cross-site scripting (we cover this later in this lecture) and SQL injection (covered in a DB lecture), which is present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
+:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is *Input validation and representation* which covers issues such as cross-site scripting (we cover this later in this lecture) and SQL injection (covered in a later course), which is present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
 
 If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as the *percentage of applications* and *median vulnerability count*:
 
@@ -150,7 +162,7 @@ Taking a slightly higher-level view, the top five violated security categories a
 
 The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example:
 
-![NodeGoat not secure](img/L8-browser-warning.png)
+![Juice Shop not secure](img/L8-browser-warning-juiceshop.png)
 
 It is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on `Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
 
@@ -167,19 +179,19 @@ to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
 
-## NodeGoat
+## JuiceShop
 
-One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we covered Node.js/Express, most useful to us is a vulnerable web application that was written in Node.js/Express.
+One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we have covered JavaScript/Node.js, a vulnerable web application that is written in JavaScript/Node.js will be most useful to us.
 
-The [OWASP NodeGoat project](https://github.com/OWASP/NodeGoat) was designed specifically for this purpose. It provides an *"environment to learn how OWASP Top 10 security risks apply to web applications developed using Node.js"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
+The [OWASP Juice Shop Tool project](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) was designed specifically for this purpose. It is the most modern and sophisticated insecure web application written purely in JavaScript (using Node.js/Express/Angular) and *"encompasses vulnerabilities from the entire OWASP Top 10 along with many other security flaws found in real-world applications"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
 
-The NodeGoat project implements an *Employee Retirement Savings Management* system called RetireEasy - we already saw a glimpse of it in the previous section.
+The Juice Shop project is a realistic online juice shop - we already saw a glimpse of it in the previous section. It features a number of web application vulnerabilities as security challenges with varying difficulties. 
 
-Apart from providing a vulnerable application, NodeGoat also provides a helpful [tutorial](http://nodegoat.herokuapp.com/tutorial) on the implemented vulnerabilities, how to execute attacks and, importantly, how to mitigate them.
+Additionally, it comes with a companion guide called [Pwning OWASP Juice Shop](https://leanpub.com/juice-shop), which explains the vulnerabilities found in Juice Shop and a step-by-step solution guide for exploiting each vulnerability.
 
 ## OWASP Top 10 in practice
 
-In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of NodeGoat. Some of them will be introduced in more detail than others.
+In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of Juice Shop. Some of them will be introduced in more detail than others.
 
 ### Injection
 
@@ -206,14 +218,16 @@ Web applications that do not validate their input are also attackable, if they i
 
 `eval()` in fact is so dangerous that [it should never be used](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#Do_not_ever_use_eval!).
 
-#### :bangbang: NodeGoat
+#### :bangbang: Juice Shop
 
-1. To try out this attack, head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. On the left-hand side, click on *Contributions*.
-4. To explore the effect of different inputs, try out a few numbers and strings in the three *New Payroll Contribution Percent* form fields.
-5. In one of the form fields, now fill in `process.exit()` and click `Submit`.
-6. You should now see an application error.
+1. To try out this attack, head to Juice Shop installation at https://juice-shop.herokuapp.com/
+2. You can access the user reviews using the backend API `/rest/products/{id}/reviews`.
+3. To see the first customer's review, go to: https://juice-shop.herokuapp.com/rest/products/1/reviews. You will see the review in JSON format.
+4. Try out a few other values for `{id}`.
+5. This indicates that the `{id}` is processed by the server as a user input. Let's see if we can execute commands using it.
+6. Replace `{id}` with `sleep(2000)` and press Enter. You will observe that the server takes roughly 2 seconds to respond. This is because the `sleep(x)` command takes an integer as input that makes the program sleep for `x` ms.
+7. To avoid real Denial of Service attacks, the Juice Shop will sleep for a maximum of 2 seconds. 
+8. **Dangerous**: If you replace `{id}` with `process.exit()`, the application will crash and will need to be redeployed. Be **VERY** careful with this because you, including your fellow students, won't be able to access Juice Shop for the next 10 minutes!
 
 #### How to avoid it
 
@@ -230,7 +244,7 @@ As stated earlier, `eval()` should be avoided at all costs.
 
 #### SQL injection
 
-One important injection type is missing in the above list: **SQL injections**. They will be covered in the database part of this course.
+One important injection type is missing in the above list: **SQL injections**. They will be covered in *CSE1505 Information and Data Management*.
 
 ### Broken authentication
 
@@ -246,20 +260,29 @@ An attacker can exploit broken authentication and session management functions t
 - **Session IDs are static instead of being rotated**. If session IDs are not regularly changed, they are more easily guessable.
 - **Session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can wait for a user with valuable information to pass by.
 
-#### :bangbang: NodeGoat
+#### :bangbang: Juice Shop
 
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Open the browser's dev tools. In particular, the **Storage Inspector** allows you to view the cookies stored by the client.
-3. Login with `user1` (user) and `User1_123` (password).
-4. Check the cookie value of `connect.sid`.
-5. Close the browser tab.
-6. Open a new browser tab and access http://nodegoat.herokuapp.com/. No login should be required.
-7. Head to the Storage Inspector and delete the session cookie.
-8. Access http://nodegoat.herokuapp.com/. A login should be required.
+1. Head to Juice Shop's installation: https://juice-shop.herokuapp.com/#/login.
+2. Open the browser's dev tools (right-click, Inspect, on Google Chrome). In particular, go to **Application** tab, find the **Storage** section. It allows you to view the cookies stored by the client.
+3. Login with `admin@juice-sh.op` (user) and `admin123` (password). 
+4. In the `Cookies` tab, you will see a new cookie `token` added.
+5. Copy the value of `token` (which will be a long random looking string). 
+6. *Experiment 1*
+    - Close the browser tab.
+    - Open a new browser tab and access https://juice-shop.herokuapp.com/. No login should be required.
+7. *Experiment 2*
+    - Open a new Incognito window and go to https://juice-shop.herokuapp.com/. 
+    - Go to the `Cookies` tab. No `token` cookie should be present.
+    - Write click on the white pane and choose `Add new`.
+    - Type `token` as `Name` and paste the value of cookie in `Value`.
+    - Refresh the browser window. You will now be logged in as `admin@juice-sh.op`.
+8. *Experiment 3*
+    - Head to the `Cookies` tab and delete the session cookie `token`.
+    - In a few seconds (or after a tab refresh), a login should be required again.
 
 #### How to avoid it
 
-- Good authentication and session management is difficult - avoid if possible an implementation from scratch.
+- Good authentication and session management is difficult - avoid, if possible, an implementation from scratch.
 - Ensure that the session ID is **never sent over the network unencrypted**.
 - Session IDs should not be visible in URLs.
 - Generate a new session ID on login and **avoid reuse**.
@@ -295,57 +318,48 @@ http://myforum.nl/search?q=Let+me+…
 http://myforum.nl/search?q=<script>…
 ```
 
-#### :bangbang: NodeGoat
+#### :bangbang: Juice Shop
 
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. Click *Profile* on the left-hand tab.
-4. In the *First Name* field, type `<script>alert("Hello there!")</script>`. Also fill the *bank routing #* field with a random value since it is mandatory.
-5. Click *Submit*. You should now see an alert dialogue.
-6. Head to the top-right corner and check the profile by clicking on the *Profile* link. Again, the alert dialogue pops up as the code has been stored on the server. This is thus a stored XSS attack.
+1. Head to Juice Shop's installation at https://juice-shop.herokuapp.com/#/. 
+2. Login as `admin@juice-sh.op` (user) and `admin123` (password).
+3. Go to the profile page at https://juice-shop.herokuapp.com/profile.
+4. **Note:** Since this is a globally accessible website, chances are that someone has already attempted to do a stored-XSS attack. Hence, you *might* see an alert dialog when you go to the `/profile` page.
+5. In the Username, type `<script>alert('Hello World!')</script>` and click `Set Username`. 
+6. Typically, this should be enough for an XSS attack. However, Juice Shop has used some defenses. 
+7. You will see under the profile picture, the username `lert('Hello World!')`, while in the input field `lert('Hello World!')</script>` remains. The server does some kind of input sanitization (or cleanup), so the attack doesn't succeed. However, if you look closely, the sanitization is not done properly as some part of the attack code remains. 
+8. As you will see next, it is easy to bypass server defenses if they are not configured properly. Apparently, the sanitizer looks for this pattern: `<(.)*>.` (starts with < sign, anything can be placed between <>, and one character after it) and removes the string found. So the attack code becomes ineffective.
+9. Typing `<<x>xscript>alert('Hello World!')</script>` bypasses the sanitizer as it effectively removes `<x>x` and turns the username into `<script>alert('Hello World!')</script>`, which is valid JS code.
+10. Now, when you go back to the https://juice-shop.herokuapp.com/profile page, the alert dialogue pops up again as the code has been stored on the server. This is thus a *Stored XSS attack*.
 
 #### How to avoid it
 
 As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g. escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
+**DOMPurify** is a good tool for sanitizing HTML code. It's written in JavaScript and supports all modern browsers. When used, DOMPurify removes all "dangerous" html code in a given string, and therefore you can use it to protect your website from XSS attacks. You can play with DOMPurify via this [link](https://cure53.de/purify), or install it using the instructions from their [repository](https://github.com/cure53/DOMPurify).
+Here is a code example for DOMPurify :
+   ```javascript
+   var dirty = '<script> alert("I am dangerous"); </script> Hi';
 
-### Direct object references
+   var clean = DOMPurify.sanitize(dirty);
+   ```
+   After execution, the variable `clean` will contain only **"Hi"**, DOMPurify will remove the `<script>` tag to prevent an XSS attack. 
 
-Web applications often make use of direct object references when generating a HTTP response. We have already seen this in a code snippet in [Lecture 6](Lecture-6.md):
+### Improper Input Validation
 
-```javascript
-var todoTypes = {
-    important: ["TI1506","OOP","Calculus"],
-    urgent: ["Dentist","Hotel booking"],
-    unimportant: ["Groceries"],
-};
+When user input is not checked or incorrectly validated, the web application may start behaving in unexpected ways. An attacker can craft an input that alters the application's control flow, cause it to crash, or even execute arbitrary user-provided code.
 
-app.get('/todos/:type', function (req, res, next) {
-    var todos = todoTypes[req.params.type];
-    if (!todos) {
-        return next(); // will eventually fall through to 404
-    }
-    res.send(todos);
-});
-```
+Improper input validation is often the root cause of other vulnerabilities, e.g. [Injection](#injection) and [XSS](#xss) attacks.
 
-Here, we use the routing parameter `:type` as key of the `todoTypes` object. Often, applications do not verify whether a user requesting a particular route is authorized to access the target object. This leads to so-called *insecure direct object references*. A malicious user can test different routes to determine whether this issue exists.
-
-Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' to-do lists in this manner.
-
-#### :bangbang: NodeGoat
-
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. Click *Allocations* on the left-hand tab.
-4. Check the URL, it should be http://nodegoat.herokuapp.com/allocations/2.
-5. Check the name of the *Asset Allocations*, it should be the *last name* you entered, e.g., *boo*.
-6. Now change the URL of step (4) by replacing the `/2` with `/3` or `/4`. You should now see the *Asset Allocations* of a different users, without requiring any login data.
+#### :bangbang: Juice Shop
+1. Head over to Juice Shop's installation and attempt to register as a new user: https://tud-juice-shop.herokuapp.com/#/register.
+2. Fill the registration form. You will observe that the `Repeat Password` field gives an error until the passwords are a complete match.
+3. Now, go back to the `Password` field and change it.
+4. You will see that the `Repeat Password` does not raise any error, and you can register with mismatching passwords. 
 
 #### How to avoid it
-
-- Avoid the use of direct object references (indirect is better).
-- Use of objects should always include an authorization subroutine.
-- Avoid exposing object IDs, keys and filenames to users.
+- User input should always be validated (e.g. is this really an email?, do the passwords match?, are the conditions met for enabling certain functionality?)
+- User input should always be sanitized (e.g. by stripping out potential JavaScript code elements).
+- A server that generates output based on user data should escape it (e.g. escaping <script> leads to `&lt;script&gt;`), so that the browser does not execute it.
+- These steps **should** occur on the server-side, as a malicious user can always circumvent client-side validation/sanitation steps.
 
 ### Security misconfiguration
 
@@ -356,6 +370,14 @@ Issues can arise everywhere (Web server, database, application framework, operat
 - Resources may be publicly accessible that should not be.
 - The root user can log in via SSH (this allows remote access).
 - Security patches are not applied on time.
+- Error handling is not done properly causing the application to crash abruptly.
+
+#### :bangbang: Juice Shop
+1. Go to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/#/
+2. There are multiple security misconfigurations in Juice Shop:
+    - You can access admin account by `admin@juice-sh.op` (user) and an easily guessable `admin123` (password).
+    - Visit https://tud-juice-shop.herokuapp.com/rest/qwertz to see an error that was not properly handled by the developers.
+    - Visit https://tud-juice-shop.herokuapp.com/profile while *not logged in* to see an illegal activity error. The proper way to deal with such errors is to show a customized error message, otherwise a lot of unnecessary and sensitive information also gets published.
 
 #### How to avoid it
 
@@ -390,15 +412,47 @@ In addition, if sensitive documents can be accessed without authorization, or us
 - Disable autocompletion on HTML forms collecting sensitive data.
 - Disable caching for pages containing sensitive data.
 
-### Access controls
+### Broken Access controls
 
 A malicious user, who is authorized to access a Web application (e.g. a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g. from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
-This attack is similar to [Direct object references](#direct-object-references). A malicious user tests a range of target URLs that should require authentication. This is especially easy for large Web frameworks which come with a number of default routes enabled.
+Web applications often make use of Direct Object References when generating a HTTP response. We have already seen this in a code snippet in [Lecture 6](Lecture-6.md):
+
+```javascript
+var todoTypes = {
+    important: ["TI1506","OOP","Calculus"],
+    urgent: ["Dentist","Hotel booking"],
+    unimportant: ["Groceries"],
+};
+
+app.get('/todos/:type', function (req, res, next) {
+    var todos = todoTypes[req.params.type];
+    if (!todos) {
+        return next(); // will eventually fall through to 404
+    }
+    res.send(todos);
+});
+```
+
+Here, we use the routing parameter `:type` as key of the `todoTypes` object. Often, applications do not verify whether a user requesting a particular route is authorized to access the target object. This leads to so-called *insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large Web frameworks which come with a number of default routes enabled.
+
+Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g. `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' to-do lists in this manner.
+
+#### :bangbang: Juice Shop
+
+1. Go to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/#/.
+Login with `jim@juice-sh.op` (user) and `ncc-1701` (password). This is a typical user account. 
+3. Add some items to Jim's basket.
+4. Next, go to https://tud-juice-shop.herokuapp.com/#/basket where you will see the items placed in basket.
+5. Right click on the page and click on Inspect. Go to the *Application* tab, and then *Session Storage*. 
+6. You will see a token with name `bid` and the value `2`. 
+7. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, it is called *Horizontal Privilege Escalation*.
 
 #### How to avoid it
 
-Use of functions should always include an authorization subroutine.
+- Use of functions should always include an authorization subroutine.
+- Avoid the use of direct object references (indirect is better).
+- Avoid exposing object IDs, keys and filenames to users.
 
 ### CSRF
 
@@ -413,34 +467,6 @@ Here is an example scenario: imagine a Web application that allows users to tran
 ```
 
 If the victim access the website that is under the attacker's control (e.g. because the attacker send the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place if the web application the user is authenticated to does not defend against a CSRF attack (This occurs when the web application cannot distinguish between a forged and legitimate request).
-
-#### :bangbang: NodeGoat
-
-1. Head to NodeGoat's installation at http://nodegoat.herokuapp.com/login. 
-2. Login with `user1` (user) and `User1_123` (password).
-3. Click *Profile* and check the current *Bank Account* and *Bank Routing* numbers. 
-4. Now save the following HTML document:
-
-```html
-<!doctype html>
-<html lang="en">
-    <head>
-    </head>
-    <body>
-        <form method="POST" action="http://nodegoat.herokuapp.com/profile">
-            <h1> You are about to win a brand new phone!</h1>
-            <h2> Click on the win button to claim it...</h2>
-            <input type="hidden" name="bankAcc" value="2"/>
-            <input type="hidden" name="bankRouting" value="2#"/>
-            <input type="submit" value="Win !!!"/>
-        </form>
-    </body>
-</html>
-```
-
-and open it in a new browser tab. This is the attacker's site.
-
-5. Click the *Win* button. You are now redirected. On the *Profile* page you should now see bank account and bank routing numbers set to `2`.
 
 #### How to avoid it
 
@@ -459,7 +485,24 @@ Going back to our example, if a user is accessing a *Win an iPAD* web site and a
 
 Vulnerabilities of software libraries and frameworks are continuously being discovered and patched. An application that is not patched when a vulnerability becomes known is a candidate for exploitation. It is important to be aware of the dependencies of one's Node.js application and install security patches quickly when they become available. 
 
-Not only the application itself needs to be kept up-to-date. The server's operating system also needs to be continuously patched, as well as any other software used to support the web server (e.g. Redis, MongoDB, Nginx).
+Not only the application itself needs to be kept up-to-date, the server's operating system also needs to be continuously patched, as well as any other software used to support the web server (e.g. Redis, MongoDB, Nginx).
+
+In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vulnerability) was discovered in many open source archiving libraries. The problem arises from missing validation of archives while decompressing. As a result, any compressed archive containing file names with relative paths (e.g. ../file.txt) go unchecked, and while decompressing the file is placed at its relative address which can be outside the archive directory. Attackers can use this vulnerability to move their own versions of critical libraries to the `/root` folder, or in an attempt to overwrite existing files.
+
+#### :bangbang: Juice Shop
+1. Create a file called `legal.md` containing string `"Hello World!"`. 
+2. Compress it into an archive with name `zipslip.zip`.
+3. Open the archive (e.g., using 7Zip) and rename `legal.md` to `../../ftp/legal.md`. Typically operating systems don't allow file names containing `/ or \`, but no such rule applies to files present inside an archive.
+4. Now, head over to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/.
+5. Log in as `jim@juice-sh.op` (user) and `ncc-1701` (password).
+6. Go to complaints page at https://tud-juice-shop.herokuapp.com/#/complain
+7. Write your complain, attach `zipslip.zip`, and click `Submit`.
+8. Now, if you visit https://juice-shop.herokuapp.com/ftp/legal.md, you will see the contents of your version of `legal.md`.
+
+#### How to avoid it
+
+- Always use latest versions of libraries
+- Keep a look out for [potential vulnerabiltiies](https://www.cvedetails.com/) in open source software, and patch them asap.
 
 ### Unvalidated Redirects
 
@@ -470,6 +513,15 @@ Here is an example scenario: imagine a web application includes a route called `
 `http://www.mygame.nl/redirect?url=www.malicious-url.com`. 
 
 The user, when seeing this URL in an email or message forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`. Instead of `mygame.nl` it leads to `www.malicious-url.com` which the attacker has under control. If the user does not check the address bar anymore, she will remain under the belief to be on `mygame.nl` - and if she is asked to reenter her credit card information, she may just do that.
+
+#### :bangbang: Juice Shop
+1. Head over to Juice Shop's installation at https://juice-shop.herokuapp.com/
+2. Log in as `jim@juice-sh.op` (user) and `ncc-1701` (password).
+3. Go to payment options at https://juice-shop.herokuapp.com/#/payment/shop (Typically, you can reach here by following the procedure for *checking out*)
+4. Observe that you cannot pay using crypto currency. This used to be a feature but Juice Shop's developers decided to remove it since it was not profitable. However, they were not very good at removing this functionality.
+5. Right click, *Inspect* and view the contents of `main-es2015.js`. 
+6. Let's see if Juice Shop is vulnerable to unvalidated redirects. Search for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash`, `Ether`.
+6. Hence, if you were to click on `Pay with Bitcoin` (*now unavailable*), you will be redirected to Blockchain's website without any warning: https://tud-juice-shop.herokuapp.com/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm. The attacker can just as easily add her own malicious link to the URL after `redirect?to=`.
 
 #### How to avoid it
 
@@ -499,24 +551,21 @@ Here are a few questions you should be able to answer after having followed the 
 
 3. What does the *same-origin policy* refer to (recall [Lecture 4](Lecture-4.md), in particular Ajax)? How is this related to web security?
 
-4. Which attack type does this scenarios describe: An attacker sends a browser request to a benign Web site using the credentials of another user (the victim).
+4. Which attack type does this scenario describe: An attacker can browse through other users' Facebook timelines by URL manipulation.
 
-5. Which attack type does this scenarios describe: A vulnerability exists if an attacker can inject scripting code into pages generated by a Web application.
+5. Which vulnerability does this scenario describe: An attacker can access other users' Facebook timelines by stealing their session cookies.
 
-6. You have written a Web application with a server-side component (a Node.js script). The Web app requires a number of cookies (all set by the server-side component) to function properly. To minimize the chance of attack you have an idea: you develop a secret function F that computes for each cookie value a checksum. F is only known to you (the owner of the Web application); F cannot be guessed. Initially when each cookie is created, the checksum is appended to the cookie value. When clients send existing cookies back to the server, your server-side component recomputes the checksum of the cookie value (without taking the appended checksum into account) - if the computed checksum is at least as large as the one sent back with the cookie, your application accepts the cookie as valid and non-malicious. Against which attack does this setup protect the Web application?
+6. Which attack type does this scenario describe: A vulnerability exists if an attacker can inject scripting code into pages generated by a Web application.
 
-7. Which of the following approaches is not suitable for an attacker to attempt the injection of malicious data into a server-side application?
+7. You have written a Web application with a server-side component (a Node.js script). The Web app requires a number of cookies (all set by the server-side component) to function properly. To minimize the chance of attack you have an idea: you develop a secret function F that computes for each cookie value a checksum. F is only known to you (the owner of the Web application); F cannot be guessed. Initially when each cookie is created, the checksum is appended to the cookie value. When clients send existing cookies back to the server, your server-side component recomputes the checksum of the cookie value (without taking the appended checksum into account) - if the computed checksum is at least as large as the one sent back with the cookie, your application accepts the cookie as valid and non-malicious. Against which attack does this setup protect the Web application?
+
+8. Which of the following approaches is not suitable for an attacker to attempt the injection of malicious data into a server-side application?
     - URL parameter manipulation
     - Hidden HTML field manipulation
     - Cookie manipulation
     - HTML tag manipulation
     - HTTP response header manipulation
   
-8. What does a signed cookie protect against?
+9. What does a signed cookie protect against?
 
-9.  Which of the following approaches is most likely to secure an application against cross-site request
-forgery?
-    - Use of state-of-the-art encryption algorithms to store the data on the server.
-    - Use of reauthentication and CAPTCHA mechanisms.
-    - Avoiding the use of direct object references; the use of objects should include an authorization subroutine.
-    - Validating all user input and escaping generated output.
+10.  Which vulnerability does this scenario describe: A company *AlphaShoes* followed all the security principles for designing their website. They tested it thoroughly, and applied protection against all attacks. An attacker still manages to bypass the security of the website due to an underlying vulnerability.  
