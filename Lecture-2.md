@@ -59,7 +59,7 @@ If you ever wanted to know how *Windows 95* looks like, there is an [Electron ap
 
 ![Windows 95](img/L2-windows95.png)
 
-On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. More concretely, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](http://www.upenn.edu/computing/printout/archive/v12/5/win95.html).
+On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. More concretely, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](https://www.technologytips.com/windows-system-requirements/).
 
 ## Web design basics
 
