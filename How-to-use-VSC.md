@@ -100,4 +100,6 @@ You can define inline breakpoints by clicking F9 in the lines of code, or by cli
 
 ![VSC debugging](img/VSC-debug.png)
 
+Since JavaScript is [dynamically typed](https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_typing) a lot of common programming mistakes can remain unnoticed before running js code. [`@ts-check`](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript) is a great tool to catch some of these mistakes at the very moment you type your code.
+
 You can find more information about debugging in VSC [here](https://code.visualstudio.com/docs/editor/debugging).
