@@ -496,6 +496,9 @@ Another worthwhile function to know about is [`console.assert`](https://develope
 
 Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
 
+### Object copying
+Copying objects in JavaScript is a bit more complicated than it sounds. JavaScript passes everything by reference (unlike Java), which can cause a lot of errors if you are not careful. This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to copy objects in JavaScript.  
+
 ### Design pattern I: Basic constructor
 
 First, let's quickly recap what classes in Java offer us:
