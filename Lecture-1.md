@@ -11,36 +11,36 @@
     - [Key aspects of the Internet](#key-aspects-of-the-internet)
     - [Two important organizations](#two-important-organizations)
 - [HTTP messages](#http-messages)
-    - [Web servers and clients](#web-servers-and-clients)
-    - [Network communication](#network-communication)
-    - [:bangbang: Activity](#bangbang-activity)
-    - [HTTP request message](#http-request-message)
-    - [HTTP response message](#http-response-message)
+  - [Web servers and clients](#web-servers-and-clients)
+  - [Network communication](#network-communication)
+  - [:bangbang: Activity](#bangbang-activity)
+  - [HTTP request message](#http-request-message)
+  - [HTTP response message](#http-response-message)
 - [HTTP headers dissected](#http-headers-dissected)
-    - [Well-known header fields](#well-known-header-fields)
-    - [Content-Type](#content-type)
-    - [Content-Length](#content-length)
-    - [Content-Encoding](#content-encoding)
-    - [Content-MD5](#content-md5)
-    - [Expires](#expires)
-    - [Expires & Cache-Control](#expires--cache-control)
-    - [Last-Modified](#last-modified)
-    - [Connection & Upgrade](#connection--upgrade)
-    - [Status codes](#status-codes)
+  - [Well-known header fields](#well-known-header-fields)
+  - [Content-Type](#content-type)
+  - [Content-Length](#content-length)
+  - [Content-Encoding](#content-encoding)
+  - [Content-MD5](#content-md5)
+  - [Expires](#expires)
+  - [Expires & Cache-Control](#expires--cache-control)
+  - [Last-Modified](#last-modified)
+  - [Connection & Upgrade](#connection--upgrade)
+  - [Status codes](#status-codes)
 - [HTTP methods](#http-methods)
-    - [Common HTTP methods](#common-http-methods)
-    - [:bangbang: Activity](#bangbang-activity)
-    - [From domain to IP address](#from-domain-to-ip-address)
+  - [Common HTTP methods](#common-http-methods)
+  - [:bangbang: Activity](#bangbang-activity-1)
+  - [From domain to IP address](#from-domain-to-ip-address)
 - [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
-    - [URL syntax: query](#url-syntax-query)
-    - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
-    - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
-    - [URL design restrictions](#url-design-restrictions)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
 - [Authentication](#authentication)
-    - [User-related HTTP header fields](#user-related-http-header-fields)
-    - [Client-IP address tracking](#client-ip-address-tracking)
-    - [Fat URLs](#fat-urls)
-    - [HTTP basic authentication](#http-basic-authentication)
+  - [User-related HTTP header fields](#user-related-http-header-fields)
+  - [Client-IP address tracking](#client-ip-address-tracking)
+  - [Fat URLs](#fat-urls)
+  - [HTTP basic authentication](#http-basic-authentication)
 - [Secure HTTP](#secure-http)
 - [Self-check](#self-check)
 
@@ -69,11 +69,11 @@ In the 1960s, the first steps from vision to reality were made by DARPA, the *De
 
 It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure in the web community today, in fact, he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
 
-In the early days of the web, browsers looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, [Lynx](http://lynx.invisible-island.net/), which you can still use today:
+In the early days of the web, browsers looked nothing like they do today; one of the earliest one was [Lynx](http://lynx.invisible-island.net/), a text-based browser. You can still use it to this day. Concretely, here is how `google.com` and `amazon.com` are rendered on Lynx:
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Lynx-wikipedia.png" width="600">
+![](img/L1-lynx-google.png)
 
-<sup>Image sourced from Lynx's Wikipedia page</sup>
+![](img/L1-lynx-amazon.png)
 
 Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 
@@ -141,6 +141,10 @@ There are several panels, for the different types of data that are downloaded or
 Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in the *Headers tab*:
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
+
+You can also copy an HTTP request as a cURL command !
+
+![cURL command copy](img/L5-devtools-curl.png)
 
 Let's dive into the details!
 
@@ -507,6 +511,27 @@ host:www.microsoft.com
 
 By now it should be clear that multiple requests may be required to end up with the desired resource. The web browser handles these redirects transparently. Lastly, you also saw that web servers can recognise to some extent the source of a request and act accordingly; we did not include a user agent string to identify ourselves as requester and were given a response that assumed a machine-generated request.
 
+Interesting note - You can even watch movies with telnet! Try to run this command and see what happens.
+```console
+telnet towel.blinkenlights.nl
+
+
+      .....                    @@@@@    @@@@@            ...........     
+      ......                  @     @  @     @           ..........      
+      .......                    @@@   @     @           .........       
+      ........                 @@      @     @            .......        
+       ........               @@@@@@@   @@@@@  th         ......         
+         .......            -----------------------       ......         
+           ......             C  E  N  T  U  R  Y          ....          
+             .....          -----------------------        ....          
+                ...         @@@@@ @@@@@ @   @ @@@@@        ...           
+                  ==          @   @      @ @    @          ==            
+                __||__        @   @@@@    @     @        __||__          
+               |      |       @   @      @ @    @       |      |         
+      _________|______|_____  @   @@@@@ @   @   @  _____|______|_________
+
+```
+
 ### From domain to IP address
 
 Have you noticed something in the activity you just completed? We connected to the domain `microsoft.com` on port `80` and immediately got the response: `Trying 134.170.185.46` (or a similar set of numbers). This is called an **IP address** or *Internet Protocol address*.
@@ -728,9 +753,25 @@ For future HTTP requests to the site, the browser **automatically sends along** 
 
 As just mentioned, the username/password combination are encoded by the client, before being passed to the server. The **encoding scheme** is simple: the username and password are joined together by a colon and converted into **base-64 encoding** (described in detail in [RFC 4648](https://tools.ietf.org/html/rfc4648#section-4)). It is a simple *binary-to-text* encoding scheme that ensures that only HTTP compatible characters are entered into the message.
 
-For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`.
+For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`.  
 
-It has to be emphasized once more that encoding has nothing to do with encryption. The username and password send via basic authentication can be decoded trivially, they are sent over the network *in the clear*.
+CSS can also be encoded in base-64 but in most cases this will not be necessary.
+
+How to convert a string to base-64 step-by-step?  
+Assume we want to convert the string `.class{color:blue;}`
+1. First you must ensure that the string length is a **multiple of 3**. If it's not, you should add padding to make the length a multiple of 3. The "=" sign is used to represent padding, so now the string becomes:  
+`.class{color:blue;}==`
+2. Convert the [ascii](https://upload.wikimedia.org/wikipedia/commons/7/7b/Ascii_Table-nocolor.svg) characters to their corresponding decimals:  
+`46 99 108 97 115 115 123 99 111 108 111 114 58 98 108 117 101 59 125`
+3. Convert the decimals  to 8-bit binary representation.
+4. Seperate the result in 6-bit groups:  
+`001011 100110 001101 101100 011000 010111 001101 110011 011110 110110 001101 101111 011011 000110 111101 110010 001110 100110 001001 101100 011101 010110 010100 111011 011111 010011 110100 111101`
+5. Convert binary to decimal:  
+`11 38 13 44 24 23 13 51 30 54 13 47 27 6 61 50 14 38 9 44 29 22 20 59 31 19 52 61`
+6. Covert the decimal characters to base-64 using a [base-64 chart](https://en.wikipedia.org/wiki/Base64#Base64_table):  
+`LmNsYXNze2NvbG9yOmJsdWU7fQ==`  
+
+It has to be emphasized once more that encoding has nothing to do with encryption. The username and password sent via basic authentication can be decoded trivially, they are sent over the network *in the clear*.
 This by itself is not critical, as long as users are aware of this. However, users tend to be lazy, they tend to reuse the same or similar login/password combinations for a wide range of websites of highly varying criticality. Even though the username/password for site `A` may be worthless to an attacker, if the user only made a slight modification to her usual username/password combination to access site `B`, let's say her online bank account, the user will be in trouble.
 
 Overall, basic authentication is the best of the four authentication options discussed; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalization and access control within a friendly environment such as an intranet.

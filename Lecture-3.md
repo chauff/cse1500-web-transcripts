@@ -12,28 +12,34 @@
 - [Examples throughout the lectures](#examples-throughout-the-lectures)
 - [JavaScript's reputation](#javascripts-reputation)
 - [Scripting overview](#scripting-overview)
-    - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-    - [`<script>`](#script)
-    - [:bangbang: Activity](#bangbang-activity)
+  - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
+  - [`<script>`](#script)
+  - [:bangbang: Activity](#bangbang-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
-    - [Scoping](#scoping)
-    - [Hoisting](#hoisting)
-    - [this](#this)
+  - [Scoping](#scoping)
+  - [Hoisting](#hoisting)
+  - [this](#this)
 - [JavaScript design patterns](#javascript-design-patterns)
     - [JavaScript objects](#javascript-objects)
     - [Object creation with `new`](#object-creation-with-new)
     - [Object literals](#object-literals)
     - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
     - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-    - [Design pattern 3: Module](#design-pattern-3-module)
+    - [Design pattern 3: Module](#design-pattern-3--module) 
 - [Events and the DOM](#events-and-the-dom)
-    - [Document Object Model](#document-object-model)
+  - [Document Object Model](#document-object-model)
         - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
         - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
         - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
         - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
         - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
         - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
+- [Some ES6 concepts](#some-es6-concepts)
+  - [Variable definition](#variable-definition)
+  - [Arrow functions](#arrow-functions)
+  - [Map, Reduce and Filter](#map-reduce-and-filter)
+  - [Default function arguments](#default-function-arguments)
+  - [Template strings](#template-strings)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -73,7 +79,7 @@ In the early years of JavaScript, it was considered more of a toy language. Toda
 
 <sup>Top languages over time (as measured by number of contributors) on GitHub.</sup>
 
-Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on.
+Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in [multiple programming paradigms](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93).
 
 In addition, today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
@@ -89,12 +95,13 @@ One of the confusing aspects about JavaScript today are the naming conventions, 
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
-In this course we include very few **ES6** features, as we have only a few lectures to cover client/server-side JavaScript. The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; this is a useful limitation. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
+In this course we include few **ES6** features (there is [a section](#some-es6-concepts) covering some below), as we have only a few lectures to cover client/server-side JavaScript. The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; this is a useful limitation. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
 
 In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
 Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge to the compiler to catch errors (e.g. functions called with wrong parameters) early on. TypeScript allows you to do that, by **enabling static type checking**.
+
 
 ### JS engines compilers
 
@@ -103,6 +110,53 @@ They compile javascript into **bytecode** and then optimize it to improve overal
 
 Some javascript engines (e.g., V8) also have a **lazy compilation mechanism** (among others optimization mechanisms). Some functions ([IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)) are first compiled and the other functions are skipped (the engine only records the name of the function and the location of its source code).
 These functions are then compiled at run-time.
+
+## Javascript Functions  
+A function is a small program destined to perform a particular task.  
+#### Types of functions
+1. Function Declaration: defines a named function.  
+	```javascript
+	function add(a, b){
+	  return a + b;
+	}
+	```  
+2. Function Expression: defines a named or anonymous function. An anonymous function is a function that has no name.  
+	 ```javascript
+	let add = function(a, b) {
+	  return a + b;
+	}
+	``` 
+	:point_up: anonymous function  assigned to variable add.  
+	**Function Declarations are [hoisted](#scoping-hoisting-and-this), function expressions are not.**  
+3. Arrow Function: is just a shorter syntax for writing function expressions   
+    Without brackets: 
+	```javascript
+	const add(a,b) => a + b;
+	``` 
+	Or with brackets:
+	```javascript
+	const add(a,b) => {
+	  a + b;
+	}
+	```
+4. Generator Function:  returns a [`Generator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator "The Generator object is returned by a generator function and it conforms to both the iterable protocol and the iterator protocol.") object.  
+	```javascript
+	function *() {
+	  yield i;
+	  yield i + 10;
+	}
+	``` 
+#### Functions vs Methods  
+Methods are functions that belong to objects.
+```javascript
+number.add(otherNumber) // add is a method
+a = add(x,y) // add is a function 
+``` 
+
+#### Keep in mind
+- Functions are Objects, Objects are not Functions.
+- A function without a return statement, will always return **undefined**.
+
 
 ## Scripting overview
 
@@ -255,7 +309,7 @@ Scoping is also important when it comes to larger programming projects: imagine 
 
 :point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
 
-`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3-module).
+`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3--module).
 
 ### Hoisting
 
@@ -367,7 +421,7 @@ to be different each time, as each time, `this` refers to a different object. We
 - CASE 2: as a property of the global `window` object;
 - CASE 3: as a bound function.
 
- We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes).
+ We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/this%20%26%20object%20prototypes).
 
 ## JavaScript design patterns
 
@@ -456,6 +510,9 @@ Another worthwhile function to know about is [`console.assert`](https://develope
 <sup>Screenshot of Firefox's Web Console.</sup>
 
 Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
+
+### Object copying
+Copying objects in JavaScript is a bit more complicated than it sounds. JavaScript passes everything by reference (unlike Java), which can cause a lot of errors if you are not careful. This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to copy objects in JavaScript.  
 
 ### Design pattern I: Basic constructor
 
@@ -688,7 +745,7 @@ the code still works as expected. Why do we even add this line? If we do not add
 Here is one example where it does indeed matter whether whether this wiring is correct :point_down::
 
 ```javascript
-function Game() {};
+function Game() {}
 function TwoPlayerGame() {}
 
 TwoPlayerGame.prototype = Object.create(Game.prototype);
@@ -761,7 +818,7 @@ An IIFE itself is also a design pattern, it looks as follows :point_down::
 
 :point_up: The function is **anonymous** (it does not have a name and it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to its immediate execution. The brackets surrounding the function are not strictly necessary, but they are commonly used.
 
-Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) series, half a book is dedicated to closures.
+Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/scope%20%26%20closures) series, half a book is dedicated to closures.
 
 The encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
 
@@ -908,7 +965,7 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
             function sayHello() {
               var tb = document.getElementById("out");
               tb.value = 'Hello World';
-            };
+            }
 
             /* we attach a function to a button's click event
              * after the DOM finished loading
@@ -976,7 +1033,7 @@ Let's look at how this works in practice :point_down: (again, try out the code f
               var li = document.createElement('li');
               li.innerHTML = 'List element ' + (ul.childElementCount+1) +' ';
               ul.appendChild(li);
-            };
+            }
         </script>
     </head>
 
@@ -1005,7 +1062,7 @@ We can of course also remove elements :point_down::
           function removeLastChild() {
             var ul = document.getElementById('u');
             ul.removeChild(ul.lastElementChild);
-          };
+          }
 
           function removeFirstChild() {
             var ul = document.getElementById('u');
@@ -1138,7 +1195,7 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
           function mouseover() {
             var incr = parseInt(this.id.substr(1));
             intervals[this.id] = setInterval(updateNum, 1000/incr, this);
-          };
+          }
 
           function mouseout()
           {
@@ -1277,7 +1334,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
                     var t = parseInt(document.getElementById(timerLog).innerHTML);
                     t = t + 1;
                     document.getElementById(timerLog).innerHTML = t +" seconds";
-                ;}, 1000);
+                }, 1000);
 
               }
 
@@ -1327,6 +1384,107 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
 
+## Some ES6 concepts
+
+This section contains optional (non-exam) content.
+
+### Variable definition
+`var` has two scopes : global scope and function scope.
+
+ES6 introduces two new keywords that allow us to define variables :
+- `let` has a block scope
+- `const` is used to define read-only variable (its value is a constant and the identifier cannot be reassigned)
+
+### Arrow functions
+
+Arrow functions are a new and more concise syntax to write functions.
+```javascript
+//Regular function
+const addition = function (a,b){
+  return a + b;
+}
+//Arrow function (ES6 syntax)
+const addition = (a,b) => {return a+b};
+```
+In an arrow function, `this` does not represent the object calling the function (as in a regular function) but rather the object that defined the function. (In short, arrow function don't have their own `this` and `this` corresponds to `this` in the global scope)
+
+Arrow functions are often used for array manipulation (see the section "map, reduce, filter" below) and can sometimes turn a several-lines regular function into a one-line function. Still, they cannot always replace regular functions, notably, when an implicit binding of `this` is needed.
+
+### Map, Reduce and Filter
+
+Map, reduce and filter are array functions introduced by ES6.
+
+The **map** method cycles through an array, applies a function on each element and returns the new array.
+
+```javascript
+//Multiply each item of an array by 2
+//Without map (Before ES6)
+for(let i = 0;i<oldArray.length;i++){
+  newArray[i] = oldArray[i] * 2;
+}
+//With map (ES6 syntax)
+let newArray = oldArray.map(x=>x*2)
+```
+The **reduce** method cycles through an array, applies a method on each element in order to reduce the array to a single value.
+
+```javascript
+//Find the sum of an array
+//Without reduce (Before ES6)
+for(let i = 0;i<arr.length;i++){
+  sum += arr[i];
+}
+//With reduce (ES6 syntax)
+sum = arr.reduce((a,b)=>{return a+b});
+```
+The **filter** method cycles through the order and output a new filtered array containing only the items meeting a certain condition.
+
+```javascript
+//Only get the even values of an array
+//Without filter (before ES6)
+for(var i = 0;i<oldArray.length;i++){
+  if(arr[i]%2==0){
+    newArray.push(arr[i])
+  }
+}
+//With filter (ES6 syntax)
+let newArray = oldArray.filter((a)=>a%2==0)
+```
+
+### Default function arguments
+Since ES6, assigning default values to a function's parameters is possible.
+```javascript
+function foo(a,b = 1){
+  ...
+}
+```
+
+The default value is used when an argument is either `undefined` or omitted. It is also possible to call the above function without arguments as they will then be considered by either their default values (if specified) or as `undefined`.
+
+### Template strings
+
+Template literals allow us to plug variables in strings in a more readable way.
+
+```javascript
+var version = "ES6"
+var a = "This does not use " + version + "syntax";
+var b = "This uses ${version} syntax";
+```
+### Object destructuring
+
+Object destructuring allow us to extract properties of an object without having to do it one-by-one for each property.
+
+```javascript
+var game = {
+  player1 : "name1",
+  player2 : "name2",
+  ...
+}
+//Before ES6
+var player1 = game.player1;
+var player2 = game.player2;
+//With ES6
+var {player1, player2} = game
+```
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
