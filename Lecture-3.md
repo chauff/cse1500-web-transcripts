@@ -20,12 +20,12 @@
   - [Hoisting](#hoisting)
   - [this](#this)
 - [JavaScript design patterns](#javascript-design-patterns)
-  - [JavaScript objects](#javascript-objects)
-  - [Object creation with `new`](#object-creation-with-new)
-  - [Object literals](#object-literals)
-  - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
-  - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-  - [Design pattern 3: Module](#design-pattern-3-module)
+    - [JavaScript objects](#javascript-objects)
+    - [Object creation with `new`](#object-creation-with-new)
+    - [Object literals](#object-literals)
+    - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
+    - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
+    - [Design pattern 3: Module](#design-pattern-3--module) 
 - [Events and the DOM](#events-and-the-dom)
   - [Document Object Model](#document-object-model)
     - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
@@ -294,7 +294,7 @@ Scoping is also important when it comes to larger programming projects: imagine 
 
 :point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
 
-`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3-module).
+`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3--module).
 
 ### Hoisting
 
@@ -406,7 +406,7 @@ to be different each time, as each time, `this` refers to a different object. We
 - CASE 2: as a property of the global `window` object;
 - CASE 3: as a bound function.
 
- We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes).
+ We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/this%20%26%20object%20prototypes).
 
 ## JavaScript design patterns
 
@@ -800,7 +800,7 @@ An IIFE itself is also a design pattern, it looks as follows :point_down::
 
 :point_up: The function is **anonymous** (it does not have a name and it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to its immediate execution. The brackets surrounding the function are not strictly necessary, but they are commonly used.
 
-Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) series, half a book is dedicated to closures.
+Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/scope%20%26%20closures) series, half a book is dedicated to closures.
 
 The encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
 
