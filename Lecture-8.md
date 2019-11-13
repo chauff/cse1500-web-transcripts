@@ -329,6 +329,14 @@ http://myforum.nl/search?q=<script>…
 #### How to avoid it
 
 As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g. escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
+**DOMPurify** is a good tool for sanitizing HTML code. It's written in JavaScript and supports all modern browsers. When used, DOMPurify removes all "dangerous" html code in a given string, and therefore you can use it to protect your website from XSS attacks. You can play with DOMPurify via this [link](https://cure53.de/purify), or install it using the instructions from their [repository](https://github.com/cure53/DOMPurify).
+Here is a code example for DOMPurify :
+   ```javascript
+   var dirty = '<script> alert("I am dangerous"); </script> Hi';
+
+   var clean = DOMPurify.sanitize(dirty);
+   ```
+   After execution, the variable `clean` will contain only **"Hi"**, DOMPurify will remove the `<script>` tag to prevent an XSS attack. 
 
 ### Improper Input Validation
 
