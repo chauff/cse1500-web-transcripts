@@ -8,39 +8,39 @@
 - [Learning goals](#learning-goals)
 - [World Wide Web vs. Internet](#world-wide-web-vs-internet)
     - [A brief history of the web](#a-brief-history-of-the-web)
-    - [Key aspects of the Internet](#key-aspects-of-the-internItet)
+    - [Key aspects of the Internet](#key-aspects-of-the-internet)
     - [Two important organizations](#two-important-organizations)
 - [HTTP messages](#http-messages)
-    - [Web servers and clients](#web-servers-and-clients)
-    - [Network communication](#network-communication)
-    - [:bangbang: Activity](#bangbang-activity)
-    - [HTTP request message](#http-request-message)
-    - [HTTP response message](#http-response-message)
+  - [Web servers and clients](#web-servers-and-clients)
+  - [Network communication](#network-communication)
+  - [:bangbang: Activity](#bangbang-activity)
+  - [HTTP request message](#http-request-message)
+  - [HTTP response message](#http-response-message)
 - [HTTP headers dissected](#http-headers-dissected)
-    - [Well-known header fields](#well-known-header-fields)
-    - [Content-Type](#content-type)
-    - [Content-Length](#content-length)
-    - [Content-Encoding](#content-encoding)
-    - [Content-MD5](#content-md5)
-    - [Expires](#expires)
-    - [Expires & Cache-Control](#expires--cache-control)
-    - [Last-Modified](#last-modified)
-    - [Connection & Upgrade](#connection--upgrade)
-    - [Status codes](#status-codes)
+  - [Well-known header fields](#well-known-header-fields)
+  - [Content-Type](#content-type)
+  - [Content-Length](#content-length)
+  - [Content-Encoding](#content-encoding)
+  - [Content-MD5](#content-md5)
+  - [Expires](#expires)
+  - [Expires & Cache-Control](#expires--cache-control)
+  - [Last-Modified](#last-modified)
+  - [Connection & Upgrade](#connection--upgrade)
+  - [Status codes](#status-codes)
 - [HTTP methods](#http-methods)
-    - [Common HTTP methods](#common-http-methods)
-    - [:bangbang: Activity](#bangbang-activity)
-    - [From domain to IP address](#from-domain-to-ip-address)
+  - [Common HTTP methods](#common-http-methods)
+  - [:bangbang: Activity](#bangbang-activity-1)
+  - [From domain to IP address](#from-domain-to-ip-address)
 - [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
-    - [URL syntax: query](#url-syntax-query)
-    - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
-    - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
-    - [URL design restrictions](#url-design-restrictions)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
 - [Authentication](#authentication)
-    - [User-related HTTP header fields](#user-related-http-header-fields)
-    - [Client-IP address tracking](#client-ip-address-tracking)
-    - [Fat URLs](#fat-urls)
-    - [HTTP basic authentication](#http-basic-authentication)
+  - [User-related HTTP header fields](#user-related-http-header-fields)
+  - [Client-IP address tracking](#client-ip-address-tracking)
+  - [Fat URLs](#fat-urls)
+  - [HTTP basic authentication](#http-basic-authentication)
 - [Secure HTTP](#secure-http)
 - [Self-check](#self-check)
 
@@ -69,11 +69,11 @@ In the 1960s, the first steps from vision to reality were made by DARPA, the *De
 
 It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). Tim Berners-Lee remains an important figure in the web community today, in fact, he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
 
-In the early days of the web, browsers looked nothing like they do today; one of the earliest one was Lynx, a text-based browser. Here is an example of such a text-based browser, [Lynx](http://lynx.invisible-island.net/), which you can still use today:
+In the early days of the web, browsers looked nothing like they do today; one of the earliest one was [Lynx](http://lynx.invisible-island.net/), a text-based browser. You can still use it to this day. Concretely, here is how `google.com` and `amazon.com` are rendered on Lynx:
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Lynx-wikipedia.png" width="600">
+![](img/L1-lynx-google.png)
 
-<sup>Image sourced from Lynx's Wikipedia page</sup>
+![](img/L1-lynx-amazon.png)
 
 Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 
@@ -141,6 +141,10 @@ There are several panels, for the different types of data that are downloaded or
 Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in the *Headers tab*:
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
+
+You can also copy an HTTP request as a cURL command !
+
+![cURL command copy](img/L5-devtools-curl.png)
 
 Let's dive into the details!
 
@@ -506,6 +510,27 @@ host:www.microsoft.com
 ```
 
 By now it should be clear that multiple requests may be required to end up with the desired resource. The web browser handles these redirects transparently. Lastly, you also saw that web servers can recognise to some extent the source of a request and act accordingly; we did not include a user agent string to identify ourselves as requester and were given a response that assumed a machine-generated request.
+
+Interesting note - You can even watch movies with telnet! Try to run this command and see what happens.
+```console
+telnet towel.blinkenlights.nl
+
+
+      .....                    @@@@@    @@@@@            ...........     
+      ......                  @     @  @     @           ..........      
+      .......                    @@@   @     @           .........       
+      ........                 @@      @     @            .......        
+       ........               @@@@@@@   @@@@@  th         ......         
+         .......            -----------------------       ......         
+           ......             C  E  N  T  U  R  Y          ....          
+             .....          -----------------------        ....          
+                ...         @@@@@ @@@@@ @   @ @@@@@        ...           
+                  ==          @   @      @ @    @          ==            
+                __||__        @   @@@@    @     @        __||__          
+               |      |       @   @      @ @    @       |      |         
+      _________|______|_____  @   @@@@@ @   @   @  _____|______|_________
+
+```
 
 ### From domain to IP address
 
