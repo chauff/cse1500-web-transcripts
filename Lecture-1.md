@@ -142,6 +142,10 @@ Each resource is requested through an **HTTP request**. How exactly such a reque
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
 
+You can also copy an HTTP request as a cURL command !
+
+![cURL command copy](img/L5-devtools-curl.png)
+
 Let's dive into the details!
 
 ### HTTP request message
