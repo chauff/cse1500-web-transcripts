@@ -24,6 +24,8 @@
 - Explain the ideas behind usability testing and employ it.
 - Employ HTML to create web pages.
 
+<sup>Note that this lecture does not cover **how to write HTML**, this is covered completely in the required reading for this lecture. At the end of this lecture we provide historic context to understand/appreciate the current state of HTML.</sup>
+
 ## Web sites vs. web applications vs. the web as a platform
 
 The W3C has many working groups, among them (until 2016) the *Web Applications (WebApps) Working Group* whose [goal](https://www.w3.org/2014/06/webapps-charter.html) was as follows:
@@ -63,7 +65,7 @@ On the downside, such a cross-platform approach usually brings with it considera
 
 ## Web design basics
 
-Web design is not trivial. However, a few basic rules go a long way. Most of these principles seem obvious, but in practice are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much worth a read. In the following sections we go over a number of Krug's rules.
+Web design is not trivial. However, a few basic rules go a long way. Most of these principles seem obvious, but in practice are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited (2014)](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much worth a read. In the following sections we go over a number of Krug's rules.
 
 ### Rule: Don't make me think
 
@@ -75,7 +77,7 @@ Consider this example of [ebay.com](https://www.ebay.com/) :point_down:
 
 <sup>Screenshot taken on October 11, 2019</sup>
 
-:point_up: Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for the upcoming fall season.
+:point_up: Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for discounted electronics.
 
 Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/) :point_down:
 
@@ -89,7 +91,7 @@ Contrast ebay with the following older example from [koopplein](https://web.arch
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
-**Good to know**: In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **330 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
+**Good to know**: In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **390 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
@@ -110,6 +112,9 @@ A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/ht
 It should be mentioned though that Google is not the only offender here, take this example :point_down: from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
 
 ![Twitter web site](img/L2-twitter.png)
+
+The Google/Twitter examples above are of course not accidental: user interface designers are not accidentally trying to disguise the fact that those are ads (also known as promoted/sponsored content). This is done on purpose: we know that users are less likely to focus their attention on ads if it is obvious that they are indeed ads. Disguising them means a higher likelihood of users engaging with them. A higher engagement level means a higher financial return for the company. This is what is known as a **dark pattern**, more specifically the pattern of disguised ads. At least [15 types of dark patterns exist](https://webtransparency.cs.princeton.edu/dark-patterns/). More formally, *"dark patterns are user interface design choices that benefit an online service by coercing, steering, or deceiving users into making unintended and potentially harmful decisions."* and can be found in more than 10% of shopping websites (the more popular the shopping site, the more likely the appearance of dark patterns) according to [this recent research study](https://webtransparency.cs.princeton.edu/dark-patterns/) from Princeton University.
+
 
 ### Rule: Minimize noise and clutter
 
@@ -158,7 +163,7 @@ In a **usability test**, a user is given a **typical task**, such as:
 - Retrieve a lost password.
 - Change the current credit card information.
 - Delete a user account.
-- Find an article in the archive;.
+- Find an article in the archive.
 - Edit a posting made in a forum.
 - Start a game with three players.
 
@@ -209,11 +214,6 @@ What is the core business of this company? This is the homepage of a Dutch cafe 
 
 Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
-### Design Systems not Pages  
-The Internet now is much more than just a collection of pages. The term *page* itself is old-fashioned and conceptually wrong. It goes back to the era where businesses built their online presence just by uploading their brochures on a website. Even today you will hear very often phrases like "I just want a 5-page website, "how much will a simple homepage cost", or "how long will it take to migrate our 30,000 page journal to this new fancy CMS"?  
-The page metaphor has served its purpose to help users familiarize with this new medium called the Internet, but it's not enough.  Publishing content for the Web used to be trivial, as desktops were the only devices connected to it. Nowadays content is consumed by a variety of devices like smarphones, netbooks, notebooks, tablets, ebook-readers, smartwatches, TVs, game consoles, cars etc. Soon with the explosion of IOT(Internet Of Things) any device you could imagine will consume content.  
-So this *page* idea is pretty much dead. Instead you should focus on making your systems **modular** so that your content can be sent anywhere. Because users will expect it to be everywhere. When you design a web experience it's better to focus on designing [Systems Of Components](http://atomicdesign.bradfrost.com/chapter-1/)
-
 ## HTML5
 
 HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that together enable **rich web content**:
@@ -222,7 +222,7 @@ HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that togeth
 - **CSS**: control the appearance of marked-up content;
 - client-side **JavaScript**: manipulate the contents of HTML documents and respond to user interactions.
 
-Modern web application development requires knowledge of all three technologies. In practice, it also requires a whole set of additional frameworks and tools to go from prototype code to production code, such as build tools, transpilers, code coverage tools and so on. Even for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70) alone. We will introduce a few of those tools throughout the practical assignments.
+Modern web application development requires knowledge of all three technologies. In practice, it also requires a whole set of additional frameworks and tools to go from prototype code to production code, such as build tools, transpilers, code coverage tools and so on. This is the case even "just" for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70). We will introduce a few of those tools throughout the practical assignments.
 
 Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 as an XML 1.0 application and stands for **Extensible HyperText Markup Language**. It looks as follows (taken straight from the [W3C XHTML recommendation](https://www.w3.org/TR/xhtml1/)):
 
@@ -245,9 +245,11 @@ XHTML was designed to make processing of web pages **easier for machines** by ha
 
 With this introduction of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to implementing their own non-standardized features). A good resource to check which browser versions support which HTML5 feature and to what extent is https://caniuse.com/.
 
-As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form):
+As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form%20features):
 
 ![HTML5 form support](img/L2-html5-form.png)
+
+<sup>Screenshot taken on October 11, 2019.</sup>
 
 We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices - depending on their target population (and the most popular browsers among the target population), certain HTML5 features should (not) be employed.
 
@@ -287,7 +289,8 @@ In rare cases, features added to a web standard can also be removed again, the [
 
 <sup>Screenshot taken on October 11, 2019.</sup>
 
-The W3C writes the following about the AppCache: *This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead.*
+The W3C writes the following about the AppCache: *This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead.* 
+
 
 ## Self-check
 
