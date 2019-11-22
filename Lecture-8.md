@@ -16,7 +16,7 @@
   - [Backdoors](#backdoors)
   - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
-- [JuiceShop](#juiceshop)
+- [Juice Shop](#juice-shop)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
   - [Injection](#injection)
     - [:bangbang: Juice Shop](#bangbang-juice-shop)
@@ -34,18 +34,19 @@
   - [Security misconfiguration](#security-misconfiguration)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-4)
     - [How to avoid it](#how-to-avoid-it-4)
-  - [Sensitive data](#sensitive-data)
+  - [Sensitive data exposure](#sensitive-data-exposure)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop-5)
     - [How to avoid it](#how-to-avoid-it-5)
   - [Broken Access controls](#broken-access-controls)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-5)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop-6)
     - [How to avoid it](#how-to-avoid-it-6)
   - [CSRF](#csrf)
     - [How to avoid it](#how-to-avoid-it-7)
   - [Insecure components](#insecure-components)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-6)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop-7)
     - [How to avoid it](#how-to-avoid-it-8)
   - [Unvalidated Redirects](#unvalidated-redirects)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-7)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop-8)
     - [How to avoid it](#how-to-avoid-it-9)
 - [Summary](#summary)
 - [Self-check](#self-check)
@@ -182,7 +183,7 @@ to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
 
-## JuiceShop
+## Juice Shop
 
 One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we have covered JavaScript/Node.js, a vulnerable web application that is written in JavaScript/Node.js will be most useful to us.
 
