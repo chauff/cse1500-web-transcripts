@@ -58,23 +58,23 @@ CSE1500: Web and Database Technology <!-- omit in toc -->
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
 
-The **Web technology materials and resources** of the 2018/19 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
+The **Web technology materials and resources** of the 2019/20 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
 
-```diff
-- We are currently updating the materials for the 2019/20 edition. 
-- None of the material has been finalized yet for 2019/20!
-```
+These extensive materials were created for the 2018/19 edition (to accomodate the 900+ students that were in class that year).
 
-The database materials are not included here!
+Lectures/assignments with a 🚧 marker are not yet finalized for the 2019/20 edition!
+
+The database materials (lectures/assignments) are not included here! You can find them on Brightspace! Due to the many code examples in the web technology lectures we opted to maintain the materials in a GitHub repository.
 
 ## Table of Contents <!-- omit in toc -->
-- [Responsible instructors](#responsible-instructors)
+- [Course instructors](#course-instructors)
 - [Web technology course book](#web-technology-course-book)
 - [Tooling](#tooling)
   - [Recommended](#recommended)
   - [Required](#required)
 - [Course grading](#course-grading)
 - [Course topics](#course-topics)
+- [Web tutorials](#web-tutorials)
 - [Sample exams](#sample-exams)
 - [Assignments](#assignments)
 - [Demo application](#demo-application)
@@ -85,20 +85,24 @@ The database materials are not included here!
 - [Web lectures](#web-lectures)
   - [Lecture 1](#lecture-1)
   - [Lecture 2](#lecture-2)
-  - [Lecture 3](#lecture-3)
-  - [Lecture 4](#lecture-4)
-  - [Lecture 5](#lecture-5)
-  - [Lecture 6](#lecture-6)
-  - [Lecture 7](#lecture-7)
-  - [Lecture 8](#lecture-8)
+  - [🚧 Lecture 3](#%f0%9f%9a%a7-lecture-3)
+  - [🚧 Lecture 4](#%f0%9f%9a%a7-lecture-4)
+  - [🚧 Lecture 5](#%f0%9f%9a%a7-lecture-5)
+  - [🚧 Lecture 6](#%f0%9f%9a%a7-lecture-6)
+  - [🚧 Lecture 7](#%f0%9f%9a%a7-lecture-7)
+  - [🚧 Lecture 8](#%f0%9f%9a%a7-lecture-8)
 
-## Responsible instructors
+## Course instructors
 
-The responsible instructors are Associate Professors [Claudia Hauff](https://chauff.github.io/) and [Alessandro Bozzon](http://www.wis.ewi.tudelft.nl/bozzon/).
+The responsible instructors are Associate Professors [Claudia Hauff](https://chauff.github.io/) (web) and Professor [Alessandro Bozzon](https://www.alessandrobozzon.com/) (databases). The responsible instructors can be reached at `cse1500-ewi@tudelft.nl`. 
+
+The web technology werkcolleges are led by Assistant Professor [Julián Urbano](https://julian-urbano.info/). [Azqa Nadeem](http://homepage.tudelft.nl/j9y2d/) covers some of the werkcolleges as well, will teach the web security lecture and is responsible for the web technology teaching assistants.
 
 ## Web technology course book 
 
-The course book for the web technology part is [**Learning Web App Development**](https://www.oreilly.com/library/view/learning-web-app/9781449371388/) by Semmy Purewal. This book covers HTML, CSS, JavaScript and Node.js/Express - exactly the technologies we cover in this course. The book is written for learners without any prior knowledge in these technologies.
+The course book for the web technology part is [**Learning Web App Development**](https://www.oreilly.com/library/view/learning-web-app/9781449371388/) by Semmy Purewal. This book covers HTML, CSS, JavaScript and Node.js/Express - exactly the technologies we cover in this course. The book is written for learners without any prior knowledge in these technologies. This book was published in 2014. This could be considered a feature or a bug ... we consider it a feature, as it means that a lot of the recently incorporated changes in the JavaScript language are **not** part of the book. Given that we only have one lecture to introduce the JavaScript language itself, the coverage of the JavaScript language in the book is sufficient and complete enough to allow everyone to start coding! 
+
+The book also covers version control basics (`git` to be specific) which can be ignored for the purposes of our lectures. You will learn all about `git` in the academic quarters that follow!
 
 ![Web course book](img/RME-book.png)
 
@@ -106,23 +110,24 @@ The course book for the web technology part is [**Learning Web App Development**
 
 ### Recommended
 
-[Visual Studio Code](https://code.visualstudio.com/) is the strongly recommended development environment for this course. It is a free and open-source IDE available for all major operating systems. It was originally designed to support Node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**! It has [integrated source control](https://code.visualstudio.com/docs/editor/versioncontrol) with `git` support out of the box - making it easy to program in pairs. It als has a *Live Share* extension, which allows you to code in pairs without the need for tools like `git`.
+[Visual Studio Code](https://code.visualstudio.com/) (VSC) is the strongly recommended development environment for the web technology assignments. It is a free and open-source IDE available for all major operating systems. It was originally designed to support Node.js programmers (a server-­side JavaScript framework we use in this class), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**!
 
 ![Visual Studio Code](img/RME-vsc.png)
 
-VS Code offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this may be a bit overwhelming, we made a short list of the extensions we recommend to install for this course:
+VSC offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this may be a bit overwhelming, we made a short list of the extensions we recommend to install for this course. For the programming assignments we strongly recommend the **VS Live Share** extension for those students that do not want to dive into `git` yet! 
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), the most popular linting utility for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables) - use it to improve your code.
 - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) does what the name suggests.
 - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a great tool to try out JavaScript snippets without hassle.
 - [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension (especially useful if a student team works mostly remotely).
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier.
+- 
 - If you like to add TODOs to your code, try [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree), it makes sure you don't overlook any of your TODOs!
 - Finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea. [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. [Cobalt2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2) is also nice. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
 
 If you need to be convinced about why Visual Studio Code is a great IDE to use, check out [this podcast](https://syntax.fm/show/012/why-is-everyone-switching-to-vs-code) by Wes Bos and Scott Tolinski on this very topic.
 
-**Browser developer tools**: they are built into all modern browsers; familiarize yourself with the developer tools of your favorite browser. For Firefox (my personal choice), you can find an elaborate description of the developer tools [at MDN](https://developer.mozilla.org/en-US/docs/Tools).
+**Browser developer tools** are built into all modern browsers; familiarize yourself with the developer tools of your favorite browser. In our lectures, we will showcase Firefox's developer tools - an elaborate description of them can be found at [MDN](https://developer.mozilla.org/en-US/docs/Tools).
 
 If you are new to team programming, and want to use VSC's features efficiently, [read our guide](How-to-use-VSC.md).
 
@@ -132,7 +137,7 @@ The latest stable version of [Node.js](https://nodejs.org/en/).
 
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
-Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user please use the Windows Subsystem for Linux or use a Virtual Machine. You can also use Windows alternatives to telnet such as Putty.
+Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user we recommend to use the Windows Subsystem for Linux or use a Virtual Machine; alternatively you can try [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/).
 
 ## Course grading
 
@@ -140,11 +145,11 @@ Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older ver
 
 **Passing requirements**: the overall grade must be **5.8** or higher AND the midterm grade must be at least a **5** AND the final exam grade must be at least a **5** in accordance with TU Delft's exam regulations.
 
-Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover web programming topics and three cover database topics. While the assignments together make up only 20% of the final grade and are not required, we strongly recommend to tackle the assignments - they cover a lot of exam materials in a practical manner!
+Assignments are done in **pairs of two students** and are graded by student assistants in a binary manner (pass or fail). There are six assignments in total, three cover database topics and three cover web technology topics. While the assignments together make up only 20% of the final grade and are not required, we strongly recommend to tackle the assignments - they cover a lot of exam materials in a practical manner!
 
-We have two assessment moments: one for the Web technology assignments and one for the Database technology assignments. The assessment is interview-based. The assessment session can yield anything between 3x pass and 3x no-pass. The grading is conducted per student.
+We have two assessment moments: one for the database assignments and one for the web technology assignments. The assessment is interview-based. Each assessment moment can yield anything between 3x pass and 3x no-pass. The grading is conducted per student.
 
-The table below shows how the number of passes (maximum 6: 3x web and 3x database) are converted to the assignment grade:
+The table below shows how the number of passes (maximum 6: 3x database and 3x web) are converted to the assignment grade:
 
 | Number of passes | Grade |
 |------------------|-------|
@@ -159,24 +164,35 @@ The table below shows how the number of passes (maximum 6: 3x web and 3x databas
 
 ## Course topics
 
-| Week | Monday                    | Thursday                | Friday     |
+Both databases and web are covered in eight lectures each. The midterm covers only database topics. The final covers only web technology topics.
+
+| Week | Monday                    | Wednesday               | Thursday     |
 |------|---------------------------|-------------------------|------------|
-| 2.1  | HTTP                      | HTML5                   | ---        |
-| 2.2  | JavaScript                | Node.js                 | ---        |
-| 2.3  | CSS                       | Node.js (advanced)      | ---        |
-| 2.4  | Cookies and sessions      | Web security            | ---        |
-| 2.5  | ---                       | **Midterm exam**                 | ---        |
-| 2.6  | Introduction to databases | Data models             | ---        |
-| 2.7  | RDBMS: SQL DML 1          | RDBMS: SQL DML 2        | ---        |
-| 2.8  | NoSQL: document stores            | NoSQL: graph stores | ---        |
-| 2.9  | NoSQL: key-value stores    |SQL/NoSQL (advanced)     | ---        |
-| 2.10 | ---                       | ---                     | **Final exam** |
+| 2.1  | Introduction to databases | Relational database systems             | ---        |
+| 2.2  | Design of relational database systems          | SQL 1        | ---        |
+| 2.3  | SQL 2            | NoSQL: graph stores | ---        |
+| 2.4  | NoSQL: document stores    |SQL (advanced)     | ---        |
+| 2.5 | ---                       | ---                     | **Midterm exam** |
+| 2.6  | HTTP                      | HTTP/HTML5                   | ---        |
+| 2.7  | JavaScript                | Node.js                 | ---        |
+| 2.8  | CSS                       | Node.js (advanced)      | ---        |
+| 2.9  | Cookies and sessions      | Web security            | ---        |
+| 2.10  | **Final exam**                       | ---                 | ---        |
+
+## Web tutorials
+
+We offer three tutorials (interactive sessions to solve small problems) for interested students - these tutorials are optional and do not count towards the 140 hours of this course:
+- Week 2.7: JavaScript
+- Week 2.8: Node.js
+- Week 2.9: old exam questions
+
+Check the [MyTimeTable app](https://mytimetable.tudelft.nl/) to determine which tutorial session to attend! 
 
 ## Sample exams
 
-Until (and including) the 2017/18 edition, the web and database (DB) topics were interwoven (usually 1 lecture of web and 1 lecture of DB topics per week) and thus for most years, the midterm and final exams also contain questions on both topics. 
+Until (and including) the 2017/18 edition, the web and database topics were interwoven (usually 1 lecture of web and 1 lecture of database topics per week) and thus for most years, the midterm and final exams also contain questions on both topics. For the 2019/20 edition, the final exam will contain about 40 multiple choice questions on the web technology topics.
 
-Exam topics are all topics covered in the lectures and the required readings. Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not exam material.
+**Exam topics are all topics covered in the lectures and the required readings.** Content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not exam material.
 
 - [Midterm 2015/16](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2.pdf) ([with answers](https://github.com/chauff/chauff.github.io/blob/master/documents/webdb-2017-18/midterm2-answers.pdf))
 - [Final 2015/16](https://chauff.github.io/documents/webdb-2017-18/final2.pdf) ([with answers](https://chauff.github.io/documents/webdb-2017-18/final2-answers.pdf))
@@ -189,15 +205,18 @@ Exam topics are all topics covered in the lectures and the required readings. Co
 
 There are six assignments in total.
 
-Assignments are worked on in **teams of 2 students**. *We do not allow larger teams; we do not allow teams of 1*.
+Assignments are worked on in **teams of 2 students**. *We do not allow larger teams; we do not allow teams of 1*. You are *not* required to work in the same group for both the database and web assignments, you can change partners.
 
-The first three assignments cover web technology topics.
+Assignments 1-3 cover database topics and can be found on Brightspace. Assignments 4-6 cover web technology topics: 
 
-- [Assignment 1 (web)](Assignment-1.md)
-- [Assignment 2 (web)](Assignment-2.md)
-- [Assignment 3 (web)](Assignment-3.md)
+- 🚧 [Assignment 4 (web)](Assignment-4.md)
+- 🚧 [Assignment 5 (web)](Assignment-5.md)
+- 🚧 [Assignment 6 (web)](Assignment-6.md)
 
-**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric is available [here](rubric.md).
+**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric for the web assignments is available [here](rubric.md). The assessment takes place during weeks 2.8, 2.9 and 2.10. 
+
+**All assignments must be submitted in Brightspace before your assessment timeslot, and in any case no later than January 24, 2020 at 23:30 (hard deadline).** All submissions are timestamped. Late submissions (or re-submissions) will not be assessed. We are going to check if your submitted work is consistent with the one used for assessment.
+
 
 ## Demo application
 
@@ -260,7 +279,7 @@ All lecture transcripts and assigments (which were developed in Markdown) were *
 
 ### Lecture 1
 
-The lecture covers HTTP ([transcript](Lecture-1.md), [course intro slides](slides/cse1500-intro.pdf) and [lecture slides](slides/cse1500-lecture1.pdf)).
+The lecture covers HTTP ([transcript](Lecture-1.md)).
   
 - Required readings: *none*
 - Recommended activity:
@@ -280,7 +299,7 @@ The lecture covers HTTP ([transcript](Lecture-1.md), [course intro slides](slide
 
 ### Lecture 2
 
-This lecture covers web design and HTML5 ([transcript](Lecture-2.md) and [lecture slides](slides/cse1500-lecture2.pdf)).
+This lecture covers web design and HTML5 ([transcript](Lecture-2.md)).
 
 - Required readings:
   - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -297,9 +316,9 @@ This lecture covers web design and HTML5 ([transcript](Lecture-2.md) and [lectur
   - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
   - Mathur, A., Acar, G., Friedman, M., Lucherini, E., Mayer, J., Ghetty, M. and Narayanan, A., 2019. [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/), ACM Human-Computer Interaction, Vol. 3, CSCW, Article 81.
 
-### Lecture 3
+### 🚧 Lecture 3
 
-This lecture covers client-side JavaScript ([transcript](Lecture-3.md) and [lecture slides](slides/cse1500-lecture3.pdf)).
+This lecture covers client-side JavaScript ([transcript](Lecture-3.md)).
 
 - Required readings:
   - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -323,9 +342,9 @@ This lecture covers client-side JavaScript ([transcript](Lecture-3.md) and [lect
   - Lin, J., 2018. [Computing without Servers, V8, Rocket Ships, and Other Batshi*t Crazy Ideas in Data Systems](http://ceur-ws.org/Vol-2167/keynote1.pdf). In Proceedings of DESIRES. A quote ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
   - Patra, J., Dixit, P.N. and Pradel, M., 2018, May. [ConflictJS: finding and understanding conflicts between JavaScript libraries](http://mp.binaervarianz.de/icse2018.pdf). In Proceedings of the 40th International Conference on Software Engineering (pp. 741-751). ACM.
 
-### Lecture 4
+### 🚧 Lecture 4
 
-This lecture covers Node.js ([transcript](Lecture-4.md) and [lecture slides](slides/cse1500-lecture4.pdf)).
+This lecture covers Node.js ([transcript](Lecture-4.md)).
 
 - Required readings:
   - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -337,9 +356,9 @@ This lecture covers Node.js ([transcript](Lecture-4.md) and [lecture slides](sli
 - Relevant scientific publications:
   - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp.1023-1044.
   
-### Lecture 5
+### 🚧 Lecture 5
 
-This lecture covers CSS ([transcript](Lecture-5.md) and [lecture slides](slides/cse1500-lecture5.pdf)).
+This lecture covers CSS ([transcript](Lecture-5.md)).
   
 - Required readings:
   - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -355,9 +374,9 @@ This lecture covers CSS ([transcript](Lecture-5.md) and [lecture slides](slides/
 - Relevant scientific publications:
   - Meyerovich, L.A. and Bodik, R., 2010, April. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web (pp. 711-720). ACM.
 
-### Lecture 6
+### 🚧 Lecture 6
 
-This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md) and [lecture slides](slides/cse1500-lecture6.pdf)).
+This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md)).
 
 - Required readings: *none*
 - Recommended activities:
@@ -371,9 +390,9 @@ This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md) and [l
   - Fard, A.M. and Mesbah, A., 2013, September. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings-article/2013/scam/12OmNylsZKu/12OmNwHhoWN). In Source Code Analysis and Manipulation (SCAM), 2013 IEEE 13th International Working Conference on (pp. 116-125). IEEE.
   - Nasehi, S.M., Sillito, J., Maurer, F. and Burns, C., 2012, September. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). In 2012 28th IEEE International Conference on Software Maintenance (ICSM) (pp. 25-34). IEEE.
 
-### Lecture 7
+### 🚧 Lecture 7
 
-This lecture covers cookies and sessions ([transcript](Lecture-7.md) and [lecture slides](slides/cse1500-lecture7.pdf)).
+This lecture covers cookies and sessions ([transcript](Lecture-7.md)).
 
 - Required readings: *none*
 - Recommended activities: *none*
@@ -385,9 +404,9 @@ This lecture covers cookies and sessions ([transcript](Lecture-7.md) and [lectur
   - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](https://ieeexplore.ieee.org/abstract/document/865085). IEEE internet computing, 4(4), pp.36-44.
   - Franken, G., Van Goethem, T. and Joosen, W., 2018. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168.
 
-### Lecture 8 
+### 🚧 Lecture 8 
 
-This lecture covers web security topics ([transcript](Lecture-8.md) and [lecture slides](slides/cse1500-lecture8.pdf)).
+This lecture covers web security topics ([transcript](Lecture-8.md)).
 
 - Required readings: *none*
 - Recommended activities:

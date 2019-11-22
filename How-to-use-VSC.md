@@ -1,15 +1,17 @@
 Table of Contents
 ==
+TODO: check writeup!
 
 - [Table of Contents](#table-of-contents)
 - [How to use VSC](#how-to-use-vsc)
-    - [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
-        - [Git](#git)
-        - [GitHub](#github)
-        - [Local vs. remote repository](#local-vs-remote-repository)
-        - [VSC ...](#vsc-)
-    - [Live Share](#live-share)
-    - [Debugging Node.js scripts](#debugging-nodejs-scripts)
+  - [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
+    - [Git](#git)
+    - [GitHub](#github)
+    - [Octotree](#octotree)
+    - [Local vs. remote repository](#local-vs-remote-repository)
+    - [VSC ...](#vsc)
+  - [Live Share](#live-share)
+  - [Debugging Node.js scripts](#debugging-nodejs-scripts)
 
 # How to use VSC
 

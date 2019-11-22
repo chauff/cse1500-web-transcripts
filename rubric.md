@@ -1,12 +1,14 @@
 # Rubric web assignments
 
+//TODO: read
+
 This is an overview of the rubric the TAs use to assess the web assignments.
 
 A single assessment session is held per group for the three web assignments. Every web assignment is assessed as either passing or non-passing. Although groups of two students are assessed, the passing/non-passing grades are handed out per student. It is thus possible for one team member to pass all three assignments and for the other to fail all three assignments.
 
 The rubric below contains example questions/tasks for each assignment as well as an overview of the requirements to achieve a pass. To answer the questions, students can always consult their notes and code. Any Brightspace uploads that did not happen before the assessment can still be executed during the assessment session.
 
-## Assignment 1
+## Assignment 4
 
 ### Possible questions / tasks
 
@@ -24,7 +26,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 - The board game design is available on the Brightspace forum. The deliverables are uploaded to Brightspace.
 - The splash / board game design fulfils most of the board game requirements (listed in [Assignment 1](Assignment-1.md)).
 
-## Assignment 2
+## Assignment 5
 
 ### Possible questions / tasks
 
@@ -47,7 +49,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 - The game works as intended: players are randomly paired, valid moves can be executed.
 
 
-## Assignment 3
+## Assignment 6
 
 ### Possible questions / tasks
 

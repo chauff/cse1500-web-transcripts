@@ -1,5 +1,7 @@
 # Overview of interactive web programming exercises
 
+//TODO: check
+
 One of the issues beginning web developers face is the deluge of materials that are "out there" on the web. It is easy to be overwhelmed, not just by the amount of material, but also the fast pace of new standards, new frameworks and new languages. In this course, we only have a few weeks to teach you the basics of web programming. For this reason, below we have listed a number of interactive exercises from a single source: [nodeschool.io](https://nodeschool.io/). These "exercise bundles" are themselves implemented as Node.js packages! So, you will use `node` to learn `node`!
 
 Nodeschool offers a long list of self-guided tutorials and exercises; we have matched them up to our lectures. A ● indicates that this concept is taught in class, a ◐ indicates that this is useful knowledge (especially towards completing your assignments) but not required. If a row has no mark at all, then this exercise can safely be skipped.
