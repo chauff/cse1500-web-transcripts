@@ -74,9 +74,9 @@ The database materials (lectures/assignments) are not included here! You can fin
   - [Required](#required)
 - [Course grading](#course-grading)
 - [Course topics](#course-topics)
-- [Web tutorials](#web-tutorials)
+- [Web technology tutorials](#web-technology-tutorials)
 - [Sample exams](#sample-exams)
-- [Assignments](#assignments)
+- [Assignments & assessment](#assignments--assessment)
 - [Demo application](#demo-application)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
@@ -137,7 +137,7 @@ The latest stable version of [Node.js](https://nodejs.org/en/).
 
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
-Telnet (for Assignment 1): if you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. If you are a Windows user we recommend to use the Windows Subsystem for Linux or use a Virtual Machine; alternatively you can try [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/).
+Telnet (for [Assignment 4](Assignment-4.md)).
 
 ## Course grading
 
@@ -179,7 +179,7 @@ Both databases and web are covered in eight lectures each. The midterm covers on
 | 2.9  | Cookies and sessions      | Web security            | ---        |
 | 2.10  | **Final exam**                       | ---                 | ---        |
 
-## Web tutorials
+## Web technology tutorials
 
 We offer three tutorials (interactive sessions to solve small problems) for interested students - these tutorials are optional and do not count towards the 140 hours of this course:
 - Week 2.7: JavaScript
@@ -201,7 +201,7 @@ Until (and including) the 2017/18 edition, the web and database topics were inte
 - [Midterm 2018/19](exams/midterm-cse1500-201819.pdf) ([with answers](exams/midterm-cse1500-201819-solutions.pdf))
 - [Midterm Resit 2018/19](exams/midterm-resit-cse1500-201819.pdf) ([with answers](exams/midterm-resit-cse1500-201819-solutions.pdf))
 
-## Assignments
+## Assignments & assessment
 
 There are six assignments in total.
 
@@ -209,11 +209,11 @@ Assignments are worked on in **teams of 2 students**. *We do not allow larger te
 
 Assignments 1-3 cover database topics and can be found on Brightspace. Assignments 4-6 cover web technology topics: 
 
-- 🚧 [Assignment 4 (web)](Assignment-4.md)
-- 🚧 [Assignment 5 (web)](Assignment-5.md)
-- 🚧 [Assignment 6 (web)](Assignment-6.md)
+- [Assignment 4 (web)](Assignment-4.md)
+- [Assignment 5 (web)](Assignment-5.md)
+- [Assignment 6 (web)](Assignment-6.md)
 
-**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric for the web assignments is available [here](rubric.md). The assessment takes place during weeks 2.8, 2.9 and 2.10. 
+**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric for the web assignments is available [here](rubric.md). The assessment takes place during weeks 2.9 and 2.10. 
 
 **All assignments must be submitted in Brightspace before your assessment timeslot, and in any case no later than January 24, 2020 at 23:30 (hard deadline).** All submissions are timestamped. Late submissions (or re-submissions) will not be assessed. We are going to check if your submitted work is consistent with the one used for assessment.
 

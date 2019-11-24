@@ -266,6 +266,8 @@ The Semantic Web is a Web of data — of dates and titles and part numbers and c
 properties and any other data one might conceive of.
 ```
 
+Let us lastly point to the unfortunately underutilized [`<kbd>` HTML tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd) which represents keyboard input (e.g. <kbd>Shift</kbd>+<kbd>Ctrl</kbd>) and should be used by anyone writing tutorials/documentation in HTML.
+
 ### Who decides the HTML standard
 
 HTML is widely used, which makes standardisation a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (Microsoft, Google, Mozilla, Nokia, Baidu, Yandex, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required:
