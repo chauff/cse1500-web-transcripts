@@ -14,7 +14,7 @@
 - [Scripting overview](#scripting-overview)
   - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
   - [`<script>`](#script)
-  - [:bangbang: Activity](#bangbang-activity)
+  - [‼️ Activity](#%e2%80%bc%ef%b8%8f-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
   - [Scoping](#scoping)
   - [Hoisting](#hoisting)
@@ -53,15 +53,15 @@
 
 ## Take-aways of book chapter 4
 
-If you have already read Chapter 4 of the course book, you should know:
+Haing read chapter 4 of the course book in preparation for this lecture, you should know:
 
 - the basics of JavaScript;
 - how to include JavaScript in your web application;
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
 - the DOM;
-- the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
+- the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. Its popularity has steadily declined over the past few years as modern browsers implement more and more functionalities that `jQuery` was designed to make easy. It is still though very much in use as many large-scale projects still have it as a dependency.
 
-In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
+In this lecture we built upon book chapter 4 and cover a number of important JavaScript design patterns.
 
 ## Examples throughout the lectures
 
@@ -69,51 +69,51 @@ The code examples throughout these course materials tend to based on three diffe
 
 - A todo application as introduced in the web course book.
 - A habit tracker application as students had to implement in the 2017/18 edition of this course.
-- A board game application as needs to be implemented for the 2018/19 edition of this course.
+- A board game application as you need to implement this year.
 
 As the course material has been developed over time, you will get a glimpse of each of those applications.
 
 ## JavaScript's reputation
 
-In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in in the last five years](https://octoverse.github.com/projects) ([TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript claimed rank #7):
+In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in the past few years](https://octoverse.github.com/), with [TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript, claiming rank #7: 
 
 ![Top languages on GitHub](img/L3-github.png)
 
-<sup>Top languages over time (as measured by number of contributors) on GitHub.</sup>
+<sup>Top languages over time (as measured by number of contributors) on GitHub. [Image source](https://octoverse.github.com/).</sup>
 
-Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in [multiple programming paradigms](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93).
+Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in multiple programming paradigms ([read this interview](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93) with Kyle Simpson, author of one of the most popular JavaScript book series if you want to know more).
 
 Today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
-- [V8](https://developers.google.com/v8/) is Google's JavaScript engine,
-- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and
-- [Chakra](https://github.com/Microsoft/ChakraCore) is/was Microsoft's JavaScript runtime. In December 2018, Microsoft has announced that [they will adopt chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser) and thus they will use V8. The final version should be released around spring 2020.
+- [V8](https://developers.google.com/v8/) is Google's JavaScript engine (used in Chrome and other browsers);
+- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox);
+- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime engine (used in the Edge browser). In December 2018, Microsoft announced that [they will adopt Chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser project) and thus Edge will switch to the V8 JavaScript engine eventually.
 
-Javascript is an interpreted language, therefore a browser can read a javascript code line-by-line and run the program. However, all modern engines use **just-in-time (JIT) compilation** (the compilation happens at run-time). They compile javascript into **bytecode** and then optimize it to improve overall performance.
+While the browser is the most obvious usage scenario for JavaScript runtime environments, they are also used elsewhere (such as [microcontrollers](https://github.com/jerryscript-project/jerryscript)). Most importantly for us: the Node.js platform we cover in the next lecture is built on top of V8. 
 
-Some javascript engines (e.g., V8) also have a **lazy compilation mechanism** (among others optimization mechanisms). Some functions ([IIFEs](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)) are first compiled and the other functions are skipped (the engine only records the name of the function and the location of its source code). These functions are then compiled at run-time.
+Javascript is an *interpreted* language, a browser's JavaScript engine reads and interprets JavaScript code line-by-line (advantage: quick upstart, disadvantage: the program overall *runs* slower than one written in a language requiring compilation). Today's JavaScript engines both interpret *and* compile by employing so-called **just-in-time (JIT) compilation**. This means that JavaScript code that is run repeatedly such as often-called functions (the JavaScript engine monitors the frequency of code usage) is eventually compiled and no longer interpreted. [This article by Lin Clark](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/) explains this in more detail for those that want to know more.
 
 JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
 
 JavaScript is a language in flux.
 
-One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard (a good overview is provided at http://es6-features.org/) and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
+One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard (a good overview is provided at http://es6-features.org/) and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle. 
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
-In this course we include very few **ES6** features (there is [a section](#some-es6-concepts) covering some below), as we have only a limited number of lectures to cover client/server-side JavaScript. The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; **this is a useful limitation**. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
+In this course we include very few **ES6** features, as we only have one lecture to introduce JavaScript (*this* lecture ...). The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; **this is a useful limitation**. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
 
 In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
-Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge to the compiler to catch errors (e.g. functions called with wrong parameters) early on. TypeScript allows you to do that, by **enabling static type checking**.
+Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**.
 
 
 ## Scripting overview
 
 ### Server-side vs. client-side scripting
 
-**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client - often an HTML document. The client thus has to trust the server's computations (there is no possibility to validate the code that ran on the server). Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly **increase the server's load**. As clients often only receive an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML.
+**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client - often an HTML document. The client thus has to trust the server's computations (there is no possibility to validate the code that ran on the server). Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software is installed on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly **increase the server's load**. As clients often only receive an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML.
 
 **Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code. A famous example of the uproar such code digging can cause is the *NYTimes election needle jitter*: a jitter was introduced to an election needle visualization in order to convey the uncertainty around election forecasting. This jitter though was not based on data as readers were expecting, but instead hard-coded as a random component into the client-side script. This was quickly spotted by a Twitter user:
 
@@ -121,7 +121,9 @@ Here is one example of what TypeScript offers: JavaScript is a **dynamic languag
 
 and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-york-times-forecast-dial-had-a-fake-twitch-jitter.html), [2](https://www.theverge.com/2016/11/8/13571216/new-york-times-election-forecast-jitter-needle)).
 
-A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client.
+A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client. 
+
+Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) which provides a standard for an in-browser database that is transaction-based and stores key-value pairs persistently. While it cannot be queried with SQL directly, libraries such as [JSstore](https://github.com/ujjwalguptaofficial/JsStore) exist that act as wrapper around IndexedDB to enable SQL-like querying. The storage limits are browser and device-dependent; in principle it is possible to store Gigabytes of data within the browser's database. This can be very useful for instance for games (game objects are stored in the database) as well as data processing pipelines that are designed to be easy-to-use for non-experts such as our recently open-sourced ELAT tool (the processed data is stored in the database). //TODO: URL ELAT
 
 ### `<script>`
 
@@ -132,11 +134,11 @@ By placing the `<script>` tags at the end, the JavaScript files will be one of t
 
 In other words, interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, `jQuery`'s [`document.ready`](http://learn.jquery.com/using-jquery-core/document-ready/) function is a useful utility.
 
-### :bangbang: Activity
+### ‼️ Activity
 
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
-Executing the JavaScript code snippet :point_down: yields what output?
+Executing the JavaScript code snippet 👇 yields what output?
 
 ```javascript
 function giveMe(x){
@@ -149,7 +151,7 @@ var giveMe5 = giveMe(5);
 console.log( giveMe5(10) );
 ```
 
-Executing the JavaScript code snippet :point_down: yields what output?
+Executing the JavaScript code snippet 👇 yields what output?
 
 ```javascript
 function toPrint(x){
@@ -175,7 +177,7 @@ Scoping is the **context in which values and expressions are visible**. In contr
 
 - local;
 - global;
-- block (since **ES6**).
+- block (introduced in **ES6**).
 
 A *block* is used to group a number of statements together with a pair of curly brackets `{...}`.
 
@@ -187,11 +189,7 @@ The scopes of values and expressions depend on *where* and *how* they are declar
 - `let` was introduced in **ES6**: **block** scope;
 - `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
 
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global.
-
-Having only two scopes available results in some unexpected code behavior, which can be especially confusing for JavaScript beginners. Let's look at one popular example.
-
-Imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript :point_down::
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. Having only two scopes available resulted in code behaviour that is not always intuitive. Let's look at one popular example: imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript 👇:
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -199,7 +197,7 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code :point_down: to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
+Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code 👇 to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -209,9 +207,9 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-:point_up: When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Here is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
+☝️ When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Here is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
 
-Let's fix the two issues (printing 11s instead of 1...10 and waiting a second *between print outs* one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet :point_down: was the established solution:
+Let's fix the two issues (printing 11s instead of 1...10 and waiting a second *between print outs* one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet 👇 was the established solution:
 
 ```javascript
 function fn(i) {
@@ -224,9 +222,9 @@ for (var i = 1; i <= 10; i++)
     fn(i);
 ```
 
-:point_up: You will find this construct in all kinds of code bases. We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
+☝️ You will find this construct in all kinds of code bases. We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
 
-With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect :point_down::
+With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect 👇:
 
 ```javascript
 for (let i = 1; i <= 10; i++)
@@ -235,13 +233,13 @@ for (let i = 1; i <= 10; i++)
     }, 1000 * i)
 ```
 
-Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. Here is a toy `jQuery` example to showcase this issue :point_down::
+Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. Here is a toy `jQuery` example to showcase this issue 👇:
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
         $(document).ready(function(){
             //$ = "overwriting";
