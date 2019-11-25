@@ -12,36 +12,36 @@
 - [Examples throughout the lectures](#examples-throughout-the-lectures)
 - [JavaScript's reputation](#javascripts-reputation)
 - [Scripting overview](#scripting-overview)
-  - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-  - [`<script>`](#script)
-  - [‼️ Activity](#%e2%80%bc%ef%b8%8f-activity)
+    - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
+    - [The `<script>` tag](#the-script-tag)
+    - [‼️ Activity](#%E2%80%BC%EF%B8%8F-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
-  - [Scoping](#scoping)
-  - [Hoisting](#hoisting)
-  - [this](#this)
+    - [Scoping](#scoping)
+    - [Hoisting](#hoisting)
+    - [The keyword `this`](#the-keyword-this)
 - [JavaScript design patterns](#javascript-design-patterns)
-  - [JavaScript objects](#javascript-objects)
-  - [Object creation with `new`](#object-creation-with-new)
-  - [Object literals](#object-literals)
-  - [Object copying](#object-copying)
-  - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
-  - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-  - [Design pattern 3: Module](#design-pattern-3-module)
+    - [JavaScript objects](#javascript-objects)
+    - [Object creation with `new`](#object-creation-with-new)
+    - [Object literals](#object-literals)
+    - [Object copying](#object-copying)
+    - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
+    - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
+    - [Design pattern 3: Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
-  - [Document Object Model](#document-object-model)
-    - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
-    - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
-    - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
-    - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
-    - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
-    - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
+    - [Document Object Model](#document-object-model)
+        - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
+        - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
+        - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
+        - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
+        - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
+        - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
 - [Some ES6 concepts](#some-es6-concepts)
-  - [Variable definition](#variable-definition)
-  - [Arrow functions](#arrow-functions)
-  - [Map, Reduce and Filter](#map-reduce-and-filter)
-  - [Default function arguments](#default-function-arguments)
-  - [Template strings](#template-strings)
-  - [Object destructuring](#object-destructuring)
+    - [Variable definition](#variable-definition)
+    - [Arrow functions](#arrow-functions)
+    - [Map, Reduce and Filter](#map-reduce-and-filter)
+    - [Default function arguments](#default-function-arguments)
+    - [Template strings](#template-strings)
+    - [Object destructuring](#object-destructuring)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -125,7 +125,7 @@ A clear advantage of client-side coding is **reduced server load**, as clients e
 
 Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) which provides a standard for an in-browser database that is transaction-based and stores key-value pairs persistently. While it cannot be queried with SQL directly, libraries such as [JSstore](https://github.com/ujjwalguptaofficial/JsStore) exist that act as wrapper around IndexedDB to enable SQL-like querying. The storage limits are browser and device-dependent; in principle it is possible to store Gigabytes of data within the browser's database. This can be very useful for instance for games (game objects are stored in the database) as well as data processing pipelines that are designed to be easy-to-use for non-experts such as our recently open-sourced ELAT tool (the processed data is stored in the database). //TODO: URL ELAT
 
-### `<script>`
+### The `<script>` tag
 
 The placement of the `<script>` tag is an often discussed issue (1000+ upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this lecture, we follow the course book argument (page 98):
 
@@ -282,9 +282,13 @@ var seven = function(){
 console.log(x+" - "+y);
 ```
 
-In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
+In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser by copying the entire snippet at once into the web console!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
 
-The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. In our example, the JavaScript runtime *hoists* the declaration of `six`; it is processed before the remaining code is executed.
+The difference lies in how we went about defining our `six` and `seven` functions: 
+- `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached.
+- `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. 
+
+In our example, the JavaScript runtime *hoists* the declaration of `six`; it is processed before the remaining code is executed.
 
 Once more:
 
@@ -318,18 +322,24 @@ console.log(a);
 console.log(b);
 ```
 
-Now we will end up with a `ReferenceError: a is not defined` as the `var a` declaration at the end of function `f` is **hoisted** to the top of the function. The same applies to `b`. Both variables `a` and `b` thus have local scope.
+Now we will end up with a `ReferenceError: a is not defined` as the `var a` declaration at the end of function `f` is **hoisted** to the top of the function. The same applies to `b`. Both variables `a` and `b` thus have local scope and are not accessible to the `console.log` calls.
 
-### this
+### The keyword `this`
 
-In Java, `this` refers to the current object, **in JavaScript what `this` refers to is dependent on *how* the function containing `this` was called**. We also have the option to set the value of a function's `this` independent of how the function was called, using the [`bind` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind). Here is a concrete example of this behaviour :point_down::
+As you know, in Java, `this` refers to the current object. 
+
+**In JavaScript what `this` refers to is dependent on *how* the function containing `this` was called**. 
+
+We also have the option to set the value of a function's `this` independent of how the function was called, using the [`bind` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind). 
+
+Let's walk through this concrete code example to showcase the behaviour of `this` :point_down: :
 
 ```javascript
-//Assume execution in the browser's Web Console, so that we
+//We assume execution in the browser's Web Console, we thus
 //know the global window object exists (it is provided by the browser).
 
-//property of the global `window` variable
-//can also be accessed as window.h
+//h is now a property of the global `window` variable;
+//it can also be accessed as window.h
 var h = "Sports";
 
 function habit(s){
@@ -375,7 +385,7 @@ to be different each time, as each time, `this` refers to a different object. We
 ## JavaScript design patterns
 
 *"Design patterns are reusable solutions to commonly occurring problems in software design."* This quote is on the first page of Addy Osmani's popular [book on JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/). A basic example of a reusable solution is one for object creation. Instead of everyone trying to figure out how to create objects, we use well-known **recipes** (a.k.a. design patterns) that were developed over time and apply them.
-There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Besides **design patterns**, there also exist **anti-patterns**, that are programming recipes which are popular but ineffective at tackling a recurring problem.
+There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Note that besides **design patterns**, there also exist **anti-patterns**, that are programming recipes which are popular but ineffective at tackling a recurring problem.
 
 ### JavaScript objects
 
@@ -385,7 +395,7 @@ The object-oriented programming paradigm is based on a set of cooperating object
 
 In JavaScript, **functions are also objects**. Apart from functions, JavaScript also comes with a number of other built-in objects: Strings, arrays and objects specific to the fact that JavaScript was developed to add interaction to HTML. One example is the `document` object, which only makes sense in the context of an HTML page. Note, that the `document` object is not part of core JavaScript (the language is defined independently of the browser context), however when we discuss client-side scripting we do mean JavaScript in the browser. The browser is the host application in this case and provides the `document` object.
 
-JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at other developers' code).
+JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at existing code bases).
 
 ### Object creation with `new`
 
@@ -446,22 +456,23 @@ var paramModule = {
 };
 ```
 
-The function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is an alternative for `console.log`, especially for objects and arrays, as it displays tabular data as a table:
+For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table:
 
 ![console.table](img/L3-console-table.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
-Another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
+Continuing on the debugging theme, another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
 
 ![console.assert](img/L3-console-assert.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
-Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
+Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? We can hardly copy and paste a method to all objects.
 
-### Object copying
-Copying objects in JavaScript is a bit more complicated than it sounds. JavaScript passes everything by reference (unlike Java), which can cause a lot of errors if you are not careful. This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to copy objects in JavaScript.  
+One idea could be to simply *copy* an object over and over again, however that turns out to be quite complicated. JavaScript passes everything by reference (unlike Java), which can cause issues when objects are complex (i.e. many of their properties are objects themselves). This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. This is for your information only, we do not cover deep copies in class.
+
+Let's look at three design patterns to simplify this work for us! The first one should be the most familiar to you, as it looks similar to the object creation pattnern we use in Java.
 
 ### Design pattern I: Basic constructor
 
@@ -495,14 +506,14 @@ public class Game {
 And here is how we do the same in JavaScript :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
     this.getID = function(){ return this.id; };
     this.setID = function(id){ this.id = id; };
 }
 ```
 
-We use functions as **constructors** and rely on `this`. We rely on the keyword `new` to initialize a new object similar to what you have already seen before :point_down::
+**We use functions as constructors and rely on `this`**. We rely on the keyword `new` to initialize a new object similar to what you have already seen before :point_down::
 
 ```javascript
 var g1 = new Game(1);
@@ -520,7 +531,7 @@ var g2 = new Game(3);
 A common error is to forget the `new` keyword. The JavaScript runtime will not alert you to this mistake, in fact, the JavaScript runtime will simply execute the function as-is. Let's take a look at what happens when you copy and paste the following code into your browser's Web Console :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
     this.getID = function(){ return this.id; };
     this.setID = function(id){ this.id = id; };
@@ -574,7 +585,7 @@ Here is a quick summary of the basic constructor:
 
 We tackle issues 1. and 2. with the next design pattern.
 
-We have already touched upon the drawback of the third issue: imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently "overwrite" important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works).
+We have already touched upon the drawback of the third issue: imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently "overwrite" important parts of the code without ever being informed about it, because that is not how the JavaScript runtime works.
 
 ### Design pattern 2: Prototype-based constructor
 
@@ -589,7 +600,7 @@ So, why is this important and how can you make use of this knowledge? Recall, th
 This is exactly what the prototype-based constructor provides. Let's look at an example :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
 }
 
@@ -624,7 +635,7 @@ This explanation should also answer the following question: what happens if a pr
 Changes made to the prototype are also reflected in existing objects :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
 }
 
@@ -664,7 +675,7 @@ Game.prototype.setID = function(id){ this.id = id; };
 /* constructor */
 function TwoPlayerGame(id, p1, p2){
     /*
-     * call(...) calls a function with a given this value and arguments.
+     * call(...) calls a function with a given `this` value and arguments.
      */
     Game.call(this, id);
     this.p1 = p1;
