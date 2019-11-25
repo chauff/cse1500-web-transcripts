@@ -103,6 +103,8 @@ To many, the IETF is a lesser known organization, and while you may not often co
 
 HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol (*speedy protocol*); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). As HTTP/1.1 is still the dominant protocol type on the web, we focus on it in this lecture.
 
+We do not cover HTTP/3 in this lecture, for those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses.
+
 ### Web servers and clients
 
 On the web, clients and servers communicate with each other through **HTTP requests** and **HTTP responses**. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your web browser is acting as the **client** (sending an HTTP request). The **server** is your email provider (sending an HTTP response).

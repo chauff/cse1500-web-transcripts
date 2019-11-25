@@ -213,9 +213,9 @@ Assignments 1-3 cover database topics and can be found on Brightspace. Assignmen
 - [Assignment 5 (web)](Assignment-5.md)
 - [Assignment 6 (web)](Assignment-6.md)
 
-**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-30 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric for the web assignments is available [here](rubric.md). The assessment takes place during weeks 2.9 and 2.10. 
+**Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-25 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric for the web assignments is available [here](rubric.md). The assessment takes place during week 2.9.
 
-**All assignments must be submitted in Brightspace before your assessment timeslot, and in any case no later than January 24, 2020 at 23:30 (hard deadline).** All submissions are timestamped. Late submissions (or re-submissions) will not be assessed. We are going to check if your submitted work is consistent with the one used for assessment.
+**All assignments must be submitted in Brightspace before your assessment timeslot, and in any case no later than January 22, 2020 at 23:30 (hard deadline).** All submissions are timestamped. Late submissions (or re-submissions) will not be assessed. We are going to check if your submitted work is consistent with the one used for assessment.
 
 
 ## Demo application
@@ -292,6 +292,7 @@ The lecture covers HTTP ([transcript](Lecture-1.md)).
   - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/).
   - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users.
   - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/).
+  - A detailed overview of the [history of web standards](https://www.smashingmagazine.com/2019/01/web-standards-guide/) and how to make use of them.
 - Relevant scientific publications:
   - Ihm, S. and Pai, V.S., 2011. [Towards understanding modern web traffic](https://dl.acm.org/citation.cfm?id=2068845). In Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference (pp. 295-312). ACM.
   - Naylor, D., Finamore, A., Leontiadis, I., Grunenberger, Y., Mellia, M., Munafò, M., Papagiannaki, K. and Steenkiste, P., 2014. [The cost of the S in HTTPS](https://dl.acm.org/citation.cfm?id=2674991). In Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies (pp. 133-140).
