@@ -1,5 +1,6 @@
 Table of Contents
 ==
+- [Table of Contents](#table-of-contents)
 - [Demo code](#demo-code)
     - [balloons-game](#balloons-game)
     - [node-file-watching-ex](#node-file-watching-ex)
