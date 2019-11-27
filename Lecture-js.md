@@ -1,8 +1,8 @@
 # JavaScript: the language of browser interactions <!-- omit in toc -->
 
-*This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
+*This is the densest web lecture of this course. Learning how to code takes some time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and also not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and also not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
