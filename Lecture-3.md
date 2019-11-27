@@ -4,7 +4,7 @@
 
 *This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and also not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
@@ -12,36 +12,28 @@
 - [Examples throughout the lectures](#examples-throughout-the-lectures)
 - [JavaScript's reputation](#javascripts-reputation)
 - [Scripting overview](#scripting-overview)
-    - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-    - [The `<script>` tag](#the-script-tag)
-    - [‼️ Activity](#%E2%80%BC%EF%B8%8F-activity)
+  - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
+  - [The `<script>` tag](#the-script-tag)
+  - [‼️ Activity](#%e2%80%bc%ef%b8%8f-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
-    - [Scoping](#scoping)
-    - [Hoisting](#hoisting)
-    - [The keyword `this`](#the-keyword-this)
+  - [Scoping](#scoping)
+  - [Hoisting](#hoisting)
+  - [The keyword `this`](#the-keyword-this)
 - [JavaScript design patterns](#javascript-design-patterns)
-    - [JavaScript objects](#javascript-objects)
-    - [Object creation with `new`](#object-creation-with-new)
-    - [Object literals](#object-literals)
-    - [Object copying](#object-copying)
-    - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
-    - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-    - [Design pattern 3: Module](#design-pattern-3-module)
+  - [JavaScript objects](#javascript-objects)
+  - [Object creation with `new`](#object-creation-with-new)
+  - [Object literals](#object-literals)
+  - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
+  - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
+  - [Design pattern 3: Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
-    - [Document Object Model](#document-object-model)
-        - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
-        - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
-        - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
-        - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
-        - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
-        - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
-- [Some ES6 concepts](#some-es6-concepts)
-    - [Variable definition](#variable-definition)
-    - [Arrow functions](#arrow-functions)
-    - [Map, Reduce and Filter](#map-reduce-and-filter)
-    - [Default function arguments](#default-function-arguments)
-    - [Template strings](#template-strings)
-    - [Object destructuring](#object-destructuring)
+  - [Document Object Model](#document-object-model)
+    - [:bangbang: Example 1: document.getElementById / document.querySelector](#bangbang-example-1-documentgetelementbyid--documentqueryselector)
+    - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
+    - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
+    - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
+    - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
+    - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -382,6 +374,11 @@ to be different each time, as each time, `this` refers to a different object. We
 
  We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/this%20%26%20object%20prototypes).
 
+ 🚩 In ES6 so-called arrow functions were introduced. Instead of writing `let sum = function(a,b){return a+b}` we can shorten it to `let sum = (a,b) => {return a+b}`. This may look initially just like a more compact way of writing a function expression, but there is more to it - in particular the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are looking into the use of arrow functions! 
+
+🚩 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
+
+
 ## JavaScript design patterns
 
 *"Design patterns are reusable solutions to commonly occurring problems in software design."* This quote is on the first page of Addy Osmani's popular [book on JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/). A basic example of a reusable solution is one for object creation. Instead of everyone trying to figure out how to create objects, we use well-known **recipes** (a.k.a. design patterns) that were developed over time and apply them.
@@ -456,7 +453,9 @@ var paramModule = {
 };
 ```
 
-For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table:
+---
+
+:bug: For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table:
 
 ![console.table](img/L3-console-table.png)
 
@@ -468,9 +467,11 @@ Continuing on the debugging theme, another worthwhile function to know about is 
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
+---
+
 Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? We can hardly copy and paste a method to all objects.
 
-One idea could be to simply *copy* an object over and over again, however that turns out to be quite complicated. JavaScript passes everything by reference (unlike Java), which can cause issues when objects are complex (i.e. many of their properties are objects themselves). This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. This is for your information only, we do not cover deep copies in class.
+One idea could be to simply *copy* an object over and over again, however that turns out to be quite complicated. JavaScript passes everything by reference, which can cause issues when objects are complex (i.e. many of their properties are objects themselves). This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. This is for your information only, we do not cover deep copies in class.
 
 Let's look at three design patterns to simplify this work for us! The first one should be the most familiar to you, as it looks similar to the object creation pattnern we use in Java.
 
@@ -508,6 +509,10 @@ And here is how we do the same in JavaScript :point_down::
 ```javascript
 function Game(id){
     this.id = id;
+    this.totalPoints = 0;
+    this.winner = null;
+    this.difficulty = "easy";
+
     this.getID = function(){ return this.id; };
     this.setID = function(id){ this.id = id; };
 }
@@ -519,8 +524,12 @@ function Game(id){
 var g1 = new Game(1);
 g1.getID();
 g1.setID(2);
-
 var g2 = new Game(3);
+
+//🚩 ES6: object destructuring allows us to extract several object properties at once instead of one-by-one
+var {totalPoints,winner,difficulty} = g1;
+//🚩 ES6: template literals to make string concatenations more readable
+console.log(`This game reached ${totalPoints} points, was won by ${winner} and had difficulty ${diff}.`);
 ```
 
 **In JavaScript, an object constructor is just a normal function**. When the `new` keyword appears, the JavaScript runtime executes two steps:
@@ -552,7 +561,7 @@ Lesson here: be sure to know when to use `new` and what `this` refers to when.
 Another interesting feature of JavaScript is the possibility to add new properties and methods **on the fly**, after object creation. In Java, once we have written our class and instantiated objects from the class, we cannot rewrite the class blueprint to affect the already created objects. JavaScript is a **prototype-based language** and here we can actually change our objects on the fly :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
     this.getID = function(){ return this.id; };
     this.setID = function(id){ this.id = id; };
@@ -780,7 +789,23 @@ An IIFE itself is also a design pattern, it looks as follows :point_down::
 
 Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/scope%20%26%20closures) series, half a book is dedicated to closures.
 
-The encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
+---
+
+:bug: A common error in the module pattern is to forget to add the final bracket pair `()` when defining the IIFE. Those issues will be caught at runtime when the code does not work as expected. In our game module example, the line `gameStatModule.incrGamesStarted();` will lead to the error `TypeError: gameStatModule.incrGamesStarted is not a function` if we remove the final IIFE bracket pair (try it out!). VSC offers a simple way to catch those errors already when coding. We simply add the line:
+
+```
+//@ts-check
+```
+
+at the top of any JavaScript file we want to have type-checked. The error of the missing bracket pair is now caught:
+
+![Exploring events](img/L3-ts-check.png)
+
+We thus borrow the type checker of TypeScript to make sure to catch - at least some - coding mistakes we make early on. To avoid copying this line everywhere, we can also set up VSC to perform type checking [automatically for all JavaScript files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript).
+
+---
+
+Finally we note that in the module pattern, the encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
 
 ```javascript
 /* creating a module */
@@ -830,7 +855,7 @@ Summarizing the module pattern:
 
 ## Events and the DOM
 
-Having read chapter 4 of the course book, you should be familiar with code such as this :point_down: (the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) applies to functions or entire scripts and is a manner of cutting down on potential silent errors):
+Having read chapter 4 of the web course book, you should be familiar with code such as this :point_down: (the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) applies to functions or entire scripts and is a manner of cutting down on potential silent errors):
 
 ```javascript
 var main = function () {
@@ -845,13 +870,15 @@ var main = function () {
 $(document).ready(main);
 ```
 
-The course book makes extensive use of `jQuery` (a big time saver in practice). With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
+The course book makes extensive use of `jQuery`. With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
 
 - `document.getElementById`
 - `document.getElementsByClassName`
-- `document.getElementsByTagName`
-- `document.querySelector` (returns the first element within the DOM tree that matches the selector)
-- `document.querySelectorAll` (returns all elements that match)
+- `document.getElementsByTagName` 
+- [`document.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector): returns the first element within the DOM tree according to a **depth-first pre-order traversal** that matches the selector
+- [`document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll): returns all elements that match the selector
+
+The last two ways of selecting DOM elements allow complex selector rules to be specified!
 
 The code snippet :point_up: also shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens *when* an event fires**. In the example above, the event is the click on a button.
 
@@ -865,11 +892,17 @@ The course book walks you through several examples of making a responsive UI con
 
 :four: Attach the function to the event **on** the control.
 
-If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
+---
+
+:bug: If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
 
 ![Exploring events](img/L3-event-listeners.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
+
+---
+
+:triangular_flag_on_post: If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this class. The reason is simply a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
 
 ### Document Object Model
 
@@ -891,11 +924,11 @@ The DOM is our entry point to interactive web applications. It allows use to:
 We will now walk through a number of examples that add an interactive element to a web application.
 These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
 
-They strongly overlap with what is discussed in the required reading (Chapter 4 of the course book) of this lecture. Take it as a reminder of what is covered in the book chapter.
+They strongly overlap with what is discussed in the required reading (chapter 4 of the course book) of this lecture. Take it as a reminder of what is covered in the book chapter.
 
-#### :bangbang: Example 1: document.getElementById
+#### :bangbang: Example 1: document.getElementById / document.querySelector
 
-Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box.
+Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box. As you can see there are different ways (we have listed four here) of pinpointing a DOM element:  
 
 ```html
 <!DOCTYPE html>
@@ -905,6 +938,9 @@ Here :point_down: we have a page with two elements: a button and a text box. A c
     </head>
     <body>
         <button onclick="
+            //var tb = document.querySelector('#out');
+            //var tb = document.querySelector('input')
+            //var tb = document.querySelector('input[type=text]')
             var tb = document.getElementById('out');
             tb.value = 'Hello World!'
         ">Say Hello World</button>
@@ -913,7 +949,7 @@ Here :point_down: we have a page with two elements: a button and a text box. A c
 </html>
 ```
 
-This code :point_up: is of course not ideal as we are writting JavaScript code in the middle of HTML elements, so let us refactor to achieve a bit better code separation :point_down::
+This code :point_up: is of course not ideal as we are writting JavaScript code in the middle of HTML elements, so let us refactor to achieve a better code separation :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -924,7 +960,7 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
             /* we define the function */
             function sayHello() {
               var tb = document.getElementById("out");
-              tb.value = 'Hello World';
+              tb.value = "Hello World";
             }
 
             /* we attach a function to a button's click event
@@ -951,15 +987,16 @@ window.onload = function() {
 };
 ```
 
-is replaced just by :point_down::
+is replaced by :point_down::
 
 ```javascript
 document.getElementById("b").onclick = sayHello;
 ```
-
-As another exercise, add a second `<input>` element with the **same id** and see what happens. And lastly, try for yourself to replace `<input>` with a `<span>` element. You can no longer use `.value` but instead need to rely on a different property ([hint](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)).
+<sup>Explanation: the HTML page is parsed sequentially from top to bottom; without the `window.onload` event handler the browser engine will try to acess the button element before it has been defined, leading to an error: `TypeError: document.getElementById(...) is null.`</sup>
 
 #### :bangbang: Example 2: creating new nodes
+
+Note: as all our examples are simple, we will stick to `document.getElementById` to select DOM elements. In more realistic coding scenarios, `document.querySelector(All)` will most often be used.
 
 HTML tags and content can be added dynamically in two steps:
 
@@ -976,7 +1013,7 @@ To achieve step :two:, a number of methods are available to every DOM element:
 | `removeChild(node)`      |  removes the given node from this node's child list                      |
 | `replaceChild(new, old)` | replaces the old node with the new one                                   |
 
-Let's look at how this works in practice :point_down: (again, try out the code for yourself):
+Let's look at how this works in practice :point_down: :
 
 ```html
 <!DOCTYPE html>
@@ -991,7 +1028,10 @@ Let's look at how this works in practice :point_down: (again, try out the code f
             function addElement() {
               var ul = document.getElementById('u');
               var li = document.createElement('li');
-              li.innerHTML = 'List element ' + (ul.childElementCount+1) +' ';
+              var count = ul.childElementCount+1;
+              
+              //li.innerHTML = 'List element ' + (ul.childElementCount+1) +' '; //before ES6: + to concatenate strings
+              li.innerHTML = `List element ${ul.childElementCount+1}`; //🚩 ES6: template literals
               ul.appendChild(li);
             }
         </script>
@@ -1004,7 +1044,7 @@ Let's look at how this works in practice :point_down: (again, try out the code f
 </html>
 ```
 
-:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it.
+:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it. The code example also shows off [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which were introduced in ES6: they allow us to plug variables (here: `ul.childElementCount+1`) into strings (demarked with backticks) in a more readable manner. 
 
 We can of course also remove elements :point_down::
 
@@ -1021,12 +1061,14 @@ We can of course also remove elements :point_down::
 
           function removeLastChild() {
             var ul = document.getElementById('u');
-            ul.removeChild(ul.lastElementChild);
+            if(ul.childElementCount>0)
+              ul.removeChild(ul.lastElementChild);
           }
 
           function removeFirstChild() {
             var ul = document.getElementById('u');
-            ul.removeChild(ul.firstElementChild);  
+            if(ul.childElementCount>0)
+              ul.removeChild(ul.firstElementChild);  
           }
         </script>
     </head>
@@ -1071,7 +1113,7 @@ document.getElementById("button76").onclick = computeTimes(76);
 
 but this will not work either, as in this case :point_up: the JavaScript runtime will parse each line will immediately execute the `computeTimes` function instead of attaching it to the click event.
 
-The best option to avoid code duplication is the use of `this` :point_down::
+We can avoid code duplication with the use of `this` :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -1108,7 +1150,7 @@ The best option to avoid code duplication is the use of `this` :point_down::
 </html>
 ```
 
-:point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here a lazy way of stripping out the " times" string suffix, forcing a conversion to type `number`.
+:point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. The [`parseInt` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here used to strip out the " times" string suffix, forcing a conversion to type `number`.
 
 #### :bangbang: Example 4: mouse events
 
@@ -1122,8 +1164,9 @@ A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, .
     1. `mousedown`
     2. `mousemove`
     3. ...
-    n-1. `mousemove`
-    n. `mouseup`
+    4. ..
+    5. `mousemove`
+    6. `mouseup`
 
 Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer starts and remains active as long as the mouse pointer hovers over the button element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
 
@@ -1228,10 +1271,13 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
 
     <body>
       <form>
-          <p><em>Task: Write or mark the 3 most important information nuggets</em>
+          <p><em>Task: Write down / mark the 3 most important information nuggets</em>
             <br>
 
-            <textarea id="ta" cols="50" rows="5" readonly>"Hobey Baker (1892-1918) was an American amateur athlete of the early twentieth century, widely regarded by his contemporaries as one of the best athletes of his time."
+            <textarea id="ta" cols="50" rows="5" readonly>
+                "Hobey Baker (1892-1918) was an American amateur athlete of the early 
+                twentieth century, widely regarded by his contemporaries as one of the 
+                best athletes of his time."
             </textarea>
             <br>
 
@@ -1295,7 +1341,6 @@ In this example we do do make slight use of CSS (to flash a red background and a
                     t = t + 1;
                     document.getElementById(timerLog).innerHTML = t +" seconds";
                 }, 1000);
-
               }
 
               //we reached the end
@@ -1320,7 +1365,8 @@ In this example we do do make slight use of CSS (to flash a red background and a
             <em>Task: Type out the following text correctly:</em>
             <br>
 
-            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">H. Baker was an American amateur athlete of the 20th century.</textarea>
+            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">
+                H. Baker was an American amateur athlete of the 20th century.</textarea>
             <br>
 
             <textarea id="typed" cols="50" rows="5" readonly="" autocomplete="off"></textarea>
@@ -1344,107 +1390,7 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
 
-## Some ES6 concepts
 
-This section contains optional (non-exam) content.
-
-### Variable definition
-`var` has two scopes : global scope and function scope.
-
-ES6 introduces two new keywords that allow us to define variables :
-- `let` has a block scope
-- `const` is used to define read-only variable (its value is a constant and the identifier cannot be reassigned)
-
-### Arrow functions
-
-Arrow functions are a new and more concise syntax to write functions.
-```javascript
-//Regular function
-const addition = function (a,b){
-  return a + b;
-}
-//Arrow function (ES6 syntax)
-const addition = (a,b) => {return a+b};
-```
-In an arrow function, `this` does not represent the object calling the function (as in a regular function) but rather the object that defined the function. (In short, arrow function don't have their own `this` and `this` corresponds to `this` in the global scope)
-
-Arrow functions are often used for array manipulation (see the section "map, reduce, filter" below) and can sometimes turn a several-lines regular function into a one-line function. Still, they cannot always replace regular functions, notably, when an implicit binding of `this` is needed.
-
-### Map, Reduce and Filter
-
-Map, reduce and filter are array functions introduced by ES6.
-
-The **map** method cycles through an array, applies a function on each element and returns the new array.
-
-```javascript
-//Multiply each item of an array by 2
-//Without map (Before ES6)
-for(let i = 0;i<oldArray.length;i++){
-  newArray[i] = oldArray[i] * 2;
-}
-//With map (ES6 syntax)
-let newArray = oldArray.map(x=>x*2)
-```
-The **reduce** method cycles through an array, applies a method on each element in order to reduce the array to a single value.
-
-```javascript
-//Find the sum of an array
-//Without reduce (Before ES6)
-for(let i = 0;i<arr.length;i++){
-  sum += arr[i];
-}
-//With reduce (ES6 syntax)
-sum = arr.reduce((a,b)=>{return a+b});
-```
-The **filter** method cycles through the order and output a new filtered array containing only the items meeting a certain condition.
-
-```javascript
-//Only get the even values of an array
-//Without filter (before ES6)
-for(var i = 0;i<oldArray.length;i++){
-  if(arr[i]%2==0){
-    newArray.push(arr[i])
-  }
-}
-//With filter (ES6 syntax)
-let newArray = oldArray.filter((a)=>a%2==0)
-```
-
-### Default function arguments
-Since ES6, assigning default values to a function's parameters is possible.
-```javascript
-function foo(a,b = 1){
-  ...
-}
-```
-
-The default value is used when an argument is either `undefined` or omitted. It is also possible to call the above function without arguments as they will then be considered by either their default values (if specified) or as `undefined`.
-
-### Template strings
-
-Template literals allow us to plug variables in strings in a more readable way.
-
-```javascript
-var version = "ES6"
-var a = "This does not use " + version + "syntax";
-var b = "This uses ${version} syntax";
-```
-### Object destructuring
-
-Object destructuring allow us to extract properties of an object without having to do it one-by-one for each property.
-
-```javascript
-var game = {
-  player1 : "name1",
-  player2 : "name2",
-  ...
-}
-//Before ES6
-var player1 = game.player1;
-var player2 = game.player2;
-//With ES6
-var {player1, player2} = game
-```
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:

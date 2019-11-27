@@ -60,9 +60,7 @@ CSE1500: Web and Database Technology <!-- omit in toc -->
 
 The **Web technology materials and resources** of the 2019/20 [Web and Database Technology course](http://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48438) at TU Delft are listed here. 
 
-These extensive materials were created for the 2018/19 edition (to accomodate the 900+ students that were in class that year).
-
-Lectures/assignments with a 🚧 marker are not yet finalized for the 2019/20 edition!
+They were initially created for the 2018/19 edition of the course. Lectures with a 🚧 marker are not yet finalized for the 2019/20 edition and small changes are possible.
 
 The database materials (lectures/assignments) are not included here! You can find them on Brightspace! Due to the many code examples in the web technology lectures we opted to maintain the materials in a GitHub repository.
 
@@ -85,7 +83,7 @@ The database materials (lectures/assignments) are not included here! You can fin
 - [Web lectures](#web-lectures)
   - [Lecture 1](#lecture-1)
   - [Lecture 2](#lecture-2)
-  - [🚧 Lecture 3](#%f0%9f%9a%a7-lecture-3)
+  - [Lecture 3](#lecture-3)
   - [🚧 Lecture 4](#%f0%9f%9a%a7-lecture-4)
   - [🚧 Lecture 5](#%f0%9f%9a%a7-lecture-5)
   - [🚧 Lecture 6](#%f0%9f%9a%a7-lecture-6)
@@ -205,7 +203,7 @@ Until (and including) the 2017/18 edition, the web and database topics were inte
 
 There are six assignments in total.
 
-Assignments are worked on in **teams of 2 students**. *We do not allow larger teams; we do not allow teams of 1*. You are *not* required to work in the same group for both the database and web assignments, you can change partners.
+Assignments are worked on in **teams of 2 students**. *We do not allow larger teams; we do not allow teams of 1*.
 
 Assignments 1-3 cover database topics and can be found on Brightspace. Assignments 4-6 cover web technology topics: 
 
@@ -317,7 +315,7 @@ This lecture covers web design and HTML5 ([transcript](Lecture-2.md)).
   - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
   - Mathur, A., Acar, G., Friedman, M., Lucherini, E., Mayer, J., Ghetty, M. and Narayanan, A., 2019. [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/), ACM Human-Computer Interaction, Vol. 3, CSCW, Article 81.
 
-### 🚧 Lecture 3
+### Lecture 3
 
 This lecture covers client-side JavaScript ([transcript](Lecture-3.md)).
 
