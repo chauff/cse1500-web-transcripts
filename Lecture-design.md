@@ -22,7 +22,7 @@
 - Explain the ideas behind usability testing and employ it.
 - Employ HTML to create web pages.
 
-<sup>Note that this lecture does not cover **how to write HTML**, this is covered completely in the required reading for this lecture. At the end of this lecture we provide historic context to understand/appreciate the current state of HTML.</sup>
+<sup>Note that this lecture does not cover **how to write HTML**, this is covered in the required reading for this lecture. At the end of this lecture we provide historic context to understand/appreciate the current state of HTML.</sup>
 
 ## Web sites vs. web applications vs. the web as a platform
 
