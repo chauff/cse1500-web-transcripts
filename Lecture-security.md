@@ -1,8 +1,6 @@
 # Web security <!-- omit in toc -->
 
-:point_right: [Overview of all Lecture 8 materials](README.md#lecture-8)
-
-*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and also not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
@@ -23,31 +21,31 @@
     - [How to avoid it](#how-to-avoid-it)
     - [SQL injection](#sql-injection)
   - [Broken authentication](#broken-authentication)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-1)
-    - [How to avoid it](#how-to-avoid-it-1)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
   - [XSS](#xss)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-2)
-    - [How to avoid it](#how-to-avoid-it-2)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
   - [Improper Input Validation](#improper-input-validation)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-3)
-    - [How to avoid it](#how-to-avoid-it-3)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
   - [Security misconfiguration](#security-misconfiguration)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-4)
-    - [How to avoid it](#how-to-avoid-it-4)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
   - [Sensitive data exposure](#sensitive-data-exposure)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-5)
-    - [How to avoid it](#how-to-avoid-it-5)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
   - [Broken Access controls](#broken-access-controls)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-6)
-    - [How to avoid it](#how-to-avoid-it-6)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
   - [CSRF](#csrf)
-    - [How to avoid it](#how-to-avoid-it-7)
+    - [How to avoid it](#how-to-avoid-it)
   - [Insecure components](#insecure-components)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-7)
-    - [How to avoid it](#how-to-avoid-it-8)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
   - [Unvalidated Redirects](#unvalidated-redirects)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-8)
-    - [How to avoid it](#how-to-avoid-it-9)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [How to avoid it](#how-to-avoid-it)
 - [Summary](#summary)
 - [Self-check](#self-check)
 
@@ -252,7 +250,7 @@ One important injection type is missing in the above list: **SQL injections**. T
 
 ### Broken authentication
 
-Recall that in order to establish *sessions*, cookies are used ([Lecture 7](Lecture-7.md)). A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
+Recall that in order to establish *sessions*, cookies are used ([previous lecture](Lecture-sessions.md)). A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
 
 ![Session](img/L8-sessions.png)
 
@@ -420,7 +418,7 @@ In addition, if sensitive documents can be accessed without authorization, or us
 
 A malicious user, who is authorized to access a Web application (e.g. a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g. from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
-Web applications often make use of Direct Object References when generating a HTTP response. We have already seen this in a code snippet in [Lecture 6](Lecture-6.md):
+Web applications often make use of Direct Object References when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](Lecture-node2.md):
 
 ```javascript
 var todoTypes = {
@@ -553,7 +551,7 @@ Here are a few questions you should be able to answer after having followed the 
     - Using a Web application with weak encryption.
     - Using the browser’s "remember this password" option when logging into a Web application.
 
-3. What does the *same-origin policy* refer to (recall [Lecture 4](Lecture-4.md), in particular Ajax)? How is this related to web security?
+3. What does the *same-origin policy* refer to, in particular Ajax)? How is this related to web security?
 
 4. Which attack type does this scenario describe: An attacker can browse through other users' Facebook timelines by URL manipulation.
 

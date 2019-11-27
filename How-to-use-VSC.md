@@ -1,6 +1,5 @@
 Table of Contents
 ==
-TODO: check writeup!
 
 - [Table of Contents](#table-of-contents)
 - [How to use VSC](#how-to-use-vsc)

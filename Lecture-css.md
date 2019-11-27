@@ -1,7 +1,5 @@
 # CSS: the language of web design <!-- omit in toc -->
 
-:point_right: [Overview of all Lecture 5 materials](README.md#lecture-5)
-
 *At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
 
 ## Table of Contents <!-- omit in toc -->
