@@ -201,7 +201,7 @@ Until (and including) the 2017/18 edition, the web and database topics were inte
 
 ## Assignments & assessment
 
-There are six assignments in total.
+There are six assignments in this course in total.
 
 Assignments are worked on in **teams of 2 students**. *We do not allow larger teams; we do not allow teams of 1*.
 
@@ -214,6 +214,8 @@ Assignments 1-3 cover database topics and can be found on Brightspace. Assignmen
 **Assessment**: the three web assignments are assessed in a **single** interview session with a TA; the interview lasts 20-25 minutes. Each of the three assignments can be passed or failed (binary judgment, there are no grade levels) on an individual basis. The assessment rubric for the web assignments is available [here](rubric.md). The assessment takes place during week 2.9.
 
 **All assignments must be submitted in Brightspace before your assessment timeslot, and in any case no later than January 22, 2020 at 23:30 (hard deadline).** All submissions are timestamped. Late submissions (or re-submissions) will not be assessed. We are going to check if your submitted work is consistent with the one used for assessment.
+
+FYI, in previous years, roughly 90% of groups attempted and passed the first assignment, about 60% of groups passed two assignments and about 30% of groups all three assignments. 
 
 
 ## Demo application
