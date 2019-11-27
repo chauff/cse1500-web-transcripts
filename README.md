@@ -81,14 +81,14 @@ The database materials (lectures/assignments) are not included here! You can fin
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [Web lectures](#web-lectures)
-  - [Lecture 1](#lecture-1)
-  - [Lecture 2](#lecture-2)
-  - [Lecture 3](#lecture-3)
-  - [🚧 Lecture 4](#%f0%9f%9a%a7-lecture-4)
-  - [🚧 Lecture 5](#%f0%9f%9a%a7-lecture-5)
-  - [🚧 Lecture 6](#%f0%9f%9a%a7-lecture-6)
-  - [🚧 Lecture 7](#%f0%9f%9a%a7-lecture-7)
-  - [🚧 Lecture 8](#%f0%9f%9a%a7-lecture-8)
+  - [Lecture 9](#lecture-9)
+  - [Lecture 10](#lecture-10)
+  - [Lecture 11](#lecture-11)
+  - [🚧 Lecture 12](#%F0%9F%9A%A7-lecture-12)
+  - [🚧 Lecture 13](#%F0%9F%9A%A7-lecture-13)
+  - [🚧 Lecture 14](#%F0%9F%9A%A7-lecture-14)
+  - [🚧 Lecture 15](#%F0%9F%9A%A7-lecture-15)
+  - [🚧 Lecture 16](#%F0%9F%9A%A7-lecture-16)
 
 ## Course instructors
 
@@ -275,9 +275,11 @@ For each lecture we provide a range of materials:
 
 All lecture transcripts and assigments (which were developed in Markdown) were **automatically** converted to PDF format, for those students preferring PDFs. Warning: due to the automatic conversion not all pages will look great. You cann find them in the [generatedPDFs](generatedPDFs/) folder here on GitHub.
 
-### Lecture 1
+Lectures 1-8 cover database topics and can be found on Brightspace.
 
-The lecture covers HTTP ([transcript](Lecture-1.md)).
+### Lecture 9
+
+The lecture covers HTTP ([transcript](Lecture-http.md)).
   
 - Required readings: *none*
 - Recommended activity:
@@ -296,9 +298,9 @@ The lecture covers HTTP ([transcript](Lecture-1.md)).
   - Naylor, D., Finamore, A., Leontiadis, I., Grunenberger, Y., Mellia, M., Munafò, M., Papagiannaki, K. and Steenkiste, P., 2014. [The cost of the S in HTTPS](https://dl.acm.org/citation.cfm?id=2674991). In Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies (pp. 133-140).
   - Falaki, H., Lymberopoulos, D., Mahajan, R., Kandula, S. and Estrin, D., 2010. [A first look at traffic on smartphones](https://dl.acm.org/citation.cfm?id=1879176). In Proceedings of the 10th ACM SIGCOMM conference on Internet measurement (pp. 281-287).
 
-### Lecture 2
+### Lecture 10
 
-This lecture covers web design and HTML5 ([transcript](Lecture-2.md)).
+This lecture covers web design and HTML5 ([transcript](Lecture-design.md)).
 
 - Required readings:
   - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -315,9 +317,9 @@ This lecture covers web design and HTML5 ([transcript](Lecture-2.md)).
   - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
   - Mathur, A., Acar, G., Friedman, M., Lucherini, E., Mayer, J., Ghetty, M. and Narayanan, A., 2019. [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/), ACM Human-Computer Interaction, Vol. 3, CSCW, Article 81.
 
-### Lecture 3
+### Lecture 11
 
-This lecture covers client-side JavaScript ([transcript](Lecture-3.md)).
+This lecture covers client-side JavaScript ([transcript](Lecture-js.md)).
 
 - Required readings:
   - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -343,9 +345,9 @@ This lecture covers client-side JavaScript ([transcript](Lecture-3.md)).
   - Jangda, A., Powers, B., Berger, E. D., & Guha, A., 2019. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
 
 
-### 🚧 Lecture 4
+### 🚧 Lecture 12
 
-This lecture covers Node.js ([transcript](Lecture-4.md)).
+This lecture covers Node.js ([transcript](Lecture-node.md)).
 
 - Required readings:
   - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -357,9 +359,9 @@ This lecture covers Node.js ([transcript](Lecture-4.md)).
 - Relevant scientific publications:
   - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp.1023-1044.
   
-### 🚧 Lecture 5
+### 🚧 Lecture 13
 
-This lecture covers CSS ([transcript](Lecture-5.md)).
+This lecture covers CSS ([transcript](Lecture-css.md)).
   
 - Required readings:
   - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -375,9 +377,9 @@ This lecture covers CSS ([transcript](Lecture-5.md)).
 - Relevant scientific publications:
   - Meyerovich, L.A. and Bodik, R., 2010, April. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web (pp. 711-720). ACM.
 
-### 🚧 Lecture 6
+### 🚧 Lecture 14
 
-This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md)).
+This lecture covers advanced Node.js concepts ([transcript](Lecture-node2.md)).
 
 - Required readings: *none*
 - Recommended activities:
@@ -391,9 +393,9 @@ This lecture covers advanced Node.js concepts ([transcript](Lecture-6.md)).
   - Fard, A.M. and Mesbah, A., 2013, September. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings-article/2013/scam/12OmNylsZKu/12OmNwHhoWN). In Source Code Analysis and Manipulation (SCAM), 2013 IEEE 13th International Working Conference on (pp. 116-125). IEEE.
   - Nasehi, S.M., Sillito, J., Maurer, F. and Burns, C., 2012, September. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). In 2012 28th IEEE International Conference on Software Maintenance (ICSM) (pp. 25-34). IEEE.
 
-### 🚧 Lecture 7
+### 🚧 Lecture 15
 
-This lecture covers cookies and sessions ([transcript](Lecture-7.md)).
+This lecture covers cookies and sessions ([transcript](Lecture-sessions.md)).
 
 - Required readings: *none*
 - Recommended activities: *none*
@@ -405,9 +407,9 @@ This lecture covers cookies and sessions ([transcript](Lecture-7.md)).
   - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](https://ieeexplore.ieee.org/abstract/document/865085). IEEE internet computing, 4(4), pp.36-44.
   - Franken, G., Van Goethem, T. and Joosen, W., 2018. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168.
 
-### 🚧 Lecture 8 
+### 🚧 Lecture 16
 
-This lecture covers web security topics ([transcript](Lecture-8.md)).
+This lecture covers web security topics ([transcript](Lecture-security.md)).
 
 - Required readings: *none*
 - Recommended activities:
