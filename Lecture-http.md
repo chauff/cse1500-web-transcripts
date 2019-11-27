@@ -48,7 +48,7 @@
 
 <sup>Image sourced from the linked video below.</sup>
 
-Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wide Web Consortium, also known as **W3C**: what are web standards and what makes web standards so important?
+Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wide Web Consortium, also known as the **W3C**: what are web standards and what makes web standards so important?
 
 ## Learning goals
 
