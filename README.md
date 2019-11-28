@@ -354,7 +354,7 @@ This lecture covers Node.js ([transcript](Lecture-node.md)).
 - Required readings:
   - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
 - Recommended activities:
-  - [Interactive exercises for Lecture 4](nodeschool-exercises.md).
+  - [Interactive Node.js exercises](nodeschool-exercises.md).
 - Recommended readings:
   - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451).
   - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).
