@@ -326,7 +326,7 @@ This lecture covers client-side JavaScript ([transcript](Lecture-js.md)).
 - Required readings:
   - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
 - Recommended activities:
-  - [Interactive exercises for Lecture 3](nodeschool-exercises.md).
+  - [Interactive JavaScript exercises](nodeschool-exercises.md).
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
   - [JavaScript30](https://javascript30.com/): 30 day vanilla JS coding challenges
 - Recommended readings:
