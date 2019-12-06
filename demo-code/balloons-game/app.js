@@ -38,7 +38,6 @@ setInterval(function() {
       let gameObj = websockets[i];
       //if the gameObj has a final status, the game is complete/aborted
       if (gameObj.finalStatus != null) {
-        console.log("\tDeleting element " + i);
         delete websockets[i];
       }
     }

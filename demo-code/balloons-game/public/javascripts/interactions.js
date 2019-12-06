@@ -1,3 +1,4 @@
+//@ts-check
 /* ESLint global variables information */
 /* global Setup, Status, Messages, englishDict, Alphabet, VisibleWordBoard, StatusBar, createBalloons*/
 
@@ -228,7 +229,7 @@ function disableAlphabetButtons() {
           if (res == null) {
             promptString = Status["prompt"];
           } else {
-            res = res.toUpperCase();
+            res = res.toUpperCase();//game is played with uppercase letters
 
             if (
               res.length < Setup.MIN_WORD_LENGTH ||
@@ -239,10 +240,11 @@ function disableAlphabetButtons() {
               promptString = Status["promptChars"];
             }
             //dictionary has only lowercase entries
+            //TODO: convert the dictionary to uppercase to avoid this extra string conversion cost
             else if (
               Object.prototype.hasOwnProperty.call(
                 englishDict,
-                res.toLocaleLowerCase
+                res.toLocaleLowerCase()
               ) == false
             ) {
               promptString = Status["promptEnglish"];

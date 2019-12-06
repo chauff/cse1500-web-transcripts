@@ -1,5 +1,6 @@
 Table of Contents
 ==
+- [Table of Contents](#table-of-contents)
 - [Demo code](#demo-code)
     - [balloons-game](#balloons-game)
     - [node-file-watching-ex](#node-file-watching-ex)
@@ -51,9 +52,9 @@ npm test
 
 *Note: you will learn all about testing in a later course; Jest is included here for those that want to know how testing in JavaScript can be done.*
 
-The code is mostly void of [ES6 features](http://es6-features.org/) - the exception being the use of `let`. This was a conscious choice due to the small amount of time we have to teach JavaScript. You can use ES6 features in your own code.
+The code is mostly void of [ES6 features](http://es6-features.org/) - the exception being the use of `let` and `const`. This was a conscious choice due to the small amount of time we have to teach JavaScript. You can use ES6 features in your own code.
 
-In alignment with A1, the wireframe designs for this game are: [Splash screen](https://wireframe.cc/uInPWd) and [game screen](https://wireframe.cc/z9NaMr).
+In alignment with the first web technology assignment, the wireframe designs for this game are the [splash screen](https://wireframe.cc/uInPWd) and the [game screen](https://wireframe.cc/z9NaMr).
 
 The game required very few public resources. They are listed here:
 - The English word list came from https://github.com/dwyl/english-words
