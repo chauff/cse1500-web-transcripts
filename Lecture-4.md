@@ -2,7 +2,7 @@
 
 :point_right: [Overview of all Lecture 4 materials](README.md#lecture-4)
 
-*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
+*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and also not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
@@ -34,18 +34,17 @@
 
 ## Introduction to Node.js
 
-Node.js (or *Node* for short) in its own words:
+Node.js in [its own words](https://web.archive.org/web/20180306073316/https://nodejs.org/en/):
 
 ```console
-“Node.js is a platform built on Google Chrome's JavaScript runtime for easily building fast,
-scalable network applications. Node.js uses an event-driven, non-blocking  I/O model that
-makes it lightweight and efficient, perfect for data-intensive real-time applications that
-run across distributed devices."
+"Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an 
+event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package 
+ecosystem, npm, is the largest ecosystem of open source libraries in the world."
 ```
 
-The most important keywords in this description are **scalable**, **event-driven** and **non-blocking**. While we are not concerned with scalability in this course, we will return to the other two keywords shortly.
+The most important keywords in this description are **efficient**, **event-driven** and **non-blocking**. While we are not concerned with scalability/efficiency in this course, we will return to the other two keywords shortly.
 
-Node.js is by now a well-established platform; the most important milestones between 2008 and 2018 are:
+Node.js is by now a well-established platform; important milestones between 2008 and 2018 are:
 
 - 2008: Google's JavaScript execution engine (**V8**) is open-sourced (if you are interested what happened in the 10 years since then, [check out this blog post from the V8 team](https://v8project.blogspot.com/2018/09/10-years.html)).
 - 2009: Node.js is released. It builds on V8.
@@ -53,8 +52,9 @@ Node.js is by now a well-established platform; the most important milestones bet
 - December 2014: Node.js developers are unhappy with the stewardship of the project and fork io.js.
 - May 2015: io.js merges back with Node.js. The [Node.js Foundation](https://foundation.nodejs.org/) is set up. It has been steering Node's development ever since.
 - 2017: Node becomes a **first-class citizen of V8**. This means that no V8 code change is allowed to break Node.
+- August 2018: [Node.js has been downloaded more than one billion times.](https://medium.com/@nodejs/more-than-a-billion-downloads-of-node-js-952a8a98eb42)
 
-Node.js is widely used today, in [Stack Overflow's 2017 developer survey](https://insights.stackoverflow.com/survey/2017) Node.js was the most popular framework in the *Frameworks, Libraries, and Other Technologies* section. If you want to know more about how the V8 engine and Node.js fit together, watch [this keynote by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
+Node.js is widely used today, in [Stack Overflow's 2018 developer survey](https://insights.stackoverflow.com/survey/2018) Node.js was the most popular framework in the *Frameworks, Libraries, and Other Technologies* section. If you want to know more about how the V8 engine and Node.js fit together, watch [this keynote by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
 
 ### Node.js vs. client-side JavaScript
 
@@ -71,7 +71,7 @@ Take a look at this event loop example:
 
 ![Node.js event loop](img/L4-event-loop.png)
 
-Here, despite the **single-threaded nature** of Node.js, several things are seemingly going on in parallel: a file is read from disk, a database is queried while at the same time an HTTP request from a client comes in. The reason for this is the **asynchronous** nature of file reads, network requests and so on (basically: I/O requests). While the event loop is executed in a single thread, Node maintains a *pool of threads* in order to process I/O requests in parallel. So, it is more correct to say that Node's event loop is single-threaded. To make this concrete, let's look at how local files are read in Node. Here is an example taken from the [Node documentation](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) :point_down::
+Here, despite the **single-threaded nature** of Node.js, several things are seemingly going on in parallel: a file is read from disk, a database is queried while at the same time an HTTP request from a client comes in. The reason for this is the **asynchronous** nature of file reads, network requests and so on (basically: I/O requests). While the event loop is executed in a single thread, Node maintains a *pool of threads* in order to process I/O requests in parallel. So, it is more correct to say that **Node's event loop is single-threaded**. To make this concrete, let's look at how local files are read in Node. Here is an example taken from the [Node documentation](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) :point_down::
 
 ```javascript
 fs.readFile('/etc/passwd', function(err, data) {
