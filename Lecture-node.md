@@ -1,26 +1,25 @@
 # Node.js: JavaScript on the server <!-- omit in toc -->
 
-:point_right: [Overview of all Lecture 4 materials](README.md#lecture-4)
-
-*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and also not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and also not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Introduction to Node.js](#introduction-to-nodejs)
-    - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
-    - [Event-driven and non-blocking](#event-driven-and-non-blocking)
+  - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
+  - [Event-driven and non-blocking](#event-driven-and-non-blocking)
+- [Contributing to Node.js](#contributing-to-nodejs)
 - [Node.js in examples](#nodejs-in-examples)
-    - [:bangbang: Watching a file for changes](#bangbang-watching-a-file-for-changes)
-    - [:bangbang: Low-level networking with Node.js](#bangbang-low-level-networking-with-nodejs)
-    - [:bangbang: Creating a Hello World! web server with Node.js](#bangbang-creating-a-hello-world-web-server-with-nodejs)
+  - [:bangbang: Watching a file for changes](#bangbang-watching-a-file-for-changes)
+  - [:bangbang: Low-level networking with Node.js](#bangbang-low-level-networking-with-nodejs)
+  - [:bangbang: Creating a Hello World! web server with Node.js](#bangbang-creating-a-hello-world-web-server-with-nodejs)
 - [Express](#express)
-    - [:bangbang: Greetings Express](#bangbang-greetings-express)
-    - [:bangbang: A complete web application](#bangbang-a-complete-web-application)
+  - [:bangbang: Greetings Express](#bangbang-greetings-express)
+  - [:bangbang: A complete web application](#bangbang-a-complete-web-application)
 - [JSON: exchanging data between the client and server](#json-exchanging-data-between-the-client-and-server)
 - [Ajax: dynamic updating on the client](#ajax-dynamic-updating-on-the-client)
 - [WebSockets](#websockets)
-    - [:bangbang: A first WebSocket example](#bangbang-a-first-websocket-example)
-    - [WebSockets for multi-player games](#websockets-for-multi-player-games)
+  - [:bangbang: A first WebSocket example](#bangbang-a-first-websocket-example)
+  - [WebSockets for multi-player games](#websockets-for-multi-player-games)
 - [Self-check](#self-check)
 
 
@@ -143,7 +142,7 @@ console.log("Now watching " + file);
 
 Although the piece of code :point_up: is small, it has a few interesting components:
 
-- Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [Lecture 6](Lecture-6.md)). In this case, `fs` is our entry point to the file system.
+- Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [a later lecture](Lecture-node2.md)). In this case, `fs` is our entry point to the file system.
 - You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) contains two parameters: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous (though nothing prevents us from giving the function a name) and executed asynchronously.
 - As the filesystem access requires operating system specific code, the behaviour can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation (scroll to *Availability*).
 - The last line of code (`console.log("Now watching " + file);`) is executed immediately after the **setup** of the callback.
@@ -186,7 +185,7 @@ Finally, let's quickly walk through the steps to run this script from within VSC
 
 ### :bangbang: Low-level networking with Node.js
 
-As already mentioned, Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number (if you don't know what these two concepts refer to, have a look at [Lecture 1](Lecture-1.md) again).
+As already mentioned, Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number (if you don't know what these two concepts refer to, have a look at [the HTTP lecture](Lecture-http.md) again).
 
 TCP socket connections have **two endpoints**:
 
@@ -312,7 +311,7 @@ server.listen(port, function () {
 });
 ```
 
-To make this example more interesting, let's return different responses depending on the URL path (if you are unsure about the components that make up a URL, head to [Lecture 1](Lecture-1.md)). The task is now to return a greeting for the `/greetme` path and a `404 Not Found` error otherwise. If the URL query (i.e. the part of the URL that assigns values to parameters) contains a parameter named `name`, we greet by name, and otherwise use `Anonymous`. Our [script](demo-code/node-url-routing-ex) now looks as follows :point_down::
+To make this example more interesting, let's return different responses depending on the URL path (if you are unsure about the components that make up a URL, head to the [HTTP lecture](Lecture-http.md)). The task is now to return a greeting for the `/greetme` path and a `404 Not Found` error otherwise. If the URL query (i.e. the part of the URL that assigns values to parameters) contains a parameter named `name`, we greet by name, and otherwise use `Anonymous`. Our [script](demo-code/node-url-routing-ex) now looks as follows :point_down::
 
 ```javascript
 var http = require("http");
