@@ -81,7 +81,7 @@ The web is built on top of the Internet. The Internet describes the hardware lay
 The different sub-networks function autonomously, they do not depend on each other. There is not a single master - no machine or sub-network is in control of the whole network. It is very easy for machines or even entire sub-networks to join and leave the network without interrupting the flow of data among the remaining network.
 All devices interact with each other through **agreed-upon open standards** which are easy to use. These standards are implemented in a wide range of open-source server and client software.
 
-To show how far we have come, [here](https://qz.com/860873/a-1973-map-of-the-internet-charted-by-darpa/) is the state of the Internet in 1973.
+To show how far we have come, [here](https://twitter.com/workergnome/status/807704855276122114) is the state of the Internet in 1973.
 
 ### Two important organizations
 
