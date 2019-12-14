@@ -1,6 +1,6 @@
 # Cookies, sessions and third-party authentication <!-- omit in toc -->
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and also not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
@@ -11,20 +11,20 @@
 - [Cookies vs. sessions](#cookies-vs-sessions)
 - [Cookie flow](#cookie-flow)
 - [Cookies in more detail](#cookies-in-more-detail)
-    - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
-    - [Cookie fields](#cookie-fields)
-    - [Cookie field 'Domain'](#cookie-field-domain)
+  - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
+  - [Cookie fields](#cookie-fields)
+  - [Cookie field 'Domain'](#cookie-field-domain)
 - [:bangbang: A Node.js application](#bangbang-a-nodejs-application)
 - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
 - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
-    - [Third-party cookies](#third-party-cookies)
-    - [Evercookie](#evercookie)
+  - [Third-party cookies](#third-party-cookies)
+  - [Evercookie](#evercookie)
 - [Client-side cookies](#client-side-cookies)
 - [:bangbang: Sessions](#bangbang-sessions)
 - [Third-party authentication](#third-party-authentication)
-    - [OAuth 2.0 roles](#oauth-20-roles)
-    - [Roles exemplified](#roles-exemplified)
-    - [Express](#express)
+  - [OAuth 2.0 roles](#oauth-20-roles)
+  - [Roles exemplified](#roles-exemplified)
+  - [Express](#express)
 - [Self-check](#self-check)
 
 
