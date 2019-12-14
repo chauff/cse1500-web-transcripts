@@ -1,44 +1,153 @@
 # HTTP: the language of Web communication <!-- omit in toc -->
 
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
+
 ## Table of Contents <!-- omit in toc -->
 
 - [Web standards](#web-standards)
 - [Learning goals](#learning-goals)
 - [World Wide Web vs. Internet](#world-wide-web-vs-internet)
-    - [A brief history of the web](#a-brief-history-of-the-web)
-    - [Key aspects of the Internet](#key-aspects-of-the-internet)
-    - [Two important organizations](#two-important-organizations)
+  - [A brief history of the web](#a-brief-history-of-the-web)
+  - [Key aspects of the Internet](#key-aspects-of-the-internet)
+  - [Two important organizations](#two-important-organizations)
 - [HTTP messages](#http-messages)
-    - [Web servers and clients](#web-servers-and-clients)
-    - [Network communication](#network-communication)
-    - [:bangbang: Activity](#bangbang-activity)
-    - [HTTP request message](#http-request-message)
-    - [HTTP response message](#http-response-message)
+  - [Web servers and clients](#web-servers-and-clients)
+  - [Network communication](#network-communication)
+  - [:bangbang: Activity](#bangbang-activity)
+  - [HTTP request message](#http-request-message)
+  - [HTTP response message](#http-response-message)
 - [HTTP headers dissected](#http-headers-dissected)
-    - [Well-known header fields](#well-known-header-fields)
-    - [Header field Content-Type](#header-field-content-type)
-    - [Header field Content-Length](#header-field-content-length)
-    - [Header field Content-Encoding](#header-field-content-encoding)
-    - [Header field Content-MD5](#header-field-content-md5)
-    - [Header field Expires](#header-field-expires)
-    - [Header field Cache-Control](#header-field-cache-control)
-    - [Header field Last-Modified](#header-field-last-modified)
-    - [Header fields Connection & Upgrade](#header-fields-connection--upgrade)
-    - [Status codes](#status-codes)
+  - [Well-known header fields](#well-known-header-fields)
+  - [Header field Content-Type](#header-field-content-type)
+  - [Header field Content-Length](#header-field-content-length)
+  - [Header field Content-Encoding](#header-field-content-encoding)
+  - [Header field Content-MD5](#header-field-content-md5)
+  - [Header field Expires](#header-field-expires)
+  - [Header field Cache-Control](#header-field-cache-control)
+  - [Header field Last-Modified](#header-field-last-modified)
+  - [Header fields Connection &amp; Upgrade](#header-fields-connection-amp-upgrade)
+  - [Status codes](#status-codes)
 - [HTTP methods](#http-methods)
-    - [Common HTTP methods](#common-http-methods)
-    - [:bangbang: Activity](#bangbang-activity)
-    - [From domain to IP address](#from-domain-to-ip-address)
+  - [Common HTTP methods](#common-http-methods)
+  - [:bangbang: Activity](#bangbang-activity-1)
+  - [From domain to IP address](#from-domain-to-ip-address)
 - [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
-    - [URL syntax: query](#url-syntax-query)
-    - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
-    - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
-    - [URL design restrictions](#url-design-restrictions)
+- [<ul>
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
 - [Authentication](#authentication)
-    - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
-    - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
-    - [Authentication by fat URLs](#authentication-by-fat-urls)
-    - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
+- [Secure HTTP](#secure-http)
+- [Self-check](#self-check)
+<li>http://правительство.рф</li>
+</ul>](#ul-lihttp%d0%bf%d1%80%d0%b0%d0%b2%d0%b8%d1%82%d0%b5%d0%bb%d1%8c%d1%81%d1%82%d0%b2%d0%be%d1%80%d1%84li-ul)
+  - [URL syntax: query](#url-syntax-query)
+  - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
+  - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
+  - [URL design restrictions](#url-design-restrictions)
+- [Authentication](#authentication)
+  - [Authentication by user-related HTTP header fields](#authentication-by-user-related-http-header-fields)
+  - [Authentication by Client-IP address tracking](#authentication-by-client-ip-address-tracking)
+  - [Authentication by fat URLs](#authentication-by-fat-urls)
+  - [Authentication by HTTP basic authentication](#authentication-by-http-basic-authentication)
 - [Secure HTTP](#secure-http)
 - [Self-check](#self-check)
 
@@ -110,6 +219,7 @@ On the web, clients and servers communicate with each other through **HTTP reque
 
 How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources**, that is any kind of content with an identity on the web. This can be static files, web services, but also dynamically generated content. As long as they are accessible through an identifier, they can be considered as web resources.
 The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
+**HTTP proxies** are part of the Internet's infrastructure - there are many devices between a client and server that forward or process (e.g. filtering of requests, caching of responses) the HTTP requests and responses. 
 
 ### Network communication
 
@@ -127,7 +237,9 @@ Many network protocols exist, to us only three are of importance:
 - the Transmission Control Protocol (**TCP**), and
 - the HyperText Transfer Protocol (**HTTP**).
 
-HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
+HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it! 
+
+🚩 Note, that this setup will change in HTTP/3, which resides on top of UDP, a protocol without guarantees of message delivery and packet order. HTTP/3 itself will be responsible to ensure reliable transmissions in a highly efficient manner (which in turn will lead to speedups over HTTP/1.1 and HTTP/2).
 
 ### :bangbang: Activity
 
@@ -137,13 +249,13 @@ The Firefox Developer Tools can be reached from within the browser by heading to
 
 ![Browser built-in web dev tools](img/L1-devtools.png)
 
-You can see above that the resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (31 to be exact). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each http request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than three seconds to receive a response from the server when requesting the page residing at https://www.tudelft.nl/ and nearly five seconds to complete all requests. This is actually not a lot of resources; head over to a site like [Volkskrant](https://www.volkskrant.nl/), [NYTimes](https://www.volkskrant.nl/) or the [Guardian](https://www.theguardian.com/international) and the cascade of resource requests - at the end a few hundred resources will have been requested.
+:point_up: You can see that the resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (31 to be exact). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each http request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than three seconds to receive a response from the server when requesting the page residing at https://www.tudelft.nl/ and nearly five seconds to complete all requests. This is actually not a lot of resources; head over to a site like [Volkskrant](https://www.volkskrant.nl/), [NYTimes](https://www.volkskrant.nl/) or the [Guardian](https://www.theguardian.com/international) and look at the cascade of resource requests - at the end a few hundred resources will have been requested.
 
-Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in the *Headers panel* (which appears within the Network panel) when clicking on a particular resource row:
+Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in the *Headers panel* (which appears within the Network panel) when clicking on a particular resource row :point_down: :
 
 ![Browser built-in web dev tools](img/L1-devtools2.png)
 
-Note that above the request header is neatly organized, toggle the *Raw Headers* button to see how the request and response headers look in their raw format (i.e. how the header information is transferred).
+:point_up: Note that above the request header is neatly organized, toggle the *Raw Headers* button to see how the request and response headers look in their raw format (i.e. how the header information is transferred).
 
 Now that you have a first idea of what HTTP messages are about, let's dive into the details!
 
@@ -305,7 +417,7 @@ But why bother with encodings at all? If an image or video is compressed by the 
 
 Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy (which in the worst case can lead to [catastrophic errors](https://raygun.com/blog/costly-software-errors-history/)).
 
-MD5 stands for **message digest** and acts as a sanity check: the HTTP message content is hashed into a 128 bit value (the checksum). *Hashing* simply means that data of arbitrary size is mapped to data of fixed size in a deterministic manner. Once a client receives an HTTP response message that contains an MD5 checksum (computed by the server based on the message body), it then computes the checksum of the messages body as well and compares it with the server-provided value. If there is a mismatch, the client should assume that the content has been corrupted along the way and thus it should request the web resource again.
+MD5 stands for **message digest** and acts as a sanity check: the HTTP message content is hashed into a 128 bit value (the checksum). *Hashing* simply means that data of arbitrary size is mapped to data of fixed size in a deterministic manner. The MD5 checksum algorithm is described in [RFC 1321](https://tools.ietf.org/html/rfc1321). Once a client receives an HTTP response message that contains an MD5 checksum (computed by the server based on the message body), it then computes the checksum of the messages body as well and compares it with the server-provided value. If there is a mismatch, the client should assume that the content has been corrupted along the way and thus it should request the web resource again.
 
 `Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
 
@@ -333,13 +445,13 @@ There is another header that is similar to the `Expires` header: `Cache-Control`
 
 Enabling the origin server to fix in advance how quickly a cached version of a resource goes stale was an important design decision. The alternative would have been to solely rely on web caches to query the origin server to determine whether or not the cached resources are out of date - this would be inefficient though as these kind of enquiries would have to happen very frequently.
 
-Here is an example of the header settings of https://www.theguardian.com/uk:
+Here is an example of the header settings of https://www.theguardian.com/uk :point_down: :
 
 ![Cache-Control Guardian UK](img/L1-cache-control.png)
 
 Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that `Cache-Control` directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture (for more information, [check the `Cache-Control` MDN page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)).
 
-Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings above tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any cache can store a copy of the response.
+Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any cache can store a copy of the response.
 
 
 ### Header field Last-Modified
@@ -364,7 +476,7 @@ This can be achieved through **polling**: the client **regularly** sends an HTTP
 
 An alternative to polling is **long polling**: here, the client sends an HTTP request as before, but this time the server holds the request open until new data is available before sending its HTTP response. Once the response is sent, the client immediately sends another HTTP request that is kept open. While this avoids wasteful HTTP request/response pairs, it requires the server backend to be significantly more complex: the backend is now responsible for ensuring the right data is sent to the right client and scaling becomes an issue.
 
-Both options are workarounds to the requirement of **client-initiated** HTTP request/response pairs. The IETF recognized early on that such solutions will not be sufficient forever and in 2011 standardized the **WebSocket protocol** ([RFC 6455](https://tools.ietf.org/html/rfc6455)). The RFC 6455 abstract read as follows:
+Both options are workarounds to the requirement of **client-initiated** HTTP request/response pairs. The IETF recognized early on that such solutions will not be sufficient forever and in 2011 standardized the **WebSocket protocol** ([RFC 6455](https://tools.ietf.org/html/rfc6455)). The RFC 6455 abstract read as follows :point_down: :
 
 ```console
 The WebSocket Protocol enables two-way communication between a client
@@ -383,7 +495,7 @@ WebSockets finally enable **bidirectional communication** between client and ser
 
 Client and server agree to this new protocol as follows: the client initiates the protocol *upgrade* by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
 
-For a concrete example, explore the HTTP request/response headers of the [word guesser demo game](demo-code/balloons-game). It relies on WebSockets to enable bidirectional communication between client and server. The browser's network panel allows you once more to investigate the protocol specifics:
+For a concrete example, explore the HTTP request/response headers of the [word guesser demo game](demo-code/balloons-game). It relies on WebSockets to enable bidirectional communication between client and server. The browser's network panel allows you once more to investigate the protocol specifics :point_down: :
 
 ![Network monitor WebSockets](img/L1-websocket.png)
 
@@ -440,11 +552,11 @@ Status codes starting with 100 provide information to the client, e.g. `100 Cont
 
 Status code `200 OK` is the most common one - it indicates that the HTTP request was successful and the response contains the requested web resource (or a part of it).
 
-Status codes in the three hundred range most often point to a redirect: a resource that was originally under URL `A` can now be found under URL `B`. These redirects are automatically resolved by the browser - you only notice a slightly longer loading time, otherwise redirects do not affect browser users. The network monitor shows you what exactly this delay amounts to:
+Status codes in the three hundred range most often point to a redirect: a resource that was originally under URL `A` can now be found under URL `B`. These redirects are automatically resolved by the browser - you only notice a slightly longer loading time, otherwise redirects do not affect browser users. The network monitor shows you what exactly this delay amounts to :point_down: :
 
 ![Network monitor redirect](img/L1-redirect.png)
 
-Here, status code `301 Moved Permanently` indicates that the resource at http://volkskrant.nl has been moved elsewhere for good. The `Location` header tells us the new location (https://volkskrant.nl).
+Here :point_up:, status code `301 Moved Permanently` indicates that the resource at http://volkskrant.nl has been moved elsewhere for good. The `Location` header tells us the new location (https://volkskrant.nl).
 
 Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, i.e. the web resource or entity the client requests, does not exist on the server.
 
@@ -746,7 +858,7 @@ All of the shown header fields are request header fields, i.e. sent from the cli
 
 The first three header fields contain information about the user such as an email address, the identifying string for the user's device (though here device is rather general and refers to a particular type of mobile phone, not the specific phone of this user), and the web page the user came from.
 
-In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by web crawlers; in case they break a web server due to too much crawling, the owner of the web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device/browser-specific customization, but not more. Here is a concrete example of the `User-Agent` a Firefox browser may send: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:68.0) Gecko/20100101 Firefox/68.0`. The `Referer` is similarly crude: it can tell us something about a user's interests (because the user had just visited that resource) but does not enable us to uniquely identify a user.
+In reality, users rarely publish their email addresses through the `From` field, this field is today mostly used by web crawlers; in case they break a web server due to too much crawling, the owner of the web server can quickly contact the humans behind the crawler via email. The `User-Agent` allows device/browser-specific customization, but not more. Here is a concrete example of the `User-Agent` a Firefox browser may send: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:68.0) Gecko/20100101 Firefox/68.0`. A number of services (e.g. [userstack](https://userstack.com/)) exist that provide interpretations of the user-agent string. The `Referer` is similarly crude: it can tell us something about a user's interests (because the user had just visited that resource) but does not enable us to uniquely identify a user.
 
 To conclude, the HTTP headers `From`, `Referer` and `User-Agent` are not suitable to track the modern web user. We cover the `Client-IP` header next and `Authorization` in a [later section](#http-basic-authentication).
 
@@ -768,11 +880,11 @@ The principle of fat URLs is simple: users are tracked through the generation of
 
 In this manner, different HTTP requests can be tied together into a single **logical session**: the server is aware which requests are coming from the same user through the ID inside the fat URLs.
 
-Let's look at this concept one more time, based on the following toy example:
+Let's look at this concept one more time, based on the following toy example :point_down: :
 
 ![Fat URL toy example](img/L1-fatURLs.png)
 
-On the left you see a shop web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page `my-shop.nl`, the server recognizes the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server. This authenticaion approach is still to weak though as the user can simply navigate to `my-shop.nl` again and to receive a new unique identifier.
+On the left :point_up: you see a shop web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page `my-shop.nl`, the server recognizes the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server. This authenticaion approach is still to weak though as the user can simply navigate to `my-shop.nl` again and to receive a new unique identifier.
 
 **Fat URLs have issues**:
 
@@ -789,11 +901,11 @@ To conclude, fat URLs are a valid option for authentication as long as you are a
 Let's move on to the final authentication option we consider here: **HTTP basic authentication**. You are already familiar with this type of authentication: the server asks the user **explicitly** for authentication by requesting a valid username and a password.
 HTTP has a built-in mechanism to support this process through the `WWW-Authenticate` and `Authorization` headers. Since HTTP is **stateless**, once a user has logged in, the login information has to be resend to the server with every single HTTP request the user's device is making.
 
-Here is a concrete example of HTTP basic authentication:
+Here is a concrete example of HTTP basic authentication :point_down: :
 
 ![Basic authentication example](img/L1-basicauth.png)
 
- We have the usual server and client setup. The client sends an HTTP request to access a particular web resource, in this case the `index.html` page residing at `www.microsoft.com`.
+We have the usual server and client setup :point_up:. The client sends an HTTP request to access a particular web resource, in this case the `index.html` page residing at `www.microsoft.com`.
 
 The server sends back a `401` status code, indicating to the client that this web resource requires a login. It also sends back information about the supported authentication scheme (in this case: `Basic`). There are several authentication schemes, but we will only consider the basic one here. The *realm* describes the protection area: if several web resources on the same server require authentication within the same realm, a single user/password combination should be sufficient to access all of them.
 

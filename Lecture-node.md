@@ -1,13 +1,12 @@
 # Node.js: JavaScript on the server <!-- omit in toc -->
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and also not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Introduction to Node.js](#introduction-to-nodejs)
   - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
   - [Event-driven and non-blocking](#event-driven-and-non-blocking)
-- [Contributing to Node.js](#contributing-to-nodejs)
 - [Node.js in examples](#nodejs-in-examples)
   - [:bangbang: Watching a file for changes](#bangbang-watching-a-file-for-changes)
   - [:bangbang: Low-level networking with Node.js](#bangbang-low-level-networking-with-nodejs)
@@ -53,7 +52,7 @@ Node.js is by now a well-established platform; important milestones between 2008
 - 2017: Node becomes a **first-class citizen of V8**. This means that no V8 code change is allowed to break Node.
 - August 2018: [Node.js has been downloaded more than one billion times.](https://medium.com/@nodejs/more-than-a-billion-downloads-of-node-js-952a8a98eb42)
 
-Node.js is widely used today, in [Stack Overflow's 2018 developer survey](https://insights.stackoverflow.com/survey/2018) Node.js was the most popular framework in the *Frameworks, Libraries, and Other Technologies* section. If you want to know more about how the V8 engine and Node.js fit together, watch [this keynote by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
+Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE). If you want to know more about how the V8 engine and Node.js fit together, watch [this keynote by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
 
 ### Node.js vs. client-side JavaScript
 
@@ -100,25 +99,15 @@ Here is one more comparison of the blocking vs. non-blocking nature of code exec
 | 3. **wait** for the database to return data and process it | 3. **do other things**                                                  |
 | 4. process the next request                               | 4. when the callback returns process it                          |
 
-What this example showcases is Node's very efficient way of handling I/O requests. I/O requests usually require a waiting time - waiting for a database to return results, waiting for a third-party web service or waiting for a connection request. By using callbacks, the Node runtime does not have to wait for slow I/O operations to complete. This explanation is by necessity a simplified version of the real process, as one could spend a lecture alone on the inner workings of the event loop. If you are interested in this topic, watch this excellent talk by [Philip Roberts on the topic as well as his visualisation tool](http://latentflip.com/loupe/).
+What this example showcases is Node's very efficient way of handling I/O requests. I/O requests usually require a waiting time - waiting for a database to return results, waiting for a third-party web service or waiting for a connection request. By using callbacks, the Node runtime does not have to wait for slow I/O operations to complete. This explanation is by necessity a simplified version of the real process, as one could spend a lecture alone on the inner workings of the event loop. If you are interested in this topic, [watch this excellent talk](http://latentflip.com/loupe/) by Philip Roberts on the topic.
 
 Node's focus on making so-called **I/O bound programs** (that is, programs constrained by data access where adding more CPU power will not lead to speedups) efficient comes at a price: programs that require heavy CPU usage and contain few I/O requests may be better served on other platforms.
 
 As the typical web application is indeed I/O bound, Node.js has become a popular choice of server-side framework. Another positive side effect of Node is the *reuse* of the language: instead of learning JavaScript for the client-side and PHP (or another language) for the server-side part of an application, we restrict ourselves to a single language and can even *share code* between client and server efficiently.
 
-## Contributing to Node.js
-
-Node.js is an ever-growing framework notably thanks to its contributors.
-Some areas that need contributions the most include:
-- Documentation (enhancing and adding documentations)
-- Guides (documentations to help end-users with real-world use cases)
-- Node.js collection (central community resource for content around Node.js)
-- Automating (a variety of works needs to be automated)
-
-If you are interested in contributing, check [this](https://dev.to/azure/start-contributing-to-nodejs-in-the-new-year-3dlh) !
 ## Node.js in examples
 
-Let's now walk through a number of Node.js code examples that increase in complexity and lead us towards server-side scripting for web applications. Along the way, we introduce important Node runtime concepts. As always, we recommend that you try out all code examples yourself. We assume you have Node.js already installed on your machine.
+Let's now walk through a number of Node code examples that increase in complexity and lead us towards server-side scripting for web applications. Along the way, we introduce important Node runtime concepts. As always, we recommend that you try out all code examples yourself. We assume you have Node.js already installed on your machine.
 
 ### :bangbang: Watching a file for changes
 
@@ -129,7 +118,7 @@ Let's look at how we can solve this task in Node.js. To be clear: this task has 
 ```javascript
 var fs = require('fs');
 
-var file = process.argv[2];
+var file = process.argv[2]; //read the file name from the command line
 
 fs.watch(file, function () {
     console.log("File changed!");
@@ -144,7 +133,7 @@ Although the piece of code :point_up: is small, it has a few interesting compone
 
 - Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [a later lecture](Lecture-node2.md)). In this case, `fs` is our entry point to the file system.
 - You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) contains two parameters: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous (though nothing prevents us from giving the function a name) and executed asynchronously.
-- As the filesystem access requires operating system specific code, the behaviour can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation (scroll to *Availability*).
+- As the filesystem access requires operating system specific code, the behaviour can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation.
 - The last line of code (`console.log("Now watching " + file);`) is executed immediately after the **setup** of the callback.
 
 A note on Node terminology: you will often find references to **Node modules** and **Node packages**. They differ slightly in meaning:
@@ -152,9 +141,11 @@ A note on Node terminology: you will often find references to **Node modules** a
 - A **module** is any file or directory that can be loaded by `require()`.
 - A **package** is any file or directory that is described by a `package.json` file.
 
-Although not very useful, our `watching.js` script above can be considered a module, but not a package, as so far we have not seen the need for a `package.json` file (we will though, in a few examples).
+Although not very useful, our `watching.js` script above can be considered a module, but not a package, as so far we have not seen the need for a `package.json` file.
 
-Finally, let's quickly walk through the steps to run this script from within VSC's debug environment. We assume that you have cloned/downloaded the [Web-Teaching GitHub repository](https://github.com/chauff/Web-Teaching). Now execute the following steps:
+---
+
+:bug: Finally, let's quickly walk through the steps to run this script from within VSC's debug environment. We assume that you have cloned/downloaded the [Web-Teaching GitHub repository](https://github.com/chauff/Web-Teaching). Now execute the following steps:
 
 1. Open VSC and then select *Open Workspace* and select the *Web-Teaching* folder you downloaded.
 2. On the left-most panel, click on *Debug* and then click on the *No configurations* pull-down menu at the top; select *Add configuration* and when asked choose the *Node.js* environment.
@@ -183,9 +174,11 @@ Finally, let's quickly walk through the steps to run this script from within VSC
 
 ![Debug panel](img/L4-debug.png)
 
+---
+
 ### :bangbang: Low-level networking with Node.js
 
-As already mentioned, Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number (if you don't know what these two concepts refer to, have a look at [the HTTP lecture](Lecture-http.md) again).
+Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number (if you don't know what these two concepts refer to, have a look at [the HTTP lecture](Lecture-http.md) again).
 
 TCP socket connections have **two endpoints**:
 
@@ -256,9 +249,7 @@ Let's take a closer look at the source code :point_up::
 - We here make use of the [`net` module](https://nodejs.org/api/net.html) which provides an asynchronous network API. It is one of the core modules and comes prepackaged in Node - we will later see how to install non-core modules.
 - The method `net.createServer` returns a server object and takes as argument a callback function, which is invoked when another endpoint connects.
 - With `server.listen(port)` we **bind** our server to a specific port.
-- The callback function contains both client-side and server-side output. All client-side output is "written" to the connection object (which takes care of all the low-level details of actually sending the data), while as we already know the server-side messages are simply written out to our `console` object:
-
-![tcp example](img/L4-tcp-js-2.png)
+- The callback function contains both client-side and server-side output. All client-side output is "written" to the connection object (which takes care of all the low-level details of actually sending the data), while as we already know the server-side messages are simply written out to our `console` object.
 
 ### :bangbang: Creating a Hello World! web server with Node.js
 
@@ -282,7 +273,7 @@ server.listen(port, function () {
 });
 ```
 
-:point_up: Let's assume that script is stored in `web.js`, then we can start it by typing into the terminal `node web.js 3000`. Now that we are moving up in the network stack and work with HTTP, we can use the browser as our client. Open your browser and use the following URL in the browser's address bar: `localhost:3000`, or `localhost:3000/hello` or any other path. The port number in the URL should match the port your server binds to. Each time, you should see a *Hello World!* displayed in the browser window.
+:point_up: Let's assume that script is stored in `web.js`. This means we can start the script by typing `node web.js 3000` into the terminal. Now that we are moving up in the network stack and work with HTTP, we can use the browser as our client. Open your browser and use the following URL in the browser's address bar: `localhost:3000`, or `localhost:3000/hello` or any other path. The port number in the URL should match the port your server binds to. Each time, you should see a *Hello World!* displayed in the browser window.
 
 A few remarks on the code piece above :point_up::
 
@@ -364,7 +355,7 @@ Start the server (by now you know how) and try different URLs in the browser (ad
 
 By this time you may ask yourself how tedious server-side programming really is, considering that we have just implemented a separate logic for each URL route. Clearly, there must be more to Node.js then the few modules we introduced so far. And indeed there is. Note though that this exercise in low-level Node.js capabilities were not in vain, there are many network programming use cases that do not require a web server.
 
-When we do implement a web server, in the Node.js community that typically means making use of the [Express](https://expressjs.com/) framework.
+When we do implement a web server, in the Node.js community that most often means making use of the [Express](https://expressjs.com/) framework.
 
 ## Express
 

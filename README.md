@@ -84,11 +84,11 @@ The database materials (lectures/assignments) are not included here! You can fin
   - [Lecture 9](#lecture-9)
   - [Lecture 10](#lecture-10)
   - [Lecture 11](#lecture-11)
-  - [🚧 Lecture 12](#%F0%9F%9A%A7-lecture-12)
-  - [🚧 Lecture 13](#%F0%9F%9A%A7-lecture-13)
-  - [🚧 Lecture 14](#%F0%9F%9A%A7-lecture-14)
-  - [🚧 Lecture 15](#%F0%9F%9A%A7-lecture-15)
-  - [🚧 Lecture 16](#%F0%9F%9A%A7-lecture-16)
+  - [🚧 Lecture 12](#%f0%9f%9a%a7-lecture-12)
+  - [🚧 Lecture 13](#%f0%9f%9a%a7-lecture-13)
+  - [🚧 Lecture 14](#%f0%9f%9a%a7-lecture-14)
+  - [🚧 Lecture 15](#%f0%9f%9a%a7-lecture-15)
+  - [🚧 Lecture 16](#%f0%9f%9a%a7-lecture-16)
 
 ## Course instructors
 
@@ -358,6 +358,7 @@ This lecture covers Node.js ([transcript](Lecture-node.md)).
 - Recommended readings:
   - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451).
   - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).
+  - If you are interested in learning how best to get involved in the Node community, [read this blog post](https://dev.to/azure/start-contributing-to-nodejs-in-the-new-year-3dlh) on how to go about it.
 - Relevant scientific publications:
   - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp.1023-1044.
   
