@@ -96,13 +96,14 @@ To many, the IETF is a lesser known organization, and while you may not often co
 
 ## HTTP messages
 
+- **HTTP/0.9** was the first version the protocol (very limited in power).
 - **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardized in 1997.
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
 - **HTTP/3** has not been standardized yet.
 
 HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol (*speedy protocol*); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). As HTTP/1.1 is still the dominant protocol type on the web, we focus on it in this lecture.
 
-We do not cover HTTP/3 in this lecture, for those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses.
+We do not cover HTTP/3 in this lecture, for those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses. Another good overview resource is [MDN's evolution of HTTP page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP).
 
 ### Web servers and clients
 
