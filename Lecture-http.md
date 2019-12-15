@@ -96,6 +96,8 @@ To many, the IETF is a lesser known organization, and while you may not often co
 
 ## HTTP messages
 
+Important versions of the protocol are the following:
+
 - **HTTP/0.9** was the first version the protocol (very limited in power, developed between 1989-1991).
 - **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardized in 1997.
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
