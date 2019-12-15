@@ -9,8 +9,9 @@
   - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
   - [Rule: If you cannot make it self-evident, make it self-explanatory](#rule-if-you-cannot-make-it-self-evident-make-it-self-explanatory)
   - [Expectations vs. reality: usability testing](#expectations-vs-reality-usability-testing)
-  - [Site navigation: the *trunk test*](#site-navigation-the-trunk-test)
+  - [Site navigation: the trunk test](#site-navigation-the-trunk-test)
   - [Entry page checklist](#entry-page-checklist)
+  - [Performance metrics](#performance-metrics)
 - [HTML5](#html5)
   - [The move towards HTML5](#the-move-towards-html5)
   - [Who decides the HTML standard](#who-decides-the-html-standard)
@@ -211,6 +212,23 @@ Surprisingly many home pages are not able to answer these questions. Take for ex
 What is the core business of this company? This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
 
 Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
+
+### Performance metrics
+
+Once web applications become complex, besides general usability we also need to consider various **performance metrics**. A basic question to ask is: how long does it take for the entire application to load, but of course that is a very crude metric and it is also not always clear what exactly this means, due to polling, etc. We thus need more fine-grained metrics. The [metrics section at Google's web.dev resource](https://web.dev/metrics/) provides a good overview of what questions to ask in order to measure aspects of an application's performance that are *relevant* to the user. This includes metrics such as:
+
+- the time until the first content is rendered;
+- the time until the user can successfully interact with the application;
+- the time between the user's first interaction with the application and the time the browser responds to it.
+
+:bug: While the Firefox dev tools do not provide these metrics out-of-the-box, its [performance panel](https://developer.mozilla.org/en-US/docs/Tools/Performance) allows a developer to explore where the browser spends a lot of its time: executing JavaScript, computing the stye (which may have changed due to a resizing of the browser window or some JavaScript function), computing the layout or rendering the page. 
+
+For example, when we record the performance of the [tudelft.nl](https://www.tudelft.nl/) homepage, we see the following in the beginning of the loading process :point_down: :
+
+![performance pane](img/L2-performance.png)
+
+In this [waterfall](https://developer.mozilla.org/en-US/docs/Tools/Performance/Waterfall) visualization we see that initially the browser spends most of its time recalculating the style (based on for instance additional images that were loaded); few paint events occur.
+
 
 ## HTML5
 
