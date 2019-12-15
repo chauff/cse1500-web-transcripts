@@ -74,7 +74,7 @@ The database materials (lectures/assignments) are not included here! You can fin
 - [Course topics](#course-topics)
 - [Web technology tutorials](#web-technology-tutorials)
 - [Sample exams](#sample-exams)
-- [Assignments & assessment](#assignments--assessment)
+- [Assignments &amp; assessment](#assignments-amp-assessment)
 - [Demo application](#demo-application)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
@@ -281,7 +281,7 @@ Lectures 1-8 cover database topics and can be found on Brightspace.
 
 ### Lecture 9
 
-The lecture covers HTTP ([transcript](Lecture-http.md)).
+The lecture covers HTTP ([intro slides](slides/2019_20/intro-0.pdf), [lecture slides](slides/2019_20/http-1.pdf), [transcript](Lecture-http.md)).
   
 - Required readings: *none*
 - Recommended activity:
