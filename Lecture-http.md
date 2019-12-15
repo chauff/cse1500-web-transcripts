@@ -170,12 +170,14 @@ DNT: 1
 Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 ```
 
-HTTP is a **plain text protocol** and **line-oriented**.
+HTTP/1.1 is a **plain text protocol** and **line-oriented**.
 The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number `1.1` indicates the highest version of HTTP that an application supports.  
 
 What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The `host` header enables several domains to reside at the same IP address (i.e. server colocation). The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on.
 
 In the last line, you can see that in this request, a cookie is sent from the client to server.
+
+🚩HTTP/2 (and subsequent versions) have been switched to a binary protocol.
 
 ### HTTP response message
 
