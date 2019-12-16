@@ -265,7 +265,7 @@ As a concrete example, here is the browser support overview of HTML5 form featur
 
 ![HTML5 form support](img/L2-html5-form.png)
 
-<sup>Screenshot taken on October 11, 2019.</sup>
+<sup>Screenshot taken on December 16, 2019.</sup>
 
 We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices - depending on their target population (and the most popular browsers among the target population), certain HTML5 features should (not) be employed.
 
