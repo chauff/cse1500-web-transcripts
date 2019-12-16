@@ -227,7 +227,7 @@ For example, when we record the performance of the [tudelft.nl](https://www.tude
 
 ![performance pane](img/L2-performance.png)
 
-In this [waterfall](https://developer.mozilla.org/en-US/docs/Tools/Performance/Waterfall) visualization we see that initially the browser spends most of its time recalculating the style (based on for instance additional images that were loaded); few paint events occur.
+In this [waterfall](https://developer.mozilla.org/en-US/docs/Tools/Performance/Waterfall) visualization we see that initially the browser spends most of its time recalculating the style (based on for instance additional images that were loaded); few paint events occur. In general, the following sequence of events is an often recurring one: JavaScript computation :arrow_right: recompute style :arrow_right: recompute layout :arrow_right: repaint.
 
 
 ## HTML5
