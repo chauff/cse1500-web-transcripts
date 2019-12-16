@@ -275,7 +275,7 @@ For each lecture we provide a range of materials:
 
 ## Web lectures
 
-All lecture transcripts and assigments (which were developed in Markdown) were **automatically** converted to PDF format, for those students preferring PDFs. Warning: due to the automatic conversion not all pages will look great. You cann find them in the [generatedPDFs](generatedPDFs/) folder here on GitHub.
+All lecture transcripts and assigments (which were developed in Markdown) were **automatically** converted to PDF format, for those students preferring PDFs. Warning: due to the automatic conversion not all pages will look great. You can find them in the [generatedPDFs](generatedPDFs/) folder here on GitHub.
 
 Lectures 1-8 cover database topics and can be found on Brightspace.
 
