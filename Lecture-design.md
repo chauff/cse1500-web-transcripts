@@ -139,6 +139,9 @@ A positive example of this rule is the following Surveymonkey ([December 1, 2013
 
 Lastly, **avoid happy talk**, that is text without any content for the sake of adding some text (e.g. a welcome message).
 
+### Aesthetics matter
+
+This may be obvious, but the look and feel of an application of course also influences both the users' *perceived* usability as well as the *actual* usability. A popular research work measuring these effect is that of [Sonderegger & Sauer](https://www.sciencedirect.com/science/article/pii/S0003687009001148). They conducted an experiment with an objectively ugly and and objectively good looking mobile phone prototype: not only did the study participants rate the ugly phone as being less usable, they actually performed worse in a given task than the participants receiving the good looking device.
 
 ### Expectations vs. reality: usability testing
 
