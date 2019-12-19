@@ -741,6 +741,8 @@ The WebSocket protocol as described in [RFC 6455](https://tools.ietf.org/html/rf
 
 In our client-side code example :point_up: we saw how simple it is to send data once a connection is established: `socket.send()`.
 
+:bug: TODO: show an example of Firefox's [WebSocket Inspector](https://hacks.mozilla.org/2019/10/firefoxs-new-websocket-inspector/)
+
 ### WebSockets for multi-player games
 
 In a multi-player game (such as the board games application implemented throughout the assignments), every player (client) establishes a WebSocket connection to the server. **The server has to keep track of which game each player is assigned to**. When a player in a game with multiple players sends a message to the server (e.g. to *broadcast* her latest move in the game), **the server has to send this message to all other players in the game** - and only to those players. Players active in other games should not receive those messages.
