@@ -56,7 +56,7 @@ Make sure to name your files with an **A4** prefix!
 ---
 
 **Exercise**:
-Use `telnet` to request the contents of the Dutch rainfall radar section of the `weer.nl` website: [weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
+Use `telnet` to request the contents of the Dutch rainfall radar section of the `www.weer.nl` website: [www.weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
 
 ```console
 telnet www.weer.nl 80
