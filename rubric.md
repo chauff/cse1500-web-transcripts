@@ -6,7 +6,7 @@ A single assessment session is held per group for the three web assignments. Eve
 
 The rubric below contains example questions/tasks for each assignment as well as an overview of the requirements to achieve a pass. To answer the questions, students can always consult their notes and code. Any Brightspace uploads that did not happen before the assessment can still be executed during the assessment session.
 
-## Assignment 1
+## Assignment 4
 
 ### Possible questions / tasks
 
@@ -22,9 +22,9 @@ The rubric below contains example questions/tasks for each assignment as well as
 
 - The student is able to answer most of the TA's questions correctly.
 - The board game design is available on the Brightspace forum. The deliverables are uploaded to Brightspace.
-- The splash / board game design fulfils most of the board game requirements (listed in [Assignment 1](Assignment-1.md)).
+- The splash / board game design fulfils the board game requirements (listed in the first web technology assignment).
 
-## Assignment 2
+## Assignment 5
 
 ### Possible questions / tasks
 
@@ -47,7 +47,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 - The game works as intended: players are randomly paired, valid moves can be executed.
 
 
-## Assignment 3
+## Assignment 6
 
 ### Possible questions / tasks
 
@@ -69,6 +69,4 @@ The rubric below contains example questions/tasks for each assignment as well as
 - The splash and game screen have a consistent design.
 - Templating (EJS) has been used.
 - At least one client-side cookie has been implemented.
-- The game forbids players to make invalid moves. *Here, we are more lenient towards games that require a lot of game logic to check the move validity (such as chess).*
-
-
+- The game forbids players to make invalid moves.

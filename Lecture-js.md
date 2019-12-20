@@ -1,10 +1,8 @@
 # JavaScript: the language of browser interactions <!-- omit in toc -->
 
-:point_right: [Overview of all Lecture 3 materials](README.md#lecture-3)
+*This is the densest web lecture of this course. Learning how to code takes some time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
 
-*This is the densest web lecture of this course. Learning how to code takes time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
-
-*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
@@ -13,12 +11,12 @@
 - [JavaScript's reputation](#javascripts-reputation)
 - [Scripting overview](#scripting-overview)
     - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-    - [`<script>`](#script)
-    - [:bangbang: Activity](#bangbang-activity)
+    - [The `<script>` tag](#the-script-tag)
+    - [‼️ Activity](#%E2%80%BC%EF%B8%8F-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
     - [Scoping](#scoping)
     - [Hoisting](#hoisting)
-    - [this](#this)
+    - [The keyword `this`](#the-keyword-this)
 - [JavaScript design patterns](#javascript-design-patterns)
     - [JavaScript objects](#javascript-objects)
     - [Object creation with `new`](#object-creation-with-new)
@@ -28,7 +26,7 @@
     - [Design pattern 3: Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
     - [Document Object Model](#document-object-model)
-        - [:bangbang: Example 1: document.getElementById](#bangbang-example-1-documentgetelementbyid)
+        - [:bangbang: Example 1: document.getElementById / document.querySelector](#bangbang-example-1-documentgetelementbyid--documentqueryselector)
         - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
         - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
         - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
@@ -45,15 +43,15 @@
 
 ## Take-aways of book chapter 4
 
-If you have already read Chapter 4 of the course book, you should know:
+Haing read chapter 4 of the course book in preparation for this lecture, you should know:
 
 - the basics of JavaScript;
 - how to include JavaScript in your web application;
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
 - the DOM;
-- the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. It provides a lower-level API to simplify working with the DOM across browsers. `jQuery` is still one of the most popular JavaScript libraries in use today (despite the rise of alternatives, newer frameworks that incorporate a lot of `jQuery` functionality), with more than half of the most trafficked web sites in the world relying on a variant of `jQuery`. Its strength is its ability to simplify tedious tasks.
+- the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. Its popularity has steadily declined over the past few years as modern browsers implement more and more functionalities that `jQuery` was designed to make easy. It is still though very much in use as many large-scale projects still have it as a dependency.
 
-In this lecture we built upon chapter 4 and cover a number of important JavaScript design patterns.
+In this lecture we built upon book chapter 4 and cover a number of important JavaScript design patterns.
 
 ## Examples throughout the lectures
 
@@ -61,46 +59,51 @@ The code examples throughout these course materials tend to based on three diffe
 
 - A todo application as introduced in the web course book.
 - A habit tracker application as students had to implement in the 2017/18 edition of this course.
-- A board game application as needs to be implemented for the 2018/19 edition of this course.
+- A board game application as you need to implement this year.
 
 As the course material has been developed over time, you will get a glimpse of each of those applications.
 
 ## JavaScript's reputation
 
-In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in in the last five years](https://octoverse.github.com/projects) ([TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript claimed rank #7):
+In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in the past few years](https://octoverse.github.com/), with [TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript, claiming rank #7: 
 
 ![Top languages on GitHub](img/L3-github.png)
 
-<sup>Top languages over time (as measured by number of contributors) on GitHub.</sup>
+<sup>Top languages over time (as measured by number of contributors) on GitHub. [Image source](https://octoverse.github.com/).</sup>
 
-Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on.
+Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in multiple programming paradigms ([read this interview](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93) with Kyle Simpson, author of one of the most popular JavaScript book series if you want to know more).
 
-In addition, today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
+Today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
-- [V8](https://developers.google.com/v8/) is Google's JavaScript engine,
-- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox), and
-- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime.
+- [V8](https://developers.google.com/v8/) is Google's JavaScript engine (used in Chrome and other browsers);
+- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox);
+- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime engine (used in the Edge browser). In December 2018, Microsoft announced that [they will adopt Chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser project) and thus Edge will switch to the V8 JavaScript engine eventually.
+
+While the browser is the most obvious usage scenario for JavaScript runtime environments, they are also used elsewhere (such as [microcontrollers](https://github.com/jerryscript-project/jerryscript)). Most importantly for us: the Node.js platform we cover in the next lecture is built on top of V8. 
+
+Javascript is an *interpreted* language, a browser's JavaScript engine reads and interprets JavaScript code line-by-line (advantage: quick upstart, disadvantage: the program overall *runs* slower than one written in a language requiring compilation). Today's JavaScript engines both interpret *and* compile by employing so-called **just-in-time (JIT) compilation**. This means that JavaScript code that is run repeatedly such as often-called functions (the JavaScript engine monitors the frequency of code usage) is eventually compiled and no longer interpreted. [This article by Lin Clark](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/) explains this in more detail for those that want to know more.
 
 JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
 
 JavaScript is a language in flux.
 
-One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard (a good overview is provided at http://es6-features.org/) and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle.
+One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard (a good overview is provided at http://es6-features.org/) and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle. 
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
-In this course we include very few **ES6** features, as we have only a few lectures to cover client/server-side JavaScript. The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; this is a useful limitation. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series!
+In this course we include very few **ES6** features, as we only have one lecture to introduce JavaScript (*this* lecture ...). The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; **this is a useful limitation**. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
 
 In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
-Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge to the compiler to catch errors (e.g. functions called with wrong parameters) early on. TypeScript allows you to do that, by **enabling static type checking**.
+Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**.
+
 
 ## Scripting overview
 
 ### Server-side vs. client-side scripting
 
-**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client - often an HTML document. The client thus has to trust the server's computations (there is no possibility to validate the code that ran on the server). Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software runs on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly **increase the server's load**. As clients often only receive an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML.
+**Server-side scripting** refers to scripts that run on the **web server** (in contrast to the client). Executing the scripts on the server means they are **private** and only the result of the script execution is returned to the client - often an HTML document. The client thus has to trust the server's computations (there is no possibility to validate the code that ran on the server). Server-side scripts can access **additional resources** (most often databases) and they can use **non-standard language features** (when you run a server you know which type of software is installed on it and what type of language features it supports). At the same time, as all computations are conducted on the server, with many clients sending HTTP requests, this can quickly **increase the server's load**. As clients often only receive an HTML document as result of the computation, the app developer does not have to worry about clients' device capabilities - any modern browser can render HTML.
 
 **Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code. A famous example of the uproar such code digging can cause is the *NYTimes election needle jitter*: a jitter was introduced to an election needle visualization in order to convey the uncertainty around election forecasting. This jitter though was not based on data as readers were expecting, but instead hard-coded as a random component into the client-side script. This was quickly spotted by a Twitter user:
 
@@ -108,9 +111,11 @@ Here is one example of what TypeScript offers: JavaScript is a **dynamic languag
 
 and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-york-times-forecast-dial-had-a-fake-twitch-jitter.html), [2](https://www.theverge.com/2016/11/8/13571216/new-york-times-election-forecast-jitter-needle)).
 
-A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client.
+A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client. 
 
-### `<script>`
+Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) which provides a standard for an in-browser database that is transaction-based and stores key-value pairs persistently. While it cannot be queried with SQL directly, libraries such as [JSstore](https://github.com/ujjwalguptaofficial/JsStore) exist that act as wrapper around IndexedDB to enable SQL-like querying. The storage limits are browser and device-dependent; in principle it is possible to store Gigabytes of data within the browser's database. This can be very useful for instance for games (game objects are stored in the database) as well as data processing pipelines that are designed to be easy-to-use for non-experts such as our recently open-sourced ELAT tool (the processed data is stored in the database). //TODO: URL ELAT
+
+### The `<script>` tag
 
 The placement of the `<script>` tag is an often discussed issue (1000+ upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this lecture, we follow the course book argument (page 98):
 
@@ -119,11 +124,11 @@ By placing the `<script>` tags at the end, the JavaScript files will be one of t
 
 In other words, interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, `jQuery`'s [`document.ready`](http://learn.jquery.com/using-jquery-core/document-ready/) function is a useful utility.
 
-### :bangbang: Activity
+### ‼️ Activity
 
 Based on chapter 4 of the course book, you should be able to answer the following two questions.
 
-Executing the JavaScript code snippet :point_down: yields what output?
+Executing the JavaScript code snippet 👇 yields what output?
 
 ```javascript
 function giveMe(x){
@@ -136,7 +141,7 @@ var giveMe5 = giveMe(5);
 console.log( giveMe5(10) );
 ```
 
-Executing the JavaScript code snippet :point_down: yields what output?
+Executing the JavaScript code snippet 👇 yields what output?
 
 ```javascript
 function toPrint(x){
@@ -162,7 +167,7 @@ Scoping is the **context in which values and expressions are visible**. In contr
 
 - local;
 - global;
-- block (since **ES6**).
+- block (introduced in **ES6**).
 
 A *block* is used to group a number of statements together with a pair of curly brackets `{...}`.
 
@@ -174,11 +179,7 @@ The scopes of values and expressions depend on *where* and *how* they are declar
 - `let` was introduced in **ES6**: **block** scope;
 - `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
 
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global.
-
-Having only two scopes available results in some unexpected code behavior, which can be especially confusing for JavaScript beginners. Let's look at one popular example.
-
-Imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript :point_down::
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. Having only two scopes available resulted in code behaviour that is not always intuitive. Let's look at one popular example: imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript 👇:
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -186,7 +187,7 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code :point_down: to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
+Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code 👇 to print out the numbers 1 to 10 with each number appearing after roughly a second (*roughly*, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -196,9 +197,9 @@ for (var i = 1; i <= 10; i++) {
 }
 ```
 
-:point_up: When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Here is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
+☝️ When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Here is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
 
-Let's fix the two issues (printing 11s instead of 1...10 and waiting a second *between print outs* one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet :point_down: was the established solution:
+Let's fix the two issues (printing 11s instead of 1...10 and waiting a second *between print outs* one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet 👇 was the established solution:
 
 ```javascript
 function fn(i) {
@@ -211,9 +212,9 @@ for (var i = 1; i <= 10; i++)
     fn(i);
 ```
 
-:point_up: You will find this construct in all kinds of code bases. We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
+☝️ You will find this construct in all kinds of code bases. We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
 
-With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect :point_down::
+With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect 👇:
 
 ```javascript
 for (let i = 1; i <= 10; i++)
@@ -222,13 +223,13 @@ for (let i = 1; i <= 10; i++)
     }, 1000 * i)
 ```
 
-Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. Here is a toy `jQuery` example to showcase this issue :point_down::
+Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. Here is a toy `jQuery` example to showcase this issue 👇:
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
         $(document).ready(function(){
             //$ = "overwriting";
@@ -247,7 +248,7 @@ Scoping is also important when it comes to larger programming projects: imagine 
 
 :point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
 
-`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3-module).
+`jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3--module).
 
 ### Hoisting
 
@@ -271,9 +272,13 @@ var seven = function(){
 console.log(x+" - "+y);
 ```
 
-In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
+In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser by copying the entire snippet at once into the web console!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
 
-The difference lies in how we went about defining our `six` and `seven` functions: `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached. `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. In our example, the JavaScript runtime *hoists* the declaration of `six`; it is processed before the remaining code is executed.
+The difference lies in how we went about defining our `six` and `seven` functions: 
+- `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached.
+- `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. 
+
+In our example, the JavaScript runtime *hoists* the declaration of `six`; it is processed before the remaining code is executed.
 
 Once more:
 
@@ -307,18 +312,24 @@ console.log(a);
 console.log(b);
 ```
 
-Now we will end up with a `ReferenceError: a is not defined` as the `var a` declaration at the end of function `f` is **hoisted** to the top of the function. The same applies to `b`. Both variables `a` and `b` thus have local scope.
+Now we will end up with a `ReferenceError: a is not defined` as the `var a` declaration at the end of function `f` is **hoisted** to the top of the function. The same applies to `b`. Both variables `a` and `b` thus have local scope and are not accessible to the `console.log` calls.
 
-### this
+### The keyword `this`
 
-In Java, `this` refers to the current object, **in JavaScript what `this` refers to is dependent on *how* the function containing `this` was called**. We also have the option to set the value of a function's `this` independent of how the function was called, using the [`bind` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind). Here is a concrete example of this behaviour :point_down::
+As you know, in Java, `this` refers to the current object. 
+
+**In JavaScript what `this` refers to is dependent on *how* the function containing `this` was called**. 
+
+We also have the option to set the value of a function's `this` independent of how the function was called, using the [`bind` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind). 
+
+Let's walk through this concrete code example to showcase the behaviour of `this` :point_down: :
 
 ```javascript
-//Assume execution in the browser's Web Console, so that we
+//We assume execution in the browser's Web Console, we thus
 //know the global window object exists (it is provided by the browser).
 
-//property of the global `window` variable
-//can also be accessed as window.h
+//h is now a property of the global `window` variable;
+//it can also be accessed as window.h
 var h = "Sports";
 
 function habit(s){
@@ -359,12 +370,17 @@ to be different each time, as each time, `this` refers to a different object. We
 - CASE 2: as a property of the global `window` object;
 - CASE 3: as a bound function.
 
- We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/README.md#you-dont-know-js-this--object-prototypes).
+ We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/this%20%26%20object%20prototypes).
+
+ 🚩 In ES6 so-called arrow functions were introduced. Instead of writing `let sum = function(a,b){return a+b}` we can shorten it to `let sum = (a,b) => {return a+b}`. This may look initially just like a more compact way of writing a function expression, but there is more to it - in particular the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are looking into the use of arrow functions! 
+
+🚩 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
+
 
 ## JavaScript design patterns
 
 *"Design patterns are reusable solutions to commonly occurring problems in software design."* This quote is on the first page of Addy Osmani's popular [book on JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/). A basic example of a reusable solution is one for object creation. Instead of everyone trying to figure out how to create objects, we use well-known **recipes** (a.k.a. design patterns) that were developed over time and apply them.
-There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Besides **design patterns**, there also exist **anti-patterns**, that are programming recipes which are popular but ineffective at tackling a recurring problem.
+There are many different design patterns, some are known to work across languages and some are specific to just a small subset of programming languages. What we cover in this lecture is mostly specific to JavaScript. Note that besides **design patterns**, there also exist **anti-patterns**, that are programming recipes which are popular but ineffective at tackling a recurring problem.
 
 ### JavaScript objects
 
@@ -374,7 +390,7 @@ The object-oriented programming paradigm is based on a set of cooperating object
 
 In JavaScript, **functions are also objects**. Apart from functions, JavaScript also comes with a number of other built-in objects: Strings, arrays and objects specific to the fact that JavaScript was developed to add interaction to HTML. One example is the `document` object, which only makes sense in the context of an HTML page. Note, that the `document` object is not part of core JavaScript (the language is defined independently of the browser context), however when we discuss client-side scripting we do mean JavaScript in the browser. The browser is the host application in this case and provides the `document` object.
 
-JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at other developers' code).
+JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at existing code bases).
 
 ### Object creation with `new`
 
@@ -435,19 +451,27 @@ var paramModule = {
 };
 ```
 
-The function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is an alternative for `console.log`, especially for objects and arrays, as it displays tabular data as a table:
+---
+
+:bug: For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table:
 
 ![console.table](img/L3-console-table.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
-Another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
+Continuing on the debugging theme, another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
 
 ![console.assert](img/L3-console-assert.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
-Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? Clearly, copy and paste is not the way to go.
+---
+
+Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? We can hardly copy and paste a method to all objects.
+
+One idea could be to simply *copy* an object over and over again, however that turns out to be quite complicated. JavaScript passes everything by reference, which can cause issues when objects are complex (i.e. many of their properties are objects themselves). This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. This is for your information only, we do not cover deep copies in class.
+
+Let's look at three design patterns to simplify this work for us! The first one should be the most familiar to you, as it looks similar to the object creation pattnern we use in Java.
 
 ### Design pattern I: Basic constructor
 
@@ -481,21 +505,29 @@ public class Game {
 And here is how we do the same in JavaScript :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
+    this.totalPoints = 0;
+    this.winner = null;
+    this.difficulty = "easy";
+
     this.getID = function(){ return this.id; };
     this.setID = function(id){ this.id = id; };
 }
 ```
 
-We use functions as **constructors** and rely on `this`. We rely on the keyword `new` to initialize a new object similar to what you have already seen before :point_down::
+**We use functions as constructors and rely on `this`**. We rely on the keyword `new` to initialize a new object similar to what you have already seen before :point_down::
 
 ```javascript
 var g1 = new Game(1);
 g1.getID();
 g1.setID(2);
-
 var g2 = new Game(3);
+
+//🚩 ES6: object destructuring allows us to extract several object properties at once instead of one-by-one
+var {totalPoints,winner,difficulty} = g1;
+//🚩 ES6: template literals to make string concatenations more readable
+console.log(`This game reached ${totalPoints} points, was won by ${winner} and had difficulty ${diff}.`);
 ```
 
 **In JavaScript, an object constructor is just a normal function**. When the `new` keyword appears, the JavaScript runtime executes two steps:
@@ -506,7 +538,7 @@ var g2 = new Game(3);
 A common error is to forget the `new` keyword. The JavaScript runtime will not alert you to this mistake, in fact, the JavaScript runtime will simply execute the function as-is. Let's take a look at what happens when you copy and paste the following code into your browser's Web Console :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
     this.getID = function(){ return this.id; };
     this.setID = function(id){ this.id = id; };
@@ -527,7 +559,7 @@ Lesson here: be sure to know when to use `new` and what `this` refers to when.
 Another interesting feature of JavaScript is the possibility to add new properties and methods **on the fly**, after object creation. In Java, once we have written our class and instantiated objects from the class, we cannot rewrite the class blueprint to affect the already created objects. JavaScript is a **prototype-based language** and here we can actually change our objects on the fly :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
     this.getID = function(){ return this.id; };
     this.setID = function(id){ this.id = id; };
@@ -560,7 +592,7 @@ Here is a quick summary of the basic constructor:
 
 We tackle issues 1. and 2. with the next design pattern.
 
-We have already touched upon the drawback of the third issue: imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently "overwrite" important parts of the code (without ever being informed about it, because that is not how the JavaScript runtime works).
+We have already touched upon the drawback of the third issue: imagine you are using a particular JavaScript library; if you are not aware of the library' internals, you may inadvertently "overwrite" important parts of the code without ever being informed about it, because that is not how the JavaScript runtime works.
 
 ### Design pattern 2: Prototype-based constructor
 
@@ -575,7 +607,7 @@ So, why is this important and how can you make use of this knowledge? Recall, th
 This is exactly what the prototype-based constructor provides. Let's look at an example :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
 }
 
@@ -610,7 +642,7 @@ This explanation should also answer the following question: what happens if a pr
 Changes made to the prototype are also reflected in existing objects :point_down::
 
 ```javascript
-function Game( id){
+function Game(id){
     this.id = id;
 }
 
@@ -650,7 +682,7 @@ Game.prototype.setID = function(id){ this.id = id; };
 /* constructor */
 function TwoPlayerGame(id, p1, p2){
     /*
-     * call(...) calls a function with a given this value and arguments.
+     * call(...) calls a function with a given `this` value and arguments.
      */
     Game.call(this, id);
     this.p1 = p1;
@@ -680,7 +712,7 @@ the code still works as expected. Why do we even add this line? If we do not add
 Here is one example where it does indeed matter whether whether this wiring is correct :point_down::
 
 ```javascript
-function Game() {};
+function Game() {}
 function TwoPlayerGame() {}
 
 TwoPlayerGame.prototype = Object.create(Game.prototype);
@@ -753,9 +785,25 @@ An IIFE itself is also a design pattern, it looks as follows :point_down::
 
 :point_up: The function is **anonymous** (it does not have a name and it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to its immediate execution. The brackets surrounding the function are not strictly necessary, but they are commonly used.
 
-Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) series, half a book is dedicated to closures.
+Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/scope%20%26%20closures) series, half a book is dedicated to closures.
 
-The encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
+---
+
+:bug: A common error in the module pattern is to forget to add the final bracket pair `()` when defining the IIFE. Those issues will be caught at runtime when the code does not work as expected. In our game module example, the line `gameStatModule.incrGamesStarted();` will lead to the error `TypeError: gameStatModule.incrGamesStarted is not a function` if we remove the final IIFE bracket pair (try it out!). VSC offers a simple way to catch those errors already when coding. We simply add the line:
+
+```
+//@ts-check
+```
+
+at the top of any JavaScript file we want to have type-checked. The error of the missing bracket pair is now caught:
+
+![Exploring events](img/L3-ts-check.png)
+
+We thus borrow the type checker of TypeScript to make sure to catch - at least some - coding mistakes we make early on. To avoid copying this line everywhere, we can also set up VSC to perform type checking [automatically for all JavaScript files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript).
+
+---
+
+Finally we note that in the module pattern, the encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
 
 ```javascript
 /* creating a module */
@@ -805,7 +853,7 @@ Summarizing the module pattern:
 
 ## Events and the DOM
 
-Having read chapter 4 of the course book, you should be familiar with code such as this :point_down: (the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) applies to functions or entire scripts and is a manner of cutting down on potential silent errors):
+Having read chapter 4 of the web course book, you should be familiar with code such as this :point_down: (the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) applies to functions or entire scripts and is a manner of cutting down on potential silent errors):
 
 ```javascript
 var main = function () {
@@ -820,13 +868,15 @@ var main = function () {
 $(document).ready(main);
 ```
 
-The course book makes extensive use of `jQuery` (a big time saver in practice). With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
+The course book makes extensive use of `jQuery`. With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
 
 - `document.getElementById`
 - `document.getElementsByClassName`
-- `document.getElementsByTagName`
-- `document.querySelector` (returns the first element within the DOM tree that matches the selector)
-- `document.querySelectorAll` (returns all elements that match)
+- `document.getElementsByTagName` 
+- [`document.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector): returns the first element within the DOM tree according to a **depth-first pre-order traversal** that matches the selector
+- [`document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll): returns all elements that match the selector
+
+The last two ways of selecting DOM elements allow complex selector rules to be specified!
 
 The code snippet :point_up: also shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens *when* an event fires**. In the example above, the event is the click on a button.
 
@@ -840,11 +890,17 @@ The course book walks you through several examples of making a responsive UI con
 
 :four: Attach the function to the event **on** the control.
 
-If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
+---
+
+:bug: If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
 
 ![Exploring events](img/L3-event-listeners.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
+
+---
+
+:triangular_flag_on_post: If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this class. The reason is simply a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
 
 ### Document Object Model
 
@@ -866,11 +922,11 @@ The DOM is our entry point to interactive web applications. It allows use to:
 We will now walk through a number of examples that add an interactive element to a web application.
 These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
 
-They strongly overlap with what is discussed in the required reading (Chapter 4 of the course book) of this lecture. Take it as a reminder of what is covered in the book chapter.
+They strongly overlap with what is discussed in the required reading (chapter 4 of the course book) of this lecture. Take it as a reminder of what is covered in the book chapter.
 
-#### :bangbang: Example 1: document.getElementById
+#### :bangbang: Example 1: document.getElementById / document.querySelector
 
-Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box.
+Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box. As you can see there are different ways (we have listed four here) of pinpointing a DOM element:  
 
 ```html
 <!DOCTYPE html>
@@ -880,6 +936,9 @@ Here :point_down: we have a page with two elements: a button and a text box. A c
     </head>
     <body>
         <button onclick="
+            //var tb = document.querySelector('#out');
+            //var tb = document.querySelector('input')
+            //var tb = document.querySelector('input[type=text]')
             var tb = document.getElementById('out');
             tb.value = 'Hello World!'
         ">Say Hello World</button>
@@ -888,7 +947,7 @@ Here :point_down: we have a page with two elements: a button and a text box. A c
 </html>
 ```
 
-This code :point_up: is of course not ideal as we are writting JavaScript code in the middle of HTML elements, so let us refactor to achieve a bit better code separation :point_down::
+This code :point_up: is of course not ideal as we are writting JavaScript code in the middle of HTML elements, so let us refactor to achieve a better code separation :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -899,8 +958,8 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
             /* we define the function */
             function sayHello() {
               var tb = document.getElementById("out");
-              tb.value = 'Hello World';
-            };
+              tb.value = "Hello World";
+            }
 
             /* we attach a function to a button's click event
              * after the DOM finished loading
@@ -926,15 +985,16 @@ window.onload = function() {
 };
 ```
 
-is replaced just by :point_down::
+is replaced by :point_down::
 
 ```javascript
 document.getElementById("b").onclick = sayHello;
 ```
-
-As another exercise, add a second `<input>` element with the **same id** and see what happens. And lastly, try for yourself to replace `<input>` with a `<span>` element. You can no longer use `.value` but instead need to rely on a different property ([hint](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)).
+<sup>Explanation: the HTML page is parsed sequentially from top to bottom; without the `window.onload` event handler the browser engine will try to acess the button element before it has been defined, leading to an error: `TypeError: document.getElementById(...) is null.`</sup>
 
 #### :bangbang: Example 2: creating new nodes
+
+Note: as all our examples are simple, we will stick to `document.getElementById` to select DOM elements. In more realistic coding scenarios, `document.querySelector(All)` will most often be used.
 
 HTML tags and content can be added dynamically in two steps:
 
@@ -951,7 +1011,7 @@ To achieve step :two:, a number of methods are available to every DOM element:
 | `removeChild(node)`      |  removes the given node from this node's child list                      |
 | `replaceChild(new, old)` | replaces the old node with the new one                                   |
 
-Let's look at how this works in practice :point_down: (again, try out the code for yourself):
+Let's look at how this works in practice :point_down: :
 
 ```html
 <!DOCTYPE html>
@@ -966,9 +1026,12 @@ Let's look at how this works in practice :point_down: (again, try out the code f
             function addElement() {
               var ul = document.getElementById('u');
               var li = document.createElement('li');
-              li.innerHTML = 'List element ' + (ul.childElementCount+1) +' ';
+              var count = ul.childElementCount+1;
+              
+              //li.innerHTML = 'List element ' + (ul.childElementCount+1) +' '; //before ES6: + to concatenate strings
+              li.innerHTML = `List element ${ul.childElementCount+1}`; //🚩 ES6: template literals
               ul.appendChild(li);
-            };
+            }
         </script>
     </head>
 
@@ -979,7 +1042,7 @@ Let's look at how this works in practice :point_down: (again, try out the code f
 </html>
 ```
 
-:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it.
+:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it. The code example also shows off [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which were introduced in ES6: they allow us to plug variables (here: `ul.childElementCount+1`) into strings (demarked with backticks) in a more readable manner. 
 
 We can of course also remove elements :point_down::
 
@@ -996,12 +1059,14 @@ We can of course also remove elements :point_down::
 
           function removeLastChild() {
             var ul = document.getElementById('u');
-            ul.removeChild(ul.lastElementChild);
-          };
+            if(ul.childElementCount>0)
+              ul.removeChild(ul.lastElementChild);
+          }
 
           function removeFirstChild() {
             var ul = document.getElementById('u');
-            ul.removeChild(ul.firstElementChild);  
+            if(ul.childElementCount>0)
+              ul.removeChild(ul.firstElementChild);  
           }
         </script>
     </head>
@@ -1046,7 +1111,7 @@ document.getElementById("button76").onclick = computeTimes(76);
 
 but this will not work either, as in this case :point_up: the JavaScript runtime will parse each line will immediately execute the `computeTimes` function instead of attaching it to the click event.
 
-The best option to avoid code duplication is the use of `this` :point_down::
+We can avoid code duplication with the use of `this` :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -1083,7 +1148,7 @@ The best option to avoid code duplication is the use of `this` :point_down::
 </html>
 ```
 
-:point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. [`parseInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here a lazy way of stripping out the " times" string suffix, forcing a conversion to type `number`.
+:point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. The [`parseInt` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here used to strip out the " times" string suffix, forcing a conversion to type `number`.
 
 #### :bangbang: Example 4: mouse events
 
@@ -1097,8 +1162,9 @@ A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, .
     1. `mousedown`
     2. `mousemove`
     3. ...
-    n-1. `mousemove`
-    n. `mouseup`
+    4. ..
+    5. `mousemove`
+    6. `mouseup`
 
 Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer starts and remains active as long as the mouse pointer hovers over the button element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
 
@@ -1130,7 +1196,7 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
           function mouseover() {
             var incr = parseInt(this.id.substr(1));
             intervals[this.id] = setInterval(updateNum, 1000/incr, this);
-          };
+          }
 
           function mouseout()
           {
@@ -1203,10 +1269,13 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
 
     <body>
       <form>
-          <p><em>Task: Write or mark the 3 most important information nuggets</em>
+          <p><em>Task: Write down / mark the 3 most important information nuggets</em>
             <br>
 
-            <textarea id="ta" cols="50" rows="5" readonly>"Hobey Baker (1892-1918) was an American amateur athlete of the early twentieth century, widely regarded by his contemporaries as one of the best athletes of his time."
+            <textarea id="ta" cols="50" rows="5" readonly>
+                "Hobey Baker (1892-1918) was an American amateur athlete of the early 
+                twentieth century, widely regarded by his contemporaries as one of the 
+                best athletes of his time."
             </textarea>
             <br>
 
@@ -1269,8 +1338,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
                     var t = parseInt(document.getElementById(timerLog).innerHTML);
                     t = t + 1;
                     document.getElementById(timerLog).innerHTML = t +" seconds";
-                ;}, 1000);
-
+                }, 1000);
               }
 
               //we reached the end
@@ -1295,7 +1363,8 @@ In this example we do do make slight use of CSS (to flash a red background and a
             <em>Task: Type out the following text correctly:</em>
             <br>
 
-            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">H. Baker was an American amateur athlete of the 20th century.</textarea>
+            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">
+                H. Baker was an American amateur athlete of the 20th century.</textarea>
             <br>
 
             <textarea id="typed" cols="50" rows="5" readonly="" autocomplete="off"></textarea>
@@ -1318,6 +1387,7 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keypress` |  user presses and releases key while element has keyboard focus (a problematic event) |
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
+
 
 ## Self-check
 

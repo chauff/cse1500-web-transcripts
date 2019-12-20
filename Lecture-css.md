@@ -1,8 +1,6 @@
 # CSS: the language of web design <!-- omit in toc -->
 
-:point_right: [Overview of all Lecture 5 materials](README.md#lecture-5)
-
-*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 
@@ -32,6 +30,7 @@
   - [:bangbang: Transitions](#bangbang-transitions)
 - [Browser-specific prefixes](#browser-specific-prefixes)
 - [Rendering engines have bugs too!](#rendering-engines-have-bugs-too)
+- [CSS Debugging](#css-debugging)
 - [Self-check](#self-check)
 
 
@@ -91,6 +90,9 @@ body {
 ```
 
 `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
+
+*Note*: In this example color is represented by its hex value. The most common color formats in CSS are *color name, hex value, rgb value.*  
+Example: Green color can be represented by its name `green`, its hex value `#008000` and its rgb value `rgb(0, 128, 0)`. A nice tool to quickly convert between different color formats can be found [here](https://convertingcolors.com/).  
 
 Lastly, you know about `!important` which overrides all other declarations.
 
@@ -1154,6 +1156,7 @@ Here is a concrete example of how media queries enable a **responsive design** :
 
 ```html
 <!DOCTYPE html>
+<html>
   <head>
 
     <!-- We can link a style sheet conditional on the media attribute -->
@@ -1218,9 +1221,29 @@ Here is a concrete example of how media queries enable a **responsive design** :
 </html>
 ```
 
-Use your browser's responsive design mode :point_down: and the browser's *Print as PDF* feature to test the behaviour of the media queries.
+Use your browser's responsive design mode :point_down: to test the behaviour of the media queries.
+For `@media print` you can use the **Print simulation** mode in the Developer Tools of Firefox, or alternatively, the browser's *Print as PDF* feature.
 
 ![Responsive design mode](img/L5-responsive.png)
+
+Another useful media feature is `prefers-color-scheme`, it allows us to create dark or light themes based on what the user requested.
+Here is an example of how you can use `prefers-color-scheme` :point_down::
+```css
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body{
+    background-color: white;
+    color:black;
+  }
+}
+```
+
 
 ## Animations and transitions
 
@@ -1489,6 +1512,14 @@ This approach has now been deprecated and although the vendor-specific prefixed 
 ## Rendering engines have bugs too!
 
 Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
+
+## CSS Debugging
+
+The dev tools are really helpful when it comes to debug CSS. Take a look at the [documentation](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS) ! (This a Firefox doc but the core features are roughly the same in all browsers)
+
+Some browsers even have additional dev tool features. For example, in Firefox Developer Edition, you can detect which CSS properties have an effect on the current element. :point_down: 
+
+![CSS Debugging example](img/L5-debugging.png)
 
 ## Self-check
 

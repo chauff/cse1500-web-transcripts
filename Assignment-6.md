@@ -1,4 +1,4 @@
-# Assignment 3
+# Assignment 6
 
 In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.
 
@@ -16,20 +16,22 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.2  | CSS                                                |
 | 1.3  | CSS                                                |
 | 1.4  | CSS                                                |
-| 1.5  | →→→ upload 1.1 / 1.2 to :bulb: Brightspace forum            |
+| 1.5  | →→→ upload 1.1 / 1.2 to 💡 Brightspace forum            |
 | 2    | Source code                                        |
 | 3    | Source code                                        |
 | 4    | -                                                  |
-| 5 (optional) | →→→ upload URL to :bulb: Brightspace forum         |
+| 5 (optional) | →→→ upload URL to 💡 Brightspace forum         |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
 Submit your code in the form of a zipped folder. Make sure that your code contains the necessary `package.json` file to install/run the code, i.e. it should be sufficient to run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
-The code has to be uploaded by one of the team members to :bulb: Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs. This means that the outcomes of Assignment 1, 2 and 3 are **all** uplodated to the same directory!
-Make sure to name your files with an **A3** prefix!
+*Note: we expect one zipped code submission, we do **not** want one code submission per task!*
 
-**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in Assignment 2) **AND with players trying to make invalid moves.** 
+The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs and before the ultimate assessment deadline. This means that the outcomes of Assignment 4, 5 and 6 are **all** uploaded to the same directory!
+Make sure to name your files with an **A6** prefix!
+
+**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in Assignment 5) **AND with players trying to make invalid moves.** 
 
 ## 1. CSS
 
@@ -42,7 +44,7 @@ As you might have already guessed, your CSS should reside in `myapp/public/style
 
 ### 1.1)
 
-First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 1. You can deviate from your initial design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties. Your code must include **at least** one instance of each of the following:
+First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 4. You can deviate from your initial design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties. Your code must include **at least** one instance of each of the following:
 
 - Pseudo-classes `:hover` and `:active`
 - Pseudo-elements `::after` and `::before`
@@ -51,7 +53,7 @@ First, work on your **splash screen** and style the page with CSS according to t
 - At least one CSS animation and one CSS transition.
 
 ---
-:point_right: Hints:
+👉 Hints:
 
 - CSS examples are plentiful on the web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, prefer simpler CSS rules, often the same effect can be achieved in a myriad of ways.
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as [Sass](https://sass-lang.com/) exist. Do **not** use those, in this course we make use of *plain CSS*.
@@ -65,7 +67,7 @@ Next, tackle the CSS for your **game screen**. The look of the game screen shoul
 Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).
 
 ---
-:point_right: Hint:
+👉 Hint:
 
 - In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
 
@@ -73,7 +75,7 @@ Your code for the game screen must have at least one instance of each of the req
 
 ### 1.3)
 
-To ensure that your players are aware of the screen size limitations (i.e. the game works well on a larger screen), use [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to **alert players** if their screen resolution is below a sufficiently large minimum. What this minimum is, depends on the game you implemented and your specific CSS rules. There is no need to actually try your app on many different physical devices, Firefox (other major browsers have similar tooling) has a [Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode) tool that provides good simulations of various devices.
+To ensure that your players are aware of the screen size limitations (i.e. the game works well on a larger screen), use [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to **alert players** if their screen resolution is below a sufficiently large minimum. How exactly the alert looks like is up to you. What exactly the screen resolution minimum is, depends on the game you implemented and your specific CSS rules. There is no need to actually try your app on different physical devices, Firefox (other major browsers have similar tooling) has a [Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode) tool that provides good simulations of various devices.
 
 ### 1.4)
 
@@ -81,13 +83,13 @@ Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/
 
 ### 1.5)
 
-Once you have completed the CSS of your app, head over to CSE1500's :bulb: Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your :bulb: Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
+Once you have completed the CSS of your app, head over to CSE1500's 💡 Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your 💡 Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
 
 *Feel free to browse your colleagues' designs and implementations and comment on them!*
 
 ## 2. Templating
 
-When you started out and generated the boilerplate code (Assignmnent 2, task 1), we asked you to set as *view engine* `ejs`. Let's now make use of that view engine for the **splash screen**. If you followed our assignment instructions, so far, not a lot is going on with it; it should visually look appealing and have a *Play* button, but that's about it.
+When you started out and generated the boilerplate code (Assignmnent 5, task 1), we asked you to set as *view engine* `ejs`. Let's now make use of that view engine for the **splash screen**. If you followed our assignment instructions, so far, not a lot is going on with it; it should visually look appealing and have a *Play* button, but that's about it.
 
 One last requirement for the splash screen is to show a number of statistics about the games played, games completed, etc. Templates offer us a simple way to *inject* those numbers into our splash screen.
 
@@ -119,7 +121,7 @@ Check the ESLint (or any other linter) output: it should help you to spot easy-t
 
 Ensure that your code contains the necessary `package.json` file content to install/run the code, i.e. it should be sufficient to take your `myapp` folder, and run `npm install` and `npm start` to start the server. Any specific configuration parameters your code requires should be described in an accompanying `README` file.
 
-:fireworks: **Well done!** If you have reached this point, you have a fully functioning game.
+🎆🎆🎆🎆🎆 **Well done!** If you have reached this point, you have a fully functioning game.
 
 You now have three options:
 
@@ -133,7 +135,7 @@ You now have three options:
 
 To make your game accessible to the public, it needs to be deployed somewhere - `locahost:3000` only goes so far.
 
-For short-term deployments (a few minutes/hours), e.g. to show off your game quickly, [ngrok](https://ngrok.com/) is a quick and easy solution. You can run your server on localhost and expose it through a public URL. *Please don't run any privacy-sensitive apps this way, as all traffic passes through ngrok servers!*
+For short-term deployments (a few minutes/hours), e.g. to show off your game quickly, [ngrok](https://ngrok.com/) is an easy solution. You can run your server on localhost and expose it through a public URL. *Please do **NOT** run any privacy-sensitive apps this way, as all traffic passes through ngrok servers!*
 
 ### Production deployment
 
@@ -157,6 +159,6 @@ git commit -n "First commit"
 
 As an alternative, make a screencast of your game and upload it to a video hosting platform such as [vimeo](https://vimeo.com/upload) or [YouTube](https://www.youtube.com/).
 
-Once you have deployed or videotaped your app, head over to CSE1500's :bulb: Brightspace, go to *Discussions* and the forum **DEPLOYED/VIDEOTAPED GAMES**. Add the URL of your deployed app or video.
+Once you have deployed or videotaped your app, head over to CSE1500's 💡 Brightspace, go to *Discussions* and the forum **DEPLOYED/VIDEOTAPED GAMES**. Add the URL of your deployed app or video.
 
-:video_game: And now, it's time to play some games of your fellow study colleagues! :video_game:
+🎮 👾 And now, it's time to play some games of your fellow study colleagues! 👾 🎮

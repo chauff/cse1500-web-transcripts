@@ -1,8 +1,6 @@
 # Cookies, sessions and third-party authentication <!-- omit in toc -->
 
-:point_right: [Overview of all Lecture 7 materials](README.md#lecture-7)
-
-*At times we use :point_up: and :point_down: to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
@@ -13,20 +11,20 @@
 - [Cookies vs. sessions](#cookies-vs-sessions)
 - [Cookie flow](#cookie-flow)
 - [Cookies in more detail](#cookies-in-more-detail)
-    - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
-    - [Cookie fields](#cookie-fields)
-    - [Cookie field 'Domain'](#cookie-field-domain)
+  - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
+  - [Cookie fields](#cookie-fields)
+  - [Cookie field 'Domain'](#cookie-field-domain)
 - [:bangbang: A Node.js application](#bangbang-a-nodejs-application)
 - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
 - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
-    - [Third-party cookies](#third-party-cookies)
-    - [Evercookie](#evercookie)
+  - [Third-party cookies](#third-party-cookies)
+  - [Evercookie](#evercookie)
 - [Client-side cookies](#client-side-cookies)
 - [:bangbang: Sessions](#bangbang-sessions)
 - [Third-party authentication](#third-party-authentication)
-    - [OAuth 2.0 roles](#oauth-20-roles)
-    - [Roles exemplified](#roles-exemplified)
-    - [Express](#express)
+  - [OAuth 2.0 roles](#oauth-20-roles)
+  - [Roles exemplified](#roles-exemplified)
+  - [Express](#express)
 - [Self-check](#self-check)
 
 
@@ -39,7 +37,7 @@
 
 ## Recall the HTTP lecture
 
-In [Lecture 1](Lecture-1.md) we covered http. Recall, that HTTP is **stateless**, every HTTP request contains all information necessary for the server to send a response in reply to a request. The server is not required to keep track of the requests received. This became obvious when we discussed authentication: the client, making an HTTP request to a server requiring authentication will send the username/password combination in every single request. This design decision simplifies the server architecture considerably.
+HTTP is **stateless**, every HTTP request contains all information necessary for the server to send a response in reply to a request. The server is not required to keep track of the requests received. This became obvious when we discussed authentication: the client, making an HTTP request to a server requiring authentication will send the username/password combination in every single request. This design decision simplifies the server architecture considerably.
 
 ## Introduction to cookies
 
@@ -79,7 +77,7 @@ Firefox's developer tools are helpful to inspect what is being sent over the net
 
 ![Viewing cookies in the browser](img/L7-cookies-browser.png)
 
-<sup>Screenshot taken October 10, 2018. Overview of cookies sent/received when accessing https://www.bol.com</sup>
+<sup>Screenshot taken October 11, 2019. Overview of cookies sent/received when accessing https://www.bol.com</sup>
 
 As the name suggests, *Response Cookies* are cookies that are appearing in an HTTP response (cookies sent by the server) and *Request Cookies* are cookies appearing in an HTTP request (cookies sent from client to server). Note, that the client does not send client-generated cookies to the server, the client only *returns* cookies to the server that the server sent to the client beforehand.
 
@@ -87,7 +85,7 @@ When developing web applications, use Firefox's Storage Inspector dev tool tab, 
 
 ![Storage dev tools cookies](img/L7-storage.png)
 
-<sup>Screenshot taken October 23, 2018. Overview of cookies sent to the client when accessing https://www.volkskrant.nl</sup>
+<sup>Screenshot taken October 11, 2019. Overview of cookies sent to the client when accessing https://www.volkskrant.nl</sup>
 
 ## Cookie security
 

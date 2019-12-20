@@ -1,5 +1,5 @@
 const tracker = require("../statTracker");
 
-test('object exists', () => {
-    expect(tracker).toHaveProperty("gamesAborted");
+test("object exists", () => {
+  expect(tracker).toHaveProperty("gamesAborted");
 });

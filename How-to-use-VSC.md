@@ -3,13 +3,14 @@ Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [How to use VSC](#how-to-use-vsc)
-    - [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
-        - [Git](#git)
-        - [GitHub](#github)
-        - [Local vs. remote repository](#local-vs-remote-repository)
-        - [VSC ...](#vsc)
-    - [Live Share](#live-share)
-    - [Debugging Node.js scripts](#debugging-nodejs-scripts)
+  - [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
+    - [Git](#git)
+    - [GitHub](#github)
+    - [Octotree](#octotree)
+    - [Local vs. remote repository](#local-vs-remote-repository)
+    - [VSC ...](#vsc)
+  - [Live Share](#live-share)
+  - [Debugging Node.js scripts](#debugging-nodejs-scripts)
 
 # How to use VSC
 
@@ -50,6 +51,9 @@ Now you can add your partners to the repository, so all of you can work together
 ![VSC GitHub settings](img/VSC-github-settings.png)
 
 The menu that appears on the left has an entry *Collaborators*: click on it and add your partners.
+
+### Octotree  
+[Octotree](https://www.octotree.io/) is a chrome extension that makes it easy to view code on Github. It creates a tree view of the whole project on the left or right side of the browser.
 
 ### Local vs. remote repository
 
@@ -96,5 +100,7 @@ The execution will stop at each breakpoint you have defined. Once the execution 
 You can define inline breakpoints by clicking F9 in the lines of code, or by clicking to the left of the line. In both cases you will see a red point indicating the breakpoint. You can also define breakpoints from the menu *Debug* by clicking on *New Breakpoint*. In that case you can create Logpoints, where a message is displayed in the debug console when the execution reaches that point, and Conditional Breakpoints, where the execution will stop after a number of hits, or when an expression is true.
 
 ![VSC debugging](img/VSC-debug.png)
+
+Since JavaScript is [dynamically typed](https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_typing) a lot of common programming mistakes can remain unnoticed before running js code. [`@ts-check`](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript) is a great tool to catch some of these mistakes at the very moment you type your code.
 
 You can find more information about debugging in VSC [here](https://code.visualstudio.com/docs/editor/debugging).
