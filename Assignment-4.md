@@ -62,6 +62,8 @@ Use `telnet` to request the contents of the Dutch rainfall radar section of the 
 telnet www.weer.nl 80
 ```
 
+(*Note: the above command was updated on Dec. 20, 2019 as the server response has changed since the assignment was written up in Oct. 2019!*)
+
 ### 1.1)
 
 Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the Dutch rainfall radar page. Always use `HEAD` first to retrieve meta-­data about the resource.
