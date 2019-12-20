@@ -3,7 +3,10 @@
   --status-red: #fd2130;
 }
 
-html, body, main, section {
+html,
+body,
+main,
+section {
   height: 100%;
   margin: 0px;
   padding: 0px;

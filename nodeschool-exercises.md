@@ -8,7 +8,7 @@ A nice side effect of the nodeschool.io exercises is the fact that they all requ
 
 These are largely introductory exercises, each one takes no longer than 3-4 minutes to read up upon and solve (some less than a minute). They will help you to get started if you have never programmed in JavaScript and/or Node.js before this course. They do not only introduce language features, but also how to use the node package manger `npm`, how to debug Node.js programs and so on.
 
-**Note**: _We do not require you to go through these exercises, they are supposed to help you get started on your assignments._
+**Note**: This is completely optional! We do not require you to go through these exercises, they are supposed to help you get started on your assignments if you are completely new to JavaScript and Node.js.
 
 
 ## Where to start

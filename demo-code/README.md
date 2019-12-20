@@ -1,17 +1,18 @@
 Table of Contents
 ==
+- [Table of Contents](#table-of-contents)
 - [Demo code](#demo-code)
-    - [balloons-game](#balloons-game)
-    - [node-file-watching-ex](#node-file-watching-ex)
-    - [node-tcp-ex](#node-tcp-ex)
-    - [node-web-ex](#node-web-ex)
-    - [node-express-ex](#node-express-ex)
-    - [node-websocket-ex](#node-websocket-ex)
-    - [node-ajax-ex](#node-ajax-ex)
-    - [node-component-ex](#node-component-ex)
-    - [node-sessions-ex](#node-sessions-ex)
-    - [node-cookies-ex](#node-cookies-ex)
-    - [node-ejs-ex](#node-ejs-ex)
+  - [balloons-game](#balloons-game)
+  - [node-file-watching-ex](#node-file-watching-ex)
+  - [node-tcp-ex](#node-tcp-ex)
+  - [node-web-ex](#node-web-ex)
+  - [node-express-ex](#node-express-ex)
+  - [node-websocket-ex](#node-websocket-ex)
+  - [node-ajax-ex](#node-ajax-ex)
+  - [node-component-ex](#node-component-ex)
+  - [node-sessions-ex](#node-sessions-ex)
+  - [node-cookies-ex](#node-cookies-ex)
+  - [node-ejs-ex](#node-ejs-ex)
 
 # Demo code
 
@@ -37,6 +38,8 @@ npm install
 npm start
 ```
 
+Depending on your OS (Mac OS!), you may encounter a `gyp ERR! configure error` when running `npm install`. Just continue, this is a known issue due to the inclusion of `jest`, a testing library. The game and the test setup will remain working as expected.
+
 You can now access the game at [http://localhost:3000/](http://localhost:3000/) in the browser. Open another browser or a New Private Window for any other player.
 
 If you want to change the port two actions are required: (1) alter `balloons-game/package.json` (change the line `node app.js 3000` and replace `3000` with your preferred port); (2) alter `balloons-game/public/javascripts/config.js` (the port of the Websocket URL).
@@ -51,9 +54,9 @@ npm test
 
 *Note: you will learn all about testing in a later course; Jest is included here for those that want to know how testing in JavaScript can be done.*
 
-The code is mostly void of [ES6 features](http://es6-features.org/) - the exception being the use of `let`. This was a conscious choice due to the small amount of time we have to teach JavaScript. You can use ES6 features in your own code.
+The code is mostly void of [ES6 features](http://es6-features.org/) - the exception being the use of `let` and `const`. This was a conscious choice due to the small amount of time we have to teach JavaScript. You can use ES6 features in your own code.
 
-In alignment with A1, the wireframe designs for this game are: [Splash screen](https://wireframe.cc/uInPWd) and [game screen](https://wireframe.cc/z9NaMr).
+In alignment with the first web technology assignment, the wireframe designs for this game are the [splash screen](https://wireframe.cc/uInPWd) and the [game screen](https://wireframe.cc/z9NaMr).
 
 The game required very few public resources. They are listed here:
 - The English word list came from https://github.com/dwyl/english-words
