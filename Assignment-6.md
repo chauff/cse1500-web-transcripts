@@ -57,7 +57,8 @@ First, work on your **splash screen** and style the page with CSS according to t
 
 - CSS examples are plentiful on the web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, prefer simpler CSS rules, often the same effect can be achieved in a myriad of ways.
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as [Sass](https://sass-lang.com/) exist. Do **not** use those, in this course we make use of *plain CSS*.
-
+- If you are unsure about what combination of colors to use for your game, take a look at [https://www.happyhues.co/](https://www.happyhues.co/) for inspiration.
+- If you are in need of icons for your game (dice, chess figures, etc.) take a look at [https://thenounproject.com](https://thenounproject.com).
 ---
 
 ### 1.2)
