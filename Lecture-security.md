@@ -136,6 +136,7 @@ An example here is [Instagram's backend admin panel](https://www.hackread.com/in
 
 In order to effectively secure a web application, it helps to know what the most frequent security issues are.
 
+### CSRHPE 2016
 Let's turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (CSRHPE) to answer this question. For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Here, we go over some of the most important findings concerning web applications.
 
 The most important **software security issues** for web and mobile applications are the following, reported as *percentage of scanned applications*:
@@ -180,6 +181,15 @@ once using HTTPS, and the bank's website uses Strict Transport Security, your br
 to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
+
+### Symantec ISTR (2019)
+
+The [Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf) (ISTR) published by Symantec outlines the threat landscape as seen in early 2019. They determine the trends using telemetry collected from over 123 Million sensors that monitor activities of over 300,000 organizations that use Symantec’s protection. We look at a few relevant trends:
+
+1. In general, web attacks on endpoints (host machines) have increased by 56%. Spear phishing is the most prevalent infection vector used by the attackers, where they are more likely to use malicious attachments rather than malicious URLs. Nearly half of the malicious email attachments are Microsoft Office files, which are disguised either as invoices or email delivery-failure notifications.
+2. Mobile security remains a major concern: One in 36 mobile phones has a high-risk application installed. Additionally, ransomware attacks on mobile phones have increased by 33%. _Ransomware_ is a type of financial malware that makes important files on a system inaccessible by encrypting them, unless a ransom is paid.  
+3. _Formjacking_ is one of the leading threats faced by e-commerce sites: _Formjacking_ is the use of malicious JavaScript code to steal information from payment forms on the checkout pages of e-commerce sites. It has been used to compromise 4800 websites, on average, each month.
+
 
 ## Juice Shop
 
