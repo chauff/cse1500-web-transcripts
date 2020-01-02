@@ -182,6 +182,21 @@ to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
 
+### edgescan VSR (2019)
+
+The [2019 Vulnerability Statistics Report](https://www.edgescan.com/wp-content/uploads/2019/02/edgescan-Vulnerability-Stats-Report-2019.pdf) published by edgescan reviews the major security weaknesses by analyzing [Common Vulnerabilities and Exposures]( https://cve.mitre.org/) (CVE) of 2018. CVE is a repository of known vulnerabilities in software systems. Their analysis shows that the global state of cybersecurity is such that organizations still don’t have _situational awareness_ --- if they don’t know what is wrong, they cannot even begin to fix it.
+
+They distinguish between two levels of vulnerabilities: (i) _Web-Application-layer vulnerabilities_ that cover weaknesses in the web application itself like insecure sever configuration, client-side security, and injection attacks; (ii) _Infrastructure-layer vulnerabilities_ that cover weaknesses in the underlying platform like deprecated protocol support, poor implementation, and weak configuration. While 81% vulnerabilities belong to the infrastructure layer, the 19% vulnerabilities in web application layer are more high-risk from a security breach standpoint. 
+
+![Most frequent web vulnerabilities](img/L8-security-report-4.png)
+
+<sup>Recreation of the Figure on page 8, edgescan VSR.</sup>
+
+:point_up: The figure shows the most relevant security vulnerabilities with respect to the content of this lecture. These vulnerabilities form 74.8% of the total vulnerabilities analyzed by edgescan. Each category is color coded to show the related topics discussed in this lecture.  
+
+:point_up: _Cross-site scripting_, _Vulnerable components_ and _Injection attacks_ are the key three vulnerabilities in 2018. _Cross-site scripting_ (XSS) exists generally due to poor contextual output encoding. _Vulnerable components_ refer to platform vulnerabilities that are already known (have associated CVEs) but are still unpatched. _Broken authentication_ covers weak passwords and weaknesses in session management. _Injection_ covers both SQL injection (database attack via vulnerable web application) and other injection attacks that provide stepping stones for hijacking the application server and the associated network.  _System exposure_ refers to security misconfigurations like exposed admin console, insecure defaults and directory traversal attacks that allow an attacker to freely browse different directories.  _Malicious file upload_ refers to a category of Improper input validation where an attacker can successfully upload malicious files to a web application in the absence of proper format and security checks. _Sensitive data exposure_ refers to the availability of sensitive credentials or business information to attackers. One way of leaking such information is through overly detailed error messages. _Authorization issues_ refer to broken access control where an attacker can perform unauthorized data and functional privilege escalation. _Open redirects_ is a category of Unvalidated redirects where a web application accepts untrusted user input containing URLs where that request can be forcefully redirected. Finally, _Cross-site Request Forgery_ (CSRF) allows an attacker to force users to execute unwanted actions on a web application where they are currently authenticated.
+
+
 ### Symantec ISTR (2019)
 
 The [Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf) (ISTR) published by Symantec outlines the threat landscape as seen in early 2019. They determine the trends using telemetry collected from over 123 Million sensors that monitor activities of over 300,000 organizations that use Symantec’s protection. We look at a few relevant trends:
