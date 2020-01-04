@@ -52,13 +52,15 @@ Node.js is by now a well-established platform; important milestones between 2008
 - 2017: Node becomes a **first-class citizen of V8**. This means that no V8 code change is allowed to break Node.
 - August 2018: [Node.js has been downloaded more than one billion times.](https://medium.com/@nodejs/more-than-a-billion-downloads-of-node-js-952a8a98eb42)
 
-Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE). If you want to know more about how the V8 engine and Node.js fit together, watch [this keynote by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
+Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE!). If you want to know more about how the V8 engine and Node.js fit together, watch [this talk by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
 
 ### Node.js vs. client-side JavaScript
 
-[Mariko Kosaka](https://twitter.com/kosamari), another Googler, shared this image to compare client-side JavaScript and Node.js on Twitter:
+[Mariko Kosaka](https://twitter.com/kosamari) shared this image to compare client-side JavaScript and Node.js on Twitter, which captures the essence of Node.js very well:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What IS Node.js 🤔❓❓<br><br>(Proposal to stop calling server side JavaScript✨) <a href="https://t.co/IhPt8UHnPN">pic.twitter.com/IhPt8UHnPN</a></p>&mdash; Mariko Kosaka (@kosamari) <img src="https://pbs.twimg.com/media/C5_ue1TWYAA0C1R.jpg">March 3, 2017</blockquote>
+
+:point_up: Shown on the left here is Google Chrome and its JavaScript runtime engine V8 (other browsers may make use of other JavaScript runtime engines). V8 is also the core of Node.js. The main difference between the browser and Node.js are the available APIs. As an example, while JavaScript code deployed in the browser cannot access the local file system for security reasons, Node.js can. It is also important to realize that Node.js runs on many different types of hardware.
 
 
 ### Event-driven and non-blocking
@@ -72,20 +74,23 @@ Take a look at this event loop example:
 Here, despite the **single-threaded nature** of Node.js, several things are seemingly going on in parallel: a file is read from disk, a database is queried while at the same time an HTTP request from a client comes in. The reason for this is the **asynchronous** nature of file reads, network requests and so on (basically: I/O requests). While the event loop is executed in a single thread, Node maintains a *pool of threads* in order to process I/O requests in parallel. So, it is more correct to say that **Node's event loop is single-threaded**. To make this concrete, let's look at how local files are read in Node. Here is an example taken from the [Node documentation](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) :point_down::
 
 ```javascript
-fs.readFile('/etc/passwd', function(err, data) {
-    if(err) throw err;
-    console.log(data);
-})
+var fs = require('fs');//this line will be explained in a bit
+
+//we assume there is a file styles.css in the current directory
+fs.readFile('./styles.css', 'utf8', function(err, data) {
+  if (err) throw err;
+  console.log(data);
+});
 ```
 
 <sup>In the documentation it does not actually say `function(err, data)` but `(err, data) =>` instead; this is just a syntactic shortcut called an [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) introduced in ES6.</sup>
 
-:point_up: The method `readFile` takes two parameters: the path of the file to read and a **callback function**: the function to execute when the file reading operation has completed. The callback function has two parameters: an error object and a data object. If the file reading operation failed for some reason, we throw the error, otherwise we print out the data to the console. Once the Node runtime encounters this code snippet, it will execute `fs.readFile(....)` and return immediately to execute the next line of code (this is called **non-blocking**). What happens to the file read operation? The Node runtime has access to a pool of I/O threads and once a thread has completed the file reading operation, an event is entered into the event loop to then execute the callback (in our case printing out the contents to the console).
+:point_up: The method `readFile` takes three parameters: the path of the file to read, the file encoding type, and a **callback function**: the function to execute when the file reading operation has completed. The callback function has two parameters: an error object and a data object. If the file reading operation failed for some reason, we throw the error, otherwise we print out the data to the console. Once the Node runtime encounters this code snippet, it will execute `fs.readFile(....)` and return immediately to execute the next line of code (this is called **non-blocking**). What happens to the file read operation? The Node runtime has access to a pool of I/O threads and once a thread has completed the file reading operation, an event is entered into the event loop to then execute the callback (in our case printing out the contents to the console).
 
 The Node runtime can also read file contents from disk in a **blocking** manner :point_down::
 
 ```javascript
-let data = fs.readFileSync('/etc/passwd');
+let data = fs.readFileSync('./styles.css', 'utf8');
 ```
 
 :point_up: The Node runtime will wait until the file read is complete, return the file content in the `data` variable and then continue with the next line of code. If the file to read is large, this operation will take time and nothing else is executed in the meantime (because the code is **blocking**).
@@ -198,7 +203,12 @@ This is our corresponding [script](demo-code/node-tcp-ex) :point_down::
 const fs = require('fs');
 const net = require('net');
 
-//command line arguments: file to watch and port number
+/* 
+ * command line arguments: file to watch and port number;
+ * we start reading arguments from process.argv[2] onwards as
+ * process.argv[0] contains the path to the node program and
+ * process.argv[1] contains teh path to the node script
+ */
 const filename = process.argv[2];
 const port = process.argv[3];
 
@@ -359,15 +369,13 @@ When we do implement a web server, in the Node.js community that most often mean
 
 ## Express
 
-As noted in the web course book (Chapter 6), Express *creates a layer on top of the core HTTP module that handles a lot of complex things that we don't want to handle ourselves, like serving up static HTML, CSS, and client-side JavaScript files.*
+As noted in the web course book (Chapter 6), [Express](https://expressjs.com/) *"creates a layer on top of the core HTTP module that handles a lot of complex things that we don't want to handle ourselves, like serving up static HTML, CSS, and client-side JavaScript files."*
 
-Express is a rather minimalistic web framework that provides a *thin layer of fundamental web application features, without obscuring Node.js features that you know and love* ([Express](https://expressjs.com/) in its own words).
-
-Node.js has a small core code base; it comes with a number of core modules included such as `http` and `url`. Express is not one of the core modules (though it is certainly among the most popular non-core modules with more than [3 million downloads per week](https://www.npmjs.com/package/express)) and needs to be installed separately. In the Node ecosystem, the Node package manager ([npm](https://www.npmjs.com/)) provides us with an easy to use and efficient manner to install additional packages.
+Node.js has a small core code base; it comes with a number of core modules included such as `http` and `url`. Express is not one of the core modules (though it is certainly among the most popular non-core modules with more than [6 million downloads per week](https://www.npmjs.com/package/express)) and needs to be installed separately. In the Node ecosystem, the Node package manager ([npm](https://www.npmjs.com/)) provides us with an easy to use and efficient manner to install additional packages.
 
 Let's say you want to know whether a Node module exists that offers functionality you do not want to implement yourself. For this example, let this be the functionality of finding the smallest number in a list. Here is what is typically done:
 
-:one: Head to [npmjs.com](https://www.npmjs.com/), which allows you to search and browse more than 650,000 existing Node packages. You can also publish your own. Having such a central repository of packages helps code discovery and reuse.
+:one: Head to [npmjs.com](https://www.npmjs.com/), which allows you to search and browse existing Node packages. You can also publish your own. Having such a central repository of packages helps code discovery and reuse.
 
 :two: Search for the desired functionality, e.g. by using *smallest in list* as query.
 
@@ -460,23 +468,25 @@ Having all the pieces in place (knowledge of HTML, client-side JavaScript, Node.
 
 :five: Add interactivity between client and server.
 
-Here is an example of a concrete folder structure for a todo application:
+Here is the folder structure (a bit cleaned up for illustration purposes!) of the demo board game application:
 
 ![folder structure](img/L4-file-structure.png)
 
-In [Assignment 2](Assignment-2.md) you will learn how to create such a folder structure semi-automatically, according to accepted best practices.
+In [Assignment 5](Assignment-5.md) you will learn how to create such a folder structure semi-automatically, according to accepted best practices.
 
 Step :five:, the interactivity between client and server is the most time-consuming part of application development, as it can be based on different technologies, depending on the application's needs.
 
-In the course book, the client-server interaction is implemented with **Ajax** - which is sensible in the context of the Todo application developed throughout the book. In the board game project we ask you to implement throughout assignments [1](Assignment-1.md), [2](Assignment-2.md) and [3](Assignment-3.md), the client-server interaction is largely based on **WebSockets** - which is a good choice due to the bidirectional communication needs.
+In the course book, the client-server interaction is implemented with **Ajax** - which is sensible in the context of the Todo application developed throughout the course book. In the board game project we ask you to implement throughout assignments [4](Assignment-4.md), [5](Assignment-5.md) and [6](Assignment-6.md), the client-server interaction is largely based on **WebSockets** - which is a good choice due to the bidirectional communication needs ofour app.
 
-Here is a typical web application flow that showcases a possible client-server interaction for a Todo application:
+Ajax *is* useful for the splash screen of our board game project, in particular when it comes to updating the game statistics (e.g. games played, games aborted, games ongoing). The application flow below showcases a possible client-server interaction to do just that:
 
-![Todo application](img/L4-todo-app.png)
+![Splash screen statistics flow](img/L4-splash-statistics.png)
 
-In this application, the todos are stored in the server's main memory; once you have completed the second part of the Web- and Database Technology course (where you learn what principles databases are based on and how to interact with them), you will be able to connect a database to a web application, in order to store data persistently and retrieve it.
+:point_up: The game statistics are stored in the server's main memory for simplicity; in any large-scale application they would be stored in a database that the server makes read/write requests to. Important to realize is that initially (step :two:) the server only returns static files that do not contain the actual game statistics; in step :three: the client executes a few lines of JavaScript (Ajax!) to request the statistics from the server (step :four:); the server sends in step :five: the requested data. 
 
 When designing your own application, it is important to have a good understanding of the request/response flow in different stages of the application.
+
+Before describing Ajax in more detail, we make a short detour into data exchange formats: how does the data typically look like that is exchanged between client and server?
 
 ## JSON: exchanging data between the client and server
 
@@ -519,7 +529,25 @@ Here is an example of a Twitter message in JSON format (taken from [Twitter's do
 
 Years ago, XML was used as data exchange format on the web. XML is well defined but not easy to handle. To get an idea of XML, take a look at [this Twitter output in XMl format](https://gist.github.com/jonm/3080489).
 
-JSON was developed by Douglas Crockford, one of the early advocates for JavaScript and the author of [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do). XML is often too bulky in practice; JSON has a much smaller footprint than XML. Importantly, JSON can be parsed with built-in JavaScript functionality ([`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)), which turns a JSON string into an object. JavaScript objects can be turned into JSON with the [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method.
+JSON was developed by Douglas Crockford, one of the early advocates for JavaScript and the author of [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do). XML is often too bulky in practice; JSON has a much smaller footprint than XML. Importantly, JSON can be parsed with built-in JavaScript functionality ([`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)), which turns a JSON string into an object. JavaScript objects can be turned into JSON with the [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method:
+
+```javascript
+var gameStats = {
+    gamesPlayed: 0,
+    gamesAbolished: 0,
+    gamesOngoing: 0,
+    incrGamesPlayed : function(){
+        this.gamesPlayed++;
+    }
+}
+gameStats.incrGamesPlayed();
+
+var jsonString = JSON.stringify(gameStats); 
+//"{\"gamesPlayed\":1,\"gamesAbolished\":0,\"gamesOngoing\":0}"
+
+var jsonObject = JSON.parse(jsonString);
+//jsonObject is equivalent to gameStats minus the properties that are functions
+```
 
 Two major differences between JSON and JavaScript objects are:
 
@@ -532,7 +560,7 @@ With JSON being a de facto data exchange standard, Express has a dedicated respo
 
 Ajax stands for **Asynchronous JavaScript and XML**. XML is in the name, and in the name only. XML is not commonly used as Ajax data exchange format anymore (JSON is!).  
 
-**Asynchronous Javascript:** In synchronous programming, things happen one at a time. When a function needs information from another function, it has to wait for it to finish and this delays the whole program. This is a bad use of your computer's resources, there's no point waiting for a process to finish especially in an era where computer processors are equipped with multiple cores. This is where asynchronous programming steps up. A function that takes too long to finish is seperated from the main application and when it's done it notifies the main program if it was successful or not. [MDN web docs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous) is an excellent source to learn about asynchronous Javascript. The first 3 guides of this link should give you enough information to understand this concept.
+**Asynchronous Javascript:** In synchronous programming, things happen one at a time. When a function needs information from another function, it has to wait for it to finish and this delays the whole program. This is a bad use of your computer's resources, there's no point waiting for a process to finish especially in an era where computer processors are equipped with multiple cores. This is where asynchronous programming steps up. A function that takes too long to finish is seperated from the main application and when it is done, it notifies the main program if it was successful or not. 
 
 Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web page. Ajax is not a language. Ajax is also not a product. You see examples of this technology every day; if you stay long enough on the Twitter homepage, you will see a message such as *See 1 new tweet*, which appears without a complete reload of the page. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we now see a continous stream of request/response message pairs - every few seconds the browser sends a request to Twitter's servers to check for new tweets to load:
 
@@ -616,8 +644,6 @@ In practice, implementing Ajax calls correctly can be frustrating, mostly due to
 The same-origin policy is fulfilled when the **protocol, port and host** are the same for two pages. Important for debugging: Ajax **cannot** be executed from a web page opened locally from disk (e.g. if you head to your browser and open `file:///Users/claudia/GitHub/Web-Teaching/demo-code/node-ajax-ex/client/index.html`).
 
 There are ways around Ajax' same-origin policy, some of which have been collected in this [Stack Overflow thread](https://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy). As in all scenarios and usages of web technologies, the interaction between technologies and the availability of all kinds of web technologies makes it possible to "misuse" a technology for another purpose to circumvent a perceived restriction or shortcoming.
-
-Overall, despite there being possibilities to enable Ajax across origins, it is not recommended and using Ajax as-is does not allow it.
 
 ## WebSockets
 
@@ -741,7 +767,7 @@ The WebSocket protocol as described in [RFC 6455](https://tools.ietf.org/html/rf
 
 In our client-side code example :point_up: we saw how simple it is to send data once a connection is established: `socket.send()`.
 
-:bug: TODO: show an example of Firefox's [WebSocket Inspector](https://hacks.mozilla.org/2019/10/firefoxs-new-websocket-inspector/)
+:bug: The [WebSocket Inspector](https://hacks.mozilla.org/2019/10/firefoxs-new-websocket-inspector/) can help you to debug your code!
 
 ### WebSockets for multi-player games
 
