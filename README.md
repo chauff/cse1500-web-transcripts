@@ -84,7 +84,7 @@ The database materials (lectures/assignments) are not included here! You can fin
   - [Lecture 9](#lecture-9)
   - [Lecture 10](#lecture-10)
   - [Lecture 11](#lecture-11)
-  - [🚧 Lecture 12](#%f0%9f%9a%a7-lecture-12)
+  - [Lecture 12](#lecture-12)
   - [🚧 Lecture 13](#%f0%9f%9a%a7-lecture-13)
   - [🚧 Lecture 14](#%f0%9f%9a%a7-lecture-14)
   - [🚧 Lecture 15](#%f0%9f%9a%a7-lecture-15)
@@ -347,13 +347,14 @@ This lecture covers client-side JavaScript ([lecture slides](slides/2019_20/js.p
   - Jangda, A., Powers, B., Berger, E. D., & Guha, A., 2019. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
 
 
-### 🚧 Lecture 12
+### Lecture 12
 
 This lecture covers Node.js ([transcript](Lecture-node.md)).
 
 - Required readings:
   - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do). We will cover Node.js in the lecture from sratch, use the reading to get a first idea of what Node.js is about!
 - Recommended activities:
+  - The [MDN documentation on Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous) is an excellent source to learn about the topic in more detail.
   - [Interactive Node.js exercises](nodeschool-exercises.md).
 - Recommended readings:
   - [Node.js State of the Union 2017](https://medium.com/the-node-js-collection/node-js-state-of-the-union-blog-2017-ed86640ec451).
