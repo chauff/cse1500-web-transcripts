@@ -57,7 +57,7 @@ Make sure to name your files with an **A4** prefix!
   - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the PuTTY session (which you start using the *Open* button).
 ---
 
-⚠️ ⚠️ ⚠️ **Exercise (1) comes in two flavours: if you completed this part before January 1, 2020 you will have telnetted to `weer.nl`. As of January 1, the website no longer works as required for this exercise and thus we offer a second variant that asks you to telnet into `surfweer.nl`.** The remaining exercises are unaffected from this change!
+⚠️ ⚠️ ⚠️ **Exercise (1) comes in two flavours: if you completed this part before January 1, 2020 you will have telnetted to `weer.nl`. This is fine. There is no need to repeat the exercise; submit the responses as you wrote them up. If you are starting this exercise in January 2020, go to the `surfweer.nl` variant instead.** The remaining exercises are unaffected from this change!
 
 **Exercise weer.nl (valid until January 1, 2020)**:
 Use `telnet` to request the contents of the Dutch rainfall radar section of the `www.weer.nl` website: [www.weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
