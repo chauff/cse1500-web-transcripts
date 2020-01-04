@@ -460,7 +460,7 @@ Having all the pieces in place (knowledge of HTML, client-side JavaScript, Node.
 
 :one: Develop the client-side code (HTML, JavaScript and CSS - the latter we will cover in one of the next lectures);
 
-:two: Place all client-side files into a directory (e.g. `/static`) **on the server**;
+:two: Place all client-side files into a directory (e.g. `/static` or `/public`) **on the server**;
 
 :three: Write the **server code** using Express;
 
@@ -468,17 +468,15 @@ Having all the pieces in place (knowledge of HTML, client-side JavaScript, Node.
 
 :five: Add interactivity between client and server.
 
-Here is the folder structure (a bit cleaned up for illustration purposes!) of the demo board game application:
+Small web applications (as our board game) are typically structured as shown here :point_down:. This structure (slightly revised for illustration purposes) is that of our demo board game project. In [Assignment 5](Assignment-5.md) you will learn how to create such a folder structure **automatically**, according to accepted best practices.
 
 ![folder structure](img/L4-file-structure.png)
 
-In [Assignment 5](Assignment-5.md) you will learn how to create such a folder structure semi-automatically, according to accepted best practices.
+Among the five steps of web application development, step :five:, the interactivity between client and server is the most time-consuming part, as it can be based on different technologies, depending on the application's needs.
 
-Step :five:, the interactivity between client and server is the most time-consuming part of application development, as it can be based on different technologies, depending on the application's needs.
+In the course book, the client-server interaction is implemented with **Ajax** - which is sensible in the context of the Todo application developed throughout the course book. In the board game project we ask you to implement throughout assignments [4](Assignment-4.md), [5](Assignment-5.md) and [6](Assignment-6.md), the client-server interaction is largely based on **WebSockets** - which is a good choice due to the bidirectional communication needs of our app.
 
-In the course book, the client-server interaction is implemented with **Ajax** - which is sensible in the context of the Todo application developed throughout the course book. In the board game project we ask you to implement throughout assignments [4](Assignment-4.md), [5](Assignment-5.md) and [6](Assignment-6.md), the client-server interaction is largely based on **WebSockets** - which is a good choice due to the bidirectional communication needs ofour app.
-
-Ajax *is* useful for the splash screen of our board game project, in particular when it comes to updating the game statistics (e.g. games played, games aborted, games ongoing). The application flow below showcases a possible client-server interaction to do just that:
+Ajax *is* useful for the splash screen of our board game project, in particular when it comes to updating the game statistics (e.g. games played, games aborted, games ongoing). The application flow showcases a possible client-server interaction to do just that :point_down:
 
 ![Splash screen statistics flow](img/L4-splash-statistics.png)
 
@@ -529,7 +527,7 @@ Here is an example of a Twitter message in JSON format (taken from [Twitter's do
 
 Years ago, XML was used as data exchange format on the web. XML is well defined but not easy to handle. To get an idea of XML, take a look at [this Twitter output in XMl format](https://gist.github.com/jonm/3080489).
 
-JSON was developed by Douglas Crockford, one of the early advocates for JavaScript and the author of [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do). XML is often too bulky in practice; JSON has a much smaller footprint than XML. Importantly, JSON can be parsed with built-in JavaScript functionality ([`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)), which turns a JSON string into an object. JavaScript objects can be turned into JSON with the [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method:
+JSON was developed by Douglas Crockford, one of the early advocates for JavaScript and - among others - the author of [JavaScript: The Good Parts](http://shop.oreilly.com/product/9780596517748.do) (a highly influential book). XML is often too bulky in practice; JSON has a much smaller footprint than XML. Importantly, JSON can be parsed with built-in JavaScript functionality ([`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)), which turns a JSON string into an object. JavaScript objects can be turned into JSON with the [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method :point_down::
 
 ```javascript
 var gameStats = {
@@ -556,15 +554,18 @@ Two major differences between JSON and JavaScript objects are:
 
 With JSON being a de facto data exchange standard, Express has a dedicated response object method to send a JSON response: [`res.json(param)`](http://expressjs.com/en/api.html#res.json). The method's parameter is converted to a JSON string using `JSON.stringify()`. You will see a working example of this method in the next section.
 
+With the data exchange format out of the way, we can now turn back to Ajax.
+
 ## Ajax: dynamic updating on the client
 
 Ajax stands for **Asynchronous JavaScript and XML**. XML is in the name, and in the name only. XML is not commonly used as Ajax data exchange format anymore (JSON is!).  
 
 **Asynchronous Javascript:** In synchronous programming, things happen one at a time. When a function needs information from another function, it has to wait for it to finish and this delays the whole program. This is a bad use of your computer's resources, there's no point waiting for a process to finish especially in an era where computer processors are equipped with multiple cores. This is where asynchronous programming steps up. A function that takes too long to finish is seperated from the main application and when it is done, it notifies the main program if it was successful or not. 
 
-Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web page. Ajax is not a language. Ajax is also not a product. You see examples of this technology every day; if you stay long enough on the Twitter homepage, you will see a message such as *See 1 new tweet*, which appears without a complete reload of the page. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we now see a continous stream of request/response message pairs - every few seconds the browser sends a request to Twitter's servers to check for new tweets to load:
+Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web page. Ajax is not a language. Ajax is also not a product. Let's take the Bing search engine as an example: once you start typing a query, with each letter typed a new set of query suggestions will become available :point_down:. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we observe that each keystroke will lead to a new request/response message pair (and the request contains the currently typed query as visible on the Headers pane):
 
 ![Twitter xhr](img/L4-xhr.png)
+<sup>Screenshot taken in January 2020.</sup>
 
  :point_up: The column *Cause* lists the reason for the network request - `xhr`, which tells us that Ajax was used. `xhr` is short for `XMLHttpRequest`, which is an object offered by all major browsers that is at the heart of Ajax and allows us to:
 - make requests to the server without a full page reload;
@@ -633,13 +634,9 @@ In a nutshell, Ajax - without the high-level encapsulation through `jQuery` - wo
 
 :four: On the client, JavaScript code injects the data into the page.
 
-Or graphically:
+Importantly, with Ajax, the number of complete page reloads is vastly reduced. **Only the newly available** (e.g. a new set of query suggestions based on the current query) or **changed data** needs to be retrieved from the server, instead of the complete document. Ajax was and remains an important technology to move from web pages to web applications - imagine every time you type a character into your favourite search engine you would have to wait for the page to reload in order to get the latest query suggestions. We would quickly abolish query suggestions.
 
-![Ajax in a picture](img/L4-ajax.png)
-
-Importantly, with Ajax, the number of complete page reloads is vastly reduced. **Only the newly available or changed data needs to be retrieved from the server, instead of the complete web page**. Ajax was and remains an important technology to move from web pages to web applications - imagine every time you type a character into your favourite search engine you would have to wait for the page to reload in order to get the latest query suggestions. We would quickly abolish query suggestions.
-
-In practice, implementing Ajax calls correctly can be frustrating, mostly due to Ajax's security model. In our example, we have conveniently requested data from "our" web server. In fact, a security restriction of Ajax is that it can only fetch files or request routes from the same web server as the calling page (this is called **same-origin policy**).
+In practice, implementing Ajax calls correctly can be frustrating, mostly due to Ajax's security model. In our todo list code example, we have conveniently requested data from "our" web server. In fact, a security restriction of Ajax is that it can only fetch files or request routes from the same web server as the calling page (this is called **same-origin policy**).
 
 The same-origin policy is fulfilled when the **protocol, port and host** are the same for two pages. Important for debugging: Ajax **cannot** be executed from a web page opened locally from disk (e.g. if you head to your browser and open `file:///Users/claudia/GitHub/Web-Teaching/demo-code/node-ajax-ex/client/index.html`).
 
@@ -649,9 +646,9 @@ There are ways around Ajax' same-origin policy, some of which have been collecte
 
 While Ajax is a mainstay of today's web, it has issues:
 
-- The server cannot **push** data to the client, it can only respond to HTTP requests, thus requiring a form of **polling** (as we saw in the Twitter example) to simulate the desired push-based behaviour. This is resource-intensive on both the client and the server-side.
-- Every time data is requested and sent, an entire HTTP message is required - this has a considerable amount of overhead if the data to send is only a few bytes (e.g. in a chess game, we may just send a single move such as `b2b4` at a time - that's four characters in total).
-- The client-side script has to track the mapping from outgoing connections to the incoming connection (in cases where a client make requests to multiple servers).
+- The server cannot **push** data to the client, it can only respond to HTTP requests, thus requiring a form of **polling** to simulate the desired push-based behaviour (for example, a user's Twitter timeline is updated by making requests to Twitter's servers every few seconds). This is resource-intensive on both the client and the server-side.
+- Every time data is requested and sent, an entire HTTP message is required - this has a considerable amount of overhead if the data to send is only a few bytes (as an example, in a chess game, we may just send a single move such as `b2b4` at a time - that's four characters in total).
+- The client-side script has to track the mapping from outgoing connections to the incoming connection (in cases where a client makes requests to multiple servers).
 
 The WebSocket protocol (defined in [RFC 6455](https://tools.ietf.org/html/rfc6455)) was designed to overcome those issues, as stated in its RFC abstract:
 
@@ -665,15 +662,18 @@ not rely on opening multiple HTTP connections (e.g., using
 XMLHttpRequest or <iframe>s and long polling).
 ```
 
-In other words, the WebSocket protocol enables **bidirectional** communication between client and server over HTTP (at least initially over HTTP). The WebSocket protocol itself is a TCP-based protocol, the handshake is interpreted by HTTP servers as an upgrade request. Once a connection between a client and server is established (this requires a *handshake* as the client requests an upgrade to the connection and the server responds to that upgrade before data transfer is possible), data (called *messages* in this protocol) can be send back and forth. Both the client and the server can now send messages and we thus no longer need to *simulate* a single connection, we actually *have* a single connection that can be reused again and again. This is especially useful for web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners) or gaming applications (a client/player sends its own move to the server, the server pushes the other players' moves to the client).
+In other words, the WebSocket protocol enables **bidirectional** communication between client and server over HTTP (at least initially over HTTP). The WebSocket protocol itself is a TCP-based protocol, the handshake is interpreted by HTTP servers as an upgrade request. Once a connection between a client and server is established (this requires a *handshake* as the client requests an upgrade to the connection and the server responds to that upgrade before data transfer is possible), data (called *messages* in this protocol) can be send back and forth. Both the client and the server can now send messages and we thus no longer need to *simulate* a single connection, we actually *have* a single connection that can be reused again and again. This is especially useful for web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners) or gaming applications (a client/player sends its own move to the server, the server pushes the other players' moves to the client). Note that the WebSocket protocol is **not** a protocol that allows peer-to-peer connections between two browsers (i.e. a connection between two browsers without a server in the middle), the communication is always established between a browser and a server/host. And thus, in our gaming project each move made by player A is send to the server which in turn sends it to the correct player B. 
 
-In order to close an established connection a *closing handshake* is required: both the client and the server can initiate the closing of the connection (unlike the initiation of the connection which is **always started by the client**). Once a connection is closed, no more data can be sent over it. Also important to know is that WebSocket servers can share a port with HTTP servers due to the HTTP upgrade request ability. The WebSocket protocol was created to be relatively simple and to co-exist with HTTP and the already established HTTP infrastructure (e.g. proxies).
+🚩 If you are interested in building a peer-to-peer application, take a look at the [WebRTC API](https://developer.mozilla.org/en-US/docs/Web/Guide/API/WebRTC/Peer-to-peer_communications_with_WebRTC).
+
+In order to close an established WebSocket connection, a *closing handshake* is required: both the client and the server can initiate the closing of the connection (unlike the initiation of the connection which is **always started by the client**). Once a connection is closed, no more data can be sent over it. Also important to know is that WebSocket servers can share a port with HTTP servers due to the HTTP upgrade request ability. The WebSocket protocol was created to be relatively simple and to co-exist with HTTP and the already established HTTP infrastructure.
+
 
 ### :bangbang: A first WebSocket example
 
 We use the popular [Node.js WebSocket library](https://www.npmjs.com/package/ws), which hides some of the low-level details (similar to `jQuery` hiding some of Ajax's low-level details).
 
-Let's start with a Hello World! example for WebSockets: our client initiates a WebSocket connection with the server and sends a first message, and the server uses the established connection to send a reply and then closes the connection. The example code can be found in [demo-code/node-websocket-ex](demo-code/node-websocket-ex). The example code can be started by first running `npm install` and then `node app.js 3000`.
+Let's start with a `Hello World!` example for WebSockets: our client initiates a WebSocket connection with the server and sends a first message, the server uses the established connection to send a reply and then closes the connection. The example code can be found in [demo-code/node-websocket-ex](demo-code/node-websocket-ex). The example code can be started by first running `npm install` and then `node app.js 3000`.
 
 Let's look at the client-side :point_down::
 
