@@ -281,7 +281,7 @@ Lectures 1-8 cover database topics and can be found on Brightspace.
 
 ### Lecture 9
 
-The lecture covers HTTP ([intro slides](slides/2019_20/intro-0.pdf), [lecture slides](slides/2019_20/http-1.pdf), [transcript](Lecture-http.md)).
+The lecture covers HTTP ([intro slides](slides/2019_20/intro.pdf), [lecture slides](slides/2019_20/http.pdf), [transcript](Lecture-http.md)).
   
 - Required readings: *none*
 - Recommended activity:
@@ -302,7 +302,7 @@ The lecture covers HTTP ([intro slides](slides/2019_20/intro-0.pdf), [lecture sl
 
 ### Lecture 10
 
-This lecture covers web design and HTML5 ([transcript](Lecture-design.md)).
+This lecture covers web design and HTML5 ([lecture slides](slides/2019_20/html.pdf), [transcript](Lecture-design.md)).
 
 - Required readings:
   - :warning: Chapter 2 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -321,7 +321,7 @@ This lecture covers web design and HTML5 ([transcript](Lecture-design.md)).
 
 ### Lecture 11
 
-This lecture covers client-side JavaScript ([transcript](Lecture-js.md)).
+This lecture covers client-side JavaScript ([lecture slides](slides/2019_20/js.pdf), [transcript](Lecture-js.md)).
 
 - Required readings:
   - :warning: Chapter 4 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
@@ -352,7 +352,7 @@ This lecture covers client-side JavaScript ([transcript](Lecture-js.md)).
 This lecture covers Node.js ([transcript](Lecture-node.md)).
 
 - Required readings:
-  - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).
+  - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do). We will cover Node.js in the lecture from sratch, use the reading to get a first idea of what Node.js is about!
 - Recommended activities:
   - [Interactive Node.js exercises](nodeschool-exercises.md).
 - Recommended readings:

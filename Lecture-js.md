@@ -8,30 +8,30 @@
 - [Learning goals](#learning-goals)
 - [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
 - [Examples throughout the lectures](#examples-throughout-the-lectures)
-- [JavaScript's reputation](#javascripts-reputation)
+- [JavaScript in context](#javascript-in-context)
 - [Scripting overview](#scripting-overview)
-    - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-    - [The `<script>` tag](#the-script-tag)
-    - [‼️ Activity](#%E2%80%BC%EF%B8%8F-activity)
+  - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
+  - [The &lt;script&gt; tag](#the-ltscriptgt-tag)
+  - [‼️ Activity](#%e2%80%bc%ef%b8%8f-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
-    - [Scoping](#scoping)
-    - [Hoisting](#hoisting)
-    - [The keyword `this`](#the-keyword-this)
+  - [Scoping](#scoping)
+  - [Hoisting](#hoisting)
+  - [The keyword this](#the-keyword-this)
 - [JavaScript design patterns](#javascript-design-patterns)
-    - [JavaScript objects](#javascript-objects)
-    - [Object creation with `new`](#object-creation-with-new)
-    - [Object literals](#object-literals)
-    - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
-    - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-    - [Design pattern 3: Module](#design-pattern-3-module)
+  - [JavaScript objects](#javascript-objects)
+  - [Object creation with new](#object-creation-with-new)
+  - [Object literals](#object-literals)
+  - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
+  - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
+  - [Design pattern 3: Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
-    - [Document Object Model](#document-object-model)
-        - [:bangbang: Example 1: document.getElementById / document.querySelector](#bangbang-example-1-documentgetelementbyid--documentqueryselector)
-        - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
-        - [:bangbang: Example 3: `this`](#bangbang-example-3-this)
-        - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
-        - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
-        - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
+  - [Document Object Model](#document-object-model)
+    - [:bangbang: Example 1: document.getElementById / document.querySelector](#bangbang-example-1-documentgetelementbyid--documentqueryselector)
+    - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
+    - [:bangbang: Example 3: this](#bangbang-example-3-this)
+    - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
+    - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
+    - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
 - [Self-check](#self-check)
 
 ## Learning goals
@@ -63,7 +63,7 @@ The code examples throughout these course materials tend to based on three diffe
 
 As the course material has been developed over time, you will get a glimpse of each of those applications.
 
-## JavaScript's reputation
+## JavaScript in context
 
 In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in the past few years](https://octoverse.github.com/), with [TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript, claiming rank #7: 
 
@@ -94,7 +94,7 @@ Similar to HTML5, after a number of years with hardly any development, we are cu
 In this course we include very few **ES6** features, as we only have one lecture to introduce JavaScript (*this* lecture ...). The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; **this is a useful limitation**. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
 
 In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
-The three most well-known of such languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/), all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
+Three of the most well-known languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/); all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
 Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**.
 
