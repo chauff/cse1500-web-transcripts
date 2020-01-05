@@ -43,9 +43,11 @@ Make sure to name your files with an **A4** prefix!
 
 - To exit a telnet session, first press <kbd>CTRL</kbd>+<kbd>]</kbd>. This brings you to a `telnet>` prompt and you can type `close` to end the session.
 
+- Telnetting `www.domain.com` is usually not the same as telnetting `domain.com`. Make sure your `host` header information matches exactly the domain you telnetted into.
+
 - [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when an empty line is expected. Press `<Enter>` to add it.
 
-- Be aware of the **backspace key** when *telneting*: while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key is forwarded to the server instead. In other words: **do not use the backspace key when telneting**.
+- Be aware of the **backspace key** when *telneting*: while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key may be forwarded to the server instead. Be aware!
 
 - This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. 
 
@@ -55,18 +57,27 @@ Make sure to name your files with an **A4** prefix!
   - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the PuTTY session (which you start using the *Open* button).
 ---
 
-**Exercise**:
+⚠️ ⚠️ ⚠️ **Exercise (1) comes in two flavours: if you completed this part before January 1, 2020 you will have telnetted to `weer.nl`. This is fine. There is no need to repeat the exercise; submit the responses as you wrote them up. If you are starting this exercise in January 2020, go to the `surfweer.nl` variant instead.** The remaining exercises are unaffected from this change!
+
+**Exercise weer.nl (valid until January 1, 2020)**:
 Use `telnet` to request the contents of the Dutch rainfall radar section of the `www.weer.nl` website: [www.weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
 
 ```console
 telnet www.weer.nl 80
 ```
 
-(*Note: the above command was updated on Dec. 20, 2019 as the server response has changed since the assignment was written up in Oct. 2019!*)
+**Exercise surfweer.nl**:
+Use `telnet` to request a list of webcams pointed at Dutch beaches from the `surfweer.nl` website: [http://surfweer.nl/surf/webcams/](http://surfweer.nl/surf/webcams/). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
+
+```console
+telnet www.surfweer.nl 80
+```
+
+
 
 ### 1.1)
 
-Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the contents of the Dutch rainfall radar page. Always use `HEAD` first to retrieve meta-­data about the resource.
+Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the desired contents. Always use `HEAD` first to retrieve meta-­data about the resource. *Note that 
 
 ### 1.2)
 
