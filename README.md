@@ -349,7 +349,7 @@ This lecture covers client-side JavaScript ([lecture slides](slides/2019_20/js.p
 
 ### Lecture 12
 
-This lecture covers Node.js ([transcript](Lecture-node.md)).
+This lecture covers Node.js ([lecture slides](slides/2019_20/node.pdf), [transcript](Lecture-node.md)).
 
 - Required readings:
   - :warning: Chapters 5 & 6 of the [web course book](http://shop.oreilly.com/product/0636920030621.do). We will cover Node.js in the lecture from sratch, use the reading to get a first idea of what Node.js is about!
