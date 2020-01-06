@@ -155,8 +155,6 @@ function my_func(x,y){
 my_func(5, toPrint);
 ```
 
-<sup>To assess your answers, run the code snippets' in the browser's Web Console.</sup>
-
 ## Scoping, hoisting and this
 
 We now cover three JavaScript principles that are often confusing for JavaScript novices.
@@ -375,6 +373,17 @@ to be different each time, as each time, `this` refers to a different object. We
  🚩 In ES6 so-called arrow functions were introduced. Instead of writing `let sum = function(a,b){return a+b}` we can shorten it to `let sum = (a,b) => {return a+b}`. This may look initially just like a more compact way of writing a function expression, but there is more to it - in particular the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are looking into the use of arrow functions! 
 
 🚩 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
+
+---
+:bug: Throughout this and the coming lectures we repeatedly point to the browser's web console as a quick way to explore JavaScript. [In the words of Kyle Simpson](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#its-not-always-js):
+
+```
+The developer console is not trying to pretend to be a JS compiler that handles your entered code exactly the same way the JS engine handles a .js file. It's trying to make it easy for you to quickly enter a few lines of code and see the results immediately. These are entirely different use-cases, and as such, it's unreasonable to expect one tool to handle both equally.
+```
+
+Thus, are (very few) specific instances where different browsers' web consoles interpret the same code snippet slightly differently and differently to the browser's JavaScript runtime engine. 
+
+---
 
 
 ## JavaScript design patterns
