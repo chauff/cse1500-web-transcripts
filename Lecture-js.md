@@ -1281,10 +1281,7 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
           <p><em>Task: Write down / mark the 3 most important information nuggets</em>
             <br>
 
-            <textarea id="ta" cols="50" rows="5" readonly>
-                "Hobey Baker (1892-1918) was an American amateur athlete of the early 
-                twentieth century, widely regarded by his contemporaries as one of the 
-                best athletes of his time."
+            <textarea id="ta" cols="50" rows="5" readonly>"Hobey Baker (1892-1918) was an American amateur athlete of the early twentieth century, widely regarded by his contemporaries as one of the best athletes of his time."
             </textarea>
             <br>
 
@@ -1372,8 +1369,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
             <em>Task: Type out the following text correctly:</em>
             <br>
 
-            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">
-                H. Baker was an American amateur athlete of the 20th century.</textarea>
+            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">H. Baker was an American amateur athlete of the 20th century.</textarea>
             <br>
 
             <textarea id="typed" cols="50" rows="5" readonly="" autocomplete="off"></textarea>
