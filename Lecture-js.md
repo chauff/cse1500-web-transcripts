@@ -81,7 +81,7 @@ Today's **JavaScript runtime environments** are highly efficient and a number of
 
 While the browser is the most obvious usage scenario for JavaScript runtime environments, they are also used elsewhere (such as [microcontrollers](https://github.com/jerryscript-project/jerryscript)). Most importantly for us: the Node.js platform we cover in the next lecture is built on top of V8. 
 
-Javascript is an *interpreted* language, a browser's JavaScript engine reads and interprets JavaScript code line-by-line (advantage: quick upstart, disadvantage: the program overall *runs* slower than one written in a language requiring compilation). Today's JavaScript engines both interpret *and* compile by employing so-called **just-in-time (JIT) compilation**. This means that JavaScript code that is run repeatedly such as often-called functions (the JavaScript engine monitors the frequency of code usage) is eventually compiled and no longer interpreted. [This article by Lin Clark](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/) explains this in more detail for those that want to know more.
+Javascript is an *interpreted* language (advantage: quick upstart, disadvantage: the program overall *runs* slower than one written in a language requiring compilation). Today's JavaScript engines both interpret *and* compile by employing so-called **just-in-time (JIT) compilation**. This means that JavaScript code that is run repeatedly such as often-called functions (the JavaScript engine monitors the frequency of code usage) is eventually compiled and no longer interpreted. [This article by Lin Clark](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/) explains this in more detail for those that want to know more.
 
 JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
 
@@ -113,7 +113,7 @@ and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-
 
 A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client. 
 
-Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) which provides a standard for an in-browser database that is transaction-based and stores key-value pairs persistently. While it cannot be queried with SQL directly, libraries such as [JSstore](https://github.com/ujjwalguptaofficial/JsStore) exist that act as wrapper around IndexedDB to enable SQL-like querying. The storage limits are browser and device-dependent; in principle it is possible to store Gigabytes of data within the browser's database. This can be very useful for instance for games (game objects are stored in the database) as well as data processing pipelines that are designed to be easy-to-use for non-experts such as our recently open-sourced ELAT tool (the processed data is stored in the database). //TODO: URL ELAT
+Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) which provides a standard for an in-browser database that is transaction-based and stores key-value pairs persistently. While it cannot be queried with SQL directly, libraries such as [JSstore](https://github.com/ujjwalguptaofficial/JsStore) exist that act as wrapper around IndexedDB to enable SQL-like querying. The storage limits are browser and device-dependent; in principle it is possible to store Gigabytes of data within the browser's database. This can be very useful for instance for games (game objects are stored in the database) as well as data processing pipelines that are designed to be easy-to-use for non-experts such as our recently open-sourced ELAT tool (the processed data is stored in the database).
 
 ### The `<script>` tag
 
@@ -154,8 +154,6 @@ function my_func(x,y){
 
 my_func(5, toPrint);
 ```
-
-<sup>To assess your answers, run the code snippets' in the browser's Web Console.</sup>
 
 ## Scoping, hoisting and this
 
@@ -375,6 +373,17 @@ to be different each time, as each time, `this` refers to a different object. We
  🚩 In ES6 so-called arrow functions were introduced. Instead of writing `let sum = function(a,b){return a+b}` we can shorten it to `let sum = (a,b) => {return a+b}`. This may look initially just like a more compact way of writing a function expression, but there is more to it - in particular the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are looking into the use of arrow functions! 
 
 🚩 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
+
+---
+:bug: Throughout this and the coming lectures we repeatedly point to the browser's web console as a quick way to explore JavaScript. [In the words of Kyle Simpson](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#its-not-always-js):
+
+```
+The developer console is not trying to pretend to be a JS compiler that handles your entered code exactly the same way the JS engine handles a .js file. It's trying to make it easy for you to quickly enter a few lines of code and see the results immediately. These are entirely different use-cases, and as such, it's unreasonable to expect one tool to handle both equally.
+```
+
+Thus, are (very few) specific instances where different browsers' web consoles interpret the same code snippet slightly differently and differently to the browser's JavaScript runtime engine. 
+
+---
 
 
 ## JavaScript design patterns
@@ -1272,10 +1281,7 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
           <p><em>Task: Write down / mark the 3 most important information nuggets</em>
             <br>
 
-            <textarea id="ta" cols="50" rows="5" readonly>
-                "Hobey Baker (1892-1918) was an American amateur athlete of the early 
-                twentieth century, widely regarded by his contemporaries as one of the 
-                best athletes of his time."
+            <textarea id="ta" cols="50" rows="5" readonly>"Hobey Baker (1892-1918) was an American amateur athlete of the early twentieth century, widely regarded by his contemporaries as one of the best athletes of his time."
             </textarea>
             <br>
 
@@ -1363,8 +1369,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
             <em>Task: Type out the following text correctly:</em>
             <br>
 
-            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">
-                H. Baker was an American amateur athlete of the 20th century.</textarea>
+            <textarea id="given" cols="50" rows="5" readonly="" autocomplete="off">H. Baker was an American amateur athlete of the 20th century.</textarea>
             <br>
 
             <textarea id="typed" cols="50" rows="5" readonly="" autocomplete="off"></textarea>
