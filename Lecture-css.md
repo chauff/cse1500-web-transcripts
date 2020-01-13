@@ -1,10 +1,11 @@
 # CSS: the language of web design <!-- omit in toc -->
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information  and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 
 - [Learning goals](#learning-goals)
+- [The Delft weather app](#the-delft-weather-app)
 - [A word of warning](#a-word-of-warning)
 - [Context](#context)
 - [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
@@ -42,11 +43,23 @@
 - Write CSS media queries.
 - Create CSS-based animations.
 
+## The Delft weather app
+
+At [https://codepen.io/charlottehase/full/abzYoQp](https://codepen.io/charlottehase/full/abzYoQp) you find a demo that we developed to show off some of CSS' animation capabilities. Throughout this transcript we will refer to it from time to time---we encourage you to fork it and explore the code. It contains a lot of comments that should help you get started. 
+
+This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
+
+More generally, if you want to find inspirations about what is possible with a bit of HTML, CSS (and JavaScript), it is worthwhile to take a look at [CodePen](https://codepen.io/) and what it has to offer.
+
+![Weather app](img/L5-weather.png)
+
 ## A word of warning
+
+This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) :point_down: sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements), will cost you a lot of time.
 
 ![Tweet](img/L5-tweet.png)
 
-The [tweet](https://twitter.com/iamdevloper/status/936199543099621376) sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish, will cost you a lot of time.
+
 
 ## Context
 
@@ -91,8 +104,7 @@ body {
 
 `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
 
-*Note*: In this example color is represented by its hex value. The most common color formats in CSS are *color name, hex value, rgb value.*  
-Example: Green color can be represented by its name `green`, its hex value `#008000` and its rgb value `rgb(0, 128, 0)`. A nice tool to quickly convert between different color formats can be found [here](https://convertingcolors.com/).  
+*Note*: In this exampl :point_up: the color value is represented by its hex value. Throughout this transcript, we offer use color names - there are more than 140 color names that all modern browsers recognize ([a nicely formatted list on is available on Wikipedia](https://en.wikipedia.org/wiki/Web_colors#X11_color_names)). Besides hex values, colors can also be represented by their `rgba` values (red, green, blue, alpha). We suggest [convertingcolors.com](https://convertingcolors.com/) as one option to convert between different color formats. 
 
 Lastly, you know about `!important` which overrides all other declarations.
 
