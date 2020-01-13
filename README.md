@@ -74,7 +74,7 @@ The database materials (lectures/assignments) are not included here! You can fin
 - [Course topics](#course-topics)
 - [Web technology tutorials](#web-technology-tutorials)
 - [Sample exams](#sample-exams)
-- [Assignments &amp; assessment](#assignments-amp-assessment)
+- [Assignments & assessment](#assignments--assessment)
 - [Demo application](#demo-application)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
@@ -85,10 +85,10 @@ The database materials (lectures/assignments) are not included here! You can fin
   - [Lecture 10](#lecture-10)
   - [Lecture 11](#lecture-11)
   - [Lecture 12](#lecture-12)
-  - [🚧 Lecture 13](#%f0%9f%9a%a7-lecture-13)
-  - [🚧 Lecture 14](#%f0%9f%9a%a7-lecture-14)
-  - [🚧 Lecture 15](#%f0%9f%9a%a7-lecture-15)
-  - [🚧 Lecture 16](#%f0%9f%9a%a7-lecture-16)
+  - [🚧 Lecture 13](#%F0%9F%9A%A7-lecture-13)
+  - [🚧 Lecture 14](#%F0%9F%9A%A7-lecture-14)
+  - [🚧 Lecture 15](#%F0%9F%9A%A7-lecture-15)
+  - [🚧 Lecture 16](#%F0%9F%9A%A7-lecture-16)
 
 ## Course instructors
 
@@ -365,7 +365,7 @@ This lecture covers Node.js ([lecture slides](slides/2019_20/node.pdf), [transcr
   
 ### 🚧 Lecture 13
 
-This lecture covers CSS ([transcript](Lecture-css.md)).
+This lecture covers CSS ([lecture slides](slides/2019_20/css.pdf), [transcript](Lecture-css.md)).
   
 - Required readings:
   - :warning: Chapter 3 of the [web course book](http://shop.oreilly.com/product/0636920030621.do).

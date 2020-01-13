@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      input[type=text] {
+        border: 0px;
+        width: 150px;
+        background-color: lightgrey;
+        border: 2px solid grey;
+      }
+
+      input[type=number]{
+        width: 40px;
+      }
+
+      input[type=number]:valid {
+        background-color: rgba(0, 255, 0, 0.25);
+          border: 2px solid green;
+      }
+
+      input[type=number]:invalid {
+        background-color: rgba(255, 0, 0, 0.25);
+          border: 2px solid red;
+      }
+
+      input[type=number]:valid + label::after {
+        content: "\2714";
+        color: green;
+      }
+
+      input[type=number]:invalid + label::after {
+        content: " (invalid)";
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <input type="text" placeholder="Add your todo" />
+      <input id="dl" type="number" min="1" max="30" step="1" placeholder="Days" required />
+      <label for="deadline1"> </label>
+    </main>
+  </body>
+</html>
