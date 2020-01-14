@@ -54,6 +54,8 @@ More generally, if you want to find inspirations about what is possible with a b
 
 As a second example application we often refer to a todo application (similar to the one developed in the course book). Here, we do not offer an entire application but present how specific parts of the application can be styled.
 
+Lastly, we also consider a TU DELFT neon sign as an example for text-heavy animations. The entire source code is presented here.
+
 ## A word of warning
 
 This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) :point_down: sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements), will cost you a lot of time.
