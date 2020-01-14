@@ -74,7 +74,7 @@ The database materials (lectures/assignments) are not included here! You can fin
 - [Course topics](#course-topics)
 - [Web technology tutorials](#web-technology-tutorials)
 - [Sample exams](#sample-exams)
-- [Assignments & assessment](#assignments--assessment)
+- [Assignments &amp; assessment](#assignments-amp-assessment)
 - [Demo application](#demo-application)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
@@ -86,9 +86,9 @@ The database materials (lectures/assignments) are not included here! You can fin
   - [Lecture 11](#lecture-11)
   - [Lecture 12](#lecture-12)
   - [Lecture 13](#lecture-13)
-  - [🚧 Lecture 14](#%F0%9F%9A%A7-lecture-14)
-  - [🚧 Lecture 15](#%F0%9F%9A%A7-lecture-15)
-  - [🚧 Lecture 16](#%F0%9F%9A%A7-lecture-16)
+  - [Lecture 14](#lecture-14)
+  - [🚧 Lecture 15](#%f0%9f%9a%a7-lecture-15)
+  - [🚧 Lecture 16](#%f0%9f%9a%a7-lecture-16)
 
 ## Course instructors
 
@@ -381,7 +381,7 @@ This lecture covers CSS ([lecture slides](slides/2019_20/css.pdf), [transcript](
 - Relevant scientific publications:
   - Meyerovich, L.A. and Bodik, R., 2010, April. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web (pp. 711-720). ACM.
 
-### 🚧 Lecture 14
+### Lecture 14
 
 This lecture covers advanced Node.js concepts ([transcript](Lecture-node2.md)).
 
