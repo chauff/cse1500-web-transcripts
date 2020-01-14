@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.0.1",
     "express": "^4.16.3",
     "ws": "^6.0.0"
   }

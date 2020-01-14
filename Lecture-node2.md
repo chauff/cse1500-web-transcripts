@@ -5,24 +5,24 @@
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
-    - [A file-based module system](#a-file-based-module-system)
-    - [:bangbang: A first module example](#bangbang-a-first-module-example)
-    - [:bangbang: `require` is blocking](#bangbang-require-is-blocking)
-    - [:bangbang: module.exports vs. exports](#bangbang-moduleexports-vs-exports)
+  - [A file-based module system](#a-file-based-module-system)
+  - [:bangbang: A first module example](#bangbang-a-first-module-example)
+  - [:bangbang: require is blocking](#bangbang-require-is-blocking)
+  - [:bangbang: module.exports vs. exports](#bangbang-moduleexports-vs-exports)
 - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
 - [Middleware in Express](#middleware-in-express)
-    - [:bangbang: Logger example](#bangbang-logger-example)
-    - [:bangbang: Authorisation component example](#bangbang-authorisation-component-example)
-    - [Components are configurable](#components-are-configurable)
+  - [:bangbang: Logger example](#bangbang-logger-example)
+  - [:bangbang: Authorisation component example](#bangbang-authorisation-component-example)
+  - [Components are configurable](#components-are-configurable)
 - [Routing](#routing)
-    - [Routing paths and string patterns](#routing-paths-and-string-patterns)
-    - [Routing parameters](#routing-parameters)
-    - [Organizing routes](#organizing-routes)
+  - [Routing paths and string patterns](#routing-paths-and-string-patterns)
+  - [Routing parameters](#routing-parameters)
+  - [Organizing routes](#organizing-routes)
 - [Templating with EJS](#templating-with-ejs)
-    - [:bangbang: A first EJS example](#bangbang-a-first-ejs-example)
-    - [:bangbang: EJS and user-defined functions](#bangbang-ejs-and-user-defined-functions)
-    - [:bangbang: JavaScript within EJS templates](#bangbang-javascript-within-ejs-templates)
-    - [:bangbang: Express and templates](#bangbang-express-and-templates)
+  - [:bangbang: A first EJS example](#bangbang-a-first-ejs-example)
+  - [:bangbang: EJS and user-defined functions](#bangbang-ejs-and-user-defined-functions)
+  - [:bangbang: JavaScript within EJS templates](#bangbang-javascript-within-ejs-templates)
+  - [:bangbang: Express and templates](#bangbang-express-and-templates)
 - [Self-check](#self-check)
 
 
@@ -55,24 +55,33 @@ While it is beyond the scope of this course to dive into the details of the npm 
 
 In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in the [JavaScript lecture](Lecture-js.md)).
 
-The module system works as follows: each Node.js file can access its so-called **module definition** through the `module` object. The module object is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or its alias `exports` is used as we will see in a second. The `module` object looks as follows :point_down::
+The module system works as follows: each Node.js file can access its so-called **module definition** through the `module` object. The module object is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or its alias `exports` is used as we will see in a second. The `module` object looks as follows (depending on the Node version and underlying operating system the object properties may vary slightly) :point_down::
 
 ```javascript
 module {
   id: '.',
+  path: '/Users/Node/Web-Teaching',
   exports: {},
   parent: null,
-  filename: '/path/to/nodejs-file.js',
+  filename: '/Users/Node/Web-Teaching/tmp.js',
   loaded: false,
   children: [],
-  paths:
-   [ '/Users/path/path2/node_modules',
-    '/Users/path/node_modules',
-     '/Users/node_modules' ]
+  paths: [
+    '/Users/Node/GitHub/Web-Teaching/node_modules',
+    '/Users/Node/GitHub/node_modules',
+    '/Users/Node/node_modules',
+    '/Users/node_modules',
+    '/node_modules'
+  ]
 }
 ```
 
-To see this for yourself, create a Node.js script containing only the line `console.log(module);` and run it. We see that currently nothing is *exported* (`exports` is empty) from this module (which makes sense, it just prints a single line).
+To see for yourself how the `module` object looks on your machine you can do one of two things:
+
+1. Create a Node.js script containing only the line `console.log(module);` and run it.
+2. Start the node REPL (just type `node` into the terminal) and then type `console.log(module);`.  
+
+We see that in our module object above :point_up: nothing is currently being *exported* as `exports` is empty.
 
 Once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
@@ -97,14 +106,13 @@ module.exports = function() {       //LINE 3
 and `bar.js` :point_down::
 
 ```javascript
-var foo = require('./foo');
+var foo = require("./foo");
 foo();                      //CASE 1: Hi from foo!
-require('./foo')();         //CASE 2: Hi from foo!
+require("./foo")();         //CASE 2: Hi from foo!
 console.log(foo);           //CASE 3: [Function]
 console.log(foo.toString());//CASE 4: function () {console.log("Hi from foo!");}
-console.log(fooA);          //CASE 5: ReferenceError
+console.log(fooA);          //CASE 5: ReferenceError (you will have to remove this line to reach the next one)
 console.log(module.exports);//CASE 6: {}
-
 ```
 
 :point_up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`).
@@ -120,7 +128,7 @@ As you can see in lines 2 and beyond of `bar.js` there are several ways to acces
 - **CASE** :two: We can also combine lines 1 and 2 into a single line with the same result.
 - **CASE** :three: If we print out the variable `foo`, we learn that it is a function.
 - **CASE** :four: Using the `toString()` function prints out the content of the function.
-- **CASE** :five: Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error.
+- **CASE** :five: Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. :bug: Visual Studio Code flags up this error (`fooA is not defined`) already at the code writing stage. 
 - **CASE** :six: Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
 
 ### :bangbang: `require` is blocking
@@ -130,16 +138,21 @@ This module setup also explains why `require` is **blocking**: once a call to `r
 Let's now consider what happens if a module is imported more than once :point_down::
 
 ```javascript
-var t1 = new Date().getTime();
-var foo1 = require('./foo');
-console.log(new Date().getTime() - t1); // > 0
+var t1 = process.hrtime()[1];//returns an array with [seconds, nanoseconds]
+var foo1 = require("./foo");
+console.log(process.hrtime()[1] - t1);//303914
 
-var t2 = new Date().getTime();
-var foo2 = require('./foo');
-console.log(new Date().getTime() - t2); // approx 0
+var t2 = process.hrtime()[1];
+var foo2 = require("./foo");
+console.log(process.hrtime()[1] - t2);//35012
 ```
 
-:point_up: Here, we execute `require('./foo')` twice and log both times the time it takes for `require` to return. The first time the line `require(foo.js)` is executed, the file `foo.js` is read from disk (this takes some time, at least a few milliseconds). In subsequent calls to `require(foo.js)`, however, the **in-memory object is returned** (takes less than a millisecond). Thus, `module.exports` is **cached**.
+:point_up: Here, we execute `require('./foo')` twice and log both times the time it takes for `require` to return. The first time the line `require(foo.js)` is executed, the file `foo.js` is read from disk (this takes some time). In subsequent calls to `require(foo.js)`, however, the **in-memory object is returned**. Thus, `module.exports` is **cached**.
+
+We here resort to using `process.hrtime()` wich returns an array whose first value is the time in seconds and the second is the time in nanoseconds relative to *"an arbitrary time in the past"* ([Node documentation](https://nodejs.org/api/process.html#process_process_hrtime_time)). While they are not useful to compute an absolute time, they can accurately measure the duration of code as seen in the above example. Depending on your machine, the reported nanoseconds intervals will differ, though on average it should take about ten times longer the first time we execute `require(foo.js)`.
+
+*Note: if you are already familiar with JavaScript you may ask yourself why we do not rely on [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) to measure time differences. It returns the number of **milliseconds** that have passed since January 1, 1970 00:00:00 UTC (why this particular time? Because that is the [Unix time](https://en.wikipedia.org/wiki/Unix_time)!). On modern machines, a millisecond-based time resolution does not offer a high enough resolution to detect this difference in loading time.*
+
 
 ### :bangbang: module.exports vs. exports
 
@@ -167,7 +180,7 @@ exports.bar = function () {
 };
 ```
 
-:point_up: In the first snippet, we use `module.exports` to make two functions (`foo` and `bar`) accessible to the outside world. In the second snippet, we use `exports` to do exactly the same. Note that in these two examples, **we do not assign something to `exports` directly**, i.e. we do not write `exports = function ....`. This is in fact **not possible**: if you directly assign a function or object to `exports`, then its reference to `module.exports` will be **broken**. You can only **assign directly** to `module.exports`, for instance, if you only want to make a single function accessible.
+:point_up: In the first snippet, we use `module.exports` to make two functions (`foo` and `bar`) accessible to the outside world. In the second snippet, we use `exports` to do exactly the same. Note that in these two examples, **we do not assign something to `exports` directly**, i.e. we do not write `exports = function ....`. This is in fact **not possible** as `exports` is only a reference (a short hand if you will) to `module.exports`: if you directly assign a function or object to `exports`, then its reference to `module.exports` will be **broken**. You can only **assign directly** to `module.exports`, for instance, if you only want to make a single function accessible.
 
 ## Creating and using a (useful) module
 
@@ -176,25 +189,40 @@ In the example above :point_up:, `foo.js` is a module we created. Not a very sen
 - a **single file**, or,
 - a **directory of files**, one of which is `index.js`.
 
-A module can contain other modules (that's what `require` is for) and should have a specific purpose. For instance, we can create a *grade rounding module* whose functionality is the rounding of grades in the Dutch grading system :point_down::
+A module can contain other modules (that's what `require` is for) and should have a specific purpose. For instance, we can create a *grade rounding module* whose functionality is the rounding of grades in the Dutch grading system. Any argument that is not a number between 1 and 10 is rejected :point_down::
 
 ```javascript
 /* not exposed */
-function roundGrade(grade) {
-    return Math.round(grade);
+var errorString = "Grades must be a number between 1 and 10.";
+
+function roundGradeUp(grade) {
+  if (isValidNumber(grade) == false) {
+    throw errorString;
+  }
+  return ( Math.ceil(grade) > 10 ? 10 : Math.ceil(grade));//max. is always 10
 }
 
-/* not exposed */
-function roundGradeUp(grade) {
-    return Math.round(0.5+parseFloat(grade));
+function isValidNumber(grade) {
+  if (
+    isNaN(grade) == true ||
+    grade < exports.minGrade ||
+    grade > exports.maxGrade
+  ) {
+    return false;
+  }
+  return true;
 }
 
 /* exposed */
 exports.maxGrade = 10;
+exports.minGrade = 1;
 exports.roundGradeUp = roundGradeUp;
 exports.roundGradeDown = function(grade) {
-    return Math.round(grade-0.5);
-}
+  if (isValidNumber(grade) == false) {
+    throw errorString;
+  }
+  return Math.floor(grade);
+};
  ```
 
 We can use the grading module in an Express application as follows :point_down::
@@ -210,14 +238,25 @@ var port = process.argv[2];
 app = express();
 http.createServer(app).listen(port);
 
-app.get("/round", function (req, res) {
-    var query = url.parse(req.url, true).query;
-    var grade = ( query["grade"]!=undefined) ? query["grade"] : "0";
+app.get("/round", function(req, res) {
+  var query = url.parse(req.url, true).query;
+  var grade = query["grade"] != undefined ? query["grade"] : "0";
 
-    //accessing module functions
-    res.send("UP: " + grading.roundGradeUp(grade) +", DOWN: "+ grading.roundGradeDown(grade));
+  //accessing module functions
+  res.send(
+    "UP: " +
+      grading.roundGradeUp(grade) +
+      ", DOWN: " +
+      grading.roundGradeDown(grade)
+  );
 });
 ```
+Assuming the Node script is started on `localhost` and port `3000`, we can then test our application with several valid and invalid queries:
+
+- `http://localhost:3000/round?grade=2.1a`
+- `http://localhost:3000/round?grade=2.1`
+- `http://localhost:3000/round?grade=`
+- `http://localhost:3000/round?grade=10`
 
 ## Middleware in Express
 
@@ -236,29 +275,29 @@ Middleware components have a number of abilities:
 - End the request-response cycle.
 - Call the next middleware function in the middleware stack.
 
-As a concrete example, imagine an Express application with a POST route `/user/addHabit` :point_down::
+As a concrete example, imagine an Express application with a POST route `/user/moveMade` :point_down::
 
 ![Middleware components](img/L6-middleware.png)
 
-:point_up: The first middleware to be called is the logging component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete.
+:point_up: The first middleware to be called is the logging component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete. 
 
 ### :bangbang: Logger example
 
 Our goal is to create a logger that records every single HTTP request made to our application as well as the URL of the request. We need to write a function that accepts the HTTP request and response objects as arguments and `next` as callback function. Here, we write two functions to showcase the use of several middleware components :point_down::
 
 ```javascript
-var express = require('express');
+var express = require("express");
 
 //a middleware logger component
 function logger(request, response, next) {
-    console.log('%s\t%s\t%s', new Date(), request.method, request.url);
-    next(); //control shifts to next middleware function
+  console.log("%s\t%s\t%s", new Date(), request.method, request.url);
+  next(); //control shifts to next middleware function
 }
 
 //a middleware delimiter component
-function delimiter(request, response, next){
-    console.log("-----------------");
-    next();
+function delimiter(request, response, next) {
+  console.log("-----------------");
+  next();
 }
 
 var app = express();
@@ -267,14 +306,20 @@ app.use(delimiter);
 app.listen(3001);
 ```
 
-The server's console output will look something like this:
+If you start the script and then make the following HTTP requests:
+
+- http://localhost:3001/first
+- http://localhost:3001/second
+- http://localhost:3001/
+
+your output on the terminal will look something like this:
 
 ```console
-Mon Oct 22 2018 21:37:13 GMT+0200 (CEST)	GET	/
+2020-01-14T19:17:16.577Z        GET     /first
 -----------------
-Mon Oct 22 2018 21:37:23 GMT+0200 (CEST)	GET	/greetme
+2020-01-14T19:17:19.111Z        GET     /second
 -----------------
-Mon Oct 22 2018 21:37:25 GMT+0200 (CEST)	GET	/hello
+2020-01-14T19:17:21.159Z        GET     /
 -----------------
 ```
 
@@ -287,6 +332,7 @@ Mon Oct 22 2018 21:37:25 GMT+0200 (CEST)	GET	/hello
 You will observe different behaviours of the application that make clear how the middleware components interact with each other and how they should be used in an Express application.
 
 In the example above we did not actually sent an HTTP response back, but you know how to write such a code snippet yourself. So far, none of our routes have contained `next` for a simple reason: all our routes ended with an HTTP response being sent and this completes the request-response cycle; in this case there is no need for a `next()` call.
+
 
 ### :bangbang: Authorisation component example
 
@@ -303,7 +349,7 @@ Once the server is started, open another terminal and use `curl` (a command line
 - Request the list of todos with the correct username and password (as hardcoded in our demonstration code): `curl --user user:password http://localhost:3000/todos`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
 - Request the list of todos with an incorrect username/password combination: `curl --user test:test http://localhost:3000/todos`. You should receive a `Wrong username/password combination` error.
 
-Having found out how the code works, let us look at the authorization component. We here define it as an anynymous function as argument to `app.use` :point_down::
+Having found out how the code *behaves*, let us look at the authorization component. We here define it as an anynymous function as argument to `app.use` :point_down::
 
 ```javascript
 app.use(function (req, res, next) {
@@ -330,11 +376,11 @@ app.use(function (req, res, next) {
 });
 ```
 
-:point_up: This code snippet first determines whether an authorization header was included in the HTTP request (accessible at `req.headers.authorization`). If no header was sent, we pass an error to the `next()` function, for Express to catch and process, i.e. sending the appropriate HTTP response. If an authorization header is present, we now extract the username and password and determine whether they match `user` and `password` respectively. If they match, `next()` is called and the next middleware component processes the request, which in our `app.js` file is `app.get("/todos",...)`.
+:point_up: This code snippet first determines whether an authorization header was included in the HTTP request (accessible at `req.headers.authorization`). If no header was sent, we pass an error to the `next()` function, for Express to catch and process, i.e. sending the appropriate HTTP response. If an authorization header is present, we now extract the username and password (remember from the http lecture that it is base64 encoded!) and determine whether they match `user` and `password` respectively. If they match, `next()` is called and the next middleware component processes the request, which in our `app.js` file is `app.get("/todos",...)`.
 
 ### Components are configurable
 
-One of the design goals of middleware is **reusability** across applications: once we define a logger or an authorization component, we should be able to use it in a wide range of applications without additional engineering effort. Reusable code usually has parameters that can be set. To make this happen, we can wrap the original middleware function in a *setup function* which takes the function parameters as input :point_down::
+One of the design goals of middleware is **reusability** across applications: once we define a logger or an authorization component, we should be able to use it in a wide range of applications without additional engineering effort. Reusable code usually has parameters that can be set. To make this happen, we can wrap the original middleware function in a *setup function* which takes the function parameters as input :point_down: (this works because of the principle of closures as briefly discussed in the JavaScript lecture):
 
 ```javascript
 function setup(options) {
@@ -459,7 +505,7 @@ Apart from regular expressions, routing parameters can be employed to enable **v
 
 ```javascript
 var todoTypes = {
-    important: ["TI1506","OOP","Calculus"],
+    important: ["TI1500","ADS","Calculus"],
     urgent: ["Dentist","Hotel booking"],
     unimportant: ["Groceries"],
 };
@@ -480,8 +526,8 @@ Routing parameters can have various levels of nesting :point_down::
 ```javascript
 var todoTypes = {
     important: {
-        today: ["TI1506"],
-        tomorrow: ["OOP", "Calculus"]
+        today: ["TI1500"],
+        tomorrow: ["ADS", "Calculus"]
     },
     urgent: {
         today: ["Dentist", "Hotel booking"],
@@ -537,7 +583,7 @@ is a poor choice, as the code quickly becomes unmaintainable, hard to debug and 
 
 One approach to solve this problem is the use of **Ajax**: the HTML code is *blank* in the sense that it does not contain any user-specific data. The HTML and JavaScript (and other resources) are sent to the client and the client makes an Ajax request to retrieve the user-specific data from the server-side. 
 
-With **templating, we are able to directly send HTML with user-specific data to the client** and thus remove the extra request-response cycle that Ajax requires.
+With **templating, we are able to directly send HTML with user-specific data to the client** and thus remove the extra request-response cycle that Ajax requires:
 
 ![templating](img/L6-templating.png)
 
