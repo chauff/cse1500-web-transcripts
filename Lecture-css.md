@@ -5,7 +5,7 @@
 ## Table of Contents <!-- omit in toc -->
 
 - [Learning goals](#learning-goals)
-- [The Delft weather app](#the-delft-weather-app)
+- [Code examples](#code-examples)
 - [A word of warning](#a-word-of-warning)
 - [Context](#context)
 - [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
@@ -16,7 +16,6 @@
   - [:bangbang: enabled and disabled](#bangbang-enabled-and-disabled)
   - [:bangbang: not](#bangbang-not)
   - [:bangbang: Selector combinations](#bangbang-selector-combinations)
-  - [:bangbang: valid and invalid](#bangbang-valid-and-invalid)
 - [Pseudo-elements](#pseudo-elements)
   - [:bangbang: first-letter and first-line](#bangbang-first-letter-and-first-line)
   - [:bangbang: before and after](#bangbang-before-and-after)
@@ -27,11 +26,11 @@
 - [CSS media queries](#css-media-queries)
 - [Animations and transitions](#animations-and-transitions)
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
-  - [:bangbang: Animations](#bangbang-animations)
+  - [Animations](#animations)
+    - [:bangbang: Animations: TU DELFT neon sign](#bangbang-animations-tu-delft-neon-sign)
+    - [:bangbang: Animations: Delft weather app](#bangbang-animations-delft-weather-app)
   - [:bangbang: Transitions](#bangbang-transitions)
 - [Browser-specific prefixes](#browser-specific-prefixes)
-- [Rendering engines have bugs too!](#rendering-engines-have-bugs-too)
-- [CSS Debugging](#css-debugging)
 - [Self-check](#self-check)
 
 
@@ -43,7 +42,7 @@
 - Write CSS media queries.
 - Create CSS-based animations.
 
-## The Delft weather app
+## Code examples
 
 At [https://codepen.io/charlottehase/full/abzYoQp](https://codepen.io/charlottehase/full/abzYoQp) you find a demo that we developed to show off some of CSS' animation capabilities. Throughout this transcript we will refer to it from time to time---we encourage you to fork it and explore the code. It contains a lot of comments that should help you get started. 
 
@@ -53,12 +52,13 @@ More generally, if you want to find inspirations about what is possible with a b
 
 ![Weather app](img/L5-weather.png)
 
+As a second example application we often refer to a todo application (similar to the one developed in the course book). Here, we do not offer an entire application but present how specific parts of the application can be styled.
+
 ## A word of warning
 
 This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) :point_down: sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements), will cost you a lot of time.
 
 ![Tweet](img/L5-tweet.png)
-
 
 
 ## Context
@@ -104,17 +104,17 @@ body {
 
 `body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
 
-*Note*: In this exampl :point_up: the color value is represented by its hex value. Throughout this transcript, we offer use color names - there are more than 140 color names that all modern browsers recognize ([a nicely formatted list on is available on Wikipedia](https://en.wikipedia.org/wiki/Web_colors#X11_color_names)). Besides hex values, colors can also be represented by their `rgba` values (red, green, blue, alpha). We suggest [convertingcolors.com](https://convertingcolors.com/) as one option to convert between different color formats. 
+*Note*: In this example :point_up: the color value is represented by its hex value. Throughout this transcript, we often use color names - there are more than 140 color names that all modern browsers recognize ([a nicely formatted list on is available on Wikipedia](https://en.wikipedia.org/wiki/Web_colors#X11_color_names)). Besides hex values, colors can also be represented by their `rgba` values (red, green, blue, alpha). We suggest [convertingcolors.com](https://convertingcolors.com/) as one option to convert between different color formats. 
 
-Lastly, you know about `!important` which overrides all other declarations.
+Lastly, you know about CSS resets and `!important` which overrides all other declarations.
 
 In this lecture, we move beyond the course book chapter and highlight a number of more advanced CSS concepts.
 
-:bangbang: **We strongly suggest to work with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor can do!**
+:bangbang: **We strongly suggest to work with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor and Inspector can do!**
 
 ## Pseudo-classes
 
-A **pseudo-class** is a keyword added to a **selector** that indicates *a particular state or type* of the corresponding element. Pseudo-classes allow styling according to (among others) **document external** factors such as mouse movements and user browsing history.
+A **pseudo-class** is a keyword added to a **selector** that indicates *a particular state or type* of the corresponding element. Pseudo-classes allow styling according to (among others) **document external** factors such as mouse movements and user browsing history as well as **element external** factors such as the placement of the element within the entire document structure.
 
 They are used as follows :point_down::
 
@@ -128,7 +128,7 @@ selector:pseudo-class {
 Imagine you have a list of twenty todo items and you want to alternate the todo items' background color (to make it easier to read them). Two simple ways to go about this are:
 
 - You can *hardcode* the CSS rule of every element, ending up with twenty rules. This is not maintainable.
-- You write two CSS rules (one per background color), assign each to a class and then alternate in the todo items class assignment. Better than the first option, but the redundancy remains.
+- You write two CSS rules (one per background color), assign each to a class and then alternate in the todo items class assignment. Better than the first option, but the redundancy remains. And what happens if you want to include a todo in the middle of the existing list? All subsequent todos would have to be assigned a different class to maintain the alternating colors.
 
 Ideally, we only create two CSS rules and solve the rest (alternate assignment of background colors) with pseudo-classes. And that's exactly what we can do with the two pseudo-classes we introduce next.
 
@@ -155,56 +155,81 @@ In the following example both pseudo-classes (`nth-child` and `nth-of-type`) are
 <html>
     <head>
         <style>
-            li {
-                list-style: none;
-                padding: 15px;
+            span {
+                width: 100px;
+                height: 100px;
+                display: inline-block;
             }
-            li:nth-of-type(2n){
-                background-color: gold;
+
+            span:nth-child(2n){
+                background-color: tomato;
             }
-            li:nth-of-type(2n+1){
-                background-color: yellow;
+            span:nth-child(2n+1){
+                background-color: orange;
             }
-            li:nth-child(1){
-                color: tomato;
+
+            span:nth-child(4){
+                border: 4px solid black;
             }
-            li:last-child{
-                color: tomato;
+
+            span:nth-of-type(4){
+                border: 4px solid darkviolet;
             }
         </style>
     </head>
     <body>
-        <ul>
-            <li>Create an Easychair instance</li>
-            <li>Send call for papers to mailing lists</li>
-            <li>Create a conference website</li>
-            <li>Book the venue</li>
-            <li>Find PC chairs</li>
-            <li>Find PC members</li>
-            <li>Book hotel rooms</li>
-            <li>Design program</li>
+        <h1>Weather</h1>
+        <span id="c1"></span>
+        <span id="c2"></span>
+        <span id="c3"></span>
+        <span id="c4"></span>
+        <span id="c5"></span>
+        <span id="c6"></span>
+        <span id="c7"></span>
+        <span id="c8"></span>
         </ul>
     </body>
 </html>
 ```
-
-This piece of code is rendered with alternating background colors as was our goal (try it out for yourself!). If we open Firefox's [Style Editor](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor) we now see the following:
+If we open Firefox's [Style Editor](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor) we now see the following:
 
 ![CSS pseudo-class](img/L5-pseudo-classes.png)
 
-The Style Editor allows us to not only inspect the CSS, but to also:
+This piece of code :point_up: is rendered with alternating background colors as was our goal. We also see here clearly how `nth-child` and `nth-of-type` differ:
+
+- the third `<span>` (`id=c3`) element is the fourth child of its parent `<body>` and thus is rendered with a black border;
+- the fourth `<span>` (`id=c4`) element is the fourth sibling among the group of `<span>` elements and thus rendered with a violet border.
+
+If we were to remove the `<h1>` element in our code snippet, `nth-child(4)` and `nth-of-type(4)` would point to exactly the same `<span>` element.
+
+Firefox's Style Editor allows us to not only inspect the CSS, but to also:
 
 - switch off the CSS (with a click on the "eye" symbol on the left);
-- hover over a CSS rule to see what part of the rendering it affects (the screenshot was taken when the mouse hovered over `li:last-child`);
 - **change the CSS** in the editor and view the immediate effect of those changes.
 
-The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the Style Editor is closed.
+---
+
+:bug: The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the Style Editor is closed. In addition, Visual Studio Code has also good code commentary for CSS: as an example, if you add the line `float: left` right after `display: inline-block` in the current code example, VSC will warn you that this CSS rule has no effect and will provide the reason why. 
+
+---
+
+Lastly, you can use this pseudo-class to change the color of half the clouds in our Delft weather app: simply append to the end of the CSS the following code snippet (you will learn what `::after` and `::before` refers to in a bit) to make half the clouds red:
+
+```css
+.cloud:nth-child(2n){
+  background-color: red;
+}
+.cloud:nth-child(2n)::after, .cloud:nth-child(2n)::before {
+  background-color: red;
+}
+```
+:point_up: Here, `nth-of-type` could have also been used instead.
 
 ### :bangbang: root
 
-One of the often voiced complaints about CSS used to be the lack of variable support (and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/)) - in the example above :point_up:, we set the same color value of `tomato` in two CSS rules (if you are interested in why we have such a seemingly random collection of color names on the web, [head over to this Wikipedia overview](https://en.wikipedia.org/wiki/X11_color_names)). If we now decide to change that color value, we would have to manually walk over all style sheets and alter it. Clearly, variables (i.e. *entities containing specific values that can be reused*) would be very helpful.
+One of the often voiced complaints about CSS used to be the lack of variable support (and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/)). In our TU Delft weather app we are playing around with quite a few colors and, importantly, as you can see in the red-clouds example above, we may have to alter several CSS rules to achieve seemingly a single effect. If we now decide to change that color value again, we have to determine all rules that need to be altered (again). Clearly, variables (i.e. *entities containing specific values that can be reused*) would be very helpful.
 
-In fact, since 2015/2016 (*yes, it took that long*), [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) are supported in all major browsers. Here is how they work :point_down::
+In fact, since 2015/2016 (*yes, it took that long*), [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) are supported in all major browsers. Here is how they work with our toy example introduced earlier :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -212,42 +237,113 @@ In fact, since 2015/2016 (*yes, it took that long*), [CSS variables](https://dev
     <head>
         <style>
             :root {
-                --highlight-color: tomato;
+                --color1: tomato;
+                --color2: orange;
+                --highlight1: black;
+                --highlight2: darkviolet;
             }
-            li {
-                list-style: none;
-                padding: 15px;
+            span {
+                width: 100px;
+                height: 100px;
+                display: inline-block;
             }
-            li:nth-of-type(2n){
-                background-color: gold;
+
+            span:nth-child(2n){
+                background-color: var(--color1);
             }
-            li:nth-of-type(2n+1){
-                background-color: yellow;
+            span:nth-child(2n+1){
+                background-color: var(--color2);
             }
-            li:nth-child(1){
-                color: var(--highlight-color);
+
+            span:nth-child(4){
+                border: 4px solid var(--highlight1);
             }
-            li:last-child{
-                color: var(--highlight-color);
+
+            span:nth-of-type(4){
+                border: 4px solid var(--highlight2);
             }
         </style>
     </head>
     <body>
-        <ul>
-            <li>Create an Easychair instance</li>
-            <li>Send call for papers to mailing lists</li>
-            <li>Create a conference website</li>
-            <li>Book the venue</li>
-            <li>Find PC chairs</li>
-            <li>Find PC members</li>
-            <li>Book hotel rooms</li>
-            <li>Design program</li>
+        <h1>Weather</h1>
+          <span id="c1"></span>
+          <span id="c2"></span>
+          <span id="c3"></span>
+          <span id="c4"></span>
+          <span id="c5"></span>
+          <span id="c6"></span>
+          <span id="c7"></span>
+          <span id="c8"></span>
         </ul>
     </body>
 </html>
 ```
 
-:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality. Non-global CSS variables can be added in the same manner to any element.
+:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality. Non-global CSS variables can be added in the same manner to any element, though they are then only available within their`{....}` block.
+
+In our Delft weather app the `:root` element looks as follows:
+
+```css
+:root {
+  --boardColorOne: steelblue; /* first board color */
+  --boardColorTwo: deeppink; /* second board color */
+  --hoverTextColor: mediumvioletred; /* text color when mouse hovering */
+  --borderBoardColor: pink;
+  --nailColor: darkblue;
+  --boardRotationStart: 5deg;
+  --boardRotationEnd: -5deg;
+  --switchOnColor: dodgerblue;
+  --switchOffColor: grey;
+  --switchColor: white;
+}
+```
+
+and the swinging letter boards are defined with the following CSS rules:
+
+```css
+.letter {
+  width: 130px;
+  height: 150px;
+  /* border-radius rounds the corners of an element; here
+   * the top 2 corners have no radius (no rounding) while
+   * the bottom 2 corners are rounded
+   */
+  border-radius: 0 0 20px 20px;
+  /*linear-gradient creates an image based on 2+ colors; has many options */
+  background: linear-gradient(to top, var(--boardColorTwo), var(--boardColorOne));
+  margin: 10px;
+  float: left;
+  font-size:100px;
+  font-family: 'Kanit', sans-serif;
+  border: 5px solid var(--borderBoardColor);
+  opacity: 0.7; /*determines transparency: 0 (invisible), 1 (opaque) */
+  /* creates shadow around element: x-offset, y-offset, blur amount, color
+   */
+  box-shadow: 5px 5px 10px var(--boardColorTwo);
+  
+  /* point around which transformation is applied, here we want
+   * the nail (roughly middle of the element and at the top) to
+   * be the origin, otherwise the swinging does not happen 
+   * "around" the nail */
+  transform-origin: 50% 0;
+
+  /* initially: same animation for all letter boards
+   * => keyframes (describes the content of the animation)
+   * => animation timing (param change over time)
+   * => duration (of a single animation cycle)
+   * => iteration-count (how often should each cycle be performed)
+   * => direction (restart from the origin or ... )
+   */
+  animation: swinging ease-in-out 1s infinite alternate;
+}
+```
+While many of these CSS properties won't yet make sense, we point out three properties that together provide easy ways to achieve a good look:
+
+-  `border-radius` as an important property to easily achieve rounded edges and circles ([MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius)); 
+-  `linear-gradient` is a function that creates an image that contains a color gradient ([MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)) which is then assigned to the `background` property;
+-  `box-shadow` as a CSS property that adds a shadow effect to its elements ([MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)).
+
+The moon in our Delft weather app for instance relies heavily on these three properties.
 
 ### :bangbang: hover and active
 
@@ -455,73 +551,10 @@ The rendering of the above code looks as follows:
 
 ![CSS selector combinations](img/L5-selector-combinations.png)
 
-### :bangbang: valid and invalid
-
-Let's move on to two more pseudo-classes, that are particularly useful for the styling of HTML forms: `:valid` and `:invalid`. Defining different styles for acceptable and non-acceptable input (e.g. if we have a grade form, only numbers from 0 to 10 are valid) makes it easy for users to see what is wrong. Although we can also use client-side JavaScript to check an input's validity, if we can do so with a CSS rule, that is preferred (less code to write for the developer, fewer opportunities to introduce bugs).
-
-`:valid` and :`invalid` can be employed as pseudo-classes of any `<input>` element. Input elements are valid if their value adheres to the input type (a number for `type=number`, an email for [`type=email`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email), etc.) and potential additional limitations due to attribute settings such as `min` or `max` as seen in this example :point_down::
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      input[type=text] {
-        border: 0px;
-        width: 150px;
-        background-color: lightgrey;
-        border: 2px solid grey;
-      }
-
-      input[type=number]{
-        width: 40px;
-      }
-
-      input[type=number]:valid {
-        background-color: rgba(0, 255, 0, 0.25);
-          border: 2px solid green;
-      }
-
-      input[type=number]:invalid {
-        background-color: rgba(255, 0, 0, 0.25);
-          border: 2px solid red;
-      }
-
-      input[type=number]:valid + label::after {
-        content: "\2714";
-        color: green;
-      }
-
-      input[type=number]:invalid + label::after {
-        content: " (invalid)";
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <input type="text" placeholder="Add your todo" />
-      <input id="dl" type="number" min="1" max="30" step="1" placeholder="Days" required />
-      <label for="deadline1"> </label>
-    </main>
-  </body>
-</html>
-```
-
-The rendered output with an invalid and valid deadline respectively looks as follows:
-
-![CSS valid / invalid](img/L5-valid-invalid.png)
-
-:point_up: This example does not only show off these four pseudo-classes, but also a number of other CSS features:
-
-- **Attribute selectors** (e.g. `input[type=number]`) allow us to select specific types of `<input>` elements.
-- The [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) element can be associated with an `<input>` element when the latter's `id` attribute is the same as the `<label>`'s `for` attribute. This is particularly useful when labels are used as captions for user interface elements: a click on the label text will then activate the interface element (e.g. a checkbox). Here, we make use of the label to signal a valid or invalid input.
-- We see here how to include **unicode characters**: when the deadline number is valid, we choose to display a checkmark, similar to :white_check_mark: (this image is a [GitHub Markdown emoji](https://gist.github.com/rxaviers/7360908) btw). This checkmark could indeed be an image, but here we chose to use a character, specifically unicode character [U+2714](http://graphemica.com/%E2%9C%94).
-- The pseudo-element `::after` makes a first appearance, together with the `content` property. We discuss those next.
 
 ## Pseudo-elements
 
-A **pseudo-element** creates an abstractions about the document tree *beyond* those specified by the document language; it provides access to an element's sub-part.
+A **pseudo-element** creates an abstractions about the document tree *beyond* those specified by the document language; it provides access to an element's **sub-parts** (e.g. the first letter of a paragraph).
 
 In order to distinguish pseudo-classes and pseudo-elements, the `::` notation was introduced in the specification, though browsers also accept the one-colon notation.
 
@@ -569,12 +602,12 @@ The code example :point_up: also showcases the percent unit for the `font-size` 
 
 ### :bangbang: before and after
 
-As already seen in the [HTML form example](#bangbang-valid-and-invalid), adding (cosmetic) content right before and after an element is achieved through:
+Adding (cosmetic) content right before and after an element is achieved through:
 
 - `::before`
 - `::after`
 
-in combination with the `content` property.
+in combination with the `content` property. These pseudo-elements are not only useful to style text in a particular manner but to also create visual artifacts (such as each cloud in our Delft weather app) that on first sight may require an image instead of just a few CSS rules. Important to know is that `::before` is the first child of the element it is attached to and `::after` is the last child of the element it is attached to.
 
 Here is one extreme example of this concept, where all document *content* is delegated to the style sheet :point_down: (the unicode characters [201C](http://unicode.org/cldr/utility/character.jsp?a=201C) and [201D](https://unicode.org/cldr/utility/character.jsp?a=201D&B1=Show) are quotation marks):
 
@@ -598,7 +631,55 @@ Here is one extreme example of this concept, where all document *content* is del
 </html>
 ```
 
-This is a poor choice admittedly as [accessibility](https://www.w3.org/standards/webdesign/accessibility) is close to zero. The document appears as content-less to a **screen reader**, a form of assistive technology that most commonly makes use of a text-to-speech engine to translate a HTML document into speech.
+This is a poor choice admittedly as [accessibility](https://www.w3.org/standards/webdesign/accessibility) is close to zero. The document appears as content-less to a **screen reader**, a form of assistive technology that most commonly makes use of a text-to-speech engine to translate a HTML document into speech. We will come back to this issue in the next section.
+
+Before we do that, let us quickly go over how the cloud effect was achieved in the Delft weather app with just a few lines of CSS. 
+
+Below :point_down: on the right you see on the right the cloud shape we use and on the left how it looks like if all elements of it are assigned a different color: our cloud consists of a `<div>` element (a rectangle with rounded edges) and a `::before` pseudo-element (a rectangle with rounded edges that is rotated 33 degrees and moved slightly with respect to its parent) and a `::after` pseudo-element (a rectangle with rounded edges that is rotated 33 degrees moved slightly with respect to its parent):
+
+![CSS cloud](img/L5-cloud-pseudoelement.png)
+
+The relevant CSS code snippets in our Delft weather app looks as follows:
+
+```css
+/* the cloud itself */
+.cloud {
+    width: 200px;
+    height: 60px;
+    background: #fff;
+    border-radius: 200px;
+    /* these last two properties are relevant for the animation of each cloud only */
+    position: absolute;
+    animation: moveclouds 15s linear infinite;
+}
+
+/* both sub-parts of cloud share a lot of rules, so we use the el1,el2 selector combination */
+.cloud::before, .cloud::after {
+    content: '';
+    background: white;
+    width: 100px;
+    height: 80px;
+    border-radius: 100px;
+    transform: rotate(33deg);
+    /* important here is to know that the before/after pseudo-elements
+    * are children of the element they belong to and thus absolute
+    * positioning makes sense here
+    */
+    position: absolute;
+    top: -15px;
+    left: 10px;
+}
+
+/* we overwrite a few of the previously defined properties */
+.cloud::after {
+    width: 110px;
+    height: 90px;
+    top: -45px;
+    /* left: auto means that the position of the element is based on the right property value */
+    left: auto;
+    right: 5px;
+}
+```
 
 ## :bangbang: Data attributes
 
@@ -745,7 +826,7 @@ Let's also define two additional concepts, that stem from HTML4:
 - **Block-level elements** are surrounded by line-breaks. They can contain block-level and inline elements. **The width is determined by their containing element.** Examples of block-level elements are `<main>` or `<p>`.
 - **Inline elements** can be placed within block-level or inline elements. They can contain other inline elements. **The width is determined by their content.** Examples are `<span>` or `<a>`.
 
-Note: While HTML5 has categories with more complex interactions, for the three properties listed above, the block-level and inline notions are sufficient.
+Note: While HTML5 has categories with more complex interactions (such as `inline-block`), for the three properties listed above, the block-level and inline notions are sufficient. In the one case where we go beyond those notations we will point it out explicitly.
 
 ### :bangbang: Float
 
@@ -939,7 +1020,7 @@ The `position` property has a number of possible values:
 | `position:relative` |  the element is adjusted on the fly, other elements are **not** affected               |
 | `position:absolute` |  the element is taken out of the normal flow (**no space is reserved for it**)         |
 | `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (=the area currently being viewed) |
-| `position:sticky`   | in-between `relative` and `fixed`                                                      |
+| `position:sticky`   | in-between `relative` and `fixed` (we do not consider it further in this class)        |
 
 Important to know when using the `position` property is the direction of the CSS coordinate system: the top-left corner is `(0,0)`. The y-axis extends **downwards**. The x-axis extends to the **right**.
 
@@ -960,10 +1041,10 @@ The following code uses relative positioning :point_down: to reposition two of t
       width: 50px;
     }
     /*
-     * Try out different pixel values.
+     * Try out different px values (px is the magic unit of CSS).
      * Remember that the coordinate system starts at the top-left
      * corner and extends downward and to the right!
-     * What happens if the pixel value is negative?
+     * What happens if the px value is negative?
      * At what point do the "eggs" leave the viewport?
      */
     #egg2 {
@@ -1005,7 +1086,7 @@ The following code uses relative positioning :point_down: to reposition two of t
     }
 
     /*
-     * Try out different pixel values.
+     * Try out different px values.
      * Remember that the coordinate system starts at the top-left
      * corner and extends downward and to the right!
      */
@@ -1071,13 +1152,15 @@ The following code uses relative positioning :point_down: to reposition two of t
 </html>
 ```
 
-Lastly, we cover the `display` property, which enables us to change the element type at will (block-level to inline and vice versa) at will and *hide* elements from view. The latter is likely to be most useful to us:
+Lastly, we cover the `display` property, which enables us to change the element type at will (block-level to inline and vice versa) at will and *hide* elements from view:
 
 | Value          | Description                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------|
-| `display:inline` |  The element is rendered with an inline element box.                                          |
-| `display:block`  |  The element is rendered with a   block element box.                                          |
+| `display:inline` |  The element is treat as an inline element.                      |
+| `display:block`  |  The element is treated as a block element (line breaks before and after the element).                     |
 | `display:none`   |  The element (and its descendents) are hidden from view; no space is reserved in the layout.  |
+| `display:inline-block`   |  A block element (height/width can be set) that does result in line breaks before/after the element.   |
+
 
 Once more, an example is sufficient to highlight the use of each of these values - uncomment the CSS rules one at a time:
 
@@ -1120,6 +1203,13 @@ Once more, an example is sufficient to highlight the use of each of these values
       /*
        * span {
        *  display: none;
+       * }
+       */
+
+      /*
+       * p {
+       *  display: inline-block;
+       *  width: 300px;
        * }
        */
     </style>
@@ -1238,25 +1328,6 @@ For `@media print` you can use the **Print simulation** mode in the Developer To
 
 ![Responsive design mode](img/L5-responsive.png)
 
-Another useful media feature is `prefers-color-scheme`, it allows us to create dark or light themes based on what the user requested.
-Here is an example of how you can use `prefers-color-scheme` :point_down::
-```css
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: black;
-    color: white;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  body{
-    background-color: white;
-    color:black;
-  }
-}
-```
-
-
 ## Animations and transitions
 
 In general, CSS styles (states) are defined by the developer. The **rendering engine** takes care of the transition between styles. A rendering engine - also known as *browser engine* or *layout engine* - is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time, especially when using CSS animations and transitions:
@@ -1269,9 +1340,11 @@ In general, CSS styles (states) are defined by the developer. The **rendering en
 | `WebKit`   | Safari, older versions of Google Chrome |
 | `Blink`    | Google Chrome, Opera                    |
 
+Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
+
 **Animations** consist of:
 
-- an animation style (e.g. `linear`);
+- an animation style (e.g. `linear`, 3 seconds duration, 10 times);
 - a number of **keyframes** that act as transition waypoints.
 
 **Transitions** are animations with a simpler syntax. They consist of exactly **two states**: start and end state.
@@ -1282,11 +1355,16 @@ There are several advantages to using CSS-based instead of JavaScript-based anim
 
 - CSS is relatively easy to use and debugging them is easier than debugging JavaScript code.
 - The rendering engines are optimized for CSS-based animations; there is no need to optimize your JavaScript code.
-- CSS animations can do much more than animating buttons. To see what is possible, head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
+- CSS animations can do much more than animating buttons. To see what is possible (beyond the Delft weather app demo), head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
 
-### :bangbang: Animations
 
-Here is a first animation example - TU Delft rendered as a neon sign, adapted from [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq) :point_down::
+### Animations 
+
+We look at two animation examples in more detail: a TU DELFT neon sign and the Delft weather app. The former is focused on text-only content, the latter is heavy on non-textual content (clouds, raindrops, etc.).
+
+#### :bangbang: Animations: TU DELFT neon sign
+
+We adapted the neon sign based on this [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq) :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -1380,9 +1458,9 @@ To summarize, for us the most important animation properties are the following:
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | `animation-iteration-count` | Number of times an animation is executed (default: 1);  the value is either a positive number or `infinite`.                         |
 | `animation-direction`       | By default the animation restarts at the starting keyframe;  if set to `alternate` the animation direction changes every  iteration. |
-| `animation-delay`           | Number of seconds (s) or milliseconds (ms) until the animation  starts (default 0s).                                               |
+| `animation-delay`           | Number of seconds (s) or milliseconds (ms) until the animation  starts (default 0s). A **negative** value (e.g. `x=-5s`) means that the animation starts immediately but already `x` seconds into the animation cycle                                  |
 | `animation-name`            | Identifies the `@keyframes`.                                                                                                         |
-| `animation-duration`        | The duration of a single animation cycle in seconds (s) or milliseconds (ms).                                                      |
+| `animation-duration`        | The duration of a single animation cycle in seconds (s) or milliseconds (ms), e.g. `2.5s`, `500ms`.                                                      |
 | `animation-timing-function` | Specifies how a CSS animation progresses between waypoints (common  choices are `linear`, `ease-in`, `ease-out`, `steps(N)`).              |
 
 Let's look at a second example :point_down:, which shows a slightly different way to define keyframe waypoints: instead of `0%` the start state can also be defined with `from`, while the end state (`100%`) can be defined with `to` (and these two can also be mixed with other waypoints such as `50%`). This animation slides TU Delft's letters in place, with different letters moving at different speeds:
@@ -1452,6 +1530,179 @@ Let's look at a second example :point_down:, which shows a slightly different wa
 
 :point_up: The animation's start state is defined through the [`transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) property, which allows us to rotate, scale, skew and translate an element: at the start of the animation, the elements are moved ([`translate`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate)) from their original position to a position that is 1000 pixels down. The end state of the animation moves the elements to position 0/0 again. While this may seem to move all letter elements to the same position, the `float:left` property ensures that the letters appear next to each other as intended.
 
+#### :bangbang: Animations: Delft weather app
+
+We now go over the **lightning** effect in our Delft weather app: it consists of a single `<div>` covering the viewport. The animation takes 5 seconds and for 75% of the time does nothing. Then it briefly paints the `<div>` background white with increasing opacity (that's lightning), the `<div>` becomes transparent again and then this happens a second time. So here, one animation cycle results in two *lightning bolts*.
+
+Once again, we only have to define the states of the animation, the rendering engine does the rest. 
+
+```css
+/* ++++++++++++++++++++ LIGHTNING ++++++++++++++++++++ 
+ * Adapted/inspired from https://codepen.io/Chrislion_me/pen/rVqwbO
+ */
+.lightning {
+  /* the entire background-image should be filled with lightning;
+   * thus we position with respect to the parent (<body>) at 0/0
+   */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  animation: flash ease-out 5s infinite;
+}
+
+@keyframes flash {
+  /* basic idea: the white div covering the entire screen appears
+   * very briefly with varying levels of opacity;
+   * The from/74% duplication of opacity: 0 is important here, as
+   * otherwise the transition from the start to 75% is a gradually
+   * whiter screen.
+   */
+  from { opacity: 0; } 
+  74% { opacity: 0;}
+  75% { background-color: white;  opacity: 0.6; }
+  76% { background-color: white;  opacity: 0.2; }
+  80% { background-color: white;  opacity: 0.95; } 
+  82% { opacity: 0; } 
+  92% { opacity: 0; } 
+  93% { background-color: white;  opacity: 0.5; }
+  94% { background-color: white;  opacity: 0.2; }
+  96% { background-color: white;  opacity: 0.9; } 
+  to { opacity: 0; }  
+}
+```
+
+Beyond lightning, we also have an animated moon: it appears to be radiating continously if you look closely. This is a simple animation of the moon's `box-shadow` property. The moon itself is a `<div>` element with a `border-radius` set such that it results in a perfect circle :point_down: :
+
+```css
+
+#moon {
+  /* the moon is positioned with respect to the <body> element at
+   * the top left corner
+   */
+  position: absolute;
+  left: 160px;
+  top: 80px;
+  border-radius: 50%; /* making it round */
+  height: 100px;
+  width: 100px;
+  border: 1px solid black; /* a black line around the circle*/
+  /* we create a background image that has a radial gradient
+   * going from dark-grey to white 
+   */
+  background: radial-gradient(circle at 20px 10px, #333, #fff);
+  /* shadow: has no offset (equal shadow on all sides) and a large blue value */
+  box-shadow: 0 0 25px #fff;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {  
+  0% {
+    box-shadow: 0 0 25px #fff;
+  }
+  25% {
+    box-shadow: 0 0 60px #fff;
+  }
+  50% {
+      box-shadow: 0 0 50px #fff;
+  }
+  90% {
+      box-shadow: 0 0 27px #fff;
+  }
+}
+```
+
+Lastly, while lightning and the moon were done in *pure CSS*, for the raindrops and the clouds we made use of a bit of JavaScript: note though that this is not strictly necessary. Since we need hundreds of raindrops/clouds that are all slightly different (slightly different locations, size, color, opacity, speed) we would need to create hundreds of different CSS rules. JavaScript makes this much easier - we create these rules programmatically. Let's quickly look at how the clouds were created :point_down::
+
+Some of the CSS parts were put directly into the CSS files - those that are the same for every cloud `<div>` we create :point_down::
+
+```css
+.cloud {
+	width: 200px; height: 60px;
+	background: #fff;
+	border-radius: 200px;
+	position: absolute;   
+  /* z-index:10; with this, the cloud is in front of the switches */
+  animation: moveclouds 15s linear infinite;
+
+}
+
+.cloud::before, .cloud::after {
+	content: '';
+	background: white;
+	width: 100px; height: 80px;
+  
+  /* important here is to know that the before/after pseudo-elements
+   * are children of the element they belong to and thus absolute
+   * positioning makes sense here
+   */
+	position: absolute; 
+  top: -15px; 
+  left: 10px;
+	
+	border-radius: 100px;
+	transform: rotate(33deg);
+}
+
+.cloud::after {
+	width: 110px; height: 90px;
+	top: -45px; 
+  /* left: auto means that the position of the element is based on the right property value */
+  left: auto; 
+  right: 5px;
+}
+
+/* simple animation: clouds go from left to right */
+@keyframes moveclouds {
+	0% {margin-left: -20%;}
+	100% {margin-left: 120%;}
+}
+```
+
+The JavaScript snippet then creates `<div>` elements and assigns to each the `.cloud` class as well as the properties unique to each cloud. For this to work, it is vital that the created element is added to the DOM tree (the rendering engine will not render it otherwise). For this reason, our HTML file contains a `<div id="clouds">` element and all generated individual cloud elements are added as children of it with the line `clouds.appendChild(c)` :point_down:: 
+
+```js
+var totalNumClouds = 30;
+
+/*
+ * checkbox unchecked: find the <div> with id "clouds" and delete all its children.
+ * checkbox checked: find the <div> with id "clouds" and create four <div> elements
+ * with class .cloud and id's c1 to c4. 
+ */
+function toggleClouds(e){
+  let clouds = document.getElementById("clouds");
+  
+  if(document.getElementById("cloudsCheckbox").checked==false){
+    while(clouds.firstChild){
+      clouds.removeChild(clouds.firstChild);
+    }    
+  }
+  else {
+    for(let i=1; i<=totalNumClouds; i++){
+      let c = document.createElement("div");
+      c.classList.add("cloud");//class .cloud in the CSS file
+
+      //random location
+      c.style.top=(50+getRandomInt(120))+"px";
+
+      //random opacity
+      c.style.opacity = Math.random();
+
+      //random animation speed
+      c.style.animationDuration = (15+getRandomInt(20))+"s";
+
+      //random starting point within the animation
+      c.style.animationDelay = (-1 * getRandomInt(40))+"s";
+
+      //slightly different size per cloud
+      c.style.transform = "scale("+(0.1+Math.random())+")";
+      clouds.appendChild(c);//add element to the DOM tree
+    }
+  }
+}
+```
+*Note: the rain drops are generated in a similar fashion, so we do not go into the code details here.*
+
 ### :bangbang: Transitions
 
 Transitions are animations with only two states (a start state and an end state).
@@ -1520,18 +1771,6 @@ main:fullscreen {
 ```
 
 This approach has now been deprecated and although the vendor-specific prefixed properties still work, the use of such properties should be avoided.
-
-## Rendering engines have bugs too!
-
-Rendering engines do a lot of heavy lifting, and can also be attacked. [This GitHub Gist](https://gist.github.com/pwnsdx/ce64de2760996a6c432f06d612e33aea) is an example of a Safari DoS (Denial-of-service) attack; the device running Safari crashes after trying to render 3485 nested `<div>` elements!
-
-## CSS Debugging
-
-The dev tools are really helpful when it comes to debug CSS. Take a look at the [documentation](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS) ! (This a Firefox doc but the core features are roughly the same in all browsers)
-
-Some browsers even have additional dev tool features. For example, in Firefox Developer Edition, you can detect which CSS properties have an effect on the current element. :point_down: 
-
-![CSS Debugging example](img/L5-debugging.png)
 
 ## Self-check
 

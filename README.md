@@ -85,7 +85,7 @@ The database materials (lectures/assignments) are not included here! You can fin
   - [Lecture 10](#lecture-10)
   - [Lecture 11](#lecture-11)
   - [Lecture 12](#lecture-12)
-  - [🚧 Lecture 13](#%F0%9F%9A%A7-lecture-13)
+  - [Lecture 13](#lecture-13)
   - [🚧 Lecture 14](#%F0%9F%9A%A7-lecture-14)
   - [🚧 Lecture 15](#%F0%9F%9A%A7-lecture-15)
   - [🚧 Lecture 16](#%F0%9F%9A%A7-lecture-16)
@@ -363,7 +363,7 @@ This lecture covers Node.js ([lecture slides](slides/2019_20/node.pdf), [transcr
 - Relevant scientific publications:
   - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp.1023-1044.
   
-### 🚧 Lecture 13
+### Lecture 13
 
 This lecture covers CSS ([lecture slides](slides/2019_20/css.pdf), [transcript](Lecture-css.md)).
   
