@@ -383,7 +383,7 @@ This lecture covers CSS ([lecture slides](slides/2019_20/css.pdf), [transcript](
 
 ### Lecture 14
 
-This lecture covers advanced Node.js concepts ([transcript](Lecture-node2.md)).
+This lecture covers advanced Node.js concepts ([lecture slides](slides/2019_20/node2.pdf), [transcript](Lecture-node2.md)).
 
 - Required readings: *none*
 - Recommended activities:
