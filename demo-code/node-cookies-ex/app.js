@@ -8,7 +8,9 @@ var app = express();
 app.use(cookies(credentials.cookieSecret));
 
 var port = process.argv[2];
-http.createServer(app).listen(port);
+http.createServer(app).listen(port, function(){
+	console.log("Listening on port "+port);
+});
 
 app.get("/sendMeCookies", function (req, res) {
 	console.log("Handing out cookies");
