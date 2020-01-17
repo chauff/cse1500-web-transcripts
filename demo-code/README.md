@@ -3,6 +3,7 @@ Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Demo code](#demo-code)
   - [balloons-game](#balloons-game)
+  - [firefox-extension](#firefox-extension)
   - [node-file-watching-ex](#node-file-watching-ex)
   - [node-tcp-ex](#node-tcp-ex)
   - [node-web-ex](#node-web-ex)
@@ -62,6 +63,20 @@ The game required very few public resources. They are listed here:
 - The English word list came from https://github.com/dwyl/english-words
 - [Button click sound](http://www.pachd.com/button.html)
 - [Balloon pop sound](https://bigsoundbank.com/detail-1023-explosion-far-away.html)
+
+## firefox-extension
+
+This extension overlays a `<div>` on every page (once it is enabled of course) on the left-hand side of the web page. It lists the cookie name/value pairs that are accessible to it through JavaScript.
+
+To enable it on Firefox, execute the following steps:
+
+1. Type `about:debugging` into your browser's address bar.
+2. Click the `This Firefox` icon on the top-left.
+3. Click the `Load Temporary Add-on` button and navigate to the `manifest.json` file.
+
+You are done, the extension is now available.
+
+Navigate to any page of your choice and you should see the cookie information on the left. To disable the extension, simply click the `Remove` button on the `This Firefox` panel for this extension.
 
 ## node-file-watching-ex
 

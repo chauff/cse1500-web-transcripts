@@ -74,7 +74,7 @@ The database materials (lectures/assignments) are not included here! You can fin
 - [Course topics](#course-topics)
 - [Web technology tutorials](#web-technology-tutorials)
 - [Sample exams](#sample-exams)
-- [Assignments &amp; assessment](#assignments-amp-assessment)
+- [Assignments & assessment](#assignments--assessment)
 - [Demo application](#demo-application)
 - [Interactive web technology exercises](#interactive-web-technology-exercises)
 - [Twitter accounts to follow](#twitter-accounts-to-follow)
@@ -87,8 +87,8 @@ The database materials (lectures/assignments) are not included here! You can fin
   - [Lecture 12](#lecture-12)
   - [Lecture 13](#lecture-13)
   - [Lecture 14](#lecture-14)
-  - [🚧 Lecture 15](#%f0%9f%9a%a7-lecture-15)
-  - [🚧 Lecture 16](#%f0%9f%9a%a7-lecture-16)
+  - [Lecture 15](#lecture-15)
+  - [🚧 Lecture 16](#%F0%9F%9A%A7-lecture-16)
 
 ## Course instructors
 
@@ -397,9 +397,9 @@ This lecture covers advanced Node.js concepts ([lecture slides](slides/2019_20/n
   - Fard, A.M. and Mesbah, A., 2013, September. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings-article/2013/scam/12OmNylsZKu/12OmNwHhoWN). In Source Code Analysis and Manipulation (SCAM), 2013 IEEE 13th International Working Conference on (pp. 116-125). IEEE.
   - Nasehi, S.M., Sillito, J., Maurer, F. and Burns, C., 2012, September. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). In 2012 28th IEEE International Conference on Software Maintenance (ICSM) (pp. 25-34). IEEE.
 
-### 🚧 Lecture 15
+### Lecture 15
 
-This lecture covers cookies and sessions ([transcript](Lecture-sessions.md)).
+This lecture covers cookies and sessions ([lecture slides](slides/2019_20/sessions.pdf), [transcript](Lecture-sessions.md)).
 
 - Required readings: *none*
 - Recommended activities: *none*

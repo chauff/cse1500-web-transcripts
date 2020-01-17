@@ -6,7 +6,7 @@ cookieWindow.style.width = "400px";
 cookieWindow.style.height = "100%";
 cookieWindow.style.opacity = "0.8";
 cookieWindow.style.color = "navy";
-cookieWindow.style.zIndex = "999";
+cookieWindow.style.zIndex = "99999";
 cookieWindow.style.backgroundColor = "gold";
 cookieWindow.style.padding = "10px";
 cookieWindow.style.wordWrap = "break-word";
@@ -14,7 +14,10 @@ cookieWindow.style.wordWrap = "break-word";
 let cookiesArray = document.cookie.split('; ');
 
 let header = document.createElement("h2");
-header.textContent = cookiesArray.length + " cookies";
+header.textContent = cookiesArray.length + " cookie";
+if(cookiesArray.length>1){
+    header.textContent += "s";
+}
 cookieWindow.appendChild(header);
 
 for (let i = 0; i < cookiesArray.length; i++) {
@@ -28,7 +31,7 @@ for (let i = 0; i < cookiesArray.length; i++) {
     else {
         para.style.backgroundColor = "mistyrose";
     }
-    para.textContent = cookie[0] + " => " + cookie[1];
+    para.textContent = cookie[0] + " \u21d2 " + cookie[1];
     cookieWindow.appendChild(para);
 }
 
