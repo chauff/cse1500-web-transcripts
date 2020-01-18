@@ -262,7 +262,7 @@ As you can see here :point_up: an extension is simply a piece of JavaScript that
 }
 ```
 
-The last step then is the deployment of the extension: we have a manifest file and a JavaScript file (here called `showCookies.js`) on local disk in a single folder. Now all we have to do is open Firefox's `about:debugging` pane, click `This Firefox` and then register our manifest file as temporary extension. If done succesfully, you should see something like this :point_down::
+The last step then is the deployment of the extension: we have a manifest file and a JavaScript file (here called `showCookies.js`) on local disk in a single folder. Now all we have to do is open Firefox's `about:debugging` pane, click <kbd>This Firefox</kbd> and then register our manifest file as temporary extension. If done succesfully, you should see something like this :point_down::
 
 ![Firefox about debugging](img/L7-aboutdebugging.png)
 

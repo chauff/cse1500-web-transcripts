@@ -153,7 +153,7 @@ Although not very useful, our `watching.js` script above can be considered a mod
 :bug: Finally, let's quickly walk through the steps to run this script from within VSC's debug environment. We assume that you have cloned/downloaded the [Web-Teaching GitHub repository](https://github.com/chauff/Web-Teaching). Now execute the following steps:
 
 1. Open VSC and then select *Open Workspace* and select the *Web-Teaching* folder you downloaded.
-2. On the left-most panel, click on *Debug* and then click on the *No configurations* pull-down menu at the top; select *Add configuration* and when asked choose the *Node.js* environment.
+2. On the left-most panel, click on <kbd>Debug</kbd> and then click on the <kbd>No configurations</kbd> pull-down menu at the top; select *Add configuration* and when asked choose the *Node.js* environment.
 3. This will create a file `launch.json` which contains details on the program to launch and it's command line arguments.
 4. Replace the default content of `launch.json` with the following lines and save the file:
 
@@ -175,7 +175,7 @@ Although not very useful, our `watching.js` script above can be considered a mod
 }
 ```
 
-5. Now, the program is ready to be debugged. In the *Debug* tab, *Launch Program* should now be the default option in the pull-down menu (see VSC's debug panel screenshot below). Click on the *Play* button (the green triangle) and your program is running with a debugger attached. Change the file *todos.txt* (the command line argument you provided in `launch.json`) and observe the console output.
+5. Now, the program is ready to be debugged. In the *Debug* tab, *Launch Program* should now be the default option in the pull-down menu (see VSC's debug panel screenshot below). Click on the <kbd>Play</kbd> button (the green triangle) and your program is running with a debugger attached. Change the file *todos.txt* (the command line argument you provided in `launch.json`) and observe the console output.
 
 ![Debug panel](img/L4-debug.png)
 

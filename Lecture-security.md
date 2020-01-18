@@ -351,7 +351,7 @@ http://myforum.nl/search?q=<script>…
 2. Login as `admin@juice-sh.op` (user) and `admin123` (password).
 3. Go to the profile page at https://juice-shop.herokuapp.com/profile.
 4. **Note:** Since this is a globally accessible website, chances are that someone has already attempted to do a stored-XSS attack. Hence, you *might* see an alert dialog when you go to the `/profile` page.
-5. In the Username field, type `<script>alert('Hello World!')</script>` and click `Set Username`. 
+5. In the Username field, type `<script>alert('Hello World!')</script>` and click <kbd>Set Username</kbd>. 
 6. Typically, this should be enough for an XSS attack. However, Juice Shop has used some defenses. 
 7. You will see under the profile picture, the username `lert('Hello World!')`, while in the input field `lert('Hello World!')</script>` remains. The server does some kind of input sanitization (or cleanup), so the attack does not succeed. However, if you look closely, the sanitization is not done properly as some part of the attack code remains. 
 8. As you will see next, it is easy to bypass server defenses if they are not configured properly. Apparently, the sanitizer looks for this pattern: `<(.)*>.` (starts with `<` sign, anything can be placed between `<>`, and one character after it) and removes the string found. So the attack code becomes ineffective.
@@ -423,7 +423,7 @@ In addition, if sensitive documents can be accessed without authorization, or us
 #### :bangbang: Juice Shop
 
 1. Head over to Juice Shop's installation at https://tud-juice-shop.herokuapp.com.
-2. Access the side menu and click on *About Us*.
+2. Access the side menu and click on <kbd>About Us</kbd>.
 3. Follow the link `Check out our boring terms of use if you are interested in such lame stuff`.
 4. You will see that the page is served by FTP (File Transfer Protocol). FTP is used for transmitting files between computers connected to the Internet. A typical user must be logged in to the FTP server in case it contains sensitive files. However, in this case, Anonymous FTP is used so anyone can access the files.
 5. Let's go one level up to see what files are available on this server using https://juice-shop.herokuapp.com/ftp/.
@@ -521,7 +521,7 @@ In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vuln
 4. Now, head over to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/.
 5. Log in as `jim@juice-sh.op` (user) and `ncc-1701` (password).
 6. Go to the complaints page at https://tud-juice-shop.herokuapp.com/#/complain.
-7. Write your complaint, attach `zipslip.zip`, and click `Submit`.
+7. Write your complaint, attach `zipslip.zip`, and click <kbd>Submit</kbd>.
 8. Now, if you visit https://juice-shop.herokuapp.com/ftp/legal.md, you will see the contents of your version of `legal.md`.
 
 #### How to avoid it
@@ -546,7 +546,7 @@ The user, when seeing this URL in an email or forum, might just inspect the init
 4. Observe that you cannot pay using crypto currency. This used to be a feature but Juice Shop's developers decided to remove it since it was not profitable. However, they were not very good at removing this functionality.
 5. Use the browser's dev tools to view the contents of `main-es2015.js`. 
 6. Let's see if Juice Shop is vulnerable to unvalidated redirects. Search for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash`, `Ether`.
-7. Hence, if you were to click on `Pay with Bitcoin` (*now unavailable*), you will be redirected to Blockchain's website without any warning: https://tud-juice-shop.herokuapp.com/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm. The attacker can just as easily add her own malicious link to the URL after `redirect?to=`.
+7. Hence, if you were to click on <kbd>Pay with Bitcoin</kbd> (*now unavailable*), you will be redirected to Blockchain's website without any warning: https://tud-juice-shop.herokuapp.com/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm. The attacker can just as easily add her own malicious link to the URL after `redirect?to=`.
 
 #### How to avoid it
 
