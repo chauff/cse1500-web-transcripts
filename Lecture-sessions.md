@@ -6,7 +6,7 @@
 - [Learning goals](#learning-goals)
 - [Recall the HTTP lecture](#recall-the-http-lecture)
 - [Introduction to cookies](#introduction-to-cookies)
-- [Viewing cookies in the browser](#viewing-cookies-in-the-browser)
+- [:bug: Viewing cookies in the browser](#bug-viewing-cookies-in-the-browser)
 - [Cookie security](#cookie-security)
 - [Cookies vs. sessions](#cookies-vs-sessions)
 - [Cookie flow](#cookie-flow)
@@ -74,7 +74,7 @@ A question we have not yet considered is what actually can be stored in cookies.
 - the setting of HTML form elements (which can also be done fully on the client-side as we will see later), or,
 - the user's UI preferences which the server can use to personalize an application's appearance.
 
-## Viewing cookies in the browser
+## :bug: Viewing cookies in the browser
 
 Cookies are **not hidden** from the user, they are stored *in the clear* and can be viewed. Users can also delete and disallow cookies.
 
@@ -141,6 +141,8 @@ Cookies can either be transient or persistent.
 **Transient cookies** are also called *session cookies* and only exist in the memory of the client. They are deleted when the browser is closed. They are *not* deleted when just the browser tab or browser window is closed however! **If a cookie has no explicit expiration date, it automatically becomes a session cookie.**
 
 **Persistent cookies** on the other hand remain intact after the browser is closed, they are **stored on disk**. They do have a maximum age and are send back from client to server only as long as they are **valid**, that is they have not yet exceeded their maximum age.
+
+*Note: modern browsers offer to restore the session after a browser crash. In this case, transient cookies are gnerally restored as the browser session is continued. This though is implemented inconsistently across different browers.*
 
 ### Cookie fields
 
