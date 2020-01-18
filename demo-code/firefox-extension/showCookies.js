@@ -1,9 +1,10 @@
 let cookieWindow = document.createElement("div");
 cookieWindow.style.position = "absolute";
+cookieWindow.style.overflow = "auto";
+cookieWindow.style.display = "block";
 cookieWindow.style.top = "0px";
 cookieWindow.style.left = "0px";
 cookieWindow.style.width = "400px";
-cookieWindow.style.height = "100%";
 cookieWindow.style.opacity = "0.8";
 cookieWindow.style.color = "navy";
 cookieWindow.style.zIndex = "99999";
