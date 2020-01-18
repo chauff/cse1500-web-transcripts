@@ -266,7 +266,7 @@ The last step then is the deployment of the extension: we have a manifest file a
 
 ![Firefox about debugging](img/L7-aboutdebugging.png)
 
-Whenver you make code changes, you will have to click `Reload` in order to see the effects. That's it, now have a fully working Firefox extension. A click on `Remove` will remove the extension again.
+Whenver you make code changes, you will have to click <kbd>Reload</kbd> in order to see the effects. That's it, now have a fully working Firefox extension. A click on <kbd>Remove</kbd> will remove the extension again.
 
 🚩 We have here just shown a very simple example of what an extension can do. But as with all web technologies, much more is possible than we cover in this class. For Firefox, [this page](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons) offers a good starting point into how to modify Firefox. Similarly for Chrome, you should start [here](https://developer.chrome.com/extensions). The new Microsoft Edge extension guide can be found [here](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/).
 
