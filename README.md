@@ -374,6 +374,7 @@ This lecture covers CSS ([lecture slides](slides/2019_20/css.pdf), [transcript](
   - :tv: Watch [this talk by Rachel Andrew](https://www.youtube.com/watch?v=cYGOv2ToZjY) to learn more about the long (and painful) history of CSS.
   - :tv: Watch [this talk by Mandy Michael](https://youtu.be/5qgUC_z8syw) on text effects in CSS. Data attributes and pseudo-elements are a powerful combination!
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
+  - If you are looking for styling challenges, take a look at the weekly [CodePen Challenges](https://codepen.io/challenges/).
 - Recommended readings:
   - :closed_book: Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
   - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
