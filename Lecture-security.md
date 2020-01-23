@@ -273,7 +273,7 @@ var isEmail = validator.isEmail('while(1)'); //false
 
 #### SQL injections
 
-SQL injections are of such great practical importance that we will dedicate more time to them in a later course: they will be covered in TI1505!
+SQL injections are of such great practical importance that we will dedicate more time to them in a later course: they will be covered in [CSE1505](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=48439)!
 
 
 ### Broken authentication
@@ -447,7 +447,7 @@ Web applications often make use of *Direct Object References* when generating a 
 
 ```javascript
 var todoTypes = {
-    important: ["TI1506","OOP","Calculus"],
+    important: ["CSE1500","ADS","Calculus"],
     urgent: ["Dentist","Hotel booking"],
     unimportant: ["Groceries"],
 };

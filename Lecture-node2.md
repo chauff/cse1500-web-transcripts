@@ -505,7 +505,7 @@ Apart from regular expressions, routing parameters can be employed to enable **v
 
 ```javascript
 var todoTypes = {
-    important: ["TI1500","ADS","Calculus"],
+    important: ["CSE1500","ADS","Calculus"],
     urgent: ["Dentist","Hotel booking"],
     unimportant: ["Groceries"],
 };
@@ -526,7 +526,7 @@ Routing parameters can have various levels of nesting :point_down::
 ```javascript
 var todoTypes = {
     important: {
-        today: ["TI1500"],
+        today: ["CSE1500"],
         tomorrow: ["ADS", "Calculus"]
     },
     urgent: {
