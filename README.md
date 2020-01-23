@@ -415,7 +415,7 @@ This lecture covers cookies and sessions ([lecture slides](slides/2019_20/sessio
 
 ### Lecture 16
 
-This lecture covers web security topics ([lecture slides](slides/2019_20/security.pdf), ([transcript](Lecture-security.md)).
+This lecture covers web security topics ([lecture slides](slides/2019_20/security.pdf)), ([transcript](Lecture-security.md)).
 
 - Required readings: *none*
 - Recommended activities:
