@@ -198,6 +198,7 @@ Until (and including) the 2017/18 edition, the web and database topics were inte
 - [Final 2016/117](https://chauff.github.io/documents/webdb-2017-18/final1.pdf)
 - [Midterm 2018/19](exams/midterm-cse1500-201819.pdf) ([with answers](exams/midterm-cse1500-201819-solutions.pdf))
 - [Midterm Resit 2018/19](exams/midterm-resit-cse1500-201819.pdf) ([with answers](exams/midterm-resit-cse1500-201819-solutions.pdf))
+- [Final 2019/20 with answers](exams/final-cse1500-201920-solutions.pdf)
 
 ## Assignments & assessment
 
