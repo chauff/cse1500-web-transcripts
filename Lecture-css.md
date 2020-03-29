@@ -553,6 +553,8 @@ The rendering of the above code looks as follows:
 
 ![CSS selector combinations](img/L5-selector-combinations.png)
 
+:video_game: If you are looking for a fun way to practice these selectors, head over to the [CSS diner](https://flukeout.github.io/)! 
+
 
 ## Pseudo-elements
 
