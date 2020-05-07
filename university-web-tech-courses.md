@@ -1,6 +1,6 @@
 # List of university-level courses with a Web focus
 
-- [Deep Dive Into Modern Web Development](https://fullstackopen.com/en /U Helsinki)
+- [Deep Dive Into Modern Web Development /U Helsinki](https://fullstackopen.com/en)
 - [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
 - [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
 - [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
