@@ -16,7 +16,7 @@
     "ws": "^6.0.0"
   },
   "devDependencies": {
-    "eslint": "^5.4.0",
+    "eslint": "^7.1.0",
     "jest": "^24"
   }
 }
