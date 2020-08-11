@@ -1,1 +1,4 @@
+plugins:
+  - jekyll-remote-theme
+
 remote-theme: chauff/cse-theme
