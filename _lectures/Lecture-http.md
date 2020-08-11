@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /http/
+linkname: HTTP
+ordering: 1
+---
+
 # HTTP: the language of Web communication <!-- omit in toc -->
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
@@ -13,7 +20,7 @@
 - [HTTP messages](#http-messages)
   - [Web servers and clients](#web-servers-and-clients)
   - [Network communication](#network-communication)
-  - [:bangbang: Activity](#bangbang-activity)
+  - [:bangbang: Activity](#️-activity)
   - [HTTP request message](#http-request-message)
   - [HTTP response message](#http-response-message)
 - [HTTP headers dissected](#http-headers-dissected)
@@ -25,14 +32,15 @@
   - [Header field Expires](#header-field-expires)
   - [Header field Cache-Control](#header-field-cache-control)
   - [Header field Last-Modified](#header-field-last-modified)
-  - [Header fields Connection &amp; Upgrade](#header-fields-connection-amp-upgrade)
+  - [Header fields Connection & Upgrade](#header-fields-connection--upgrade)
   - [Status codes](#status-codes)
 - [HTTP methods](#http-methods)
   - [Common HTTP methods](#common-http-methods)
-  - [:bangbang: Activity](#bangbang-activity-1)
+  - [:bangbang: Activity](#️-activity-1)
   - [From domain to IP address](#from-domain-to-ip-address)
 - [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
-- [URL syntax: query](#url-syntax-query)
+- [- `http://правительство.рф`](#ullihttpправительстворфliul)
+  - [URL syntax: query](#url-syntax-query)
   - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
   - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
   - [URL design restrictions](#url-design-restrictions)

@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /nodejs/
+linkname: Node.js I
+ordering: 4
+---
+
 # Node.js: JavaScript on the server <!-- omit in toc -->
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
@@ -8,16 +15,16 @@
   - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
   - [Event-driven and non-blocking](#event-driven-and-non-blocking)
 - [Node.js in examples](#nodejs-in-examples)
-  - [:bangbang: Watching a file for changes](#bangbang-watching-a-file-for-changes)
-  - [:bangbang: Low-level networking with Node.js](#bangbang-low-level-networking-with-nodejs)
-  - [:bangbang: Creating a Hello World! web server with Node.js](#bangbang-creating-a-hello-world-web-server-with-nodejs)
+  - [:bangbang: Watching a file for changes](#️-watching-a-file-for-changes)
+  - [:bangbang: Low-level networking with Node.js](#️-low-level-networking-with-nodejs)
+  - [:bangbang: Creating a Hello World! web server with Node.js](#️-creating-a-hello-world-web-server-with-nodejs)
 - [Express](#express)
-  - [:bangbang: Greetings Express](#bangbang-greetings-express)
-  - [:bangbang: A complete web application](#bangbang-a-complete-web-application)
+  - [:bangbang: Greetings Express](#️-greetings-express)
+  - [:bangbang: A complete web application](#️-a-complete-web-application)
 - [JSON: exchanging data between the client and server](#json-exchanging-data-between-the-client-and-server)
 - [Ajax: dynamic updating on the client](#ajax-dynamic-updating-on-the-client)
 - [WebSockets](#websockets)
-  - [:bangbang: A first WebSocket example](#bangbang-a-first-websocket-example)
+  - [:bangbang: A first WebSocket example](#️-a-first-websocket-example)
   - [WebSockets for multi-player games](#websockets-for-multi-player-games)
 - [Self-check](#self-check)
 

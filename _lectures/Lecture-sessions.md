@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /cookies/
+linkname: Cookies & sessions
+ordering: 7
+---
+
 # Cookies, sessions and third-party authentication <!-- omit in toc -->
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and not exam material.*
@@ -6,7 +13,7 @@
 - [Learning goals](#learning-goals)
 - [Recall the HTTP lecture](#recall-the-http-lecture)
 - [Introduction to cookies](#introduction-to-cookies)
-- [:bug: Viewing cookies in the browser](#bug-viewing-cookies-in-the-browser)
+- [:bug: Viewing cookies in the browser](#-viewing-cookies-in-the-browser)
 - [Cookie security](#cookie-security)
 - [Cookies vs. sessions](#cookies-vs-sessions)
 - [Cookie flow](#cookie-flow)
@@ -14,16 +21,16 @@
   - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
   - [Cookie fields](#cookie-fields)
   - [Cookie field 'Domain'](#cookie-field-domain)
-  - [Return to sender ...](#return-to-sender)
+  - [Return to sender ...](#return-to-sender-)
 - [An excursion: writing a Firefox extension](#an-excursion-writing-a-firefox-extension)
-- [:bangbang: A Node.js application](#bangbang-a-nodejs-application)
+- [:bangbang: A Node.js application](#️-a-nodejs-application)
 - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
 - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
   - [Third-party cookies](#third-party-cookies)
   - [Evercookie](#evercookie)
   - [Browser fingerprinting](#browser-fingerprinting)
 - [Client-side cookies](#client-side-cookies)
-- [:bangbang: Sessions](#bangbang-sessions)
+- [:bangbang: Sessions](#️-sessions)
 - [Third-party authentication](#third-party-authentication)
   - [OAuth 2.0 roles](#oauth-20-roles)
   - [Roles exemplified](#roles-exemplified)

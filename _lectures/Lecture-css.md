@@ -1,8 +1,8 @@
 ---
 layout: default
-permalink: /styling/
+permalink: /css/
 linkname: CSS
-ordering: 3
+ordering: 5
 ---
 
 # CSS: the language of web design <!-- omit in toc -->

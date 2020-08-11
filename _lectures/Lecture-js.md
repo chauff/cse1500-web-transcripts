@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /js/
+linkname: JavaScript
+ordering: 3
+---
+
 # JavaScript: the language of browser interactions <!-- omit in toc -->
 
 *This is the densest web lecture of this course. Learning how to code takes some time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
@@ -11,27 +18,27 @@
 - [JavaScript in context](#javascript-in-context)
 - [Scripting overview](#scripting-overview)
   - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
-  - [The &lt;script&gt; tag](#the-ltscriptgt-tag)
-  - [‼️ Activity](#%e2%80%bc%ef%b8%8f-activity)
+  - [The `<script>` tag](#the-script-tag)
+  - [‼️ Activity](#️-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
   - [Scoping](#scoping)
   - [Hoisting](#hoisting)
-  - [The keyword this](#the-keyword-this)
+  - [The keyword `this`](#the-keyword-this)
 - [JavaScript design patterns](#javascript-design-patterns)
   - [JavaScript objects](#javascript-objects)
-  - [Object creation with new](#object-creation-with-new)
+  - [Object creation with `new`](#object-creation-with-new)
   - [Object literals](#object-literals)
   - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
   - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-  - [Design pattern 3: Module](#design-pattern-3-module)
+  - [Design pattern 3:  Module](#design-pattern-3-module)
 - [Events and the DOM](#events-and-the-dom)
   - [Document Object Model](#document-object-model)
-    - [:bangbang: Example 1: document.getElementById / document.querySelector](#bangbang-example-1-documentgetelementbyid--documentqueryselector)
-    - [:bangbang: Example 2: creating new nodes](#bangbang-example-2-creating-new-nodes)
-    - [:bangbang: Example 3: this](#bangbang-example-3-this)
-    - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
-    - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
-    - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
+    - [:bangbang: Example 1: document.getElementById / document.querySelector](#️-example-1-documentgetelementbyid--documentqueryselector)
+    - [:bangbang: Example 2: creating new nodes](#️-example-2-creating-new-nodes)
+    - [:bangbang: Example 3: `this`](#️-example-3-this)
+    - [:bangbang: Example 4: mouse events](#️-example-4-mouse-events)
+    - [:bangbang: Example 5: a crowdsourcing interface](#️-example-5-a-crowdsourcing-interface)
+    - [:bangbang: Example 6: a typing game](#️-example-6-a-typing-game)
 - [Self-check](#self-check)
 
 ## Learning goals

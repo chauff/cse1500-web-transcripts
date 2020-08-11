@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /html/
+linkname: HTML
+ordering: 2
+---
+
 # HTML: the language of the Web <!-- omit in toc -->
 
 ## Table of Contents <!-- omit in toc -->

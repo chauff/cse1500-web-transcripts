@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /security/
+linkname: Web security
+ordering: 8
+---
+
 # Web security <!-- omit in toc -->
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
@@ -20,34 +27,34 @@
 - [Juice Shop](#juice-shop)
 - [OWASP Top 10 in practice](#owasp-top-10-in-practice)
   - [Injection](#injection)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop)
+    - [:bangbang: Juice Shop](#️-juice-shop)
     - [How to avoid it](#how-to-avoid-it)
     - [SQL injections](#sql-injections)
   - [Broken authentication](#broken-authentication)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-1)
+    - [:bangbang: Juice Shop](#️-juice-shop-1)
     - [How to avoid it](#how-to-avoid-it-1)
   - [XSS](#xss)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-2)
+    - [:bangbang: Juice Shop](#️-juice-shop-2)
     - [How to avoid it](#how-to-avoid-it-2)
   - [Improper input validation](#improper-input-validation)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-3)
+    - [:bangbang: Juice Shop](#️-juice-shop-3)
     - [How to avoid it](#how-to-avoid-it-3)
   - [Security misconfiguration](#security-misconfiguration)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-4)
+    - [:bangbang: Juice Shop](#️-juice-shop-4)
     - [How to avoid it](#how-to-avoid-it-4)
   - [Sensitive data exposure](#sensitive-data-exposure)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-5)
+    - [:bangbang: Juice Shop](#️-juice-shop-5)
     - [How to avoid it](#how-to-avoid-it-5)
   - [Broken access controls](#broken-access-controls)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-6)
+    - [:bangbang: Juice Shop](#️-juice-shop-6)
     - [How to avoid it](#how-to-avoid-it-6)
   - [CSRF](#csrf)
     - [How to avoid it](#how-to-avoid-it-7)
   - [Insecure components](#insecure-components)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-7)
+    - [:bangbang: Juice Shop](#️-juice-shop-7)
     - [How to avoid it](#how-to-avoid-it-8)
   - [Unvalidated redirects](#unvalidated-redirects)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-8)
+    - [:bangbang: Juice Shop](#️-juice-shop-8)
     - [How to avoid it](#how-to-avoid-it-9)
 - [Summary](#summary)
 - [Self-check](#self-check)
