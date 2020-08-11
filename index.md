@@ -3,7 +3,7 @@ layout: default
 permalink: /
 ---
 
-CSE1500: Web and Database Technology <!-- omit in toc -->
+Course information <!-- omit in toc -->
 ==
 
 [![Build Status](https://travis-ci.org/chauff/Web-Teaching.svg?branch=master)](https://travis-ci.org/chauff/Web-Teaching)
