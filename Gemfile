@@ -1,9 +1,13 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-gem "github-pages", group: :jekyll_plugins
+source "https://rubygems.org"
+gemspec
+
+gem "jekyll", ENV["JEKYLL_VERSION"] if ENV["JEKYLL_VERSION"]
+gem 'jemoji'
+gem "jekyll-remote-theme"
+gem "github-pages"
 
 group :jekyll_plugins do
-    gem 'jemoji'
-    gem "jekyll-remote-theme"
     gem 'jekyll-commonmark'
-  end
+end
