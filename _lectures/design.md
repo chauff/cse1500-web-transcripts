@@ -7,6 +7,8 @@ ordering: 2
 
 # HTML: the language of the Web <!-- omit in toc -->
 
+**An automatically generated PDF of this transcript is available [here](../generatedPDFs/design.pdf).**
+
 ## Table of Contents <!-- omit in toc -->
 - [Learning goals](#learning-goals)
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
@@ -24,6 +26,24 @@ ordering: 2
   - [The move towards HTML5](#the-move-towards-html5)
   - [Who decides the HTML standard](#who-decides-the-html-standard)
 - [Self-check](#self-check)
+
+## Required & recommended readings and activities <!-- omit in toc -->
+
+- Required readings:
+  //TODO: update the required readings for HTML5
+  - :warning: [Introduction to HTML forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (ignore the section on *Basic form styling*, we will cover CSS in a later lecture) and [Sending form data](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data) (up to and including the section on *Viewing HTTP requests*).
+- Recommended activity:
+  - :headphones: Listen to [this podcast with Tom Dale](http://talkingcode.com/podcast/episode-11-tom-dale/) discussing modern web applications and the move from web sites to web apps and an almost *native* experience.
+- Recommended readings:
+  - :closed_book: Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
+  - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).
+  - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected).
+  - [Atomic Design by Brad Frost](http://atomicdesign.bradfrost.com/) 
+- Relevant scientific publications:
+  - Fernandez, A., Insfran, E. and Abrahão, S., 2011. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and Software Technology, 53(8), pp. 789-817.
+  - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
+  - Mathur, A., Acar, G., Friedman, M., Lucherini, E., Mayer, J., Ghetty, M. and Narayanan, A., 2019. [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/), ACM Human-Computer Interaction, Vol. 3, CSCW, Article 81.
+
 
 ## Learning goals
 
@@ -66,7 +86,7 @@ The major benefit of Electron should be clear: instead of writing three separate
 
 If you ever wanted to know how *Windows 95* looks like, there is an [Electron app for that as well](https://github.com/felixrieseberg/windows95). It looks like this:
 
-![Windows 95](img/L2-windows95.png)
+![Windows 95](../img/design-windows95.png)
 
 On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. More concretely, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](https://www.technologytips.com/windows-system-requirements/).
 
@@ -80,7 +100,7 @@ The way a web site or web application (I tend to use the terms interchangeably h
 
 Consider this example of [ebay.com](https://www.ebay.com/) :point_down:
 
-![ebay web site](img/L2-ebay.png)
+![ebay web site](../img/design-ebay.png)
 
 <sup>Screenshot taken on October 11, 2019</sup>
 
@@ -88,7 +108,7 @@ Consider this example of [ebay.com](https://www.ebay.com/) :point_down:
 
 Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/) :point_down:
 
-![koopplein web site](img/L2-koopplein.png)
+![koopplein web site](../img/design-koopplein.png)
 
 <sup>Screenshot taken February 8, 2014</sup>
 
@@ -106,19 +126,19 @@ Similarly, there are established style standards of how to format a link: in the
 
 Users should also **not get lost within a web site**. A site should provide users with information on where they are and on how they arrived at that point. Ebay for instance leaves so-called **breadcrumbs**:
 
-![ebay web site](img/L2-ebay2.png)
+![ebay web site](../img/design-ebay2.png)
 
 Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Here :point_down: is an example from Google that does a poor job in this respect. It is not obvious on first sight that the first search result is indeed a paid advertisement instead of a so-called "organic" search result:
 
-![Google web site recent](img/L2-google.png)
+![Google web site recent](../img/design-google.png)
 
 A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot more forthcoming when it came to notifying its users about advertisements :point_down:
 
-![Google web site 2013](img/L2-google2.png)
+![Google web site 2013](../img/design-google2.png)
 
 It should be mentioned though that Google is not the only offender here, take this example :point_down: from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
 
-![Twitter web site](img/L2-twitter.png)
+![Twitter web site](../img/design-twitter.png)
 
 The Google/Twitter examples above are of course not accidental: user interface designers are not accidentally trying to disguise the fact that those are ads (also known as promoted/sponsored content). This is done on purpose: we know that users are less likely to focus their attention on ads if it is obvious that they are indeed ads. Disguising them means a higher likelihood of users engaging with them. A higher engagement level means a higher financial return for the company. This is what is known as a **dark pattern**, more specifically the pattern of disguised ads. More formally, *"dark patterns are user interface design choices that benefit an online service by coercing, steering, or deceiving users into making unintended and potentially harmful decisions."* and can be found in more than 10% of shopping websites (the more popular the shopping site, the more likely the appearance of dark patterns) according to [this recent research study](https://webtransparency.cs.princeton.edu/dark-patterns/) from Princeton University. Dark patterns exist in different domains, not just social web platforms or search engines: in the past, researchers have looked at dark patterns [in the design of games](http://fdg2013.org/program/papers/paper06_zagal_etal.pdf), [privacy](https://www.degruyter.com/downloadpdf/j/popets.2016.2016.issue-4/popets-2016-0038/popets-2016-0038.pdf) and [home robots](https://ieeexplore.ieee.org/abstract/document/8673274).
 
@@ -129,11 +149,11 @@ The rule does not have to be explained, here are two examples that should make t
 
 ZDNet crawled on [March 31, 2001](https://web.archive.org/web/20010331202808/http://www4.zdnet.com:80/):
 
-![ZDNet web site](img/L2-zdnet-2001.png)
+![ZDNet web site](../img/design-zdnet-2001.png)
 
 vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/) :point_down:
 
-![ZDNet web site](img/L2-zdnet-2014.png)
+![ZDNet web site](../img/design-zdnet-2014.png)
 
 While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
 
@@ -143,7 +163,7 @@ Self-explanatory sites require users to expend a small amount of cognitive effor
 
 A positive example of this rule is the following Surveymonkey ([December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/)) splash screen :point_down:
 
-![Surveymonkey](img/L2-surveymonkey.png)
+![Surveymonkey](../img/design-surveymonkey.png)
 
 Lastly, **avoid happy talk**, that is text without any content for the sake of adding some text (e.g. a welcome message).
 
@@ -165,7 +185,7 @@ Instead, the average user:
 
 A web application should be designed based on **user reality**. **Usability testing** is an important step to create a well-designed web application. The development cycle consists of *designing*-*testing*-*reviewing*:
 
-![Web app development cycle](img/L2-cycle.png)
+![Web app development cycle](../img/design-cycle.png)
 
 In a **usability test**, a user is given a **typical task**, such as:
 
@@ -216,11 +236,14 @@ The home page (or entry page) of a web application should answer a number of ess
 
 Surprisingly many home pages are not able to answer these questions. Take for example this entry page:
 
-![Coffeecompany](img/L2-coffeecompany.png)
+![Coffeecompany](../img/design-coffeecompany.png)
 
 <sup>Screenshot taken October 11, 2019</sup>
 
-What is the core business of this company? This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
+<details> 
+  <summary>What is the core business of this company? Click to find out the answer! </summary>
+   This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
+</details>
 
 Another serial offender of the entry page checklist are university home pages as immortalized in [this xkcd comic](http://xkcd.com/773/).
 
@@ -236,7 +259,7 @@ Once web applications become complex, besides general usability we also need to 
 
 For example, when we record the performance of the [tudelft.nl](https://www.tudelft.nl/) homepage, we see the following in the beginning of the loading process :point_down: :
 
-![performance pane](img/L2-performance.png)
+![performance pane](../img/design-performance.png)
 
 In this [waterfall](https://developer.mozilla.org/en-US/docs/Tools/Performance/Waterfall) visualization we see that initially the browser spends most of its time recalculating the style (based on for instance additional images that were loaded); few paint events occur. In general, the following sequence of events is an often recurring one: JavaScript computation :arrow_right: recompute style :arrow_right: recompute layout :arrow_right: repaint.
 
@@ -274,7 +297,7 @@ With this introduction of new features **browser compatibility** issues returned
 
 As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form%20features):
 
-![HTML5 form support](img/L2-html5-form.png)
+![HTML5 form support](../img/design-html5-form.png)
 
 <sup>Screenshot taken on December 16, 2019.</sup>
 
@@ -314,7 +337,7 @@ As of August 2018, [HTML5.3](https://www.w3.org/TR/html53/) has a *Working Draft
 
 In rare cases, features added to a web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner (by adding a manifest file to a site containing no more than a few lines of text), but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favor of another set of technologies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is [still supported by all major browsers](https://caniuse.com/#search=appcache):
 
-![AppCache](img/L2-appcache.png)
+![AppCache](../img/design-appcache.png)
 
 <sup>Screenshot taken on October 11, 2019.</sup>
 
