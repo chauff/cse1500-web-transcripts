@@ -7,7 +7,7 @@ collections:
     sort_by: ordering #should work with Jekyll 4
   practicals:
     output: true
-    sort_by: ordering
+    sort_by: ordering #should work with Jekyll 4
 
 plugins:
   - jemoji
