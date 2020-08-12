@@ -1,7 +1,7 @@
 ---
 layout: default
-permalink: /cookies/
-linkname: Cookies & sessions
+permalink: /sessions/
+linkname: Sessions et al.
 ordering: 7
 ---
 
