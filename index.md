@@ -14,7 +14,7 @@ This website contains **all materials of the web technology part** of the course
 
 We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, Node.js and Express.
 
-**The materials are in the process of being updated for the 2020/21 edition.**
+:warning: **The materials are in the process of being updated for the 2020/21 edition.**
 
 ## Table of contents <!-- omit in toc -->
 - [Web technology instructor](#web-technology-instructor)
