@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /assignment rubric/
+linkname: Assignment rubric
+ordering: 4
+---
+
 # Rubric web assignments
 
 This is an overview of the rubric the TAs use to assess the web assignments.

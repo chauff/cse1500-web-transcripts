@@ -15,30 +15,16 @@ They were initially created for the 2018/19 edition of the course and have been 
 The database materials (lectures/assignments) are not included here! You can find them on Brightspace! Due to the many code examples in the web technology lectures we opted to maintain the materials in a GitHub repository.
 
 ## Table of Contents <!-- omit in toc -->
-- [Course instructors](#course-instructors)
-- [Web technology course book](#web-technology-course-book)
-- [Tooling](#tooling)
-  - [Recommended](#recommended)
-  - [Required](#required)
-- [Course grading](#course-grading)
-- [Course topics](#course-topics)
-- [Web technology tutorials](#web-technology-tutorials)
-- [Sample exams](#sample-exams)
-- [Assignments & assessment](#assignments--assessment)
-- [Demo application](#demo-application)
-- [Interactive web technology exercises](#interactive-web-technology-exercises)
-- [Twitter accounts to follow](#twitter-accounts-to-follow)
-- [Web development resources](#web-development-resources)
-- [Lecture material types](#lecture-material-types)
-- [Web lectures](#web-lectures)
-  - [Lecture 9](#lecture-9)
-  - [Lecture 10](#lecture-10)
-  - [Lecture 11](#lecture-11)
-  - [Lecture 12](#lecture-12)
-  - [Lecture 13](#lecture-13)
-  - [Lecture 14](#lecture-14)
-  - [Lecture 15](#lecture-15)
-  - [Lecture 16](#lecture-16)
+- [List of university-level courses with a Web focus](#list-of-university-level-courses-with-a-web-focus)
+  - [Web lectures](#web-lectures)
+    - [Lecture 9](#lecture-9)
+    - [Lecture 10](#lecture-10)
+    - [Lecture 11](#lecture-11)
+    - [Lecture 12](#lecture-12)
+    - [Lecture 13](#lecture-13)
+    - [Lecture 14](#lecture-14)
+    - [Lecture 15](#lecture-15)
+    - [Lecture 16](#lecture-16)
 
 ## Course instructors
 
@@ -223,6 +209,26 @@ For each lecture we provide a range of materials:
 - **Relevant scientific publications**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this "just" programming? To showcase how web technologies are researched, we here list a number of scientific publications that contribute to our understanding of (the use of) web technologies.
 
 *If you are interested in knowing what other universities teach in terms of web technologies, take a look at [this list of courses with a web focus](university-web-tech-courses.md).*
+
+# List of university-level courses with a Web focus
+
+- [Deep Dive Into Modern Web Development /U Helsinki](https://fullstackopen.com/en)
+- [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
+- [Research on Web Technologies /NTNU](https://www.ntnu.edu/studies/courses/IMT4308/#tab=omEmnet)
+- [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
+- [Web Programming Fundamentals /Stanford](http://web.stanford.edu/class/cs193x/)
+- [Creating Modern Web Applications /Brown](https://cs.brown.edu/courses/csci1320/index.html)
+- [Web Security /NUS](http://www.comp.nus.edu.sg/~prateeks/teaching/sp15/cs5331-sp15.html)
+- [Programming Languages for Web Applications /Virginia](http://www.cs.virginia.edu/~up3f/cs4640/schedule.html)
+- [Web Development /MIT](http://webdevelopment.mit.edu/2018/lectures)
+- [Web Technologies /USC](http://cs-server.usc.edu:45678/lectures.html)
+- [Web Development /NYU](https://cs.nyu.edu/courses/spring15/CSCI-UA.0061-002/syllabus/)
+- [Cutting-edge Web Technologies /Berkeley](https://inst.eecs.berkeley.edu/~cs294-101/sp15/)
+- [Web Technologies /U Texas](http://www.cs.utsa.edu/~cs4413/)
+- [Web Programming /U Washington](https://courses.cs.washington.edu/courses/cse154/17au/lectures.shtml)
+- [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
+- [Javascript /UPenn](http://www.seas.upenn.edu/~cis197/)
+  
 
 ## Web lectures
 

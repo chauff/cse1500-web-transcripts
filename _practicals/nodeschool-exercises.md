@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /nodeschool/
+linkname: Nodeschool exercises
+ordering: 6
+---
+
 # Overview of interactive web programming exercises
 
 One of the issues beginning web developers face is the deluge of materials that are "out there" on the web. It is easy to be overwhelmed, not just by the amount of material, but also the fast pace of new standards, new frameworks and new languages. In this course, we only have a few weeks to teach you the basics of web programming. For this reason, below we have listed a number of interactive exercises from a single source: [nodeschool.io](https://nodeschool.io/). These "exercise bundles" are themselves implemented as Node.js packages! So, you will use `node` to learn `node`!

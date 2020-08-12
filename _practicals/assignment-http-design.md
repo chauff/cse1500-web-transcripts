@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /assignment http+design/
+linkname: Assignment HTTP+Design
+ordering: 1
+---
+
 # Assignment 4
 
 The first part of this assignment gives you hands-on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application** (which you will further develop in assignments 5 and 6).

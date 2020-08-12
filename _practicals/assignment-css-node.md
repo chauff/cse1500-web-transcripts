@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /assignment css+node/
+linkname: Assignment CSS+Node
+ordering: 3
+---
+
 # Assignment 6
 
 In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.

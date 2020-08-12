@@ -1,3 +1,10 @@
+---
+layout: default
+permalink: /assignment js+node/
+linkname: Assignment JS+Node
+ordering: 2
+---
+
 # Assignment 5
 
 In this assignment you will build the backbone of your application. In the first part of this assignment, you will add **client-­side JavaScript** code to your application to make it interactive. In part two, you will write server-side code in **Node.js** and use WebSockets to enable clients to communicate with each other via the server.

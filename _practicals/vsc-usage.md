@@ -1,16 +1,9 @@
-Table of Contents
-==
-
-- [Table of Contents](#table-of-contents)
-- [How to use VSC](#how-to-use-vsc)
-  - [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
-    - [Git](#git)
-    - [GitHub](#github)
-    - [Octotree](#octotree)
-    - [Local vs. remote repository](#local-vs-remote-repository)
-    - [VSC ...](#vsc)
-  - [Live Share](#live-share)
-  - [Debugging Node.js scripts](#debugging-nodejs-scripts)
+---
+layout: default
+permalink: /vsc/
+linkname: How to use VSC
+ordering: 5
+---
 
 # How to use VSC
 
