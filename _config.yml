@@ -4,7 +4,7 @@ remote_theme: chauff/cse-theme
 collections:
   lectures:
     output: true
-    sort_by: ordering
+    sort_by: ordering #should work with Jekyll 4
   practicals:
     output: true
     sort_by: ordering
