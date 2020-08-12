@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /assignment rubric/
+permalink: /rubric/
 linkname: Assignment rubric
 ordering: 4
 ---

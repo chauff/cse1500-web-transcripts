@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /assignment js+node/
+permalink: /assignmentII/
 linkname: Assignment JS+Node
 ordering: 2
 ---

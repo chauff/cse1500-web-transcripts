@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /assignment http+design/
+permalink: /assignmentI/
 linkname: Assignment HTTP+Design
 ordering: 1
 ---
