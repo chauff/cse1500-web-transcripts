@@ -73,7 +73,9 @@ ordering: 1
 
 ## Web standards
 
-{% include image.html url="../img/http-web.png" description="Web Standards. Image sourced from the linked video below." %}
+![Web standards](../img/http-web.png)
+
+<sup>Web standards. Image sourced from the linked video below.</sup>
 
 Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wide Web Consortium, also known as the **W3C**: what are web standards and what makes web standards so important?
 
@@ -164,15 +166,15 @@ HTTP is at the top of the stack, and TCP builds on top of IP. Important to know 
 
 ### :bangbang: Activity
 
-Open a modern browser and use its built-in **web development tools** to see what **HTTP messages** are exchanged when loading a web site. In this course, all tooling examples are using the [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools); very similar tooling set exists for Chrome and Edge.
+Open a modern browser and use its built-in **web development tools** to see what **HTTP messages** are exchanged when loading a web site. 
 
-The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to ``Tools >> Web Developer``. There are several panels, we here take a look at the **Network panel** and how it looks after the user requested the web page residing at the URL https://www.tudelft.nl/:
+The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to ``Tools >> Web Developer``. The Chrome Developer tools can be reached via the toolbar, navigating to ``View >> Developer >> Developer Tools``. There are several panels, we here take a look at the **Network panel** on Firefox and how it looks after the user requested the web page residing at the URL https://www.tudelft.nl/:
 
 ![Browser built-in web dev tools](../img/http-devtools.png)
 
-:point_up: You can see that the resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (31 to be exact). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each http request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than three seconds to receive a response from the server when requesting the page residing at https://www.tudelft.nl/ and nearly five seconds to complete all requests. This is actually not a lot of resources; head over to a site like [Volkskrant](https://www.volkskrant.nl/), [NYTimes](https://www.volkskrant.nl/) or the [Guardian](https://www.theguardian.com/international) and look at the cascade of resource requests - at the end a few hundred resources will have been requested.
+:point_up: You can see that the resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (31 to be exact). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each http request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than three seconds to receive a response from the server when requesting the page residing at https://www.tudelft.nl/ and nearly five seconds to complete all requests. This is actually not a lot of resources; head over to a site like [Volkskrant](https://www.volkskrant.nl/), [NYTimes](https://www.nytimes.com/) or the [Guardian](https://www.theguardian.com/international) and look at the cascade of resource requests - at the end a few hundred resources will have been requested.
 
-Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in the *Headers panel* (which appears within the Network panel) when clicking on a particular resource row :point_down: :
+Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in Firefox's *Headers panel* (which appears within the Network panel) when clicking on a particular resource row :point_down: :
 
 ![Browser built-in web dev tools](../img/http-devtools2.png)
 
@@ -202,7 +204,7 @@ What are we requesting? Line 2 answers this question, we are requesting the web 
 
 In the last line, you can see that in this request, a cookie is sent from the client to server.
 
-🚩HTTP/2 (and subsequent versions) have been switched to a binary protocol.
+🚩HTTP/2 (and subsequent versions) have switched to a binary protocol.
 
 ### HTTP response message
 
@@ -418,7 +420,7 @@ WebSockets finally enable **bidirectional communication** between client and ser
 
 Client and server agree to this new protocol as follows: the client initiates the protocol *upgrade* by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
 
-For a concrete example, explore the HTTP request/response headers of the [word guesser demo game](demo-code/balloons-game). It relies on WebSockets to enable bidirectional communication between client and server. The browser's network panel allows you once more to investigate the protocol specifics :point_down: :
+For a concrete example, explore the HTTP request/response headers of our [demo game](https://github.com/chauff/cse-demo-game). It relies on WebSockets to enable bidirectional communication between client and server. Firefox's network panel allows you once more to investigate the protocol specifics :point_down: :
 
 ![Network monitor WebSockets](../img/http-websocket.png)
 
@@ -525,7 +527,8 @@ Try out the following examples yourself. Every line of the protocol is completed
 
 In order to close a telnet session, enter the telnet prompt (press `Ctrl` + `]`) and then use the `quit` command.
 
-We are conducting our telnet activity on [ard.de](http://www.ard.de), the official homepage of one of Germany's largest public broadcasters - we simply use it as it is one of the most popular sites we are aware off that still offers content over http (instead of only over https).
+//TODO: new http example needed
+We are conducting our telnet activity on [ard.de](http://www.ard.de), the official homepage of one of Germany's largest public broadcasters - we simply use it as it is one of the most popular sites we are aware off that still offers content over http (instead of only over https). 
  
 **Use `HEAD` to get information about the page**
 
@@ -589,7 +592,7 @@ host:www.ard.de
 ```
 
 
-Finally, for those that want to see to what extremes people go to make fun (or use) of telnet, try out the following
+Finally, for those that want to see to what extremes people go to make fun (or use) of telnet, try out the following:
 
 ```console
 telnet towel.blinkenlights.nl
@@ -628,7 +631,7 @@ This might sound like a lot, but just think about how many devices you own that 
 
 Why are we still using IPv4? Because transitioning to the new standard takes time - a lot of devices require software upgrades (and nobody can force the maintainers to upgrade) and things still work, so there is no immediate sense of urgency.
 
-[Google keeps track of the percentage of users using its services through IPv6](https://www.google.com/intl/en/ipv6/statistics.html#tab=ipv6-adoption&tab=ipv6-adoption). As of late 2019 about 30% of users rely on IPv6, a slow and steady increase - it is just a matter of years until IPv4 is replaced by IPv6.
+[Google keeps track of the percentage of users using its services through IPv6](https://www.google.com/intl/en/ipv6/statistics.html#tab=ipv6-adoption&tab=ipv6-adoption). As of 2020 about 30% of users rely on IPv6, a slow and steady increase - it is just a matter of years until IPv4 is replaced by IPv6.
 
 ## Uniform Resource Locators (URLs)
 
@@ -644,8 +647,10 @@ Let's now take a closer look at the format of *Uniform Resource Locators*, more 
 - `http://myshop.nl/comp;typ=c/apple;class=a;date=today/index.html;fr=delft`
 - `http://правительство.рф`
 ---
-[Find out the answer!](#answer)
-
+<details> 
+  <summary>Click to find out the answer! </summary>
+   All URLs are valid. 
+</details>
 
 URLs are the common way to access any resource on the Internet; the format of URLs is standardized. You should already be relatively familiar with the format of URLs accessing resources through HTTP and HTTPS. Resource access in other protocols (e.g. `ftp`) is similar, with only small variations.
 
@@ -676,8 +681,6 @@ https://duckduckgo.com/html?q=delft
 
 This is an example of a URL pointing to the Duckduckgo website that - as part of the URL - contains the `q=delft` query. This query component is passed to the application accessed at the web server - in this case, Duckduckgo's search system and returned to you is a list of search results for the query `delft`. This syntax is necessary to enable interactive application.
 By convention we use `name=value` to pass application variables. If an application expects several variables, e.g. not only the search string but also the number of expected search results, we combine them with an `&`: `name1=value1&name2=value2& ...`.
-
-<a name="answer">Answer: All URLs are valid.</a> [Return to the URL section.](#uniform-resource-locators-urls)
 
 ### Schemes: more than just HTTP(S)
 
