@@ -1,10 +1,2 @@
 baseurl: "/Web-Teaching/"
 remote_theme: chauff/cse-theme
-
-collections:
-  lectures:
-    output: true
-    sort_by: ordering
-  practicals:
-    output: true
-    sort_by: ordering
