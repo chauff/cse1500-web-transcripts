@@ -39,7 +39,6 @@ ordering: 1
   - [:bangbang: Activity](#️-activity-1)
   - [From domain to IP address](#from-domain-to-ip-address)
 - [Uniform Resource Locators (URLs)](#uniform-resource-locators-urls)
-- [- `http://правительство.рф`](#ullihttpправительстворфliul)
   - [URL syntax: query](#url-syntax-query)
   - [Schemes: more than just HTTP(S)](#schemes-more-than-just-https)
   - [Relative vs. absolute URLs](#relative-vs-absolute-urls)
@@ -637,7 +636,6 @@ Why are we still using IPv4? Because transitioning to the new standard takes tim
 
 Let's now take a closer look at the format of *Uniform Resource Locators*, more commonly known by their abbreviation URLs. You are probably typing those into your browser at least a few times a day, let's see how well you know them! To get you started, here is a short quiz.
 
----
 **How many of the following URLs are valid?**
 
 - `mailto:c.hauff@tudelft.nl`
@@ -646,7 +644,7 @@ Let's now take a closer look at the format of *Uniform Resource Locators*, more 
 - `https://duckduckgo.com/html?q=delft`
 - `http://myshop.nl/comp;typ=c/apple;class=a;date=today/index.html;fr=delft`
 - `http://правительство.рф`
----
+
 <details> 
   <summary>Click to find out the answer! </summary>
    All URLs are valid. 
@@ -709,7 +707,7 @@ Relative:
 Those relative URLs in combination with the base URL above lead to:
 
 ```console
-https://www.tudelft.nl/studenten/brightspace
+https://www.tudelft.nl/students/brightspace
 https://www.tudelft.nl/disclaimer
 ```
 
@@ -717,7 +715,7 @@ An absolute URL can be used to retrieve a web resource without requiring any add
 
 Relative URLs require a **base URL** to enable their conversion into absolute URLs. By default, this base URL is derived from the absolute URL of the web page the relative URLs are found in. The base URL of a resource is everything up to and including the last slash in its path name.
 
-The base URL is used to convert the relative URLs into absolute URLs. The conversion in the first case (`brightspace`) is straightforward, the relative URL is appended to the base URL. In the second case (`../disclaimer`) you have to know that the meaning of `..` is to move a directory up, thus in the base URL the `/studenten` directory is removed from the base and then the relative URL is added.
+The base URL is used to convert the relative URLs into absolute URLs. The conversion in the first case (`brightspace`) is straightforward, the relative URL is appended to the base URL. In the second case (`../disclaimer`) you have to know that the meaning of `..` is to move a directory up, thus in the base URL the `/students` directory is removed from the base and then the relative URL is added.
 
 Note, that this conversion from relative to absolute URL can be governed by quite complex rules, they are described in [RFC 3986](https://www.ietf.org/rfc/rfc3986.txt).
 
@@ -764,7 +762,7 @@ But of course, this is not how today's web works: servers **do** identify device
 - user login
 - fat URLs
 
-If you already know a bit about web development you will miss in this list cookies and sessions. We cover these concepts in [a later lecture](Lecture-sessions.md).
+If you already know a bit about web development you will miss in this list cookies and sessions. We cover these concepts in [a later lecture](sessions.md).
 
 We now cover each of the four identification options listed above in turn.
 
@@ -868,7 +866,6 @@ So far we have seen *lightweight authentication* approaches. Those are not usefu
 ![HTTPS](../img/http-https.png)
 
 Note, that client and server have to **negotiate** the cryptographic protocol to use (the most secure protocol both sides can handle). The encryption employed is only as secure as the weaker side allows: if the server has the latest encryption protocols enabled but the client has not been updated in years, a weak encryption will be the result.
-
 
 ## Self-check
 
