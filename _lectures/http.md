@@ -52,11 +52,29 @@ ordering: 1
 - [Secure HTTP](#secure-http)
 - [Self-check](#self-check)
 
+## Required & recommended readings and activities <!-- omit in toc -->
+
+- Required readings: *none*
+- Recommended activity:
+  - :headphones: Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
+  - :tv: A [short video](https://www.youtube.com/watch?v=fXUni9WrUuw) (in Dutch) by CWI (Centrum Wiskunde & Informatica) to celebrate 30 years since the Netherlands was connected to the public Internet!
+- Recommended readings:
+  - :closed_book: Chapters 1, 2 and 3 of [HTTP: The Definite Guide (O'REILLY 2002)](http://shop.oreilly.com/product/9781565925090.do).
+  - [MDN overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP).
+  - Developer tools overview of your favorite web browser (e.g. [Firefox](https://developer.mozilla.org/en-US/docs/Tools) or [Chrome](https://developer.chrome.com/devtools)).
+  - [A brief history of HTTP](https://hpbn.co/brief-history-of-http/).
+  - [Browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/) showcases how seemingly innocuous data can identify users.
+  - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/).
+  - A detailed overview of the [history of web standards](https://www.smashingmagazine.com/2019/01/web-standards-guide/) and how to make use of them.
+- Relevant scientific publications:
+  - Ihm, S. and Pai, V.S., 2011. [Towards understanding modern web traffic](https://conferences.sigcomm.org/imc/2011/docs/p295.pdf). In Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference (pp. 295-312). ACM.
+  - Naylor, D., Finamore, A., Leontiadis, I., Grunenberger, Y., Mellia, M., Munafò, M., Papagiannaki, K. and Steenkiste, P., 2014. [The cost of the S in HTTPS](https://davidtnaylor.com/CostOfTheS.pdf). In Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies (pp. 133-140).
+  - Falaki, H., Lymberopoulos, D., Mahajan, R., Kandula, S. and Estrin, D., 2010. [A first look at traffic on smartphones](http://conferences.sigcomm.org/imc/2010/papers/p281.pdf). In Proceedings of the 10th ACM SIGCOMM conference on Internet measurement (pp. 281-287).
+
 ## Web standards
 
-![Web standards](img/L1-web.png)
-
-<sup>Image sourced from the linked video below.</sup>
+![Web standards](../img/http-web.png)
+<figcaption>Image sourced from the linked video below.</figcaption>
 
 Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wide Web Consortium, also known as the **W3C**: what are web standards and what makes web standards so important?
 
