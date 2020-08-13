@@ -78,7 +78,6 @@ ordering: 3
 - Employ JavaScript objects.
 - Employ the principle of callbacks.
 - Write interactive web applications based on click, mouse and keystroke events.
-- Explain and use `jQuery` (the library introduced in the course book).
 
 ## Take-aways of the required reading
 
@@ -1591,12 +1590,11 @@ deal1.details.getPrice();
 <html>
     <head>
         <title>Local Deals Finder</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
             var main = function(){
                 var list = document.getElementsByTagName("li");
                 for(var i = 0; i<list.length; i++){
-                    document.getElementsByTagName("li")[i].onclick = showDetails();
+                    document.getElementsByTagName("li")[i].onclick = showDetails();//pay attention to this line!
                 }
             }
             $(document).ready(main);
