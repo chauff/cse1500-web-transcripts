@@ -14,6 +14,7 @@ HTTP: the language of Web communication <!-- omit in toc -->
 
 ## Table of Contents <!-- omit in toc -->
 
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Web standards](#web-standards)
 - [Learning goals](#learning-goals)
 - [World Wide Web vs. Internet](#world-wide-web-vs-internet)
@@ -54,7 +55,7 @@ HTTP: the language of Web communication <!-- omit in toc -->
 - [Secure HTTP](#secure-http)
 - [Self-check](#self-check)
 
-## Required & recommended readings and activities <!-- omit in toc -->
+## Required & recommended readings and activities
 
 - Required readings: *none*
 - Recommended activity:
