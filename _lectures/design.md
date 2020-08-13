@@ -352,6 +352,13 @@ The W3C writes the following about the AppCache: *This feature is in the process
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
 
+<details>
+<summary>What happens if the `target` attribute is not defined in an HTML form?</summary>
+The response received after submitting the form is displayed in the current frame or browsing context.
+</details>
+
+
+
 1. Which of the following statements about HTML `<form>` methods `GET` and `POST` is true?
     - There is no difference, `GET` and `POST` can be used in exactly the same situations.
     - Through `GET` more data can be sent in an HTTP request than through `POST`.

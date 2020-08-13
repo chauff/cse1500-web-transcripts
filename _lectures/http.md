@@ -895,35 +895,64 @@ Here are a few questions you should be able to answer after having followed the 
   False.
 </details>
 
-1. What are the main advantage and disadvantage of using compression?
-2. What is the main problem of HTTP's plain text format compared to a binary format?
-3. What is commonly compressed: HTTP headers and/or HTTP responses? Why?
-4. In what circumstance might `HEAD` be useful?
-5. In what order do the following operations occur when you enter  [http://www.microsoft.com](http://www.microsoft.com) in the browser's address bar?
-    - Convert domain to IP address
-    - Send HTTP request
-    - Receive HTTP response
-    - Establish a TCP connection
-6. What is the main advantage of relative URLs over absolute URLs?
-7. What is the main weakness of URLs as they are in use today?
-    - URLs are unnecessarily long.
-    - We are running out of URL space for ASCII-based URLs.
-    - URLs point to a location instead of a web resource.
-    - URLs point to a web resource instead of a location.
-8. Which of the following statements about the hypertext transfer protocol are TRUE?
-    - `HEAD` can be used to determine whether a given URL refers to an existing web resource.
-    - The HTTP header field `Last-Modified` is used in an HTTP request that informs the server of the client's latest version of a given web resource.
-    - The information retrieved via `HEAD` can also be retrieved via `GET`.
-    - The `Content-Length` header is used in an HTTP request to inform the server which parts of a web resource a client wants to receive.
-9. Which of the following statements about web caches are TRUE?
-    - Web caches increase the processing power of origin servers.
-    - Web caches are the web's backup: they keep a copy of every resource on the web.
-    - Web caches rely on the `Content-Range` header field to determine when a copy becomes invalid.
-    - Web caches lead to reduced distance delay.
-10. Which of the following statements about IPv6 are FALSE?
-    - IPv6 has approximately ten times as much address space available as IPv4.
-    - Most Internet traffic today makes use of IPv6 (instead of IPv4).
-    - IPv6 addresses do not have an associated domain name in the Domain Name System registry.
-    - IPv6 addresses are 128 bit long.
-11. What issues do fat URLs have?
-12. What is the purpose of HTTPS?
+<details> 
+  <summary>True or False? When a URL such as http://x.org/ is entered into the browser's address bar, the browser uses port 80 by default. </summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? When accessing the URL http://x.org/1184.htm/#anchor1 via the browser, the server sends only that part of the Web page to the client that starts at fragment `#anchor1`. </summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? Web caches increase the processing power of origin servers. </summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? Web caches are the Web’s backup: they keep a copy of every resource on the Web. </summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? Web caches rely on the `Content-Range` HTTP header field to determine when a copy becomes invalid. </summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? Web caches lead to reduced distance delay.</summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? IPv6 has approximately ten times as much address space available as IPv4.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? IPv6 addresses do not have an associated domain name in the Domain Name System registry.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? IPv6 addresses are 128 bit long.</summary>
+  True.
+</details>
+
+<details>
+<summary>How many unique IP addresses does the IPv4 address space contain?</summary>
+256^4.
+</details>
+
+<details>
+<summary>True or False? URLs point to a location instead of a web resource.</summary>
+True.
+</details>
+
+<details>
+<summary>What does it mean when a client sends an HTTP request with the header `Cache-Control:max-age=0`?</summary>
+The Web cache receiving the request should retrieve the resource from the origin server.
+</details>
+
+
