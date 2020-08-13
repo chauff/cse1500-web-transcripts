@@ -9,7 +9,10 @@ ordering: 7
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information and not exam material.*
 
+**An automatically generated PDF of this transcript is available [here](../generatedPDFs/sessions.pdf).**
+
 ## Table of Contents <!-- omit in toc -->
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Recall the HTTP lecture](#recall-the-http-lecture)
 - [Introduction to cookies](#introduction-to-cookies)
@@ -36,6 +39,18 @@ ordering: 7
   - [Roles exemplified](#roles-exemplified)
   - [Express](#express)
 - [Self-check](#self-check)
+
+## Required & recommended readings and activities
+
+- Required readings: *none*
+- Recommended activities: *none*
+- Recommended readings:
+  - //TODO: check updated chapter :closed_book: Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown.
+  - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/).
+- Relevant scientific publications:
+  - Roesner, F., Kohno, T. and Wetherall, D., 2012. [Detecting and defending against third-party tracking on the web](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final17.pdf). In Proceedings of the 9th USENIX conference on Networked Systems Design and Implementation (pp. 12-12). USENIX Association.
+  - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](https://ieeexplore.ieee.org/abstract/document/865085). IEEE internet computing, 4(4), pp.36-44.
+  - Franken, G., Van Goethem, T. and Joosen, W., 2018. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168.
 
 
 ## Learning goals
@@ -87,7 +102,7 @@ Cookies are **not hidden** from the user, they are stored *in the clear* and can
 
 Firefox's developer tools are helpful to inspect what is being sent over the network (in this case, cookies) :point_down::
 
-![Viewing cookies in the browser](img/L7-cookies-browser.png)
+![Viewing cookies in the browser](../img/sessions-cookies-browser.png)
 
 <sup>Screenshot taken October 11, 2019. Overview of cookies sent/received when accessing https://www.bol.com</sup>
 
@@ -95,7 +110,7 @@ As the name suggests, *Response Cookies* are cookies that are appearing in an HT
 
 When developing web applications, use Firefox's Storage Inspector dev tool tab, which makes debugging cookie settings easy :point_down::
 
-![Storage dev tools cookies](img/L7-storage.png)
+![Storage dev tools cookies](../img/sessions-storage.png)
 
 <sup>Screenshot taken October 11, 2019. Overview of cookies sent to the client when accessing https://www.volkskrant.nl</sup>
 
@@ -133,7 +148,7 @@ Cookies and sessions are closely related. **Sessions make use of cookies**. The 
 
 In this section, we cover the cookie flow between client and server. Consider the graphic below. On the right we have our server-side application and on the left our browser (the client), which contains a cookie store.
 
-![Cookie basics](img/L7-cookie-basics.png)
+![Cookie basics](../img/sessions-cookie-basics.png)
 
 At the first visit to a web application, the client sends an HTTP request not containing a cookie. The server sends an HTTP response to the client including a cookie. Cookies are **encoded in HTTP headers**. At each subsequent HTTP request made to the same server-side application, the browser returns all cookies that were sent from that application. Cookies are actually **bound to a site domain name**, they are only sent back on requests to this specific site - a security feature of the browser. As we will see in a moment, we also have the ability for even more fine-grained control over when to return cookies from client to server.
 
@@ -202,7 +217,7 @@ If you carefully look at the cookies that are sent in HTTP request/response mess
 
 Let's *customize* our browser now to make it easier for us to see how many cookies our browser has in its cookie storage for each site we visit. Instead of opening the browser's developer tools every time, we want to see this information right away *whilst* browsing:
 
-![Firefox extension](img/L7-extension.png)
+![Firefox extension](../img/sessions-extension.png)
 
 Such an *extension* (a piece of software to customize your browser) can be built easily with a few lines of JavaScript. We will introduce here how this very extension looks for Firefox; it is very similar for other major browsers in use today.
 
@@ -273,7 +288,7 @@ As you can see here :point_up: an extension is simply a piece of JavaScript that
 
 The last step then is the deployment of the extension: we have a manifest file and a JavaScript file (here called `showCookies.js`) on local disk in a single folder. Now all we have to do is open Firefox's `about:debugging` pane, click <kbd>This Firefox</kbd> and then register our manifest file as temporary extension. If done succesfully, you should see something like this :point_down::
 
-![Firefox about debugging](img/L7-aboutdebugging.png)
+![Firefox about debugging](../img/sessions-aboutdebugging.png)
 
 Whenver you make code changes, you will have to click <kbd>Reload</kbd> in order to see the effects. That's it, now have a fully working Firefox extension. A click on <kbd>Remove</kbd> will remove the extension again.
 
@@ -303,7 +318,7 @@ module.exports = {
 
 Let's look at the annotated code of `app.js` :point_down::
 
-![Node.js code example](img/L7-node-cookies-ex.png)
+![Node.js code example](../img/sessions-node-cookies-ex.png)
 
 :point_up: The route `/sendMeCookies` sends cookies from the server to the client, one of which is signed. Signing is as simple as setting the `signed` property to `true`. Cookies the client sends back to the server appear in the HTTP request object and can be accessed through `req.cookies`. Here, a distinction is made between signed and unsigned cookies - you can only be sure that the signed cookies have not been tampered with.
 
@@ -351,7 +366,7 @@ Web portals can feature content from third-party domains (such as banner ads), w
 
 Consider this example:
 
-![Third-party cookies](img/L7-third-party-cookies.png)
+![Third-party cookies](../img/sessions-third-party-cookies.png)
 
 Here, we suppose a user visits `x.org`. The server replies to the HTTP request, using `Set-Cookie` to send a cookie to the client. This is a first-party cookie. `x.org` also contains an advert from `ads.agency.com`, which the browser loads as well. In the corresponding HTTP response, the server `ads.agency.com` also sends a cookie to the client, this time belonging to the advert's domain (`ads.agency.com`). This is a third-party cookie.
 This by itself is not a problem. However, the global ad agency is used by many different websites, and thus, when the user visits other websites, those may also contain adverts from `ads.agency.com`. Eventually, all cookies from the domain `ads.agency.com` will be sent back to the advertiser when loading any of their ads or when visiting their website. The ad agency can then use these cookies to build up a browsing history of the user across all the websites that show their ads.
@@ -414,7 +429,7 @@ However, we still have the problem that without cookies, the server cannot tell 
 
 Let's describe how sessions work on a todo web application example:
 
-![Sessions](img/L7-sessions.png)
+![Sessions](../img/sessions-sessions.png)
 
 :point_up: A client visits a web application for the first time, sending an HTTP `GET` request to retrieve some todos. The server checks the HTTP request and does not find any cookies, so the server randomly generates a session ID and returns it in a cookie to the client. This is the piece of information that will identify the client in future requests to the server. The server uses the session ID to look up information about the client, usually stored in a database. This enables servers to store as much information as necessary, without hitting a limit on the number of cookies or the maximum size of a cookie.
 
@@ -424,7 +439,7 @@ To conclude this section, we discuss how to make use of sessions in Node.js/Expr
 
 Let's look at [node-sessions-ex](demo-code/node-sessions-ex) for a working toy example. Install, run and explore the code before continuing.
 
-![Session code example](img/L7-node-sessions-ex.png)
+![Session code example](../img/sessions-node-sessions-ex.png)
 
 :point_up: Here, we store the session information in memory, which of course means that when the server fails, the data will be lost. In most web applications, we would store this information eventually in a database.
 To set up the usage of sessions in Express, we need two middleware components: `cookie-parser` and `express-session`. Since sessions use cookies, we also need to ensure that our middleware pipeline is set up in the correct order: the `cookie-parser` should be added to the pipeline before `express-session`, otherwise this piece of code will lead to an error (*try it out for yourself*).
@@ -440,7 +455,7 @@ The final topic of this lecture is third-party authentication. This is a topic e
 
 Even if you are not aware of the name, you will have used third-party authentication already. In many web applications that require a login, we are given the choice of either creating a username/password or by signing up through a third party such as Facebook, Google or Twitter. Below is a login screen of [Quora](https://www.quora.com/), with Facebook and Google acting as third-party authenticators:
 
-![Joining Quora](img/L7-quora.png)
+![Joining Quora](../img/sessions-quora.png)
 
 Third-party authentication has become prevalent across the web, because **authentication**, i.e. the task of verifying a user's identity, is hard to do right.
 
@@ -480,15 +495,15 @@ The **access token** referred to in the resource server role is a string denotin
 
 Let's consider this specific example: an end-user (resource owner) can grant a printing service (client) access to her protected photos stored at a photo-sharing service (resource server), without sharing her username and password with the printing service :point_down::
 
-![OAuth2 example 1](img/L7-oauth2-1.png)
+![OAuth2 example 1](../img/sessions-oauth2-1.png)
 
 :point_down: The user authenticates directly with a server trusted by the photo-sharing service(authorization server), which issues the printing service delegation-specific credentials (access token):
 
-![OAuth2 example 1](img/L7-oauth2-2.png)
+![OAuth2 example 1](../img/sessions-oauth2-2.png)
 
 The mapping between the entities and OAuth 2.0 roles is as follows :point_down::
 
-![OAuth2 example 1](img/L7-oauth2-3.png)
+![OAuth2 example 1](../img/sessions-oauth2-3.png)
 
 ### Express
 
