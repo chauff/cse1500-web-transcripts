@@ -169,6 +169,7 @@ The materials we present here are only one way of introducing the fundamentals o
 - [Deep Dive Into Modern Web Development /U Helsinki](https://fullstackopen.com/en)
 - [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
 - [Web Applications /Stanford](http://web.stanford.edu/class/cs142/)
+- [Web Security /Stanford](https://web.stanford.edu/class/cs253/)
 - [Creating Modern Web Applications /Brown](https://cs.brown.edu/courses/csci1320/index.html)
 - [Web Security /NUS](http://www.comp.nus.edu.sg/~prateeks/teaching/sp15/cs5331-sp15.html)
 - [Programming Languages for Web Applications /Virginia](http://www.cs.virginia.edu/~up3f/cs4640/schedule.html)

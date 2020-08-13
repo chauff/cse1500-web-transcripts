@@ -217,6 +217,8 @@ Similar to the wireframe example of the demo game, start designing your own appl
 
 Create a design for the splash screen (also known as *entry page*): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/). The [noun project](https://thenounproject.com/) can be a useful resource for game pieces.
 
+If you are looking for a color scheme for your design, take a look at [https://coolors.co/](coolors.co).
+
 ### 5.2)
 
 Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in Exercise 4.3).

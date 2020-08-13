@@ -71,6 +71,7 @@ ordering: 3
   - Lin, J., 2018. [Computing without Servers, V8, Rocket Ships, and Other Batshi*t Crazy Ideas in Data Systems](http://ceur-ws.org/Vol-2167/keynote1.pdf). In Proceedings of DESIRES. A quote ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
   - Patra, J., Dixit, P.N. and Pradel, M., 2018. [ConflictJS: finding and understanding conflicts between JavaScript libraries](http://mp.binaervarianz.de/icse2018.pdf). In Proceedings of the 40th International Conference on Software Engineering, pp. 741-751.
   - Jangda, A., Powers, B., Berger, E. D., & Guha, A., 2019. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
+  - Chaqfeh, M., Zaki, Y., Hu, J. and Subramanian, L., 2020. [JSCleaner: De-Cluttering Mobile Webpages Through JavaScript Cleanup](https://doi.org/10.1145/3366423.3380157). In Proceedings of The Web Conference 2020, pp. 763-773.
 
 
 ## Learning goals
@@ -108,7 +109,7 @@ In the early years of JavaScript, it was considered more of a toy language. Toda
 
 <sup>Top languages over time (as measured by number of contributors) on GitHub. [Image source](https://octoverse.github.com/), 2019.</sup>
 
-Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in multiple programming paradigms ([read this interview](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93) with Kyle Simpson, author of one of the most popular JavaScript book series if you want to know more).
+Vital to JavaScript's rise from toy language to serious contender ([even in space!](https://twitter.com/jason_mayes/status/1267227834096861184)) is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in multiple programming paradigms ([read this interview](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93) with Kyle Simpson, author of one of the most popular JavaScript book series if you want to know more).
 
 Today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
