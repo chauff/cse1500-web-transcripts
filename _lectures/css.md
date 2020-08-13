@@ -86,9 +86,9 @@ Lastly, we also consider a TU DELFT neon sign as an example for text-heavy anima
 
 ## A word of warning
 
-This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) :point_down: sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements before CSS grid came along), will cost you a lot of time.
+This tweet :point_down: sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements before CSS grid came along), will cost you a lot of time.
 
-![Tweet](../img/css-tweet.png)
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">when I think I&#39;m a fairly decent programmer, and then try and align two buttons next to each other in CSS <a href="https://t.co/v43Lp9Vv0U">pic.twitter.com/v43Lp9Vv0U</a></p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/936199543099621376?ref_src=twsrc%5Etfw">November 30, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 Another important bit of information comes from Addy Osmani:
 
