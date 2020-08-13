@@ -5,7 +5,7 @@ linkname: How to use VSC
 ordering: 5
 ---
 
-# How to use VSC
+# How to use VSC <!-- omit in toc -->
 
 The project is conducted in pairs of students. Here we provide an overview of how VSC can help you to work **efficiently** in pairs. You have two options:
 
@@ -15,6 +15,16 @@ The project is conducted in pairs of students. Here we provide an overview of ho
 _Note: this information is provided to help you work in pairs efficiently during the web assignments. This is not exam material (i.e. we will not ask you questions about `git`, Live Share, VSC or debugging.)_
 
 We now introduce both options and finish the tutorial with a quick look at VSC's debugging abilities.
+
+## Table of Contents <!-- omit in toc -->
+- [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
+  - [Git](#git)
+  - [GitHub](#github)
+  - [Octotree](#octotree)
+  - [Local vs. remote repository](#local-vs-remote-repository)
+  - [VSC ...](#vsc-)
+- [Live Share](#live-share)
+- [Debugging Node.js scripts](#debugging-nodejs-scripts)
 
 ## Collaborating via Git+GitHub
 
@@ -41,7 +51,7 @@ In order to work with GitHub, all group members must have a [GitHub account](htt
 
 Now you can add your partners to the repository, so all of you can work together. To that end just go to the main page of the new repository and click the tab *Settings*:
 
-![VSC GitHub settings](img/VSC-github-settings.png)
+![VSC GitHub settings](../img/VSC-github-settings.png)
 
 The menu that appears on the left has an entry *Collaborators*: click on it and add your partners.
 
@@ -60,11 +70,11 @@ _Note: after adding the URL of the remote repository and after indicating the fo
 
 When you edit your project, the icon *Source Project* at the left will indicate the number of files modified. You can record a set of changes in your local repository by clicking on *Commit All*. Remember to add a meaningful message so it can be useful to follow the status of the project. You can see how to use other git commands [here](https://git-scm.com/docs).
 
-![VSC source](img/VSC-source.png)
+![VSC source](../img/VSC-source.png)
 
 Once your changes are registered in your local repository, you synchronize with the remote repository, so that your changes make it to the shared repository on GitHub. In order to do that, just click in the synchronization icon at the bottom of the page, as shown in the figure below. You will be asked again for the GitHub user name and password in the *Command Palette* at the top of the window. You will be notified if there are conflicts so you can see them and take the appropriate decisions.
 
-![VSC sync](img/VSC-sync.png)
+![VSC sync](../img/VSC-sync.png)
 
 If you want to give this setup a try, we suggest you start setting things up early and get help from the TAs if you get stuck. All TAs are familiar with `git`, GitHub and VSC!
 
@@ -72,11 +82,11 @@ If you want to give this setup a try, we suggest you start setting things up ear
 
 If you do not yet care about `git`, use the Live Share option instead. For small projects (like the one in this class) where you may not need to track changes, you can effectively work together as a team with the VS Live Share extension.
 
-![Liveshare](img/VSC-liveshare-install.png)
+![Liveshare](../img/VSC-liveshare-install.png)
 
 After installing the extension in VSC from the *Extensions* window, reload it and you will see a *share* icon at the bottom. The first time you click on it you will be asked to sign in to VSC with Microsoft or GitHub, so others can be sure about who you are when you share or join shared sessions.
 
-![Liveshare usage](img/VSC-liveshare-use.png)
+![Liveshare usage](../img/VSC-liveshare-use.png)
 
 After signing in, you will see in your VSC the URL you can send to your project partners. Once a partner clicks the link, her local instance of VSC will display the shared project. Host and partners can then edit the files and see any changes made by their partners in real time. You can even debug collaboratively: when the host starts debugging, partners can not only see the debugging window, but they can also use debugging options (step into, step over, add breakpoints, write expressions to evaluate, etc.).
 
@@ -92,7 +102,7 @@ The execution will stop at each breakpoint you have defined. Once the execution 
 
 You can define inline breakpoints by clicking F9 in the lines of code, or by clicking to the left of the line. In both cases you will see a red point indicating the breakpoint. You can also define breakpoints from the menu *Debug* by clicking on *New Breakpoint*. In that case you can create Logpoints, where a message is displayed in the debug console when the execution reaches that point, and Conditional Breakpoints, where the execution will stop after a number of hits, or when an expression is true.
 
-![VSC debugging](img/VSC-debug.png)
+![VSC debugging](../img/VSC-debug.png)
 
 Since JavaScript is [dynamically typed](https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_typing) a lot of common programming mistakes can remain unnoticed before running js code. [`@ts-check`](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript) is a great tool to catch some of these mistakes at the very moment you type your code.
 
