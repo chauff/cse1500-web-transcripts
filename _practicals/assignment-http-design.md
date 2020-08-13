@@ -44,7 +44,7 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 
 ## 1. HTTP request messages: GET/HEAD
 
-👉 Hints:
+👉 Let's start with a few hints:
 
 - To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.ard.de 80|tee out` will save all output to a file called `out`.
 - To exit a telnet session, first press <kbd>CTRL</kbd>+<kbd>]</kbd>. This brings you to a `telnet>` prompt and you can type `close` to end the session.
@@ -58,9 +58,7 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
   - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the PuTTY session (which you start using the *Open* button).
 
 //TODO: new domain for http/telnet
-⚠️ ⚠️ ⚠️ **Exercise (1) comes in two flavours: if you completed this part before January 1, 2020 you will have telnetted to `weer.nl`. This is fine. There is no need to repeat the exercise; submit the responses as you wrote them up. If you are starting this exercise in January 2020, go to the `surfweer.nl` variant instead.** The remaining exercises are unaffected from this change!
 
-**Exercise weer.nl (valid until January 1, 2020)**:
 Use `telnet` to request the contents of the Dutch rainfall radar section of the `www.weer.nl` website: [www.weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
 
 ```console
@@ -92,7 +90,6 @@ What is the purpose of the `X-Cache` tag in the header information? If you have 
 
 What does the retrieved resource's `Cache-Control` directive mean?
 
----
 
 ## 2. HTTP request messages: PUT
 
@@ -124,7 +121,6 @@ With this code, we have modified the resource accessible at `/put` to now hold t
 
 The `Content-­length` is exactly the number of characters (12 - we count the whitespace as well!) of `Hello World!`. What happens if the `Content-length` field is smaller or larger than the exact number of characters in the content?
 
----
 
 ## 3. Basic authentication
 
@@ -158,8 +154,6 @@ telnet httpbin.org 80
 ````
 
 Request the same page without the `Authorization` header field - what happens? Is the behavior the same as reloading the page in the browser? Explain why / why not.
-
----
 
 ## 4. Web programming project: board game app
 
@@ -211,13 +205,12 @@ Find **three** examples of your chosen board game (in 2D) that can be played onl
 
 Which *game features* in the game examples of 4.2) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
 
----
-
 ## 5. Design your own board game app
 
 Having looked at at least three existing implementations of your chosen board game (Exercise 4.2), you are now in a position to design your own game interface. 
 
 //TODO: wireframe demo game link
+
 Similar to the wireframe example of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
 ### 5.1)
@@ -236,4 +229,5 @@ Once you have completed the design of your app, head over to CSE1500's 💡 Brig
 ## 6. Your own board game app: HTML
 
 //TODO: update demo game link
+
 Similar to the demo game, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. To get an idea on the expected amount of content (it is not a lot!), check [`game.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/game.html) and [`splash.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/splash.html) of the demo board game. Ignore the few lines of code loading JavaScript and CSS files, these will be covered in the two later assignments.
