@@ -27,7 +27,7 @@ These are largely introductory exercises, each one takes no longer than a few mi
 
 |                       |                           |        |         |              |           |       |              |                      |
 |-----------------------|---------------------------|:--------:|:---------:|:--------------:|:-----------:|:-------:|:--------------:|:----------------------:|
-|                       |                           | **HTTP** | **HTML** | **JavaScript** | **Node.js** | **CSS** | **Node.js II** | **Cookies & sessions** |
+|                       |                           | **HTTP** | **HTML** | **JS** | **Node** | **CSS** | **Node2** | **Sessions** |
 | [learnyouhtml](https://github.com/denysdovhan/learnyouhtml)         | **_all exercises_**           |        | ⚫    |             |           |       |              |                      |
 | [javascripting](https://www.github.com/sethvincent/javascripting)         | **_all exercises_**           |        |         | ⚫            |           |       |              |                      |
 | [learnyounode](https://www.github.com/workshopper/learnyounode)          | hello world               |        |         |              | ⚫         |       |              |                      |
