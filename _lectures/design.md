@@ -156,7 +156,7 @@ vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/2014083123512
 
 ![ZDNet web site](../img/design-zdnet-2014.png)
 
-While it is not hard to go back to very old web designs and find faults in them, it should also be mentioned that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single page which could then be sent to the client in a single HTTP response.
+While it is not hard to go back to very old web designs and find faults in them (a not-too-serious look at the history of web design can be found [here](https://pavellaptev.github.io/web-dark-ages)), it should also be mentioned that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single page which could then be sent to the client in a single HTTP response.
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 

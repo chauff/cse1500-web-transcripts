@@ -12,7 +12,7 @@ This website contains **all materials of the web technology part** of the course
 
 **The transcripts are extensive, video lectures covering each transcript will not be provided in the 2020/21 edition. Instead, each week a Q&A session will be held (via Zoom most likely) where every student is invited to participate. Smaller videos discussing specific aspects (e.g. how to approach the assignments) will be provided.**
 
-We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, Node.js and Express.
+We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, Node.js and Express. In the five weeks of the web technology lectures we can only cover the web programming fundamentals. If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with in 2020, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 :warning: **The materials are in the process of being updated for the 2020/21 edition.**
 
