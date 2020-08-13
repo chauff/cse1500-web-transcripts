@@ -5,15 +5,17 @@ linkname: Assignment CSS+Node
 ordering: 3
 ---
 
-# Assignment 6
+# Assignment CSS+Node
 
 In the first part of this assignment, you will employ *CSS* to make your splash and game screen look good.
 
 In the second part of this assignment, you will implement a number of smaller items, that each do not take a lot of time, but round off your application and showcase additional abilities of Node.js and the browser.
 
+**An automatically generated PDF of this assignment is available [here](../generatedPDFs/assignment-css-node.pdf).**
+
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! Both team members must contribute to the code and both team members must understand all parts of the code. The group interviews will focus on having the required functionality and showing off your understanding of the code.
+Remember that this is a group assignment! Work efficiently as a team! Both team members **must contribute to the code** and **both team members must understand the code**. The group interview will focus on having the required functionality and showing off your understanding of the code.
 
 ### Overview of deliverables and upload procedure
 
@@ -22,8 +24,7 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.1  | CSS                                                |
 | 1.2  | CSS                                                |
 | 1.3  | CSS                                                |
-| 1.4  | CSS                                                |
-| 1.5  | →→→ upload 1.1 / 1.2 to 💡 Brightspace forum            |
+| 1.4  | →→→ upload 1.1 / 1.2 to 💡 Brightspace forum            |
 | 2    | Source code                                        |
 | 3    | Source code                                        |
 | 4    | -                                                  |
@@ -35,15 +36,14 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 *Note: we expect one zipped code submission, we do **not** want one code submission per task!*
 
-The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs and before the ultimate assessment deadline. This means that the outcomes of Assignment 4, 5 and 6 are **all** uploaded to the same directory!
-Make sure to name your files with an **A6** prefix!
+The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistant and before the ultimate assessment deadline. This means that the outcomes of all web technology assignments are uploaded to the same directory!
 
-**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in Assignment 5) **AND with players trying to make invalid moves.** 
+**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in the previous assignment) **AND with players trying to make invalid moves.** 
 
 ## 1. CSS
 
 Now that we finally covered CSS, you will continue to work on your splash and game screens and style them with CSS.
-You are **not allowed** to use external libraries or preprocessing tools. Your application should have a modern look and feel. If you are unsure what this means, consider our demo game, it contains sufficient CSS styling to pass this requirement.
+Do **not** use external libraries or preprocessing tools. If you are unsure how much styling of your game is required, take a look at our demo game, it contains sufficient CSS styling to pass this requirement.
 
 Style the game so that it looks and works well on a laptop/desktop device, i.e. we are considering screen resolutions of ~1366x768 or higher. We are **not** concerned about apps for mobile devices.
 
@@ -53,6 +53,7 @@ As you might have already guessed, your CSS should reside in `myapp/public/style
 
 First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 4. You can deviate from your initial design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties. Your code must include **at least** one instance of each of the following:
 
+//TODO: upate the list (CSS grid instead of position attributes)
 - Pseudo-classes `:hover` and `:active`
 - Pseudo-elements `::after` and `::before`
 - Box model: margin, padding, border
@@ -87,17 +88,13 @@ To ensure that your players are aware of the screen size limitations (i.e. the g
 
 ### 1.4)
 
-Finally, offer a [fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen) of your game. While we have not discussed this in the lecture, it is a good (and short) exercise to apply and extend your CSS knowledge.
-
-### 1.5)
-
 Once you have completed the CSS of your app, head over to CSE1500's 💡 Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your 💡 Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
 
 *Feel free to browse your colleagues' designs and implementations and comment on them!*
 
 ## 2. Templating
 
-When you started out and generated the boilerplate code (Assignmnent 5, task 1), we asked you to set as *view engine* `ejs`. Let's now make use of that view engine for the **splash screen**. If you followed our assignment instructions, so far, not a lot is going on with it; it should visually look appealing and have a *Play* button, but that's about it.
+When you started out and generated the boilerplate code (previous assignment, task 1), we asked you to set as *view engine* `ejs`. Let's now make use of that view engine for the **splash screen**. If you followed our assignment instructions, so far, not a lot is going on with it; it should visually look appealing and have a *Play* button, but that's about it.
 
 One last requirement for the splash screen is to show a number of statistics about the games played, games completed, etc. Templates offer us a simple way to *inject* those numbers into our splash screen.
 
@@ -149,6 +146,7 @@ For short-term deployments (a few minutes/hours), e.g. to show off your game qui
 
 ngrok is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
+//TODO: check whether Heroku instructions still hold
 Deploy your app in Heroku according to the instructions linked above, but first make these changes:
 
 1. In `app.js`, replace `http.createServer(app).listen(port);` by `http.createServer(app).listen(process.env.PORT || 3000);`
