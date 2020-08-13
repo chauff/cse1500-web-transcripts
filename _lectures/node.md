@@ -9,7 +9,10 @@ ordering: 4
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
+**An automatically generated PDF of this transcript is available [here](../generatedPDFs/node.pdf).**
+
 ## Table of Contents <!-- omit in toc -->
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Introduction to Node.js](#introduction-to-nodejs)
   - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
@@ -28,6 +31,19 @@ ordering: 4
   - [WebSockets for multi-player games](#websockets-for-multi-player-games)
 - [Self-check](#self-check)
 
+## Required & recommended readings and activities
+- Required readings:
+  - //TODO: update the required readings. We will cover Node.js in the lecture from sratch, use the reading to get a first idea of what Node.js is about!
+- Recommended activities:
+  - [Interactive Node.js exercises](../_practicals/nodeschool-exercises.md).
+- Recommended readings:
+  - The [MDN documentation on Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous) is an excellent source to learn about the topic in more detail.
+  - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).
+  - If you are interested in learning how best to get involved in the Node community, [read this blog post](https://dev.to/azure/start-contributing-to-nodejs-in-the-new-year-3dlh) on how to go about it.
+- Relevant scientific publications:
+  - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp. 1023-1044.
+  - Sun, H., Bonetta, D., Humer, C., & Binder, W., 2018. [Efficient dynamic analysis for Node. js.](https://doi.org/10.1145/3178372.3179527) In Proceedings of the 27th International Conference on Compiler Construction, pp. 196-206.
+  - Nielsen, B.B., Hassanshahi, B. and Gauthier, F., 2019. [Nodest: feedback-driven static analysis of Node.js applications](https://doi.org/10.1145/3338906.3338933). In Proceedings of the 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering, pp. 455-465.
 
 ## Learning goals
 
@@ -59,7 +75,7 @@ Node.js is by now a well-established platform; important milestones between 2008
 - 2017: Node becomes a **first-class citizen of V8**. This means that no V8 code change is allowed to break Node.
 - August 2018: [Node.js has been downloaded more than one billion times.](https://medium.com/@nodejs/more-than-a-billion-downloads-of-node-js-952a8a98eb42)
 
-Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE!). If you want to know more about how the V8 engine and Node.js fit together, watch [this talk by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler working on the V8 engine.
+Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE!). If you want to know more about how the V8 engine and Node.js fit together, watch [this 2017 talk by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler who works/worked on the V8 engine.
 
 ### Node.js vs. client-side JavaScript
 
@@ -76,7 +92,7 @@ One of the core concepts of Node is the **event loop**. Node.js is a single-thre
 
 Take a look at this event loop example:
 
-![Node.js event loop](img/L4-event-loop.png)
+![Node.js event loop](../img/node-event-loop.png)
 
 Here, despite the **single-threaded nature** of Node.js, several things are seemingly going on in parallel: a file is read from disk, a database is queried while at the same time an HTTP request from a client comes in. The reason for this is the **asynchronous** nature of file reads, network requests and so on (basically: I/O requests). While the event loop is executed in a single thread, Node maintains a *pool of threads* in order to process I/O requests in parallel. So, it is more correct to say that **Node's event loop is single-threaded**. To make this concrete, let's look at how local files are read in Node. Here is an example taken from the [Node documentation](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) :point_down::
 
@@ -184,7 +200,7 @@ Although not very useful, our `watching.js` script above can be considered a mod
 
 5. Now, the program is ready to be debugged. In the *Debug* tab, *Launch Program* should now be the default option in the pull-down menu (see VSC's debug panel screenshot below). Click on the <kbd>Play</kbd> button (the green triangle) and your program is running with a debugger attached. Change the file *todos.txt* (the command line argument you provided in `launch.json`) and observe the console output.
 
-![Debug panel](img/L4-debug.png)
+![Debug panel](../img/node-debug.png)
 
 ---
 
@@ -202,7 +218,7 @@ An analogous example of TCP socket connections are phone lines: One phone *binds
 
 Let's now move our file watching example into the networked world. The new task is to inform interested clients about changes to the watched file. Here is a visual depiction of the process:
 
-![low-level networking visual](img/L4-tcp-js.png)
+![low-level networking visual](../img/node-tcp-js.png)
 
 This is our corresponding [script](demo-code/node-tcp-ex) :point_down::
 
@@ -376,7 +392,7 @@ When we do implement a web server, in the Node.js community that most often mean
 
 ## Express
 
-As noted in the web course book (Chapter 6), [Express](https://expressjs.com/) *"creates a layer on top of the core HTTP module that handles a lot of complex things that we don't want to handle ourselves, like serving up static HTML, CSS, and client-side JavaScript files."*
+[Express](https://expressjs.com/) *" is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. Express provides a thin layer of fundamental web application features, without obscuring Node.js features ..."*
 
 Node.js has a small core code base; it comes with a number of core modules included such as `http` and `url`. Express is not one of the core modules (though it is certainly among the most popular non-core modules with more than [6 million downloads per week](https://www.npmjs.com/package/express)) and needs to be installed separately. In the Node ecosystem, the Node package manager ([npm](https://www.npmjs.com/)) provides us with an easy to use and efficient manner to install additional packages.
 
@@ -477,15 +493,15 @@ Having all the pieces in place (knowledge of HTML, client-side JavaScript, Node.
 
 Small web applications (as our board game) are typically structured as shown here :point_down:. This structure (slightly revised for illustration purposes) is that of our demo board game project. In [Assignment 5](Assignment-5.md) you will learn how to create such a folder structure **automatically**, according to accepted best practices.
 
-![folder structure](img/L4-file-structure.png)
+![folder structure](../img/node-file-structure.png)
 
 Among the five steps of web application development, step :five:, the interactivity between client and server is the most time-consuming part, as it can be based on different technologies, depending on the application's needs.
 
-In the course book, the client-server interaction is implemented with **Ajax** - which is sensible in the context of the Todo application developed throughout the course book. In the board game project we ask you to implement throughout assignments [4](Assignment-4.md), [5](Assignment-5.md) and [6](Assignment-6.md), the client-server interaction is largely based on **WebSockets** - which is a good choice due to the bidirectional communication needs of our app.
+The client-server interaction can be implemented with **Ajax** - which is a sensible choice for many application settings. In the board game project we ask you to implement the three web technology assignments, the client-server interaction is largely based on **WebSockets** - which is a good choice due to the bidirectional communication needs of our app.
 
 Ajax *is* useful for the splash screen of our board game project, in particular when it comes to updating the game statistics (e.g. games played, games aborted, games ongoing). The application flow showcases a possible client-server interaction to do just that :point_down:
 
-![Splash screen statistics flow](img/L4-splash-statistics.png)
+![Splash screen statistics flow](../img/node-splash-statistics.png)
 
 :point_up: The game statistics are stored in the server's main memory for simplicity; in any large-scale application they would be stored in a database that the server makes read/write requests to. Important to realize is that initially (step :two:) the server only returns static files that do not contain the actual game statistics; in step :three: the client executes a few lines of JavaScript (Ajax!) to request the statistics from the server (step :four:); the server sends in step :five: the requested data. 
 
@@ -571,7 +587,7 @@ Ajax stands for **Asynchronous JavaScript and XML**. XML is in the name, and in 
 
 Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web page. Ajax is not a language. Ajax is also not a product. Let's take the Bing search engine as an example: once you start typing a query, with each letter typed a new set of query suggestions will become available :point_down:. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we observe that each keystroke will lead to a new request/response message pair (and the request contains the currently typed query as visible on the Headers pane):
 
-![Twitter xhr](img/L4-xhr.png)
+![Twitter xhr](../img/node-xhr.png)
 <sup>Screenshot taken in January 2020.</sup>
 
  :point_up: The column *Cause* lists the reason for the network request - `xhr`, which tells us that Ajax was used. `xhr` is short for `XMLHttpRequest`, which is an object offered by all major browsers that is at the heart of Ajax and allows us to:
@@ -763,7 +779,7 @@ This code snippet :point_up: also shows how we can gather additional information
 
 Make sure to take a look at the browser's Network Monitor, you should see the upgrade to the WebSocket protocol:
 
-![WebSocket in the Network Monitor](img/L4-websocket.png)
+![WebSocket in the Network Monitor](../img/node-websocket.png)
 
 The WebSocket protocol as described in [RFC 6455](https://tools.ietf.org/html/rfc6455) has four event types:
 

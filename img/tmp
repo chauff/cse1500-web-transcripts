@@ -1,6 +1,10 @@
-mv L3-console-assert.png js-console-assert.png
-mv L3-console-table.png js-console-table.png
-mv L3-event-listeners.png js-event-listeners.png
-mv L3-github.png js-github.png
-mv L3-prototypechain.png js-prototypechain.png
-mv L3-ts-check.png js-ts-check.png
+mv L4-debug.png node-debug.png
+mv L4-event-loop.png node-event-loop.png
+mv L4-file-structure.png node-file-structure.png
+mv L4-nodejs-clientjs.png node-nodejs-clientjs.png
+mv L4-splash-statistics.png node-splash-statistics.png
+mv L4-tcp-js-2.png node-tcp-js-2.png
+mv L4-tcp-js.png node-tcp-js.png
+mv L4-todo-app.png node-todo-app.png
+mv L4-websocket.png node-websocket.png
+mv L4-xhr.png node-xhr.png
