@@ -54,20 +54,21 @@ As you might have already guessed, your CSS should reside in `myapp/public/style
 First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 4. You can deviate from your initial design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties. Your code must include **at least** one instance of each of the following:
 
 //TODO: upate the list (CSS grid instead of position attributes)
+
 - Pseudo-classes `:hover` and `:active`
 - Pseudo-elements `::after` and `::before`
 - Box model: margin, padding, border
 - At least two different position attributes, e.g. `position:relative` and `position:absolute`
 - At least one CSS animation and one CSS transition.
 
----
+
 👉 Hints:
 
 - CSS examples are plentiful on the web; you can adapt them to your own needs. Make sure though, that you **understand** the different CSS rules you are adding and are able to **explain** their effect. If in doubt, prefer simpler CSS rules, often the same effect can be achieved in a myriad of ways.
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as [Sass](https://sass-lang.com/) exist. Do **not** use those, in this course we make use of *plain CSS*.
 - If you are unsure about what combination of colors to use for your game, take a look at [https://www.happyhues.co/](https://www.happyhues.co/) for inspiration.
 - If you are in need of icons for your game (dice, chess figures, etc.) take a look at [https://thenounproject.com](https://thenounproject.com).
----
+
 
 ### 1.2)
 
@@ -75,12 +76,10 @@ Next, tackle the CSS for your **game screen**. The look of the game screen shoul
 
 Your code for the game screen must have at least one instance of each of the requirements listed in 1.1).
 
----
 👉 Hint:
 
 - In a board game, you may want to assign elements (tiles, cards, etc.) a different status depending on player actions, e.g. a game token moves from tile A to B. A simple but effect manner to achieve this effect is to assign different CSS `classes` depending on a tile's state. In JavaScript, `document.getElementById(id).className += " anotherClass";` adds a CSS `class` to an element.
 
----
 
 ### 1.3)
 

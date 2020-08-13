@@ -324,9 +324,8 @@ If a server does not include a specific MIME type in the HTTP response header, t
 
 This header field contains the **size of the entity body** in the HTTP response message. It has two purposes:
 
-1. To indicate to the client whether or not the entire message was received. If the message received is less than what was promised, the client should make the same request again.
-
-2. The header is also of importance for so-called **persistent connections**. Building up a TCP connection costs time. Instead of doing this for every single HTTP request/response cycle, we can reuse the same TCP connection for multiple HTTP request/response messages. For this to work though, it needs to be known when a particular HTTP message ends and when a new one starts.
+- To indicate to the client whether or not the entire message was received. If the message received is less than what was promised, the client should make the same request again.
+- The header is also of importance for so-called **persistent connections**. Building up a TCP connection costs time. Instead of doing this for every single HTTP request/response cycle, we can reuse the same TCP connection for multiple HTTP request/response messages. For this to work though, it needs to be known when a particular HTTP message ends and when a new one starts.
 
 ### Header field Content-Encoding
 
@@ -531,6 +530,7 @@ Try out the following examples yourself. Every line of the protocol is completed
 In order to close a telnet session, enter the telnet prompt (press `Ctrl` + `]`) and then use the `quit` command.
 
 //TODO: new http example needed
+
 We are conducting our telnet activity on [ard.de](http://www.ard.de), the official homepage of one of Germany's largest public broadcasters - we simply use it as it is one of the most popular sites we are aware off that still offers content over http (instead of only over https). 
  
 **Use `HEAD` to get information about the page**

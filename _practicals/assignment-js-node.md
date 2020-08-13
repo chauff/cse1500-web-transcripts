@@ -122,6 +122,7 @@ Node.js has become a very popular framework for server-side programming; here is
 Before you start coding, you need to have a *plan* of what needs to be done. Focus on your `game.html` page. We will deal with `splash.html` in the next assignment. **Check the required functionalities of your game listed in [Assignment HTTP+Design](assignment-http-design.md) once again**. Make a list of *all* interactive UI elements you need and their functionality. 
 
 //TODO: update demo game link
+
 Here is one example item for the [word guesser demo game](demo-code/balloons-game) to help you get started:
 
 - mouse click on a letter in the `div` element with `id=alphabet`: first, check whether the letter is still available (enabled); if so, check whether the letter occurs in the target string (the hidden word); if yes, reveal the letter, if not, remove a balloon; disable the letter; if the guessed letter was wrong, check wether the game is lost.
@@ -150,7 +151,6 @@ Now that you have made your plan and decided on the use of the design patterns, 
 - Create as few global variables as possible (improves code maintainability).
 - Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` (besides the obligatory script loading tags) but instead reside in the corresponding `myapp/public/javascripts` folder.
 
----
 👉 Hints:
 
 - You do not have to incorporate style elements yet (CSS), we will cover styling of HTML elements in the next assignment. If despite this, you choose to incorporate CSS, be aware that we have certain requirements for CSS, so if you want to use CSS already, [check the requirements](assignment-css-node.md) to avoid duplicate work later on.
@@ -163,8 +163,6 @@ Now that you have made your plan and decided on the use of the design patterns, 
 - You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is expected. For instance, for now you may want to check the validity of players' moves on the client-side (which is fine), but you may later decide to move this functionality to the server-side.
 - If you are using `console.log`, familiarize yourself with the other abilities of the [`Console`](https://developer.mozilla.org/en-US/docs/Web/API/Console) object as well, they are useful for client-side JavaScript debugging in the browser. `console.table` makes the output more readable. `console.assert` is good for sanity checks of your code: e.g. if you have functions that expect an array, you can add an assert statement to check whether the argument is indeed of the expected type. [Some people get angry about the usage of `console.log` for debugging purposes](https://hackernoon.com/please-stop-using-console-log-its-broken-b5d7d396cf15), as there are better debugging tools available in the web development tools of the browser and VSC. Ideally, you make use of those debugging options, however, this takes time to learn.
 - You can use ESLint to help you write cleaner code. You can install it as an [extension of VSC](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), resulting in immediate feedback from the linter while coding (underlined in red). In order to use ESLint, you need to create a configuration file for the client-side JavaScript and another one for the Node.js code on the server. In the VSC extension, open `View::Command Palette` and type `Create ESLint configuration`, once in the `myapp/public/javascript` folder for the client-side JavaScript code, and once in the root folder of the app for the Node.js code.
-
----
 
 ## 3. Node.js
 
@@ -228,6 +226,7 @@ Instead of using the command line, you can also start your server from within VS
 In the next step, let's make our two HTML files available with modern web tech, i.e. routes:
 
 //TODO: add example of Jekyll site setup
+
 URLs ending in  `*.html` are considered old-fashioned, modern web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. If you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute. Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
 
 In our boilerplate setup, a folder `routes` was generated; you can store your routes in files within this folder. The [demo game](demo-code/balloons-game) shows you how to do this and how to import the routes in `app.js`. This is typically done to make the code more maintainable. You can also write out all routes directly in `app.js` (as we often do in the toy code examples presented in the lectures), however once you are working on a larger project this quickly becomes tedious.
@@ -239,6 +238,7 @@ Before you are implementing the client-server communication via WebSockets, it i
 For example, your game may have different types of players (in the demo game, we have two types of players, a *word creator* and a *word guesser*) and the type of player a client corresponds to, should be communicated to each client. The moves need to be communicated between clients, facilitated by the server (the **word guesser** wants to send the character guessed to the **word creator**). Who won the game may be important for the server to log and here one player type may be responsible for communicating this to the server; and so on.
 
 //TODO: update link to demo game
+
 Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need, depends on your chosen game to implement. As a concrete example, in the demo game, all message types are listed in [messages.js](demo-code/balloons-game/public/javascripts/messages.js).
 
 ### 3.4) WebSockets: a minimum viable examples
@@ -252,6 +252,7 @@ npm install --save ws
 ````
 
 //TODO: update example link
+
 Before you implement anything for your board game, we suggest you take a look at this [example](demo-code/node-websocket-ex) of a WebSocket-based app - **it is completely independent of your board game application code**. In this minimum viable example, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. 
 
 ### 3.5) WebSockets: implementing your game
@@ -265,16 +266,12 @@ Having seen and run the minimal WebSocket example, it is now time to implement c
 - The server keeps track of certain game statistics (pick three statistics you want to report).
 - The players communicate with each other (i.e. their moves) via WebSockets.
 
----
+
 👉 Hints:
 
 - You may want to share code between the client and server - the message types described above are a good candidate for code you do not want to duplicate. The solution is a particular design pattern, [described here](https://medium.com/@ShamreshKhan/how-to-share-client-side-and-server-side-js-code-cc04c3422497). If you add for instance `messages.js` to `myapp/public/javascripts` following that particular design pattern, you can add the following line to `app.js` to access it in your Node.js script as well: `var messages = require("./public/javascripts/messages");`.
-
 - The server has to keep track of all ongoing games in order to facilitate the broadcasting of messages to the correct clients. There are many ways to do this, one option is to create a `game` object that keeps track of the WebSocket objects belonging to the game's players. Each WebSocket object receives an `id` and a `Map` object with WebSocket `id` as key and `game` object as value to ensure that the server can determine quickly for which WebSockets the received messages are meant.
-
 - The game status on the server can be implemented as an in-memory object; we do not require you to store the game status in a database or back it up to file.
-
----
 
 ## 4. Cleaning up
 
