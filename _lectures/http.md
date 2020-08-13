@@ -875,84 +875,87 @@ Note, that client and server have to **negotiate** the cryptographic protocol to
 
 Here are a few questions you should be able to answer after having followed the lecture (click the question to check the answer):
 
+
 <details> 
-  <summary>True or False? The HTTP `HEAD` method can be used to determine whether a given URL refers to an existing Web resource. </summary>
+  <summary>True or False? The Content-MD5 header field in an HTTP response provides a public key to decrypt the message body.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? The base-64 encoding in HTTP basic authentication ensures that only the correct username and password are transmitted.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? The client's credentials need to be sent in every single HTTP request to a server requiring basic authentication.</summary>
   True.
 </details>
 
 <details> 
-  <summary>True or False? The HTTP header field `Last-Modified` is used in an HTTP request that informs the server of the client's latest version of a given Web resource. </summary>
-  False.
+  <summary>What does long polling refer to in the context of HTTP?</summary>
+  Long polling emulates a push mechanism that is missing in HTTP/1.1: the client sends an HTTP request; the server holds the request open until new data is available before sending its HTTP response. Once the response is sent, the client immediately sends another HTTP request that is kept open.
 </details>
 
 <details> 
-  <summary>True or False? The information retrieved via the HTTP `HEAD` method can also be retrieved via the HTTP `GET` method. </summary>
+  <summary>What does `Accept-Encoding:identity` indicate?</summary>
+  Sent in the request header. The client only understands content that
+is not compressed.
+</details>
+
+<details> 
+  <summary>What do persistent connections refer to in the context of HTTP?</summary>
+  A single TCP connection is used to send and receive multiple HTTP requests and responses.
+</details>
+
+<details> 
+  <summary>True or False? Web caches make use of the `Expires` header field to determine when a fetched resource is no longer valid.</summary>
+  True.
+</details>
+
+```
+GET HTTP/1.1 /
+Host: www.tudelft.nl
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:31.0)
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-gb,en;q=0.5
+DNT: 1
+Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
+```
+<details> 
+  <summary>Is the above HTTP request message valid?</summary>
+  It is invalid as the syntax of the first line is incorrect. The correct syntax is the following: `GET / HTTP/1.1`.
+</details>
+
+```
+Authorization: Basic dXNlcjpwYXNzd2Q=
+```
+<details> 
+  <summary>If an HTTP request message contains the line above, what does this mean?</summary>
+  The client attempts to authenticate itself with a server, usually after the server responded with an `Unauthorized` response to an earlier HTTP request for a particular resource.
+</details>
+
+<details> 
+  <summary>True or False? In HTTP/1.1 the client always initiates the conversation with the server.</summary>
   True.
 </details>
 
 <details> 
-  <summary>True or False? The `Content-Length` HTTP header is used in an HTTP request to inform the server which parts of a Web resource a client wants to receive. </summary>
+  <summary>True or False? HTTP/1.1 supports bidirectional communication between client and server.</summary>
   False.
-</details>
-
-<details> 
-  <summary>True or False? When a URL such as http://x.org/ is entered into the browser's address bar, the browser uses port 80 by default. </summary>
-  True.
-</details>
-
-<details> 
-  <summary>True or False? When accessing the URL http://x.org/1184.htm/#anchor1 via the browser, the server sends only that part of the Web page to the client that starts at fragment `#anchor1`. </summary>
-  False.
-</details>
-
-<details> 
-  <summary>True or False? Web caches increase the processing power of origin servers. </summary>
-  False.
-</details>
-
-<details> 
-  <summary>True or False? Web caches are the Web’s backup: they keep a copy of every resource on the Web. </summary>
-  False.
-</details>
-
-<details> 
-  <summary>True or False? Web caches rely on the `Content-Range` HTTP header field to determine when a copy becomes invalid. </summary>
-  False.
-</details>
-
-<details> 
-  <summary>True or False? Web caches lead to reduced distance delay.</summary>
-  True.
-</details>
-
-<details> 
-  <summary>True or False? IPv6 has approximately ten times as much address space available as IPv4.</summary>
-  False.
-</details>
-
-<details> 
-  <summary>True or False? IPv6 addresses do not have an associated domain name in the Domain Name System registry.</summary>
-  False.
-</details>
-
-<details> 
-  <summary>True or False? IPv6 addresses are 128 bit long.</summary>
-  True.
 </details>
 
 <details>
-<summary>How many unique IP addresses does the IPv4 address space contain?</summary>
-256^4.
+  <summary>What does the header field `Cache-Control:max-age=100` mean if it is sent in an HTTP response? You can assume that the HTTP response was sent today.</summary>
+  The web cache through which the HTTP response passes, caches the resource sent in the HTTP response. If an HTTP request for the cached resource arrives at the cache more than two minutes after the response was cached, the web cache will revalidate the resource by querying the origin server
 </details>
 
-<details>
-<summary>True or False? URLs point to a location instead of a web resource.</summary>
-True.
+<details> 
+  <summary>True or False? A PUT method request can lead to the creation of a new resource on the server.</summary>
+  True.
 </details>
 
-<details>
-<summary>What does it mean when a client sends an HTTP request with the header `Cache-Control:max-age=0`?</summary>
-The Web cache receiving the request should retrieve the resource from the origin server.
+<details> 
+  <summary>True or False? PUT sends data from server to client; the client determines how to handle the data.</summary>
+  False.
 </details>
-
 

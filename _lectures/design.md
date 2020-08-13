@@ -352,23 +352,28 @@ The W3C writes the following about the AppCache: *This feature is in the process
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
 
-<details>
-<summary>What happens if the `target` attribute is not defined in an HTML form?</summary>
-The response received after submitting the form is displayed in the current frame or browsing context.
+<details> 
+  <summary>True or False? The `action` attribute of an HTML form defines where the data gets sent. Its value must be a valid relative or absolute URL.</summary>
+  True.
 </details>
 
+<details> 
+  <summary>True or False? If an HTML form is sent using the GET method, the data is appended to the body of the HTTP request.</summary>
+  False.
+</details>
 
+<details> 
+  <summary>True or False? The `action` attribute of an HTML form defines how the form is accessed on the client: either as a HTTP POST request or an HTTP GET request.</summary>
+  False.
+</details>
 
-1. Which of the following statements about HTML `<form>` methods `GET` and `POST` is true?
-    - There is no difference, `GET` and `POST` can be used in exactly the same situations.
-    - Through `GET` more data can be sent in an HTTP request than through `POST`.
-    - Through `GET`, data is sent more securely than through `POST`.
-    - Using `GET`, the data to be sent is visible in the URL which is not the case for `POST`.
-2. In the context of web design, what is the purpose of the trunk test?
-3. In a usability test, what is the task of the facilitator?
-4. What happens if the `target` attribute is not defined in an HTML `<form>`?
-    - The response received after submitting the form is displayed in the current frame or browsing context.
-    - The HTML form lacks a required attribute and the browser will inform the user with a `405` error when the user tries to submit the form.
-    - The response received after submitting the form is displayed in a new browser window.
-    - The HTML form lacks a required attribute and the browser will inform the server with a `505` error that an invalid form request was made.
-5. What does it mean for the W3C to produce a recommendation document?
+<details>
+<summary>In a usability test, what is the task of the facilitator?</summary>
+...
+</details>
+
+<details>
+<summary>What does it mean for the W3C to produce a recommendation document?</summary>
+</details>
+
+//TODO: add more

@@ -770,6 +770,68 @@ app.get("/todos", function (req, res) {
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
 
+
+<details> 
+  <summary>True or False? Node.js has a file-based module system.</summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? Node.js runs each module in a separate scope and only returns the final value of `module.exports`.</summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? The `require` module runs asynchronously.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? `module.exports` and `exports` can be used in exactly the same way.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? Middleware components can execute code.</summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? Middleware components can change the request and response objects.</summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? Middleware components can start the request-response cycle.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? Middleware components can call any middleware function in the middleware stack.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
+  If x seconds have passed without a request from the client, the server ends the session.
+</details>
+
+<details> 
+  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
+  If x seconds have passed without a request from the client, the server ends the session.
+</details>
+
+<details> 
+  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
+  If x seconds have passed without a request from the client, the server ends the session.
+</details>
+
+<details> 
+  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
+  If x seconds have passed without a request from the client, the server ends the session.
+</details>
+
+
 1. Does `require()` use synchronous or asynchronous access?
 2. Consider these two files, `constants.js` and `bar.js`. What is the console output of `node bar.js`?
 

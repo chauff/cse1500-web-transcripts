@@ -1808,50 +1808,37 @@ This approach has now been deprecated and although the vendor-specific prefixed 
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
 
-1. What is the main purpose of a *CSS reset*?
+<details> 
+  <summary>Through which mechanism can data be stored directly in CSS files?</summary>
+  The `content` attribute.
+</details>
 
-2. Consider the HTML page snippet below:
+<details> 
+  <summary>True or False? A single DOM element cannot contain multiple classes.</summary>
+  False.
+</details>
 
-```html
-<main>
-	<section id="s1" class="todos todosHome">
-		<p data-due="today" data-prio="urgent">
-			Do the dishes
-		</p>
-		<p data-due="tomorrow" data-prio="neutral">
-			Do the laundry
-		</p>
-	</section>
-	<section>
-		<p data-due="yesterday" data-prio="urgent">
-			Prepare for the midterm
-		</p>
-		<p data-due="tomorrow" data-prio="urgent">
-			Prepare for Q3
-		</p>
-	</section>
-</main>
-<footer>
-	<p class="copyright neutral todos">
-		Copyright 2018/19.
-	</p>
-</footer>
-```
+<details> 
+  <summary>True or False? A `class` attribute can be added to any DOM element.</summary>
+  True.
+</details>
 
-For brevity, only the content inside `<body>` is shown; you can assume code in the header that loads the corresponding CSS. Which CSS snippet will generate this presentation of the content:
+<details> 
+  <summary>What is the main purpose of a "CSS reset"?</summary>
+  To reset the browser-specific default stylesheet to a consistent baseline.
+</details>
 
-![Rendered-page](../img/css-ex1-test.png)
+<details>
+  <summary>What are the differences between CSS animations and CSS transitions?</summary>
+  ...
+</details>
 
-3. Consider the HTML page snippet from Question 2 again. For all todo items, whose `data-prio` attribute is set to `urgent`, the string *Urgent!* should appear next to the item. How can this effect be achieved through CSS?
+<details>
+  <summary>What is a rendering engine?</summary>
+  ...
+</details>
 
-4. What are the differences between CSS animations and CSS transitions?
 
-5. What is a rendering engine?
 
-6. Explain the possible values of the `position` attribute.
 
-7. Give three examples of pseudo-classes.
-
-8. Explain how data can be stored in CSS and what the advantages/disadvantages are.
-   
-9. Explain the difference between CSS animations and transitions.
+//TODO: add more

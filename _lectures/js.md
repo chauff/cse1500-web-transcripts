@@ -1432,67 +1432,96 @@ To conclude this DOM section, here is an overview of important keyboard and text
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
 
-1. After executing the JavaScript code snippet below in the browser, what is the output on the console?
+```javascript
+for (var i = 1; i <= 10; i++) { 
+    setTimeout(function() { 
+        console.log(i);
+    }, 1000); 
+}
+```
+<details> 
+  <summary>What will be the result of executing the above piece of JavaScript in the browser?</summary>
+  After a one second delay, ten printouts of the number 11 appear on the console.
+</details>
+
+<details> 
+  <summary>What does JavaScript's hoisting principle refer to?</summary>
+  Declarations are processed before any code is executed.
+</details>
+
+<details> 
+  <summary>True or False? In JavaScript, functions cannot be passed as parameters.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? In JavaScript, functions are objects.</summary>
+  True.
+</details>
 
 ```javascript
-var f = ( function myfunc1(a){
-    var c = 2 * a;
-    return function myfunc2(b){
-        return 3 * c;
+function m(fn,ar){ 
+    let result = [];
+    for(let i=0; i!=ar.length; i++){ 
+        result[i] = fn(ar[i]);
     }
-})(5);
-
-console.log(f(4));
+    return result; 
+}
+console.log( m(function(x){return 2*x;},[1,4,6,7]) );
 ```
+<details> 
+  <summary>After executing the JavaScript above in the browser, what is the Web Console output?</summary>
+  [ 2, 8, 12, 14 ]
+</details>
 
-2. After executing the JavaScript code snippet below in the browser, how many of `a`, `b`, `c` and `d` have global scope (they become a property of the `window` object)?
+<details> 
+  <summary>True or False? In the prototype-based design pattern, objects do not share functions.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? The prototype-based design pattern exposes only the necessary members to the public.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
+  If x seconds have passed without a request from the client, the server ends the session.
+</details>
+
+<details> 
+  <summary>True or False? In the module design pattern, methods added on the fly to an already created object cannot access emulated private members.</summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? Each JavaScript object has a link to at least two prototype objects.</summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? If a property is defined as property of an object and as property of all the objects in its prototype chain, the object's property definition takes precedence.</summary>
+  True.
+</details>
 
 ```javascript
-var a = 5;
-b = 10;
-
-function outer(a){
-    c = 0;
-    d = 1;
-
-    function inner(d){
-        c = 12;
-    }
-    inner(5);
-    var c, d;
+function func(x) {
+    var y = x + 2;
+    z = 20;
+    return function(y) {
+        var z = y * 3; 
+        return function(z) {
+            return x + y + z;
+        };
+    }; 
 }
-outer(6);
+console.log(func(3)(4)("z"));
 ```
+<details> 
+  <summary>What is the output of the above piece of JavaScript?</summary>
+  7z
+</details>
 
-3. After executing the JavaScript code snippet below in the browser, what is the output on the console?
-
-```javascript
-function Habit(habit){
-    this.habit = habit;
-}
-
-function WeeklyHabit(habit, timesPerWeek){
-    Habit.call(this, habit);
-    this.timesPerWeek = timesPerWeek;
-}
-
-WeeklyHabit.prototype = Object.create( Habit.prototype );
-WeeklyHabit.prototype.constructor = WeeklyHabit;
-
-Habit.prototype.updateFreq = function(f){ this.freq = f; }
-WeeklyHabit.prototype.updateFreq = function(f){ this.freq = f + " times"; }
-
-var h1 = new Habit("Go swimming");
-var h2 = new WeeklyHabit("Eat healthily", "5");
-
-h1.updateFreq(1);
-h2.updateFreq(2);
-console.log(h1.freq);
-console.log(h2.freq);
-
-```
-
-4. What is the output on the web console when running the following piece of JavaScript in the browser?
 
 ```javascript
 function A(x){
@@ -1506,61 +1535,11 @@ function A(x){
 }
 console.log( A(3)(4)(5) );
 ```
+<details> 
+  <summary>What is the output on the web console when running the above snippet of JavaScript in the browser?</summary>
+  12
+</details>
 
-5. Which of the following statements about the basic constructor in JavaScript is **wrong**?
-- Objects share functions.
-- All members are public.
-- An object constructor looks like a normal function.
-- Prexing a call to a function with the keyword `new` indicates to the JavaScript runtime that the function should behave like a constructor.
-
-6. What is the output on the web console when running the following piece of JavaScript in the browser?
-
-```javascript
-var todoModule = ( function() {
-    var numTodos = 0;
-
-    return {
-        incrNumTodos: function(){
-            numTodos++;
-        },
-        decrNumTodos: function(){
-            if(numTodos>0){
-                numTodos--;
-            }
-        },
-        printTodos: function(){
-            console.log(numTodos);
-        }
-    };
-});
-
-for(let i=0; i<5; i++){
-    todoModule.incrNumTodos();
-}
-todoModule.printTodos();
-```
-
-7. After executing the JavaScript code snippet below in the browser what will be the console output?
-
-```javascript
-var message = "Toy kitchen";
-var price = "89.90";
-
-var deal1 = {
-    message: "Peppa Pig",
-    details: {
-        price: "29.95",
-        getPrice: function(){
-            console.log(this.price);
-        }
-    }
-}
-
-var a = deal1.details.getPrice;
-a();
-```
-
-8. After executing the JavaScript code snippet below in the browser what will be the console output?
 
 ```javascript
 var message = "Toy kitchen";
@@ -1578,12 +1557,11 @@ var deal1 = {
 
 deal1.details.getPrice();
 ```
+<details> 
+  <summary>What is the output on the web console when running the above snippet of JavaScript in the browser?</summary>
+  29.95
+</details>
 
-9. In a prototype version of one of our applications, we want to implement functionality in JavaScript that retrieves details of local deals from the server when a user clicks on a deal. The code below contains a first implementation of this functionality. What is the main issue of this code?
-- Reloading the web page *n* times will lead to *n* listeners being attached to the same list item.
-- No event listeners will be attached to click events on list items.
-- The JavaScript code will be executed before teh DOM tree is loaded, the event listeners will be attached to the `window` object instead of the list items.
-- The method `document.getElementsByTagName()` does not exist leading to an error in the script.
 
 ```html
 <!DOCTYPE html>
@@ -1615,3 +1593,7 @@ deal1.details.getPrice();
     </body>
 </html>
 ```
+<details> 
+  <summary>In a prototype version of one of your applications, you want to implement functionality in JavaScript that retrieves details of local deals from the server when a user clicks on a deal. The code above contains a first implementation of this functionality. What is the main issue of this code?</summary>
+  No event listeners will be attached to click events on list items.
+</details>
