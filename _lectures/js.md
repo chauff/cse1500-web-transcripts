@@ -11,9 +11,12 @@ ordering: 3
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
+**An automatically generated PDF of this transcript is available [here](../generatedPDFs/js.pdf).**
+
 ## Table of Contents <!-- omit in toc -->
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
-- [Take-aways of book chapter 4](#take-aways-of-book-chapter-4)
+- [Take-aways of the required reading](#take-aways-of-the-required-reading)
 - [Examples throughout the lectures](#examples-throughout-the-lectures)
 - [JavaScript in context](#javascript-in-context)
 - [Scripting overview](#scripting-overview)
@@ -41,6 +44,35 @@ ordering: 3
     - [:bangbang: Example 6: a typing game](#️-example-6-a-typing-game)
 - [Self-check](#self-check)
 
+
+## Required & recommended readings and activities
+
+- Required readings:
+  //TODO: update the required readings for JavaScript
+- Recommended activities:
+  - [Interactive JavaScript exercises](../_practicals/nodeschool-exercises.mdnodeschool-exercises.md).
+  - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
+  - [JavaScript30](https://javascript30.com/): 30 day vanilla JS coding challenges
+- Recommended readings:
+  - :closed_book: [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
+  - [JavaScript for impatient programmers: online quizzes](https://exploringjs.com/impatient-js/quiz/).
+  - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects).
+  - [The dynamic nature of JavaScript makes optimization tricky (blog post)](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html).
+  - [Why do we need all those fancy tools for JavaScript development nowadays? (blog post)](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70).
+  - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger).
+  - [Array.prototype.sort is now stable in V8](https://twitter.com/mathias/status/1036626116654637057) (tweet): shows that even basic mechanisms like sorting are still being changed in mature implementations.
+  - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript.
+  - [The State of JavaScript 2019](https://2019.stateofjs.com/).
+  - [Clean Code concepts adapted for JavaScript](https://github.com/ryanmcdermott/clean-code-javascript): a popular GitHub repository with many examples of good and bad code patterns.
+- Relevant scientific publications:
+  - Charland, A. and Leroux, B., 2011. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Queue, 9(4), p. 20.
+  - Mowery, K., Bogenreif, D., Yilek, S. and Shacham, H., 2011. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). In Proceedings of W2SP (Vol. 2, No. 11).
+  - Ratanaworabhan, P., Livshits, B. and Zorn, B.G., 2010. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). In Proceedings of the 2010 USENIX conference on Web application development.
+  - Lin, J., 2018. [Computing without Servers, V8, Rocket Ships, and Other Batshi*t Crazy Ideas in Data Systems](http://ceur-ws.org/Vol-2167/keynote1.pdf). In Proceedings of DESIRES. A quote ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
+  - Patra, J., Dixit, P.N. and Pradel, M., 2018. [ConflictJS: finding and understanding conflicts between JavaScript libraries](http://mp.binaervarianz.de/icse2018.pdf). In Proceedings of the 40th International Conference on Software Engineering, pp. 741-751.
+  - Jangda, A., Powers, B., Berger, E. D., & Guha, A., 2019. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
+
+
 ## Learning goals
 
 - Employ JavaScript objects.
@@ -48,17 +80,16 @@ ordering: 3
 - Write interactive web applications based on click, mouse and keystroke events.
 - Explain and use `jQuery` (the library introduced in the course book).
 
-## Take-aways of book chapter 4
+## Take-aways of the required reading
 
-Haing read chapter 4 of the course book in preparation for this lecture, you should know:
+Haing worked through the required reading in preparation for this lecture, you should know:
 
 - the basics of JavaScript;
 - how to include JavaScript in your web application;
 - what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
-- the DOM;
-- the basics of `jQuery` - a cross-platform JavaScript library designed to simplify the client-side scripting of HTML. Its popularity has steadily declined over the past few years as modern browsers implement more and more functionalities that `jQuery` was designed to make easy. It is still though very much in use as many large-scale projects still have it as a dependency.
+- the DOM.
 
-In this lecture we built upon book chapter 4 and cover a number of important JavaScript design patterns.
+In this lecture we built upon this knowledge and cover a number of important JavaScript design patterns.
 
 ## Examples throughout the lectures
 
@@ -72,18 +103,18 @@ As the course material has been developed over time, you will get a glimpse of e
 
 ## JavaScript in context
 
-In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in the past few years](https://octoverse.github.com/), with [TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript, claiming rank #7: 
+In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in the past few years](https://octoverse.github.com/#top-languages), with [TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript, claiming rank #7: 
 
-![Top languages on GitHub](img/L3-github.png)
+![Top languages on GitHub](../img/js-github.png)
 
-<sup>Top languages over time (as measured by number of contributors) on GitHub. [Image source](https://octoverse.github.com/).</sup>
+<sup>Top languages over time (as measured by number of contributors) on GitHub. [Image source](https://octoverse.github.com/), 2019.</sup>
 
 Vital to JavaScript's rise from toy language to serious contender is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in multiple programming paradigms ([read this interview](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93) with Kyle Simpson, author of one of the most popular JavaScript book series if you want to know more).
 
 Today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
 
-- [V8](https://developers.google.com/v8/) is Google's JavaScript engine (used in Chrome and other browsers);
-- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine (used in Firefox);
+- [V8](https://developers.google.com/v8/) is Google's JavaScript engine (used in Chrome and other browsers).
+- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine and used in Firefox. In [August 2020](https://arstechnica.com/information-technology/2020/08/firefox-maker-mozilla-lays-off-250-workers-says-covid-19-lowered-revenue/), Mozilla announced to cut 250 jobs from its company; it remains to be seen what this means for the future development of SpiderMonkey (and other browser components).
 - [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime engine (used in the Edge browser). In December 2018, Microsoft announced that [they will adopt Chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser project) and thus Edge will switch to the V8 JavaScript engine eventually.
 
 While the browser is the most obvious usage scenario for JavaScript runtime environments, they are also used elsewhere (such as [microcontrollers](https://github.com/jerryscript-project/jerryscript)). Most importantly for us: the Node.js platform we cover in the next lecture is built on top of V8. 
@@ -98,7 +129,7 @@ One of the confusing aspects about JavaScript today are the naming conventions, 
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
-In this course we include very few **ES6** features, as we only have one lecture to introduce JavaScript (*this* lecture ...). The course book has been released before the release of ES6 and thus does not incorporate any ES6 features; **this is a useful limitation**. If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
+In this course we include very few **ES6** features, as we only have one lecture to introduce JavaScript (*this* lecture ...). If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
 
 In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 Three of the most well-known languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/); all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
@@ -124,16 +155,13 @@ Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) 
 
 ### The `<script>` tag
 
-The placement of the `<script>` tag is an often discussed issue (1000+ upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this lecture, we follow the course book argument (page 98):
+The placement of the `<script>` tag is an often discussed issue (1000+ upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this lecture, we do the following:
 
-*"We place the `<script>` tags in the `<body>` element: the browser displays the page in a **top-down fashion**, **creating the DOM elements as it comes across them**.
-By placing the `<script>` tags at the end, the JavaScript files will be one of the last things the page loads. Because JavaScript files often take time to load, we do that last so that the user will get visual feedback from the other elements as fast as possible."*
-
-In other words, interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, `jQuery`'s [`document.ready`](http://learn.jquery.com/using-jquery-core/document-ready/) function is a useful utility.
+As the browser renders the page in a top-down fashion, with DOM elements created in the order they appear in the HTML document, we place the `<script>` tags right before the closing `<body>` tag. Thus, the DOM is already complete once the JavaScript is being executed. Interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, make use of the browser window's [load event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event) which is fired once the DOM has loaded.
 
 ### ‼️ Activity
 
-Based on chapter 4 of the course book, you should be able to answer the following two questions.
+Based on the required readings, you should be able to answer the following two questions.
 
 Executing the JavaScript code snippet 👇 yields what output?
 
@@ -147,6 +175,11 @@ var giveMe5 = giveMe(5);
 
 console.log( giveMe5(10) );
 ```
+<details> 
+  <summary>Click to find out the answer! </summary>
+   50 
+</details>
+
 
 Executing the JavaScript code snippet 👇 yields what output?
 
@@ -161,10 +194,14 @@ function my_func(x,y){
 
 my_func(5, toPrint);
 ```
+<details> 
+  <summary>Click to find out the answer! </summary>
+   5
+</details>
 
 ## Scoping, hoisting and this
 
-We now cover three JavaScript principles that are often confusing for JavaScript novices.
+We now cover three JavaScript principles that often lead to confusion.
 
 ### Scoping
 
@@ -228,7 +265,10 @@ for (let i = 1; i <= 10; i++)
     }, 1000 * i)
 ```
 
-Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. Here is a toy `jQuery` example to showcase this issue 👇:
+Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. 
+
+//TODO: 1-2 sentences about the past importance of jQuery
+Here is a toy `jQuery` example to showcase this issue 👇:
 
 ```html
 <!DOCTYPE html>
@@ -251,7 +291,7 @@ Scoping is also important when it comes to larger programming projects: imagine 
 </html>
 ```
 
-:point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). You should also be familiar with the `jQuery` syntax and know that `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
+:point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
 
 `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3--module).
 
@@ -377,9 +417,9 @@ to be different each time, as each time, `this` refers to a different object. We
 
  We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/this%20%26%20object%20prototypes).
 
- 🚩 In ES6 so-called arrow functions were introduced. Instead of writing `let sum = function(a,b){return a+b}` we can shorten it to `let sum = (a,b) => {return a+b}`. This may look initially just like a more compact way of writing a function expression, but there is more to it - in particular the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are looking into the use of arrow functions! 
+ In ES6 so-called arrow functions were introduced. Instead of writing `let sum = function(a,b){return a+b}` we can shorten it to `let sum = (a,b) => {return a+b}`. This may look initially just like a more compact way of writing a function expression, but there is more to it - in particular the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are looking into the use of arrow functions! 
 
-🚩 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
+A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
 
 ---
 :bug: Throughout this and the coming lectures we repeatedly point to the browser's web console as a quick way to explore JavaScript. [In the words of Kyle Simpson](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#its-not-always-js):
@@ -407,6 +447,8 @@ The object-oriented programming paradigm is based on a set of cooperating object
 In JavaScript, **functions are also objects**. Apart from functions, JavaScript also comes with a number of other built-in objects: Strings, arrays and objects specific to the fact that JavaScript was developed to add interaction to HTML. One example is the `document` object, which only makes sense in the context of an HTML page. Note, that the `document` object is not part of core JavaScript (the language is defined independently of the browser context), however when we discuss client-side scripting we do mean JavaScript in the browser. The browser is the host application in this case and provides the `document` object.
 
 JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at existing code bases).
+
+//TODO: explain in a few sentences that `class` (in other keywords) exist now in JS but it is very much unlike the class keyword in Java.
 
 ### Object creation with `new`
 
@@ -471,13 +513,13 @@ var paramModule = {
 
 :bug: For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table:
 
-![console.table](img/L3-console-table.png)
+![console.table](../img/js-console-table.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
 Continuing on the debugging theme, another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
 
-![console.assert](img/L3-console-assert.png)
+![console.assert](../img/js-console-assert.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
@@ -614,7 +656,7 @@ We have already touched upon the drawback of the third issue: imagine you are us
 
 The last line of the code snippet above :point_up: shows that objects come with **default methods**, and so the natural question should be, where do these methods come from? The answer is **prototype chaining**. Objects have a **secret pointer** to another object - the object's prototype. And thus, when creating for instance an object with a basic constructor as just seen, **the properties of the constructor's prototype are also accessible in the new object**. If a property is not defined in the object, the **prototype chain** is followed:
 
-![Prototype chain](img/L3-prototypechain.png)
+![Prototype chain](../img/js-prototypechain.png)
 
 Here, `name.__proto__` points to the object that is next in the lookup chain to resolve property names. As always though, things are not quite as simple and over time JavaScript runtimes have evolved in their implementation of [__proto__](http://2ality.com/2015/09/proto-es6.html). Normally, it is not necessary to manually *walk up* the prototype chain, instead the JavaScript runtime does the work for you.
 
@@ -813,7 +855,7 @@ Going back to our `gameStatModule` :point_up::point_up:, we immediately execute 
 
 at the top of any JavaScript file we want to have type-checked. The error of the missing bracket pair is now caught:
 
-![Exploring events](img/L3-ts-check.png)
+![Exploring events](../img/js-ts-check.png)
 
 We thus borrow the type checker of TypeScript to make sure to catch - at least some - coding mistakes we make early on. To avoid copying this line everywhere, we can also set up VSC to perform type checking [automatically for all JavaScript files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript).
 
@@ -869,22 +911,7 @@ Summarizing the module pattern:
 
 ## Events and the DOM
 
-Having read chapter 4 of the web course book, you should be familiar with code such as this :point_down: (the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) applies to functions or entire scripts and is a manner of cutting down on potential silent errors):
-
-```javascript
-var main = function () {
-  "use strict";
-  $(".comment-input button").on("click", function (event) {
-    var $new_comment = $("<p>"),
-    comment_text = $(".comment-input input").val();
-    $new_comment.text(comment_text);
-    $(".comments").append($new_comment);
-  });
-};
-$(document).ready(main);
-```
-
-The course book makes extensive use of `jQuery`. With `jQuery` it does not matter if you are after a `class` or `id`, the access pattern is always the same: `$()`. This is in contrast to plain JavaScript where we deal with `document` (the web page object and our entry point to the DOM) which comes with a number of manners to select groups or single DOM elements:
+Having read the required readings, you should be somewhat familiar with the DOM and DOM events. In plain JavaScript we use the `document` object as our entry point to the DOM. It allows us to select DOM elements (either a group or a single element) in various ways:
 
 - `document.getElementById`
 - `document.getElementsByClassName`
@@ -894,9 +921,10 @@ The course book makes extensive use of `jQuery`. With `jQuery` it does not matte
 
 The last two ways of selecting DOM elements allow complex selector rules to be specified!
 
+//TODO: add new code snippet
 The code snippet :point_up: also shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens *when* an event fires**. In the example above, the event is the click on a button.
 
-The course book walks you through several examples of making a responsive UI control. Here is a step-by-step guide:
+When creating a UI element that is responsive to user actions, we typically follow the following steps:
 
 :one: Pick a control, e.g. a `button`.
 
@@ -910,13 +938,13 @@ The course book walks you through several examples of making a responsive UI con
 
 :bug: If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
 
-![Exploring events](img/L3-event-listeners.png)
+![Exploring events](../img/js-event-listeners.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
 
 ---
 
-:triangular_flag_on_post: If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this class. The reason is simply a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
+:triangular_flag_on_post: If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this course. The reason is simply a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
 
 ### Document Object Model
 
@@ -938,7 +966,7 @@ The DOM is our entry point to interactive web applications. It allows use to:
 We will now walk through a number of examples that add an interactive element to a web application.
 These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
 
-They strongly overlap with what is discussed in the required reading (chapter 4 of the course book) of this lecture. Take it as a reminder of what is covered in the book chapter.
+They overlap with what is discussed in the required readings.
 
 #### :bangbang: Example 1: document.getElementById / document.querySelector
 
