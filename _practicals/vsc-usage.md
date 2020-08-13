@@ -14,8 +14,6 @@ The project is conducted in pairs of students. Here we provide an overview of ho
 
 _Note: this information is provided to help you work in pairs efficiently during the web assignments. This is not exam material (i.e. we will not ask you questions about `git`, Live Share, VSC or debugging.)_
 
-We now introduce both options and finish the tutorial with a quick look at VSC's debugging abilities.
-
 ## Table of Contents <!-- omit in toc -->
 - [Collaborating via Git+GitHub](#collaborating-via-gitgithub)
   - [Git](#git)
