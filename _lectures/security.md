@@ -9,7 +9,10 @@ ordering: 8
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
+**An automatically generated PDF of this transcript is available [here](../generatedPDFs/security.pdf).**
+
 ## Table of Contents <!-- omit in toc -->
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Introduction](#introduction)
 - [Threat categories](#threat-categories)
@@ -59,6 +62,24 @@ ordering: 8
 - [Summary](#summary)
 - [Self-check](#self-check)
 
+## Required & recommended readings and activities
+
+- Required readings: *none*
+- Recommended activities:
+  - :headphones: Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
+  - :tv: [The Power of the Web Platform](https://github.com/feross/TheAnnoyingSite.com) - a talk by Feross Aboukhadijeh about what annoying things are possible on the web. Entertaining! Be sure to not open the accompanying website while in a quiet space.
+- Recommended readings:
+  - [Stanford's 2019 Web Security course](https://web.stanford.edu/class/cs253/) has a very relevant set of slides.
+  - :closed_book: If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).
+  - [Stanford's Computer and Network Security course](https://crypto.stanford.edu/cs155/) has a number of lectures on web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf)).
+  - CERN's [web security lecture](https://indico.cern.ch/event/242207/).
+  - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) provides an extensive list of practical tips, best practices and further readings on the topic.
+  - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d).
+- Relevant scientific publications:
+  - Aggarwal, G., Bursztein, E., Jackson, C. and Boneh, D., 2010. [An Analysis of Private Browsing Modes in Modern Browsers](http://crypto.stanford.edu/~dabo/papers/privatebrowsing.pdf). In Proceedings of the 19th USENIX conference on Security. USENIX Association.
+  - Kieyzun, A., Guo, P.J., Jayaraman, K. and Ernst, M.D., 2009. [Automatic creation of SQL injection and cross-site scripting attacks](https://dl.acm.org/citation.cfm?id=1555036). In Proceedings of the 31st International Conference on Software Engineering (pp. 199-209). IEEE Computer Society.
+  - Von Ahn, L., Maurer, B., McMillen, C., Abraham, D. and Blum, M., 2008. [recaptcha: Human-based character recognition via web security measures](http://science.sciencemag.org/content/321/5895/1465). Science, 321(5895), pp.1465-1468.
+  - Acar, G., Eubank, C., Englehardt, S., Juarez, M., Narayanan, A. and Diaz, C., 2014. [The web never forgets: Persistent tracking mechanisms in the wild](https://www.ftc.gov/system/files/documents/public_comments/2015/10/00064-98109.pdf). In Proceedings of the 2014 ACM SIGSAC Conference on Computer and Communications Security (pp. 674-689). ACM.
 
 ## Learning goals
 
@@ -91,11 +112,11 @@ Website defacement is an attack against a website that changes the visual appear
 
 A famous example here is CERN, [which in 2008 had one of its portals defaced by a Greek hacker group](https://astroengine.com/2008/09/16/greek-hackers-invade-lhc-nothing-much-happens/). This benevolent looking  page:
 
-![CERN web page](img/L8-cern-1.png)
+![CERN web page](../img/security-cern-1.png)
 
 became this one:
 
-![CERN web page hacked](img/L8-cern-2.png)
+![CERN web page hacked](../img/security-cern-2.png)
 
 Beside defacement, no damage was done. Despite this, the attack was a cause for concern as the "hacked" web server formed part of the monitoring systems for some of the Large Hadron Collider detector hardware.
 
@@ -113,7 +134,7 @@ This threat is the most devastating for organizations that do not have proper ba
 
 Code Spaces ([snapshot of their website in 2014](https://web.archive.org/web/20140219025823/http://www.codespaces.com:80/)) used to be a company providing secure hosting options and project management services for companies. Until the day the [*Murder in the Amazon cloud*](http://www.infoworld.com/article/2608076/data-center/murder-in-the-amazon-cloud.html) happened - the title of the article is not an exaggeration. Code Spaces was built on Amazon Web Services (AWS), one of the major cloud computing platform providers used by many companies due to their reliable service at predictable cost. Services on demand tend to be cheaper and easier to work with than running and maintaining one's own hardware. AWS has an easy to use interface to spin up servers - a Web interface that has (of course) an authentication step built-in: 
 
-![AWS console](img/L8-aws.png)
+![AWS console](../img/security-aws.png)
 
 An attacker was able to access this interface and threatened to shut down the servers and delete the data snapshots (literally possible with a click of a button) unless a ransom was paid. The company did not pay and tried to regain control of their AWS control panel. By the time this was achieved, the attacker had already deleted almost all resources. As Code Spaces had decided to run the servers **and their backups** from the same AWS account, they were all vulnerable at once. The company clients' data was gone and [Code Spaces shut down](https://web.archive.org/web/20140625045902/http://www.codespaces.com/).
 
@@ -152,7 +173,7 @@ Let us first turn to the [Cyber security risk report 2016 published by HPE](http
 
 The most important **software security issues** for web and mobile applications are the following, reported as *percentage of scanned applications*:
 
-![Web and mobile security](img/L8-security-report-1.png)
+![Web and mobile security](../img/security-security-report-1.png)
 
 <sup>Figure taken from page 56, CSRHPE.</sup>
 
@@ -160,7 +181,7 @@ The most important **software security issues** for web and mobile applications 
 
 If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as the *percentage of applications* and *median vulnerability count*:
 
-![Top 10 vulnerabilities](img/L8-security-report-2.png)
+![Top 10 vulnerabilities](../img/security-security-report-2.png)
 
 <sup>Figure taken from page 57, CSRHPE.</sup>
 
@@ -170,13 +191,13 @@ If we zoom in on the non-mobile applications, the ten most commonly occurring vu
 
 Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as *percentage of applications violating a category*:
 
-![Top 5 violated security categories](img/L8-security-report-3.png)
+![Top 5 violated security categories](../img/security-security-report-3.png)
 
 <sup>Figure taken from page 59, CSRHPE.</sup>
 
 The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
 
-![Juice Shop not secure](img/L8-browser-warning-juiceshop.png)
+![Juice Shop not secure](../img/security-browser-warning-juiceshop.png)
 
 It is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on `Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
 
@@ -199,7 +220,7 @@ The [2019 vulnerability statistics report](https://www.edgescan.com/wp-content/u
 
 edgescan distinguishes between two levels of vulnerabilities: (i) *web application layer vulnerabilities* that cover weaknesses in the web applications themselves such as insecure sever configuration, client-side security, and injection attacks; (ii) *infrastructure layer vulnerabilities* that cover weaknesses in the underlying platform and include deprecated protocol support, poor implementation, and weak configurations. While 81% of the vulnerabilities belong to the infrastructure layer, the 19% vulnerabilities in the web application layer are more high-risk from a security breach standpoint :point_down:: 
 
-![Most frequent web vulnerabilities](img/L8-security-report-4.png)
+![Most frequent web vulnerabilities](../img/security-security-report-4.png)
 
 <sup>Source: edgescan VSR, page 8.</sup>
 
@@ -245,7 +266,7 @@ Input for injection attacks can be created via:
 
 Injection attacks on the server can take multiple forms, we first consider **OS command injection**:
 
-![OS command injection](img/L8-os-command-injection.png)
+![OS command injection](../img/security-os-command-injection.png)
 
 :point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
 
@@ -280,14 +301,14 @@ var isEmail = validator.isEmail('while(1)'); //false
 
 #### SQL injections
 
-SQL injections are of such great practical importance that we will dedicate more time to them in a later course: they will be covered in TI1505!
+SQL injections are of such great practical importance that we will dedicate more time to them in a later course (*CSE1505: Information and Data Management*).
 
 
 ### Broken authentication
 
 Recall that in order to establish *sessions*, cookies are used ([previous lecture](Lecture-sessions.md)). A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
 
-![Session](img/L8-sessions.png)
+![Session](../img/security-sessions.png)
 
 An attacker can exploit broken authentication and session management functions to impersonate a user. In the latter case, the attacker only needs to acquire knowledge of a user's session cookie ID. This can happen under several conditions:
 
