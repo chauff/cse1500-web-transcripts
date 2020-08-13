@@ -1,10 +1,6 @@
-mv L4-debug.png node-debug.png
-mv L4-event-loop.png node-event-loop.png
-mv L4-file-structure.png node-file-structure.png
-mv L4-nodejs-clientjs.png node-nodejs-clientjs.png
-mv L4-splash-statistics.png node-splash-statistics.png
-mv L4-tcp-js-2.png node-tcp-js-2.png
-mv L4-tcp-js.png node-tcp-js.png
-mv L4-todo-app.png node-todo-app.png
-mv L4-websocket.png node-websocket.png
-mv L4-xhr.png node-xhr.png
+mv L6-ejs-js.png node2-ejs-js.png
+mv L6-express.png node2-express.png
+mv L6-html-manually.png node2-html-manually.png
+mv L6-middleware.png node2-middleware.png
+mv L6-module.png node2-module.png
+mv L6-templating.png node2-templating.png

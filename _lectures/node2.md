@@ -9,29 +9,46 @@ ordering: 6
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
+**An automatically generated PDF of this transcript is available [here](../generatedPDFs/node2.pdf).**
+
 ## Table of Contents <!-- omit in toc -->
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
   - [A file-based module system](#a-file-based-module-system)
-  - [:bangbang: A first module example](#bangbang-a-first-module-example)
-  - [:bangbang: require is blocking](#bangbang-require-is-blocking)
-  - [:bangbang: module.exports vs. exports](#bangbang-moduleexports-vs-exports)
+  - [:bangbang: A first module example](#️-a-first-module-example)
+  - [:bangbang: `require` is blocking](#️-require-is-blocking)
+  - [:bangbang: module.exports vs. exports](#️-moduleexports-vs-exports)
 - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
 - [Middleware in Express](#middleware-in-express)
-  - [:bangbang: Logger example](#bangbang-logger-example)
-  - [:bangbang: Authorisation component example](#bangbang-authorisation-component-example)
+  - [:bangbang: Logger example](#️-logger-example)
+  - [:bangbang: Authorisation component example](#️-authorisation-component-example)
   - [Components are configurable](#components-are-configurable)
 - [Routing](#routing)
   - [Routing paths and string patterns](#routing-paths-and-string-patterns)
   - [Routing parameters](#routing-parameters)
   - [Organizing routes](#organizing-routes)
 - [Templating with EJS](#templating-with-ejs)
-  - [:bangbang: A first EJS example](#bangbang-a-first-ejs-example)
-  - [:bangbang: EJS and user-defined functions](#bangbang-ejs-and-user-defined-functions)
-  - [:bangbang: JavaScript within EJS templates](#bangbang-javascript-within-ejs-templates)
-  - [:bangbang: Express and templates](#bangbang-express-and-templates)
+  - [:bangbang: A first EJS example](#️-a-first-ejs-example)
+  - [:bangbang: EJS and user-defined functions](#️-ejs-and-user-defined-functions)
+  - [:bangbang: JavaScript within EJS templates](#️-javascript-within-ejs-templates)
+  - [:bangbang: Express and templates](#️-express-and-templates)
 - [Self-check](#self-check)
 
+## Required & recommended readings and activities
+
+- Required readings: *none*
+- Recommended activities:
+  - An interactive ejs playground can be found [here](https://ionicabizau.github.io/ejs-playground/).
+- Recommended readings:
+  - To learn more about ejs, take a look at its [GitHub repository](https://github.com/mde/ejs).
+  - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
+  - An overview of [best practices in Node.js](https://github.com/i0natan/nodebestpractices).
+  - [Slide deck on High Performance JS in V8](https://docs.google.com/presentation/d/1KCcA-WAyhGs0SEOrfU21fjaTWTxvNxYLwmNlGIbuZFw/edit?usp=sharing).
+- Relevant scientific publications:
+  - Fard, A.M. and Mesbah, A., 2013, September. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings-article/2013/scam/12OmNylsZKu/12OmNwHhoWN). In Source Code Analysis and Manipulation (SCAM), 2013 IEEE 13th International Working Conference on (pp. 116-125). IEEE.
+  - Nasehi, S.M., Sillito, J., Maurer, F. and Burns, C., 2012, September. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). In 2012 28th IEEE International Conference on Software Maintenance (ICSM) (pp. 25-34). IEEE.
+  
 
 ## Learning goals
 
@@ -48,7 +65,7 @@ These issues were recognized early on by the creators of Node.js. For this reaso
 
 By default, *no code in a module is accessible to other modules*. Any property or method that should be visible to other modules has to be **explicitly** marked as such - you will learn shortly how exactly. Node.js modules can be published to [npmjs.com](https://www.npmjs.com/), the most important portal to discover and share modules with other developers. This is [Express' page on npm](https://www.npmjs.com/package/express):
 
-![Express npm](img/L6-express.png)
+![Express npm](../img/node2-express.png)
 
 <sup>Screenshot taken on October 11, 2019.</sup>
 
@@ -94,7 +111,7 @@ Once you have defined your own module, the globally available `require` function
 
 Here is a graphical overview of the connection between `require` and `module.exports`:
 
-![Modules](img/L6-module.png)
+![Modules](../img/node2-module.png)
 
 An application uses the `require` function to import module code. The module itself populates the `module.exports` variable to make certain parts of the code base in the module available to the outside world. Whatever was assigned to `module.exports` (or its alias `exports`) is then returned to the application when the application calls `require()`.
 
@@ -284,7 +301,7 @@ Middleware components have a number of abilities:
 
 As a concrete example, imagine an Express application with a POST route `/user/moveMade` :point_down::
 
-![Middleware components](img/L6-middleware.png)
+![Middleware components](../img/node2-middleware.png)
 
 :point_up: The first middleware to be called is the logging component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete. 
 
@@ -584,7 +601,7 @@ require('./routes.js')(app);
 
 When we started our journey with Node.js and Express, we discussed that writing HTML in this manner :point_down::
 
-![HTML mixed-in](img/L6-html-manually.png)
+![HTML mixed-in](../img/node2-html-manually.png)
 
 is a poor choice, as the code quickly becomes unmaintainable, hard to debug and generally a pain to work with.
 
@@ -592,7 +609,7 @@ One approach to solve this problem is the use of **Ajax**: the HTML code is *bla
 
 With **templating, we are able to directly send HTML with user-specific data to the client** and thus remove the extra request-response cycle that Ajax requires:
 
-![templating](img/L6-templating.png)
+![templating](../img/node2-templating.png)
 
 With templates, our goal is to write as little HTML by hand as possible. Instead, 
 

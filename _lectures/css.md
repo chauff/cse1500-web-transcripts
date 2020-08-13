@@ -9,14 +9,16 @@ ordering: 5
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Lastly, paragraphs with a 🚩 are just for your information  and not exam material.*
 
+**An automatically generated PDF of this transcript is available [here](../generatedPDFs/css.pdf).**
+
 ## Table of Contents <!-- omit in toc -->
 
-
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Code examples](#code-examples)
 - [A word of warning](#a-word-of-warning)
 - [Context](#context)
-- [Take-aways of book chapter 3](#take-aways-of-book-chapter-3)
+- [Take-aways of the required reading](#take-aways-of-the-required-reading)
 - [Pseudo-classes](#pseudo-classes)
   - [:bangbang: nth-child(X) and nth-of-type(X)](#️-nth-childx-and-nth-of-typex)
   - [:bangbang: root](#️-root)
@@ -41,6 +43,24 @@ ordering: 5
 - [Browser-specific prefixes](#browser-specific-prefixes)
 - [Self-check](#self-check)
 
+## Required & recommended readings and activities
+
+- Required readings:
+  //TODO: update the required readings for CSS
+- Recommended activities:
+  - :tv: Watch [this talk by Rachel Andrew](https://www.youtube.com/watch?v=cYGOv2ToZjY) to learn more about the long (and painful) history of CSS.
+  - :tv: Watch [this talk by Mandy Michael](https://youtu.be/5qgUC_z8syw) on text effects in CSS. Data attributes and pseudo-elements are a powerful combination!
+  - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
+  - If you are looking for styling challenges, take a look at the weekly [CodePen Challenges](https://codepen.io/challenges/).
+  - At [https://flukeout.github.io/](https://flukeout.github.io/) you find a small game that allows you to practice CSS selectors.
+- Recommended readings:
+  - :closed_book: Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
+  - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
+  - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
+  - After studying this lecture you have the basic knowledge to consider a career as a [Front-End Developer](https://frontendmasters.com/books/front-end-handbook/2019/#1)
+- Relevant scientific publications:
+  - Meyerovich, L.A. and Bodik, R., 2010. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web, pp. 711-720.
+  - Panchekha P. and Torlak E., 2016. [Automated reasoning for web page layout](https://doi.org/10.1145/2983990.2984010). In Proceedings of the ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications, pp. 181-194.
 
 ## Learning goals
 
@@ -58,9 +78,9 @@ This demo contains only a single image (the TU DELFT EWI building), everything e
 
 More generally, if you want to find inspirations about what is possible with a bit of HTML, CSS (and JavaScript), it is worthwhile to take a look at [CodePen](https://codepen.io/) and what it has to offer.
 
-![Weather app](img/L5-weather.png)
+![Weather app](../img/css-weather.png)
 
-As a second example application we often refer to a todo application (similar to the one developed in the course book). Here, we do not offer an entire application but present how specific parts of the application can be styled.
+As a second example application we often refer to a todo application. Here, we do not offer an entire application but present how specific parts of the application can be styled.
 
 Lastly, we also consider a TU DELFT neon sign as an example for text-heavy animations. The entire source code is presented here.
 
@@ -68,7 +88,7 @@ Lastly, we also consider a TU DELFT neon sign as an example for text-heavy anima
 
 This [tweet](https://twitter.com/iamdevloper/status/936199543099621376) :point_down: sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements), will cost you a lot of time.
 
-![Tweet](img/L5-tweet.png)
+![Tweet](../img/css-tweet.png)
 
 
 ## Context
@@ -90,9 +110,9 @@ Be aware, that it is not possible to make use of the very latest CSS features an
 
 When building web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (which includes CSS3) functionalities in browsers that do not natively support them.
 
-## Take-aways of book chapter 3
+## Take-aways of the required reading
 
-Having read Chapter 3 of the course book, you should be able to style HTML elements with CSS.
+Having worked through the required reading, you should be able to style HTML elements with CSS.
 
 You have also learned about three types of style sheets:
 
@@ -118,7 +138,7 @@ body {
 
 Lastly, you know about CSS resets and `!important` which overrides all other declarations.
 
-In this lecture, we move beyond the course book chapter and highlight a number of more advanced CSS concepts.
+In this lecture, we move beyond these basics and introduce a number of more advanced CSS concepts.
 
 :bangbang: **We strongly suggest to work with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor and Inspector can do!**
 
@@ -203,7 +223,7 @@ In the following example both pseudo-classes (`nth-child` and `nth-of-type`) are
 ```
 If we open Firefox's [Style Editor](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor) we now see the following:
 
-![CSS pseudo-class](img/L5-pseudo-classes.png)
+![CSS pseudo-class](../img/css-pseudo-classes.png)
 
 This piece of code :point_up: is rendered with alternating background colors as was our goal. We also see here clearly how `nth-child` and `nth-of-type` differ:
 
@@ -559,7 +579,7 @@ An example should make the differences between them clear :point_down::
 
 The rendering of the above code looks as follows:
 
-![CSS selector combinations](img/L5-selector-combinations.png)
+![CSS selector combinations](../img/css-selector-combinations.png)
 
 :video_game: If you are looking for a fun way to practice these selectors, head over to the [CSS diner](https://flukeout.github.io/)! 
 
@@ -606,7 +626,7 @@ So, what are abstractions that go beyond what is specified in the document langu
 
 The browser renders this code as follows:
 
-![CSS first-line](img/L5-tobe.png)
+![CSS first-line](../img/css-tobe.png)
 
 When you open this example in your own browser, change the size of the browser window - the first line, no matter how long or small, will always be rendered in grey.
 
@@ -649,7 +669,7 @@ Before we do that, let us quickly go over how the cloud effect was achieved in t
 
 Below :point_down: on the right you see on the right the cloud shape we use and on the left how it looks like if all elements of it are assigned a different color: our cloud consists of a `<div>` element (a rectangle with rounded edges) and a `::before` pseudo-element (a rectangle with rounded edges that is rotated 33 degrees and moved slightly with respect to its parent) and a `::after` pseudo-element (a rectangle with rounded edges that is rotated 33 degrees moved slightly with respect to its parent):
 
-![CSS cloud](img/L5-cloud-pseudoelement.png)
+![CSS cloud](../img/css-cloud-pseudoelement.png)
 
 The relevant CSS code snippets in our Delft weather app looks as follows:
 
@@ -746,7 +766,7 @@ Here is another example of storing data in CSS :point_down::
 
 This is rendered as follows:
 
-![CSS data due](img/L5-due.png)
+![CSS data due](../img/css-due.png)
 
 Instead of storing data directly in CSS, a better way is to *make use of data stored in HTML elements*. This is achieved through so-called **data attributes**: attributes on any HTML element that are prefixed with `data-`.
 
@@ -914,7 +934,7 @@ In order to understand what exactly this means, experiment with the following co
 
 Admittedly, the resulting rendering is not looking great:
 
-![CSS float](img/L5-float.png)
+![CSS float](../img/css-float.png)
 
 However, it serves a purpose: it helps us to understand how the different elements appear within their parent element.
 
@@ -934,7 +954,7 @@ Try out the effects of `float` on the code example :point_up: by using one after
 
 If needed, we can also reset the flow the the value `clear`, either to reset the `left`, `right` or `both` sides of the flow. The canonical example for flow resetting are web page layouts that have **sidebars**, such as this one :point_down::
 
-![Sidebars](img/L5-sidebars.png)
+![Sidebars](../img/css-sidebars.png)
 
 Here, we have two sidebars that each *float* to the left and right of the main content respectively. The footer should appear below both sidebars. Try out the HTML below :point_down: to see the effect of both `float` and `clear`: remove the commenting of one CSS rule at a time.
 
@@ -1040,7 +1060,7 @@ Let's walk through each of the position values in turn, starting with `relative`
 
 For the `position` property, we use a stack of eggs and reposition one or more eggs at a time. The original stack looks like this:
 
-![CSS position egg stack](img/L5-eggs.png)
+![CSS position egg stack](../img/css-eggs.png)
 
 The following code uses relative positioning :point_down: to reposition two of the four eggs:
 
@@ -1084,7 +1104,7 @@ The following code uses relative positioning :point_down: to reposition two of t
 </html>
 ```
 
-![Relative positioning](img/L5-eggs-relative.png)
+![Relative positioning](../img/css-eggs-relative.png)
 
 :point_down: If we change the positioning of some eggs to `position:absolute`, we now see that **they are taken out of the normal flow** and **no space** is reserved for them. The positioning of those elements is now relative to the *nearest ancestor* or the window itself (in our case it is the window itself):
 
@@ -1127,7 +1147,7 @@ The following code uses relative positioning :point_down: to reposition two of t
 </html>
 ```
 
-![Absolute positioning](img/L5-eggs-absolute.png)
+![Absolute positioning](../img/css-eggs-absolute.png)
 
 :point_down: The `position:fixed` value is similar to `position:absolute`, but now the containing element is the **viewport**, i.e. the area of the document that is visible in the browser. This means that elements with `position:fixed` remain visible. Here is an example (you need to minimize the window until you need to scroll down to see all of the four eggs to achieve a visible effect):
 
@@ -1338,7 +1358,7 @@ Here is a concrete example of how media queries enable a **responsive design** :
 Use your browser's responsive design mode :point_down: to test the behaviour of the media queries.
 For `@media print` you can use the **Print simulation** mode in the Developer Tools of Firefox, or alternatively, the browser's *Print as PDF* feature.
 
-![Responsive design mode](img/L5-responsive.png)
+![Responsive design mode](../img/css-responsive.png)
 
 ## Animations and transitions
 
@@ -1455,7 +1475,7 @@ We adapted the neon sign based on this [this CodePen example](https://codepen.io
 
 It renders as follows:
 
-![TU Delft neon sign](img/L5-tudelft.png)
+![TU Delft neon sign](../img/css-tudelft.png)
 
 The example :point_up: contains a number of interesting points:
 
@@ -1820,7 +1840,7 @@ Here are a few questions you should be able to answer after having followed the 
 
 For brevity, only the content inside `<body>` is shown; you can assume code in the header that loads the corresponding CSS. Which CSS snippet will generate this presentation of the content:
 
-![Rendered-page](img/L5-ex1-test.png)
+![Rendered-page](../img/css-ex1-test.png)
 
 3. Consider the HTML page snippet from Question 2 again. For all todo items, whose `data-prio` attribute is set to `urgent`, the string *Urgent!* should appear next to the item. How can this effect be achieved through CSS?
 
