@@ -5,15 +5,28 @@ linkname: Assignment rubric
 ordering: 4
 ---
 
-# Rubric web assignments
+# Rubric web technology assignments <!-- omit in toc -->
 
-This is an overview of the rubric the TAs use to assess the web assignments.
+This is an overview of the rubric the teaching assistants use to assess the web technology assignments.
 
 A single assessment session is held per group for the three web assignments. Every web assignment is assessed as either passing or non-passing. Although groups of two students are assessed, the passing/non-passing grades are handed out per student. It is thus possible for one team member to pass all three assignments and for the other to fail all three assignments.
 
-The rubric below contains example questions/tasks for each assignment as well as an overview of the requirements to achieve a pass. To answer the questions, students can always consult their notes and code. Any Brightspace uploads that did not happen before the assessment can still be executed during the assessment session.
+The rubric below contains example questions/tasks for each assignment **as well as an overview of the requirements** to achieve a pass. To answer the questions, students can always consult their notes and code. 
 
-## Assignment 4
+*Note: any required Brightspace uploads that did not happen before the assessment session can still be executed during the assessment session.*
+
+## Table of Contents <!-- omit in toc -->
+- [Assignment HTTP+Design](#assignment-httpdesign)
+  - [Possible questions / tasks](#possible-questions--tasks)
+  - [Passing requirements](#passing-requirements)
+- [Assignment JS+Node](#assignment-jsnode)
+  - [Possible questions / tasks](#possible-questions--tasks-1)
+  - [Passing requirements](#passing-requirements-1)
+- [Assignment CSS+Node](#assignment-cssnode)
+  - [Possible questions / tasks](#possible-questions--tasks-2)
+  - [Passing requirements](#passing-requirements-2)
+
+## Assignment HTTP+Design 
 
 ### Possible questions / tasks
 
@@ -31,7 +44,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 - The board game design is available on the Brightspace forum. The deliverables are uploaded to Brightspace.
 - The splash / board game design fulfils the board game requirements (listed in the first web technology assignment).
 
-## Assignment 5
+## Assignment JS+Node
 
 ### Possible questions / tasks
 
@@ -54,7 +67,7 @@ The rubric below contains example questions/tasks for each assignment as well as
 - The game works as intended: players are randomly paired, valid moves can be executed.
 
 
-## Assignment 6
+## Assignment CSS+Node
 
 ### Possible questions / tasks
 
