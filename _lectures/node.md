@@ -171,8 +171,6 @@ A note on Node terminology: you will often find references to **Node modules** a
 
 Although not very useful, our `watching.js` script above can be considered a module, but not a package, as so far we have not seen the need for a `package.json` file.
 
----
-
 :bug: Finally, let's quickly walk through the steps to run this script from within VSC's debug environment. We assume that you have cloned/downloaded the [Web-Teaching GitHub repository](https://github.com/chauff/Web-Teaching). Now execute the following steps:
 
 1. Open VSC and then select *Open Workspace* and select the *Web-Teaching* folder you downloaded.
@@ -202,7 +200,6 @@ Although not very useful, our `watching.js` script above can be considered a mod
 
 ![Debug panel](../img/node-debug.png)
 
----
 
 ### :bangbang: Low-level networking with Node.js
 

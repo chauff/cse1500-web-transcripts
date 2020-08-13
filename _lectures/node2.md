@@ -811,29 +811,36 @@ Here are a few questions you should be able to answer after having followed the 
   False.
 </details>
 
+```javascript
+app.get('/whaa+[dt]s+upp*', function(req,res){
+    res.send(…)
+});
+```
 <details> 
-  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
-  If x seconds have passed without a request from the client, the server ends the session.
+  <summary>Name three different routes, the above handler matches.</summary>
+  ...
 </details>
 
+```javascript
+var ejs = require('ejs');
+var people = ['Wolverine', 'paul', 'picard'];
+var X = function (input) {
+        if(input){
+            return input[0];
+        }
+        return "";
+    }
+var template = '<%= helperFunc(input); %>';
+var context = {
+    input: people,
+    helperFunc: X
+};
+console.log(ejs.render(template, context));
+```
 <details> 
-  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
-  If x seconds have passed without a request from the client, the server ends the session.
+  <summary>What is the output of the code snippet above?</summary>
+  ...
 </details>
-
-<details> 
-  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
-  If x seconds have passed without a request from the client, the server ends the session.
-</details>
-
-<details> 
-  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
-  If x seconds have passed without a request from the client, the server ends the session.
-</details>
-
-
-1. Does `require()` use synchronous or asynchronous access?
-2. Consider these two files, `constants.js` and `bar.js`. What is the console output of `node bar.js`?
 
 ```javascript
 //constants.js
@@ -852,62 +859,7 @@ constants2.pi = 3;
 console.log(constants3.pi);
 ```
 
-3. Consider these two files, `constants.js` and `bar.js`. What is the console output of `node bar.js`?
-
-```javascript
-//constants.js
-module.exports = function() {
-    return {
-        pi: 3.1415,
-        one: 1,
-        login: "root",
-        password: "root"
-    }
-}(); //pay attention to the final bracket pair!
-```
-
-```javascript
-//bar.js
-var constants1 = require('./constants');
-constants1["password"] = "admin";
-var constants2 = require('./constants');
-console.log(constants2["password"]);
-var constants3 = require('./constants');
-constants2["pi"] = 3;
-console.log(constants3["pi"]);
-```
-
-4. Name three different routes that this handler matches.
-
-```javascript
-app.get('/user(name)?s+', function(req,res){
-    res.send(…)
-});
-```
-
-5. Name three different routes that this handler matches.
-
-```javascript
-app.get('/whaa+[dt]s+upp*', function(req,res){
-    res.send(…)
-});
-```
-
-5. What is the console output after executing this code snippet?
-
-```javascript
-var ejs = require('ejs');
-var people = ['Wolverine', 'paul', 'picard'];
-var X = function (input) {
-        if(input){
-            return input[0];
-        }
-        return "";
-    }
-var template = '<%= helperFunc(input); %>';
-var context = {
-    input: people,
-    helperFunc: X
-};
-console.log(ejs.render(template, context));
-```
+<details> 
+  <summary>Consider two files above, `constants.js` and `bar.js`. What is the console output of `node bar.js`?</summary>
+  ...
+</details>

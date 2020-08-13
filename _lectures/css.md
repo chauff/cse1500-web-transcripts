@@ -237,11 +237,7 @@ Firefox's Style Editor allows us to not only inspect the CSS, but to also:
 - switch off the CSS (with a click on the "eye" symbol on the left);
 - **change the CSS** in the editor and view the immediate effect of those changes.
 
----
-
 :bug: The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the Style Editor is closed. In addition, Visual Studio Code has also good code commentary for CSS: as an example, if you add the line `float: left` right after `display: inline-block` in the current code example, VSC will warn you that this CSS rule has no effect and will provide the reason why. 
-
----
 
 Lastly, you can use this pseudo-class to change the color of half the clouds in our Delft weather app: simply append to the end of the CSS the following code snippet (you will learn what `::after` and `::before` refers to in a bit) to make half the clouds red:
 
