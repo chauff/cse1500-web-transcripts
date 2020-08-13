@@ -873,7 +873,27 @@ Note, that client and server have to **negotiate** the cryptographic protocol to
 
 ## Self-check
 
-Here are a few questions you should be able to answer after having followed the lecture:
+Here are a few questions you should be able to answer after having followed the lecture (click the question to check the answer):
+
+<details> 
+  <summary>True or False? The HTTP `HEAD` method can be used to determine whether a given URL refers to an existing Web resource. </summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? The HTTP header field `Last-Modified` is used in an HTTP request that informs the server of the client's latest version of a given Web resource. </summary>
+  False.
+</details>
+
+<details> 
+  <summary>True or False? The information retrieved via the HTTP `HEAD` method can also be retrieved via the HTTP `GET` method. </summary>
+  True.
+</details>
+
+<details> 
+  <summary>True or False? The `Content-Length` HTTP header is used in an HTTP request to inform the server which parts of a Web resource a client wants to receive. </summary>
+  False.
+</details>
 
 1. What are the main advantage and disadvantage of using compression?
 2. What is the main problem of HTTP's plain text format compared to a binary format?
