@@ -189,7 +189,7 @@ Now that you have a first idea of what HTTP messages are about, let's dive into 
 
 Below is a typical HTTP request message:
 
-```console
+```
 GET / HTTP/1.1
 Host: www.tudelft.nl
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:31.0) Gecko/20100101 Firefox/31.0
@@ -213,7 +213,7 @@ In the last line, you can see that in this request, a cookie is sent from the cl
 
 The server that received the above HTTP request may now assemble the following response:
 
-```console
+```
 HTTP/1.1 200 OK
 Date: Fri, 22 Nov 2019 13:35:55 GMT
 Content-Type: text/html; charset=utf-8
@@ -406,7 +406,7 @@ An alternative to polling is **long polling**: here, the client sends an HTTP re
 
 Both options are workarounds to the requirement of **client-initiated** HTTP request/response pairs. The IETF recognized early on that such solutions will not be sufficient forever and in 2011 standardized the **WebSocket protocol** ([RFC 6455](https://tools.ietf.org/html/rfc6455)). The RFC 6455 abstract read as follows :point_down: :
 
-```console
+```
 The WebSocket Protocol enables two-way communication between a client
 running untrusted code in a controlled environment to a remote host
 that has opted-in to communications from that code.  The security
@@ -429,7 +429,7 @@ For a concrete example, explore the HTTP request/response headers of our [demo g
 
 The client sends the following HTTP headers to request the upgrade to the WebSocket protocol:
 
-```console
+```
 Host: localhost:3000
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:61.0) Gecko/20100101 Firefox/61.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -449,7 +449,7 @@ As you can see, besides `Connection` and `Upgrade` a number of other information
 
 The server accepts the protocol with the following headers:
 
-```console
+```
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
@@ -494,7 +494,7 @@ Errors on the server side start with 5; one relatively common status code is `50
 
 Consider the first line of our introductory [HTTP request message](#http-request-message) example:
 
-```console
+```
 GET / HTTP/1.1
 ```
 
@@ -535,7 +535,7 @@ We are conducting our telnet activity on [ard.de](http://www.ard.de), the offici
  
 **Use `HEAD` to get information about the page**
 
-```console
+```
 telnet ard.de 80
     Trying 83.125.35.3...
     Connected to ard.de.
@@ -550,7 +550,7 @@ host:ard.de
 
 **Use `HEAD` to see what is at the moved location** (and note that `ard.de` and `www.ard.de` are two different lcoations)
 
-```console
+```
 telnet www.ard.de 80
     Trying 23.34.184.239...
     Connected to e7671.e6.akamaiedge.net.
@@ -564,7 +564,7 @@ host:www.ard.de
 ```
 
 **We continue to follow the new location** (note the change in resource path now!)
-```console
+```
 telnet www.ard.de 80
     Trying 23.34.184.239...
     Connected to e7671.e6.akamaiedge.net.
@@ -580,7 +580,7 @@ host:www.ard.de
 
 **Use `GET` to retrieve the content** (the printout on the terminal is not very insightful to us, it is just the HTML code of the requested resource)
 
-```console
+```
 telnet www.ard.de 80
     Trying 23.34.184.239...
     Connected to e7671.e6.akamaiedge.net.
@@ -597,13 +597,13 @@ host:www.ard.de
 
 Finally, for those that want to see to what extremes people go to make fun (or use) of telnet, try out the following:
 
-```console
+```
 telnet towel.blinkenlights.nl
 ```
 
 and wait for the movie to start. After a while you should see something like this ...
 
-```console
+```
 
       .....                    @@@@@    @@@@@            ...........     
       ......                  @     @  @     @           ..........      
@@ -658,7 +658,7 @@ URLs are the common way to access any resource on the Internet; the format of UR
 
 In general, a URL consists of up to 9 parts:
 
-```console
+```
 <scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>
 ```
 
@@ -677,7 +677,7 @@ From back to front:
 
 One of the most important URL types for us is the syntax for a `query`. What does that mean? Let's consider this URL:
 
-```console
+```
 https://duckduckgo.com/html?q=delft
 ```
 
@@ -694,7 +694,7 @@ URLs can either be **absolute** or **relative**. Shown below are examples of bot
 
 Absolute (our base URL):
 
-```console
+```
 https://www.tudelft.nl/studenten/
 ```
 
@@ -710,7 +710,7 @@ Relative:
 
 Those relative URLs in combination with the base URL above lead to:
 
-```console
+```
 https://www.tudelft.nl/students/brightspace
 https://www.tudelft.nl/disclaimer
 ```
@@ -737,7 +737,7 @@ Character encodings are not sufficient though, what about languages that are not
 
 IETF comes once again to the rescue! **Punycode** ([RFC 3492](https://www.ietf.org/rfc/rfc3492.txt)) was developed to allow URLs with unicode characters that are then translated uniquely and reversibly into an ASCII string. Quoting the RFC abstract:
 
-```console
+```
 Punycode is a simple and efficient transfer encoding syntax designed
 for use with Internationalized Domain Names in Applications (IDNA).
 It uniquely and reversibly transforms a Unicode string into an ASCII

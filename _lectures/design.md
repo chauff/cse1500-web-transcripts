@@ -10,6 +10,7 @@ ordering: 2
 **An automatically generated PDF of this transcript is available [here](../generatedPDFs/design.pdf).**
 
 ## Table of Contents <!-- omit in toc -->
+- [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
 - [Electron](#electron)
@@ -27,7 +28,7 @@ ordering: 2
   - [Who decides the HTML standard](#who-decides-the-html-standard)
 - [Self-check](#self-check)
 
-## Required & recommended readings and activities <!-- omit in toc -->
+## Required & recommended readings and activities
 
 - Required readings:
   //TODO: update the required readings for HTML5
@@ -57,7 +58,7 @@ ordering: 2
 
 The W3C has many working groups, among them (until 2016) the *Web Applications (WebApps) Working Group* whose [goal](https://www.w3.org/2014/06/webapps-charter.html) was as follows:
 
-```console
+```
 As web browsers and the web engine components that power them become ubiquitous across a range
 of operating systems and devices, developers are increasingly using web technologies to build
 applications and are relying on web engines as application runtime environments. Examples of
@@ -92,7 +93,7 @@ On the downside, such a cross-platform approach usually brings with it considera
 
 ## Web design basics
 
-Web design is not trivial. However, a few basic rules go a long way. Most of these principles seem obvious, but in practice are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited (2014)](http://www.sensible.com/dmmt.html) by Steve Krug. It is very much worth a read. In the following sections we go over a number of Krug's rules.
+Web design is not trivial. However, a few basic rules go a long way. Most of these principles seem obvious, but in practice are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited (2014)](http://www.sensible.com/dmmt.html) by Steve Krug. In the following sections we go over a number of Krug's rules with concrete examples.
 
 ### Rule: Don't make me think
 
@@ -155,7 +156,7 @@ vs. ZDNet crawled on [August 31, 2014](https://web.archive.org/web/2014083123512
 
 ![ZDNet web site](../img/design-zdnet-2014.png)
 
-While it is not hard to go back to very old web designs and find faults in them, it should also be pointed out that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single web page which could then be sent to the client in a single HTTP response.
+While it is not hard to go back to very old web designs and find faults in them, it should also be mentioned that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single page which could then be sent to the client in a single HTTP response.
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 
@@ -169,13 +170,13 @@ Lastly, **avoid happy talk**, that is text without any content for the sake of a
 
 ### Aesthetics matter (of course!)
 
-This may be obvious, but the look and feel of an application of course also influences both the users' *perceived* usability as well as the *actual* usability. A popular research work measuring these effect is that of [Sonderegger & Sauer](https://www.sciencedirect.com/science/article/pii/S0003687009001148). They conducted an experiment with an objectively ugly and and objectively good looking mobile phone prototype: not only did the study participants rate the ugly phone as being less usable, they actually performed worse in a given task than the participants receiving the good looking device.
+This may be obvious, but the look and feel of an application of course also influences both the users' *perceived* usability as well as the *actual* usability. An insightful piece of research conducted by [Sonderegger & Sauer](https://www.sciencedirect.com/science/article/pii/S0003687009001148) has measured this influence. They conducted an experiment with an objectively ugly and an objectively good looking mobile phone prototype: not only did the study participants rate the ugly phone as being less usable, they actually performed worse in a given task than the participants receiving the good looking device.
 
 ### Expectations vs. reality: usability testing
 
-Our expectations of web users are often not grounded in reality. We may expect users to be **rational**, **attentive** and having a **clear goal** in mind.
+Our expectations of web users are often *not* grounded in reality. We may expect users to be **rational**, **attentive** and having a **clear goal** in mind.
 
-Instead, the average user:
+Instead, the average web user:
 
 - quickly scans a web page (not even reading it);
 - decides within seconds whether or not a site is worth their attention (research on so-called *dwell time* has shown this [again](https://dl.acm.org/citation.cfm?id=1835513) and [again](https://dl.acm.org/citation.cfm?id=2835833));
@@ -249,7 +250,7 @@ Another serial offender of the entry page checklist are university home pages as
 
 ### Performance metrics
 
-Once web applications become complex, besides general usability we also need to consider various **performance metrics**. A basic question to ask is: how long does it take for the entire application to load, but of course that is a very crude metric and it is also not always clear what exactly this means, due to polling, etc. We thus need more fine-grained metrics. The [metrics section at Google's web.dev resource](https://web.dev/metrics/) provides a good overview of what questions to ask in order to measure aspects of an application's performance that are *relevant* to the user. This includes metrics such as:
+Once web applications become complex, besides general usability we also need to consider various **performance metrics**. A basic question to ask is: *how long does it take for the entire application to load?* This is of course a rather crude metric and it is not always clear what exactly this means, due to polling, etc. We thus need more fine-grained metrics. The [metrics section at Google's web.dev resource](https://web.dev/metrics/) provides a good overview of what questions to ask in order to measure aspects of an application's performance that are *relevant* to the user. This includes metrics such as:
 
 - the time until the first content is rendered;
 - the time until the user can successfully interact with the application;
@@ -273,6 +274,8 @@ HTML5 is a set of related technologies (core HTML5, CSS, JavaScript) that togeth
 - client-side **JavaScript**: manipulate the contents of HTML documents and respond to user interactions.
 
 Modern web application development requires knowledge of all three technologies. In practice, it also requires a whole set of additional frameworks and tools to go from prototype code to production code, such as build tools, transpilers, code coverage tools and so on. This is the case even "just" for [frontend coding](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70). We will introduce a few of those tools throughout the practical assignments.
+
+//TODO: web stack examples
 
 Before HTML5 we had **XHTML** and HTML 4.01. XHTML is a reformulation of HTML 4 as an XML 1.0 application and stands for **Extensible HyperText Markup Language**. It looks as follows (taken straight from the [W3C XHTML recommendation](https://www.w3.org/TR/xhtml1/)):
 
@@ -309,6 +312,7 @@ The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <
 
 **Plugins** were created to go beyond what at the time was possible with HTML. Probably the most famous plugin remains Adobe Flash, which was introduced in 1996. HTML5 is a drive to return rich content **directly** into the browser, without the need for plugins or addons.
 
+//TODO: use as semantic HTML example the cse-theme setup
 HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. As a guideline, when creating an HTML document, it is always best to select the **most specific** element to represent your content (instead of only using `<div>`'s). Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentation, e.g. `<b>` or `<i>`. At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **semantic HTML** is quite different from the grand vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/):
 
 ```
