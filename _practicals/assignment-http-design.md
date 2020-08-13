@@ -44,26 +44,18 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 
 ## 1. HTTP request messages: GET/HEAD
 
----
 👉 Hints:
 
 - To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.ard.de 80|tee out` will save all output to a file called `out`.
-
 - To exit a telnet session, first press <kbd>CTRL</kbd>+<kbd>]</kbd>. This brings you to a `telnet>` prompt and you can type `close` to end the session.
-
 - Telnetting `www.domain.com` is usually not the same as telnetting `domain.com`. Make sure your `host` header information matches exactly the domain you telnetted into.
-
 - [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when an empty line is expected. Press `<Enter>` to add it.
-
 - Be aware of the **backspace key** when *telneting*: while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key may be forwarded to the server instead. Be aware!
-
 - This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. 
-
 - If you are a Windows user, use the Windows Subsystem for Linux. As an alternative (if you really do not want to use Linux), use [PuTTY](https://www.putty.org/) with the following settings:
   - Use the *Raw* connection type (not *Telnet*).
   - For *Close window on exit*, use *Never*.
   - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the PuTTY session (which you start using the *Open* button).
----
 
 //TODO: new domain for http/telnet
 ⚠️ ⚠️ ⚠️ **Exercise (1) comes in two flavours: if you completed this part before January 1, 2020 you will have telnetted to `weer.nl`. This is fine. There is no need to repeat the exercise; submit the responses as you wrote them up. If you are starting this exercise in January 2020, go to the `surfweer.nl` variant instead.** The remaining exercises are unaffected from this change!

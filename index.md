@@ -95,7 +95,7 @@ The table below shows how the number of passes (maximum 6: 3x database and 3x we
 | 1                | 1.7   |
 | 0                | 0.0   |
 
-FAQ:
+Frequently Asked Questions:
 - **Are all web technology exam questions multiple-choice questions?** Yes.
 - **Can assignment passes be carried over to the next year?** No, while assignment passes are valid for this year's resit, next year all assignments have to be tackled again.
 - **Is there a resit option for the assignments?** No.
