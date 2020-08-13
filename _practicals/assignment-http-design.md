@@ -5,13 +5,13 @@ linkname: Assignment HTTP+Design
 ordering: 1
 ---
 
-# Assignment 4
+# Assignment HTTP+Design
 
-The first part of this assignment gives you hands-on experience in **HTTP**. In the second part you will make a head start with the design of your **board game web application** (which you will further develop in assignments 5 and 6).
+The first part of this assignment gives you hands-on experience with **HTTP**. In the second part you will make a head start with the design of your **board game web application** (which you will further develop the next two assignments).
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). Use this assignment to set up a collaborative coding environment within your team. Assignment 5 will require extensive JavaScript programming that both team members need to contribute to.
+Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.
 
 ### Overview of deliverables and upload procedure
 
@@ -27,17 +27,16 @@ If you get lost within the assignment, use this overview of deliverables to get 
 | 3.1  | Answer Q3.1                                        |
 | 3.2  | Answer Q3.2                                        |
 | 4.1  | Chosen game type                                   |
-| 4.2  | Four annotated game screens (include the game URL) |
-| 4.3  | Description of six game features                   |
+| 4.2  | Three game screens (include the game URL) |
+| 4.3  | Description of six (three pos., three neg.) game features                   |
 | 5.1  | Splash screen design (wireframe)                   |
 | 5.2  | Game screen design (wireframe)                     |
 | 5.3  | →→→ upload 5.1/5.2 to 💡 Brightspace forum               |
 | 6  | Two html files                                     |
 
-All deliverable text/imagery (apart from 6. which are two html files) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team name.
+All deliverable text/imagery (apart from 6. which are two html files) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team id (the group you signed up for on Brightspace).
 
-The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the TAs and before the ultimate assessment deadline. This means that the outcomes of Assignment 4, 5 and 6 are **all** uploaded to the same directory!
-Make sure to name your files with an **A4** prefix!
+The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistants and before the ultimate assessment deadline. This means that the outcomes of all web assignments are **all** uploaded to the same directory!
 
 **To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.**
 
@@ -64,6 +63,7 @@ Make sure to name your files with an **A4** prefix!
   - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the PuTTY session (which you start using the *Open* button).
 ---
 
+//TODO: new domain for http/telnet
 ⚠️ ⚠️ ⚠️ **Exercise (1) comes in two flavours: if you completed this part before January 1, 2020 you will have telnetted to `weer.nl`. This is fine. There is no need to repeat the exercise; submit the responses as you wrote them up. If you are starting this exercise in January 2020, go to the `surfweer.nl` variant instead.** The remaining exercises are unaffected from this change!
 
 **Exercise weer.nl (valid until January 1, 2020)**:
@@ -177,34 +177,33 @@ You can choose from six games:
 2. [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
 3. Chess - there are many variants available besides the default, [pick one](https://en.wikipedia.org/wiki/List_of_chess_variants): 2-4 players depending on the variant
 4. [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)): 2 players
-5. [Connect 4](https://en.wikipedia.org/wiki/Connect_Four): 2 players
+5. [Hex](https://en.wikipedia.org/wiki/Hex_(board_game)): 2 players
 6. [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
 
 At the end of the three web assignments, your board game application will have the following functionalities:
 
 - The game is for 2+ players and in 2D.
 - The game works 2+ modern browsers (e.g. Firefox and Chrome).
-- It works well on a laptop/desktop device, i.e. we are considering screen resolutions of ~1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices.
+- It works well on a laptop/desktop device, i.e. we are considering screen resolutions of ~1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices or apps with a responsive design.
 - Upon entering your web application's URL, a **splash screen** is shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), a brief description of how-to-play on your platform and a *Play* button (or something to that effect).
 - Upon pressing *Play*, the user enters the **game screen** and waits for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
 - Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
 - The splash and game screens need to look good (we do realize that this is subjective and we handle this requirement very leniently!); all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
 - Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players participating in the game.
 - Players see basic information about the ongoing game, e.g. the time passed since starting the game or number of lost/won pieces.
-- Players are able to play the game in fullscreen mode.
-- Players play the game with the mouse.
+- Players play the game with the mouse (i.e. you are mostly focusing on `click` events).
 - Once a player drops out of a game, the game is aborted; this is announced to all players currently active in the game.
 - The game has at least one sound effect (e.g. a *ping* every time a move is made).
 
-The list above should tell you that you have considerable (artistic) freedom. In assignments 5 & 6, you are given a set of requirements (e.g. here are the three types of CSS rules you need to employ in your code).
+The list above should tell you that you have considerable (artistic) freedom.
 
-Beyond what is specified in subsequent assignments **no external libraries or frameworks are allowed**, apart from [`jQuery`](https://jquery.com/) and (if needed) a library to help you validate the game moves. We allow `jQuery` as it is used in the web course book; you can use it too, but are not required to. You can use a JavaScript library to determine whether a player makes a valid move as for some games (such as chess) this is considerably more difficult than for others!
+In this course you learn how to program in "plain" JavaScript. We **do not allow external libraries or frameworks** beyond those specified in the assignments. Concretely, we **do allow** the use of a JavaScript library of your choice to determine whether a player makes a valid move as for some games (such as chess) this is considerably more difficult than for others!
 
-We also allow **small** simplifications to the chosen games, e.g. for Ludo an implementation for 2 players is sufficient, for chess you can ignore the [pawn promotion rule](https://en.wikipedia.org/wiki/Promotion_(chess)). Be upfront about the simplifications made. If you are in doubt whether you are simplifying the game too much, ask us by emailing `cse1500-ewi@tudelft.nl`.
+We also allow small simplifications to the chosen games, e.g. for Ludo an implementation for 2 players is sufficient, for chess you can ignore the [pawn promotion rule](https://en.wikipedia.org/wiki/Promotion_(chess)). Be upfront about the simplifications made. If you are in doubt whether you are simplifying the game too much, email us at `cse1500-ewi@tudelft.nl`.
 
-**Optionally**: when you have incorporated the requirements listed above without any additional libraries/framework besides `jQuery` (and a move validation library) and you want to keep improving your application by adding additional functionalities, you can indeed incorporate existing libraries/frameworks. Make sure to document clearly where in your code you employ them. The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent: while for the game of Ludo it would not be too difficult to come up with a number of rules to create a decent computer opponent, for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
+**Optionally**: when you have incorporated the requirements listed above without any additional libraries/framework besides those allowed and you want to keep improving your application by adding additional functionalities, you can indeed incorporate existing libraries/frameworks. Make sure to document clearly where in your code you employ them. The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent: while for the game of Ludo it would not be too difficult to come up with a number of rules to create a decent computer opponent, for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
 
-*If your team has a different idea and wants to implement another board game that has the functionalities listed above, please get permission from the instructors before you start doing any work by emailing (`cse1500-ewi@tudelft.nl`) your team ID and a short description of the game you have in mind.*
+*If your team has a different idea and wants to implement another board game that has the functionalities listed above, please ask for permission before you start doing any work by emailing (`cse1500-ewi@tudelft.nl`). Include your team ID and a short description of the game you have in mind in your email.*
 
 ### 4.1)
 
@@ -212,17 +211,20 @@ We also allow **small** simplifications to the chosen games, e.g. for Ludo an im
 
 ### 4.2)
 
-Find **three** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the web application's design (focus on the game screen) based on the **web design principles** covered in class. Record the game URLs. Which **three design aspects** stand out positively or negatively? Make a screenshot of each example and annotate the positive/negative aspects.
+Find **three** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the web application's design (focus on the game screen) based on the **web design principles** covered in class: to what extent do they fulfill them?. Record the game URLs. 
 
 ### 4.3)
 
-Which *game features* in the game examples of 4.2) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features in total.
+Which *game features* in the game examples of 4.2) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
 
 ---
 
 ## 5. Design your own board game app
 
-Having looked at at least three existing implementations of your chosen board game (Exercise 4.2), you are now in a position to design your own game interface. Similar to the wireframe example in the course book (check Chapter 2 if you have not done so yet) and the [demo code wireframes](demo-code/balloons-wireframes), start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
+Having looked at at least three existing implementations of your chosen board game (Exercise 4.2), you are now in a position to design your own game interface. 
+
+//TODO: wireframe demo game link
+Similar to the wireframe example of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
 ### 5.1)
 
@@ -239,4 +241,5 @@ Once you have completed the design of your app, head over to CSE1500's 💡 Brig
 
 ## 6. Your own board game app: HTML
 
-Similar to the course book, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. To get an idea on the expected amount of content (it is not a lot!), check [`game.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/game.html) and [`splash.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/splash.html) of the demo board game. Ignore the few lines of code loading JavaScript and CSS files, these will be covered in Assignments 5 and 6 respectively. 
+//TODO: update demo game link
+Similar to the demo game, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. To get an idea on the expected amount of content (it is not a lot!), check [`game.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/game.html) and [`splash.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/splash.html) of the demo board game. Ignore the few lines of code loading JavaScript and CSS files, these will be covered in the two later assignments.
