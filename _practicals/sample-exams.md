@@ -9,7 +9,7 @@ ordering: 7
 
 **Exam topics are all topics covered in the lectures and the required readings.** The content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not exam material.
 
-The web technology exam usually contains 40 multiple-choice questions; the resit is shorter with about 30 questions (due to the time constraints of the resit week).
+The web technology exam usually contains about 40 multiple-choice questions; the resit is shorter with about 30 questions (due to the time constraints of the resit week).
 
 - [2018/19](../exams/midterm-cse1500-201819-solutions.pdf)
 - [2018/19 resit](../exams/midterm-resit-cse1500-201819-solutions.pdf)
