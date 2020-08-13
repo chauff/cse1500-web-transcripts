@@ -7,7 +7,7 @@ ordering: 3
 
 # JavaScript: the language of browser interactions <!-- omit in toc -->
 
-*This is the densest web lecture of this course. Learning how to code takes some time. Take a look at the [exercises](nodeschool-exercises.md) that are relevant for this lecture.*
+*This is the densest web lecture of this course. Learning how to code takes some time. Take a look at the [exercises](../_practicals/nodeschool-exercises.md) that are relevant for this lecture.*
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
@@ -22,7 +22,7 @@ ordering: 3
 - [Scripting overview](#scripting-overview)
   - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
   - [The `<script>` tag](#the-script-tag)
-  - [‼️ Activity](#️-activity)
+  - [:bangbang: Activity](#️-activity)
 - [Scoping, hoisting and this](#scoping-hoisting-and-this)
   - [Scoping](#scoping)
   - [Hoisting](#hoisting)
@@ -158,7 +158,7 @@ The placement of the `<script>` tag is an often discussed issue (1000+ upvotes f
 
 As the browser renders the page in a top-down fashion, with DOM elements created in the order they appear in the HTML document, we place the `<script>` tags right before the closing `<body>` tag. Thus, the DOM is already complete once the JavaScript is being executed. Interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, make use of the browser window's [load event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event) which is fired once the DOM has loaded.
 
-### ‼️ Activity
+### :bangbang: Activity
 
 Based on the required readings, you should be able to answer the following two questions.
 
@@ -420,7 +420,6 @@ to be different each time, as each time, `this` refers to a different object. We
 
 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
 
----
 :bug: Throughout this and the coming lectures we repeatedly point to the browser's web console as a quick way to explore JavaScript. [In the words of Kyle Simpson](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#its-not-always-js):
 
 ```
@@ -428,8 +427,6 @@ The developer console is not trying to pretend to be a JS compiler that handles 
 ```
 
 Thus, are (very few) specific instances where different browsers' web consoles interpret the same code snippet slightly differently and differently to the browser's JavaScript runtime engine. 
-
----
 
 
 ## JavaScript design patterns
@@ -508,8 +505,6 @@ var paramModule = {
 };
 ```
 
----
-
 :bug: For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table:
 
 ![console.table](../img/js-console-table.png)
@@ -521,8 +516,6 @@ Continuing on the debugging theme, another worthwhile function to know about is 
 ![console.assert](../img/js-console-assert.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
-
----
 
 Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? We can hardly copy and paste a method to all objects.
 
@@ -844,8 +837,6 @@ An IIFE itself is also a design pattern, it looks as follows :point_down::
 
 Going back to our `gameStatModule` :point_up::point_up:, we immediately execute the function. The function contains a number of variables with function scope and a return statement. **The return statement contains the result of the function invocation**. In this case, an *object literal* is returned and this object literal has two methods: `incrGamesStarted()` and `getNumGamesStarted()`. Outside of this module, we cannot directly access `gamesStarted` or any of the other emulated *private* variables, all we will get is an `undefined` as the returned object does not contain those properties. The returned object though **has access** to them through JavaScript's concept of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)). *A closure is the combination of a function and the lexical environment within which that function was declared* (as defined by MDN); in our case the lexical environment includes the emulated private variables. Once again, things are not as easy as they seem, in the [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/scope%20%26%20closures) series, half a book is dedicated to closures.
 
----
-
 :bug: A common error in the module pattern is to forget to add the final bracket pair `()` when defining the IIFE. Those issues will be caught at runtime when the code does not work as expected. In our game module example, the line `gameStatModule.incrGamesStarted();` will lead to the error `TypeError: gameStatModule.incrGamesStarted is not a function` if we remove the final IIFE bracket pair (try it out!). VSC offers a simple way to catch those errors already when coding. We simply add the line:
 
 ```
@@ -857,8 +848,6 @@ at the top of any JavaScript file we want to have type-checked. The error of the
 ![Exploring events](../img/js-ts-check.png)
 
 We thus borrow the type checker of TypeScript to make sure to catch - at least some - coding mistakes we make early on. To avoid copying this line everywhere, we can also set up VSC to perform type checking [automatically for all JavaScript files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript).
-
----
 
 Finally we note that in the module pattern, the encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
 
@@ -921,6 +910,7 @@ Having read the required readings, you should be somewhat familiar with the DOM 
 The last two ways of selecting DOM elements allow complex selector rules to be specified!
 
 //TODO: add new code snippet
+
 The code snippet :point_up: also shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens *when* an event fires**. In the example above, the event is the click on a button.
 
 When creating a UI element that is responsive to user actions, we typically follow the following steps:
@@ -933,15 +923,11 @@ When creating a UI element that is responsive to user actions, we typically foll
 
 :four: Attach the function to the event **on** the control.
 
----
-
 :bug: If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
 
 ![Exploring events](../img/js-event-listeners.png)
 
 <sup>Screenshot of Firefox's Web Console.</sup>
-
----
 
 :triangular_flag_on_post: If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this course. The reason is simply a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
 
