@@ -56,6 +56,7 @@ ordering: 5
   - At [https://flukeout.github.io/](https://flukeout.github.io/) you find a small game that allows you to practice CSS selectors.
 - Recommended readings:
   - :closed_book: Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
+  - [A blog post on the history of CSS: Old CSS, new CSS](https://eev.ee/blog/2020/02/01/old-css-new-css/)
   - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
   - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
   - After studying this lecture you have the basic knowledge to consider a career as a [Front-End Developer](https://frontendmasters.com/books/front-end-handbook/2019/#1)
@@ -1356,9 +1357,11 @@ Here is a concrete example of how media queries enable a **responsive design** :
 ```
 
 Use your browser's responsive design mode :point_down: to test the behaviour of the media queries.
-For `@media print` you can use the **Print simulation** mode in the Developer Tools of Firefox, or alternatively, the browser's *Print as PDF* feature.
+For `@media print` you can use the **Print simulation** mode in the Developer Tools of Firefox ([similarly for Chrome](https://developers.google.com/web/tools/chrome-devtools/css/print-preview)), or alternatively, the browser's *Print as PDF* feature.
 
 ![Responsive design mode](../img/css-responsive.png)
+
+
 
 ## Animations and transitions
 
