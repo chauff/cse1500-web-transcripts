@@ -66,6 +66,7 @@ ordering: 3
   - [The State of JavaScript 2019](https://2019.stateofjs.com/).
   - [Clean Code concepts adapted for JavaScript](https://github.com/ryanmcdermott/clean-code-javascript): a popular GitHub repository with many examples of good and bad code patterns.
 - Relevant scientific publications:
+  - Wirfs-Brock, A. and Eich, B., 2020. [JavaScript: the first 20 years](https://doi.org/10.1145/3386327). Proceedings of the ACM on Programming Languages, 4(HOPL), pp.1-189.
   - Charland, A. and Leroux, B., 2011. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Queue, 9(4), p. 20.
   - Mowery, K., Bogenreif, D., Yilek, S. and Shacham, H., 2011. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). In Proceedings of W2SP (Vol. 2, No. 11).
   - Ratanaworabhan, P., Livshits, B. and Zorn, B.G., 2010. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). In Proceedings of the 2010 USENIX conference on Web application development.
