@@ -57,6 +57,7 @@ ordering: 3
   - :closed_book: [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
   - [JavaScript for impatient programmers: online quizzes](https://exploringjs.com/impatient-js/quiz/).
   - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects).
+  - [The modern JavaScript tutorial](https://javascript.info/) - detailed tutorial on JavaScript, going well beyond what we cover in this course.
   - [The dynamic nature of JavaScript makes optimization tricky (blog post)](https://v8project.blogspot.com/2017/09/elements-kinds-in-v8.html).
   - [Why do we need all those fancy tools for JavaScript development nowadays? (blog post)](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70).
   - [Learn how to debug with Firefox devtools](https://mozilladevelopers.github.io/playground/debugger).
