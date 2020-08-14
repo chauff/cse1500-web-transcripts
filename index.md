@@ -6,7 +6,7 @@ permalink: /
 Web technology course information <!-- omit in toc -->
 ==
 
-CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year Bachelor students of the Bachelor Computer Science and Engineering take at TU Delft.
+CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year Bachelor students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/).
 
 This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. 
 
