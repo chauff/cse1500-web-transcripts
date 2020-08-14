@@ -73,6 +73,7 @@ HTTP: the language of Web communication <!-- omit in toc -->
   - Ihm, S. and Pai, V.S., 2011. [Towards understanding modern web traffic](https://conferences.sigcomm.org/imc/2011/docs/p295.pdf). In Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference (pp. 295-312). ACM.
   - Naylor, D., Finamore, A., Leontiadis, I., Grunenberger, Y., Mellia, M., Munafò, M., Papagiannaki, K. and Steenkiste, P., 2014. [The cost of the S in HTTPS](https://davidtnaylor.com/CostOfTheS.pdf). In Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies (pp. 133-140).
   - Falaki, H., Lymberopoulos, D., Mahajan, R., Kandula, S. and Estrin, D., 2010. [A first look at traffic on smartphones](http://conferences.sigcomm.org/imc/2010/papers/p281.pdf). In Proceedings of the 10th ACM SIGCOMM conference on Internet measurement (pp. 281-287).
+  - Mishra, V., Laperdrix, P., Vastel, A., Rudametkin, W., Rouvoy, R. and Lopatka, M., 2020. [Don't Count Me Out: On the Relevance of IP Address in the Tracking Ecosystem](https://doi.org/10.1145/3366423.3380161). In Proceedings of The Web Conference, pp. 808-815.
 
 ## Web standards
 
