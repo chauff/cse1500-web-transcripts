@@ -10,7 +10,7 @@ CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.n
 
 This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. 
 
-**The transcripts are extensive, video lectures covering each transcript will not be provided in the 2020/21 edition. Instead, each week a Q&A session will be held (via Zoom most likely) where every student is invited to participate. Smaller videos discussing specific aspects (e.g. how to approach the assignments) will be provided.**
+**The transcripts are extensive. Video lectures covering each transcript will not be provided in the course 2020/21 edition. Instead, each week an online Q&A session will be held where every student is invited to participate. Smaller videos discussing specific aspects (e.g. how to approach the assignments) will be provided.**
 
 We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, Node.js and Express. In the five weeks of the web technology lectures we can only cover the web programming fundamentals. If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with in 2020, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
