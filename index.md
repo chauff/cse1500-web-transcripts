@@ -25,7 +25,6 @@ We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, 
 - [Course grading](#course-grading)
 - [Web technology topics](#web-technology-topics)
 - [Web technology assignments](#web-technology-assignments)
-- [Generating PDFs from the transcripts](#generating-pdfs-from-the-transcripts)
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [University courses with a web focus elsewhere](#university-courses-with-a-web-focus-elsewhere)
@@ -129,10 +128,6 @@ There are three web technology assignments:
 - [Assignment on server-side JavaScript and CSS](_practicals/assignment-css-node.md).
 
 The three assignments build on each other - over the course of them you are tasked with implementing a small multi-player game. In previous years, roughly 90% of groups passed one assignment, 60% passed two web technology assignments and 30% of groups passed all three web technology assignments.
-
-## Generating PDFs from the transcripts
-
-//TODO: VSC Markdown details to add
 
 ## Web development resources
 
