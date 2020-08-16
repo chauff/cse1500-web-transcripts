@@ -7,8 +7,6 @@ ordering: 2
 
 # HTML: the language of the Web <!-- omit in toc -->
 
-**An automatically generated PDF of this transcript is available [here](../generatedPDFs/design.pdf).**
-
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
