@@ -1,5 +1,5 @@
 {
-    "markdown-pdf.convertOnSave": true,
+    "markdown-pdf.convertOnSave": false,
     "markdown-pdf.convertOnSaveExclude": [
         "README.md",
         "index.md",
