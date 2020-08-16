@@ -333,7 +333,9 @@ HTML is widely used, which makes standardisation a slow process. Many different 
 
 <sup>Source: [W3C Recommendation Track Process](https://www.w3.org/2018/Process-20180201/#maturity-levels).</sup>
 
-Informally, one could say that the W3C standardizes what the browser vendors have agreed upon and have chosen to implement or chosen to implement in the near future.
+Informally, one could say that the W3C standardizes what the browser vendors have agreed upon and have chosen to implement or chosen to implement in the near future. A more pessimistic view of the process has been voiced by Rich Harris:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">How Web Standards Work<br><br>1. design a flawed API (it&#39;s fine! APIs are hard)<br>2. ship it in the most-used browser, despite objections<br>3. get cross-browser working group to fix the API<br>4. oops, too late, that would break the web <a href="https://t.co/IuU6Xxzilv">pic.twitter.com/IuU6Xxzilv</a></p>&mdash; Rich Harris (@Rich_Harris) <a href="https://twitter.com/Rich_Harris/status/1220412711768666114?ref_src=twsrc%5Etfw">January 23, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 Consensus building takes time. HTML5 for instance was a candidate recommendation in Q4-2012 and became a W3C recommendation in Q4-2014. HTML5.1 was a candidate recommendation in Q1-2015 and became a recommendation in Q4-2016.
 
