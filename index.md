@@ -169,7 +169,7 @@ For each lecture we provide a range of materials:
 
 ## University courses with a web focus elsewhere
 
-The materials we present here are only one way of introducing the fundamentals of the web to undergraduate students. A number of other universities offer publicly accessible teaching materials:
+Lastly, the materials we present here are only one way of introducing the fundamentals of the web to undergraduate students. A number of other universities offer publicly accessible teaching materials:
 
 - [Deep Dive Into Modern Web Development /U Helsinki](https://fullstackopen.com/en)
 - [Design and Implementation of Software for the Web /GMU](https://cs.gmu.edu/~tlatoza/teaching/swe432f17/home.html)
@@ -184,3 +184,4 @@ The materials we present here are only one way of introducing the fundamentals o
 - [Web Programming /U Washington](https://courses.cs.washington.edu/courses/cse154/20su/)
 - [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
 - [Javascript /UPenn](http://www.seas.upenn.edu/~cis197/)
+
