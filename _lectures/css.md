@@ -44,7 +44,7 @@ ordering: 5
 ## Required & recommended readings and activities
 
 - Required readings:
-  //TODO: update the required readings for CSS
+  //TODO: update the required readings for CSS (MDN based?)
 - Recommended activities:
   - :tv: Watch [this talk by Rachel Andrew](https://www.youtube.com/watch?v=cYGOv2ToZjY) to learn more about the long (and painful) history of CSS.
   - :tv: Watch [this talk by Mandy Michael](https://youtu.be/5qgUC_z8syw) on text effects in CSS. Data attributes and pseudo-elements are a powerful combination!
