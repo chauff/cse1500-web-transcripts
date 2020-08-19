@@ -29,7 +29,7 @@ We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, 
 
 ## Web technology instructor
 
-The responsible instructor of the web technology part is Associate Professor [Claudia Hauff](https://chauff.github.io/). Inquires about the course content, exams and so on should be emailed to `cse1500-ewi@tudelft.nl`. 
+The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquires about the course content, exams and so on should be emailed to `cse1500-ewi@tudelft.nl`. 
 
 ## Book 
 
