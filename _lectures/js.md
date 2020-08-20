@@ -52,6 +52,7 @@ ordering: 3
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
   - [JavaScript30](https://javascript30.com/): 30 day vanilla JS coding challenges
 - Recommended readings:
+  - [A blog post by the V8 team on how to read the ECMAscript specification](https://v8.dev/blog/understanding-ecmascript-part-1).
   - :closed_book: [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
   - [JavaScript for impatient programmers: online quizzes](https://exploringjs.com/impatient-js/quiz/).
   - MDN's introduction to [JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects).
