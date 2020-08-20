@@ -40,6 +40,7 @@ ordering: 3
     - [:bangbang: Example 4: mouse events](#️-example-4-mouse-events)
     - [:bangbang: Example 5: a crowdsourcing interface](#️-example-5-a-crowdsourcing-interface)
     - [:bangbang: Example 6: a typing game](#️-example-6-a-typing-game)
+- [🚩 Modern JS libraries](#-modern-js-libraries)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -1413,6 +1414,16 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keypress` |  user presses and releases key while element has keyboard focus (a problematic event) |
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
+
+## 🚩 Modern JS libraries
+
+For almost any task you will be faced in web engineering, you can find JavaScript libraries. In this class, we explicitly avoid the use of libraries to teach you the fundamentals. However, it is still useful to look at successful libraries to get an idea of what their appeal is. Here, we consider [Popper](https://popper.js.org/), a tooltip and popover positioning engine. This library has everything we want in a library:
+
+- It has a very narrow scope (which makes it likely that what it does, it does well).
+- It has a visually appealing website and a good tutorial to get started quickly.
+- The developer and user community on GitHub is active (issues are being opened and closed).
+- Highly starred on GitHub.
+- The library comes with various installation options. 
 
 
 ## Self-check
