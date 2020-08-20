@@ -48,9 +48,9 @@ ordering: 7
   - :tv: [Storage on the web](https://www.youtube.com/watch?v=NNuTV-gjlZQ): how to store **large amounts** of data on the modern browser.
   - An elaborate [thread of tweets](https://threadreaderapp.com/thread/1199817699116736512.html) discusses privacy implications of 1st/3rd party cookies and tracking of users through them.
 - Relevant scientific publications:
-  - Roesner, F., Kohno, T. and Wetherall, D., 2012. [Detecting and defending against third-party tracking on the web](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final17.pdf). In Proceedings of the 9th USENIX conference on Networked Systems Design and Implementation (pp. 12-12). USENIX Association.
-  - Park, J.S. and Sandhu, R., 2000. [Secure cookies on the Web](https://ieeexplore.ieee.org/abstract/document/865085). IEEE internet computing, 4(4), pp.36-44.
-  - Franken, G., Van Goethem, T. and Joosen, W., 2018. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168.
+  - Roesner, Franziska, Tadayoshi Kohno, and David Wetherall. [Detecting and defending against third-party tracking on the web](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final17.pdf). In Proceedings of the 9th USENIX conference on Networked Systems Design and Implementation. 2012. 
+  - Sandhu, Ravi, and Joon S. Park. [Secure cookies on the Web](https://ieeexplore.ieee.org/abstract/document/865085). IEEE internet computing, 4(4), pp.36-44. 2000.
+  - Franken, Gertjan, Tom Van Goethem, and Wouter Joosen. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168. 2018.
 
 
 ## Learning goals

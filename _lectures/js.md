@@ -64,15 +64,14 @@ ordering: 3
   - [The State of JavaScript 2019](https://2019.stateofjs.com/).
   - [Clean Code concepts adapted for JavaScript](https://github.com/ryanmcdermott/clean-code-javascript): a popular GitHub repository with many examples of good and bad code patterns.
 - Relevant scientific publications:
-  - Wirfs-Brock, A. and Eich, B., 2020. [JavaScript: the first 20 years](https://doi.org/10.1145/3386327). Proceedings of the ACM on Programming Languages, 4(HOPL), pp.1-189.
-  - Charland, A. and Leroux, B., 2011. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Queue, 9(4), p. 20.
-  - Mowery, K., Bogenreif, D., Yilek, S. and Shacham, H., 2011. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). In Proceedings of W2SP (Vol. 2, No. 11).
-  - Ratanaworabhan, P., Livshits, B. and Zorn, B.G., 2010. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). In Proceedings of the 2010 USENIX conference on Web application development.
-  - Lin, J., 2018. [Computing without Servers, V8, Rocket Ships, and Other Batshi*t Crazy Ideas in Data Systems](http://ceur-ws.org/Vol-2167/keynote1.pdf). In Proceedings of DESIRES. A quote ... "_So, the future is. . .  JavaScript? Once  we get beyond the fact that JavaScript is an undeniably shitty language on which to build an interlingual execution platform, there is at least some so-crazy-it-might-actually-work appeal to this idea._"
-  - Patra, J., Dixit, P.N. and Pradel, M., 2018. [ConflictJS: finding and understanding conflicts between JavaScript libraries](http://mp.binaervarianz.de/icse2018.pdf). In Proceedings of the 40th International Conference on Software Engineering, pp. 741-751.
-  - Jangda, A., Powers, B., Berger, E. D., & Guha, A., 2019. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
-  - Chaqfeh, M., Zaki, Y., Hu, J. and Subramanian, L., 2020. [JSCleaner: De-Cluttering Mobile Webpages Through JavaScript Cleanup](https://doi.org/10.1145/3366423.3380157). In Proceedings of The Web Conference 2020, pp. 763-773.
-
+  - Wirfs-Brock, Allen, and Brendan Eich. [JavaScript: the first 20 years](https://doi.org/10.1145/3386327). Proceedings of the ACM on Programming Languages 4.HOPL (2020): 1-189.
+  - Charland, Andre, and Brian Leroux. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Communications of the ACM 54.5 (2011): 49-53.
+  - Mowery, Keaton, et al. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). Proceedings of W2SP 2.11 (2011).
+  - Ratanaworabhan, Paruj, Benjamin Livshits, and Benjamin G. Zorn. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). WebApps 10 (2010).
+  - Lin, Jimmy. [Computing without Servers, V8, Rocket Ships, and Other Batshi*t Crazy Ideas in Data Systems](http://ceur-ws.org/Vol-2167/keynote1.pdf) DESIRES (2018): 3-6.
+  - Patra, Jibesh, Pooja N. Dixit, and Michael Pradel. [ConflictJS: finding and understanding conflicts between JavaScript libraries](http://mp.binaervarianz.de/icse2018.pdf). Proceedings of the 40th International Conference on Software Engineering. 2018.
+  - Jangda, Abhinav, et al. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
+  - Chaqfeh, Moumena, et al. [JSCleaner: De-Cluttering Mobile Webpages Through JavaScript Cleanup](https://doi.org/10.1145/3366423.3380157). Proceedings of The Web Conference. 2020.
 
 ## Learning goals
 

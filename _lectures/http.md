@@ -68,10 +68,11 @@ HTTP: the language of Web communication <!-- omit in toc -->
   - [A crash course on HTTP and DNS by Mozilla (among other things)](https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/).
   - A detailed overview of the [history of web standards](https://www.smashingmagazine.com/2019/01/web-standards-guide/) and how to make use of them.
 - Relevant scientific publications:
-  - Ihm, S. and Pai, V.S., 2011. [Towards understanding modern web traffic](https://conferences.sigcomm.org/imc/2011/docs/p295.pdf). In Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference (pp. 295-312). ACM.
-  - Naylor, D., Finamore, A., Leontiadis, I., Grunenberger, Y., Mellia, M., Munafò, M., Papagiannaki, K. and Steenkiste, P., 2014. [The cost of the S in HTTPS](https://davidtnaylor.com/CostOfTheS.pdf). In Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies (pp. 133-140).
-  - Falaki, H., Lymberopoulos, D., Mahajan, R., Kandula, S. and Estrin, D., 2010. [A first look at traffic on smartphones](http://conferences.sigcomm.org/imc/2010/papers/p281.pdf). In Proceedings of the 10th ACM SIGCOMM conference on Internet measurement (pp. 281-287).
-  - Mishra, V., Laperdrix, P., Vastel, A., Rudametkin, W., Rouvoy, R. and Lopatka, M., 2020. [Don't Count Me Out: On the Relevance of IP Address in the Tracking Ecosystem](https://doi.org/10.1145/3366423.3380161). In Proceedings of The Web Conference, pp. 808-815.
+  - Ihm, Sunghwan, and Vivek S. Pai. [Towards understanding modern web traffic](https://conferences.sigcomm.org/imc/2011/docs/p295.pdf). Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference. 2011.
+  - Naylor, David, et al. [The cost of the S in HTTPS](https://davidtnaylor.com/CostOfTheS.pdf). Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies. 2014.
+  - Falaki, Hossein, et al. [A first look at traffic on smartphones](http://conferences.sigcomm.org/imc/2010/papers/p281.pdf). Proceedings of the 10th ACM SIGCOMM conference on Internet measurement. 2010.
+  - Mishra, Vikas, et al. [Don't Count Me Out: On the Relevance of IP Address in the Tracking Ecosystem](https://doi.org/10.1145/3366423.3380161). Proceedings of The Web Conference. 2020.
+
 
 ## Web standards
 

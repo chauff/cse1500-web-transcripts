@@ -61,8 +61,8 @@ ordering: 5
   - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
   - If you want to look behind the scenes of a rendering engine, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
 - Relevant scientific publications:
-  - Meyerovich, L.A. and Bodik, R., 2010. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web, pp. 711-720.
-  - Panchekha P. and Torlak E., 2016. [Automated reasoning for web page layout](https://doi.org/10.1145/2983990.2984010). In Proceedings of the ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications, pp. 181-194.
+  - Meyerovich, Leo A., and Rastislav Bodik. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763). Proceedings of the 19th international conference on WWW. 2010.
+  - Panchekha, Pavel, and Emina Torlak. [Automated reasoning for web page layout](https://doi.org/10.1145/2983990.2984010). Proceedings of the 2016 ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications. 2016.
 
 ## Learning goals
 

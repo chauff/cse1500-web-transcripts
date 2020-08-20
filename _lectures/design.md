@@ -40,9 +40,10 @@ ordering: 2
   - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected).
   - [Atomic Design by Brad Frost](http://atomicdesign.bradfrost.com/) 
 - Relevant scientific publications:
-  - Fernandez, A., Insfran, E. and Abrahão, S., 2011. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and Software Technology, 53(8), pp. 789-817.
-  - Sonderegger, A. and Sauer, J., 2010. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied Ergonomics, 41(3), pp. 403-410.
-  - Mathur, A., Acar, G., Friedman, M., Lucherini, E., Mayer, J., Ghetty, M. and Narayanan, A., 2019. [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/), ACM Human-Computer Interaction, Vol. 3, CSCW, Article 81.
+  - Fernandez, Adrian, Emilio Insfran, and Silvia Abrahão. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and software Technology 53.8 (2011): 789-817.
+  - Sonderegger, Andreas, and Juergen Sauer. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied ergonomics 41.3 (2010): 403-410.
+  - Mathur, Arunesh, et al. [Dark Patterns at Scale: Findings from a Crawl of 11KShopping Websites](https://webtransparency.cs.princeton.edu/dark-patterns/). Proceedings of the ACM on Human-Computer Interaction. Vol 3. CSCW (2019): 1-32.
+  
 
 
 ## Learning goals

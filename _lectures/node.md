@@ -39,9 +39,9 @@ ordering: 4
   - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).
   - If you are interested in learning how best to get involved in the Node community, [read this blog post](https://dev.to/azure/start-contributing-to-nodejs-in-the-new-year-3dlh) on how to go about it.
 - Relevant scientific publications:
-  - Chaniotis, I.K., Kyriakou, K.I.D. and Tselikas, N.D., 2015. [Is Node.js a viable option for building modern web applications? A performance evaluation study.](https://link.springer.com/article/10.1007/s00607-014-0394-9) Computing, 97(10), pp. 1023-1044.
-  - Sun, H., Bonetta, D., Humer, C., & Binder, W., 2018. [Efficient dynamic analysis for Node. js.](https://doi.org/10.1145/3178372.3179527) In Proceedings of the 27th International Conference on Compiler Construction, pp. 196-206.
-  - Nielsen, B.B., Hassanshahi, B. and Gauthier, F., 2019. [Nodest: feedback-driven static analysis of Node.js applications](https://doi.org/10.1145/3338906.3338933). In Proceedings of the 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering, pp. 455-465.
+  - Chaniotis, Ioannis K., Kyriakos-Ioannis D. Kyriakou, and Nikolaos D. Tselikas. [Is Node.js a viable option for building modern web applications? A performance evaluation study](https://link.springer.com/article/10.1007/s00607-014-0394-9). Computing 97.10 (2015): 1023-1044.
+  - Sun, Haiyang, et al. [Efficient dynamic analysis for Node.js](https://doi.org/10.1145/3178372.3179527). Proceedings of the 27th International Conference on Compiler Construction. 2018.
+  - Nielsen, Benjamin Barslev, Behnaz Hassanshahi, and François Gauthier. [Nodest: feedback-driven static analysis of Node.js applications](https://doi.org/10.1145/3338906.3338933). Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering. 2019.
 
 ## Learning goals
 
