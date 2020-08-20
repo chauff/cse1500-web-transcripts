@@ -8,7 +8,7 @@ Web technology course information <!-- omit in toc -->
 
 CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year Bachelor students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/).
 
-This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in the browser's localStorage (i.e. no data leaves your machine).
+This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in the browser's localStorage: i.e., no data leaves your machine. Be aware though that all data is deleted when you clear your browser's history/cookies/storage!
 
 We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, Node.js and Express. In the five weeks of the web technology lectures we can only cover the web programming fundamentals. If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
