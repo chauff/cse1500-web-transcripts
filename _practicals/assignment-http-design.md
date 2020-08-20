@@ -46,6 +46,7 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 
 👉 Let's start with a few hints:
 
+- This assignment requires you to work on the shell. If you are not familiar with this type of command line interface, take a look at this [MIT class](https://missing.csail.mit.edu/); it covers the *missing semester of computer science education* and introduces a range of practical tools, including in lesson 1 [the shell](https://missing.csail.mit.edu/2020/course-shell/).
 - To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.ard.de 80|tee out` will save all output to a file called `out`.
 - To exit a telnet session, first press <kbd>CTRL</kbd>+<kbd>]</kbd>. This brings you to a `telnet>` prompt and you can type `close` to end the session.
 - Telnetting `www.domain.com` is usually not the same as telnetting `domain.com`. Make sure your `host` header information matches exactly the domain you telnetted into.
@@ -211,7 +212,7 @@ Having looked at at least three existing implementations of your chosen board ga
 
 //TODO: wireframe demo game link
 
-Similar to the wireframe example of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
+Similar to the wireframe example of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/), [excalidraw](https://excalidraw.com/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
 ### 5.1)
 

@@ -35,6 +35,7 @@ ordering: 2
   - :headphones: Listen to [this podcast with Tom Dale](http://talkingcode.com/podcast/episode-11-tom-dale/) discussing modern web applications and the move from web sites to web apps and an almost *native* experience.
 - Recommended readings:
   - :closed_book: Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
+  - A blog post on the [use of animations to enhance the user experience](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9).
   - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).
   - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected).
   - [Atomic Design by Brad Frost](http://atomicdesign.bradfrost.com/) 
@@ -92,6 +93,8 @@ On the downside, such a cross-platform approach usually brings with it considera
 ## Web design basics
 
 Web design is not trivial. However, a few basic rules go a long way. Most of these principles seem obvious, but in practice are often ignored. This lecture is based on the book [Don't Make Me Think, Revisited (2014)](http://www.sensible.com/dmmt.html) by Steve Krug. In the following sections we go over a number of Krug's rules with concrete examples.
+
+Before you continue, I urge you to head to https://userinyerface.com/ and "play" its game: attempt to fill in the form as quickly as you can. Along the way, you will come across many annoying user interface features that you have undoubtedly come across elsewhere on the web already. This experience showcases why good UI design is so important.
 
 ### Rule: Don't make me think
 
@@ -261,6 +264,8 @@ For example, when we record the performance of the [tudelft.nl](https://www.tude
 ![performance pane](../img/design-performance.png)
 
 In this [waterfall](https://developer.mozilla.org/en-US/docs/Tools/Performance/Waterfall) visualization we see that initially the browser spends most of its time recalculating the style (based on for instance additional images that were loaded); few paint events occur. In general, the following sequence of events is an often recurring one: JavaScript computation :arrow_right: recompute style :arrow_right: recompute layout :arrow_right: repaint.
+
+Web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) track a wide range of web performance metrics for you.
 
 
 ## HTML5

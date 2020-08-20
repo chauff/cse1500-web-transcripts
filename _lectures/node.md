@@ -72,6 +72,7 @@ Node.js is by now a well-established platform; important milestones between 2008
 - May 2015: io.js merges back with Node.js. The [Node.js Foundation](https://foundation.nodejs.org/) is set up. It has been steering Node's development ever since.
 - 2017: Node becomes a **first-class citizen of V8**. This means that no V8 code change is allowed to break Node.
 - August 2018: [Node.js has been downloaded more than one billion times.](https://medium.com/@nodejs/more-than-a-billion-downloads-of-node-js-952a8a98eb42)
+- May 2018: [Deno](https://github.com/denoland/deno) was first introduced by the creator of Node.js (Ryan Dahl) as an improved alternative to Node.js. Though it has gained traction, Node.js remains the leading JavaScript-based server-side runtime.
 
 Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE!). If you want to know more about how the V8 engine and Node.js fit together, watch [this 2017 talk by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler who works/worked on the V8 engine.
 
