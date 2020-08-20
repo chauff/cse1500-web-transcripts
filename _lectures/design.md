@@ -265,7 +265,7 @@ For example, when we record the performance of the [tudelft.nl](https://www.tude
 
 In this [waterfall](https://developer.mozilla.org/en-US/docs/Tools/Performance/Waterfall) visualization we see that initially the browser spends most of its time recalculating the style (based on for instance additional images that were loaded); few paint events occur. In general, the following sequence of events is an often recurring one: JavaScript computation :arrow_right: recompute style :arrow_right: recompute layout :arrow_right: repaint.
 
-Web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) track a wide range of web performance metrics for you.
+Web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) track a wide range of web performance metrics for you. Online scanners such as [webhint.io](https://webhint.io/) (originally coming out of the Microsoft Edge development team) and [PageSpeed Insights](https://developers.google.com/speed/docs/insights/v5/about) (from the Chrome team) exist as well - they do not only provide performance metrics but also list a range of best practices and hints at how to improve a site's performance. 
 
 
 ## HTML5
@@ -323,7 +323,7 @@ The Semantic Web is a Web of data — of dates and titles and part numbers and c
 properties and any other data one might conceive of.
 ```
 
-Let us lastly point to the unfortunately underutilized [`<kbd>` HTML tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd) which represents keyboard input (e.g. <kbd>Shift</kbd>+<kbd>Ctrl</kbd>) and should be used by anyone writing tutorials/documentation in HTML.
+Let us lastly point to the unfortunately underutilized [`<kbd>` HTML tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd) which represents keyboard input (e.g. <kbd>Shift</kbd>+<kbd>Ctrl</kbd>) and is particularly useful when writing programming tutorials (in addition, it is also neatly rendered when writing Markdown on GitHub - the format these lecture notes are created in).
 
 ### Who decides the HTML standard
 
