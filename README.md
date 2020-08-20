@@ -6,4 +6,6 @@ The course page can be found at https://chauff.github.io/Web-Teaching/.
 
 # Setup Notes
 
-Two VSC extensions are important for this setup to remain working: Markdown PDF (to automatically generate PDFs of the lectures and assignments when they are updated) and Markdown All In One to automatically create/update table of contents.
+Two Visual Studio Code extensions are important for this setup to remain efficient: Markdown PDF (to generate PDFs of the lectures and assignments) and Markdown All In One to automatically create/update table of contents.
+
+The PDFs are no longer available on GitHub (to limit the repository's size). They are available on Brightspace. they can also be generated with the mentioned Markdown PDF Visual Studio Code extension.
