@@ -60,7 +60,6 @@ ordering: 5
   - [A blog post on the history of CSS: Old CSS, new CSS](https://eev.ee/blog/2020/02/01/old-css-new-css/)
   - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
   - If you want to look behind the scenes, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
-  - :closed_book: An handbook on the skills and tools necessary to become a modern [front-end developer](https://frontendmasters.com/books/front-end-handbook/2019/).
 - Relevant scientific publications:
   - Meyerovich, L.A. and Bodik, R., 2010. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763) In Proceedings of the 19th international conference on World wide web, pp. 711-720.
   - Panchekha P. and Torlak E., 2016. [Automated reasoning for web page layout](https://doi.org/10.1145/2983990.2984010). In Proceedings of the ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications, pp. 181-194.
