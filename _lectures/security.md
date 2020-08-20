@@ -78,6 +78,7 @@ ordering: 8
   - Kieyzun, Adam, et al. [Automatic creation of SQL injection and cross-site scripting attacks](https://dl.acm.org/citation.cfm?id=1555036). 31st international conference on software engineering. IEEE, 2009.
   - Von Ahn, Luis, et al. [reCAPTCHA: Human-based character recognition via web security measures](http://science.sciencemag.org/content/321/5895/1465). Science 321.5895 (2008): 1465-1468.
   - Acar, Gunes, et al. [The web never forgets: Persistent tracking mechanisms in the wild](https://www.ftc.gov/system/files/documents/public_comments/2015/10/00064-98109.pdf). Proceedings of the ACM SIGSAC Conference on Computer and Communications Security. 2014.
+  - Zimmermann, Markus, et al. [Small world with high risks: A study of security threats in the npm ecosystem](https://www.usenix.org/system/files/sec19-zimmermann.pdf). 28th USENIX Security Symposium. 2019.
 
 ## Learning goals
 
