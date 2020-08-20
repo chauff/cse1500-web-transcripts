@@ -42,7 +42,6 @@ ordering: 3
     - [:bangbang: Example 6: a typing game](#️-example-6-a-typing-game)
 - [Self-check](#self-check)
 
-
 ## Required & recommended readings and activities
 
 - Required readings:
