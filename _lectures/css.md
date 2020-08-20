@@ -72,9 +72,7 @@ ordering: 5
 
 ## Code examples
 
-At [https://codepen.io/charlottehase/full/abzYoQp](https://codepen.io/charlottehase/full/abzYoQp) you find a demo that we developed to show off some of CSS' animation capabilities. Throughout this transcript we will refer to it from time to time---we encourage you to fork it and explore the code. It contains a lot of comments that should help you get started. 
-
-This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
+At [https://codepen.io/charlottehase/full/abzYoQp](https://codepen.io/charlottehase/full/abzYoQp) you find a demo that we developed to show off some of CSS' animation capabilities. Throughout this transcript we will refer to it from time to time---we encourage you to explore its code. It contains a lot of comments that should help you get started. This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
 
 More generally, if you want to find inspirations about what is possible with a bit of HTML, CSS (and JavaScript), it is worthwhile to take a look at [CodePen](https://codepen.io/) and what it has to offer.
 
@@ -92,7 +90,9 @@ This tweet :point_down: sums up a lot of CSS experiences - some things are easy 
 
 Another important bit of information comes from Addy Osmani:
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">border: 1px solid red; is the console.log of CSS</p>&mdash; Addy Osmani (@addyosmani) <a href="https://twitter.com/addyosmani/status/1275700187491639298?ref_src=twsrc%5Etfw">June 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">border: 1px solid red; is the console.log of CSS</p>&mdash; Addy Osmani (@addyosmani) <a href="https://twitter.com/addyosmani/status/1275700187491639298?ref_src=twsrc%5Etfw">June 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Finally, remember to take a look at [caniuse.com](https://caniuse.com/) if you find different browsers showing different renderings of your styling. As a concrete example, you may have noticed that the hyperlink styling on this very website looks slightly different on Firefox and Chrome: while on Firefox the underline and overline are relatively thick, on Chrome they are not. The reason is simply that the CSS property `text-decoration-thickness` is at the moment only supported in Firefox and Safari as seen [here](https://caniuse.com/#search=text-decoration-thickness). 
 
 ## Context
 
