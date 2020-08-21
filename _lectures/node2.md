@@ -31,6 +31,7 @@ ordering: 6
   - [:bangbang: EJS and user-defined functions](#️-ejs-and-user-defined-functions)
   - [:bangbang: JavaScript within EJS templates](#️-javascript-within-ejs-templates)
   - [:bangbang: Express and templates](#️-express-and-templates)
+- [🚩Node.js in production](#nodejs-in-production)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -762,6 +763,10 @@ app.get("/todos", function (req, res) {
 </body>
 </html>
 ```
+
+## 🚩Node.js in production
+
+When deploying a web app in production, there is usually more to it than we can describe in the two Node.js lectures. Testing is a vital aspect we have not yet covered (there will be a whole course on testing later on in your BSc), but also how to reliably run Node.js in production. One tool to help here is [PM2](https://github.com/Unitech/pm2), a popular production process manager with a built-in load balancer.
 
 ## Self-check
 
