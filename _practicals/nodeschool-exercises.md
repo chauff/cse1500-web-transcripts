@@ -66,6 +66,7 @@ These are largely introductory exercises, each one takes no longer than a few mi
 |                       | higher order functions    |        |         | ⚫            |           |       |              |                      |
 |                       | basic: map                |        |         |              | ⚫         |       |              |                      |
 |                       | basic: filter             |        |         |              | ⚫          |       |              |                      |
+|                       | basic: every some             |        |         |              | ⚫          |       |              |                      |
 |                       | basic: reduce             |        |         |              | ⚫          |       |              |                      |
 |                       | basic: recursion          |        |         |              |           |       |              |                      |
 |                       | basic: call               |        |         |              |           |       |              |                      |
@@ -87,20 +88,7 @@ These are largely introductory exercises, each one takes no longer than a few mi
 |                       | stylus css                |        |         |              |           |       |              |                      |
 |                       | param pam pam             |        |         |              |           |       | ⚫            |                      |
 |                       | What's in query           |        |         |              | ⚫         |       |              |                      |
-|                       |                           |        |         |              |           |       |              |                      |
-| [bug-clinic](https://github.com/othiym23/bug-clinic)            | intake                    |        |         |              |           |       |  ◐           |                      |
-|                       | triage                    |        |         |              |           |       | ◐            |                      |
-|                       | disinfect                 |        |         |              |           |       | ◐            |                      |
-|                       | monitor                   |        |         |              |           |       | ◐            |                      |
-|                       | traces                    |        |         |              |           |       |              |                      |
-|                       | test                      |        |         |              |           |       |              |                      |
-|                       | scan                      |        |         |              |           |       | ◐            |                      |
-|                       | probe                     |        |         |              |           |       |              |                      |
-|                       | observe                   |        |         |              |           |       |              |                      |
-|                       | intervene                 |        |         |              |           |       |              |                      |
-|                       | operate                   |        |         |              |           |       |              |                      |
-|                       | biopsy                    |        |         |              |           |       |              |                      |
-|                       | postmortem                |        |         |              |           |       |              |                      |
+|                       | json me           |        |         |              | ⚫         |       |              |                      |
 |                       |                           |        |         |              |           |       |              |                      |
 | [count-to-6](https://github.com/domenic/count-to-6)            | hello es6                 |        |         | ◐            |           |       |              |                      |
 |                       | template strings          |        |         | ⚫            |           |       |              |                      |

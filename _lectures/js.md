@@ -65,6 +65,7 @@ ordering: 3
   - [Tooling and conventions](https://twitter.com/manucorporat/status/1037370271286657024) are vital in the fast-paced world of JavaScript.
   - [The State of JavaScript 2019](https://2019.stateofjs.com/).
   - [Clean Code concepts adapted for JavaScript](https://github.com/ryanmcdermott/clean-code-javascript): a popular GitHub repository with many examples of good and bad code patterns.
+  - If you are already familiar with the concept of software testing, take a look at this article about the [state of JavaScript testing in 2020](https://medium.com/welldone-software/an-overview-of-javascript-testing-7ce7298b9870).
 - Relevant scientific publications:
   - Wirfs-Brock, Allen, and Brendan Eich. [JavaScript: the first 20 years](https://doi.org/10.1145/3386327). Proceedings of the ACM on Programming Languages 4.HOPL (2020): 1-189.
   - Charland, Andre, and Brian Leroux. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Communications of the ACM 54.5 (2011): 49-53.
