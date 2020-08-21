@@ -8,7 +8,15 @@ assignees: ''
 ---
 
 ## Lecture
-Which lecture?
+Which lectures?
+- [] HTTP
+- [] HTML & design
+- [] JavaScript
+- [] Node.js
+- [] CSS
+- [] Node.js II
+- [] Sessions
+- [] Web security
 
 ## What is the problem?
 Describe the issue
