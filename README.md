@@ -4,6 +4,11 @@ This repository contains the web technology course materials for the CSE1500 Web
 
 The course page can be found at https://chauff.github.io/Web-Teaching/.
 
+## Related repositories
+
+- [CSE1500 demo game](https://chauff.github.io/demo-game)
+- [CSE1500 code examples](https://chauff.github.io/demo-code)
+
 # Setup Notes
 
 Two Visual Studio Code extensions are important for this setup to remain efficient: Markdown PDF (to generate PDFs of the lectures and assignments) and Markdown All In One to automatically create/update table of contents.
