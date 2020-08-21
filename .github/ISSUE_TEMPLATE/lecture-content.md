@@ -9,14 +9,14 @@ assignees: ''
 
 ## Lecture
 Which lectures?
-- [] HTTP
-- [] HTML & design
-- [] JavaScript
-- [] Node.js
-- [] CSS
-- [] Node.js II
-- [] Sessions
-- [] Web security
+* [ ] HTTP
+* [ ] HTML & design
+* [ ] JavaScript
+* [ ] Node.js
+* [ ] CSS
+* [ ] Node.js II
+* [ ] Sessions
+* [ ] Web security
 
 ## What is the problem?
-Describe the issue
+Describe the issue ...
