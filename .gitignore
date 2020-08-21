@@ -2,12 +2,10 @@
 **/bin/
 **/package-lock.json
 .vscode/launch.json
-**/asking-game
 *tmp.html
 .DS_Store
 tmp.js
 tmp.html
-demo-code/balloons-game/coverage
 .DS_Store
 tmp.css
 styles.css
