@@ -1820,7 +1820,7 @@ An alternative is [caniuse.com](https://caniuse.com/) which not only provides in
 
 ![caniuse.com user-select](../img/css-user-select.png)
 
-A tedious and boring task (check for the need of vendor-specific prefixes) that does not require any type of creativity and requires lookups in a large database? *A perfect setup for automation.* The npm package [Autoprefixer](https://www.npmjs.com/package/autoprefixer) is a popular tool to do exactly that: it parses vendor-less CSS and automatically adds the correct vendor prefixes. While in our small-scale class project this is not needed, in production-level code such automation (likely part of a much larger chain of process to convert handwritten code) is highly recommended.
+A tedious and boring task (i.e. to check for the need of vendor-specific prefixes) that does not require any type of creativity and requires lookups in a large database? *A perfect setup for automation.* The npm package [Autoprefixer](https://www.npmjs.com/package/autoprefixer) is a popular tool to do exactly that: it parses vendor-less CSS and automatically adds the correct vendor prefixes. While in our small-scale class project this is not needed, in production-level code such automation (likely part of a much larger chain of processes to convert handwritten code) is highly recommended.
 
 
 ## Self-check
