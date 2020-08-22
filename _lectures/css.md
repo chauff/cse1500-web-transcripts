@@ -1808,7 +1808,11 @@ main:fullscreen {
 
 This approach has now been *largely* deprecated. Most CSS rules/properties are interpretable across modern browsers without requiring vendor prefixes. So how do you know which rules/properties require or do not require such prefixes? One approach is simply to initially avoid all vendor prefixes and use each browser's dev tools to determine whether a CSS rule/property is recognized. It may not be recognized because it is not implemented in the rendering engine or requires a vendor prefix. 
 
-As an example, compare how the hovered-over hyperlinks look like on our course page on Firefox and Chrome. Firefox's CSS rendering engine implements the CSS property `text-decoration-thickness`: ![](../images/../img/css-firefox-link.png?display=inline-block). Chrome's rendering engine does not (yet?) implement it. Correspondingly, Chrome's developer tools show a warning that this is an unrecognized property :point_down::
+As an example, compare how the hovered-over hyperlinks look like on our course page on Firefox and Chrome. Firefox's CSS rendering engine implements the CSS property `text-decoration-thickness` and thus hovered links look as follows:
+
+<img src="../images/../img/css-firefox-link.png" width="200">
+
+Chrome's rendering engine does not (yet?) implement it (:point_down: *note the thinner lines and the smaller gap between the font and the underline in comparison to Firefox's rendering above*). Correspondingly, Chrome's developer tools show a warning that this is an unrecognized property :point_down::
 
 ![Google Chrome dev tools](../img/css-chrome-text-decoration.png)
 
