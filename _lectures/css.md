@@ -1793,7 +1793,7 @@ We can make use of the [`transition`](https://developer.mozilla.org/en-US/docs/W
 
 ## Browser-specific prefixes
 
-A last word on **vendor prefixes**. Older existing CSS code snippets will contain vendor prefixes. As an example, consider this [Stack Overflow question](https://stackoverflow.com/questions/20586143/css-animation-vs-transition). It contains CSS properties such as `-webkit-transition`, `-webkit-animation-duration` and so on. In the past, browser vendors decided to use [browser-specific prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) to include experimental CSS features in their rendering engines. This led to a lot of duplicate code, e.g.
+A last word on **vendor prefixes**. Many CSS code snippets you find online will contain vendor prefixes. As an example, consider this [Stack Overflow question](https://stackoverflow.com/questions/20586143/css-animation-vs-transition). It contains CSS properties such as `-webkit-transition`, `-webkit-animation-duration` and so on. In the past, browser vendors decided to use [browser-specific prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) to include experimental CSS features in their rendering engines. This led (and is still leading) to a lot of duplicate code, e.g.
 
 ```css
  main:-webkit-full-screen {
@@ -1806,7 +1806,18 @@ main:fullscreen {
 } /* W3C proposal */
 ```
 
-This approach has now been deprecated and although the vendor-specific prefixed properties still work, the use of such properties should be avoided.
+This approach has now been *largely* deprecated. Most CSS rules/properties are interpretable across modern browsers without requiring vendor prefixes. So how do you know which rules/properties require or do not require such prefixes? One approach is simply to initially avoid all vendor prefixes and use each browser's dev tools to determine whether a CSS rule/property is recognized. It may not be recognized because it is not implemented in the rendering engine or requires a vendor-specific prefix. 
+
+As an example, compare how the hovered-over hyperlinks look like on our course page on Firefox and Chrome. Firefox's CSS rendering engine implements the CSS property `text-decoration-thickness` which Chrome's rendering engine does not (yet?) implement. Correspondingly, Chrome's developer tools show a warning that this is an unrecognized property :point_down::
+
+![Google Chrome dev tools](../img/css-chrome-text-decoration.png)
+
+An alternative is [caniuse.com](https://caniuse.com/) which not only provides information on which CSS rules/properties are implemented but also on their need for a vendor-specific prefix. Here is an example of the CSS property `user-select` for which (among others) the Safari browser requires the use of the `-webkit` prefix :point_down::
+
+![caniuse.com user-select](../img/css-user-select.png)
+
+A tedious and boring task (check for the need of vendor-specific prefixes) that does not require any type of creativity and requires lookups in a large database? *A perfect setup for automation.* The npm package [Autoprefixer](https://www.npmjs.com/package/autoprefixer) is a popular tool to do exactly that: it parses vendor-less CSS and automatically adds the correct vendor-specific prefixes. While in our small-scale class project this is not needed, in production-level code such automation (likely part of a much larger chain of process to convert handwritten code) is highly recommended.
+
 
 ## Self-check
 
