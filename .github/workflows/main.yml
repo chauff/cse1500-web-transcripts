@@ -1,16 +1,10 @@
 # Name of workflow
 name: Check all URLs
 
-# Run workflow once a week at 11:35pm
-#on:
-#  schedule:
-#    - cron: '55 23 * * 0'
-  # Run workflow on pushes to main branch
-#  push:
-#    branches:
-#      - main
-
+# Run workflow once a week on Mondays at 1:10am
 on:
+  schedule:
+    - cron: 10 1 * * 1'
   workflow_dispatch
 
 # Steps to carry out
@@ -42,6 +36,7 @@ jobs:
         node checkURLsInMarkdown.js
         cat urlCheck.txt
 
+    # Make the output file available as an artifact
     - name: Uploading artifact
       uses: actions/upload-artifact@v2
       with:
