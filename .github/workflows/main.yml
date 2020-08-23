@@ -4,7 +4,11 @@ name: Check all URLs
 # Run workflow once a week at 11:35pm
 on:
   schedule:
-    - cron: '35 23 * * 0'
+    - cron: '55 23 * * 0'
+  # Run workflow on pushes to main branch
+  push:
+    branches:
+      - main
 
 # Source of much of the workflow: https://dev.to/curtiscodes/self-updating-github-profile-readme-with-javascript-lhm
 # Steps to carry out
