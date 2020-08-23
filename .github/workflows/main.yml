@@ -42,11 +42,8 @@ jobs:
         node checkURLsInMarkdown.js
         cat urlCheck.txt
 
-    # Commit changes
-    - name: Commit
-      run: |-
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add -f urlCheck.txt
-        git commit -m "urlCheck file"
-        git push
+    - name: Uploading artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: urlCheck
+        path: urlCheck.txt
