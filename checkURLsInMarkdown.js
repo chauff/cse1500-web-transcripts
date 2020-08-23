@@ -71,7 +71,7 @@ let parseMarkdownFiles = (function () {
                                 outFile.write("[" + res.statusCode + "] " + file + " => " + link + "\n");
 
                             }).on('error', (e) => {
-                                outFile.write("[ERROR] " + file + " => " + link + "\n");
+                                outFile.write("[ERROR] " + e.message + " " + file + " => " + link + "\n");
                             });
                         }
                     });
