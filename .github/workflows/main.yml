@@ -1,11 +1,11 @@
 # Name of workflow
 name: Check all URLs
 
-# Run workflow once a week on Sundays at 23:15 UTC
+# Run workflow once a week 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 23 * * 0'
+    - cron: '15 1 * * 1'
       
 # Steps to carry out
 jobs:
