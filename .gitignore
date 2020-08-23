@@ -10,3 +10,4 @@ tmp.html
 tmp.css
 styles.css
 generatedPDFs/*.pdf
+.DS_Store

@@ -130,15 +130,16 @@ The user's style sheet overrides the other two and the author's style sheet over
 
 Style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
 
-You know that in the following code snippet :point_down::
+You know that the following code snippet shows a **CSS rule** :point_down::
 
 ```css
 body {
   background-color: #ffff00;
+  color: gold;
 }
 ```
 
-`body` is a **selector**, `background-color` is a **property** and `#ffff00` is a **value**. You know the difference between a `class` and an `id` attribute and how to use both.
+:point_up: Here, `body` is a **selector**, `background-color` and `color` are **properties** and `#ffff00` as well as `gold` are **values**. You know the difference between a `class` and an `id` attribute and how to use both.
 
 *Note*: In this example :point_up: the color value is represented by its hex value. Throughout this transcript, we often use color names - there are more than 140 color names that all modern browsers recognize ([a nicely formatted list on is available on Wikipedia](https://en.wikipedia.org/wiki/Web_colors#X11_color_names)). Besides hex values, colors can also be represented by their `rgba` values (red, green, blue, alpha). We suggest [convertingcolors.com](https://convertingcolors.com/) as one option to convert between different color formats. 
 
