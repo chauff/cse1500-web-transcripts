@@ -10,7 +10,6 @@ on:
     branches:
       - main
 
-# Source of much of the workflow: https://dev.to/curtiscodes/self-updating-github-profile-readme-with-javascript-lhm
 # Steps to carry out
 jobs:
   build:
@@ -43,6 +42,8 @@ jobs:
     # Commit changes
     - name: Commit
       run: |-
-        git add urlCheck.txt
-        git commit -m "url check completed"
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add .
+        git commit -m "generated"
         git push
