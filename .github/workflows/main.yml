@@ -1,10 +1,29 @@
-on: [push]
-
+# Source of much of the workflow: https://dev.to/curtiscodes/self-updating-github-profile-readme-with-javascript-lhm
+# Steps to carry out
 jobs:
   build:
+    # Create a ubuntu virtual machine
     runs-on: ubuntu-latest
 
+    # Checkout repo code
     steps:
-    - uses: actions/checkout@v2
-    - name: check-urls
-      uses: chauff/link-checker-action@v1
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    # Install node
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.16
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm test
+      env:
+        CI: true
+
+    # Run script checkURLsinMarkdown.js
+    # Show the results
+    - name: Check URLs
+      run: |-
+        node checkURLsInMarkdown.js
+        cat urlCheck.txt
