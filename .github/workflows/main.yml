@@ -1,10 +1,10 @@
 # Name of workflow
 name: Check all URLs
 
-# Run workflow once a week at 11:45pm
+# Run workflow once a week at 11:35pm
 on:
   schedule:
-    - cron: '25 23 * * 0'
+    - cron: '35 23 * * 0'
 
 # Source of much of the workflow: https://dev.to/curtiscodes/self-updating-github-profile-readme-with-javascript-lhm
 # Steps to carry out
@@ -35,3 +35,10 @@ jobs:
       run: |-
         node checkURLsInMarkdown.js
         cat urlCheck.txt
+
+    # Commit changes
+    - name: Commit
+      run: |-
+        git add urlCheck.txt
+        git commit -m "url check completed"
+        git push
