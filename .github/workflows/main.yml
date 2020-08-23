@@ -1,10 +1,10 @@
 # Name of workflow
 name: Check all URLs
 
-# Run workflow once a week at 11pm
+# Run workflow once a week at 11:45pm
 on:
   schedule:
-    - cron: '0 23 * * 0'
+    - cron: '25 23 * * 0'
 
 # Source of much of the workflow: https://dev.to/curtiscodes/self-updating-github-profile-readme-with-javascript-lhm
 # Steps to carry out
