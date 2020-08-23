@@ -3,10 +3,10 @@ name: Check all URLs
 
 # Run workflow once a week on Mondays at 1:10am
 on:
+  workflow_dispatch:
   schedule:
     - cron: 10 1 * * 1'
-  workflow_dispatch
-
+      
 # Steps to carry out
 jobs:
   build:
