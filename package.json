@@ -1,12 +1,12 @@
 {
-    "name": "chauff",
-    "version": "1.0.0",
-    "description": "Check URLs across all Markdown files",
-    "main": "checkURLsInMarkdown.js",
-    "scripts": {},
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/chauff/Web-Teaching.git"
-    },
-    "author": "Claudia Hauff"
-  }
+  "name": "chauff",
+  "version": "1.0.0",
+  "description": "Check URLs across all Markdown files",
+  "main": "checkURLsInMarkdown.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chauff/Web-Teaching.git"
+  },
+  "author": "Claudia Hauff"
+}
