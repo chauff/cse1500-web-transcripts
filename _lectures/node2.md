@@ -460,7 +460,7 @@ app.get('/todos',
         res.json(todosA);
     },
     function(req,res, next){
-        if (Math.random() < 0.66) {
+        if (Math.random() < 0.5) {
             return next();
         }
         console.log("Todos in schema B returned");
