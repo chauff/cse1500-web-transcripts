@@ -5,7 +5,7 @@ name: Check all URLs
 on:
   workflow_dispatch:
   schedule:
-    - cron: 10 1 * * 1'
+    - cron: '10 1 * * 1'
       
 # Steps to carry out
 jobs:
