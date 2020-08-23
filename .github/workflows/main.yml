@@ -2,13 +2,16 @@
 name: Check all URLs
 
 # Run workflow once a week at 11:35pm
-on:
-  schedule:
-    - cron: '55 23 * * 0'
+#on:
+#  schedule:
+#    - cron: '55 23 * * 0'
   # Run workflow on pushes to main branch
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
+
+on:
+  workflow_dispatch
 
 # Steps to carry out
 jobs:
