@@ -3,6 +3,7 @@ layout: default
 permalink: /http/
 linkname: HTTP
 ordering: 1
+updateWarning: true
 ---
 
 HTTP: the language of Web communication <!-- omit in toc -->

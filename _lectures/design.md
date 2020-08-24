@@ -3,6 +3,7 @@ layout: default
 permalink: /html/
 linkname: HTML
 ordering: 2
+updateWarning: true
 ---
 
 # HTML: the language of the Web <!-- omit in toc -->

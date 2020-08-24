@@ -3,6 +3,7 @@ layout: default
 permalink: /nodejs/
 linkname: Node.js I
 ordering: 4
+updateWarning: true
 ---
 
 # Node.js: JavaScript on the server <!-- omit in toc -->

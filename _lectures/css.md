@@ -3,6 +3,7 @@ layout: default
 permalink: /css/
 linkname: CSS
 ordering: 5
+updateWarning: true
 ---
 
 # CSS: the language of web design <!-- omit in toc -->

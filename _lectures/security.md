@@ -3,6 +3,7 @@ layout: default
 permalink: /security/
 linkname: Web security
 ordering: 8
+updateWarning: true
 ---
 
 # Web security <!-- omit in toc -->
