@@ -9,6 +9,8 @@ collections:
     output: true
     sort_by: ordering #should work with Jekyll 4
 
+updateWarning: The materials are currently being updated for the 2020/21 course edition. Some content may still change.
+
 plugins:
   - jemoji
   - jekyll-remote-theme
