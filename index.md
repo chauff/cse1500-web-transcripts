@@ -12,8 +12,6 @@ This website contains **all materials of the web technology part** of the course
 
 We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, Node.js and Express. In the five weeks of the web technology lectures we can only cover the web programming fundamentals. If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
-:warning: **The materials are currently being updated for the 2020/21 edition.**
-
 ## Table of contents <!-- omit in toc -->
 - [Web technology instructor](#web-technology-instructor)
 - [Book](#book)
