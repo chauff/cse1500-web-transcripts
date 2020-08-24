@@ -10,8 +10,6 @@ updateWarning: true
 
 The first part of this assignment gives you hands-on experience with **HTTP**. In the second part you will make a head start with the design of your **board game web application** (which you will further develop the next two assignments).
 
-**An automatically generated PDF of this assignment is available [here](../generatedPDFs/assignment-http-design.pdf).**
-
 ## 0. Preliminaries
 
 Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.

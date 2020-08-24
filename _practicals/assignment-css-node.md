@@ -12,8 +12,6 @@ In the first part of this assignment, you will employ *CSS* to make your splash 
 
 In the second part of this assignment, you will implement a number of smaller items, that each do not take a lot of time, but round off your application and showcase additional abilities of Node.js and the browser.
 
-**An automatically generated PDF of this assignment is available [here](../generatedPDFs/assignment-css-node.pdf).**
-
 ## 0. Preliminaries
 
 Remember that this is a group assignment! Work efficiently as a team! Both team members **must contribute to the code** and **both team members must understand the code**. The group interview will focus on having the required functionality and showing off your understanding of the code.
