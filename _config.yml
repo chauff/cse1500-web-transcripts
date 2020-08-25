@@ -2,19 +2,27 @@ baseurl: "/Web-Teaching/"
 remote_theme: chauff/cse-theme
 
 collections:
-  practicals:
-    output: true
-    sort_by: ordering #should work with Jekyll 4
   lectures:
     output: true
-    sort_by: ordering #should work with Jekyll 4
+    sort_by: ordering
+  practicals:
+    output: true
+    sort_by: ordering
 
 updateWarning: The materials are currently being updated for the 2020/21 course edition. Some content may still change.
+
+footerImage: ../images/tudelft-ewi.svg
+
+#headerImage: ../images/tudelft_ewi_bw.jpg #goes well with the light-grey-theme.css
+#cssTheme: light-grey-theme.css
+
+headerImage: ../images/tudelft_ewi.jpg #goes well with colorful themes
+cssTheme: /assets/css/default.css
 
 plugins:
   - jemoji
   - jekyll-remote-theme
-
+  
 markdown: kramdown
 # !github-pages! mandatory › https://help.github.com/articles/using-jekyll-with-pages/#configuration-settings-you-cannot-change
 # Since Jekyll 3 the default highlighter is Rouge (replaced Pygments.rb in v44)
