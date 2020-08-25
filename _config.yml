@@ -14,7 +14,7 @@ updateWarning: The materials are currently being updated for the 2020/21 course 
 footerImage: ../images/tudelft-ewi.svg
 
 headerImage: ../images/tudelft_ewi_bw.jpg #goes well with the light-grey-theme.css
-cssTheme: /assets/css/light-grey-theme.css
+cssTheme: /assets/css/light-blue-theme.css
 
 #headerImage: ../images/tudelft_ewi.jpg #goes well with colorful themes
 #cssTheme: /assets/css/default.css
