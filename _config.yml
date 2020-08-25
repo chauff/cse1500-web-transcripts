@@ -11,10 +11,10 @@ collections:
 
 warning: The materials are being updated for the 2020/21 course edition. Some content may still change.
 
-footerImage: ../images/tudelft-ewi.svg
+footerImage: ../images/tudelft-ewi-light-footer.svg
 headerImage: ../images/tudelft_ewi_bw.jpg
-cssTheme: themes/dark-pink.css
-isDarkTheme: true
+cssTheme: themes/light-grey.css
+isDarkTheme: false
 
 plugins:
   - jemoji
