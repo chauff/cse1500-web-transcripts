@@ -3,7 +3,7 @@ layout: default
 permalink: /nodejs2/
 linkname: Node.js II
 ordering: 6
-updateWarning: true
+warning: true
 ---
 
 # Advanced Node.js <!-- omit in toc -->

@@ -3,7 +3,7 @@ layout: default
 permalink: /sessions/
 linkname: Sessions et al.
 ordering: 7
-updateWarning: true
+warning: true
 ---
 
 # Cookies, sessions and third-party authentication <!-- omit in toc -->

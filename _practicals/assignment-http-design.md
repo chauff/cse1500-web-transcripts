@@ -3,7 +3,7 @@ layout: default
 permalink: /assignmentI/
 linkname: Assignment HTTP+Design
 ordering: 1
-updateWarning: true
+warning: true
 ---
 
 # Assignment HTTP+Design

@@ -3,7 +3,7 @@ layout: default
 permalink: /assignmentII/
 linkname: Assignment JS+Node
 ordering: 2
-updateWarning: true
+warning: true
 ---
 
 # Assignment JS+Node

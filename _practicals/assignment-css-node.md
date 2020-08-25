@@ -3,7 +3,7 @@ layout: default
 permalink: /assignmentIII/
 linkname: Assignment CSS+Node
 ordering: 3
-updateWarning: true
+warning: true
 ---
 
 # Assignment CSS+Node
