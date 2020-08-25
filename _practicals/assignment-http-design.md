@@ -219,7 +219,6 @@ Create a design for the splash screen (also known as *entry page*): think of a n
 
 If you are looking for a color scheme for your design, take a look at [Google's Material palette generator](https://material.io/design/color/the-color-system.html#tools-for-picking-colors) or [Adobe's Color theme generator](https://color.adobe.com/create/color-wheel). While it is beyond the scope of our course to discuss color design choices, we recommend those interested in building web/mobile apps to take a more in-depth look at Google's [Material Design Guide](https://material.io/): it provides not only a color palette generator but also discusses Google's view on modern web design.
 
-
 ### 5.2)
 
 Create a design for the game screen, keeping the requirements listed above in mind as well as your findings in Exercise 4.3).
