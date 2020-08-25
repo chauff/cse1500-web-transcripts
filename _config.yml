@@ -13,7 +13,7 @@ updateWarning: The materials are being updated for the 2020/21 course edition. S
 
 footerImage: ../images/tudelft-ewi.svg
 headerImage: ../images/tudelft_ewi.jpg
-cssTheme: /assets/css/light-grey.css
+cssTheme: /assets/css/themes/light-grey.css
 
 plugins:
   - jemoji
