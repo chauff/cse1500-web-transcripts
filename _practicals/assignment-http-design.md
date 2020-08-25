@@ -215,6 +215,7 @@ Similar to the wireframe example of the demo game, start designing your own appl
 
 ### 5.1)
 
+
 Create a design for the splash screen (also known as *entry page*): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/). The [noun project](https://thenounproject.com/) can be a useful resource for game pieces.
 
 If you are looking for a color scheme for your design, take a look at [Google's Material palette generator](https://material.io/design/color/the-color-system.html#tools-for-picking-colors) or [Adobe's Color theme generator](https://color.adobe.com/create/color-wheel). While it is beyond the scope of our course to discuss color design choices, we recommend those interested in building web/mobile apps to take a more in-depth look at Google's [Material Design Guide](https://material.io/): it provides not only a color palette generator but also discusses Google's view on modern web design.
