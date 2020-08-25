@@ -17,3 +17,4 @@ Two Visual Studio Code extensions are important for this setup to remain efficie
 The PDFs are no longer available on GitHub (to limit the repository's size). They are available on Brightspace. they can also be generated with the mentioned Markdown PDF Visual Studio Code extension.
 
 GitHub Actions workflow: after a manual trigger (head to the Actions tab to trigger) or on a weekly basis, all links are extracted from the Markdown files in this repo (except README.md) and their returned status code is recorded. Anything beyond a status code 400 should be checked. The report resides as artifact on the Actions tab and is called `urlCheck`. 
+
