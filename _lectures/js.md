@@ -427,7 +427,10 @@ A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.fil
 :bug: Throughout this and the coming lectures we repeatedly point to the browser's web console as a quick way to explore JavaScript. [In the words of Kyle Simpson](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#its-not-always-js):
 
 ```
-The developer console is not trying to pretend to be a JS compiler that handles your entered code exactly the same way the JS engine handles a .js file. It's trying to make it easy for you to quickly enter a few lines of code and see the results immediately. These are entirely different use-cases, and as such, it's unreasonable to expect one tool to handle both equally.
+The developer console is not trying to pretend to be a JS compiler that handles your entered code exactly the same way 
+the JS engine handles a .js file. It's trying to make it easy for you to quickly enter a few lines of code and see the 
+results immediately. These are entirely different use-cases, and as such, it's unreasonable to expect one tool to handle 
+both equally.
 ```
 
 Thus, are (very few) specific instances where different browsers' web consoles interpret the same code snippet slightly differently and differently to the browser's JavaScript runtime engine. 
