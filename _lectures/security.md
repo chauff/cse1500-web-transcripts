@@ -308,7 +308,7 @@ SQL injections are of such great practical importance that we will dedicate more
 
 Recall that in order to establish *sessions*, cookies are used ([previous lecture](Lecture-sessions.md)). A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
 
-![Session](../img/security-sessions.png)
+![Session](../img/sessions-sessions.png)
 
 An attacker can exploit broken authentication and session management functions to impersonate a user. In the latter case, the attacker only needs to acquire knowledge of a user's session cookie ID. This can happen under several conditions:
 
