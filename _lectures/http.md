@@ -9,7 +9,7 @@ warning: true
 HTTP: the language of Web communication <!-- omit in toc -->
 ==
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 
@@ -98,17 +98,23 @@ The vision of the World Wide Web was already developed in the 1940s by Vannevar 
 
 In the 1960s, the first steps from vision to reality were made by DARPA, the *Defense Advanced Research Projects Agency* of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate.
 
-It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). **This protocol (and how it enables the web to function as we know it today) is what this lecture is all about.** Tim Berners-Lee remains an important figure in the web community today, in fact, he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
+It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). **This protocol (and how it enables the web to function as we know it today) is what this lecture is all about.** Tim Berners-Lee remains an important figure in the web community today; he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
 
-In the early days of the web, browsers looked nothing like they do today; one of the earliest one was [Lynx](http://lynx.invisible-island.net/), a text-based browser that is functioning to this day. Here is how `google.com` and `amazon.com` are rendered on Lynx:
+In the early days of the web, browsers looked nothing like they do today; one of the earliest one was [Lynx](http://lynx.invisible-island.net/), a text-based browser that is functioning to this day. Take a look at how `google.com` and `amazon.com` are rendered on Lynx:
 
 ![](../img/http-lynx-google.png)
 
+<sup>Google.com as rendered by the Lynx browser.</sup>
+
 ![](../img/http-lynx-amazon.png)
 
-Another example (offically the second browser ever created) is the Line Mode browser, a simulator of which is available at [http://line-mode.cern.ch/](http://line-mode.cern.ch/).
+<sup>Amazon.com as rendered by the Lynx browser.</sup>
 
-Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
+If you are inclined to try text-based browsers yourself, take a look at [browsh](https://www.brow.sh), a modern-day text-based browser.
+
+Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft's Internet Explorer. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. [Brave](https://brave.com/) was launched in 2016, advertised as browser that takes users' privacy seriously. 
+
+The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
 
 ### Key aspects of the Internet
 
@@ -116,7 +122,7 @@ The web is built on top of the Internet. The Internet describes the hardware lay
 The different sub-networks function autonomously, they do not depend on each other. There is not a single master - no machine or sub-network is in control of the whole network. It is very easy for machines or even entire sub-networks to join and leave the network without interrupting the flow of data among the remaining network.
 All devices interact with each other through **agreed-upon open standards** which are easy to use. These standards are implemented in a wide range of open-source server and client software.
 
-To show how far we have come, [here](https://twitter.com/workergnome/status/807704855276122114) is the state of the Internet in 1973.
+To show how far we have come, [take a look](https://twitter.com/workergnome/status/807704855276122114) at the **entire** state of the Internet in 1973.
 
 ### Two important organizations
 
@@ -129,34 +135,34 @@ To many, the IETF is a lesser known organization, and while you may not often co
 
 ## HTTP messages
 
-[Important versions](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP) of the protocol are the following:
+Let's now turn to HTTP, the hypertext transfer protocol, the focus of this lecture. [Important versions](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP) of the protocol are the following:
 
 - **HTTP/0.9** was the first version the protocol (very limited in power, developed between 1989-1991).
-- **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardized in 1997. HTTP/1.1 is the first **standardized** version of http.
+- **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardized in 1997. HTTP/1.1 is the first **standardized** version of HTTP.
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
 - **HTTP/3** has not been standardized yet, though an [RFC draft](https://tools.ietf.org/html/draft-ietf-quic-http-29) already exists.
 
-HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol (*speedy protocol*); [more details here](https://developers.google.com/web/fundamentals/performance/http2/). As HTTP/1.1 is still the dominant protocol type on the web, we focus on it in this lecture.
+HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol (*speedy protocol*); [more details here](https://developers.google.com/web/fundamentals/performance/http2/).For those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses. 
 
-We do not cover HTTP/3 in this lecture, for those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses. 
+**As HTTP/1.1 is still the dominant protocol type on the web, we focus on it in this lecture. Unless stated otherwise, the following contents is all about HTTP/1.1.**
 
 ### Web servers and clients
 
-On the web, clients and servers communicate with each other through **HTTP requests** and **HTTP responses**. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/` your web browser is acting as the **client** (sending an HTTP request). The **server** is your email provider (sending an HTTP response).
+On the web, clients and servers communicate with each other through **HTTP requests** and **HTTP responses**. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/`, your web browser is acting as the **client** sending an HTTP request. Your email provider is acting as the **server**, sending an HTTP response. 
 
 ![HTTP request and response](../img/http-http-req-res.png)
 
 How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources**, that is any kind of content with an identity on the web. This can be static files, web services, but also dynamically generated content. As long as they are accessible through an identifier, they can be considered as web resources.
-The **client initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
+The **client always initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
 **HTTP proxies** are part of the Internet's infrastructure - there are many devices between a client and server that forward or process (e.g. filtering of requests, caching of responses) the HTTP requests and responses. 
 
 ### Network communication
 
-Where does HTTP fit into the **network stack**, i.e. the set of protocols ("stacked" on top of each other) that together define how communication over the Internet happens? A very common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model*:
+Where does HTTP fit into the **network stack**, i.e. the set of protocols ("stacked" on top of each other) that together define how communication over the Internet happens? A common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model*:
 
 ![Zimmermann's OSI model](../img/http-OSI.png)
 
-<sup>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702)</sup>
+<sup>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702). For our purposes the two outer stacks can be considered client and server, the middle ones are HTTP proxies. An HTTP message travels down the network stack on the device being transformed in every layer potentially into multiple messages which are then transmitted via the physical network. At the other end, these messages travel up the device's network stack again, being transformed in every layer and then at the final layer the HTTP message is reassembled.</sup>
 
  It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails. 
 
@@ -174,23 +180,27 @@ HTTP is at the top of the stack, and TCP builds on top of IP. Important to know 
 
 Open a modern browser and use its built-in **web development tools** to see what **HTTP messages** are exchanged when loading a web site. 
 
-The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to ``Tools >> Web Developer``. The Chrome Developer tools can be reached via the toolbar, navigating to ``View >> Developer >> Developer Tools``. There are several panels, we here take a look at the **Network panel** on Firefox and how it looks after the user requested the web page residing at the URL https://www.tudelft.nl/:
+The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to ``Tools » Web Developer``. The Chrome Developer tools can be reached via the toolbar, navigating to ``View » Developer » Developer Tools``. There are several panels, we here take a look at the **Network panel** on Firefox and how it looks after the user requested the web page residing at the URL [https://www.tudelft.nl/](https://www.tudelft.nl/) :point_down::
 
 ![Browser built-in web dev tools](../img/http-devtools.png)
 
-:point_up: You can see that the resource initially requested (`/`, i.e. the page residing at the URL https://www.tudelft.nl/) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (31 to be exact). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each http request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than three seconds to receive a response from the server when requesting the page residing at https://www.tudelft.nl/ and nearly five seconds to complete all requests. This is actually not a lot of resources; head over to a site like [Volkskrant](https://www.volkskrant.nl/), [NYTimes](https://www.nytimes.com/) or the [Guardian](https://www.theguardian.com/international) and look at the cascade of resource requests - at the end a few hundred resources will have been requested.
+<sup>Firefox's dev tools. Screenshot taken August 28, 2020.</sup>
 
-Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in Firefox's *Headers panel* (which appears within the Network panel) when clicking on a particular resource row :point_down: :
+:point_up: You can see that the resource initially requested (`/`, i.e. the page residing at the URL [https://www.tudelft.nl/]((https://www.tudelft.nl/)) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (33 to be exact as shown in the bottom left of the network panel). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each HTTP request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than one second to receive a response from the server when requesting `/` and about three seconds to complete all requests. This is actually not a lot of resources; head over to a site like [Volkskrant](https://www.volkskrant.nl/), [NYTimes](https://www.nytimes.com/) or the [Guardian](https://www.theguardian.com/international) and look at the cascade of resource requests - it is not uncommon to end up with 100+ requests.
+
+Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in Firefox's *Headers panel* (which appears within the Network panel) when clicking on a particular resource row :point_down::
 
 ![Browser built-in web dev tools](../img/http-devtools2.png)
 
-:point_up: Note that above the request header is neatly organized, toggle the *Raw Headers* button to see how the request and response headers look in their raw format (i.e. how the header information is transferred).
+<sup>Firefox's dev tools. Screenshot taken August 28, 2020.</sup>
+
+:point_up: The **Response Headers** panel is neatly organized. To see the actual "raw" format of the headers that are sent as part of HTTP messages, toggle the *Raw Headers* button.
 
 Now that you have a first idea of what HTTP messages are about, let's dive into the details!
 
 ### HTTP request message
 
-Below is a typical HTTP request message:
+Remember that HTTP request messages are always sent by the client. Below is a typical HTTP request message:
 
 ```
 GET / HTTP/1.1
@@ -203,10 +213,10 @@ DNT: 1
 Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 ```
 
-HTTP/1.1 is a **plain text protocol** and **line-oriented**.
+:point_uHTTP/1.1 is a **plain text protocol** and **line-oriented**.
 The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number `1.1` indicates the highest version of HTTP that an application supports.  
 
-What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. The `host` header enables several domains to reside at the same IP address (i.e. server colocation). The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on.
+:point_up: What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. Once you start creating your own HTTP request messages, you may wonder why we need the `host` header, given that we provide a domain name or IP address (what this exactly means is explained later on in this transcript) before creating HTTP messages. We need the `host` header, it enables **several domains** to reside at **the same IP address** (this is also called server colocation). The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on.
 
 In the last line, you can see that in this request, a cookie is sent from the client to server.
 
@@ -214,7 +224,7 @@ In the last line, you can see that in this request, a cookie is sent from the cl
 
 ### HTTP response message
 
-The server that received the above HTTP request may now assemble the following response:
+The server that received the above HTTP request may now assemble the following response :point_down::
 
 ```
 HTTP/1.1 200 OK
@@ -229,9 +239,7 @@ Server: TU Delft Web Server
 [..body..]
 ```
 
-Here, `[..xx..]` indicates other message content we are not interested in at the moment.
-
-The first line indicates the status of the response. In this case, the requested **resource exists** and the client is authorized to access it. Thus, the server sends back the status `200 OK`: everything is okay, the resource was found, you are allowed to receive it.
+:point_up: Here, `[..xx..]` indicates other message content we are not interested in at the moment. The first line indicates the status of the response. In this case, the requested **resource exists** and the client is authorized to access it. Thus, the server sends back the status `200 OK`: everything is okay, the resource was found, you are allowed to receive it.
 The response is then structured into **response header fields** in the `name:value` format, and the **response body** which contains the actual content. The body is optional - if the requested resource is not found, an error status code without a body would be returned to the client.
 The header fields contain important information for the client to understand the data being sent, including the type of content, the length and so on. Without this information, the client would be unable to process the data in the correct manner.
 
@@ -245,7 +253,6 @@ More than fifty header fields exist, a number of well-known ones (though to some
 |------------------|-----------------------------------------------------|
 | **Content-Type**     | Entity type                                         |
 | **Content-Length**   | Length/size of the message                          |
-| Content-Language | Language of the entity sent           |
 | **Content-Encoding** | Data transformations applied to the entity          |
 | Content-Location | Alternative location of the entity                  |
 | Content-Range    | For partial entities, range defines the pieces sent |
@@ -257,18 +264,17 @@ More than fifty header fields exist, a number of well-known ones (though to some
 
 The header fields **in bold** will be covered below in more detail. Let's briefly describe the other fields:
 
-- `Content-Language` indicates the language the resource (also known as entity) is in, which can be English, Dutch or any other language.
 - The `Content-Location` field can be useful if loading times are long or the content seems wrong; it can point to an alternative location where the same web resource resides.
 - `Content-Range` is vital for entities that consist of multiple parts and are sent partially across different HTTP responses; without this information, the client would be unable to piece together the whole entity.
 - `Allow` indicates to the client what type of requests can be made for the entity in question; `GET` is only one of a number of methods, it may also be possible to alter or delete a web resource.
 
 ### Header field Content-Type
 
-This header field informs the client (*for the purpose of this class the client is commonly a web browser*) what type of content is send. We use **MIME types** for this purpose.
+This header field informs the client what type of content is being sent. We use **MIME types** for this purpose.
 
 **MIME** stands for *Multipurpose Internet Mail Extensions* (governed by RFCs [2045](https://tools.ietf.org/html/rfc2045) and [2046](https://tools.ietf.org/html/rfc2046)) and was designed to solve problems when moving messages between electronic mail systems; it worked well and was adopted by HTTP to label its content.
 
-MIME **types** determine how the client reacts - html is rendered, videos are played, and so on.
+MIME **types** determine how the client reacts: html is rendered, videos are played, and so on.
 The pattern is always the same: each MIME type has a **primary object type** and a **subtype**.
 Here are a few typical examples: `text/plain`, `text/html`, `image/jpeg`, `video/quicktime`, `application/vnd.ms-powerpoint`. As you can see in the `text/*` cases, the primary object type can have several subtypes.
 
@@ -304,7 +310,7 @@ lineReader.on('close', function(line) {
         console.log(sortable);
 });
  --->
-Diverse MIME types exist. Below is a list of some of the most and least popular MIME types among 170K web resources sampled from a 2019 large-scale [web crawl](http://commoncrawl.org/):
+Diverse MIME types exist. Below is a list of some of the most popular and least popular MIME types among 170K web resources sampled from a 2019 large-scale [web crawl](http://commoncrawl.org/):
 
 | Most popular          | Least popular               |
 |-----------------------|-----------------------------|
@@ -369,28 +375,32 @@ This is where the `Expires` header field comes in. It indicates to a web cache w
 
 ![Web cache](../img/http-webcache.png)
 
+Nowadays, web caching are just part of the functionality a *Content Delivery Network (CDN)*, i.e. a network of geographically distributed servers which deliver fast access to web resources, provides.   
+
 ### Header field Cache-Control
 
 There is another header that is similar to the `Expires` header: `Cache-Control`. For our purposes, the most important difference is the manner they indicate staleness to the web cache: `Expires` uses an **absolute expiration date**, e.g. *December 1, 2021*, while `Cache-Control` uses a **relative time**, `max-age=<seconds>` since being sent. If both header fields are set, `Cache-Control` takes precedence.
 
 Enabling the origin server to fix in advance how quickly a cached version of a resource goes stale was an important design decision. The alternative would have been to solely rely on web caches to query the origin server to determine whether or not the cached resources are out of date - this would be inefficient though as these kind of enquiries would have to happen very frequently.
 
-Here is an example of the header settings of https://www.theguardian.com/uk :point_down: :
+Here is an example of the header settings of [https://www.theguardian.com/international](https://www.theguardian.com/international) :point_down::
 
 ![Cache-Control Guardian UK](../img/http-cache-control.png)
 
+<sup>Response header (partial). Firefox, August 30, 2020. </sup>
+
 Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that `Cache-Control` directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture (for more information, [check the `Cache-Control` MDN page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)).
 
-Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any cache can store a copy of the response.
+Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any type of cache can store a copy of the response.
 
 
 ### Header field Last-Modified
 
-The `Last-Modified` header field contains the date when the web resource was last altered. There is no header field though that indicates **how much** the resource has changed. Even if only a whitespace was added to a plain-text document, the `Last-Modified` header would change.
+The `Last-Modified` header field contains the date when the web resource was last altered. **There is no header field though that indicates how much the resource has changed.** Even if only a whitespace was added to a plain-text document, the `Last-Modified` header would change.
 
 It is often used in combination with the [`If-Modified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) header. When web caches actively try to revalidate web resources they cache, they only want the web resource sent by the origin server if it has changed since the `Last-Modified` date. If nothing has changed, the origin server simply returns a `304 Not Modified` response; otherwise the updated web resource is sent to the web cache.
 
-`Last-Modified` dates has to be taken with a grain of salt. They are not always reliable, and can be manipulated by the origin server to ensure high cache validation rates for instance.
+`Last-Modified` dates has to be taken with a grain of salt. They are not always reliable, and can be manipulated by the origin server to ensure high cache validation rates. This in turn indicates that the origin server is serving novel content regularly.
 
 ### Header fields Connection & Upgrade
 
