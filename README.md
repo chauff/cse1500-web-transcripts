@@ -6,7 +6,7 @@ The course page can be found at https://chauff.github.io/Web-Teaching/.
 
 ## Related repositories
 
-- [CSE1500 demo game](https://github.com/chauff/demo-game)
+- [CSE1500 demo game](https://github.com/chauff/balloons-game)
 - [CSE1500 code examples](https://github.com/chauff/demo-code)
 - [CSE1500 website theme](https://github.com/chauff/cse-theme/)
 
