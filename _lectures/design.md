@@ -312,19 +312,17 @@ As a concrete example, here is the browser support overview of HTML5 form featur
 
 <sup>Screenshot taken on September 2, 2020.</sup>
 
-We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices - depending on their target population (and the most popular browsers among the target population), certain HTML5 features should be employed *with care*. That does not mean to *not* use the latest HTML5 features, it just means that we need to be considerate of our users and provide them with options, even if they rely on browsers that are not supporting the features we use. As a concrete example, let's use the `<input type="date">` widget. Here is how the [MDN demo](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date) is rendered on Firefox vs. Safari :point_down::
+We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices - depending on their target population (and the most popular browsers among the target population), certain HTML5 features should be employed *with care*. That does not mean to *not* use the latest HTML5 features, it just means that we need to be considerate of our users and provide them with options, even if they rely on browsers that are not supporting the features we use. As a concrete example, let's use the `<input type="date">` widget. Here is how the [MDN demo on this input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date) is rendered on Firefox and Safari respectively :point_down::
 
 ![HTML5 input date Firefox](../img/design-inputDate-firefox.png)
 
 <sup>Firefox screenshot taken September 2, 2020.</sup>
 
-Here is how Safari renders the same page:
-
 ![HTML5 input date Safari](../img/design-inputDate-safari.png)
 
 <sup>Safari screenshot taken September 2, 2020.</sup>
 
-:point_up: We find that Firefox supports this input type with a calendar picker widget, while Safari does not. What can we do in this case? The answer is to use *polyfills*. A polyfill is a code snippet that brings a modern browser feature (such as a calendar picker) to browsers that do not natively support that feature. Here is an example of a [polyfill for Safari (among others)](https://github.com/chemerisuk/better-dateinput-polyfill). Sometimes when looking for polyfills one can also come across the term *shim*. These concepts are not quite interchangeable, though they often used in the same contexts.
+:point_up: We find that Firefox supports this input type with a calendar picker widget, while Safari does not. What can we do in this case? The answer is to use (or create!) *polyfills*. A polyfill is a code snippet that brings a modern browser feature (such as a calendar picker) to browsers that do not natively support that feature. Here is an example of a [polyfill for Safari (among others)](https://github.com/chemerisuk/better-dateinput-polyfill). Sometimes when looking for polyfills one can also come across the term *shim*. These concepts are not quite interchangeable, though they often used in the same contexts.
 
 ### The move towards HTML5
 
@@ -388,17 +386,27 @@ Here are a few questions you should be able to answer after having followed the 
 </details>
 
 <details> 
+  <summary>How can we enable users to not get lost within a complex website?</summary>
+  Through the use of so-called breadcrumbs, that provide users with information on where within the site they currently are.
+</details>
+
+<details> 
   <summary>True or False? The `action` attribute of an HTML form defines how the form is accessed on the client: either as a HTTP POST request or an HTTP GET request.</summary>
   False.
 </details>
 
 <details>
 <summary>In a usability test, what is the task of the facilitator?</summary>
-...
+The facilitator guides the participant through the test.
 </details>
 
 <details>
-<summary>What does it mean for the W3C to produce a recommendation document?</summary>
+<summary>Name three web performance metrics.</summary>
+LCP, FID, and CLS.
 </details>
 
-//TODO: add more
+<details>
+<summary>What does the CLS metric measure?</summary>
+CLS measures a page's visual stability by aggregating to what extent visible elements shift in the layout unexpectedly.
+</details>
+
