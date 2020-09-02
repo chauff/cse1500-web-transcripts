@@ -373,7 +373,7 @@ This is where the `Expires` header field comes in. It indicates to a web cache w
 
 ![Web cache](../img/http-webcache.png)
 
-🚩Nowadays, web caching are just part of the functionality a so-called **Content Delivery Network (CDN)**, i.e. a network of geographically distributed servers which deliver fast access to web resources, provides. CDNs  
+🚩Nowadays, web caching are just part of the functionality a so-called **Content Delivery Network (CDN)**, i.e. a network of geographically distributed servers which deliver fast access to web resources, provides. 
 
 ### Header field Cache-Control
 
@@ -498,9 +498,9 @@ Status codes in the three hundred range most often point to a redirect: a resour
 
 ![Network monitor redirect](../img/http-redirect.png)
 
-<sup>Network panel after entering http://delft.nl into the address bar. Firefox, August 31, 2020.</sup>
+<sup>Network panel after entering `http://delft.nl` into the address bar. Firefox, August 31, 2020.</sup>
 
-:point_up: Here, the URL [http://delft.nl](http://delft.nl) was entered into the browser's address bar. The browser renders the expected page (the homepage of the city of Delft), however, in the background it took three HTTP requests to retrieve the resource at path `/`. The status codes `302 Moved Temporarily` and `301 Moved Permanently` indicate that the resource at http://delft.nl has been moved elsewhere: first to `https://delft/nl` and then to `https://www.delft.nl`. Each time, the `Location` header tells us the new location.
+:point_up: Here, the URL [http://delft.nl](http://delft.nl) was entered into the browser's address bar. The browser renders the expected page (the homepage of the city of Delft), however, in the background it took three HTTP requests to retrieve the resource at path `/`. The status codes `302 Moved Temporarily` and `301 Moved Permanently` indicate that the resource at `http://delft.nl` has been moved elsewhere: first to `https://delft/nl` and then to `https://www.delft.nl`. Each time, the `Location` header tells us the new location.
 
 Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, that is, the web resource or entity the client requests, does not exist on the server.
 
@@ -571,7 +571,7 @@ host:mit.edu
     ...
 ```
 
-**Use `HEAD` to see what is at the moved location** (and note that `mit.edu` and `web.mit.edu` refer to different lcoations) :point_down::
+**Use `HEAD` to see what is at the moved location** (note that `mit.edu` and `web.mit.edu` refer to different lcoations) :point_down::
 
 ```
 telnet web.mit.edu 80
@@ -587,7 +587,7 @@ host:web.mit.edu
     ...
 ```
 
-**Use `GET` to retrieve the content** (the printout on the terminal is not very insightful to us, it is just the HTML code of the requested resource) :point_down::
+**Use `GET` to retrieve the content** (the printout on the terminal is not very insightful to us, it is just the requested resource) :point_down::
 
 ```
 telnet web.mit.edu 80
