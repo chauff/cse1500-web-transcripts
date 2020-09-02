@@ -20,8 +20,8 @@ warning: false
   - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
   - [Rule: If you cannot make it self-evident, make it self-explanatory](#rule-if-you-cannot-make-it-self-evident-make-it-self-explanatory)
   - [Aesthetics matter (of course!)](#aesthetics-matter-of-course)
-  - [Expectations vs. reality: usability testing](#expectations-vs-reality-usability-testing)
-  - [Performance metrics](#performance-metrics)
+- [Usability testing: expectations vs. reality](#usability-testing-expectations-vs-reality)
+- [Performance metrics](#performance-metrics)
 - [HTML5](#html5)
   - [The move towards HTML5](#the-move-towards-html5)
   - [Who decides the HTML standard](#who-decides-the-html-standard)
@@ -209,7 +209,7 @@ Lastly, **avoid happy talk**, that is text without any content for the sake of a
 
 This may be obvious, but the look and feel of an application of course also influences both the users' *perceived* usability as well as the *actual* usability. An insightful piece of research conducted by [Sonderegger & Sauer](https://www.sciencedirect.com/science/article/pii/S0003687009001148) has measured this influence. They conducted an experiment with an objectively ugly and an objectively good looking mobile phone prototype: not only did the study participants rate the ugly phone as being less usable, they actually performed worse in a given task than the participants receiving the good looking device.
 
-### Expectations vs. reality: usability testing
+## Usability testing: expectations vs. reality
 
 Our expectations of web users are often *not* grounded in reality. We may expect users to be **rational**, **attentive** and having a **clear goal** in mind.
 
@@ -249,7 +249,7 @@ This [blog post](https://asinthecity.com/2013/04/09/recording-mobile-device-usab
 
 The result of a usability test are a set of issues. Each of those issues should be assigned a **priority** (low, medium, high) and the next iteration of the development should focus on the high priority problems. No new issues should be added to the list until the most severe issues are fixed.
 
-### Performance metrics
+## Performance metrics
 
 Once web applications become complex, besides general usability we also need to consider various **performance metrics**, ideally metrics that are *user-centric*. A basic question to ask is: *how long does it take for the entire application to load?*. This is of course a rather crude metric and it is not always clear what exactly this means, due to polling, etc. We thus need more fine-grained performance metrics. The [web vitals section at Google's web.dev resource](https://web.dev/metrics/) provides a good overview of what questions to ask in order to measure aspects of an application's performance that are *relevant* to the user. Let's focus on the three metrics that Google considers to be [core web vitals](https://web.dev/vitals/):
 
