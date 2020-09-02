@@ -8,13 +8,13 @@ warning: false
 
 # HTML: the language of the Web <!-- omit in toc -->
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
-- [:flag: Cross-platform applications](#flag-cross-platform-applications)
+- [🚩Cross-platform applications](#cross-platform-applications)
 - [Web design basics](#web-design-basics)
   - [Rule: Don't make me think](#rule-dont-make-me-think)
   - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
@@ -81,7 +81,7 @@ In 2017 this group was superseded by the [*Web Platform Working Group*](https://
 - Canvas (for drawing);
 - Web components (a component model for the web).
 
-## :flag: Cross-platform applications
+## 🚩Cross-platform applications
 
 *Do web technologies also help you to create desktop apps or mobile apps?* 
 
@@ -132,7 +132,7 @@ Contrast ebay with the following older example from [koopplein](https://web.arch
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
-:flag: **Good to know**: In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **390 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
+🚩 **Good to know**: In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **390 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
@@ -271,7 +271,7 @@ An alternative service is [webhint.io](https://webhint.io/) (originally coming o
 
 <sup>Screenshot taken September 2, 2020.</sup>
 
-:flag: In both examples, we see that web peformance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
+🚩 In both examples, we see that web peformance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
 
 :bug: Beyond online tools, browser extensions such as [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) exist as well that allow you to gain more specific insights into your application's performance.
 
