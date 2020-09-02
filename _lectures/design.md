@@ -33,7 +33,7 @@ warning: false
   - [Getting started with HTML @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started)
   - [HTML text fundamentals @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals)
   - [Document and website structure @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure)
-  - [Introduction to HTML forms @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (:warning: skip over the section on *Basic form styling*, we will cover this topic in a later lecture).
+  - [Introduction to HTML forms @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (**skip over** the section on *Basic form styling*, we will cover this topic in a later lecture).
 - Recommended activity:
   - :headphones: Listen to [this podcast with Tom Dale](http://talkingcode.com/podcast/episode-11-tom-dale/) discussing modern web applications and the move from web sites to web apps and an almost *native* experience.
 - Recommended readings:
