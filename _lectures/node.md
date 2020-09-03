@@ -35,6 +35,7 @@ warning: true
   - //TODO: update the required readings. We will cover Node.js in the lecture from sratch, use the reading to get a first idea of what Node.js is about!
 - Recommended activities:
   - [Interactive Node.js exercises](../_practicals/nodeschool-exercises.md).
+  - [Microsoft's beginner-friendly tutorial on building JavaScript applications with Node.js](https://docs.microsoft.com/en-us/learn/paths/build-javascript-applications-nodejs/)
 - Recommended readings:
   - The [MDN documentation on Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous) is an excellent source to learn about the topic in more detail.
   - [The world runs on Node.js (Twitter thread)](https://twitter.com/bitandbang/status/1037306199522328577).

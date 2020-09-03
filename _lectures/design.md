@@ -14,7 +14,7 @@ warning: false
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
-- [🚩Cross-platform applications](#cross-platform-applications)
+- [Cross-platform applications](#cross-platform-applications)
 - [Web design basics](#web-design-basics)
   - [Rule: Don't make me think](#rule-dont-make-me-think)
   - [Rule: Minimize noise and clutter](#rule-minimize-noise-and-clutter)
@@ -81,7 +81,7 @@ In 2017 this group was superseded by the [*Web Platform Working Group*](https://
 - Canvas (for drawing);
 - Web components (a component model for the web).
 
-## 🚩Cross-platform applications
+## Cross-platform applications
 
 *Do web technologies also help you to create desktop apps or mobile apps?* 
 
@@ -188,8 +188,8 @@ Take a look at this entry page for a business as a negative example :point_down:
 <sup>Screenshot taken October 11, 2019.</sup>
 
 <details> 
-  <summary>What do you think is the **core business** of this company? Click to find out the answer! </summary>
-   This is the homepage of a Dutch cafe chain: [https://coffeecompany.nl/](https://coffeecompany.nl/) - not something easily guessable from the entry page.
+  <summary>What do you think is the core business of this company? Click to find out the answer! </summary>
+   This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
 </details>
 
 The entry page (or home page) of a web application should answer a number of essential questions, none of which are answered in our example:

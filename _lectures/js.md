@@ -3,20 +3,19 @@ layout: default
 permalink: /js/
 linkname: JavaScript
 ordering: 3
-warning: true
+warning: false
 ---
 
 # JavaScript: the language of browser interactions <!-- omit in toc -->
 
-*This is the densest web lecture of this course. Learning how to code takes some time. Take a look at the [exercises](../_practicals/nodeschool-exercises.md) that are relevant for this lecture.*
+*This is the densest web technlogy lecture of this course. Learning how to program takes time. Don't get frustrated if it is hard in the beginning. We introduce JavaScript this early in the web technology lectures to give you the time to learn it.*
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
-- [Take-aways of the required reading](#take-aways-of-the-required-reading)
-- [Examples throughout the lectures](#examples-throughout-the-lectures)
+- [Take-aways of the required readings](#take-aways-of-the-required-readings)
 - [JavaScript in context](#javascript-in-context)
 - [Scripting overview](#scripting-overview)
   - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
@@ -41,13 +40,15 @@ warning: true
     - [:bangbang: Example 4: mouse events](#️-example-4-mouse-events)
     - [:bangbang: Example 5: a crowdsourcing interface](#️-example-5-a-crowdsourcing-interface)
     - [:bangbang: Example 6: a typing game](#️-example-6-a-typing-game)
-- [🚩 Modern JS libraries](#-modern-js-libraries)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
 
 - Required readings:
-  //TODO: update the required readings for JavaScript
+  - [A first splash into JavaScript @MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash).
+  - [JavaScript variables @MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables).
+  - [JavaScript strings @MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings) (**skip over** the *Template literals* section).
+  - [Manipulating documents @MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents) (**skip over** the *Manipulate styles* section, this will be covered in a later lecture).
 - Recommended activities:
   - [Interactive JavaScript exercises](../_practicals/nodeschool-exercises.mdnodeschool-exercises.md).
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
@@ -79,30 +80,20 @@ warning: true
 
 ## Learning goals
 
-- Employ JavaScript objects.
+- Write valid JavaScript code for the browser (variables, functions, conditionals, objects).
+- Employ JavaScript design patterns.
 - Employ the principle of callbacks.
 - Write interactive web applications based on click, mouse and keystroke events.
 
-## Take-aways of the required reading
+## Take-aways of the required readings
 
 Haing worked through the required reading in preparation for this lecture, you should know:
 
 - the basics of JavaScript;
 - how to include JavaScript in your web application;
-- what the [strict mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode) is;
 - the DOM.
 
-In this lecture we built upon this knowledge and cover a number of important JavaScript design patterns.
-
-## Examples throughout the lectures
-
-The code examples throughout these course materials tend to based on three different example applications:
-
-- A todo application as introduced in the web course book.
-- A habit tracker application as students had to implement in the 2017/18 edition of this course.
-- A board game application as you need to implement this year.
-
-As the course material has been developed over time, you will get a glimpse of each of those applications.
+In this lecture we reinforce this knowledge and built upon it by covering a number of important JavaScript design patterns.
 
 ## JavaScript in context
 
@@ -114,31 +105,68 @@ In the early years of JavaScript, it was considered more of a toy language. Toda
 
 Vital to JavaScript's rise from toy language to serious contender ([even in space!](https://twitter.com/jason_mayes/status/1267227834096861184)) is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in multiple programming paradigms ([read this interview](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93) with Kyle Simpson, author of one of the most popular JavaScript book series if you want to know more).
 
-Today's **JavaScript runtime environments** are highly efficient and a number of them co-exist peacefully:
+Today's **JavaScript runtime environments** are highly efficient and a number of them exist:
 
 - [V8](https://developers.google.com/v8/) is Google's JavaScript engine (used in Chrome and other browsers).
-- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine and used in Firefox. In [August 2020](https://arstechnica.com/information-technology/2020/08/firefox-maker-mozilla-lays-off-250-workers-says-covid-19-lowered-revenue/), Mozilla announced to cut 250 jobs from its company; it remains to be seen what this means for the future development of SpiderMonkey (and other browser components).
-- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime engine (used in the Edge browser). In December 2018, Microsoft announced that [they will adopt Chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser project) and thus Edge will switch to the V8 JavaScript engine eventually.
+- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine and used in Firefox.
+- [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime engine. It was originally used in Microsoft's Edge browser. In December 2018, Microsoft decided to [adopt Chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser project) as its JavaScript runtime in the browser. Chakra is still powering Windows applications that are written in HTML/CSS and JavaScript.
 
-While the browser is the most obvious usage scenario for JavaScript runtime environments, they are also used elsewhere (such as [microcontrollers](https://github.com/jerryscript-project/jerryscript)). Most importantly for us: the Node.js platform we cover in the next lecture is built on top of V8. 
+While the browser is the most obvious usage scenario for JavaScript runtime environments, they are also used in other areas such as [microcontrollers](https://github.com/jerryscript-project/jerryscript). **Most importantly for us: the Node.js platform we cover in the next lecture is built on top of V8.** 
 
-Javascript is an *interpreted* language (advantage: quick upstart, disadvantage: the program overall *runs* slower than one written in a language requiring compilation). Today's JavaScript engines both interpret *and* compile by employing so-called **just-in-time (JIT) compilation**. This means that JavaScript code that is run repeatedly such as often-called functions (the JavaScript engine monitors the frequency of code usage) is eventually compiled and no longer interpreted. [This article by Lin Clark](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/) explains this in more detail for those that want to know more.
+Javascript is an *interpreted* language. That has advantages and disadvantages:
 
-JavaScript tracks ECMAScript, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects exist as well (e.g. ActionScript).
+- advantage: quick upstart;
+- disadvantage: the program overall *runs* slower than one written in a language (such as Java) requiring compilation.
+
+Today's JavaScript engines both interpret *and* compile by employing so-called **just-in-time (JIT) compilation**. This means that JavaScript code that is run repeatedly such as often-called functions is eventually compiled and no longer interpreted. [This article by Lin Clark](https://hacks.mozilla.org/2017/02/a-crash-course-in-just-in-time-jit-compilers/) explains this in more detail for those that want to know more.
+
+**JavaScript tracks ECMAScript**, the scripting-language specification standardized by [Ecma International](http://www.ecma-international.org/). While JavaScript is the most popular implementation of the standard, other implementations or dialects (such as [ActionScript](https://en.wikipedia.org/wiki/ActionScript)) exist as well.
 
 JavaScript is a language in flux.
 
-One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard (a good overview is provided at http://es6-features.org/) and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle. 
+One of the confusing aspects about JavaScript today are the naming conventions, you may come across terms such as **ES6**, **ES7**, **ES2015**, **ECMAScript 2017**, and so on. These names refer to different version of ECMAScript (ES for short) which is in continuous development. Most often, you are likely to encounter **ES6** (also referred to as **ES2015**) which added a host of new features to the standard (a good overview is provided at [http://es6-features.org/](http://es6-features.org/)) and required a long-standing effort: *the completion of the sixth edition is the culmination of a fifteen year effort* ([source](https://tc39.github.io/ecma262/)). Starting with **ES2016** (also known as **ES7**), ECMAScript is updated in a yearly cycle. 
 
 Similar to HTML5, after a number of years with hardly any development, we are currently in a phase of continuous updates and changes.
 
-In this course we include very few **ES6** features, as we only have one lecture to introduce JavaScript (*this* lecture ...). If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) series.
+In this course we include just a few **ES6** features, as we only have one lecture to introduce JavaScript (*this* lecture ...). If you want to go beyond the coverage of JavaScript in this course, take a look at the very comprehensive [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/README.md) series. I want to be clear here: learning all there is about JavaScript in the web development setting is a huge task. This is not made easier by the fact that every year the language is being updated, browsers regularly update the features of the language they support (or they introduce their features which are not in the spec), all kinds of tooling around the language exists that goes in and out of fashion, JavaScript libraries come along that make many tasks easier but have quite a learning curve ... bottom line, JavaScript is like a giant mountain (where browsers throw down new features in hot air balloons, tools and libraries come and go and leave half-finished buildings or walls behind) and we are just heading for the first peak in this class :point_down::
 
-In this course we cover *plain JavaScript*, but it is also worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
+![Studying JavaScript is quite a task!](../img/js-mountain.png)
+
+So please, do not be disheartened if you are trying to find the answer to a JavaScript question and encounter five new concepts you have not heard before. This is normal. The JavaScript ecoysystem contains many moving pieces and understanding how they all fit together is quite an undertaking.
+
+In this course we cover *plain JavaScript*, but it is worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 Three of the most well-known languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/); all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
-Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**.
+Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**. If that all sounds incomprehendible right now, don't worry. Here is a concrete example that should make things clear. Consider this **Java** code snippet :point_down::
 
+```java
+public class MyTest {
+    public static void main(String args[]){
+        String s = "hello";
+        s = 5;
+        System.out.println(s);
+    }
+}
+```
+
+Compiling this code will lead to an error because Java has static type checking :point_down::
+```
+○ → javac MyTest.java 
+MyTest.java:4: error: incompatible types: int cannot be converted to String
+        s = 5;
+            ^
+1 error
+```
+
+In JavaScript, the assignment of a number to a string goes down without problems, the JavaScript runtime engine does its best to infer the correct type :point_down::
+
+```javascript
+let s = "hello";
+typeof(s); // 'string'
+s = 5;
+typeof(s); // 'number'
+console.log(s); // 5
+```
 
 ## Scripting overview
 
@@ -148,23 +176,31 @@ Here is one example of what TypeScript offers: JavaScript is a **dynamic languag
 
 **Client-side scripting** on the other hand does not return the result of a computation to the client, but instead sends the script (and if necessary the data) to the client which enables the user to dig through the code. A famous example of the uproar such code digging can cause is the *NYTimes election needle jitter*: a jitter was introduced to an election needle visualization in order to convey the uncertainty around election forecasting. This jitter though was not based on data as readers were expecting, but instead hard-coded as a random component into the client-side script. This was quickly spotted by a Twitter user:
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Looking for trends in <a href="https://twitter.com/nytimes?ref_src=twsrc%5Etfw">@nytimes</a>&#39;s presidential forecast needle? Don&#39;t look too hard - the bounce is random jitter from your PC, not live data <a href="https://t.co/pwcV6epee7">pic.twitter.com/pwcV6epee7</a></p>&mdash; Alp Toker (@atoker) <a href="https://twitter.com/atoker/status/796176641600974851?ref_src=twsrc%5Etfw">November 9, 2016</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Looking for trends in <a href="https://twitter.com/nytimes?ref_src=twsrc%5Etfw">@nytimes</a>&#39;s presidential forecast needle? Don&#39;t look too hard - the bounce is random jitter from your PC, not live data <a href="https://t.co/pwcV6epee7">pic.twitter.com/pwcV6epee7</a></p>&mdash; Alp Toker (@atoker) <a href="https://twitter.com/atoker/status/796176641600974851?ref_src=twsrc%5Etfw">November 9, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 and a lot of criticism followed ([1](http://nymag.com/intelligencer/2016/11/new-york-times-forecast-dial-had-a-fake-twitch-jitter.html), [2](https://www.theverge.com/2016/11/8/13571216/new-york-times-election-forecast-jitter-needle)).
 
-A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes of data) need to be downloaded and processed by the client. 
+A clear advantage of client-side coding is **reduced server load**, as clients execute the scripts, though all data necessary for the scripts (which could be megabytes or gigabytes of data) need to be downloaded and processed by the client. 
 
-Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) which provides a standard for an in-browser database that is transaction-based and stores key-value pairs persistently. While it cannot be queried with SQL directly, libraries such as [JSstore](https://github.com/ujjwalguptaofficial/JsStore) exist that act as wrapper around IndexedDB to enable SQL-like querying. The storage limits are browser and device-dependent; in principle it is possible to store Gigabytes of data within the browser's database. This can be very useful for instance for games (game objects are stored in the database) as well as data processing pipelines that are designed to be easy-to-use for non-experts such as our recently open-sourced ELAT tool (the processed data is stored in the database).
+Modern browsers implement the [IndexedDB API](https://w3c.github.io/IndexedDB/) :point_down::
+
+![AppCache](../img/js-indexeddb.png)
+
+<sup>Screenshot taken on September 3, 2020.</sup>
+
+IndexedDB provides a standard for an in-browser database that is transaction-based and stores key-value pairs persistently. While it cannot be queried with SQL directly, libraries such as [JSstore](https://github.com/ujjwalguptaofficial/JsStore) exist that act as wrapper around IndexedDB to enable SQL-like querying. The storage limits are browser and device-dependent; in principle it is possible to store gigabytes of data within the browser's database. This can be very useful for instance for games (game objects are stored in the database) as well as client-side in-browser data processing tools.
 
 ### The `<script>` tag
 
-The placement of the `<script>` tag is an often discussed issue (1000+ upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this lecture, we do the following:
+The placement of the `<script>` tag is an often discussed issue (1.5+K upvotes for [this question on Stack Overflow alone](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)). In this course, we adhere to the following:
 
 As the browser renders the page in a top-down fashion, with DOM elements created in the order they appear in the HTML document, we place the `<script>` tags right before the closing `<body>` tag. Thus, the DOM is already complete once the JavaScript is being executed. Interactivity based on the DOM should only start **after** the DOM has been fully loaded; if you decide to place your script's elsewhere, make use of the browser window's [load event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event) which is fired once the DOM has loaded.
 
 ### :bangbang: Activity
 
-Based on the required readings, you should be able to answer the following two questions.
+Let's get into the mindset for JavaScript. Based on the required readings, try to answer the following two questions. Look at the source code, check the answer and if you don't believe it, make sure to also try it out yourself!
+
+On to the two questions ...
 
 Executing the JavaScript code snippet 👇 yields what output?
 
@@ -202,9 +238,11 @@ my_func(5, toPrint);
    5
 </details>
 
+If you compare this to how Java treats functions (or methods), you should realize that this language is very different from what you have seen so far in your studies.
+
 ## Scoping, hoisting and this
 
-We now cover three JavaScript principles that often lead to confusion.
+We now cover three JavaScript principles that often lead to confusion and log debugging sessions.
 
 ### Scoping
 
@@ -218,13 +256,29 @@ A *block* is used to group a number of statements together with a pair of curly 
 
 The scopes of values and expressions depend on *where* and *how* they are declared:
 
-- `var` declared within a function: **local** scope;
-- `var` declared outside of a function: **global** scope;
-- no `var`: **global scope** (no matter where declared);
-- `let` was introduced in **ES6**: **block** scope;
-- `const` was introduced in **ES6**: **block** scope, no reassignment or redeclaration (but the originally assigned element can change).
+|                                                  | Scope  |
+|--------------------------------------------------|--------|
+| `var` declared within a function                 | local  |
+| `var` declared outside of a function             | global |
+| `let` (ES6)                                      | block  |
+| `const` (ES6)                                    | block  |
+| variable declaration without `var`/`let`/`const` | global |
 
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global. Having only two scopes available resulted in code behaviour that is not always intuitive. Let's look at one popular example: imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript 👇:
+The difference between `let` and `const` is that `const` does not allow the reassignment or redeclaration of a variable. The originally assigned element though **can** change. An example should make this clear :point_down::
+
+```javascript
+let a = [1,2,3]; //array with 3 numbers
+const b = [4,5,6]; //array with 3 numbers
+
+a = "hello world"; //OK
+
+b = "hello world"; //Uncaught TypeError: invalid assignment to const 'b'
+
+b[0] = -1; //OK, the originally assigned array is changed
+console.log(b); //Array(3) [ -1, 5, 6 ]
+```
+
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. Having only two scopes available resulted in code behaviour that does not always seem intuitive. Let's look at one popular example: imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript 👇:
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -270,8 +324,7 @@ for (let i = 1; i <= 10; i++)
 
 Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace. 
 
-//TODO: 1-2 sentences about the past importance of jQuery
-Here is a toy `jQuery` example to showcase this issue 👇:
+Here is a toy example to showcase this issue 👇:
 
 ```html
 <!DOCTYPE html>
@@ -294,7 +347,9 @@ Here is a toy `jQuery` example to showcase this issue 👇:
 </html>
 ```
 
-:point_up: This code does exactly what we expect (hiding a button once we click it). Try it for yourself (save the code in a `.html` file and open it with the browser). `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
+:point_up: This code uses the jQuery JavaScript library which used to be extremely popular as it simplifies DOM traversal and manipulation (among others). It is still being used, but less so, as other libraries exist and the JavaScript runtime engines have improved. Here, the first `script` tag directs the browser to load an external script. The second time the `script` tag is used, we embed code directly within the HTML document. You may wonder why we place the `script` tag within the `<head>` element after stating that we will place it right before the closing `<body>` tag earlier on. This is simply to show that this is possible too.
+
+:point_up: This code does exactly what it says: one click on the rendered button hides it forever. Try it for yourself (save the code in a `*.html` file and open it with the browser). `$(..)` is an alias for the function [`jQuery(..)`](http://api.jquery.com/jQuery/). But what happens if we overwrite `$`? Find out by uncommenting the `$ = "overwriting";` line of code. Result: the code is broken and we end up with `TypeError: $ is not a function`.
 
 `jQuery` and other libraries have very few variables ending up in global scope in order to **reduce potential conflicts** with other JavaScript libraries. In addition, the **public API is minimized** in order to avoid unintentional side-effects (incorrect usage of the library by end users) as much as possible. We will later see how to achieve this with the [module design pattern](#design-pattern-3--module).
 
@@ -320,11 +375,11 @@ var seven = function(){
 console.log(x+" - "+y);
 ```
 
-In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser by copying the entire snippet at once into the web console!), the output will be `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
+In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser by copying the entire snippet at once into the web console!), the output will be a `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
 
 The difference lies in how we went about defining our `six` and `seven` functions: 
 - `var seven = function(){...}` is a **function expression** and is only defined when that line of code is reached.
-- `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding fucntion or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. 
+- `function six(){...}` on the other hand is a **function declaration** and is defined as soon as its surrounding function or script is executed due to the **hoisting principle**: declarations are processed before any code is executed. 
 
 In our example, the JavaScript runtime *hoists* the declaration of `six`; it is processed before the remaining code is executed.
 
@@ -373,42 +428,42 @@ We also have the option to set the value of a function's `this` independent of h
 Let's walk through this concrete code example to showcase the behaviour of `this` :point_down: :
 
 ```javascript
-//We assume execution in the browser's Web Console, we thus
+ //We assume execution in the browser's Web Console, we thus
 //know the global window object exists (it is provided by the browser).
 
 //h is now a property of the global `window` variable;
 //it can also be accessed as window.h
-var h = "Sports";
+var name = "Beat Saber";
 
-function habit(s){
-    this.h = s;
-    this.printHabit = function(){
-        console.log(this.h);
+function game(n){
+    this.name = n;
+    this.printName = function(){
+        console.log(this.name);
     }
 }
 
 //CASE 1
-//Creating a new object and calling the object's printHabit() function
-var habitObj = new habit("Reading");
-habitObj.printHabit(); // this.h = "Reading"
+//Creating a new object and calling the object's printName() function
+var gameObj = new game("Astro Bot Rescue Mission");
+gameObj.printName(); // this.name = "Astro Bot Rescue Mission"
 
 //CASE 2
-//Copying the printHabit function;
-//printHabit is now a property of the global window object
-var printHabit = habitObj.printHabit;
-printHabit(); // this.h = "Sports"
+//Copying the printName function;
+//printName is now a property of the global window object
+var printName = gameObj.printName;
+printName(); // this.name = "Beat Saber"
 
 //CASE 3
-//Fixing 'this' of the printHabit function
-var boundPrintHabit = printHabit.bind({h: "Music"});
-boundPrintHabit(); // this.h = "Music"
+//Fixing 'this' of the printName function
+var boundPrintName = printName.bind({name: "Tetris Effect"});
+boundPrintName(); // this.name = "Tetris Effect"
 ```
 
-:point_up: If you execute this code in the browser's Web Console, you will observe the output of the `printHabit` function, originally defined inside the `habit` function :point_down::
+:point_up: If you execute this code in the browser's Web Console, you will observe the output of the `printName` function, originally defined inside the `game` function :point_down::
 
 ```javascript
 function(){
-    console.log(this.h);
+    console.log(this.name);
 }
 ```
 
@@ -420,17 +475,35 @@ to be different each time, as each time, `this` refers to a different object. We
 
  We will come across a number of other examples in this and the following lectures that will give you an intuition of what `this` is about. While a detailed discussion of `this` is outside the scope of this lecture, you should realize that it is a complex concept. MDN has a [whole page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) dedicated to `this`, while the popular You Don't Know JavaScript book series covers the concept in about [half a book](https://github.com/getify/You-Dont-Know-JS/tree/1st-ed/this%20%26%20object%20prototypes).
 
- In ES6 so-called arrow functions were introduced. Instead of writing `let sum = function(a,b){return a+b}` we can shorten it to `let sum = (a,b) => {return a+b}`. This may look initially just like a more compact way of writing a function expression, but there is more to it - in particular the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are looking into the use of arrow functions! 
+ In ES6 so-called **arrow functions** were introduced. Instead of writing :point_down::
+ 
+ ```javascript
+ let sum = function(a,b){return a+b}
+ ``` 
+ 
+ we can shorten it to :point_down::
+ 
+ ```javascript
+ let sum = (a,b) => {return a+b}
+```
 
-A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays. They are not difficult to understand, we here explain them on an example. Consider the array `let ar=['garden','town','carriage','mice','wizzard','hat']`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those array elements with strings of more than five characters we use `let arLong = ar.filter(x => x.length > 5)`. The `.reduce()` function is maybe the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0));`.
+🚩 This may look just like a more compact way of writing a function expression, but there is more to it. In particular, the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are [looking deeper](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) into the use of arrow functions! 
+
+🚩 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays:
+
+- [`.map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map): creates a new array and populates it by calling the provided function on every element of the calling array.
+- [`.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce): creates a single output value by calling the provided reducer function on every element of the calling array.
+- [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter): creates a new array with those elements of the calling array that pass the provided filter function.
+
+🚩 This may sound a bit abstract, but once you see an example it wil all makes sense. Consider the array `let ar=["Beat Saber", "Astro Bot Rescue Mission", "Tetris Effect", "Moss", "Falcon Age", "Trover Saves the Universe"]`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those strings of more than five characters we use `let arLong = ar.filter(x => x.length > 10)`. The `.reduce()` function is the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0);`.
 
 :bug: Throughout this and the coming lectures we repeatedly point to the browser's web console as a quick way to explore JavaScript. [In the words of Kyle Simpson](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#its-not-always-js):
 
 ```
-The developer console is not trying to pretend to be a JS compiler that handles your entered code exactly the same way 
-the JS engine handles a .js file. It's trying to make it easy for you to quickly enter a few lines of code and see the 
-results immediately. These are entirely different use-cases, and as such, it's unreasonable to expect one tool to handle 
-both equally.
+The developer console is not trying to pretend to be a JS compiler that handles your entered code 
+exactly the same way the JS engine handles a .js file. It's trying to make it easy for you to 
+quickly enter a few lines of code and see the results immediately. These are entirely different 
+use-cases, and as such, it's unreasonable to expect one tool to handle both equally.
 ```
 
 Thus, are (very few) specific instances where different browsers' web consoles interpret the same code snippet slightly differently and differently to the browser's JavaScript runtime engine. 
@@ -443,7 +516,26 @@ There are many different design patterns, some are known to work across language
 
 ### JavaScript objects
 
-In JavaScript, **functions are first-class citizens** of the language. This means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable**. This is quite a difference to Java for example, where functions cannot be passed around.
+In JavaScript, **functions are first-class citizens** of the language. This means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable** :point_down::
+
+```javascript
+
+//a function is passed as second parameter
+function cutoffStringAt(c, fn){
+
+  //a function is returned
+	return function(s){
+		fn(s.substring(0, c));
+	}
+}
+
+//a function is assigned to a variable
+var cutoffStringAt5 = cutoffStringAt(5, function(s){
+	console.log(s);
+});
+```
+
+This is quite a difference to Java for example, where functions cannot be passed around.
 
 The object-oriented programming paradigm is based on a set of cooperating objects (each one able to send/receive "messages" and process data) instead of a collections of functions or a set of commands. The goal of object-oriented design is to assign every object a distinct role, in order to improve code maintainability.
 
@@ -451,7 +543,7 @@ In JavaScript, **functions are also objects**. Apart from functions, JavaScript 
 
 JavaScript objects can be created in different ways. This is very much unlike Java where there is essentially only one: you have a class, write a constructor and then use the `new` keyword to create an object. We will not consider all the manners of creating JavaScript objects here, you should remember though that there are different ways (especially when you look at existing code bases).
 
-//TODO: explain in a few sentences that `class` (in other keywords) exist now in JS but it is very much unlike the class keyword in Java.
+:warning: When discussing object-oriented JavaScript it needs to be mentioned that since ES6 the `class` keyword exists in JavaScript. It does not act though in the same way as the `class` keyword in Java and acts mostly as *syntactic sugar*. Inheritance in JavaScript is prototype-based (you will learn soon what this means) and the `class` keyword does not change this. You may wonder, why we do not include a discussion of `class` here - there simply is no time. JavaScript (as you may have realized by now) has a tremendous amount of features and the language is growing all the time. We here cover only a part of JavaScript, sticking to the essentials.
 
 ### Object creation with `new`
 
@@ -512,21 +604,21 @@ var paramModule = {
 };
 ```
 
-:bug: For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table:
+:bug: For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table :point_down::
 
 ![console.table](../img/js-console-table.png)
 
-<sup>Screenshot of Firefox's Web Console.</sup>
+<sup>Firefox's Web Console, September 4, 2020.</sup>
 
-Continuing on the debugging theme, another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner:
+:bug: Continuing the debugging theme, another worthwhile function to know about is [`console.assert`](https://developer.mozilla.org/en-US/docs/Web/API/console/assert) which prints an error if an assertion is false. If you have for instance a function that should always be called with a single positive integer, there is nothing you can do to enforce this - JavaScript is a dynamic language. However, if you know that any valid function call must have a single integer argument, you can use assertions to - at least at runtime - observe the assertion failure in case the function is used in an unintended manner :point_down::
 
 ![console.assert](../img/js-console-assert.png)
 
-<sup>Screenshot of Firefox's Web Console.</sup>
+<sup>Firefox's Web Console, September 4, 2020.</sup>
 
 Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? We can hardly copy and paste a method to all objects.
 
-One idea could be to simply *copy* an object over and over again, however that turns out to be quite complicated. JavaScript passes everything by reference, which can cause issues when objects are complex (i.e. many of their properties are objects themselves). This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. This is for your information only, we do not cover deep copies in class.
+:flag: One idea could be to simply *copy* an object over and over again, however that turns out to be quite complicated. This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. 
 
 Let's look at three design patterns to simplify this work for us! The first one should be the most familiar to you, as it looks similar to the object creation pattnern we use in Java.
 
@@ -914,11 +1006,52 @@ Having read the required readings, you should be somewhat familiar with the DOM 
 - [`document.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector): returns the first element within the DOM tree according to a **depth-first pre-order traversal** that matches the selector
 - [`document.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll): returns all elements that match the selector
 
-The last two ways of selecting DOM elements allow complex selector rules to be specified!
+The last two ways of selecting DOM elements allow complex selector rules to be specified (this will become important in the later CSS lecture).
 
-//TODO: add new code snippet
+Let's look at a simple example of the DOM and DOM events using the already familiar hide-the-button example :point_down::
 
-The code snippet :point_up: also shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens *when* an event fires**. In the example above, the event is the click on a button.
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Hide this button</h1>
+        <button id="b">Hide me forever</button>
+
+        <p></p>
+
+        <h2>Hide this button too</h2>
+        <button class="second">Hide me forever too</button>
+
+        <script>
+
+            /* addEventListener: allows multiple events to be attached to an element */
+            document.getElementById("b").addEventListener("click", function(){
+                document.getElementsByTagName("h1")[0].hidden = true;
+            })
+
+            document.getElementById("b").addEventListener("click", function(){
+                this.hidden = true;
+            })
+
+            /* ***** */
+
+            /* onclick property: only one handler can be assigned to an element at a time */
+            document.querySelectorAll(".second")[0].onclick = function(){
+                this.hidden = true;
+            }
+            document.querySelector("h2 ~ button").onclick = function(){
+                document.getElementsByTagName("h2")[0].hidden = true;
+            }
+        </script>
+    </body>
+</html>
+```
+
+:point_up: Here, two elements are rendered by the browser, a heading (*Hide this button*) and a button. Clicking on the button will hide both the heading and the button. Importantly, the browser provides us with an API to access keyboard and mouse events among others. As web developers we can start working from the point of *what happens when a click event has occurred?*. The code snippet thus shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens *when* an event fires**. How can we connect events (e.g. a click) and actions (e.g. hiding an element)? Most often we will use [targetEl.addEventListener(eventType, fn)](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) which takes a function (`fn`) as input that is called whenever the desired `eventTyp` has been recorded for `targetEl`. In the example above, it becomes clear that in this manner multiple events can be attached to a single element. This is in contrast to using the `onclick` property to attach an event handler to an element: only one event can be attached to an element.
+
 
 When creating a UI element that is responsive to user actions, we typically follow the following steps:
 
@@ -928,32 +1061,32 @@ When creating a UI element that is responsive to user actions, we typically foll
 
 :three: Write a JavaScript function: what should happen when the event occurs, e.g. an `alert` message may appear.
 
-:four: Attach the function to the event **on** the control.
+:four: Attach the function to the event/control combination via `addEventListener`.
 
 :bug: If you want to examine how web applications make use of events, the browser developer tools will help you once more. On Firefox, the **HTML panel** allows you to explore **which events are attached to which controls** and with a click on the event button itself, you can dig into the callback function as seen here:
 
 ![Exploring events](../img/js-event-listeners.png)
 
-<sup>Screenshot of Firefox's Web Console.</sup>
+<sup>Screenshot of Firefox's Web Console, September 4, 2020.</sup>
 
-:triangular_flag_on_post: If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this course. The reason is simply a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
+:flag: If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this course. The reason is simply a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
 
 ### Document Object Model
 
 The DOM is our entry point to interactive web applications. It allows use to:
 
-- **Extract an element's state**
+- **Extract an element's state**:
   - Is the checkbox checked?
   - Is the button disabled?
   - Is a `<h1>` appearing on the page?
-- **Change an element's state**
-  - Check a checkbox
-  - Disable a button
-  - Create an `<h1>` element on a page if none exists
-- **Change an element's style** (material for a later lecture)
-  - Change the color of a button
-  - Change the size of a paragraph
-  - Change the background color of a web application
+- **Change an element's state**:
+  - Check a checkbox.
+  - Disable a button.
+  - Create an `<h1>` element on a page if none exists.
+- **Change an element's style** (material of a later lecture):
+  - Change the color of a button.
+  - Change the size of a paragraph.
+  - Change the background color of a web application.
 
 We will now walk through a number of examples that add an interactive element to a web application.
 These examples are small and self-contained. This means that all necessary code is contained within a single code snippet.
@@ -962,12 +1095,15 @@ They overlap with what is discussed in the required readings.
 
 #### :bangbang: Example 1: document.getElementById / document.querySelector
 
+![DOM Example 1](../img/js-example1.png)
+
 Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box. As you can see there are different ways (we have listed four here) of pinpointing a DOM element:  
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 1</title>
     </head>
     <body>
@@ -989,20 +1125,21 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 1</title>
         <script>
-            /* we define the function */
-            function sayHello() {
-              var tb = document.getElementById("out");
-              tb.value = "Hello World";
-            }
-
-            /* we attach a function to a button's click event
-             * after the DOM finished loading
+            /* 
+             * The DOM first has to fully load, before event listeners can be added to its elements.
              */
-            window.onload = function() {
-                document.getElementById("b").onclick = sayHello;
-            };
+            window.addEventListener('load', function(){
+
+                /*
+                 * We define what happens when button #b is clicked.
+                 */
+                document.getElementById("b").addEventListener('click', function(){
+                    document.getElementById("out").value = "Helo World!";
+                });
+            });
         </script>
     </head>
 
@@ -1013,24 +1150,13 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
 </html>
 ```
 
-Although all code is still in a single file, we have now moved all JavaScript code within `<script>` tags. Try the code out yourself! Be sure to check out what happens if the snippet :point_down::
-
-```javascript
-window.onload = function() {
-    document.getElementById("b").onclick = sayHello;
-};
-```
-
-is replaced by :point_down::
-
-```javascript
-document.getElementById("b").onclick = sayHello;
-```
-<sup>Explanation: the HTML page is parsed sequentially from top to bottom; without the `window.onload` event handler the browser engine will try to acess the button element before it has been defined, leading to an error: `TypeError: document.getElementById(...) is null.`</sup>
+:point_up: Although all code is still in a single file, we have now moved all JavaScript code within `<script>` tags. Try the code out yourself! Be sure to check out what happens if `window.addEventListener('load',...)` is removed. The code will produce the error message `Uncaught TypeError: document.getElementById(...) is null` as the HTML document is parsed sequentially from top to bottom; without the `window.addEventListener('load',...)` event handler the browser engine will try to acess the button element before it has been defined, leading to an error.
 
 #### :bangbang: Example 2: creating new nodes
 
-Note: as all our examples are simple, we will stick to `document.getElementById` to select DOM elements. In more realistic coding scenarios, `document.querySelector(All)` will most often be used.
+![DOM Example 2](../img/js-example2.png)
+
+Note: as all our examples are simple, we will stick to `document.getElementById` to select DOM elements. In more realistic coding scenarios, `document.querySelector` and `document.querySelector(All)` will often be used.
 
 HTML tags and content can be added dynamically in two steps:
 
@@ -1053,32 +1179,35 @@ Let's look at how this works in practice :point_down: :
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 2</title>
-        <script>
-            window.onload = function() {
-              document.getElementById("b").onclick = addElement;
-            };
-
-            function addElement() {
-              var ul = document.getElementById('u');
-              var li = document.createElement('li');
-              var count = ul.childElementCount+1;
-              
-              //li.innerHTML = 'List element ' + (ul.childElementCount+1) +' '; //before ES6: + to concatenate strings
-              li.innerHTML = `List element ${ul.childElementCount+1}`; //🚩 ES6: template literals
-              ul.appendChild(li);
-            }
-        </script>
     </head>
 
     <body>
         <button id="b">Add List Element</button>
         <ul id="u"></ul>
+
+        <script>
+            document.getElementById("b").addEventListener('click', addElement);
+
+            function addElement() {
+              let ul = document.getElementById('u');
+              let li = document.createElement('li');
+              let count = ul.childElementCount+1;
+              
+              //Concatenating strings (before ES6)
+              //li.innerHTML = 'List element ' + (ul.childElementCount+1) +' '; 
+
+              //🚩 ES6: template literals to concatenate strings
+              li.innerHTML = `List element ${ul.childElementCount+1}`; 
+              ul.appendChild(li);
+            }
+        </script>
     </body>
 </html>
 ```
 
-:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it. The code example also shows off [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which were introduced in ES6: they allow us to plug variables (here: `ul.childElementCount+1`) into strings (demarked with backticks) in a more readable manner. 
+:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it. :flag: The code example also shows off [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which were introduced in ES6: they allow us to plug variables (here: `ul.childElementCount+1`) into strings (demarked with *backticks*) in a more readable manner. 
 
 We can of course also remove elements :point_down::
 
@@ -1086,25 +1215,8 @@ We can of course also remove elements :point_down::
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 2 (Removal)</title>
-        <script>
-          window.onload = function() {
-            document.getElementById("bRemoveF").onclick = removeFirstChild;
-            document.getElementById("bRemoveL").onclick = removeLastChild;
-          };
-
-          function removeLastChild() {
-            var ul = document.getElementById('u');
-            if(ul.childElementCount>0)
-              ul.removeChild(ul.lastElementChild);
-          }
-
-          function removeFirstChild() {
-            var ul = document.getElementById('u');
-            if(ul.childElementCount>0)
-              ul.removeChild(ul.firstElementChild);  
-          }
-        </script>
     </head>
 
     <body>
@@ -1117,6 +1229,24 @@ We can of course also remove elements :point_down::
           <li>Item 4</li>
           <li>Item 5</li>
         </ul>
+
+        <script>
+
+          document.getElementById("bRemoveF").addEventListener('click', removeFirstChild);
+          document.getElementById("bRemoveL").addEventListener('click', removeLastChild);
+
+          function removeLastChild() {
+            let ul = document.getElementById('u');
+            if(ul.childElementCount>0)
+              ul.removeChild(ul.lastElementChild);
+          }
+
+          function removeFirstChild() {
+            let ul = document.getElementById('u');
+            if(ul.childElementCount>0)
+              ul.removeChild(ul.firstElementChild);  
+          }
+        </script>
     </body>
 </html>
 ```
@@ -1124,6 +1254,8 @@ We can of course also remove elements :point_down::
 Important to note here is that there are often methods available for DOM elements which look similar, but are leading to quite different behaviors. Case in point: in the example :point_up: we used `ul.firstElementChild` and `ul.lastElementChild`. Instead, we could have also used `ul.firstChild` and `ul.lastChild`. And this will work to - *at least with every second click*, as those methods also keep track of a node's children that are comments or text nodes, instead of just `li` nodes as we intend with our code.
 
 #### :bangbang: Example 3: `this`
+
+![DOM Example 3](../img/js-example3.png)
 
 Event handlers are bound to the attached element's objects and the handler function "knows" which element it is listening to (the element pointed to by `this`). This simplifies programming as a function can serve different objects.
 
@@ -1153,26 +1285,8 @@ We can avoid code duplication with the use of `this` :point_down::
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 3</title>
-        <script>
-          window.onload = function() {
-            document.getElementById("button10").onclick = computeTimes;
-            document.getElementById("button23").onclick = computeTimes;
-            document.getElementById("button76").onclick = computeTimes;
-          };
-
-          function computeTimes() {
-            /*
-             * this.innerHTML returns to us "N times",
-             * parseInt() then strips out the " times" suffix
-             * as it stops parsing at an invalid number character
-             */
-            var times = parseInt(this.innerHTML);
-            var input = parseFloat(document.getElementById("input").value);
-            var res = times * input;
-            alert("The result is " + res);
-          }
-        </script>
     </head>
 
     <body>
@@ -1180,6 +1294,26 @@ We can avoid code duplication with the use of `this` :point_down::
         <button id="button10">10 times</button>
         <button id="button23">23 times</button>
         <button id="button76">76 times</button>
+
+        <script>
+          /* loop over all buttons and attach an event handler */
+          let buttons = document.getElementsByTagName("button");
+          for(let b of buttons){
+            b.addEventListener("click", computeTimes);
+          }
+
+          function computeTimes() {
+            /*
+             * this.innerHTML returns to us "N times",
+             * parseInt() then strips out the " times" suffix
+             * as it stops parsing at an invalid number character
+             */
+            let times = parseInt(this.innerHTML);
+            let input = parseFloat(document.getElementById("input").value);
+            let res = times * input;
+            alert("The result is " + res);
+          }
+        </script>
     </body>
 </html>
 ```
@@ -1187,6 +1321,8 @@ We can avoid code duplication with the use of `this` :point_down::
 :point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. The [`parseInt` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here used to strip out the " times" string suffix, forcing a conversion to type `number`.
 
 #### :bangbang: Example 4: mouse events
+
+![DOM Example 4](../img/js-example4.png)
 
 A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, ...) and some are defined as a series of simpler mouse events, e.g.
 
@@ -1208,38 +1344,8 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 4</title>
-        <script>
-          window.onload = function() {
-            document.getElementById("b1").onmouseover = mouseover;
-            document.getElementById("b1").onmouseout = mouseout;
-
-            document.getElementById("b10").onmouseover = mouseover;
-            document.getElementById("b10").onmouseout = mouseout;
-
-            document.getElementById("b100").onmouseover = mouseover;
-            document.getElementById("b100").onmouseout = mouseout;
-          };
-
-          var intervals = {};
-
-          function updateNum(button){
-            var num = parseInt(button.innerHTML);
-            num = num + 1;
-            button.innerHTML = num;
-          }
-
-          function mouseover() {
-            var incr = parseInt(this.id.substr(1));
-            intervals[this.id] = setInterval(updateNum, 1000/incr, this);
-          }
-
-          function mouseout()
-          {
-            clearInterval(intervals[this.id]);
-            this.innerHTML = "0";
-          }
-        </script>
     </head>
 
     <body>
@@ -1248,6 +1354,33 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
       <button style="width:500px" id="b10">0</button>
       <br>
       <button style="width:500px" id="b100">0</button>
+
+        <script>
+
+          const buttons = document.getElementsByTagName("button");
+          for(let b of buttons){
+            b.addEventListener("mouseover", atMouseOver);
+            b.addEventListener("mouseout", atMouseOut);
+          }
+
+          let intervals = {};
+
+          function updateNum(button){
+            let num = parseInt(button.innerHTML) + 1;
+            button.innerHTML = num;
+          }
+
+          function atMouseOver() {
+            let incr = parseInt(this.id.substr(1));
+            intervals[this.id] = setInterval(updateNum, 1000/incr, this);
+          }
+
+          function atMouseOut()
+          {
+            clearInterval(intervals[this.id]);
+            this.innerHTML = "0";
+          }
+        </script>
     </body>
 </html>
 ```
@@ -1256,51 +1389,16 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
 
 #### :bangbang: Example 5: a crowdsourcing interface
 
+![DOM Example 5](../img/js-example5.png)
+
 Here is another event that can be useful, especially for text-heavy interfaces: `onselect`. Here :point_down:, we have an interface with a read-only text that the user can select passages in. If enough passages have been selected, the user can submit the selected passages:
 
 ```html
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 5</title>
-        <script>
-          window.onload = function() {
-            document.getElementById("ta").onselect = updateNuggets;
-          };
-
-          function updateNuggets() {
-            var n1 = document.getElementById('n1').value;
-            var n2 = document.getElementById('n2').value;
-            var n3 = document.getElementById('n3').value;
-
-            var selected = null;
-            var myTextArea = document.getElementById('ta');
-            if (myTextArea.selectionStart != undefined)
-            {
-              var p1 = myTextArea.selectionStart;
-              var p2 = myTextArea.selectionEnd;
-              selected = myTextArea.value.substring(p1, p2);
-            }
-
-            //if the selected phrase is already in a nugget, remove it
-            if(selected==n1) {document.getElementById('n1').value = "";}
-            else if(selected==n2){document.getElementById('n2').value = "";}
-            else if(selected==n3){document.getElementById('n3').value = "";}
-            //if the first nugget is empty, add it
-            else if(n1.length==0){document.getElementById('n1').value = selected;}
-            //if the second nugget is empty, add it
-            else if(n2.length==0){document.getElementById('n2').value = selected;}
-            //third nugget is treated differently, as now the button becomes unhidden
-            else if(n3.length==0)
-            {
-              document.getElementById('n3').value = selected;
-              document.getElementById('b').hidden = false;
-            }
-            else {
-              alert('You have selected three information nuggets. Either unselect one or manually empty text box.');
-            }
-          }
-        </script>
     </head>
 
     <body>
@@ -1318,11 +1416,60 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
             <label>Nugget 3: <input type="text" id="n3" autocomplete="off"></label><br>
             <button hidden="hidden" id="b">Submit Answers</button><br>
         </form>
+
+        <script>
+          document.getElementById("ta").addEventListener('select', updateNuggets);
+
+          function updateNuggets() {
+
+            let n1El = document.getElementById('n1');
+            let n2El = document.getElementById('n2');
+            let n3El = document.getElementById('n3');
+
+            /* what has already been selected as nuggets */
+            let n1Val = document.getElementById('n1').value;
+            let n2Val = document.getElementById('n2').value;
+            let n3Val = document.getElementById('n3').value;
+
+            console.log(n1Val);
+            console.log(n2Val);
+            console.log(n3Val);
+            /* extract the selected string */
+            let selected = null;
+            let myTextArea = document.getElementById('ta');
+            if (myTextArea.selectionStart != undefined)
+            {
+              let p1 = myTextArea.selectionStart;
+              let p2 = myTextArea.selectionEnd;
+              selected = myTextArea.value.substring(p1, p2);
+            }
+
+            //if the selected phrase is already in a nugget, remove it
+            if(selected==n1Val) {n1El.value = "";}
+            else if(selected==n2Val){n2El.value = "";}
+            else if(selected==n3Val){n3El.value = "";}
+            //if the first nugget is empty, add it
+            else if(n1Val.length==0){n1El.value = selected;}
+            //if the second nugget is empty, add it
+            else if(n2Val.length==0){n2El.value = selected;}
+            //third nugget is treated differently, as now the button becomes unhidden
+            else if(n3Val.length==0)
+            {
+              n3El.value = selected;
+              document.getElementById('b').hidden = false;
+            }
+            else {
+              alert('You have selected three information nuggets. Either unselect one or manually empty text box.');
+            }
+          }
+        </script>
     </body>
 </html>
 ```
 
 #### :bangbang: Example 6: a typing game
+
+![DOM Example 6](../img/js-example6.png)
 
 The last example is a typing game :point_down:. Given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keypress` event type. We start the timer with `setInterval` (incrementing once per second), which returns a handle that we can later pass to `clearInterval` to stop the associated callback from executing (thus stopping the clock).
 
@@ -1332,62 +1479,8 @@ In this example we do do make slight use of CSS (to flash a red background and a
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Example 6</title>
-        <script>
-          window.onload = function() {
-            document.getElementById("typed").onkeypress = checkTextAtKeyPress;
-          };
-
-          var currentPos = 0;
-          var givenText = "given";
-          var typedText = "typed";
-          var timerLog = "timer";
-          var intervals = {};
-
-          //e refers to the event (we need it to extradt the char typed)
-          function checkTextAtKeyPress(e) {
-
-            var textToType = document.getElementById(givenText).value;
-
-            //we reached the end, do nothing
-            if(currentPos >= textToType.length) {return;}
-
-            var nextChar = textToType.charAt(currentPos);
-
-            var keyPressed = String.fromCharCode(e.which);
-            console.log("Key pressed: "+keyPressed+", charCode: "+e.which);
-
-            //correct key was pressed
-            if(nextChar==keyPressed) {
-              //CSS is used here to "style" the text box
-              document.getElementById(typedText).style.backgroundColor="rgb(255,255,255)";
-              document.getElementById(typedText).value = textToType.substring(0,currentPos+1);
-
-              currentPos++;
-
-              //first time key was pressed, start counter
-              if(currentPos==1) {
-                intervals[this.id]=setInterval(function(){
-                    var t = parseInt(document.getElementById(timerLog).innerHTML);
-                    t = t + 1;
-                    document.getElementById(timerLog).innerHTML = t +" seconds";
-                }, 1000);
-              }
-
-              //we reached the end
-              if(currentPos==textToType.length) {
-                clearInterval(intervals[this.id]);
-                //CSS is used here to "style" the text box
-                document.getElementById(timerLog).style.color="orange";
-              }
-            }
-            //incorrect key
-            else {
-              //CSS is used here to "style" the text box
-              document.getElementById(typedText).style.backgroundColor="rgb(255,100,100)";
-            }
-          }
-        </script>
     </head>
 
     <body>
@@ -1405,6 +1498,61 @@ In this example we do do make slight use of CSS (to flash a red background and a
             <span id="timer">0 seconds</span>
           </p>
       </form>
+      <script>
+          let currentPos = 0;
+          let givenText = "given";
+          let typedText = "typed";
+          let timerLog = "timer";
+          let intervals = {};
+
+          let typedTextEl = document.getElementById(typedText);
+          let timerEl = document.getElementById(timerLog);
+
+          document.getElementById("typed").addEventListener('keypress', checkTextAtKeyPress);
+
+          //e refers to the event (we need it to extradt the char typed)
+          function checkTextAtKeyPress(e) {
+
+            let textToType = document.getElementById(givenText).value;
+
+            //we reached the end, do nothing
+            if(currentPos >= textToType.length) {return;}
+
+            let nextChar = textToType.charAt(currentPos);
+
+            let keyPressed = String.fromCharCode(e.which);
+            console.log("Key pressed: "+keyPressed+", charCode: "+e.which);
+
+            //correct key was pressed
+            if(nextChar==keyPressed) {
+              //CSS is used here to "style" the text box
+              typedTextEl.style.backgroundColor="white";
+              typedTextEl.value = textToType.substring(0,currentPos+1);
+
+              currentPos++;
+
+              //first time key was pressed, start counter
+              if(currentPos==1) {
+                intervals[this.id]=setInterval(function(){
+                    let t = 1 + parseInt(timerEl.innerHTML);
+                    timerEl.innerHTML = t +" seconds";
+                }, 1000);
+              }
+
+              //we reached the end
+              if(currentPos==textToType.length) {
+                clearInterval(intervals[this.id]);
+                //CSS is used here to "style" the text box
+                timerEl.style.color="orange";
+              }
+            }
+            //incorrect key
+            else {
+              //CSS is used here to "style" the text box
+              typedTextEl.style.backgroundColor="salmon";
+            }
+          }
+        </script>
     </body>
 </html>
 ```
@@ -1420,16 +1568,7 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
 
-## 🚩 Modern JS libraries
-
-For almost any task you will be faced in web engineering, you can find JavaScript libraries. In this class, we explicitly avoid the use of libraries to teach you the fundamentals. However, it is still useful to look at successful libraries to get an idea of what their appeal is. Here, we consider [Popper](https://popper.js.org/), a tooltip and popover positioning engine. This library has everything we want in a library:
-
-- It has a very narrow scope (which makes it likely that what it does, it does well).
-- It has a visually appealing website and a good tutorial to get started quickly.
-- The developer and user community on GitHub is active (issues are being opened and closed).
-- Highly starred on GitHub.
-- The library comes with various installation options. 
-
+With this example we are coming to the end of this lecture. Many of the concepts introduced here will come back in the later lectures - JavaScript will keep us busy right up to the last lecture of this course.
 
 ## Self-check
 
