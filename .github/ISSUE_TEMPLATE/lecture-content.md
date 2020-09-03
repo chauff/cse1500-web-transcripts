@@ -18,5 +18,5 @@ Which lectures?
 * [ ] Sessions
 * [ ] Web security
 
-## What is the problem?
+## What is the issue?
 Describe the issue ...
