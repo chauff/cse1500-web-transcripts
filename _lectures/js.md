@@ -40,6 +40,7 @@ warning: false
     - [:bangbang: Example 4: mouse events](#️-example-4-mouse-events)
     - [:bangbang: Example 5: a crowdsourcing interface](#️-example-5-a-crowdsourcing-interface)
     - [:bangbang: Example 6: a typing game](#️-example-6-a-typing-game)
+  - [Final notes ...](#final-notes-)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -1559,6 +1560,9 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keypress` |  user presses and releases key while element has keyboard focus (a problematic event) |
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
+
+
+### Final notes ...
 
 In the six DOM interaction examples shown here, we did not have to add a lot of code and thus **for presentation purposes** I chose to keep things lean and move all JavaScript code into the HTML file. When writing code that go beyond the few lines I am showcasing here, this should be avoided: your JavaScript code should be in dedicated files and the object-oriented programming paradigm should be employed as much as possible. 
 
