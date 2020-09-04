@@ -11,7 +11,13 @@ CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.n
 
 This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in the browser's localStorage: i.e., no data leaves your machine. Be aware though that all data is deleted when you clear your browser's history/cookies/storage!
 
-We cover the following languages and technologies: HTTP, HTML, JavaScript, CSS, Node.js and Express. In the five weeks of the web technology lectures we can only cover the web programming fundamentals. If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
+We cover the following languages: HTTP, HTML, JavaScript (on the client and server). Our "web stack" or web application stack, i.e. the software setup we use to implement web applications, is minimalistic :point_down::
+
+![our web stack](img/index-webstack.png)
+
+<sup>Web stack of CSE1500.</sup>
+
+In the five weeks of the web technology lectures we can only cover the web programming fundamentals (and thus the minimal stack). If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
 - [Web technology instructor](#web-technology-instructor)
