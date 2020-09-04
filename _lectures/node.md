@@ -29,6 +29,7 @@ warning: false
 - [WebSockets](#websockets)
   - [:bangbang: A first WebSocket example](#️-a-first-websocket-example)
   - [WebSockets for multi-player games](#websockets-for-multi-player-games)
+- [To conclude ....](#to-conclude-)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -847,9 +848,9 @@ In our client-side code example :point_up: we saw how simple it is to send data 
 
 ### WebSockets for multi-player games
 
-In a multi-player game (such as the board games application implemented throughout the assignments), every player (client) establishes a WebSocket connection to the server. **The server has to keep track of which game each player is assigned to**. When a player in a game with multiple players sends a message to the server (e.g. to *broadcast* her latest move in the game), **the server has to send this message to all other players in the game** - and only to those players. Players active in other games should not receive those messages.
+In a multi-player game (such as the board games application implemented throughout the assignments), every player (client) establishes a WebSocket connection to the server. **The server has to keep track of which game each player is assigned to**. When a player in a game with multiple players sends a message to the server (e.g. to *broadcast* her latest move in the game), **the server has to send this message to all other players in the game** - and only to those players. Players active in other games should not receive those messages :point_down::
 
-![AppCache](../img/node-ws-multiplayer.png)
+![WebSockets multiplayer](../img/node-ws-multiplayer.png)
 
 <sup>The communication via WebSockets is always between client and server. Two clients cannot communicate directly with each other, they have to go through the server.</sup>
 
@@ -938,9 +939,9 @@ you will learn more about this construct in the next lecture. For now, it is suf
 const messages = require("./public/javascripts/messages");
 ```
 
-##
+## To conclude ....
 
-To conclude, in this lecture you have started out your Node.js journey. You have seen server-side scripts can be designed at low level (where you are responsible for creating individual HTTP requests) or at high level, where libraries such as Express take care of a lot of standard web server functionalities. Once again, this is a lot to take in. We have another lecture that covers some of the finer details of Node.js. 
+In this lecture you have started out your Node.js journey. You have seen server-side scripts can be designed at low level (where you are responsible for creating individual HTTP requests) or at high level, where libraries such as Express take care of a lot of standard web server functionalities. Once again, this is a lot to take in. We have another lecture that covers some of the finer details of Node.js. 
 
 ## Self-check
 
