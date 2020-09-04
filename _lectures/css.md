@@ -45,7 +45,9 @@ warning: true
 ## Required & recommended readings and activities
 
 - Required readings:
-  //TODO: update the required readings for CSS (MDN based?)
+  - [What is CSS @MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/What_is_CSS)
+  - [Getting started with CSS @MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/Getting_started)
+  - [How CSS is structured @MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured)
 - Recommended activities:
   - :tv: Watch [this talk by Rachel Andrew](https://www.youtube.com/watch?v=cYGOv2ToZjY) to learn more about the long (and painful) history of CSS.
   - :tv: Watch [this talk by Mandy Michael](https://youtu.be/5qgUC_z8syw) on text effects in CSS. Data attributes and pseudo-elements are a powerful combination!
@@ -75,6 +77,8 @@ warning: true
 - Create CSS-based animations.
 
 ## Code examples
+
+
 
 At [https://codepen.io/charlottehase/full/abzYoQp](https://codepen.io/charlottehase/full/abzYoQp) you find a demo that we developed to show off some of CSS' animation capabilities. Throughout this transcript we will refer to it from time to time---we encourage you to explore its code. It contains a lot of comments that should help you get started. This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
 

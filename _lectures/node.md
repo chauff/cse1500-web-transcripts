@@ -199,7 +199,7 @@ Although the piece of code :point_up: is small, it has a few interesting compone
 - Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [a later lecture](Lecture-node2.md)). In this case, `fs` is our entry point to the file system.
 - You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) is used with two arguments: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous (though nothing prevents us from giving the function a name) and executed asynchronously. [`fs.access`](https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback) (used to determine whether the file exists) takes three arguments in our example.
 - As the filesystem access requires operating system specific code, the behaviour can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation.
-- :flag: The color styling of the console output is **not** Node-specific. Providing these [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) to the terminal let's us change the terminal look and feel. In our case, we only use escape codes to change the font color. This may not work in all terminals, and there are (of course) libraries that do this in a more platform-independent manner but for a quick prototype those escape codes are usually sufficient.
+- 🚩 The color styling of the console output is **not** Node-specific. Providing these [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) to the terminal let's us change the terminal look and feel. In our case, we only use escape codes to change the font color. This may not work in all terminals, and there are (of course) libraries that do this in a more platform-independent manner but for a quick prototype those escape codes are usually sufficient.
 
 A note on Node terminology: you will often find references to **Node modules** and **Node packages**. They differ slightly in meaning:
 
@@ -210,11 +210,15 @@ Although not very useful, our `watching.js` script above can be considered a mod
 
 :bug: Finally, let's quickly walk through the steps to run this script from within VSC's debug environment. Execute the following steps:
 
-1. Open VSC and head to *File » Open* and select the file containing the script.
-2. On the left-most panel, click on the little triangle with the bug on top of it (fourth icon from the top).
-3. Then, click on *Node.js Debug Terminal*; this will open VSC's terminal with the debugger attached to it. 
-4. You can set a *breakpoint* within the script (the code halts at this point and you can inspect the variables, etc.) by clicking to the left of the line numbers.
-5. In the terminal, start your program `node watching.js my-file`. That's it, you can now debug your code.
+:one: Open VSC and head to *File » Open* and select the file containing the script.
+
+:two: On the left-most panel, click on the little triangle with the bug on top of it (fourth icon from the top).
+
+:three: Then, click on *Node.js Debug Terminal*; this will open VSC's terminal with the debugger attached to it. 
+
+:four: You can set a *breakpoint* within the script (the code halts at this point and you can inspect the variables, etc.) by clicking to the left of the line numbers.
+
+:five: In the terminal, start your program `node watching.js my-file`. That's it, you can now debug your code.
 
 ![VSC debugging](../img/node-vsc-watching.png)
 
@@ -697,7 +701,7 @@ axios.get('/psvrGames')
 
 :point_up: Let's start at the bottom of this code snippet. In order to retrieve the list of games from the server, we use `axios.get(url).then(function(res)).catch(function(err))`. This is axios' shorthand for making an HTTP GET request to `url`. If the request is successful the function specified within `then()` is executed, and if not, the function within `catch()` is executed. When the request is successful, `res.data` will contain the data retrieved from the server. What do we do with that data then? To answer this question, we need to take a look at our function `addGamesToList`: we first locate in the DOM tree the unordered list placeholder (and since we know there is only one, we can simply use `"ul"` as the input to `document.querySelector()`); for every game we received, we create a list element (`<li>`) with the corresponding text and append it to our `<ul>` element.
 
-:flag: In the `axios` code snippet above, we actually see another ES6 features of the JavaScript language: **promises**. For our course, it is sufficient to understand the use of `.then().catch()` without digging deeper. For those that want to dig deeper, promises are a way out of the callback hell (as you can already glimpse in our `axios` code example), and simplify asynchronous programming considerably. In large (production-level) projects promises are the way forward. The [You Don't Know JS book series](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20&%20performance/README.md#you-dont-know-js-async--performance) covers [promises in depth](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch3.md).
+🚩 In the `axios` code snippet above, we actually see another ES6 features of the JavaScript language: **promises**. For our course, it is sufficient to understand the use of `.then().catch()` without digging deeper. For those that want to dig deeper, promises are a way out of the callback hell (as you can already glimpse in our `axios` code example), and simplify asynchronous programming considerably. In large (production-level) projects promises are the way forward. The [You Don't Know JS book series](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20&%20performance/README.md#you-dont-know-js-async--performance) covers [promises in depth](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch3.md).
 
 Without the use of axios, the `XMLHttpRequest` object leads to much mor clunky looking code, as this [MDN example](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started) shows.
 
