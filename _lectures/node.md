@@ -3,12 +3,12 @@ layout: default
 permalink: /nodejs/
 linkname: Node.js I
 ordering: 4
-warning: true
+warning: false
 ---
 
 # Node.js: JavaScript on the server <!-- omit in toc -->
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The ‼️ sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
+*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
@@ -17,14 +17,15 @@ warning: true
   - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
   - [Event-driven and non-blocking](#event-driven-and-non-blocking)
 - [Node.js in examples](#nodejs-in-examples)
-  - [:bangbang: Watching a file for changes](#️-watching-a-file-for-changes)
+  - [:bangbang: Watching a file for changes :eyes:](#️-watching-a-file-for-changes-)
   - [:bangbang: Low-level networking with Node.js](#️-low-level-networking-with-nodejs)
   - [:bangbang: Creating a Hello World! web server with Node.js](#️-creating-a-hello-world-web-server-with-nodejs)
 - [Express](#express)
   - [:bangbang: Greetings Express](#️-greetings-express)
   - [:bangbang: A complete web application](#️-a-complete-web-application)
-- [JSON: exchanging data between the client and server](#json-exchanging-data-between-the-client-and-server)
-- [Ajax: dynamic updating on the client](#ajax-dynamic-updating-on-the-client)
+- [Adding interactivity between client and server via Ajax](#adding-interactivity-between-client-and-server-via-ajax)
+  - [JSON: exchanging data between the client and server](#json-exchanging-data-between-the-client-and-server)
+  - [Ajax](#ajax)
 - [WebSockets](#websockets)
   - [:bangbang: A first WebSocket example](#️-a-first-websocket-example)
   - [WebSockets for multi-player games](#websockets-for-multi-player-games)
@@ -32,7 +33,7 @@ warning: true
 
 ## Required & recommended readings and activities
 - Required readings:
-  - //TODO: update the required readings. We will cover Node.js in the lecture from sratch, use the reading to get a first idea of what Node.js is about!
+  - None.
 - Recommended activities:
   - [Interactive Node.js exercises](../_practicals/nodeschool-exercises.md).
   - [Microsoft's beginner-friendly tutorial on building JavaScript applications with Node.js](https://docs.microsoft.com/en-us/learn/paths/build-javascript-applications-nodejs/)
@@ -57,7 +58,7 @@ warning: true
 
 Node.js in [its own words](https://web.archive.org/web/20180306073316/https://nodejs.org/en/):
 
-```console
+```
 "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an 
 event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package 
 ecosystem, npm, is the largest ecosystem of open source libraries in the world."
@@ -76,13 +77,13 @@ Node.js is by now a well-established platform; important milestones between 2008
 - August 2018: [Node.js has been downloaded more than one billion times.](https://medium.com/@nodejs/more-than-a-billion-downloads-of-node-js-952a8a98eb42)
 - May 2018: [Deno](https://github.com/denoland/deno) was first introduced by the creator of Node.js (Ryan Dahl) as an improved alternative to Node.js. Though it has gained traction, Node.js remains the leading JavaScript-based server-side runtime.
 
-Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE!). If you want to know more about how the V8 engine and Node.js fit together, watch [this 2017 talk by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler who works/worked on the V8 engine.
+Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https://insights.stackoverflow.com/survey/2019) Node.js was the most popular framework in the *Frameworks, Libraries, and Tools* section (in the same survey, Visual Studio Code came out as most popular IDE!). If you want to know more about how the V8 engine and Node.js fit together, watch [this 2017 talk by Franziska Hinkelmann](https://www.youtube.com/watch?v=PsDqH_RKvyc), a prominent Googler who worked on the V8 engine.
 
 ### Node.js vs. client-side JavaScript
 
 [Mariko Kosaka](https://twitter.com/kosamari) shared this image to compare client-side JavaScript and Node.js on Twitter, which captures the essence of Node.js very well:
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">What IS Node.js 🤔❓❓<br><br>(Proposal to stop calling server side JavaScript✨) <a href="https://t.co/IhPt8UHnPN">pic.twitter.com/IhPt8UHnPN</a></p>&mdash; Mariko Kosaka (@kosamari) <img src="https://pbs.twimg.com/media/C5_ue1TWYAA0C1R.jpg">March 3, 2017</blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What IS Node.js 🤔❓❓<br><br>(Proposal to stop calling server side JavaScript✨) <a href="https://t.co/IhPt8UHnPN">pic.twitter.com/IhPt8UHnPN</a></p>&mdash; Mariko Kosaka (@kosamari) <a href="https://twitter.com/kosamari/status/837650274672082944?ref_src=twsrc%5Etfw">March 3, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 :point_up: Shown on the left here is Google Chrome and its JavaScript runtime engine V8 (other browsers may make use of other JavaScript runtime engines). V8 is also the core of Node.js. The main difference between the browser and Node.js are the available APIs. As an example, while JavaScript code deployed in the browser cannot access the local file system for security reasons, Node.js can. It is also important to realize that Node.js runs on many different types of hardware.
 
@@ -91,11 +92,11 @@ Node.js is widely used today, in [Stack Overflow's 2019 developer survey](https:
 
 One of the core concepts of Node is the **event loop**. Node.js is a single-threaded application that executes **callbacks** in response to an occurring event. Developers write those callbacks. The event loop waits for events to enter the **event queue** and once they have, the events are processed in their order of arrival, i.e. their respective callbacks are executed.
 
-Take a look at this event loop example:
+Take a look at this event loop example :point_down::
 
 ![Node.js event loop](../img/node-event-loop.png)
 
-Here, despite the **single-threaded nature** of Node.js, several things are seemingly going on in parallel: a file is read from disk, a database is queried while at the same time an HTTP request from a client comes in. The reason for this is the **asynchronous** nature of file reads, network requests and so on (basically: I/O requests). While the event loop is executed in a single thread, Node maintains a *pool of threads* in order to process I/O requests in parallel. So, it is more correct to say that **Node's event loop is single-threaded**. To make this concrete, let's look at how local files are read in Node. Here is an example taken from the [Node documentation](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) :point_down::
+:point_up: Here, despite the **single-threaded nature** of Node.js, several things are seemingly going on in parallel: a file is read from disk, a database is queried while at the same time an HTTP request from a client comes in. The reason for this is the **asynchronous** nature of file reads, network requests and so on (basically: I/O requests). While the event loop is executed in a single thread, Node maintains a *pool of threads* in order to process I/O requests in parallel. So, it is more correct to say that **Node's event loop is single-threaded**. To make this concrete, let's look at how local files are read in Node. Here is an example taken from the [Node documentation](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback) :point_down::
 
 ```javascript
 var fs = require('fs');//this line will be explained in a bit
@@ -138,32 +139,66 @@ As the typical web application is indeed I/O bound, Node.js has become a popular
 
 Let's now walk through a number of Node code examples that increase in complexity and lead us towards server-side scripting for web applications. Along the way, we introduce important Node runtime concepts. As always, we recommend that you try out all code examples yourself. We assume you have Node.js already installed on your machine.
 
-### :bangbang: Watching a file for changes
+### :bangbang: Watching a file for changes :eyes:
 
-Here is a simple task: write a script that watches a given file for changes and alerts us to any changes by printing out a message on the console. You should know how to do this in Java already.
+Here is a simple task: write a script that watches a given file for changes and alerts us to any changes by printing out a message on the terminal. You should know how to do this in Java already.
 
-Let's look at how we can solve this task in Node.js. To be clear: this task has nothing to do with web applications; we start with it to showcase the simplicity of Node scripts. The [Node script](demo-code/node-file-watching-ex) looks as follows :point_down::
+Let's look at how we can solve this task in Node.js. To be clear: this task has nothing to do with web applications; we start with it to showcase the simplicity of Node scripts. The Node script looks as follows :point_down::
 
 ```javascript
-var fs = require('fs');
+const fs = require('fs');
 
-var file = process.argv[2]; //read the file name from the command line
+/*
+ * Let's make the console output a bit more colorful.
+ * These oddly looking strings are ANSI escape codes, they
+ * allow us to signal a change of color to the terminal.
+ * This is not Node-specific.
+ */
+let colors = {
+    error: "\x1b[31m",
+    ok: "\x1b[32m",
+    changed: "\x1b[34m",
+    reset: "\x1b[0m"
+}
 
-fs.watch(file, function () {
-    console.log("File changed!");
+//beautifying the console output
+function print(type, s){
+    console.log(colors[type],s,colors["reset"]);
+}
+
+if(process.argv.length<3){
+    print("error", "File to watch required as command line argument.");
+    process.exit(1);
+}
+
+let file = process.argv[2];
+
+fs.access(file, fs.constants.F_OK, function(err){
+    if(!err){
+        print("ok", "Now watching " + file);
+        fs.watch(file, function(){
+            print("changed", "File changed");
+        });
+    }
+    else {
+        print("error", "File to watch does not exist!");
+        process.exit(1);
+    }
 });
-
-console.log("Now watching " + file);
 ```
 
-:point_up: That's all. Store this code in a file of your choosing, e.g. `watching.js`, open the terminal and then start the script execution with `node watching.js /path/to/file/to/watch`. The command line argument here is the path to the file to watch. If it is a file in the same directory as your script, you simply add the filename. Now change the file and see what happens. Depending on the operating system, when you make a change to the watched file (e.g. add a line of text) this may or may not require saving the file before your Node script reports a file change. This code also assumes that the file to watch actually exists.
+:point_up: That's all. Store this code in a file of your choosing, e.g. `watching.js`, open the terminal and then start the script execution with `node watching.js /path/to/file/to/watch`. The command line argument here is the path to the file to watch. If it is a file in the same directory as your script, you simply add the filename. Now change the file and see what happens. Depending on the operating system, when you make a change to the watched file (e.g. add a line of text) this may or may not require saving the file before your Node script reports a file change. If a command line argument is missing or the file does not exist, the script ends. Trying this script yourself should lead to something like this :point_down::
+
+![Console output watching file changes](../img/node-watch.png)
+
+<sup>Side note: If you are looking for a well-styled terminal, take a look at the [bash-it framework](https://github.com/Bash-it/bash-it).</sup>
 
 Although the piece of code :point_up: is small, it has a few interesting components:
 
 - Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [a later lecture](Lecture-node2.md)). In this case, `fs` is our entry point to the file system.
-- You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) contains two parameters: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous (though nothing prevents us from giving the function a name) and executed asynchronously.
+- You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) is used with two arguments: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous (though nothing prevents us from giving the function a name) and executed asynchronously. [`fs.access`](https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback) (used to determine whether the file exists) takes three arguments in our example.
 - As the filesystem access requires operating system specific code, the behaviour can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation.
-- The last line of code (`console.log("Now watching " + file);`) is executed immediately after the **setup** of the callback.
+- :flag: The color styling of the console output is **not** Node-specific. Providing these [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) to the terminal let's us change the terminal look and feel. In our case, we only use escape codes to change the font color. This may not work in all terminals, and there are (of course) libraries that do this in a more platform-independent manner but for a quick prototype those escape codes are usually sufficient.
 
 A note on Node terminology: you will often find references to **Node modules** and **Node packages**. They differ slightly in meaning:
 
@@ -172,34 +207,15 @@ A note on Node terminology: you will often find references to **Node modules** a
 
 Although not very useful, our `watching.js` script above can be considered a module, but not a package, as so far we have not seen the need for a `package.json` file.
 
-:bug: Finally, let's quickly walk through the steps to run this script from within VSC's debug environment. We assume that you have cloned/downloaded the [Web-Teaching GitHub repository](https://github.com/chauff/Web-Teaching). Now execute the following steps:
+:bug: Finally, let's quickly walk through the steps to run this script from within VSC's debug environment. Execute the following steps:
 
-1. Open VSC and then select *Open Workspace* and select the *Web-Teaching* folder you downloaded.
-2. On the left-most panel, click on <kbd>Debug</kbd> and then click on the <kbd>No configurations</kbd> pull-down menu at the top; select *Add configuration* and when asked choose the *Node.js* environment.
-3. This will create a file `launch.json` which contains details on the program to launch and it's command line arguments.
-4. Replace the default content of `launch.json` with the following lines and save the file:
+1. Open VSC and head to *File » Open* and select the file containing the script.
+2. On the left-most panel, click on the little triangle with the bug on top of it (fourth icon from the top).
+3. Then, click on *Node.js Debug Terminal*; this will open VSC's terminal with the debugger attached to it. 
+4. You can set a *breakpoint* within the script (the code halts at this point and you can inspect the variables, etc.) by clicking to the left of the line numbers.
+5. In the terminal, start your program `node watching.js my-file`. That's it, you can now debug your code.
 
-```javascript
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/demo-code/node-file-watching-ex/watching.js",
-            "cwd": "${workspaceFolder}/demo-code/node-file-watching-ex",
-            "args": [
-                "todos.txt"
-            ]
-        }
-    ]
-}
-```
-
-5. Now, the program is ready to be debugged. In the *Debug* tab, *Launch Program* should now be the default option in the pull-down menu (see VSC's debug panel screenshot below). Click on the <kbd>Play</kbd> button (the green triangle) and your program is running with a debugger attached. Change the file *todos.txt* (the command line argument you provided in `launch.json`) and observe the console output.
-
-![Debug panel](../img/node-debug.png)
+![VSC debugging](../img/node-vsc-watching.png)
 
 
 ### :bangbang: Low-level networking with Node.js
@@ -208,9 +224,9 @@ Node.js was originally designed for I/O bound programs, in particular programs r
 
 TCP socket connections have **two endpoints**:
 
-:one: **binds** to a numbered port;
+:one: One endpoint **binds** to a numbered port;
 
-:two: **connects** to a port.
+:two: The other endpoint **connects** to a port.
 
 An analogous example of TCP socket connections are phone lines: One phone *binds* to a phone number. Another phone tries to call that phone. If the call is answered, a connection is established.
 
@@ -218,62 +234,72 @@ Let's now move our file watching example into the networked world. The new task 
 
 ![low-level networking visual](../img/node-tcp-js.png)
 
-This is our corresponding [script](demo-code/node-tcp-ex) :point_down::
+This is our corresponding script :point_down::
 
 ```javascript
 const fs = require('fs');
 const net = require('net');
 
-/* 
- * command line arguments: file to watch and port number;
- * we start reading arguments from process.argv[2] onwards as
- * process.argv[0] contains the path to the node program and
- * process.argv[1] contains teh path to the node script
- */
-const filename = process.argv[2];
-const port = process.argv[3];
+//Let's make the console output a bit more colorful
+let colors = {
+    error: "\x1b[31m",
+    ok: "\x1b[32m",
+    changed: "\x1b[34m",
+    reset: "\x1b[0m"
+}
 
-var server = net.createServer(function (connection) {
+function print(type, s){
+    console.log(colors[type],s,colors["reset"]);
+}
+
+if(process.argv.length<4){
+    print("error", "Two command line arguments required: [file to watch] [port]");
+    process.exit(1);
+}
+
+let file = process.argv[2];
+let port = process.argv[3];
+
+let server = net.createServer(function(connection){
 
     //what to do on connect
-    console.log("Subscriber connected");
-    connection.write("Now watching " + filename +
-        " for changes\n");
+    print("ok","Subscriber connected!");
 
-    var watcher = fs.watch(filename, function () {
-        connection.write("File " + filename +
-            " has changed: " + Date.now() + "\n");
+    connection.write(colors["ok"] + "Now watching " + file + " for changes.\n" + colors["reset"]);
+
+    var watcher = fs.watch(file, function(){
+        connection.write(colors["changed"] + "File " + file + " has changed: " + Date.now() + ".\n" + colors["reset"]);
     });
 
     //what to do on disconnect
-    connection.on('close', function () {
-        console.log("Subscriber disconnected");
+    connection.on('close', function(){
+        print("ok","Subscriber disconnected!");
         watcher.close();
     });
 });
 
-server.listen(port, function () {
-    console.log("Listening to subscribers...");
+server.listen(port, function(){
+    print("ok","Listening to subscribers ...");
 });
 ```
 
 To start this script (let's assume it is saved as `tcp.js`), we now require two command line arguments: the file to watch and the port number we want the `server` object to listen to:
 
-```console
+```
 node tcp.js todos.txt 3000
 ```
 
-Any port number between 1024 and 65536 is a good one (ports 1 to 1023 are *system ports*), as long as no other program has already bound to it. If you try to use the same port as another program, Node will throw an `EADDRINUSE` error (which means *Error: address is in use!*). A very typical port number you find in code examples is `3000`, though once more, the concrete port number chosen does not matter.
+Any port number between 1024 and 65536 is a good one (ports 1 to 1023 are *system ports* you should avoid them), as long as no other program has already bound to it. If you try to use the same port as another program, Node will throw an `EADDRINUSE` error (which means *Error: address is in use!*). A very typical port number you find in code examples is `3000`, though once more, the concrete port number chosen does not matter.
 
-Ok, we just started the server. It is now waiting for clients/subscribers on port `3000`. The next obvious question is how to start up clients. For this exercise, we will use telnet (you should already be familiar with it). Open another terminal (the server has to keep running of course) and type :point_down::
+Ok, we just started the server. It is now waiting for clients/subscribers on port `3000`. The next obvious question is how to start up clients. For this exercise, we will use telnet. Open another terminal (the server has to keep running of course) and type :point_down::
 
-```console
+```
 telnet localhost 3000
 ```
 
 :point_up: `localhost` is the hostname, you can also replace it by IP address `127.0.0.1`, which is typically assigned to `localhost`. It basically means *this computer*, as we start our server in the same machine as our client.
 
-When you make changes to the watched file, you will find that those are now reported to our telnet client. You can close the telnet session by first pressing `<Ctrl>`+`]` (which brings you to the telnet prompt) and then type `quit` followed by `<Enter>`.
+When you make changes to the watched file, you will find that those are now reported to our telnet client. You can close the telnet session by first pressing `<Ctrl>`+`]` (which brings you to the telnet prompt) and then type `quit` followed by <kbd>Enter</kbd>.
 
 Let's take a closer look at the source code :point_up::
 
@@ -286,14 +312,14 @@ Let's take a closer look at the source code :point_up::
 
 By now you will have realized, **Node.js is not a web server**. Node.js provides the **functionality** to implement one!
 
-Let's do that. We start off with another minimal task: whenever our server receives an HTTP request, it should reply with a *Hello World!* string in the HTTP response. Simple enough. Here is the [script](demo-code/node-web-ex) that does exactly that :point_down::
+Let's do that. We start off with another minimal task: whenever our server receives an HTTP request, it should reply with a *Hello World!* string in the HTTP response. Simple enough. Here is the script that does exactly that :point_down::
 
 ```javascript
-var http = require("http");
+const http = require("http");
 
-var port = process.argv[2];
+let port = process.argv[2];
 
-var server = http.createServer(function (req, res) {
+let server = http.createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Hello World!");
     console.log("HTTP response sent");
@@ -316,9 +342,9 @@ A few remarks on the code piece above :point_up::
 To make the code more modular, we can apply some refactoring, which shows off the function-as-parameter paradigm once more :point_down::
 
 ```javascript
-var http = require("http");
+const http = require("http");
 
-var port = process.argv[2];
+let port = process.argv[2];
 
 function simpleHTTPResponder(req, res){
     res.writeHead(200, { "Content-Type": "text/plain" });
@@ -326,20 +352,20 @@ function simpleHTTPResponder(req, res){
     console.log("HTTP response sent");
 }
 
-var server = http.createServer(simpleHTTPResponder);
+let server = http.createServer(simpleHTTPResponder);
 
 server.listen(port, function () {
     console.log("Listening on port " + port);
 });
 ```
 
-To make this example more interesting, let's return different responses depending on the URL path (if you are unsure about the components that make up a URL, head to the [HTTP lecture](Lecture-http.md)). The task is now to return a greeting for the `/greetme` path and a `404 Not Found` error otherwise. If the URL query (i.e. the part of the URL that assigns values to parameters) contains a parameter named `name`, we greet by name, and otherwise use `Anonymous`. Our [script](demo-code/node-url-routing-ex) now looks as follows :point_down::
+To make this example more interesting, let's return different responses depending on the URL path (if you are unsure about the components that make up a URL, head to the [HTTP lecture](http.md)). The task is now to return a greeting for the `/greetme` path and a `404 Not Found` error otherwise. If the URL query (i.e. the part of the URL that assigns values to parameters) contains a parameter named `name`, we greet by name, and otherwise use `Anonymous`. Our script now looks as follows :point_down::
 
 ```javascript
-var http = require("http");
-var url = require("url");
+const http = require("http");
+const url = require("url");
 
-var port = process.argv[2];
+let port = process.argv[2];
 
 function simpleHTTPResponder(req, res) {
 
@@ -367,16 +393,14 @@ function simpleHTTPResponder(req, res) {
     }
 }
 
-var server = http.createServer(simpleHTTPResponder);
+let server = http.createServer(simpleHTTPResponder);
 
 server.listen(port, function () {
     console.log("Listening on port " + port);
 });
 ```
 
-The code showcases how to make use of another core Node module, the [url module](https://nodejs.org/docs/latest/api/url.html); it provides support for URL resolution and parsing.
-
-Start the server (by now you know how) and try different URLs in the browser (adapt the port number if necessary):
+:point_up: The code showcases how to make use of another core Node module, the [url module](https://nodejs.org/docs/latest/api/url.html); it provides support for URL resolution and parsing. Start the server (by now you know how) and try different URLs in the browser (adapt the port number if necessary):
 
 - `localhost:3000`
 - `localhost:3000/greetme`
@@ -392,7 +416,7 @@ When we do implement a web server, in the Node.js community that most often mean
 
 [Express](https://expressjs.com/) *" is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. Express provides a thin layer of fundamental web application features, without obscuring Node.js features ..."*
 
-Node.js has a small core code base; it comes with a number of core modules included such as `http` and `url`. Express is not one of the core modules (though it is certainly among the most popular non-core modules with more than [6 million downloads per week](https://www.npmjs.com/package/express)) and needs to be installed separately. In the Node ecosystem, the Node package manager ([npm](https://www.npmjs.com/)) provides us with an easy to use and efficient manner to install additional packages.
+Node.js has a small core code base; it comes with a number of core modules included such as `http` and `url`. Express is not one of the core modules (though it is certainly among the most popular non-core modules with more than [13 million downloads per week](https://www.npmjs.com/package/express)) (as of September 2020) and needs to be installed separately. In the Node ecosystem, the Node package manager ([npm](https://www.npmjs.com/)) provides us with an easy to use and efficient manner to install additional packages.
 
 Let's say you want to know whether a Node module exists that offers functionality you do not want to implement yourself. For this example, let this be the functionality of finding the smallest number in a list. Here is what is typically done:
 
@@ -400,47 +424,61 @@ Let's say you want to know whether a Node module exists that offers functionalit
 
 :two: Search for the desired functionality, e.g. by using *smallest in list* as query.
 
-:three: If you used the search query above, your search result list will most likely contain a single package: [smallest](https://www.npmjs.com/package/smallest).
+:three: If you used the search query above, your search result list will be small and contain the package [smallest](https://www.npmjs.com/package/smallest).
 
-:four: The package description provides you with information on **how to install** the package and how to use it, as well as how popular the package is.
+:four: The package description provides you with information on **how to install** the package, how to use it, what its dependencies are and what other packages depend on it, as well as how popular the package is.
 
-Once we have found the Node packages we need for our project, how do we go about installing them? First of all, in order to create a project, we need to create a folder, e.g. `node-express-ex`. `cd` into the folder (which is still empty) and execute the following command:
+:five: To quickly get an idea of what the package is doing, try it out in the browser via [https://npm.runkit.com/](https://npm.runkit.com/) which is a Node.js playground that has all of npm's packages pre-installed.
 
-```console
+Once we have found the Node packages we need for our project, how do we go about setting them up for our project? First of all, in order to create a project, we need to create a folder, e.g. `node-express-ex`. `cd` into the folder (which is still empty) and execute the following command :point_down::
+
+```
 npm init -y
 ```
 
-This will create a `package.json` file in the folder which contains basic information about the project, all filled with defaults. If you do not want the defaults, run `npm init` instead, the `-y` option ensures that you are not asked any questions. Let's assume you want to install the Express package. Run the following command:
+Now check with the command `ls` what happened. We have a `package.json` file in the folder which now contains basic information about the project, all filled with defaults. If you do not want the defaults, run `npm init` instead, the `-y` option ensures that you are not asked any questions. Let's assume you want to install the Express package. Run the following command:
 
 ```console
 npm install express --save
 ```
 
-This will install Express in the folder `node_modules`, which is automatically created within your current folder; as Express depends on many other packages, you will find more than just Express in there. The `--save` option ensures that the `package.json` file is altered, it now contains the entry similar to this one :point_down::
+Again, use `ls` to see whether something happened in your current folder. We have just installed Express in the folder `node_modules`, which has automatically been created within your current folder; as Express depends on many other packages, you will find more than just Express in there (take a look by issueing the command `ls node_modules`). The `--save` option ensures that the `package.json` file is altered, it now contains the entry similar to this one :point_down::
 
 ```javascript
-"dependencies": {
-    "express": "^4.16.3"
+{
+  "name": "node-express-ex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
 ```
 
-:point_up: This means, that the project is dependent on Express. Without the `--save` option, the installation of Express would have occurred as well, however, the `package.json` file would remain unaltered and the dependencies are not saved. When `package.json` is properly maintained, the application can be installed by anyone with `npm install`, as also seen in the [demo game application](https://github.com/chauff/Web-Teaching/tree/master/demo-code).
+:point_up: Note the `dependencies` entry. It means, that the project is now dependent on Express. Without the `--save` option, the installation of Express would have occurred as well, however, the `package.json` file would remain unaltered and the dependencies would not have been saved. When `package.json` is properly maintained, the application can be installed by anyone with `npm install`. There is one more file in your folder, `package-lock.json`, that we are skipping over. If you look into it, you will find it much more detailed than `package.json`, it provides step by step instructions of how the `node_modules` tree was generated. More information [can be found here](https://docs.npmjs.com/configuring-npm/package-lock-json.html) but for the purposes of this course you can ignore it.
 
 ### :bangbang: Greetings Express
 
 Let's look at how to implement our greetings example with Express :point_down::
 
 ```javascript
-var express = require("express");
-var url = require("url");
-var http = require("http");
+const express = require("express");
+const url = require("url");
+const http = require("http");
 
-var port = process.argv[2];
-var app = express();
+let port = process.argv[2];
+const app = express();
 http.createServer(app).listen(port);
 
-var htmlPrefix = "<!DOCTYPE html><html><head></head><body><h1>";
-var htmlSuffix = "</h1></body></html>";
+let htmlPrefix = "<!DOCTYPE html><html><head></head><body><h1>";
+let htmlSuffix = "</h1></body></html>";
 
 app.get("/greetme", function(req, res){
     var query = url.parse(req.url, true).query;
@@ -459,13 +497,13 @@ app.get("/*", function(req, res){
 })
 ```
 
-Start the server and try a few URLs yourself!
+Start the server (by now you have learnt how to do this!) and try a few URLs yourself!
 
 A few remarks :point_up::
 
 - The call `express()` returns an object (usually named `app` for application) which is our way of making use of Express' functionalities.
-- We define three so-called **URL routes**: `/greetme`, `/goodbye` and `/*`, with the latter representing all possible routes. When an HTTP request comes in, the Express framework determines which route to execute - the routes are evaluated in order of appearance and the way we set up the code, it is only possible for a single route to be activated per request. Since `/greetme` appears before `/*` in our list of routes, we see the intended greeting. If we would move the `/*` route to be the first in the file, the only response we would ever see, no matter the URL path, would be *Not a valid route ...*.
-- Lastly, it is no longer necessary to create HTTP headers. Express takes over this tedious task, all we have to do is call the `send()` method of the HTTP response object.
+- We define three so-called **URL routes**: `/greetme`, `/goodbye` and `/*`, with the latter representing all possible routes. When an HTTP request comes in, the Express framework determines which route to execute - the routes are evaluated **in order of appearance** and the way we set up the code, it is only possible for a single route to be activated per request. Since `/greetme` appears before `/*` in our list of routes, we see the intended greeting. If we would move the `/*` route to be the first in the file, the only response we would ever see, no matter the URL path, would be *Not a valid route ...*.
+- Lastly, it is no longer necessary to create HTTP headers. Express manages this tedious task for us, all we have to do is call the `send()` method of the HTTP response object.
 
 This code though is still not maintainable, writing HTML code within a Node.js script is poor form and error-prone. For **static files**, i.e. files that are *not* created or changed on the fly, e.g. CSS, client-side JavaScript, HTML, images and audio files, Express offers us a very simple solution. A single line of code is sufficient to serve static files :point_down::
 
@@ -473,31 +511,37 @@ This code though is still not maintainable, writing HTML code within a Node.js s
 app.use(express.static(__dirname + "/static"));
 ```
 
-:point_up: For this code snippet to work, all static files need to be contained in the directory `static` (you can of course decide to name that directory differently); [`__dirname`](https://nodejs.org/docs/latest/api/globals.html) is a globally available string that contains the directory name of the current module. In response to an HTTP request, Express first checks the static files for a given route - if a static file is found, this is served, otherwise the **dynamic routes** are checked until a fitting route is found.
+:point_up: For this code snippet to work, all static files need to be contained in the directory `static` (you can of course decide to name that directory differently); [`__dirname`](https://nodejs.org/docs/latest/api/globals.html) is a globally available string in Node that contains the directory name of the current module. In response to an HTTP request, Express first checks the static files for a given route - if a static file is found, this is served, otherwise the **dynamic routes** are checked until a fitting route is found.
 
 ### :bangbang: A complete web application
 
 Having all the pieces in place (knowledge of HTML, client-side JavaScript, Node.js scripting), we can now write a complete web application. A good development strategy is the following:
 
-:one: Develop the client-side code (HTML, JavaScript and CSS - the latter we will cover in one of the next lectures);
+:one: Develop the client-side code (HTML, JavaScript and CSS - the latter we will cover in one of the next lectures).
 
-:two: Place all client-side files into a directory (e.g. `/static` or `/public`) **on the server**;
+:two: Place all client-side files into a directory (e.g. `/static` or `/public`) **on the server**.
 
-:three: Write the **server code** using Express;
+:three: Write the **server-side code** using Express.
 
-:four: Set Express' static file path to the directory created in step :two:;
+:four: Set Express' static file path to the directory created in step :two:.
 
 :five: Add interactivity between client and server.
 
-Small web applications (as our board game) are typically structured as shown here :point_down:. This structure (slightly revised for illustration purposes) is that of our demo board game project. In [Assignment 5](Assignment-5.md) you will learn how to create such a folder structure **automatically**, according to accepted best practices.
+Small web applications (such as your own board game project) are often structured as shown here on the example of our [demo game](https://github.com/chauff/balloons-game) :point_down::
 
 ![folder structure](../img/node-file-structure.png)
+
+<sup>The client-side code of the web application resides within the `/public` folder. Within it, three subfolders exist: one for any data for the client, one for all JavaScript files and one for the stylesheets. Here, as we have only two HTML files (the splash screen and the game screen) we opted to not create a separate subfolder for them. All other `.js` files (i.e. anything not in `/public`) refer to server-side code.</sup>
+
+In the [JS+Node assignment](../_practicals/assignment-js-node.md) you will learn how to create such a folder structure **automatically**, according to accepted best practices.
+
+## Adding interactivity between client and server via Ajax
 
 Among the five steps of web application development, step :five:, the interactivity between client and server is the most time-consuming part, as it can be based on different technologies, depending on the application's needs.
 
 The client-server interaction can be implemented with **Ajax** - which is a sensible choice for many application settings. In the board game project we ask you to implement the three web technology assignments, the client-server interaction is largely based on **WebSockets** - which is a good choice due to the bidirectional communication needs of our app.
 
-Ajax *is* useful for the splash screen of our board game project, in particular when it comes to updating the game statistics (e.g. games played, games aborted, games ongoing). The application flow showcases a possible client-server interaction to do just that :point_down:
+Ajax *is* useful for the splash screen of our board game project, in particular when it comes to updating the game statistics (e.g. games played, games aborted, games ongoing). The application flow showcases a possible client-server interaction to do just that :point_down::
 
 ![Splash screen statistics flow](../img/node-splash-statistics.png)
 
@@ -507,7 +551,7 @@ When designing your own application, it is important to have a good understandin
 
 Before describing Ajax in more detail, we make a short detour into data exchange formats: how does the data typically look like that is exchanged between client and server?
 
-## JSON: exchanging data between the client and server
+### JSON: exchanging data between the client and server
 
 JSON stands for *JavaScript Object Notation* and is a format that transmits data in human-readable text. It consists of attribute value pairs and array data types.
 
@@ -577,75 +621,86 @@ With JSON being a de facto data exchange standard, Express has a dedicated respo
 
 With the data exchange format out of the way, we can now turn back to Ajax.
 
-## Ajax: dynamic updating on the client
+### Ajax
 
 Ajax stands for **Asynchronous JavaScript and XML**. XML is in the name, and in the name only. XML is not commonly used as Ajax data exchange format anymore (JSON is!).  
 
 **Asynchronous Javascript:** In synchronous programming, things happen one at a time. When a function needs information from another function, it has to wait for it to finish and this delays the whole program. This is a bad use of your computer's resources, there's no point waiting for a process to finish especially in an era where computer processors are equipped with multiple cores. This is where asynchronous programming steps up. A function that takes too long to finish is seperated from the main application and when it is done, it notifies the main program if it was successful or not. 
 
-Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web page. Ajax is not a language. Ajax is also not a product. Let's take the Bing search engine as an example: once you start typing a query, with each letter typed a new set of query suggestions will become available :point_down:. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we observe that each keystroke will lead to a new request/response message pair (and the request contains the currently typed query as visible on the Headers pane):
+Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web document. Ajax is not a language. Ajax is also not a product. Let's take the Bing search engine as an example: once you start typing a query, with each letter typed a new set of query suggestions will become available :point_down:. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we observe that each keystroke will lead to a new request/response message pair (and the request contains the currently typed query as visible on the Headers pane):
 
 ![Twitter xhr](../img/node-xhr.png)
-<sup>Screenshot taken in January 2020.</sup>
+<sup>Screenshot taken September 4, 2020. Firefox. After each keystroke, an Ajax request is made to receive updated query suggestions from the server.</sup>
 
- :point_up: The column *Cause* lists the reason for the network request - `xhr`, which tells us that Ajax was used. `xhr` is short for `XMLHttpRequest`, which is an object offered by all major browsers that is at the heart of Ajax and allows us to:
+:point_up: We can select the type of content or type of request (*All*, *HTML*, *CSS* and so on) at the top of the Network pane. This allow us to filter for specific HTTP requests. Selecting `XHR` shows only requests made via Ajax. `XHR` is short for `XMLHttpRequest`, which is an object offered by all major browsers that is at the heart of Ajax and allows us to:
+
 - make requests to the server without a full page reload;
 - receive data from the server.
 
-The `jQuery` library hides a lot of the low-level `XMLHttpRequest` details. A working toy example can be found [here](demo-code/node-ajax-ex). In this example code, you will note that the server-side code does not do anything special because Ajax is involved; **to the server, the requests look like any other HTTP request**. This leaves us to look at the client-side. Here, we first consider `index.html` :point_down::
+The [`axios`](https://github.com/axios/axios) library hides a lot of the low-level `XMLHttpRequest` details and is one of the most popular choices for making Ajax calls. We will use it here. A working toy example can be found [here](https://github.com/chauff/demo-code/tree/master/node-ajax-ex). In this example code, you will note that the server-side code does not do anything special because Ajax is involved; **to the server, the requests look like any other HTTP request**. This leaves us to look at the client-side. Here, we first consider `index.html` :point_down::
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <head>
-    <title>Plain text TODOs</title>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="js/client-app.js" type="text/javascript"></script>
+	<title>Available PlayStation VR Games</title>
 </head>
 
 <body>
-    <main>
-        <section id="todo-section">
-            <p>My list of TODOS:</p>
-            <ul id="todo-list">
-            </ul>
-        </section>
-    </main>
+	<main>
+		<section class="available">
+			<p>Available PlayStation VR Games</p>
+			<ul class="available">
+			</ul>
+		</section>
+	</main>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
+	<script src="js/client-app.js"></script>
 </body>
 </html>
 ```
 
-:point_up: We first load the jQuery library and then the client-side JavaScript source. Note here, that the TODO list is **empty**. We have an empty unordered list element (`<ul>`) that will be filled with TODOs via Ajax calls. Let's find out how to make Ajax requests with the help of jQuery by looking at `js/client-app.js` :point_down::
+:point_up: On the client-side, we load the axios library and then our application-specific JavaScript code. The domain `https://unpkg.com/` is a large content delivery network. We could have also opted to store the current axios version locally, but then we would be responsible for keeping up with maintaining it. Note here, that the games list is **empty**. We have an empty unordered list element (`<ul>`) that will be filled with the available PlayStation VR games (which those are, we learn from the server) via an Ajax call. Let's find out how to make Ajax requests with the help of axios by looking at `js/client-app.js` :point_down::
 
 ```javascript
-var main = function () {
-    "use strict";
+"use strict";
 
-    var addTodosToList = function (todos) {
-        console.log("Loading todos from server");
-        var todolist = document.getElementById("todo-list");
-        for (var key in todos) {
-            var li = document.createElement("li");
-            li.innerHTML = "TODO: " + todos[key].message;
-            todolist.appendChild(li);
-        }
-    };
+function addGamesToList(games) {
+	console.log("Loading games from server.");
 
-    /*
-     * This request retrieves the todo list once, to make this a regular
-     * "event", make use of setInterval()
-     */
-    $.getJSON("../todos", addTodosToList)
-        .done( function(){ console.log("Ajax request successful.");})
-        .fail( function(){ console.log("Ajax request failed.");});
-};
-$(document).ready(main);
+	let gamesList = document.querySelector("ul");
+	for(let key in games){
+		let game = games[key];
+		let li = document.createElement("li");
+		li.innerHTML = game.title + " ("+game.price+")";
+		gamesList.appendChild(li);
+	}
+}
+
+/* 
+ * retrieve the games from the server once;
+ * use setInterval to do this regularly 
+ */
+axios.get('/psvrGames')
+	.then( function(res){
+		//success
+		console.log(res.status);
+		console.log(res.data);
+		addGamesToList(res.data);
+	})
+	.catch(function(err){
+		//error
+		console.log(err);
+	});
 ```
 
-:point_up: Let's start at the bottom of this code snippet. In order to retrieve the list of TODOs from the server, we use `$.getJSON(url, function(data))`. This is jQuery's shorthand for making an HTTP GET request to `url` and executing the function specified as second argument **in the case of a successful request**. When the request is successful, `data` will contain the data retrieved from the server. What do we do with that data then? To answer this question, we need to parse our function expression `addTodosToList`: we first locate in the DOM tree the unordered list placeholder which we gave the id `todo-list`; for every todo we received, we create a list element (`<li>`) with the corresponding text and append it to our `<ul>` element.
+:point_up: Let's start at the bottom of this code snippet. In order to retrieve the list of games from the server, we use `axios.get(url).then(function(res)).catch(function(err))`. This is axios' shorthand for making an HTTP GET request to `url`. If the request is successful the function specified within `then()` is executed, and if not, the function within `catch()` is executed. When the request is successful, `res.data` will contain the data retrieved from the server. What do we do with that data then? To answer this question, we need to take a look at our function `addGamesToList`: we first locate in the DOM tree the unordered list placeholder (and since we know there is only one, we can simply use `"ul"` as the input to `document.querySelector()`); for every game we received, we create a list element (`<li>`) with the corresponding text and append it to our `<ul>` element.
 
-Without the use of jQuery, the `XMLHttpRequest` object leads to more clunky looking code, as this [MDN example](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started) shows.
+:flag: In the `axios` code snippet above, we actually see another ES6 features of the JavaScript language: **promises**. For our course, it is sufficient to understand the use of `.then().catch()` without digging deeper. For those that want to dig deeper, promises are a way out of the callback hell (as you can already glimpse in our `axios` code example), and simplify asynchronous programming considerably. In large (production-level) projects promises are the way forward. The [You Don't Know JS book series](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20&%20performance/README.md#you-dont-know-js-async--performance) covers [promises in depth](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/async%20%26%20performance/ch3.md).
 
-In a nutshell, Ajax - without the high-level encapsulation through `jQuery` - works as follows:
+Without the use of axios, the `XMLHttpRequest` object leads to much mor clunky looking code, as this [MDN example](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started) shows.
+
+In a nutshell, Ajax - without the high-level encapsulation through `axios` - works as follows:
 
 :one: The web browser creates a `XMLHttpRequest` object.
 
@@ -657,11 +712,9 @@ In a nutshell, Ajax - without the high-level encapsulation through `jQuery` - wo
 
 Importantly, with Ajax, the number of complete page reloads is vastly reduced. **Only the newly available** (e.g. a new set of query suggestions based on the current query) or **changed data** needs to be retrieved from the server, instead of the complete document. Ajax was and remains an important technology to move from web pages to web applications - imagine every time you type a character into your favourite search engine you would have to wait for the page to reload in order to get the latest query suggestions. We would quickly abolish query suggestions.
 
-In practice, implementing Ajax calls correctly can be frustrating, mostly due to Ajax's security model. In our todo list code example, we have conveniently requested data from "our" web server. In fact, a security restriction of Ajax is that it can only fetch files or request routes from the same web server as the calling page (this is called **same-origin policy**).
+In practice, implementing Ajax calls correctly can be tricky, due to Ajax's security model. In our game list code example, we have conveniently requested data from *our* web server. In fact, a security restriction of Ajax (at least by default) is that it can only fetch files or request routes from the same web server as the calling page (this is called **same-origin policy**).
 
-The same-origin policy is fulfilled when the **protocol, port and host** are the same for two pages. Important for debugging: Ajax **cannot** be executed from a web page opened locally from disk (e.g. if you head to your browser and open `file:///Users/claudia/GitHub/Web-Teaching/demo-code/node-ajax-ex/client/index.html`).
-
-There are ways around Ajax' same-origin policy, some of which have been collected in this [Stack Overflow thread](https://stackoverflow.com/questions/3076414/ways-to-circumvent-the-same-origin-policy). As in all scenarios and usages of web technologies, the interaction between technologies and the availability of all kinds of web technologies makes it possible to "misuse" a technology for another purpose to circumvent a perceived restriction or shortcoming.
+The same-origin policy is fulfilled when the **protocol, port and host** are the same for two pages. Important for debugging: Ajax **cannot** be executed from a web page opened locally from disk (e.g. if you head to your browser and open `file:///path/to/my/files/client/index.html`). There are (as always) ways around this policy, but this it outside the scope of this class.
 
 ## WebSockets
 
@@ -669,32 +722,34 @@ While Ajax is a mainstay of today's web, it has issues:
 
 - The server cannot **push** data to the client, it can only respond to HTTP requests, thus requiring a form of **polling** to simulate the desired push-based behaviour (for example, a user's Twitter timeline is updated by making requests to Twitter's servers every few seconds). This is resource-intensive on both the client and the server-side.
 - Every time data is requested and sent, an entire HTTP message is required - this has a considerable amount of overhead if the data to send is only a few bytes (as an example, in a chess game, we may just send a single move such as `b2b4` at a time - that's four characters in total).
-- The client-side script has to track the mapping from outgoing connections to the incoming connection (in cases where a client makes requests to multiple servers).
+- The client-side script has to track the mapping from outgoing connections to the incoming connection in cases where a client makes requests to multiple servers.
 
 The WebSocket protocol (defined in [RFC 6455](https://tools.ietf.org/html/rfc6455)) was designed to overcome those issues, as stated in its RFC abstract:
 
-```console
+```
 The WebSocket Protocol enables two-way communication between a client
 [...] to a remote host [...]. The protocol consists of an opening handshake
 followed by basic message framing, layered over TCP.  The goal of
 this technology is to provide a mechanism for browser-based
 applications that need two-way communication with servers that does
 not rely on opening multiple HTTP connections (e.g., using
-XMLHttpRequest or <iframe>s and long polling).
+XMLHttpRequest or iframes and long polling).
 ```
 
-In other words, the WebSocket protocol enables **bidirectional** communication between client and server over HTTP (at least initially over HTTP). The WebSocket protocol itself is a TCP-based protocol, the handshake is interpreted by HTTP servers as an upgrade request. Once a connection between a client and server is established (this requires a *handshake* as the client requests an upgrade to the connection and the server responds to that upgrade before data transfer is possible), data (called *messages* in this protocol) can be send back and forth. Both the client and the server can now send messages and we thus no longer need to *simulate* a single connection, we actually *have* a single connection that can be reused again and again. This is especially useful for web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners) or gaming applications (a client/player sends its own move to the server, the server pushes the other players' moves to the client). Note that the WebSocket protocol is **not** a protocol that allows peer-to-peer connections between two browsers (i.e. a connection between two browsers without a server in the middle), the communication is always established between a browser and a server/host. And thus, in our gaming project each move made by player A is send to the server which in turn sends it to the correct player B. 
+In other words, the WebSocket protocol enables **bidirectional** communication between client and server over (initially) HTTP. The WebSocket protocol itself is a TCP-based protocol, the handshake is interpreted by HTTP servers as an upgrade request. Once a connection between a client and server is established (this requires a *handshake* as the client requests an upgrade to the connection and the server responds to that upgrade before data transfer is possible), data (called *messages* in this protocol) can be send back and forth. Both the client and the server can now send messages and we thus no longer need to *simulate* a single connection, we actually *have* a single connection that can be reused again and again. This is especially useful for web applications that require constant bidirectional communication such as instant messaging (a client sends its own messages to the server, the server pushes messages of the client's chat partners) or gaming applications (a client/player sends its own move to the server, the server pushes the other players' moves to the client). 
 
-🚩 If you are interested in building a peer-to-peer application, take a look at the [WebRTC API](https://developer.mozilla.org/en-US/docs/Web/Guide/API/WebRTC/Peer-to-peer_communications_with_WebRTC).
+Important to note, the WebSocket protocol is **not** a protocol that allows peer-to-peer connections between two browsers (i.e. a connection between two browsers without a server in the middle), the communication is always established between a browser and a server/host. And thus, in our gaming project each move made by player A is send to the server which in turn sends it to the player B. 
+
+🚩 If you are interested in building a peer-to-peer application, take a look at the [WebRTC API](https://developer.mozilla.org/en-US/docs/Web/Guide/API/WebRTC/Peer-to-peer_communications_with_WebRTC) instead.
 
 In order to close an established WebSocket connection, a *closing handshake* is required: both the client and the server can initiate the closing of the connection (unlike the initiation of the connection which is **always started by the client**). Once a connection is closed, no more data can be sent over it. Also important to know is that WebSocket servers can share a port with HTTP servers due to the HTTP upgrade request ability. The WebSocket protocol was created to be relatively simple and to co-exist with HTTP and the already established HTTP infrastructure.
 
 
 ### :bangbang: A first WebSocket example
 
-We use the popular [Node.js WebSocket library](https://www.npmjs.com/package/ws), which hides some of the low-level details (similar to `jQuery` hiding some of Ajax's low-level details).
+We use the popular [Node.js WebSocket library](https://www.npmjs.com/package/ws), which hides some of the low-level details (similar to `axios` hiding some of Ajax's low-level details).
 
-Let's start with a `Hello World!` example for WebSockets: our client initiates a WebSocket connection with the server and sends a first message, the server uses the established connection to send a reply and then closes the connection. The example code can be found in [demo-code/node-websocket-ex](demo-code/node-websocket-ex). The example code can be started by first running `npm install` and then `node app.js 3000`.
+Let's start with a `Hello World!` example for WebSockets: our client initiates a WebSocket connection with the server and sends a first message, the server uses the established connection to send a reply and then closes the connection. The example code can be found [here](https://github.com/chauff/demo-code/tree/master/node-websocket-ex) and can be started by first running `npm install` and then `node app.js 3000` (or any other port number, just make sure that the port number on the client-side **matches**).
 
 Let's look at the client-side :point_down::
 
@@ -713,47 +768,51 @@ Let's look at the client-side :point_down::
              JavaScript code should not be part of HTML documents.
         -->
         <script>
-            var socket = new WebSocket("ws://localhost:3000");
+            const target = document.getElementById("hello");
+            const socket = new WebSocket("ws://localhost:3000");
             socket.onmessage = function(event){
-                document.getElementById("hello").innerHTML = event.data;
+                target.innerHTML = event.data;
             };
 
             socket.onopen = function(){
                 socket.send("Hello from the client!");
-                document.getElementById("hello").innerHTML = "Sending a first message to the server ...";
+                target.innerHTML = "Sending a first message to the server ...";
             };
         </script>
     </body>
 </html>
 ```
 
-:point_up: We initiate a connection to a WebSocket server running on port `3000` on `localhost` with the line `var socket = new WebSocket("ws://localhost:3000")`. Due to the event-based nature of the WebSocket API, we write functions to be executed when particular events occur. In this case, for the `onopen` event, we send a message from client to server, while once we receive a message (event `onmessage`), we grab the message from the `event.data` field and change the `innerHTML` property of our `<span>` element.
+:point_up: We initiate a connection to a WebSocket server running on port `3000` on `localhost` with the line `var socket = new WebSocket("ws://localhost:3000")`. Due to the event-based nature of the WebSocket API, we write functions to be executed when particular events occur. In this case, for the `open` event, we send a message from client to server, while once we receive a message (event `message`), we grab the message from the `event.data` field and change the `innerHTML` property of our `<span>` element.
 
 The corresponding server-side script looks as follows :point_down::
 
 ```javascript
-var express = require("express");
-var http = require("http");
-var websocket = require("ws");
+const express = require("express");
+const http = require("http");
+const websocket = require("ws");
 
-var port = process.argv[2];
-var app = express();
+const port = process.argv[2];
+const app = express();
 
-app.use("/", function(req, res) {
-    res.sendFile("client/index.html", {root: "./"});
+app.use("/", function (req, res) {
+    res.sendFile("client/index.html", { root: "./" });
 });
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 const wss = new websocket.Server({ server });
 
-wss.on("connection", function(ws) {
-    //let's slow down the server response time a bit to make the change visible on the client side
-    setTimeout(function() {
-        console.log("Connection state: "+ ws.readyState);
+wss.on("connection", function (ws) {
+    /*
+     * let's slow down the server response time a bit to 
+     * make the change visible on the client side
+     */ 
+    setTimeout(function () {
+        console.log("Connection state: " + ws.readyState);
         ws.send("Thanks for the message. --Your server.");
         ws.close();
-        console.log("Connection state: "+ ws.readyState);
+        console.log("Connection state: " + ws.readyState);
     }, 2000);
 
     ws.on("message", function incoming(message) {
@@ -775,10 +834,6 @@ This code snippet :point_up: also shows how we can gather additional information
 | 2                | The connection is currently being closed.              |
 | 3                | The connection is closed.                              |
 
-Make sure to take a look at the browser's Network Monitor, you should see the upgrade to the WebSocket protocol:
-
-![WebSocket in the Network Monitor](../img/node-websocket.png)
-
 The WebSocket protocol as described in [RFC 6455](https://tools.ietf.org/html/rfc6455) has four event types:
 
 - `open`: this event fires once a connection request has been made and the handshake was successful; messages can be exchanged now;
@@ -794,9 +849,13 @@ In our client-side code example :point_up: we saw how simple it is to send data 
 
 In a multi-player game (such as the board games application implemented throughout the assignments), every player (client) establishes a WebSocket connection to the server. **The server has to keep track of which game each player is assigned to**. When a player in a game with multiple players sends a message to the server (e.g. to *broadcast* her latest move in the game), **the server has to send this message to all other players in the game** - and only to those players. Players active in other games should not receive those messages.
 
-Thus, **the coordination effort lies with the server**: the client needs to maintain only a single WebSocket connection (to the server); whenever the client receives a message, this message means an update to the game status (another player's move, another player dropped out of the game, the game has ended, etc.).
+![AppCache](../img/node-ws-multiplayer.png)
 
-The main question then is, *how does the server-side keep track of games and players and their respective WebSocket connections?* One way is showcased in the [demo game application](demo-code/balloons-game). Let's walk through the relevant pieces of `app.js` and `game.js`.
+<sup>The communication via WebSockets is always between client and server. Two clients cannot communicate directly with each other, they have to go through the server.</sup>
+
+Thus, **the coordination effort lies with the server**: the client needs to maintain only a single WebSocket connection to the server; whenever the client receives a message, this message means an update to the game status (another player's move, another player dropped out of the game, the game has ended, etc.).
+
+The main question then is, *how does the server-side keep track of games and players and their respective WebSocket connections?* One way is showcased in the [demo game](https://github.com/chauff/balloons-game). Let's walk through the relevant pieces of `app.js` and `game.js`.
 
 We keep track of which client is assigned to which game by mapping a WebSocket connection (the *property*) to a game (the *value*) :point_down::
 
@@ -855,7 +914,7 @@ wss.on("connection", function connection(ws) {
 
 :point_up: We assign every WebSocket connection object a **unique identifier**, add the player to the game currently missing a player and then inform the player about the player type (word guesser or word provider).
 
-Another interesting aspect to mention is the choice of messages to pass back and forth: of course, what messages to pass depends entirely on the game to implement. As a concrete example, in the word guesser game, we have a number of messages which are defined in [messages.js](demo-code/balloons-game/public/javascripts/messages.js):
+Another interesting aspect to mention is the choice of messages to pass back and forth: of course, what messages to pass depends entirely on the game to implement. As a concrete example, in the word guesser game, we have a number of messages which are defined in [messages.js](https://github.com/chauff/balloons-game/blob/master/public/javascripts/messages.js):
 
 - `GAME-WON-BY`
 - `GAME-ABORTED`
@@ -873,7 +932,15 @@ If you look at the path of `messages.js` you will find that this JavaScript file
 }(typeof exports === "undefined" ? this.Messages = {} : exports));
 ```
 
-you will learn more about this construct in the next lecture. For now, it is sufficient to know that these two lines of code :point_up: enable us to **share** JavaScript code between our server-side and client-side JavaScript runtime. In our server-side `app.js` file, we can import this piece of code as usual via `var messages = require("./public/javascripts/messages");`.
+you will learn more about this construct in the next lecture. For now, it is sufficient to know that these two lines of code :point_up: enable us to **share** JavaScript code between our server-side and client-side JavaScript runtime. In our server-side `app.js` file, we can import this piece of code as usual via 
+
+```javascript
+const messages = require("./public/javascripts/messages");
+```
+
+##
+
+To conclude, in this lecture you have started out your Node.js journey. You have seen server-side scripts can be designed at low level (where you are responsible for creating individual HTTP requests) or at high level, where libraries such as Express take care of a lot of standard web server functionalities. Once again, this is a lot to take in. We have another lecture that covers some of the finer details of Node.js. 
 
 ## Self-check
 

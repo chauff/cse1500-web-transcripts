@@ -32,7 +32,7 @@ The responsible instructor of the web technology part is Associate Prof. [Claudi
 
 ## Book 
 
-The one book we *recommend* for this part of the course is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). *It is not required though* - there are no required readings from this book and we do not even come close to covering the majority of the book's content. We recommend it as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in production settings.
+The one book we *recommend* for this part of the course is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). **It is not required though** - there are no required readings from this book and we do not even come close to covering the majority of the book's content. We recommend it as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in production settings. Thus, this books goes well beyond what you need to know for this class. The book already assumes your familiarity with basic web programming, so you will not find an introduction to CSS or JavaScript in this book.
 
 There is not one recommended book to cover the basics of HTML, CSS or JavaScript. Instead, we point you to a number of very good introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
 
