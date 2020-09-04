@@ -1264,22 +1264,14 @@ Imagine you want to create a multiplication app that has one text input box and 
 We could write three different functions and then separately attach each of them to the correct button :point_down::
 
 ```javascript
-document.getElementById("button10").onclick = computeTimes10;
-document.getElementById("button23").onclick = computeTimes23;
-document.getElementById("button76").onclick = computeTimes76;
+document.getElementById("button10").addEventListener('click', computeTimes10);
+document.getElementById("button23").addEventListener('click', computeTimes23);
+document.getElementById("button76").addEventListener('click', computeTimes76);
 ```
 
-This is tedious, error prone and not maintainable (what if you need a hundred buttons). We could also be tempted to use the following construct :point_down::
+This leads to code duplication, is tedious, error prone and not maintainable (what if you need a hundred buttons ...).
 
-```javascript
-document.getElementById("button10").onclick = computeTimes(10);
-document.getElementById("button23").onclick = computeTimes(23);
-document.getElementById("button76").onclick = computeTimes(76);
-```
-
-but this will not work either, as in this case :point_up: the JavaScript runtime will parse each line will immediately execute the `computeTimes` function instead of attaching it to the click event.
-
-We can avoid code duplication with the use of `this` :point_down::
+We can avoid code duplication with the use of `this` in order to *read out* the button's label :point_down::
 
 ```html
 <!DOCTYPE html>
