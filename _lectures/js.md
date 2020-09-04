@@ -1463,7 +1463,7 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
 
 ![DOM Example 6](../img/js-example6.png)
 
-The last example is a typing game :point_down:. Given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keypress` event type. We start the timer with `setInterval` (incrementing once per second), which returns a handle that we can later pass to `clearInterval` to stop the associated callback from executing (thus stopping the clock).
+The last example is a typing game :point_down:. Given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keypress` event type. We start the timer with `setInterval` (incrementing once per second), which returns a handle that we can later pass to `clearInterval` to stop the associated callback from executing (thus stopping the clock). You see here too how to determine which key was pressed: we use the `KeyboardEvent`'s `key` property. The site [keycode.info](https://keycode.info/) makes it easy for you to find out what `KeyboardEvent` property (there are several, we care about `key`) each key of your keyboard assigned to!
 
 In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those line on the `.style` properties.
 
@@ -1512,8 +1512,8 @@ In this example we do do make slight use of CSS (to flash a red background and a
 
             let nextChar = textToType.charAt(currentPos);
 
-            let keyPressed = String.fromCharCode(e.which);
-            console.log("Key pressed: "+keyPressed+", charCode: "+e.which);
+            let keyPressed = e.key;
+            console.log("Key pressed: "+keyPressed);
 
             //correct key was pressed
             if(nextChar==keyPressed) {
@@ -1559,6 +1559,8 @@ To conclude this DOM section, here is an overview of important keyboard and text
 | `keypress` |  user presses and releases key while element has keyboard focus (a problematic event) |
 | `keyup`    |  user releases key while element has keyboard focus                                   |
 | `select`   | user selects text in an element                                                       |
+
+In the six DOM interaction examples shown here, we did not have to add a lot of code and thus **for presentation purposes** I chose to keep things lean and move all JavaScript code into the HTML file. When writing code that go beyond the few lines I am showcasing here, this should be avoided: your JavaScript code should be in dedicated files and the object-oriented programming paradigm should be employed as much as possible. 
 
 With this example we are coming to the end of this lecture. Many of the concepts introduced here will come back in the later lectures - JavaScript will keep us busy right up to the last lecture of this course.
 
