@@ -12,7 +12,7 @@ The course page can be found at https://chauff.github.io/Web-Teaching/.
 
 # Setup Notes
 
-Two Visual Studio Code extensions are important for this setup to remain efficient: Markdown PDF (to generate PDFs of the lectures and assignments) and Markdown All In One to automatically create/update table of contents.
+Two Visual Studio Code extensions are important for this setup to remain efficient: [Markdown PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) (to generate PDFs of the lectures and assignments) and [Markdown All In One](https://github.com/yzhang-gh/vscode-markdown) to automatically create/update table of contents. :warning: As of 10/2020 there is an [issue](https://github.com/yzhang-gh/vscode-markdown/issues/792) with broken links being generated when the header contains GitHub emojis. The quick fix is to stick to version 2.8 (instead of upgrading to 3.X).
 
 The PDFs are no longer available on GitHub (in order to limit the repository's size). They are available on Brightspace. they can also be generated with the mentioned Markdown PDF Visual Studio Code extension.
 

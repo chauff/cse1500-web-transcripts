@@ -15,24 +15,24 @@ warning: true
 - [Learning goals](#learning-goals)
 - [Recall the HTTP lecture](#recall-the-http-lecture)
 - [Introduction to cookies](#introduction-to-cookies)
-- [:bug: Viewing cookies in the browser](#-viewing-cookies-in-the-browser)
+- [:bug: Viewing cookies in the browser](#bug-viewing-cookies-in-the-browser)
 - [Cookie security](#cookie-security)
 - [Cookies vs. sessions](#cookies-vs-sessions)
 - [Cookie flow](#cookie-flow)
 - [Cookies in more detail](#cookies-in-more-detail)
   - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
   - [Cookie fields](#cookie-fields)
-  - [Cookie field 'Domain'](#cookie-field-domain)
-  - [Return to sender ...](#return-to-sender-)
+  - [Cookie field Domain](#cookie-field-domain)
+  - [Return to sender ...](#return-to-sender)
 - [An excursion: writing a Firefox extension](#an-excursion-writing-a-firefox-extension)
-- [:bangbang: A Node.js application](#️-a-nodejs-application)
+- [:bangbang: A Node.js application](#bangbang-a-nodejs-application)
 - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
 - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
   - [Third-party cookies](#third-party-cookies)
   - [Evercookie](#evercookie)
   - [Browser fingerprinting](#browser-fingerprinting)
 - [Client-side cookies](#client-side-cookies)
-- [:bangbang: Sessions](#️-sessions)
+- [:bangbang: Sessions](#bangbang-sessions)
 - [Third-party authentication](#third-party-authentication)
   - [OAuth 2.0 roles](#oauth-20-roles)
   - [Roles exemplified](#roles-exemplified)
@@ -185,7 +185,7 @@ Cookies consist of seven components, of which only the first one is a required c
 
 :seven: `Signed` flag: signed cookies allow the server to check whether the cookie value has been tampered with by the client. Let's assume a cookie value `monster`, the signed cookie value is then `s%3Amonster.TdcGYBnkcvJsd0%2FNcE2L%2Bb8M55geOuAQt48mDZ6RpoU`. The server signs the cookie by **appending** a base-64 encoded *Hash Message Authentication Code* (HMAC) to the value. Note that the value is still readable, signed cookies offer **no privacy**, they make cookies though robust against tampering. The server stores a *secret* (a non-guessable string) that is required to compute the HMAC. For a cookie that is returned to the server, the server recomputes the HMAC of the value and only if the computed HMAC value matches the HMAC returned to the server, does the server consider the cookie value as untampered. Unless the server has an easily guessable secret string (such as the default secret string), this ensures no tampering.
 
-### Cookie field 'Domain'
+### Cookie field Domain
 
 Cookie fields are generally easy to understand. There is only one field which requires a more in-depth explanation and that is the `Domain` field.
 
