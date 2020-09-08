@@ -9,7 +9,7 @@ warning: false
 HTTP: the language of web communication <!-- omit in toc -->
 ==
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
+{% include_relative explanation.md %}
 
 ## Table of Contents <!-- omit in toc -->
 

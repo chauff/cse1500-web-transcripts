@@ -14,16 +14,16 @@ warning: true
 
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
-- [Code examples](#code-examples)
+- [A first demo](#a-first-demo)
 - [A word of warning](#a-word-of-warning)
 - [Context](#context)
 - [Take-aways of the required reading](#take-aways-of-the-required-reading)
 - [Pseudo-classes](#pseudo-classes)
   - [:bangbang: nth-child(X) and nth-of-type(X)](#bangbang-nth-childx-and-nth-of-typex)
-  - [:bangbang: root](#bangbang-root)
-  - [:bangbang: hover and active](#bangbang-hover-and-active)
-  - [:bangbang: enabled and disabled](#bangbang-enabled-and-disabled)
-  - [:bangbang: Selector combinations](#bangbang-selector-combinations)
+  - [:bangbang: :root](#bangbang-root)
+  - [:bangbang: :hover, :active and :visited](#bangbang-hover-active-and-visited)
+  - [:bangbang: :enabled and :disabled](#bangbang-enabled-and-disabled)
+- [:bangbang: Selector combinations](#bangbang-selector-combinations)
 - [Pseudo-elements](#pseudo-elements)
   - [:bangbang: first-letter and first-line](#bangbang-first-letter-and-first-line)
   - [:bangbang: before and after](#bangbang-before-and-after)
@@ -75,19 +75,15 @@ warning: true
 - Write CSS media queries.
 - Create CSS-based animations.
 
-## Code examples
-
-
-
-At [https://codepen.io/charlottehase/full/abzYoQp](https://codepen.io/charlottehase/full/abzYoQp) you find a demo that we developed to show off some of CSS' animation capabilities. Throughout this transcript we will refer to it from time to time---we encourage you to explore its code. It contains a lot of comments that should help you get started. This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
-
-More generally, if you want to find inspirations about what is possible with a bit of HTML, CSS (and JavaScript), it is worthwhile to take a look at [CodePen](https://codepen.io/) and what it has to offer.
+## A first demo
 
 ![Weather app](../img/css-weather.png)
 
-As a second example application we often refer to a todo application. Here, we do not offer an entire application but present how specific parts of the application can be styled.
+<sup>Screenshot of our CSS weather demo.</sup>
 
-Lastly, we also consider a TU DELFT neon sign as an example for text-heavy animations. The entire source code is presented here.
+At [CodePen](https://codepen.io/charlottehase/full/abzYoQp) you find a demo that shows off some of CSS capabilities, in particular its animation capabilities. Throughout this transcript we will refer to it from time to time; by the end of this lecture you will be able to create such a demo yourself. We added elaborate comments that should help you get started to explore the demo code. This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
+
+More generally, if you want to find inspirations about what is possible with a bit of HTML, CSS (and JavaScript), it is worthwhile to explore [CodePen](https://codepen.io/) and what it has to offer.
 
 ## A word of warning
 
@@ -95,7 +91,7 @@ This tweet :point_down: sums up a lot of CSS experiences - some things are easy 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">when I think I&#39;m a fairly decent programmer, and then try and align two buttons next to each other in CSS <a href="https://t.co/v43Lp9Vv0U">pic.twitter.com/v43Lp9Vv0U</a></p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/936199543099621376?ref_src=twsrc%5Etfw">November 30, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-Another important bit of information comes from Addy Osmani:
+Another important bit of information comes from Addy Osmani :point_down::
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">border: 1px solid red; is the console.log of CSS</p>&mdash; Addy Osmani (@addyosmani) <a href="https://twitter.com/addyosmani/status/1275700187491639298?ref_src=twsrc%5Etfw">June 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -103,7 +99,7 @@ Finally, remember to take a look at [caniuse.com](https://caniuse.com/) if you f
 
 ## Context
 
-The CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered a victim of the browser wars - which led to years of inactivity in the standard's refinement:
+The CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered to be a victim of the browser wars - which led to years of inactivity in the standard's refinement:
 
 - **CSS1** became a W3C recommendation in 1996. It had support for fonts, colors, alignment, margins, ids and classes.
 - Two years later, **CSS2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS3. However, the browser support for CSS2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS2.1.
@@ -112,27 +108,9 @@ The CSS - or **Cascading Style Sheets** - language describes how elements in the
 
 Any CSS module developed after CSS2.1 can be considered as CSS3. There will not be a monolithic CSS4, instead the different modules of the CSS specification will each continue to develop at their own pace.
 
-Be aware, that it is not possible to make use of the very latest CSS features and to expect them to work across all major browsers. Instead, which features to use should be based on:
-
-- the intended user base (will tell us something about the most popular browsers in use);
-- the mode of usage (smartphone vs. touch screen vs ...);
-- the type of web application (are 3D animations necessary, etc.).
-
-When building web applications that should work across a range of browsers (old and new), you will often come across the terms **shims**, **fallbacks** and **polyfills**. These are all terms used to provide HTML5 (which includes CSS3) functionalities in browsers that do not natively support them.
-
 ## Take-aways of the required reading
 
-Having worked through the required reading, you should be able to style HTML elements with CSS.
-
-You have also learned about three types of style sheets:
-
-- the browser's style sheet;
-- the author's style sheet;
-- the user's style sheet.
-
-The user's style sheet overrides the other two and the author's style sheet overrides the browser's.
-
-Style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
+Having worked through the required reading, you should be able to style HTML elements with CSS. Style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
 
 You know that the following code snippet shows a **CSS rule** :point_down::
 
@@ -147,15 +125,17 @@ body {
 
 *Note*: In this example :point_up: one color value is represented by its hex value, another one by name. Throughout this transcript, we often use color names - there are more than 140 color names that all modern browsers recognize ([a nicely formatted list on is available on Wikipedia](https://en.wikipedia.org/wiki/Web_colors#X11_color_names)). Besides hex values, colors can also be represented by their `rgba` values (red, green, blue, alpha). We suggest [convertingcolors.com](https://convertingcolors.com/) as one option to convert between different color formats. 
 
-Lastly, you know about CSS resets and `!important` which overrides all other declarations.
+You have also learned about two types of style sheets: the browser's style sheets (also called the *internal stylesheets* or *default styles*) and the web application style sheets, the latter overriding the former. There is a third type of style sheets and that are the user style sheets: user style sheets allow users to override the web applications' look and feel according to their own needs (e.g. larger font sizes or specific colors).
 
 In this lecture, we move beyond these basics and introduce a number of more advanced CSS concepts.
 
 :bangbang: **We strongly suggest to work with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor and Inspector can do!**
 
+Let's dive into the details!
+
 ## Pseudo-classes
 
-A **pseudo-class** is a keyword added to a **selector** that indicates *a particular state or type* of the corresponding element. Pseudo-classes allow styling according to (among others) **document external** factors such as mouse movements and user browsing history as well as **element external** factors such as the placement of the element within the entire document structure.
+A **pseudo-class** is a keyword added to a **selector** that indicates *a particular state or type* of the corresponding element. Pseudo-classes allow styling according to (among others) **document external** factors such as mouse movements and user browsing history (the link has been visited before) as well as **element external** factors such as the placement of the element within the entire document structure.
 
 They are used as follows :point_down::
 
@@ -166,6 +146,11 @@ selector:pseudo-class {
 }
 ```
 
+In the upcoming sections, we introduce the following pseudo-classes: `nth-child`, `nth-of-type`, `root`, `hover`, `active`, `visited`, `enabled` and `disabled`. This list is by no means complete (take a look at this list of [pseudo-classes implemented in most modern browsers](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)), but sufficient for our purposes.
+
+### :bangbang: nth-child(X) and nth-of-type(X)
+
+Imagine you have 
 Imagine you have a list of twenty todo items and you want to alternate the todo items' background color (to make it easier to read them). Two simple ways to go about this are:
 
 - You can *hardcode* the CSS rule of every element, ending up with twenty rules. This is not maintainable.
@@ -173,12 +158,10 @@ Imagine you have a list of twenty todo items and you want to alternate the todo 
 
 Ideally, we only create two CSS rules and solve the rest (alternate assignment of background colors) with pseudo-classes. And that's exactly what we can do with the two pseudo-classes we introduce next.
 
-### :bangbang: nth-child(X) and nth-of-type(X)
+- [`:nth-child(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) is any element that is the Xth **child element** of its parent;
+- [`:nth-of-type(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type) is any element that is the Xth **sibling** of its type.
 
-- [`nth-child(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) is any element that is the Xth **child element** of its parent;
-- [`nth-of-type(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type) is any element that is the Xth **sibling** of its type.
-
-In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Instead of `2n` and `2n+1` we can also use `even` and `odd` as shortcuts. If we want to start counting elements in reverse order, we can use the analogous `nth-last-child(X)` and `nth-last-of-type(X)` pseudo-classes.
+In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Instead of `2n` and `2n+1` we can also use `even` and `odd` as shortcuts. If we want to start counting elements in reverse order, we can use the analogous `:nth-last-child(X)` and `:nth-last-of-type(X)` pseudo-classes.
 
 If we are aiming at the first and/or last child or sibling element, we also have additional shortcut pseudo-classes:
 
@@ -189,303 +172,279 @@ If we are aiming at the first and/or last child or sibling element, we also have
 | `:first-of-type` | `:nth-of-type(1)`      |
 | `:last-of-type`  | `:nth-last-of-type(1)` |
 
-In the following example both pseudo-classes (`nth-child` and `nth-of-type`) are showcased :point_down::
+In the following example both pseudo-classes (`:nth-child` and `:nth-of-type`) are showcased :point_down::
 
 ```html
 <!DOCTYPE html>
-<html>
     <head>
         <style>
-            span {
-                width: 100px;
-                height: 100px;
-                display: inline-block;
+            div {
+                margin-bottom: 2px;
+                padding: 2px;
+                white-space: pre;
+                font-family: monospace;
             }
-
-            span:nth-child(2n){
-                background-color: tomato;
+            div:nth-child(2n){
+                background-color: orchid;
+                color: lavender;
             }
-            span:nth-child(2n+1){
-                background-color: orange;
+            div:nth-child(2n+1){
+                background-color: lavender;
+                color: orchid;
             }
-
-            span:nth-child(4){
-                border: 4px solid black;
+            div:nth-child(3) {
+                border: 1px dashed black;
             }
-
-            span:nth-of-type(4){
-                border: 4px solid darkviolet;
+            div:nth-of-type(3) {
+                border: 1px solid black;
             }
         </style>
     </head>
+
     <body>
-        <h1>Weather</h1>
-        <span id="c1"></span>
-        <span id="c2"></span>
-        <span id="c3"></span>
-        <span id="c4"></span>
-        <span id="c5"></span>
-        <span id="c6"></span>
-        <span id="c7"></span>
-        <span id="c8"></span>
-        </ul>
+        <h1>Game statistics</h1>
+        <div>12,567 players registered</div>
+        <div>   231 games ongoing</div>
+        <div>    17 games waiting for players to join</div>
+        <div> 2,302 users are in audience mode</div>
+        <div>99.87% server uptime</div>
     </body>
 </html>
 ```
-If we open Firefox's [Style Editor](https://developer.mozilla.org/en-US/docs/Tools/Style_Editor) we now see the following:
+If we open Firefox's [Page Inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/UI_Tour) we now see the following:
 
 ![CSS pseudo-class](../img/css-pseudo-classes.png)
 
-This piece of code :point_up: is rendered with alternating background colors as was our goal. We also see here clearly how `nth-child` and `nth-of-type` differ:
+This list of game statistics :point_up: is rendered with alternating background colors as was our goal. We also see here how `:nth-child` and `:nth-of-type` differ (note that in the code above, `X=3` in both cases, though the element they refer to differs):
 
-- the third `<span>` (`id=c3`) element is the fourth child of its parent `<body>` and thus is rendered with a black border;
-- the fourth `<span>` (`id=c4`) element is the fourth sibling among the group of `<span>` elements and thus rendered with a violet border.
+- the third `<div>` (*17 games waiting ...*) element is the fourth child of its parent `<body>` and thus is rendered with a dashed black border;
+- the fourth `<div>` (*2,302 users ...*) element is the fourth sibling among the group of `<div>` elements and thus rendered with a solid black border.
 
-If we were to remove the `<h1>` element in our code snippet, `nth-child(4)` and `nth-of-type(4)` would point to exactly the same `<span>` element.
+If we were to remove the `<h1>` element in our code snippet, `:nth-child(X)` and `:nth-of-type(X)` would point to the same `<div>` element.
 
-Firefox's Style Editor allows us to not only inspect the CSS, but to also:
+Firefox's developer tools do not only allow us to inspect the CSS, but also to:
 
-- switch off the CSS (with a click on the "eye" symbol on the left);
-- **change the CSS** in the editor and view the immediate effect of those changes.
+- switch off the CSS (hover over a `property:value` listing and a checkbox appears to switch that listing on/off);
+- **change the CSS** in the editor (change a value, add a `property:value`) and view the immediate effect of those changes.
 
-:bug: The last point is vital for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the Style Editor is closed. In addition, Visual Studio Code has also good code commentary for CSS: as an example, if you add the line `float: left` right after `display: inline-block` in the current code example, VSC will warn you that this CSS rule has no effect and will provide the reason why. 
+:bug: The last point makes for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Try it out for yourself! Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the browser tab is closed. In addition, Visual Studio Code has also good code commentary for CSS: it not only flags misspellt properties but also flags rules that are incompatible with each other.
 
-Lastly, you can use this pseudo-class to change the color of half the clouds in our Delft weather app: simply append to the end of the CSS the following code snippet (you will learn what `::after` and `::before` refers to in a bit) to make half the clouds red:
+### :bangbang: :root
 
-```css
-.cloud:nth-child(2n){
-  background-color: red;
-}
-.cloud:nth-child(2n)::after, .cloud:nth-child(2n)::before {
-  background-color: red;
-}
-```
-:point_up: Here, `nth-of-type` could have also been used instead.
+One of the often voiced complaints about CSS used to be the lack of variable support (and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/)). If we want to change for instance the color scheme of our course homepage to something like this :point_down::
 
-### :bangbang: root
+![CSS course homepage color theme](../img/css-color-theme.png)
 
-One of the often voiced complaints about CSS used to be the lack of variable support (and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/)). In our TU Delft weather app we are playing around with quite a few colors and, importantly, as you can see in the red-clouds example above, we may have to alter several CSS rules to achieve seemingly a single effect. If we now decide to change that color value again, we have to determine all rules that need to be altered (again). Clearly, variables (i.e. *entities containing specific values that can be reused*) would be very helpful.
+we may have to alter several CSS rules to achieve seemingly a single effect. If we now decide to change that color value again, we have to determine all rules that need to be altered (again). Clearly, variables (i.e. *entities containing specific values that can be reused*) would be very helpful.
 
 In fact, since 2015/2016 (*yes, it took that long*), [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) are supported in all major browsers. Here is how they work with our toy example introduced earlier :point_down::
 
 ```html
 <!DOCTYPE html>
-<html>
     <head>
         <style>
+            /* :root refers to the <html> element */
             :root {
-                --color1: tomato;
-                --color2: orange;
-                --highlight1: black;
-                --highlight2: darkviolet;
+                --darkColor: orchid;
+                --lightColor: lavender;
+                --borderColor: black;
+                --borderThickness: 1px;
             }
-            span {
-                width: 100px;
-                height: 100px;
-                display: inline-block;
+            div {
+                margin-bottom: 2px;
+                padding: 2px;
+                white-space: pre;
+                font-family: monospace;
             }
-
-            span:nth-child(2n){
-                background-color: var(--color1);
+            div:nth-child(2n){
+                background-color: var(--darkColor);
+                color: var(--lightColor);
             }
-            span:nth-child(2n+1){
-                background-color: var(--color2);
+            div:nth-child(2n+1){
+                background-color: var(--lightColor);
+                color: var(--darkColor);
             }
-
-            span:nth-child(4){
-                border: 4px solid var(--highlight1);
+            div:nth-child(3) {
+                border: var(--borderThickness) dashed var(--borderColor);
             }
-
-            span:nth-of-type(4){
-                border: 4px solid var(--highlight2);
+            div:nth-of-type(3) {
+                border: var(--borderThickness) solid var(--borderColor);
             }
         </style>
     </head>
+
     <body>
-        <h1>Weather</h1>
-          <span id="c1"></span>
-          <span id="c2"></span>
-          <span id="c3"></span>
-          <span id="c4"></span>
-          <span id="c5"></span>
-          <span id="c6"></span>
-          <span id="c7"></span>
-          <span id="c8"></span>
-        </ul>
+        <h1>Game statistics</h1>
+        <div>12,567 players registered</div>
+        <div>   231 games ongoing</div>
+        <div>    17 games waiting for players to join</div>
+        <div> 2,302 users are in audience mode</div>
+        <div>99.87% server uptime</div>
     </body>
 </html>
 ```
 
 :point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` functionality. Non-global CSS variables can be added in the same manner to any element, though they are then only available within their`{....}` block.
 
-In our Delft weather app the `:root` element looks as follows:
+For our course homepage we developed several themes (screenshots of all of them can be found in [this GitHub repo](https://github.com/chauff/cse-theme)), before settling on the final one. In order to make the creation of different themes efficient, we created variables everything customizable  (mostly colors). Take a look at the page inspector and explore the 39 variables we created for this purpose :point_down::
 
-```css
-:root {
-  --boardColorOne: steelblue; /* first board color */
-  --boardColorTwo: deeppink; /* second board color */
-  --hoverTextColor: mediumvioletred; /* text color when mouse hovering */
-  --borderBoardColor: pink;
-  --nailColor: darkblue;
-  --boardRotationStart: 5deg;
-  --boardRotationEnd: -5deg;
-  --switchOnColor: dodgerblue;
-  --switchOffColor: grey;
-  --switchColor: white;
-}
-```
+![CSS course homepage color theme](../img/css-color-theme2.png)
 
-and the swinging letter boards are defined with the following CSS rules:
+With those variables defined, each theme is then just a single CSS file with those variables defined.
 
-```css
-.letter {
-  width: 130px;
-  height: 150px;
-  /* border-radius rounds the corners of an element; here
-   * the top 2 corners have no radius (no rounding) while
-   * the bottom 2 corners are rounded
-   */
-  border-radius: 0 0 20px 20px;
-  /*linear-gradient creates an image based on 2+ colors; has many options */
-  background: linear-gradient(to top, var(--boardColorTwo), var(--boardColorOne));
-  margin: 10px;
-  float: left;
-  font-size:100px;
-  font-family: 'Kanit', sans-serif;
-  border: 5px solid var(--borderBoardColor);
-  opacity: 0.7; /*determines transparency: 0 (invisible), 1 (opaque) */
-  /* creates shadow around element: x-offset, y-offset, blur amount, color
-   */
-  box-shadow: 5px 5px 10px var(--boardColorTwo);
-  
-  /* point around which transformation is applied, here we want
-   * the nail (roughly middle of the element and at the top) to
-   * be the origin, otherwise the swinging does not happen 
-   * "around" the nail */
-  transform-origin: 50% 0;
+### :bangbang: :hover, :active and :visited
 
-  /* initially: same animation for all letter boards
-   * => keyframes (describes the content of the animation)
-   * => animation timing (param change over time)
-   * => duration (of a single animation cycle)
-   * => iteration-count (how often should each cycle be performed)
-   * => direction (restart from the origin or ... )
-   */
-  animation: swinging ease-in-out 1s infinite alternate;
-}
-```
-While many of these CSS properties won't yet make sense, we point out three properties that together provide easy ways to achieve a good look:
-
--  `border-radius` as an important property to easily achieve rounded edges and circles ([MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius)); 
--  `linear-gradient` is a function that creates an image that contains a color gradient ([MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)) which is then assigned to the `background` property;
--  `box-shadow` as a CSS property that adds a shadow effect to its elements ([MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow)).
-
-The moon in our Delft weather app for instance relies heavily on these three properties.
-
-### :bangbang: hover and active
-
-In the beginning we mentioned mouse movements as one of the document external factors that we can make our elements react to. Two popular pseudo-classes in this category are `:hover` and `:active`:
+In the beginning we mentioned mouse movements as one of the document external factors that we can make our elements react to. Three popular pseudo-classes in this category are `:hover`,  `:active`, and `:visited`:
 
 - `:hover` is a selector that becomes active when a mouseover on the element occurs.
 - `:active` is a selector that becomes active when the element is currently *being active* (usually that means clicked).
+- `:visited` is a selector that selects link a user has *already visited* (i.e. it is more specific than `:hover` and `:active` which apply to any type of element, not just links).
 
-Here is a simple example :point_down::
+Take a look at this example  which showcases all three pseudo-classes :point_down:. Use the mouse to hover over/click on elements and notice how the color and border properties change.
 
 ```html
 <!DOCTYPE html>
-<html>
     <head>
         <style>
-            button {
-                background: white;
-                color: darkgray;
-                width: 100px;
-                padding: 5px;
-                font-weight: bold;
-                text-align: center;
-                border: 1px solid darkgray;
+            :root {
+                --darkColor: orchid;
+                --lightColor: lavender;
+                --borderColor: darkslateblue;
+                --activeBorderColor: white;
+                --borderThickness: 3px;
+                --visitedColor: gray;
+            }
+            div {
+                margin-bottom: 2px;
+                padding: 2px;
+                white-space: pre;
+                font-family: monospace;
+                border: var(--borderThickness) solid transparent;
+            }
+            div:nth-child(2n){
+                background-color: var(--darkColor);
+                color: var(--lightColor);
+            }
+            div:nth-child(2n+1){
+                background-color: var(--lightColor);
+                color: var(--darkColor);
+            }
+            div:hover {
+                border: var(--borderThickness) dashed var(--borderColor);
             }
 
-            button:hover {
-                color: white;
-                background: darkgray;
+            div:active {
+                border-color: var(--activeBorderColor);
             }
 
-            button:active {
-                border: 1px dashed;
-                border-color: black;
+            a {
+                color: unset;
             }
+
+            a:visited {
+                color: var(--visitedColor);
+            }
+
         </style>
     </head>
+
     <body>
-        <main>
-            <button>Add Todo</button>
-        </main>
+        <h1>Game statistics</h1>
+        <div>12,567 players registered</div>
+        <div>   231 games ongoing</div>
+        <div>    17 games waiting for players to join</div>
+        <div> 2,302 users are in audience mode</div>
+        <div>99.87% server <a href="https://en.wikipedia.org/wiki/Uptime">uptime</a></div>
     </body>
 </html>
 ```
 
-While this toy example is not very impressive, `:hover` can easily be employed to create image galleries (preview vs. full image) as well as pure CSS dropdown menus (hide the menu items apart from the header and only reveal them when the mouse hovers over the header).
+One remark about the code :point_up:: the `unset` value resets the property to its inherited value. By default, the browser renders an unvisited link in a bright blue color. Here though, we want the link to retain the color of its surrounding text. The `unset` keyword helps us to achieve this. here though we 
 
-### :bangbang: enabled and disabled
+While this toy example does not look overly impressive, it should be noted that `:hover` can be employed to create image galleries (preview vs. full image) as well as pure CSS dropdown menus (hide the menu items apart from the header and only reveal them when the mouse hovers over the header).
+
+### :bangbang: :enabled and :disabled
 
 Particularly important for board game applications such as those in our assignments may be the pseudo-classes `:enabled` and `:disabled`. Imagine a game item that is only available sometimes; in our demo game for instance, once a letter has been clicked it is no longer possible to select it again. And of course this information should be visually conveyed to the user:
 
 - `:enabled` is an element that can be clicked or selected.
 - `:disabled` is an element that cannot be clicked or selected.
 
+These two pseudo-classes are not available for all elements, among others they are available for `<button>`, `<input>` and `<textarea>`.
+
 An example :point_down::
 
 ```html
 <!DOCTYPE html>
-<html>
     <head>
-        <script>
-            function disable(el){
-                document.getElementById(el.id).disabled = true;
-            }
-        </script>
         <style>
-            button {
-                background: white;
-                color: darkgray;
-                width: 100px;
-                padding: 5px;
-                font-weight: bold;
-                text-align: center;
-                border: 1px solid darkgray;
+            :root {
+                --darkColor: orchid;
+                --lightColor: lavender;
+                --borderColor: darkslateblue;
+                --activeBorderColor: white;
+                --borderThickness: 3px;
+                --visitedColor: gray;
             }
-
+            button {
+                margin-bottom: 2px;
+                padding: 2px;
+                white-space: pre;
+                font-family: monospace;
+                border: var(--borderThickness) solid transparent;
+                display: block;
+                width: 90vw;
+                text-align: left;
+            }
+            button:nth-child(2n){
+                background-color: var(--darkColor);
+                color: var(--lightColor);
+            }
+            button:nth-child(2n+1){
+                background-color: var(--lightColor);
+                color: var(--darkColor);
+            }
             button:enabled:hover {
-                color: white;
-                background: darkgray;
+                border: var(--borderThickness) dashed var(--borderColor);
             }
 
             button:enabled:active {
-                border: 1px dashed;
-                border-color: black;
+                border-color: var(--activeBorderColor);
             }
 
             button:disabled {
-                background: #ddd;
-                color: #aaa;
-                border: 1px solid #bbb;
+                background-color: darkgray;
+                color: gray;
             }
         </style>
     </head>
+
     <body>
-        <main>
-            <button id="b" onclick="disable(this)">Add Todo</button>
-        </main>
+        <h1>Game statistics</h1>
+        <button>12,567 players registered</button>
+        <button>   231 games ongoing</button>
+        <button>    17 games waiting for players to join</button>
+        <button> 2,302 users are in audience mode</button>
+        <button>99.87% server uptime</button>
     </body>
+
+    <script>
+        let divs = document.querySelectorAll("button");
+        console.log(divs.length);
+        for(let div of divs){
+            div.addEventListener("click", function(){
+                this.disabled = true;
+            })
+        }
+    </script>
 </html>
 ```
 
-:point_up: Here you can see that it is possible to combine pseudo-classes, in this case we use `button:enabled:active` and define a style that an enabled **and** active button should have. Once the button is disabled, its style will not change anymore, no matter the mouse movements.
+:point_up: Here, we revised the previous code examples and turned the `<div` elements into `<button>` elements, as the pseudo-classes `:enabled` and `:disabled` are not applicable to `<div>` elements. As can be seen, it is possible to combine pseudo-classes, here we use `button:enabled:active` and define a style that an enabled **and** active button should have. Once a button is clicked, it is disabled and its style will not change anymore, no matter the subsequent mouse actions.
 
-### :bangbang: Selector combinations
+## :bangbang: Selector combinations
 
-`e1 e2` is not the only possible element combination as selector. Most commonly used are:
+So far, we have dealt with individual selectors (e.g. `button` or `div`. As the HTML documents increase in complexity, we also need to be able to combine several selectors to target specific elements. A number of selector combiantions exist, we here list the ones most commonly used:
 
 | Selector | Description                                            |
 |----------|---------------------------------------------------------|
@@ -495,70 +454,87 @@ An example :point_down::
 | e1>e2    | Selects all `<e2>` elements that have `<e1>` as parent      |
 | e1+e2    | Selects all `<e2>` elements that follow `<e1>` immmediately |
 
-An example should make the differences between them clear :point_down::
+Let's consider the following example to clarify what each of those selector combiantions means  :point_down::
 
 ```html
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
+    <head>
+        <style>
+            :root {
+                --darkColor: orchid;
+                --lightColor: lavender;
+                --borderColor: darkslateblue;
+                --activeBorderColor: white;
+                --borderThickness: 3px;
+                --visitedColor: gray;
+            }
+            * {
+                font-family: monospace;
+            }
+            button {
+                margin-bottom: 2px;
+                padding: 2px;
+                white-space: pre;
+                border: var(--borderThickness) solid transparent;
+                display: block;
+                width: 95vw;
+                text-align: left;
+            }
+            button:nth-child(2n){
+                background-color: var(--darkColor);
+                color: var(--lightColor);
+            }
+            button:nth-child(2n+1){
+                background-color: var(--lightColor);
+                color: var(--darkColor);
+            }
 
-      /* select all p elements within div */
-      div p {
-        background-color: black;
-        color: white;
-      }
-      /* select all main and all footer elements */
-      main, footer {
-        background-color: yellow;
-      }
-      /* select all p elements that have div as parent */
-      div > p {
-        font-weight: bold;
-      }
-      /* select all p elements that follow div immediately */
-      div + p {
-        color: red;
-      }
-    </style>
-  </head>
-  
-  <body>
-    <main>
+            /* let's make all numbers bold and italics */
+            button span {
+                font-style: italic;
+                color: darkblue;
+            }
 
-      <div class="today">
+            /* let's change the font/color of all elements that are not buttons */
+            h1, body>span {
+                font-family: sans-serif;
+                color: DeepPink;
+            }
 
-        <div class="urgent">
-          <p>Shopping</p>
-          <p>Sports</p>
-        </div>
+            /* all but the first rule should be assigned this color */
+            span+span {
+                color: RoyalBlue;
+            }
 
-        <p>Go to class</p>  <!-- follows directly after a <div></div> -->
+        </style>
+    </head>
 
-      </div>
-
-      <div class="tomorrow">
-
-        <p>Go to class</p>
-
-        <div class="urgent">
-          <p>Organising the holidays</p>
-        </div>
-
-      </div>
-
-    </main>
-
-    <footer>
-      <p>CSS example 2018.</p> <!-- a <p> element not inside a <div> -->
-    </footer>
-  </body>
+    <body>
+        <h1>Game statistics</h1>
+        <button><span class="count">12,567</span> players registered</button>
+        <button>   <span class="count">231</span> games ongoing</button>
+        <button>    <span class="count">17</span> games waiting for players to join</button>
+        <button> <span class="count">2,302</span> users are in audience mode</button>
+        <button><span class="perc">99.87<span class="sign">%</span></span> server uptime</button>
+        <h1>Game rules</h1>
+        <span>Rule 1: Have fun!</span>
+        <span>Rule 2: No less than 3, no more than 5 players!</span>
+        <span>Rule 3: There can only be one winner!</span>
+    </body>
 </html>
 ```
 
-The rendering of the above code looks as follows:
+Below is the DOM tree of the code and markers that show which selector combinations yield which set of HTML elements:
 
-![CSS selector combinations](../img/css-selector-combinations.png)
+![CSS selector combinations](../img/css-dom-tree.png)
+
+<sup>The DOM tree visualization is based on [this CodePen demo](https://codepen.io/pavlovsk/pen/QKGpQA).</sup>
+
+For completeness, the rendered HTML document looks as folows:
+
+![CSS selector combinations rendering](../img/css-selector-combinations.png)
+
+<sup>Rendering of the above HTML document.</sup>
 
 :video_game: If you are looking for a fun way to practice these selectors, head over to the [CSS diner](https://flukeout.github.io/)! 
 

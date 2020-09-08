@@ -10,7 +10,7 @@ warning: false
 
 *This is the densest web technlogy lecture of this course. Learning how to program takes time. Don't get frustrated if it is hard in the beginning. We introduce JavaScript this early in the web technology lectures to give you the time to learn it.*
 
-*At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩 are just for your information and not exam material.*
+{% include_relative explanation.md %}
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
