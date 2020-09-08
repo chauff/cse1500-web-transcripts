@@ -15,13 +15,13 @@ We cover the following languages: HTTP, HTML, JavaScript (on the client and serv
 
 ![our web stack](img/index-webstack.png)
 
-<sup>Web stack of CSE1500.</sup>
+<sup>The web stack of CSE1500 consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). </sup>
 
 In the five weeks of the web technology lectures we can only cover the web programming fundamentals (and thus the minimal stack). If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
 - [Web technology instructor](#web-technology-instructor)
-- [Book](#book)
+- [Recommended book :closed_book:](#recommended-book-)
 - [Tooling](#tooling)
   - [Recommended](#recommended)
   - [Required](#required)
@@ -36,17 +36,23 @@ In the five weeks of the web technology lectures we can only cover the web progr
 
 The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquires about the course content, exams and so on should be emailed to `cse1500-ewi@tudelft.nl`. 
 
-## Book 
+## Recommended book :closed_book:
 
-The one book we *recommend* for this part of the course is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). **It is not required though** - there are no required readings from this book and we do not even come close to covering the majority of the book's content. We recommend it as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in production settings. Thus, this books goes well beyond what you need to know for this class. The book already assumes your familiarity with basic web programming, so you will not find an introduction to CSS or JavaScript in this book.
+The one book we *recommend* for this part of the course is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). 
 
-There is not one recommended book to cover the basics of HTML, CSS or JavaScript. Instead, we point you to a number of very good introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
+**It is not required though** - there are no required readings from this book and we do not even come close to covering the majority of the book's content. 
+
+We recommend it as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in production settings. Thus, this books goes well beyond what you need to know for this class. The book already assumes your familiarity with basic web programming, so you will not find an introduction to CSS or JavaScript in this book.
+
+**There is not one recommended book to cover the basics of HTML, CSS or JavaScript.** Instead, we point you to a number of introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
 
 ## Tooling
 
 ### Recommended
 
-[Visual Studio Code](https://code.visualstudio.com/) (VSC) is our recommended development environment for the assignments. It is a free and open-source Integrated Development Environment (IDE) available for all major operating systems. It is also [the most popular IDE](https://insights.stackoverflow.com/survey/2019#development-environments-and-tools) for web developers today. It was originally designed to support Node.js programmers (the server-­side JavaScript framework we introduce in this course), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**!
+[Visual Studio Code](https://code.visualstudio.com/) (VSC) is our recommended development environment for the assignments. It is a free and open-source Integrated Development Environment (IDE) available for all major operating systems. 
+
+It is also [the most popular IDE](https://insights.stackoverflow.com/survey/2019#development-environments-and-tools) for web developers today. It was originally designed to support Node.js programmers (the server-­side JavaScript framework we introduce in this course), but now has extensions for many programming languages. Best of all, **Visual Studio Code itself is written in JavaScript**!
 
 ![Visual Studio Code](img/RME-vsc.png)
 
@@ -98,21 +104,50 @@ The table below shows how the number of passes (maximum 6: 3x database and 3x we
 | 1                | 1.7   |
 | 0                | 0.0   |
 
-Frequently Asked Questions:
-- **Are all web technology exam questions multiple-choice questions?** Yes.
-- **Can assignment passes be carried over to the next year?** No, while assignment passes are valid for this year's resit, next year all assignments have to be tackled again.
-- **Is there a resit option for the assignments?** No.
-- **How does the resit look like?** Not yet known due to the COVID situation. In past years, we had a single 3-hour exam which covered both the database and web technology topics and each student could choose which part (or both) of the exam to resit.
-- **What happens if my grade for one of the exams is worse in the resit?** We grade according to TU Delft's grading policy and thus *the better grade counts*. If the resit exam grade is lower than the original exam grade, we keep the higher grade in the grade books.
-- **Can more than 2 students work in a team?** No.
-- **Can a student work alone on the assignments?** Generally: no. If you think you have a very good reason for an exception, please email the instructor.
+Frequently asked questions:
+
+<details>
+<summary>Are all web technology exam questions multiple-choice questions?</summary>
+Yes.
+</details>
+
+<details>
+<summary>Can assignment passes be carried over to the next year?</summary>
+No, while assignment passes are valid for this year's resit, next year all assignments have to be tackled again.
+</details>
+
+<details>
+<summary>Is there a resit option for the assignments?</summary>
+No.
+</details>
+
+<details>
+<summary>How does the resit look like?</summary>
+Not yet known due to the COVID situation. In past years, we had a single 3-hour exam which covered both the database and web technology topics and each student could choose which part (or both) of the exam to resit.
+</details>
+
+<details>
+<summary>What happens if my grade for one of the exams is worse in the resit?</summary>
+We grade according to TU Delft's grading policy and thus the better grade counts. If the resit exam grade is lower than the original exam grade, we keep the higher grade in the grade books.
+</details>
+
+<details>
+<summary>Can more than 2 students work in a team?</summary>
+No.
+</details>
+
+<details>
+<summary>Can a student work alone on the assignments?</summary>
+Generally: no. If you think you have a very good reason for an exception, please email the instructor.
+</details>
+
 
 ## Web technology topics
 
 The web technology topics we cover (in this order) are the following:
 
 - HTTP
-- HTML5 and web design
+- HTML and web design
 - JavaScript
 - Node.js
 - CSS
@@ -120,15 +155,15 @@ The web technology topics we cover (in this order) are the following:
 - Cookies and sessions
 - Web security
 
-The order may strike you as odd, as typically CSS is introduced before JavaScript. Here, we introduce JavaScript as early as possible, to give you the chance to practice it a longer period of time before the exam moment.
+The order may strike you as odd, especially if you are already familiar with the basics of web programming, as typically CSS is introduced before JavaScript. Here, we introduce JavaScript as early as possible, to give you the chance to practice it a longer period of time before the exam moment.
 
 ## Web technology assignments
 
-There are three web technology assignments:
+There are three web technology assignments, each one covering the material of 2-3 lectures:
 
-- [Assignment on HTTP and web design](_practicals/assignment-http-design.md),
-- [Assignment on client-side and server-side JavaScript (i.e. Node.js)](_practicals/assignment-js-node.md), and
-- [Assignment on server-side JavaScript and CSS](_practicals/assignment-css-node.md).
+- [The first web technology assignment covers HTTP and web design](_practicals/assignment-http-design.md).
+- [The second web technology assignment asks you to implement client-side and server-side JavaScript (i.e. Node.js) code](_practicals/assignment-js-node.md).
+- [The last web technology assignment focuses on server-side JavaScript and CSS](_practicals/assignment-css-node.md).
 
 The three assignments build on each other - over the course of them you are tasked with implementing a small multi-player game. In previous years, roughly 90% of groups passed one assignment, 60% passed two web technology assignments and 30% of groups passed all three web technology assignments.
 

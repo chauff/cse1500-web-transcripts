@@ -6,7 +6,7 @@ ordering: 2
 warning: false
 ---
 
-# HTML: the language of the Web <!-- omit in toc -->
+# HTML: the language of the web <!-- omit in toc -->
 
 *At times we use ☝️ and 👇 to make it clear whether an explanation belongs to the code snippet above or below the text. The :bangbang: sign is added to code examples you should run yourself. When you see a :bug:, we offer advice on how to debug your code with the browser's and VSC's tooling - these hints are solely to help you with your programming project and not exam material! Paragraphs with a 🚩are just for your information and not exam material.*
 
@@ -56,7 +56,7 @@ warning: false
 - Explain the ideas behind usability testing and employ it.
 - Employ HTML.
 
-:pager: This lecture does not cover **how to write HTML**, this is covered in the required readings for this lecture. At the end of this lecture we provide historic context to understand/appreciate the current state of HTML.
+This lecture does not cover **how to write HTML**, this is covered in the required readings for this lecture. At the end of this lecture we provide historic context to understand/appreciate the current state of HTML.
 
 ## Web sites vs. web applications vs. the web as a platform
 
@@ -91,9 +91,11 @@ Electron itself uses [Node.js](https://nodejs.org/en/), the server-side JavaScri
 
 The major benefit of Electron should be clear: instead of writing three separate desktop variants (one for each operating system) you only have to write and maintain one. New features are integrated in one application instead of three, which reduces feature delivery time. For these reasons, many well-known applications today are built on Electron, including [Visual Studio Code](https://code.visualstudio.com/) (the IDE we recommend you to use), the [Slack](https://slack.com) app, [Atom](https://atom.io/) and [many, many more](https://electronjs.org/apps).
 
-If you ever wanted to know how *Windows 95* looks like, there is an [Electron app for that as well](https://github.com/felixrieseberg/windows95). It looks like this:
+If you ever wanted to know how *Windows 95* looks like, there is an [Electron app for that as well](https://github.com/felixrieseberg/windows95). It looks like this :point_down::
 
 ![Windows 95](../img/design-windows95.png)
+
+<sup>Windows 95 stuffed into an Electron app.</sup>
 
 On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. More concretely, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](https://www.technologytips.com/windows-system-requirements/).
 
@@ -132,7 +134,7 @@ Contrast ebay with the following older example from [koopplein](https://web.arch
 - What if I want to look at offers from Delft **and** Rijswijk instead of one or the other?
 - What is all this text about?
 
-🚩 **Good to know**: In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **390 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
+**Good to know**: In case you wonder how it is possible to go back in time and look at older versions of a web site (as today's [koopplein.nl presence](https://koopplein.nl/) looks considerably better), head over to the [Wayback Machine](https://web.archive.org/), maintained by the Internet Archive whose mission is to **archive** the web. The Wayback Machine of course does not archive the entire web (this would be impossible), but it does take regular snapshots of more than **390 billion web pages**, including those of koopplein - [take a look](https://web.archive.org/web/*/koopplein.nl).
 
 When naming and formatting links, buttons, section headers, etc. adhere to **established standards** and **be clear instead of clever**. For instance, a company's web site that has a link to its current job offers should use as link text `Jobs` or `Vacancies` (clear to the user what this link is about) instead of `Interested?` or `Join us!` (less clear).
 
@@ -142,19 +144,25 @@ Users should also **not get lost within a web site**. A site should provide user
 
 ![ebay web site](../img/design-ebay2.png)
 
-Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Below is an example from Google that does a poor job in this respect. It is not obvious on first sight that the first search result is indeed a paid advertisement (the little <kbd>Ad</kbd> box can easily overlooked) instead of a so-called *organic* search result (i.e. one the search algorithm surfaces at the top ranked result) :point_down::
+Lastly, it should be easy for the user to **distinguish different parts of a site** such as advertisement vs. content. Below is an example from Google that does a poor job in this respect. It is not obvious on first sight that the first search result is indeed a paid advertisement (the little **Ad** tag can easily be overlooked) instead of a so-called *organic* search result (i.e. one the search algorithm surfaces at the top ranked result) :point_down::
 
 ![Google web site recent](../img/design-google.png)
 
-A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was a lot more forthcoming when it came to notifying its users about advertisements :point_down::
+<sup>Google search result page, September 8, 2020.</sup>
+
+A few years ago ([August 15, 2013](https://web.archive.org/web/20130815204510/https://www.google.com/search?q=toyota) to be precise) Google was more forthcoming when it came to clearly notifying its users about advertisements :point_down::
 
 ![Google web site 2013](../img/design-google2.png)
 
-It should be mentioned though that Google is not the only offender here, take this example :point_down: from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
+<sup>Google search result page, August 15, 2013.</sup>
+
+It should be mentioned that Google is not the only offender here, take this example :point_down: from Twitter which is similarly poorly designed in terms of content distinction between organic tweets and promoted (i.e. paid) ones:
 
 ![Twitter web site](../img/design-twitter.png)
 
-The Google/Twitter examples above are of course not accidental: user interface designers are not accidentally trying to disguise the fact that those are ads (also known as promoted/sponsored content). This is done on purpose: we know that users are less likely to focus their attention on ads if it is obvious that they are indeed ads. Disguising them means a higher likelihood of users engaging with them. A higher engagement level means a higher financial return for the company. This is what is known as a **dark pattern**, more specifically the pattern of disguised ads. More formally, *"dark patterns are user interface design choices that benefit an online service by coercing, steering, or deceiving users into making unintended and potentially harmful decisions." They can be found in more than 10% of shopping websites (the more popular the shopping site, the more likely the appearance of dark patterns) according to [this recent research study](https://webtransparency.cs.princeton.edu/dark-patterns/) from Princeton University. Dark patterns exist in different domains, not just social web platforms or search engines: in the past, researchers have looked at dark patterns [in the design of games](http://fdg2013.org/program/papers/paper06_zagal_etal.pdf), [privacy](https://www.degruyter.com/downloadpdf/j/popets.2016.2016.issue-4/popets-2016-0038/popets-2016-0038.pdf) and [home robots](https://ieeexplore.ieee.org/abstract/document/8673274).
+<sup>Twitter, September 7, 2020.</sup>
+
+The Google/Twitter examples above are of course not accidental: user interface designers are not accidentally trying to disguise the fact that those are ads (also known as *promoted* or *sponsored* content). This is done on purpose: [we know that users are less likely to focus their attention on ads](https://doi.org/10.1145/1835449.1835459) if they recognize them as such. Disguising them to some degree means a higher likelihood of users paying attention to them. A higher engagement level means a higher financial return for the company. This is what is known as a **dark pattern**, more specifically the pattern of disguised ads. More formally, *"dark patterns are user interface design choices that benefit an online service by coercing, steering, or deceiving users into making unintended and potentially harmful decisions." A recent [study of 11K shopping websites](https://webtransparency.cs.princeton.edu/dark-patterns/) found dark patterns in more than 10% of them (the more popular the shopping site, the more likely the appearance of dark patterns). Dark patterns exist in different domains, not just social web platforms, e-commerce sites or search engines: in the past, researchers have looked at dark patterns [in the design of games](http://fdg2013.org/program/papers/paper06_zagal_etal.pdf), [privacy](https://www.degruyter.com/downloadpdf/j/popets.2016.2016.issue-4/popets-2016-0038/popets-2016-0038.pdf) and [home robots](https://ieeexplore.ieee.org/abstract/document/8673274).
 
 
 ### Rule: Minimize noise and clutter
@@ -181,15 +189,15 @@ A positive example of this rule is the following Surveymonkey splash screen :poi
 
 <sup>Surveymonkey crawled on [December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/).</sup>
 
-Take a look at this entry page for a business as a negative example :point_down::
+In contrast, take a look at this entry page of a Dutch business and take a guess at what it does :point_down::
 
 ![Coffeecompany](../img/design-coffeecompany.png)
 
 <sup>Screenshot taken October 11, 2019.</sup>
 
 <details> 
-  <summary>What do you think is the core business of this company? Click to find out the answer! </summary>
-   This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page.
+  <summary>Click to find out the answer! </summary>
+   This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page. 
 </details>
 
 The entry page (or home page) of a web application should answer a number of essential questions, none of which are answered in our example:
@@ -224,6 +232,8 @@ Instead, the average web user:
 A web application should be designed based on **user reality**. **Usability testing** is an important step to create a well-designed web application. The development cycle consists of *designing*-*testing*-*reviewing*:
 
 ![Web app development cycle](../img/design-cycle.png)
+
+<sup>Development cycle.</sup>
 
 In a **usability test**, a user is given a **typical task**, such as:
 

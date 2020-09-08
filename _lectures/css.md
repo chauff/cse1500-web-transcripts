@@ -19,26 +19,25 @@ warning: true
 - [Context](#context)
 - [Take-aways of the required reading](#take-aways-of-the-required-reading)
 - [Pseudo-classes](#pseudo-classes)
-  - [:bangbang: nth-child(X) and nth-of-type(X)](#️-nth-childx-and-nth-of-typex)
-  - [:bangbang: root](#️-root)
-  - [:bangbang: hover and active](#️-hover-and-active)
-  - [:bangbang: enabled and disabled](#️-enabled-and-disabled)
-  - [:bangbang: not](#️-not)
-  - [:bangbang: Selector combinations](#️-selector-combinations)
+  - [:bangbang: nth-child(X) and nth-of-type(X)](#%e2%80%bc%ef%b8%8f-nth-childx-and-nth-of-typex)
+  - [:bangbang: root](#%e2%80%bc%ef%b8%8f-root)
+  - [:bangbang: hover and active](#%e2%80%bc%ef%b8%8f-hover-and-active)
+  - [:bangbang: enabled and disabled](#%e2%80%bc%ef%b8%8f-enabled-and-disabled)
+  - [:bangbang: Selector combinations](#%e2%80%bc%ef%b8%8f-selector-combinations)
 - [Pseudo-elements](#pseudo-elements)
-  - [:bangbang: first-letter and first-line](#️-first-letter-and-first-line)
-  - [:bangbang: before and after](#️-before-and-after)
-- [:bangbang: Data attributes](#️-data-attributes)
+  - [:bangbang: first-letter and first-line](#%e2%80%bc%ef%b8%8f-first-letter-and-first-line)
+  - [:bangbang: before and after](#%e2%80%bc%ef%b8%8f-before-and-after)
+- [:bangbang: Data attributes](#%e2%80%bc%ef%b8%8f-data-attributes)
 - [Element positioning](#element-positioning)
-  - [:bangbang: Float](#️-float)
-  - [:bangbang: Position](#️-position)
+  - [:bangbang: Float](#%e2%80%bc%ef%b8%8f-float)
+  - [:bangbang: Position](#%e2%80%bc%ef%b8%8f-position)
 - [CSS media queries](#css-media-queries)
 - [Animations and transitions](#animations-and-transitions)
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
   - [Animations](#animations)
-    - [:bangbang: Animations: TU DELFT neon sign](#️-animations-tu-delft-neon-sign)
-    - [:bangbang: Animations: Delft weather app](#️-animations-delft-weather-app)
-  - [:bangbang: Transitions](#️-transitions)
+    - [:bangbang: Animations: TU DELFT neon sign](#%e2%80%bc%ef%b8%8f-animations-tu-delft-neon-sign)
+    - [:bangbang: Animations: Delft weather app](#%e2%80%bc%ef%b8%8f-animations-delft-weather-app)
+  - [:bangbang: Transitions](#%e2%80%bc%ef%b8%8f-transitions)
 - [Vendor prefixes](#vendor-prefixes)
 - [Self-check](#self-check)
 
@@ -483,34 +482,6 @@ An example :point_down::
 ```
 
 :point_up: Here you can see that it is possible to combine pseudo-classes, in this case we use `button:enabled:active` and define a style that an enabled **and** active button should have. Once the button is disabled, its style will not change anymore, no matter the mouse movements.
-
-### :bangbang: not
-
-`:not(X)` is a pseudo-class that matches all elements that are not represented by selector `X`. Let's look at at :point_down::
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      main :not(.todo){
-        color: orange;
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h2>Todos</h2>
-      <p class="firsttodo">Today's todos</p>
-      <p class="todo">Tomorrow's todos</p>
-      <p class="todo">Saturday's todos</p>
-      <p>Sunday's todos</p>
-    </main>
-  </body>
-</html>
-```
-
-:point_up: Important to know here is, that the selector `e1 e2` selects **all `<e2>` elements inside `<e1>` elements**. The `:not` selector is a short form for `*:not` with `*` being the **universal selector** (selecting all elements). Altogether our CSS rule says that any element within `<main>` that does not have class attribute `.todo` is assigned an orange font color.
 
 ### :bangbang: Selector combinations
 
