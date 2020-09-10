@@ -480,12 +480,12 @@ Let's walk through the three examples:
 There may of course be other selectors that lead to the same subset of selected elements. Here are three questions to test your selector combination knowledge without resorting to `class` or `id` attributes. Remember that your solution may differ from what is shown here. The questions revolve around the above DOM tree visualization.
 
 <details>
-<summary>How can we select just the second <h1> element?</summary>
+<summary>How can we select just the second &lt;h1&gt; element?</summary>
 button+h1
 </details>
 
 <details>
-<summary>How can we select the one <span> element that is inside another?</summary>
+<summary>How can we select the one &lt;span&gt; element that is inside another?</summary>
 span>span
 </details>
 
