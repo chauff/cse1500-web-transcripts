@@ -1795,7 +1795,42 @@ Here are a few questions you should be able to answer after having followed the 
 </details>
 
 <details>
-  <summary>What is a rendering engine?</summary>
+  <summary>What is the difference between an inline and a block element?</summary>
   ...
 </details>
 
+<details>
+  <summary>What is the difference between nth-of-type and nth-child?</summary>
+...
+</details>
+
+<details>
+  <summary>What is the purpose of CSS media queries</summary>
+  ...
+</details>
+
+<details>
+  <summary>What is the difference between pseudo-elements hover and active?</summary>
+  ...
+</details>
+
+<details>
+  <summary>What does the selector combination e1+e2 mean?</summary>
+  ...
+</details>
+
+<details>
+  <summary>Explain the difference between position:absolute and position:relative.</summary>
+  ...
+</details>
+
+<details>
+  <summary>When should position:fixed be used?</summary>
+  ...
+</details>
+
+
+<details>
+  <summary>Explain the meaning of units vw and vh.</summary>
+  ...
+</details>
