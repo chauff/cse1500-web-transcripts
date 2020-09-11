@@ -42,7 +42,7 @@ warning: true
   - [CSS animations](#css-animations)
     - [:bangbang: Text-heavy animations](#️-text-heavy-animations)
     - [:bangbang: Animations: Delft weather app](#️-animations-delft-weather-app)
-  - [🚩 :bangbang: Transitions](#-️-transitions)
+  - [:bangbang: Transitions](#️-transitions)
 - [Vendor prefixes](#vendor-prefixes)
 - [Self-check](#self-check)
 
@@ -1681,7 +1681,9 @@ function toggleClouds(e){
 ```
 *Note: the rain drops are generated in a similar fashion, so we do not go into the code details here.*
 
-### 🚩 :bangbang: Transitions
+### :bangbang: Transitions
+
+🚩🚩🚩This entire section on transitions is optional.
 
 As already mentioned, transitions are animations with only two states: a start state and an end state.
 
