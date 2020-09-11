@@ -1231,7 +1231,7 @@ In our Delft weather demo many elements (the moon, the raindrops, the snow flake
 </html>
 ```
 
-This video shows off the effect both `position` values `fixed` and `absolute` have. On the left, we use `position:fixed` and on the right `position:absolute` :point_down::
+This video shows off the effect both `position` values `fixed` and `absolute` have. Focus on the position of the info box on the top. On the left, we use `position:fixed` for the info box and on the right `position:absolute` :point_down::
 
 <video src="../img/css-abs-fixed.mov" controls></video>
 
