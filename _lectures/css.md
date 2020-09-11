@@ -19,20 +19,20 @@ warning: true
 - [A bit of history](#a-bit-of-history)
 - [Take-aways of the required readings](#take-aways-of-the-required-readings)
 - [Pseudo-classes](#pseudo-classes)
-  - [:bangbang: nth-child(X) and nth-of-type(X)](#️-nth-childx-and-nth-of-typex)
-  - [:bangbang: :root](#️-root)
-  - [:bangbang: :hover, :active and :visited](#️-hover-active-and-visited)
-  - [:bangbang: :enabled and :disabled](#️-enabled-and-disabled)
-- [:bangbang: Selector combinations](#️-selector-combinations)
+  - [:bangbang: nth-child(X) and nth-of-type(X)](#bangbang-nth-childx-and-nth-of-typex)
+  - [:bangbang: :root](#bangbang-root)
+  - [:bangbang: :hover, :active and :visited](#bangbang-hover-active-and-visited)
+  - [:bangbang: :enabled and :disabled](#bangbang-enabled-and-disabled)
+- [:bangbang: Selector combinations](#bangbang-selector-combinations)
 - [Pseudo-elements](#pseudo-elements)
-  - [:bangbang: ::first-letter and ::first-line](#️-first-letter-and-first-line)
-  - [:bangbang: ::before and ::after](#️-before-and-after)
-- [:bangbang: Data attributes](#️-data-attributes)
+  - [:bangbang: ::first-letter and ::first-line](#bangbang-first-letter-and-first-line)
+  - [:bangbang: ::before and ::after](#bangbang-before-and-after)
+- [:bangbang: Data attributes](#bangbang-data-attributes)
 - [Element positioning](#element-positioning)
   - [Display types](#display-types)
   - [Grid layout](#grid-layout)
   - [CSS units and functions](#css-units-and-functions)
-  - [:bangbang: Position](#️-position)
+  - [:bangbang: Position](#bangbang-position)
     - [position:relative](#positionrelative)
     - [position:absolute](#positionabsolute)
     - [position:fixed](#positionfixed)
@@ -40,10 +40,10 @@ warning: true
 - [CSS animations and transitions](#css-animations-and-transitions)
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
   - [CSS animations](#css-animations)
-    - [:bangbang: Text-heavy animations](#️-text-heavy-animations)
-    - [:bangbang: Animations: Delft weather app](#️-animations-delft-weather-app)
-  - [:flag: Transitions](#flag-transitions)
-- [:flag: Vendor prefixes](#flag-vendor-prefixes)
+    - [:bangbang: Text-heavy animations](#bangbang-text-heavy-animations)
+    - [:bangbang: Animations: Delft weather app](#bangbang-animations-delft-weather-app)
+  - [:triangular_flag_on_post: Transitions](#triangularflagonpost-transitions)
+- [:triangular_flag_on_post: Vendor prefixes](#triangularflagonpost-vendor-prefixes)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -1681,7 +1681,7 @@ function toggleClouds(e){
 ```
 *Note: the rain drops are generated in a similar fashion, so we do not go into the code details here.*
 
-### :flag: Transitions
+### :triangular_flag_on_post: Transitions
 
 As already mentioned, transitions are animations with only two states: a start state and an end state.
 
@@ -1733,7 +1733,7 @@ We can make use of the [`transition`](https://developer.mozilla.org/en-US/docs/W
 
 :point_up: The line `transition: width 2s, height 2s, background-color 2s, transform 2s` is a short-hand for the `transition-property` (the CSS property to which a transition should be applied) and the `transition-duration` (the seconds or milliseconds until the transition is complete). As seen here, we can define multiple transition properties in one line.
 
-## :flag: Vendor prefixes
+## :triangular_flag_on_post: Vendor prefixes
 
 A last word on **vendor prefixes**. Many CSS code snippets you find online will contain vendor prefixes (either at property or rule level). As an example, consider this [Stack Overflow question](https://stackoverflow.com/questions/20586143/css-animation-vs-transition). It contains CSS properties such as `-webkit-transition`, `-webkit-animation-duration` and so on. In the past, browser vendors decided to use [browser-specific prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) to include experimental CSS features in their rendering engines. This led (and is still leading) to a lot of duplicate code, e.g.
 
