@@ -42,8 +42,8 @@ warning: true
   - [CSS animations](#css-animations)
     - [:bangbang: Text-heavy animations](#️-text-heavy-animations)
     - [:bangbang: Animations: Delft weather app](#️-animations-delft-weather-app)
-  - [:bangbang: Transitions](#️-transitions)
-- [Vendor prefixes](#vendor-prefixes)
+  - [:flag: Transitions](#flag-transitions)
+- [:flag: Vendor prefixes](#flag-vendor-prefixes)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -1681,9 +1681,7 @@ function toggleClouds(e){
 ```
 *Note: the rain drops are generated in a similar fashion, so we do not go into the code details here.*
 
-### :bangbang: Transitions
-
-🚩🚩🚩This entire section on transitions is optional.
+### :flag: Transitions
 
 As already mentioned, transitions are animations with only two states: a start state and an end state.
 
@@ -1735,7 +1733,7 @@ We can make use of the [`transition`](https://developer.mozilla.org/en-US/docs/W
 
 :point_up: The line `transition: width 2s, height 2s, background-color 2s, transform 2s` is a short-hand for the `transition-property` (the CSS property to which a transition should be applied) and the `transition-duration` (the seconds or milliseconds until the transition is complete). As seen here, we can define multiple transition properties in one line.
 
-## Vendor prefixes
+## :flag: Vendor prefixes
 
 A last word on **vendor prefixes**. Many CSS code snippets you find online will contain vendor prefixes (either at property or rule level). As an example, consider this [Stack Overflow question](https://stackoverflow.com/questions/20586143/css-animation-vs-transition). It contains CSS properties such as `-webkit-transition`, `-webkit-animation-duration` and so on. In the past, browser vendors decided to use [browser-specific prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) to include experimental CSS features in their rendering engines. This led (and is still leading) to a lot of duplicate code, e.g.
 
