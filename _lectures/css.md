@@ -581,35 +581,36 @@ In order to distinguish pseudo-classes and pseudo-elements, the double-colon (`:
 
 ### :bangbang: ::first-letter and ::first-line
 
+🚩🚩🚩 This section on `::first-letter` and `::first-line` is optional.
+
 So, what are abstractions that go beyond what is specified in the document language? Two popular examples are the `::first-letter` and the `::first-line` pseudo-elements. They do exactly what the names suggests, enabling you to style the first letter and first line respectively. Without those pseudo-elements, you would have to wrap the first letter in a `<span>` (or similar) element. This may only be mildly annoying, however, determining what constitutes the first line of a piece of text requires a clever way of computing at which word exactly the line ends while taking into acount changing viewport sizes (to then again, wrap that part of the text in a `<span>` element). Let's look at an example :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <style>
-    p::first-line {
-      color: gray;
-      font-size: 125%;
-    }
+        p::first-line {
+            color: gray;
+            font-size: 125%;
+        }
 
-    p::first-letter {
-      font-size: 200%;
-    }
+        p::first-letter {
+            font-size: 200%;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <p>
-      To be or not to be, that is the question -
+        To be or not to be, that is the question -
     </p>
-
     <p>
-      Whether 'tis nobler in the mind to suffer <br>
-      The slings and arrows of outrageous fortune, <br>
-      Or to take arms against a sea of troubles, <br>
-      ...
+        Whether 'tis nobler in the mind to suffer <br>
+        The slings and arrows of outrageous fortune, <br>
+        Or to take arms against a sea of troubles, <br>
+        ...
     </p>
-  </body>
+</body>
 </html>
 ```
 
@@ -634,20 +635,20 @@ Here is one extreme example of this concept, where all document *content* is del
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <style>
-    cite::before {
-      content: "\201CTo be, or ";
-    }
+        cite::before {
+            content: "\201CTo be, or ";
+        }
 
-    cite::after {
-      content: "not to be ... \201D";
-    }
+        cite::after {
+            content: "not to be ... \201D";
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <cite></cite>
-  </body>
+</body>
 </html>
 ```
 
@@ -803,21 +804,21 @@ The canonical example for `data-` attributes are tooltips as they provide useful
 <html>
   <head>
     <style>
-    li {
-      cursor: help;
-    }
+      li {
+        cursor: help;
+      }
 
-    li:hover::after{
-      background-color: rgba(10,10,10,0.7);
-      color: gold;
-      border: 1px dashed;
-      padding: 5px;
-      font-size: 60%;
-      content: attr(data-name);
-      position: relative;
-      bottom: 15px;
-      left: 5px;
-    }
+      li:hover::after{
+        background-color: rgba(10,10,10,0.7);
+        color: gold;
+        border: 1px dashed;
+        padding: 5px;
+        font-size: 60%;
+        content: attr(data-name);
+        position: relative;
+        bottom: 15px;
+        left: 5px;
+      }
     </style>
   </head>
   <body>
@@ -1596,44 +1597,48 @@ Lastly, while lightning and the moon were done in *pure CSS*, for the raindrops 
 
 ```css
 .cloud {
-	width: 200px; height: 60px;
-	background: #fff;
-	border-radius: 200px;
-	position: absolute;   
-  /* z-index:10; with this, the cloud is in front of the switches */
-  animation: moveclouds 15s linear infinite;
-
+    width: 200px;
+    height: 60px;
+    background: #fff;
+    border-radius: 200px;
+    position: absolute;
+    /* z-index:10; with this, the cloud is in front of the switches */
+    animation: moveclouds 15s linear infinite;
 }
 
 .cloud::before, .cloud::after {
-	content: '';
-	background: white;
-	width: 100px; height: 80px;
-  
-  /* important here is to know that the before/after pseudo-elements
+    content: '';
+    background: white;
+    width: 100px;
+    height: 80px;
+    /* important here is to know that the before/after pseudo-elements
    * are children of the element they belong to and thus absolute
    * positioning makes sense here
    */
-	position: absolute; 
-  top: -15px; 
-  left: 10px;
-	
-	border-radius: 100px;
-	transform: rotate(33deg);
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    border-radius: 100px;
+    transform: rotate(33deg);
 }
 
 .cloud::after {
-	width: 110px; height: 90px;
-	top: -45px; 
-  /* left: auto means that the position of the element is based on the right property value */
-  left: auto; 
-  right: 5px;
+    width: 110px;
+    height: 90px;
+    top: -45px;
+    /* left: auto means that the position of the element is based on the right property value */
+    left: auto;
+    right: 5px;
 }
 
 /* simple animation: clouds go from left to right */
 @keyframes moveclouds {
-	0% {margin-left: -20%;}
-	100% {margin-left: 120%;}
+    0% {
+        margin-left: -20%;
+    }
+    100% {
+        margin-left: 120%;
+    }
 }
 ```
 
