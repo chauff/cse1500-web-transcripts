@@ -37,10 +37,10 @@ warning: true
     - [position:absolute](#positionabsolute)
     - [position:fixed](#positionfixed)
 - [CSS media queries](#css-media-queries)
-- [Animations and transitions](#animations-and-transitions)
+- [CSS animations and transitions](#css-animations-and-transitions)
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
-  - [Animations](#animations)
-    - [:bangbang: Animations: TU DELFT neon sign](#️-animations-tu-delft-neon-sign)
+  - [CSS animations](#css-animations)
+    - [:bangbang: Text-heavy animations](#️-text-heavy-animations)
     - [:bangbang: Animations: Delft weather app](#️-animations-delft-weather-app)
   - [:bangbang: Transitions](#️-transitions)
 - [Vendor prefixes](#vendor-prefixes)
@@ -837,28 +837,19 @@ This example :point_up: also showcases the use of the [`cursor`](https://develop
 
 ## Element positioning
 
-One of the most complex aspects of CSS are the myriad of ways to achieve element positioning. MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what options exists. We here cover three types of positioning:
+One of the most complex aspects of CSS are the myriad of ways to achieve element positioning. MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what options exists. We here cover three types of positioning in this order:
 
 - The property [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) defines the display type of an element.
 - [Grids](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids) consist of rows and columns and elements can be placed onto them.
-- The property [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) defines how an element is positioned in a document;
+- The property [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) defines how an element is positioned in a document.
 
-Let's also define two additional concepts, that stem from HTML4:
+Before we dive into the details, let's briefly talk about the default positioning of elements: when we create HTML documents without any styling, the elements do not appear randomly on the screen, instead they are ordered in some fashion. By default, elements *flow*. **Their order is determined by the order of their appearance in the HTML document.** We also know that by default certain elements are surrounded by line-breaks and others are not. These two types of elements are known as block-level and inline elements respectively.
 
-- **Block-level elements** are surrounded by line-breaks. They can contain block-level and inline elements. **The width is determined by their containing element.** Examples of block-level elements are `<main>` or `<p>`.
-- **Inline elements** can be placed within block-level or inline elements. They can contain other inline elements. **The width is determined by their content.** Examples are `<span>` or `<a>`.
+**Block-level elements** are surrounded by line-breaks. They can contain block-level and inline elements. **Their width is determined by their containing element.** Examples of block-level elements are `<main>`, `<h1>` or `<p>`.
 
-Note: While HTML5 has categories with more complex interactions (such as `inline-block`), for our purposes, the block-level and inline notions are sufficient. 
+**Inline elements** can be placed within block-level or inline elements. They can contain other inline elements. **Their width is determined by their content.** Examples are `<span>` or `<a>`.
 
-*Note: in past editions of this course, we discussed the [float](https://developer.mozilla.org/en-US/docs/Web/CSS/float) property instead of the newer CSS grid layout. CSS grids provide a more nuanced way to place elements with respect to each other.*
-
-### Display types
-
-//TODO
-
-By default, elements *flow*. Their order is determined by the order of their appearance in the HTML document.
-
-In order to understand what exactly this means, experiment with the following code :point_down::
+In order to understand what this means, experiment with the following code :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -915,101 +906,32 @@ In order to understand what exactly this means, experiment with the following co
 </html>
 ```
 
-Admittedly, the resulting rendering is not looking great:
+Admittedly, the resulting rendering is not looking great :point_down::
 
 ![CSS float](../img/css-float.png)
 
 However, it serves a purpose: it helps us to understand how the different elements appear within their parent element.
 
-:point_up: Try out the following code variations (remember, that you can make these changes directly in the *Style Editor* of your browser):
+:bangbang: Try out the following code variations. Remember, that you can make these changes directly in the *Style Editor* of your browser:
 
 - Manually resize the browser window to explore how the block-level and inline elements render at different window sizes.
 - In the `*{...}` we have employed a CSS reset, by setting both `margin` and `padding` to `0`. Remove those two lines of code.
 - Replace `main { width: 400px; }` with `main { width: auto; }` and once more manually resize the browser window.
 
+Having introduced elements' flow and block as well as inline elements, we can now move on to display types.
 
-Lastly, we cover the `display` property, which enables us to change the element type at will (block-level to inline and vice versa) at will and *hide* elements from view:
+### Display types
+
+The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) property enables us to change the element type (e.g. from block-level to inline), *hide* elements from view and determine the layout of its children.
 
 | Value          | Description                                                                                   |
 |----------------|-----------------------------------------------------------------------------------------------|
 | `display:inline` |  The element is treat as an inline element.                      |
 | `display:block`  |  The element is treated as a block element (line breaks before and after the element).                     |
 | `display:none`   |  The element (and its descendents) are hidden from view; no space is reserved in the layout.  |
-| `display:inline-block`   |  A block element (height/width can be set) that does result in line breaks before/after the element.   |
+| `display:grid`   |  The children of this element are arranged according to the grid layout.   |
 
-
-Once more, an example is sufficient to highlight the use of each of these values - uncomment the CSS rules one at a time:
-
-```html
-<!DOCTYPE html>
-  <head>
-    <style>
-      p, span {
-        border-style: solid;
-        padding: 10px;
-        margin: 10px;
-      }
-      p {
-        border-color: blue;
-      }
-
-      /*
-       * Try out the effect of adding each of these
-       * display settings.
-       */
-
-      /*
-       * span {
-       *  border-color: red;
-       * }
-       */
-
-      /*  
-       * span {
-       *  display: block;
-       * }
-       */
-
-      /*
-       * p {
-       *   display: inline;
-       * }
-       */
-
-      /*
-       * span {
-       *  display: none;
-       * }
-       */
-
-      /*
-       * p {
-       *  display: inline-block;
-       *  width: 300px;
-       * }
-       */
-    </style>
-  </head>
-  <body>
-    <p>
-      This is paragraph one.
-    </p>
-
-    <span>
-      Span element one.
-    </span>
-
-    <span>
-      Span element two.
-    </span>
-
-    <p>
-      This is paragraph two.
-    </p>
-  </body>
-</html>
-```
-
+There are more display types, but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS. 
 
 ### Grid layout
 
@@ -1121,9 +1043,9 @@ Below is our HTML document and the corresponding rendering, so far without any`p
 <sup>Rendering of the above HTML document in Firefox.</sup>
 
 A few remarks about the piece of code :point_up::
-- If you look closely, the flags are not images that we link from another source, these are images the browser is *generating*. How does that work? The [`linear-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) function creates an image on the fly, based on the color gradient information provide. This may look odd at first sight, as there is nothing gradual in terms of color changes, but that is due to the manner in which we define the gradient. If we were to replace `linear-gradient(black 33%, red 33% 66%, gold 66%)` with `linear-gradient(black, red, gold)` we would see the gradual change of color. By setting the color boundary explicitly (e.g. `red 33% 66%`) we achieve the clear-cut color changes we need for our flags. Having defined the `linear-gradient` function, we assign the returned image to a `<div>`'s `background` property and our flag is ready. Other types of gradients exist such as the [`radial-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient) which we employed to style the moon in our Delft weather demo.
+- 🚩 If you look closely, the flags are not images that we link from another source, these are images the browser is *generating*. How does that work? The [`linear-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) function creates an image on the fly, based on the color gradient information provide. This may look odd at first sight, as there is nothing gradual in terms of color changes, but that is due to the manner in which we define the gradient. If we were to replace `linear-gradient(black 33%, red 33% 66%, gold 66%)` with `linear-gradient(black, red, gold)` we would see the gradual change of color. By setting the color boundary explicitly (e.g. `red 33% 66%`) we achieve the clear-cut color changes we need for our flags. Having defined the `linear-gradient` function, we assign the returned image to a `<div>`'s `background` property and our flag is ready. Other types of gradients exist such as the [`radial-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient) which we employed to style the moon in our Delft weather demo.
 - How do we assign a flag to a specific `<div>`? We simply add the corresponding classname in the `<div>`'s `class` attribute. As can be seen, it is possible to assign a number of classes to an element. This is quite useful for the board game project to style game fields according to whether or not they contain a game piece.
-- If we want to style elements that have a particular set of classes assigned to them, we have a selector for this purpose: `.class1.class2.class3...`.
+- 🚩 If we want to style elements that have a particular set of classes assigned to them, we have a selector for this purpose: `.class1.class2.class3...`.
 - By setting each flag' width and height to 1/3 of the viewport width (`1vw` corresponds to 1% of the viewport width) and 1/3 of the viewport height (`1vh` corresponds to 1% of the viewport height) respectively, we ensure that our grid is always fully shown in the viewport. 
 - We define a `2px` border around each `<div>`. Note how the border collapses when two `<div>`s are adjacent: the border between the `<div>`s is not `4px` in total, it remains `2px`. Finally, observe what happens when `box-sizing: border-box` is removed from the `div` CSS rule: you should notice that it is now necessary to (slightly) scroll to see all flags. This is because without this setting, the `2px` of the border is added to the width and height of each `<div>` (and we thus end up with content overflowing the viewport). The `border-box` value means that the border (and padding if set) is *included* in the specified width/height values.
 - The full set of rules applied to an element is the *union* of all rules whose selectors match the element.
@@ -1382,7 +1304,8 @@ We can create different style sheets for different device types and link them **
 <html>
   <head>
     <!-- Example of a logical or (,) in the media query -->
-    <link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 2000px), (min-width: 3000px)" href="large-device.css">
+    <link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 2000px), 
+      (min-width: 3000px)" href="large-device.css">
 
     <style>
       /* more rules can be defined here */
@@ -1396,9 +1319,15 @@ We can create different style sheets for different device types and link them **
 :point_up: Thus, a logical *and* is expressed as `and` and a logical *or* is expressed as `,`. The logical and has precedence over the logical or. As always in CSS, the order of the rules matter, later media queries trump those declared earlier.
 
 
-## Animations and transitions
+## CSS animations and transitions
 
-In general, CSS styles (states) are defined by the developer. The **rendering engine** takes care of the transition between styles. A rendering engine - also known as *browser engine* or *layout engine* - is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time, especially when using CSS animations and transitions:
+In general, CSS styles (states) are defined by the developer. As concrete examples, in our Delft weather demo, we define:
+- how a rain drop looks, its starting point, end point and how quickly it should "fall";
+- the path the leaves travel and their speed;
+- the opacity levels of a `<div>` to simulate flash lightning;
+- etc.
+
+The **rendering engine** then takes care of the **transition between styles**. A rendering engine - also known as *browser engine* or *layout engine* - is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time, especially when using CSS animations and transitions:
 
 | Engine   | Browsers                                |
 |----------|-----------------------------------------|
@@ -1419,108 +1348,152 @@ Rendering engines do a lot of heavy lifting, and can also be attacked. [This Git
 
 ### CSS vs. JavaScript animations
 
-There are several advantages to using CSS-based instead of JavaScript-based animations:
+Going back to the example of falling raindrops, we could compute the position of each raindrop between the start and end state ourselves and draw the raindrop at each of the computed positions on a canvas at something like 100 frames per second. This would also lead to an animation, but one we implemented ourselves in JavaScript.
 
-- CSS is relatively easy to use and debugging them is easier than debugging JavaScript code.
-- The rendering engines are optimized for CSS-based animations; there is no need to optimize your JavaScript code.
-- CSS animations can do much more than animating buttons. To see what is possible (beyond the Delft weather app demo), head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
+There are several advantages to using CSS-based instead of JavaScript-based animations
 
+- CSS is relatively easy to use; debugging CSS-based animations is easier than debugging JavaScript code.
+- The rendering engines are optimized for CSS-based animations; when implementing an animation from scratch in JavaScript code would have to be optimized to reach the desired frame rate.
+- CSS animations can do much more than animating buttons. To see what is possible (beyond the Delft weather demo), head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
 
-### Animations 
+### CSS animations 
 
-We look at two animation examples in more detail: a TU DELFT neon sign and the Delft weather app. The former is focused on text-only content, the latter is heavy on non-textual content (clouds, raindrops, etc.).
+We look at two CSS animation examples in more detail: a 1980s inspired splash screen for our 3x3 flags grid (let's assume we are making a *guess the country* game) and the Delft weather app. The former is focused on text-only content, the latter is heavy on non-textual content (clouds, raindrops, etc.).
 
-#### :bangbang: Animations: TU DELFT neon sign
+#### :bangbang: Text-heavy animations
 
-We adapted the neon sign based on this [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq) :point_down::
+The styling of the splash screen of our imaginary *Guess the Country* game is inspired by [this CodePen example](https://codepen.io/DevchamploO/pen/NBWBGq) and shows off faulty neon lightning and rotating cards :point_down::
+
+<video src="../img/css-text-animation.mov" controls></video>
+
+The corresponding HTML document looks as follows (in essence we have kept the flags HTML document structure in place, use country names instead of flags and added an absolutely positioned `<div>` that contains the game's title):
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
+
     <!-- Loading a specific font: https://fonts.google.com/specimen/Monoton -->
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 
     <style>
-      body{
-        background: black;
-      }
+    body {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+        padding: 0;
+        background-color: blue;
+    }
 
-      .neon{
+    div {
+        margin: 1px;
+        width: 33vw;
+        height: 33vh;
+        border: 2px solid lightgray;
+        box-sizing: border-box;
+        background-color: blue;
+        color: white;
+        text-align: center;
+        font-size: 300%;
+        line-height: 33.33vh; /* a workaround to achieve vertically centered text */
+    }
+
+
+    #title {
+        padding: 10px;
         font-family: 'Monoton', cursive; /* referencing the loaded font */
-        font-size: 150px;
-        color: #00A6D6;
+        font-size: 400%;
+        color: gold;
+        background-color: Navy;
+        width: auto;
+        height: auto;
+        border: unset; /* no border */
+        opacity: unset;
+        box-shadow: 15px 10px 10px MidnightBlue;
+        text-align: center;
+
+        /* center the title horizontally/vertically on the page */
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-weight: 400;
-        letter-spacing: 10px;
-        text-shadow: 10px 10px 10px #E64616, 5px 5px 60px #A5CA1A;
-      }
 
-      /*
-       * Instead of linear, also try out `ease-in`, `ease-out`, `steps(10)`.
-       */
-      .flicker-slow{
-        animation: flicker 3s linear infinite;
-      }
+        letter-spacing: 5px;
+        text-shadow: 10px 10px 10px red, 5px 5px 60px red;
+    }
 
-      .flicker-fast{
-        animation: flicker 1s linear infinite;
-      }
-      /*
-       * The above short-hand can be replaced by the
-       * following animation properties:
-       */
+    .flicker-slow{ animation: flicker 3s linear infinite;}
+    .flicker-fast{animation: flicker 1s linear infinite;}
+    /* avoid starting all animations at exactly the same time */
+    .flicker-delay1 {animation-delay: -0.5s;}
+    .flicker-delay2 {animation-delay: -1.9s;}
 
-      /*
-      .flicker-slow{
-        animation-name: flicker;
-        animation-duration: 3s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-      }
-
-      .flicker-fast{
-        animation-name: flicker;
-        animation-duration: 1s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-      }
-      */
-
-      @keyframes flicker {
+    @keyframes flicker {
         0%, 30%, 33%, 55%, 100% {
             opacity: .99;
         }
-
         31%, 50%, 56% {
-          opacity: 0.3;
+            opacity: 0.3;
         }
-      }
+    }    
+
+    .rotate-slow {animation: rotate 20s linear infinite;}
+    .rotate-delay1 {animation-delay: 3s;}
+    .rotate-delay2 {animation-delay: 5s;}
+    .rotate-delay3 {animation-delay: 8s;}
+    .rotate-delay4 {animation-delay: 11s;}
+    .rotate0delay5 {animation-delay: 13s;}
+    .rotate0delay6 {animation-delay: 14s;}
+    .rotate0delay7 {animation-delay: 17s;}
+    .rotate0delay8 {animation-delay: 18s;}
+
+    @keyframes rotate {
+        20% {
+            transform: rotate3d(0, 1, 0, 180deg);
+            background-color: red;
+        }
+        30% {
+            background-color: blue;
+        }
+        40%, 100% {
+            transform: rotate3d(0, 1, 0, 360deg);
+        }
+    }
     </style>
   </head>
   <body>
-    <h1 class="neon">
-      TU <span class="flicker-slow">D</span>E<span class="flicker-fast">L</span><span class="flicker-slow">F</span>T
-    </h1>
+    
+    <div class="top left rotate-slow rotate-delay4">Monaco</div>
+    <div class="top center rotate-slow rotate-delay2">Germany</div>
+    <div class="top right rotate-slow rotate-delay5">Poland</div>
+
+    <div class="mid left rotate-slow rotate-delay1">France</div>
+    <div class="mid center rotate-slow rotate-delay1">Austria</div>
+    <div class="mid right rotate-slow rotate-delay7">Netherlands</div>
+
+    <div class="bottom left rotate-slow rotate-delay8">Romania</div>
+    <div class="bottom center rotate-slow rotate-delay6">Ireland</div>
+    <div class="bottom right rotate-slow rotate-delay3">Latvia</div>
+
+    <div id="title">
+        <span class="flicker-slow">Gu</span>es<span class="flicker-slow flicker-delay1">s</span> t<span class="flicker-fast flicker-delay2">h</span>e C<span class="flicker-slow">o</span>untr<span class="flicker-fast flicker-delay1">y</span>.
+    </div> 
   </body>
 </html>
 ```
 
-It renders as follows:
+A few remarks about the code :point_up::
 
-![TU Delft neon sign](../img/css-tudelft.png)
-
-The example :point_up: contains a number of interesting points:
-
-- It is easy to load additional fonts. A popular free font service is [Google Fonts](https://fonts.google.com/); more information on how to use it is available from [MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts#Using_an_online_font_service).
-- The CSS property [`text-shadow`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow) adds - as the name suggests - shadow to text. Importantly, a list of shadows can be added in a comma-separated list which are applied front-to-back (the first shadow is on top). Shadows can be defined in a number of ways, we here stick to a single one: `offset-x offset-y blur-radius color`.
+- 🚩 It is easy to load additional fonts. A popular free font service is [Google Fonts](https://fonts.google.com/); more information on how to use it is available from [MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts#Using_an_online_font_service).
+- 🚩 The CSS property [`text-shadow`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow) adds - as the name suggests - shadow to text. Importantly, a list of shadows can be added in a comma-separated list which are applied front-to-back (the first shadow is on top). Shadows can be defined in a number of ways, we here stick to a single one: `offset-x offset-y blur-radius color`.
 - The [`animation`](https://developer.mozilla.org/en-US/docs/Web/CSS/animation) property is a short-hand property that combines a number of `animation-*` properties in one line. Specifically in our example `animation: flicker 3s linear infinite` refers to the keyframes (`flicker` - the `animation-name`), the duration of one animation cycle (3 seconds - the `animation-duration`), the `animation-timing-function` (`linear` means that the animation moves from start to end in a constant rate) and the `animation-iteration-count` (here: `infinite`, i.e. the animation never stops). We defined here two types of flickers: a slow flicker (3 seconds to complete a cycle) and a fast flicker (1 second to complete the cycle). Different letters of our `TU Delft` string are assigned to different *flicker classes*.
 - The [`@keyframes`](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) control the intermediate steps in a CSS animation. In order to achieve flickering we change the opacity of the text string. In one animation cycle, we repeatedly move from an opacity of `.99` to `.3` and back. Specifically, we define 8 waypoints of our animation (with either opacity of `.99` or `.3`): `0%, 30%, 31%, 33%, 50%, 55%, 56%, 100%`. The rendering engine is then responsible to turn this code into an actual animation that resembles flickering.
+- The country cards' animation states are defined through the [`transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) property, which allows us to rotate, scale, skew and translate an element.
+- 🚩 CSS is not only restricted to 2d animations, it also provides functionality for 3d animations as shown with [`rotate3d()` function](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate3d) which enables us to define rotations in 3d space.
+- By default, all elements with a particular animations are animated *at the same time*. That is often undesired as the animations should look somewhat random (we do not want all letters to flickr at exactly the same time, we do not want all cards to perform a rotation at exactly the same time). The [`animation-delay` property](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-delay) allows us to define the amount of time to wait before starting the animation. If that delay differs for most elements (as it does in our splash screen), we achieve the desired randomized effect.
 
-To summarize, for us the most important animation properties are the following:
+To summarize, for our purposes the most important animation properties are the following:
 
 | Property                  | Despcription                                                                                                                       |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------|
@@ -1531,74 +1504,13 @@ To summarize, for us the most important animation properties are the following:
 | `animation-duration`        | The duration of a single animation cycle in seconds (s) or milliseconds (ms), e.g. `2.5s`, `500ms`.                                                      |
 | `animation-timing-function` | Specifies how a CSS animation progresses between waypoints (common  choices are `linear`, `ease-in`, `ease-out`, `steps(N)`).              |
 
-Let's look at a second example :point_down:, which shows a slightly different way to define keyframe waypoints: instead of `0%` the start state can also be defined with `from`, while the end state (`100%`) can be defined with `to` (and these two can also be mixed with other waypoints such as `50%`). This animation slides TU Delft's letters in place, with different letters moving at different speeds:
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      body {
-        background-color: black;
-        width: 900px;
-        margin: 100px auto;
-      }
-
-      .box {
-        width: auto;
-        height: 100px;
-        background-color: #00a6d6;
-        margin: 0 auto;
-        float: left;
-        font-size: 100px;
-        padding: 20px;
-        color: white;
-        text-shadow: 3px 3px 2px black;
-      }
-
-      @keyframes move {
-        from {
-          transform: translate(0px, 1000px)
-        }
-
-        to   {
-          transform: translate(0px, 0px)
-        }
-      }
-
-      #box1, #box7 {
-        animation: move 1s;
-      }
-
-      #box2, #box8 {
-        animation: move 4s;
-      }
-
-      #box3, #box6 {
-        animation: move 2s;
-      }
-
-      #box4, #box5 {
-        animation: move 3s;
-      }
-    </style>
-  </head>
-  <body>
-      <div class="box" id="box1">T</div>
-      <div class="box" id="box2">U</div>
-      <div class="box" id="box3">&nbsp;&nbsp;</div>
-      <div class="box" id="box4">D</div>
-      <div class="box" id="box5">E</div>
-      <div class="box" id="box6">L</div>
-      <div class="box" id="box7">F</div>
-      <div class="box" id="box8">T</div>
-  </body>
-</html>
-```
-
-:point_up: The animation's start state is defined through the [`transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) property, which allows us to rotate, scale, skew and translate an element: at the start of the animation, the elements are moved ([`translate`](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate)) from their original position to a position that is 1000 pixels down. The end state of the animation moves the elements to position 0/0 again. While this may seem to move all letter elements to the same position, the `float:left` property ensures that the letters appear next to each other as intended.
 
 #### :bangbang: Animations: Delft weather app
+
+
+![CSS lightning animation](../img/css-lightning.png)
+
+<sup>Lightning animation sequence example.</sup>
 
 We now go over the **lightning** effect in our Delft weather app: it consists of a single `<div>` covering the viewport. The animation takes 5 seconds and for 75% of the time does nothing. Then it briefly paints the `<div>` background white with increasing opacity (that's lightning), the `<div>` becomes transparent again and then this happens a second time. So here, one animation cycle results in two *lightning bolts*.
 
@@ -1626,7 +1538,7 @@ Once again, we only have to define the states of the animation, the rendering en
    * otherwise the transition from the start to 75% is a gradually
    * whiter screen.
    */
-  from { opacity: 0; } 
+  from { opacity: 0; } /* from is the same as 0% */
   74% { opacity: 0;}
   75% { background-color: white;  opacity: 0.6; }
   76% { background-color: white;  opacity: 0.2; }
@@ -1636,7 +1548,7 @@ Once again, we only have to define the states of the animation, the rendering en
   93% { background-color: white;  opacity: 0.5; }
   94% { background-color: white;  opacity: 0.2; }
   96% { background-color: white;  opacity: 0.9; } 
-  to { opacity: 0; }  
+  to { opacity: 0; }  /* to is the same as 100% */
 }
 ```
 
@@ -1680,9 +1592,7 @@ Beyond lightning, we also have an animated moon: it appears to be radiating cont
 }
 ```
 
-Lastly, while lightning and the moon were done in *pure CSS*, for the raindrops and the clouds we made use of a bit of JavaScript: note though that this is not strictly necessary. Since we need hundreds of raindrops/clouds that are all slightly different (slightly different locations, size, color, opacity, speed) we would need to create hundreds of different CSS rules. JavaScript makes this much easier - we create these rules programmatically. Let's quickly look at how the clouds were created :point_down::
-
-Some of the CSS parts were put directly into the CSS files - those that are the same for every cloud `<div>` we create :point_down::
+Lastly, while lightning and the moon were done in *pure CSS*, for the raindrops and the clouds we made use of a bit of JavaScript: note though that this is not strictly necessary. Since we need hundreds of raindrops/clouds that are all slightly different (slightly different locations, size, color, opacity, speed) we would need to create hundreds of different CSS rules. JavaScript makes this much easier - we create these rules programmatically. Let's quickly look at how the clouds were created. All properties that remain static for the majority of clouds are fixed in the CSS file :point_down::
 
 ```css
 .cloud {
@@ -1727,7 +1637,7 @@ Some of the CSS parts were put directly into the CSS files - those that are the 
 }
 ```
 
-The JavaScript snippet then creates `<div>` elements and assigns to each the `.cloud` class as well as the properties unique to each cloud. For this to work, it is vital that the created element is added to the DOM tree (the rendering engine will not render it otherwise). For this reason, our HTML file contains a `<div id="clouds">` element and all generated individual cloud elements are added as children of it with the line `clouds.appendChild(c)` :point_down:: 
+Now we still have to create the `<div>` elements and assign to each the `.cloud` class as well as the properties unique to each cloud. For this to work, it is vital that the created element is added to the DOM tree (the rendering engine will not render it otherwise). For this reason, our HTML file contains a `<div id="clouds">` element and all generated individual cloud elements are added as its children with the line `clouds.appendChild(c)` :point_down:: 
 
 ```js
 var totalNumClouds = 30;
@@ -1773,7 +1683,7 @@ function toggleClouds(e){
 
 ### :bangbang: Transitions
 
-Transitions are animations with only two states (a start state and an end state).
+As already mentioned, transitions are animations with only two states: a start state and an end state.
 
 We actually have been using transitions all this time already, e.g. when defining `:hover`. In this case, the transition is from the original element style to the hover style. 
 
@@ -1889,7 +1799,3 @@ Here are a few questions you should be able to answer after having followed the 
   ...
 </details>
 
-
-
-
-//TODO: add more
