@@ -1323,7 +1323,9 @@ So far, we have largely ignored the fact that in today's **multi-device** world,
 - when **viewing** a web application on a large screen :computer: all available information should be presented side-by-side;
 - when using **text-to-speech** devices :sound:, non-essential information should be removed.
 
-Our course page shows that with just a few lines of CSS we can achieve a responsive design :point_down::
+While we do not employ media queries in the board game project, it is still useful to realize how quickly a responsive design can be created. 
+
+Our course page looks quite different in small screen vs. large screen devices, i.e. it is responsive :point_down::
 
 ![CSS flags absolute](../img/css-mobile-screen.png)
 
@@ -1332,9 +1334,11 @@ Our course page shows that with just a few lines of CSS we can achieve a respons
 Let's take a look at the CSS rules we employed here to achieve this before introducing CSS media queries more formally. By default, we style `<main>` (which contains the navigation bar and the course content) as follows:
 
 ```css
+main {
   display: grid;
   grid-template-columns: 0.3fr 0.7fr;
   grid-template-rows: auto 30px;
+}
 ```
 
 :point_up: We have defined two columns, the navigation bar on the left and the content on the right. For smaller devices we want those two columns *stacked* on top of each other. And so we add the following CSS code snippet:
@@ -1351,9 +1355,9 @@ Let's take a look at the CSS rules we employed here to achieve this before intro
 
 :point_up: The syntax is new, but the code is pretty readable: if we have a device with a maximum width of 500px, `<main>`'s grid consists of a single column and three rows (navigation row, content row and footer row). 
 
-Admittedly, there are a few more CSS rules that govern the responsive design of the course page (in particular the font size) and one more intermediate step at `max-width: 767px`. The browser's **responsive design mode** allows you to *simulate* different devices to explore the impact of different media queries:
+Admittedly, there are a few more CSS rules that govern the responsive design of the course page (in particular the font size) and one more intermediate step at `max-width: 767px`. The browser's **responsive design mode** allows you to *simulate* different devices to explore the impact of different media queries as can be seen in this video:
 
-<video src="../img/css-abs-fixed.mov" controls></video>
+<video src="../img/css-cse1500-responsive.mov" controls></video>
 
 <sup>Responsive design mode of Firefox as of September 2020.</sup>
 
