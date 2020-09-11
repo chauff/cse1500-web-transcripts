@@ -19,25 +19,30 @@ warning: true
 - [A bit of history](#a-bit-of-history)
 - [Take-aways of the required readings](#take-aways-of-the-required-readings)
 - [Pseudo-classes](#pseudo-classes)
-  - [:bangbang: nth-child(X) and nth-of-type(X)](#bangbang-nth-childx-and-nth-of-typex)
-  - [:bangbang: :root](#bangbang-root)
-  - [:bangbang: :hover, :active and :visited](#bangbang-hover-active-and-visited)
-  - [:bangbang: :enabled and :disabled](#bangbang-enabled-and-disabled)
-- [:bangbang: Selector combinations](#bangbang-selector-combinations)
+  - [:bangbang: nth-child(X) and nth-of-type(X)](#️-nth-childx-and-nth-of-typex)
+  - [:bangbang: :root](#️-root)
+  - [:bangbang: :hover, :active and :visited](#️-hover-active-and-visited)
+  - [:bangbang: :enabled and :disabled](#️-enabled-and-disabled)
+- [:bangbang: Selector combinations](#️-selector-combinations)
 - [Pseudo-elements](#pseudo-elements)
-  - [:bangbang: ::first-letter and ::first-line](#bangbang-first-letter-and-first-line)
-  - [:bangbang: ::before and ::after](#bangbang-before-and-after)
-- [:bangbang: Data attributes](#bangbang-data-attributes)
+  - [:bangbang: ::first-letter and ::first-line](#️-first-letter-and-first-line)
+  - [:bangbang: ::before and ::after](#️-before-and-after)
+- [:bangbang: Data attributes](#️-data-attributes)
 - [Element positioning](#element-positioning)
-  - [:bangbang: Float](#bangbang-float)
-  - [:bangbang: Position](#bangbang-position)
+  - [Display types](#display-types)
+  - [Grid layout](#grid-layout)
+  - [CSS units and functions](#css-units-and-functions)
+  - [:bangbang: Position](#️-position)
+    - [position:relative](#positionrelative)
+    - [position:absolute](#positionabsolute)
+    - [position:fixed](#positionfixed)
 - [CSS media queries](#css-media-queries)
 - [Animations and transitions](#animations-and-transitions)
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
   - [Animations](#animations)
-    - [:bangbang: Animations: TU DELFT neon sign](#bangbang-animations-tu-delft-neon-sign)
-    - [:bangbang: Animations: Delft weather app](#bangbang-animations-delft-weather-app)
-  - [:bangbang: Transitions](#bangbang-transitions)
+    - [:bangbang: Animations: TU DELFT neon sign](#️-animations-tu-delft-neon-sign)
+    - [:bangbang: Animations: Delft weather app](#️-animations-delft-weather-app)
+  - [:bangbang: Transitions](#️-transitions)
 - [Vendor prefixes](#vendor-prefixes)
 - [Self-check](#self-check)
 
@@ -473,9 +478,9 @@ Let's slightly revise our running game statistics example to clarify what each o
 <sup>The DOM tree visualization (with some post-processing) is derived from [this CodePen demo](https://codepen.io/pavlovsk/pen/QKGpQA): it allows you to visualize arbitrary html document structures.</sup>
 
 Let's walk through the three examples:
-- In order to select all `<span>` elements that appear *inside* a button, we use the selector `button span`.
-- To select all elements that are neither a button nor inside of one, we can use `h1, body>span`.
-- Finally, to select the last two `<span>` elements we can use `span+span`.
+- In order to select all `<span>` elements that appear *inside* a button, we use the selector `button span`: it selects all `span` elements within `button`.
+- To select all elements that are neither a button nor inside of one, we use `h1, body>span`: it selects all `<h1>` elements and all `<span>` elements that have `<body>` as parent.
+- Finally, to select the last two `<span>` elements we use `span+span`: it selects all `<span>` elements that follow immedately after a `<span>` element.
 
 There may of course be other selectors that lead to the same subset of selected elements. Here are three questions to test your selector combination knowledge without resorting to `class` or `id` attributes. Remember that your solution may differ from what is shown here. The questions revolve around the above DOM tree visualization.
 
@@ -519,6 +524,8 @@ For completeness, the HTML document corresponding to our DOM tree visualization 
                 display: block;
                 width: 95vw;
                 text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             button:nth-child(2n){
                 background-color: var(--darkColor);
@@ -560,6 +567,7 @@ For completeness, the HTML document corresponding to our DOM tree visualization 
     </body>
 </html>
 ```
+<sup>HTML document corresponding to the above DOM tree visualization.</sup>
 
 ![CSS selector combinations rendering](../img/css-selector-combinations.png)
 
@@ -605,17 +613,21 @@ So, what are abstractions that go beyond what is specified in the document langu
 </html>
 ```
 
-The browser renders this code as follows:
+Depending on the size of the browser window, what part of the text is enlarged differs :point_down::
 
 ![CSS first-line](../img/css-tobe.png)
 
-When you open this example in your own browser, change the size of the browser window - the first line, no matter how long or small, will always be rendered in grey.
+<sup>Two renderings (note the different browser window sizes) of the above HTML document.</sup>
 
 The code example :point_up: also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale the font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional *tuning* for different devices is required.
 
 ### :bangbang: ::before and ::after
 
-Adding (cosmetic) content right before and after an element is achieved through `::before` and `::after` respectively in combination with the `content` property. These pseudo-elements are not only useful to style text in a particular manner but to also create visual artifacts (such as each cloud in our Delft weather app) that on first sight may require an image instead of just a few CSS rules. Important to know is that `::before` is the **first child** of the element it is attached to and `::after` is the **last child** of the element it is attached to.
+Adding (cosmetic) content right before and after an element is achieved through `::before` and `::after` respectively in combination with the `content` property. One example is the <a href="">hyperlink</a> styling we use on our course page: each link is preceded by a little arrow (⇗) to reinforce the message that this is indeed a hyperlink. 
+
+These two pseudo-elements are not only useful though to style text in a particular manner but to also create visual artifacts (such as each cloud in our Delft weather app) that on first sight may require an image instead of just a few CSS rules. 
+
+Important to remember is that `::before` is the **first child** of the element it belongs to and `::after` is the **last child** of the element it belongs to.
 
 Here is one extreme example of this concept, where all document *content* is delegated to the style sheet :point_down: (the unicode characters [201C](http://unicode.org/cldr/utility/character.jsp?a=201C) and [201D](https://unicode.org/cldr/utility/character.jsp?a=201D&B1=Show) are quotation marks):
 
@@ -693,7 +705,7 @@ The relevant CSS code snippets in our Delft weather app looks as follows:
 }
 ```
 
-:point_up: We have not yet introduced element positioning, but note that [`position: absolute`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) positions an element *relative to its closest positioned ancestor*. Since we know that pseudo-elements `::before` and `::after` are the first and last child of the element `E` they have been defined for respectively, their closest positioned ancestor is `E`. we can use `position:absolute` to create the slight offset we need to achieve the cloud effect.
+:point_up: The rounded edges are achieved via the [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) property. We have not yet introduced element positioning, but note that [`position: absolute`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) positions an element *relative to its closest positioned ancestor*. Since we know that pseudo-elements `::before` and `::after` are the first and last child of the element `E` they have been defined for respectively, their closest positioned ancestor is `E`. we can use `position:absolute` to create the slight offset we need to achieve the cloud effect.
 
 :bug: Note that above we include the `content` property, even though it is empty: `content: ''`. This is required; if a pseudo-element has its `content` property not set, the pseudo-element will not be rendered.
 
@@ -701,6 +713,7 @@ The relevant CSS code snippets in our Delft weather app looks as follows:
 
 ## :bangbang: Data attributes
 
+Let's return to the topic of storing data within CSS files. There are several issues when doing so:
 
 - Data is distributed across HTML and CSS files.
 - CSS is conventionally not used to store data.
@@ -710,7 +723,13 @@ Instead of storing data directly in CSS, a better way is to *make use of data st
 
 CSS can access those data attributes with the [`attr()`](https://developer.mozilla.org/en-US/docs/Web/CSS/attr) function: it retrieves the value of the selected element and data attribute.
 
-What kind of data should be stored in `data-` attributes? Typically data, that is small, good to have but not essential for the web application. The alternative to storing data in an HTML element is of course to resort to another HTTP request for this data (e.g. via Ajax). This solution here, avoids this extra step. Let's look at a concrete example: we now report the game statistics with an additional piece of information (the last time the numbers were updated):
+What kind of data should be stored in `data-` attributes? Typically data, that is small, good to have but not essential for the web application. The alternative to storing data in an HTML element is of course to resort to another HTTP request for this data (e.g. via Ajax). This solution here avoids this extra step but also means that the data may be less up-to-date than a recurring Ajax request. 
+
+Let's look at a concrete example: we now report the game statistics with an additional piece of information: the last time the numbers were updated. This information should be "taped" to the right-hand side of the `<button>` element it belongs to :point_down:
+
+![CSS data attribute](../img/css-data-attribute.png)
+
+The HTML document leading to this rendering looks as follows :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -732,6 +751,8 @@ What kind of data should be stored in `data-` attributes? Typically data, that i
                 text-align: left;
                 border: unset;
                 position: relative;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             button:nth-child(2n){
                 background-color: var(--darkColor);
@@ -756,20 +777,26 @@ What kind of data should be stored in `data-` attributes? Typically data, that i
 
     <body>
         <h1>Game statistics</h1>
-        <button id="b1" data-date="01/10/2020"><span class="count">12,567</span> players registered</button>
-        <button id="b2" data-date="now">   <span class="count">231</span> games ongoing</button>
-        <button id="b3" data-date="now">    <span class="count">17</span> games waiting for players to join</button>
-        <button id="b4" data-date="09/10/2020"> <span class="count">2,302</span> users are in audience mode</button>
-        <button id="b5" data-date="01/08/2020"><span class="perc">99.87<span class="sign">%</span></span> server uptime</button>
+        <button id="b1" data-date="01/10/2020">12,567 players registered</button>
+        <button id="b2" data-date="now">   231 games ongoing</button>
+        <button id="b3" data-date="now">    17 games waiting for players to join</button>
+        <button id="b4" data-date="09/10/2020"> 2,302 users are in audience mode</button>
+        <button id="b5" data-date="01/08/2020">99.87% server uptime</button>
     </body>
 </html>
 ```
 
-The above code is rendered as follows :point_down::
+:point_up: A few remarks:
 
-![CSS data attribute](../img/css-data-attribute.png)
+- :bug: Remember that we stated earlier on that `position:absolute` positions an element relative to its closest **positioned** ancestor. Observe what happens if the line `position: relative` is removed from the `button` selector: the positioning of the button elements does not change but the pseudo-elements holding our data are now positioned with respect to the `<body>` element as it is the closest ancestor with a position. If your positioning of pseudo-elements is not where you think it should be, make sure to have set the `position` property in its parent!
+- Only attributes that start with the prefix `data-` can be surfaced in CSS via the `attr()` function.
+- Once we *switch off* the button's pseudo-element `::after` (as indicated above, it is sufficient to remove the `content` property for this purpose) and then focus on the text inside each button, we observe that with decreasing browser window width, the full text is cut down and partially replaced by a ellipsis (...) and thus avoid an overflow of the text. This is achieved through the property/value pairs of [`overflow:hidden`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) and [`text-overflow:ellipsis`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow). Without `overflow:hidden` the text will flow over the edge of the button. Once it is set, the text is cut off at the end of the button's content area. This does not look great. Adding `text-overflow:ellipsis` ensures that the user sees ... instead of the sudden clipping of the text. The renderings below should make the differences clear.
 
-A canonical example for `data-` attributes are tooltips :point_down::
+![CSS text overflow](../img/css-overflow-ellipsis.png)
+
+<sup>Left: neither the overflow nor text-overflow properties are set. Middle: the overflow property is set to hidden. Right: overflow is set to hidden, text-overflow is set to ellipsis.</sup>
+
+The canonical example for `data-` attributes are tooltips as they provide useful, but not essential additional information :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -799,7 +826,7 @@ A canonical example for `data-` attributes are tooltips :point_down::
         <li data-name="Cascading Style Sheets">CSS</li>
         <li data-name="HyperText Markup Language">HTML</li>
         <li data-name="HyperText Transfer Protocol">HTTP</li>
-        <li data-name="HyperText Transfer Protocol Secure">https</li>
+        <li data-name="HyperText Transfer Protocol Secure">HTTPS</li>
       </ul>
     </main>
   </body>
@@ -810,20 +837,24 @@ This example :point_up: also showcases the use of the [`cursor`](https://develop
 
 ## Element positioning
 
-One of the more complex aspects of CSS are the myriad of ways to achieve element positioning (MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what options exists). We here consider three CSS properties used for element positioning:
+One of the most complex aspects of CSS are the myriad of ways to achieve element positioning. MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what options exists. We here cover three types of positioning:
 
-- [`float`](https://developer.mozilla.org/en-US/docs/Web/CSS/float) defines how an element floats in the containing element (which in turn determines how other elements flow around it);
-- [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) defines how an element is positioned in a document;
-- [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) defines the display type of an element.
+- The property [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) defines the display type of an element.
+- [Grids](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids) consist of rows and columns and elements can be placed onto them.
+- The property [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) defines how an element is positioned in a document;
 
 Let's also define two additional concepts, that stem from HTML4:
 
 - **Block-level elements** are surrounded by line-breaks. They can contain block-level and inline elements. **The width is determined by their containing element.** Examples of block-level elements are `<main>` or `<p>`.
 - **Inline elements** can be placed within block-level or inline elements. They can contain other inline elements. **The width is determined by their content.** Examples are `<span>` or `<a>`.
 
-Note: While HTML5 has categories with more complex interactions (such as `inline-block`), for the three properties listed above, the block-level and inline notions are sufficient. In the one case where we go beyond those notations we will point it out explicitly.
+Note: While HTML5 has categories with more complex interactions (such as `inline-block`), for our purposes, the block-level and inline notions are sufficient. 
 
-### :bangbang: Float
+*Note: in past editions of this course, we discussed the [float](https://developer.mozilla.org/en-US/docs/Web/CSS/float) property instead of the newer CSS grid layout. CSS grids provide a more nuanced way to place elements with respect to each other.*
+
+### Display types
+
+//TODO
 
 By default, elements *flow*. Their order is determined by the order of their appearance in the HTML document.
 
@@ -836,10 +867,6 @@ In order to understand what exactly this means, experiment with the following co
 
       * {
         border-style: solid;
-
-        /* Try out what happens when the following two lines
-         * are removed ("CSS reset")
-        */
         margin: 0;
         padding: 0;
       }
@@ -870,13 +897,6 @@ In order to understand what exactly this means, experiment with the following co
       main {
         width: 400px;
       }
-
-      /* element floating (use left/right/none) */
-      /* a {
-       *  float: left;
-       * }
-       */
-
     </style>
   </head>
   <body>
@@ -907,245 +927,6 @@ However, it serves a purpose: it helps us to understand how the different elemen
 - In the `*{...}` we have employed a CSS reset, by setting both `margin` and `padding` to `0`. Remove those two lines of code.
 - Replace `main { width: 400px; }` with `main { width: auto; }` and once more manually resize the browser window.
 
-Let's now explore the use of `float`. With the `float` property, we can change the default flow. `float:left` (or `float:right`) takes an element **out of the flow**; it is then moved to the **leftmost** (or rightmost) possible position **in the containing element** - which is either the element edge or another float. In addition, if an element should not float, we can use `float: none`.
-
-Try out the effects of `float` on the code example :point_up: by using one after the other:
-
-- `a {float: right}`
-- `a {float: left}`
-- `a {float: none}`
-
-If needed, we can also reset the flow the the value `clear`, either to reset the `left`, `right` or `both` sides of the flow. The canonical example for flow resetting are web page layouts that have **sidebars**, such as this one :point_down::
-
-![Sidebars](../img/css-sidebars.png)
-
-Here, we have two sidebars that each *float* to the left and right of the main content respectively. The footer should appear below both sidebars. Try out the HTML below :point_down: to see the effect of both `float` and `clear`: remove the commenting of one CSS rule at a time.
-
-```html
-<!DOCTYPE html>
-  <head>
-    <style>
-
-    .nav {
-      background-color: grey;
-    }
-
-    main {
-      background-color: red;
-    }
-
-    footer {
-      background-color: green;
-    }
-
-
-    /* Floating to the sides */
-    /*
-     * #nav1 {
-     *  float: right;
-     * }
-     */
-
-    /* Floating to the sides */
-    /*
-     * #nav2 {
-     *  float: left;
-     * }
-     */
-
-    /*
-     * Resetting the flow: try what happens if clear:left or clear:right
-     * is used alone. Instead of both left and right, we can also use
-     * clear:both;
-     */
-    /*
-     * footer {
-     *  clear: left;
-     *  clear: right;
-     * }
-     */  
-    </style>
-  </head>
-  <body>
-    <div id="nav1" class="nav">
-      <ul>
-        <li>Go to page 1</li>
-        <li>Go to page 2</li>
-        <li>Go to page 3</li>
-        <li>Go to page 4</li>
-        <li>Go to page 5</li>
-      </ul>
-    </div>
-
-    <div id="nav2" class="nav">
-      <ul>
-        <li>January 2019</li>
-        <li>February 2019</li>
-        <li>March 2019</li>
-        <li>April 2019</li>
-      </ul>
-    </div>
-
-    <main>
-      <p>
-        Paragraph 1.
-      </p>
-
-      <p>
-        Paragraph 2.
-      </p>
-    </main>
-
-    <footer>
-      Footer information.
-    </footer>
-  </body>
-</html>
-```
-
-### :bangbang: Position
-
-The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements. This is in contrast to `float`, which  meets our demands for coarse-grained positioning. Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
-
-The `position` property has a number of possible values:
-
-| Value             | Description                                                                        |
-|-------------------|------------------------------------------------------------------------------------|
-| `position:static`   | the default                                                                            |
-| `position:relative` |  the element is adjusted on the fly, other elements are **not** affected               |
-| `position:absolute` |  the element is taken out of the normal flow (**no space is reserved for it**)         |
-| `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (=the area currently being viewed) |
-| `position:sticky`   | in-between `relative` and `fixed` (we do not consider it further in this class)        |
-
-Important to know when using the `position` property is the direction of the CSS coordinate system: the top-left corner is `(0,0)`. The y-axis extends **downwards**. The x-axis extends to the **right**.
-
-Let's walk through each of the position values in turn, starting with `relative`, where the movement of the element is **relative** to an element's original position. The horizontal offset from the original position is set through properties `left` and `right`, the vertical offset is controlled through `top` and `bottom`.
-
-For the `position` property, we use a stack of eggs and reposition one or more eggs at a time. The original stack looks like this:
-
-![CSS position egg stack](../img/css-eggs.png)
-
-The following code uses relative positioning :point_down: to reposition two of the four eggs:
-
-```html
-<!DOCTYPE html>
-  <head>
-    <style>
-
-    img {
-      width: 50px;
-    }
-    /*
-     * Try out different px values (px is the magic unit of CSS).
-     * Remember that the coordinate system starts at the top-left
-     * corner and extends downward and to the right!
-     * What happens if the px value is negative?
-     * At what point do the "eggs" leave the viewport?
-     */
-    #egg2 {
-      position: relative;
-      bottom: 20px;
-      left: 20px;
-    }
-
-    #egg4 {
-      position: relative;
-      bottom: 50px;
-      right: 10px;
-    }
-
-    </style>
-  </head>
-  <body>
-    <main>
-        <img src="https://openclipart.org/image/300px/svg_to_png/19477/shokunin_easter_egg_single.png" id="egg1" /><br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/6695/dStulle_white_egg.png" id="egg2" /> <br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/15696/mystica_Easter_egg_%28star%29.png" id="egg3" /> <br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/15694/mystica_Easter_egg_%28Painted%29.png" id="egg4" /><br />
-    </main>
-  </body>
-</html>
-```
-
-![Relative positioning](../img/css-eggs-relative.png)
-
-:point_down: If we change the positioning of some eggs to `position:absolute`, we now see that **they are taken out of the normal flow** and **no space** is reserved for them. The positioning of those elements is now relative to the *nearest ancestor* or the window itself (in our case it is the window itself):
-
-```html
-<!DOCTYPE html>
-  <head>
-    <style>
-
-    img {
-      width: 50px;
-    }
-
-    /*
-     * Try out different px values.
-     * Remember that the coordinate system starts at the top-left
-     * corner and extends downward and to the right!
-     */
-    #egg2 {
-      position: absolute;
-      bottom: 50px;
-      left: 0px;
-    }
-
-    #egg4 {
-      position: absolute;
-      bottom: 0px;
-      right: 0px;
-    }
-
-    </style>
-  </head>
-  <body>
-    <main>
-        <img src="https://openclipart.org/image/300px/svg_to_png/19477/shokunin_easter_egg_single.png" id="egg1" /><br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/6695/dStulle_white_egg.png" id="egg2" /> <br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/15696/mystica_Easter_egg_%28star%29.png" id="egg3" /> <br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/15694/mystica_Easter_egg_%28Painted%29.png" id="egg4" /><br />
-    </main>
-  </body>
-</html>
-```
-
-![Absolute positioning](../img/css-eggs-absolute.png)
-
-:point_down: The `position:fixed` value is similar to `position:absolute`, but now the containing element is the **viewport**, i.e. the area of the document that is visible in the browser. This means that elements with `position:fixed` remain visible. Here is an example (you need to minimize the window until you need to scroll down to see all of the four eggs to achieve a visible effect):
-
-```html
-<!DOCTYPE html>
-  <head>
-    <style>
-
-    img {
-      width: 50px;
-    }
-
-    #info {
-      position: fixed;
-      background: yellow;
-      left: 20px;
-      top: 20px;
-    }
-
-    </style>
-  </head>
-  <body>
-    <main>
-        <img src="https://openclipart.org/image/300px/svg_to_png/19477/shokunin_easter_egg_single.png" id="egg1" /><br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/6695/dStulle_white_egg.png" id="egg2" /> <br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/15696/mystica_Easter_egg_%28star%29.png" id="egg3" /> <br />
-        <img src="https://openclipart.org/image/300px/svg_to_png/15694/mystica_Easter_egg_%28Painted%29.png" id="egg4" /><br />
-    </main>
-
-    <div id="info">
-        These are no easter eggs.
-    </div>
-  </body>
-</html>
-```
 
 Lastly, we cover the `display` property, which enables us to change the element type at will (block-level to inline and vice versa) at will and *hide* elements from view:
 
@@ -1229,100 +1010,386 @@ Once more, an example is sufficient to highlight the use of each of these values
 </html>
 ```
 
+
+### Grid layout
+
+//TODO grid layout basics
+
+### CSS units and functions
+
+//TODO essential units (px, vw, wh, fr)
+
+//TODO essential functions (calc, minmax)
+
+### :bangbang: Position
+
+The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements. Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
+
+The `position` property has a number of possible values:
+
+| Value             | Description                                                                        |
+|-------------------|------------------------------------------------------------------------------------|
+| `position:static`   | the default                                                                            |
+| `position:relative` |  the element is adjusted on the fly, other elements are **not** affected               |
+| `position:absolute` |  the element is taken out of the normal flow (**no space is reserved for it**)         |
+| `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (=the area currently being viewed) |
+| `position:sticky`   | in-between `relative` and `fixed` (*we do not consider it further in this class*)        |
+
+Important to know when using the `position` property is the direction of the CSS coordinate system: the top-left corner is `(0,0)`. The y-axis extends **downwards**. The x-axis extends to the **right**.
+
+Finally it is time to retire our game statistics example. We showcase the impact of the different `position` values with the placement of nine countries' flags on the screen. We place our flags on a 3x3 grid: that sounds like something CSS grid should be used for and that's exactly what we are doing. For now, we also want the grid to fill the entire **viewport** but not go beyond that. The **viewport** is the area of the document that is visible in the browser. This can be achieved by giving each flag the width of `33.33vw` and the height of `33.33vh`. 
+
+Below is our HTML document and the corresponding rendering, so far without any`position` property defined :point_down::
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    body {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+        padding: 0;
+        background-color: #444;
+    }
+
+    div {
+        width: 33.33vw;
+        height: 33.33vh;
+        border: 2px solid lightgray;
+        box-sizing: border-box; /* size of the element now _includes_ the border */
+    }
+
+    .netherlands {
+        background: linear-gradient(red 33%, white 33% 66%, darkblue 66%);
+    }
+
+    .austria {
+        background: linear-gradient(red 33%, white 33% 66%, red 66%);
+    }
+
+    .ireland {
+        background: linear-gradient(90deg, green 33%, white 33% 66%, orange 66%);
+    }
+
+    .monaco {
+        background: linear-gradient(crimson 50%, white 50%);
+    }
+
+    .latvia {
+        background: linear-gradient(darkred 40%, white 40% 60%, darkred 60%);
+    }
+
+    .estonia {
+        background: linear-gradient(royalblue 33%, black 33% 66%, white 66%);
+    }
+
+    .france {
+        background: linear-gradient(90deg, #0055A4 33%, white 33% 66%, #EF4135 66%);
+    }
+
+    .romania {
+        background: linear-gradient(90deg, #002B7F 33%, #FCD116 33% 66%, #CE1126 66%);
+    }
+
+   .germany {
+        background: linear-gradient(black 33%, red 33% 66%, gold 66%);
+   }
+    </style>
+  </head>
+  <body>
+    
+    <div class="top left austria"></div>
+    <div class="top center romania"></div>
+    <div class="top right france"></div>
+
+    <div class="mid left estonia"></div>
+    <div class="mid center ireland"></div>
+    <div class="mid right latvia"></div>
+
+    <div class="bottom left monaco"></div>
+    <div class="bottom center germany"></div>
+    <div class="bottom right netherlands"></div>
+  </body>
+</html>
+```
+
+![CSS flags initial](../img/css-flags-initial.png)
+
+<sup>Rendering of the above HTML document in Firefox.</sup>
+
+A few remarks about the piece of code :point_up::
+- If you look closely, the flags are not images that we link from another source, these are images the browser is *generating*. How does that work? The [`linear-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) function creates an image on the fly, based on the color gradient information provide. This may look odd at first sight, as there is nothing gradual in terms of color changes, but that is due to the manner in which we define the gradient. If we were to replace `linear-gradient(black 33%, red 33% 66%, gold 66%)` with `linear-gradient(black, red, gold)` we would see the gradual change of color. By setting the color boundary explicitly (e.g. `red 33% 66%`) we achieve the clear-cut color changes we need for our flags. Having defined the `linear-gradient` function, we assign the returned image to a `<div>`'s `background` property and our flag is ready. Other types of gradients exist such as the [`radial-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient) which we employed to style the moon in our Delft weather demo.
+- How do we assign a flag to a specific `<div>`? We simply add the corresponding classname in the `<div>`'s `class` attribute. As can be seen, it is possible to assign a number of classes to an element. This is quite useful for the board game project to style game fields according to whether or not they contain a game piece.
+- If we want to style elements that have a particular set of classes assigned to them, we have a selector for this purpose: `.class1.class2.class3...`.
+- By setting each flag' width and height to 1/3 of the viewport width (`1vw` corresponds to 1% of the viewport width) and 1/3 of the viewport height (`1vh` corresponds to 1% of the viewport height) respectively, we ensure that our grid is always fully shown in the viewport. 
+- We define a `2px` border around each `<div>`. Note how the border collapses when two `<div>`s are adjacent: the border between the `<div>`s is not `4px` in total, it remains `2px`. Finally, observe what happens when `box-sizing: border-box` is removed from the `div` CSS rule: you should notice that it is now necessary to (slightly) scroll to see all flags. This is because without this setting, the `2px` of the border is added to the width and height of each `<div>` (and we thus end up with content overflowing the viewport). The `border-box` value means that the border (and padding if set) is *included* in the specified width/height values.
+- The full set of rules applied to an element is the *union* of all rules whose selectors match the element.
+
+Let's walk through each of the position values in turn. *We stick to the above HTML document and only present the CSS rules that need to be changed.*
+
+#### position:relative
+
+Adding the property/value pair `position:relative` to an element sets up the element to be moved **relative to its original position**. The original space reserved for this element remains reserved. The horizontal offset from the original position is set through properties `left` and `right`, the vertical offset is controlled through `top` and `bottom`:
+
+- `left` moves the element **to the right** of its original position by the given length;
+- `right` moves the element **to the left** of its original position;
+- `top` moves the element **downward** of its original position;
+- `bottom` moves the element **upwards** of its original position.
+
+*The movements may be counterintuitive at first, but keep in mind that the CSS coordinate system starts at the top left corner of the window.*
+
+ Let's move the Romanian and German flags. Replace the `.romania` and `.germany` rules of our initial code by the following rules:
+
+```css
+    .romania {
+        background: linear-gradient(90deg, green 33%, white 33% 66%, orange 66%);
+        position: relative;
+        top: 20px;
+        left: 50px;
+    }
+
+    .germany {
+        background: linear-gradient(black 33%, red 33% 66%, gold 66%);
+        position: relative;
+        bottom: 20px;
+        right: 50px;
+    }
+```
+
+The rendering will now look as follows (minus the annotations we made to showcase the position changes of the flags):
+
+![CSS flags relative](../img/css-flags-relative.png)
+
+<sup>The Romanian and German flags have been moved from the original position via position:relative.</sup>
+
+:point_up: None of the other flags have moved, `position:relative` only affects the element whose position is changed.
+
+#### position:absolute
+
+An element with property `position:absolute` is taken **out of the element flow**. The original space reserved for this element is no longer reserved. Its position is determined relative to its nearest ancestor element that has the absolute position property set as well. If this property is not set for any ancestor, the viewport is considered as ancestor. The horizontal and vertical offset properties have the following effects:
+
+- `left`: distance to the left edge of the containing block;
+- `right`: distance to the right edge of the containing block;
+- `bottom`: distance between the element's bottom edge and the bottom edge of the containing block;
+- `top`: distance between the element's top edge and the top edge of the containing block.
+
+Let's move the flags of Romania and Germany again, this time with absolute positioning. We now want to position our flags relative to the `<body>` element. To make the distinction to the viewport clear, each flag now covers half the viewport, requiring scrolling to see the entire rendered page. Replace the `.romania` and `.germany` rules of our initial code by the following four rules :point_down::
+
+```css
+    div {
+        height: 50vh;
+    }
+
+    /* observe what happens when this CSS rule is removed */
+    body {
+        position: absolute;
+    }
+
+    .romania {
+        background: linear-gradient(90deg, #002B7F 33%, #FCD116 33% 66%, #CE1126 66%);
+        position: absolute;
+        top: 20px;
+        left: 50px;
+    }
+
+    .germany {
+        background: linear-gradient(black 33%, red 33% 66%, gold 66%);
+        position: absolute;
+        bottom: 20px;
+        right: 50px;
+    }
+```
+
+Once again, the browser will render the HTML document as follows (minus the annotations we made to showcase the position changes of the flags):
+
+![CSS flags absolute](../img/css-flags-absolute.png)
+
+<sup>The Romanian and German flags have been moved from the original position via position:absolute. The closest ancestor with absolute positioning is the &lt;body&gt; element. The dashed line demarks the viewport.</sup>
+
+:point_up: As `<body>`'s `position` value is `absolute`, the two flags are now positioned relative to the `<body>` element. The most important observation to make is that almost all flags have changed their position. Since the Romanian and German flags have been taken out of the document flow, no space is reserved for them and as a result all but the first flag (Austria top/left) have moved. We here also see once again that the order of CSS rules matters: in our *initial code listing* we have a rule for `<div>`s that contains `height: 33vh`. We now add a rule `div {height: 50vh; }` which **overrides** this earlier setting. :bug: Remember this when you are trying to update properties with seemingly no effect. Important to know though, CSS rule precedence is more complicated than *later rules trump earlier ones* when the selectors are not exactly the same (as is the case for us): [take a look at this article](http://vanseodesign.com/css/css-specificity-inheritance-cascaade/) to learn more.
+
+:bangbang: Observe for yourself what happens when the `body {position: absolute}` rule is removed (spoiler: the flags will now be placed relative to the viewport)! 
+
+In our Delft weather demo many elements (the moon, the raindrops, the snow flakes) have an absolute position as they should be placed with respect to the closest absolutely positioned ancestor. In the weather demo, this is the viewport: we want the moon to always be at the top left of the viewport, the rain drops should always start at the top of the viewport and end at the bottom, etc.
+
+#### position:fixed
+
+:point_down: The `position:fixed` setting is similar to `position:absolute`, but now the containing element is **always** the **viewport**. This means that elements with `position:fixed` always remain visible. We now add another `<div>` element to show some information about the flags that should always remain at the same position, no matter the amount of scrolling. The HTML document looks as follows (all updated lines compared to the inital code listing contain comments) :point_down::
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    body {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0;
+        padding: 0;
+        background-color: #444;
+        position: absolute;
+    }
+
+    div {
+        width: 33.33vw;
+        height: 50vh; /* CHANGED */
+        border: 2px solid lightgray;
+        box-sizing: border-box;
+    }
+
+    .netherlands {
+        background: linear-gradient(red 33%, white 33% 66%, darkblue 66%);
+    }
+
+    .austria {
+        background: linear-gradient(red 33%, white 33% 66%, red 66%);
+    }
+
+    .ireland {
+        background: linear-gradient(90deg, green 33%, white 33% 66%, orange 66%);
+    }
+
+    .monaco {
+        background: linear-gradient(crimson 50%, white 50%);
+    }
+
+    .latvia {
+        background: linear-gradient(darkred 40%, white 40% 60%, darkred 60%);
+    }
+
+    .estonia {
+        background: linear-gradient(royalblue 33%, black 33% 66%, white 66%);
+    }
+
+    .france {
+        background: linear-gradient(90deg, #0055A4 33%, white 33% 66%, #EF4135 66%);
+    }
+
+    .romania {
+        background: linear-gradient(90deg, #002B7F 33%, #FCD116 33% 66%, #CE1126 66%);
+    }
+
+    .germany {
+        background: linear-gradient(black 33%, red 33% 66%, gold 66%);
+    }
+
+    .info { /* CSS rule ADDED */
+        width: auto;
+        height: auto;
+        background-color: #333;
+        color: white;
+        position: fixed; /* TRY IT: set position: absolute to observe the difference */
+        top: 0px;
+        left: 0px;
+        font-family: monospace;
+    }
+    </style>
+  </head>
+  <body>
+    
+    <div class="top left austria"></div>
+    <div class="top center romania"></div>
+    <div class="top right france"></div>
+
+    <div class="mid left estonia"></div>
+    <div class="mid center ireland"></div>
+    <div class="mid right latvia"></div>
+
+    <div class="bottom left monaco"></div>
+    <div class="bottom center germany"></div>
+    <div class="bottom right netherlands"></div>
+
+    <div class="info">Flags shown: AT, RO, FR, EE, IE, LV, MC, DE, NL.</div> <!-- ADDED -->
+  </body>
+</html>
+```
+
+This video shows off the effect both `position` values `fixed` and `absolute` have. On the left, we use `position:fixed` and on the right `position:absolute` :point_down::
+
+<video src="../img/css-abs-fixed.mov" controls></video>
+
+<sup>Position property set on the info box: position:fixed (on the left) and position:absolute (on the right).</sup>
+
 ## CSS media queries
 
-So far, we have covered the basics of CSS but largely ignored the fact that in today's **multi-device** world, we are designing web applications for vastly different screen sizes. Different devices should be served different styles:
+So far, we have largely ignored the fact that in today's **multi-device** world, we are designing web applications for vastly different screen sizes. Different devices should be served different styles:
 
 - when **printing** a web application's screen :fax:, the information printed should be the essentials (no ads, no sidebars, etc.);
-- when **viewing** a web application on a small screen :iphone:, non-essential information (e.g. a footer) should be removed;
-- when **viewing** a web application on a large screen :computer: all available information should be presented;
+- when **viewing** a web application on a small screen :iphone:, non-essential information (e.g. a footer) may be removed and elements that appear side-by-side on large screens should be shown on top of each other;
+- when **viewing** a web application on a large screen :computer: all available information should be presented side-by-side;
 - when using **text-to-speech** devices :sound:, non-essential information should be removed.
 
-**CSS media queries** enable the use of **device**/**media-type dependent** style sheets. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
+Our course page shows that with just a few lines of CSS we can achieve a responsive design :point_down::
+
+![CSS flags absolute](../img/css-mobile-screen.png)
+
+<sup>Media queries example: CSE1500.</sup>
+
+Let's take a look at the CSS rules we employed here to achieve this before introducing CSS media queries more formally. By default, we style `<main>` (which contains the navigation bar and the course content) as follows:
+
+```css
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  grid-template-rows: auto 30px;
+```
+
+:point_up: We have defined two columns, the navigation bar on the left and the content on the right. For smaller devices we want those two columns *stacked* on top of each other. And so we add the following CSS code snippet:
+
+```css
+@media (max-width: 500px){
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr 30px;
+  }
+  /* other rules */
+}
+```
+
+:point_up: The syntax is new, but the code is pretty readable: if we have a device with a maximum width of 500px, `<main>`'s grid consists of a single column and three rows (navigation row, content row and footer row). 
+
+Admittedly, there are a few more CSS rules that govern the responsive design of the course page (in particular the font size) and one more intermediate step at `max-width: 767px`. The browser's **responsive design mode** allows you to *simulate* different devices to explore the impact of different media queries:
+
+<video src="../img/css-abs-fixed.mov" controls></video>
+
+<sup>Responsive design mode of Firefox as of September 2020.</sup>
+
+More formally: **CSS media queries** enable the use of **device**/**media-type dependent** style sheets and rules. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
 
 | Value         | Description                               |
 |---------------|-------------------------------------------|
-| `media all`    |  Suitable for all device types.           |
+| `media all`    |  Suitable for all device types. The default if no media type is provided. |
 | `media print` |  Suitable for documents in print preview. |
 | `media screen` |  Suitable for screens.                    |
 | `media speech` | Suitable for speech synthesizers.         |
 
 Media queries are specified as so-called [at-rules](https://developer.mozilla.org/en-US/docs/Web/CSS/At-rule), that start with an `@` and instruct CSS how to behave. We will not only encounter at-rules for media queries, but also when discussing CSS animations later on.
 
-Here is a concrete example of how media queries enable a **responsive design** :point_down::
+We can create different style sheets for different device types and link them **conditionally** on the media attribute. In the code example below :point_down: we link the file `large-device.css` when at least one of two conditions holds:
+
+- the media type is `screen` **and** the width is at least `800px` but no more than `2000px`;
+- the width of the device is at least `3000px` independent of the device type.
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
-
-    <!-- We can link a style sheet conditional on the media attribute -->
     <!-- Example of a logical or (,) in the media query -->
-    <link rel="stylesheet" media="screen and (min-width: 800px), (min-width: 3000px)" href="large-device.css">
+    <link rel="stylesheet" media="screen and (min-width: 800px) and (max-width: 2000px), (min-width: 3000px)" href="large-device.css">
 
     <style>
-      * {
-        padding: 10px;
-      }
-
-      main {
-        background-color: red;
-      }
-
-      #sidebar {
-        background-color: green;
-        float: right;
-      }
-
-      /* when printing, use black and white */
-      @media print {
-        body {
-          color: black !important;
-          width: 100%;
-        }
-      }
-
-      /* hide the sidebar for small devices */
-      /* Example of a logical or (",") as well as and ("and") in the media query */
-      @media print, screen and (max-width: 400px) {
-        #sidebar {
-          display: none;
-        }
-      }
+      /* more rules can be defined here */
     </style>
   </head>
   <body>
-    <div id="sidebar">
-      <ul>
-        <li>Anchor 1</li>
-        <li>Anchor 2</li>
-        <li>Anchor 3</li>
-      </ul>
-    </div>
-
-    <main>
-      <p>
-        Paragraph 1
-      </p>
-      <p>
-        Paragraph 2
-      </p>  
-      <p>
-        Paragraph 3
-      </p>  
-      <p>
-        Paragraph 4
-      </p>  
-    </main>
   </body>
 </html>
 ```
 
-Use your browser's responsive design mode :point_down: to test the behaviour of the media queries.
-For `@media print` you can use the **Print simulation** mode in the Developer Tools of Firefox ([similarly for Chrome](https://developers.google.com/web/tools/chrome-devtools/css/print-preview)), or alternatively, the browser's *Print as PDF* feature.
-
-![Responsive design mode](../img/css-responsive.png)
-
+:point_up: Thus, a logical *and* is expressed as `and` and a logical *or* is expressed as `,`. The logical and has precedence over the logical or. As always in CSS, the order of the rules matter, later media queries trump those declared earlier.
 
 
 ## Animations and transitions
