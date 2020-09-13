@@ -41,7 +41,7 @@ warning: true
   - [CSS vs. JavaScript animations](#css-vs-javascript-animations)
   - [CSS animations](#css-animations)
     - [:bangbang: Text-heavy animations](#bangbang-text-heavy-animations)
-    - [:bangbang: Animations: Delft weather app](#bangbang-animations-delft-weather-app)
+    - [:bangbang: Animations: CSS weather demo](#bangbang-animations-css-weather-demo)
   - [Transitions](#transitions)
 - [Vendor prefixes](#vendor-prefixes)
 - [Self-check](#self-check)
@@ -581,8 +581,6 @@ In order to distinguish pseudo-classes and pseudo-elements, the double-colon (`:
 
 ### :bangbang: ::first-letter and ::first-line
 
-🚩🚩🚩 This section on `::first-letter` and `::first-line` is optional.
-
 So, what are abstractions that go beyond what is specified in the document language? Two popular examples are the `::first-letter` and the `::first-line` pseudo-elements. They do exactly what the names suggests, enabling you to style the first letter and first line respectively. Without those pseudo-elements, you would have to wrap the first letter in a `<span>` (or similar) element. This may only be mildly annoying, however, determining what constitutes the first line of a piece of text requires a clever way of computing at which word exactly the line ends while taking into acount changing viewport sizes (to then again, wrap that part of the text in a `<span>` element). Let's look at an example :point_down::
 
 ```html
@@ -626,7 +624,7 @@ The code example :point_up: also showcases the percent unit for the `font-size` 
 
 Adding (cosmetic) content right before and after an element is achieved through `::before` and `::after` respectively in combination with the `content` property. One example is the <a href="">hyperlink</a> styling we use on our course page: each link is preceded by a little arrow (⇗) to reinforce the message that this is indeed a hyperlink. 
 
-These two pseudo-elements are not only useful though to style text in a particular manner but to also create visual artifacts (such as each cloud in our Delft weather app) that on first sight may require an image instead of just a few CSS rules. 
+These two pseudo-elements are not only useful though to style text in a particular manner but to also create visual artifacts (such as each cloud in our CSS weather demo) that on first sight may require an image instead of just a few CSS rules. 
 
 Important to remember is that `::before` is the **first child** of the element it belongs to and `::after` is the **last child** of the element it belongs to.
 
@@ -658,13 +656,13 @@ This is a poor choice admittedly as [accessibility](https://www.w3.org/standards
 
 :point_up: The document appears as content-less (as all text has been delegated to the CSS file) to a **screen reader**, a form of assistive technology that most commonly makes use of a text-to-speech engine to translate a HTML document into speech. We will come back to this issue of storing data in CSS in the next section.
 
-Before we do that, let's discuss `::before` and `::after` as a manner of building relatively complex shapes with just a few lines of CSS. Concretely, let's go over how the cloud shape was designed in our Delft weather app.
+Before we do that, let's discuss `::before` and `::after` as a manner of building relatively complex shapes with just a few lines of CSS. Concretely, let's go over how the cloud shape was designed in our CSS weather demo.
 
 Below :point_down: on the right you see the cloud shape we use and on the left how it looks like if all elements of it are assigned a different color: our cloud consists of a `<div>` element (a rectangle with rounded edges) and a `::before` pseudo-element (a rectangle with rounded edges that is rotated 33 degrees and moved slightly with respect to its parent) and a `::after` pseudo-element (a rectangle with rounded edges that is rotated 33 degrees moved slightly with respect to its parent):
 
 ![CSS cloud](../img/css-cloud-pseudoelement.png)
 
-The relevant CSS code snippets in our Delft weather app looks as follows:
+The relevant CSS code snippets in our CSS weather demo looks as follows:
 
 ```css
 /* the cloud itself */
@@ -791,7 +789,7 @@ The HTML document leading to this rendering looks as follows :point_down::
 
 - :bug: Remember that we stated earlier on that `position:absolute` positions an element relative to its closest **positioned** ancestor. Observe what happens if the line `position: relative` is removed from the `button` selector: the positioning of the button elements does not change but the pseudo-elements holding our data are now positioned with respect to the `<body>` element as it is the closest ancestor with a position. If your positioning of pseudo-elements is not where you think it should be, make sure to have set the `position` property in its parent!
 - Only attributes that start with the prefix `data-` can be surfaced in CSS via the `attr()` function.
-- Once we *switch off* the button's pseudo-element `::after` (as indicated above, it is sufficient to remove the `content` property for this purpose) and then focus on the text inside each button, we observe that with decreasing browser window width, the full text is cut down and partially replaced by a ellipsis (...) and thus avoid an overflow of the text. This is achieved through the property/value pairs of [`overflow:hidden`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) and [`text-overflow:ellipsis`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow). Without `overflow:hidden` the text will flow over the edge of the button. Once it is set, the text is cut off at the end of the button's content area. This does not look great. Adding `text-overflow:ellipsis` ensures that the user sees ... instead of the sudden clipping of the text. The renderings below should make the differences clear.
+- 🚩 Once we *switch off* the button's pseudo-element `::after` (as indicated above, it is sufficient to remove the `content` property for this purpose) and then focus on the text inside each button, we observe that with decreasing browser window width, the full text is cut down and partially replaced by a ellipsis (...) and thus avoid an overflow of the text. This is achieved through the property/value pairs of [`overflow:hidden`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) and [`text-overflow:ellipsis`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow). Without `overflow:hidden` the text will flow over the edge of the button. Once it is set, the text is cut off at the end of the button's content area. This does not look great. Adding `text-overflow:ellipsis` ensures that the user sees ... instead of the sudden clipping of the text. The renderings below should make the differences clear.
 
 ![CSS text overflow](../img/css-overflow-ellipsis.png)
 
@@ -1044,7 +1042,7 @@ Below is our HTML document and the corresponding rendering, so far without any`p
 <sup>Rendering of the above HTML document in Firefox.</sup>
 
 A few remarks about the piece of code :point_up::
-- 🚩 If you look closely, the flags are not images that we link from another source, these are images the browser is *generating*. How does that work? The [`linear-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) function creates an image on the fly, based on the color gradient information provide. This may look odd at first sight, as there is nothing gradual in terms of color changes, but that is due to the manner in which we define the gradient. If we were to replace `linear-gradient(black 33%, red 33% 66%, gold 66%)` with `linear-gradient(black, red, gold)` we would see the gradual change of color. By setting the color boundary explicitly (e.g. `red 33% 66%`) we achieve the clear-cut color changes we need for our flags. Having defined the `linear-gradient` function, we assign the returned image to a `<div>`'s `background` property and our flag is ready. Other types of gradients exist such as the [`radial-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient) which we employed to style the moon in our Delft weather demo.
+- 🚩 If you look closely, the flags are not images that we link from another source, these are images the browser is *generating*. How does that work? The [`linear-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) function creates an image on the fly, based on the color gradient information provide. This may look odd at first sight, as there is nothing gradual in terms of color changes, but that is due to the manner in which we define the gradient. If we were to replace `linear-gradient(black 33%, red 33% 66%, gold 66%)` with `linear-gradient(black, red, gold)` we would see the gradual change of color. By setting the color boundary explicitly (e.g. `red 33% 66%`) we achieve the clear-cut color changes we need for our flags. Having defined the `linear-gradient` function, we assign the returned image to a `<div>`'s `background` property and our flag is ready. Other types of gradients exist such as the [`radial-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient) which we employed to style the moon in our CSS weather demo.
 - How do we assign a flag to a specific `<div>`? We simply add the corresponding classname in the `<div>`'s `class` attribute. As can be seen, it is possible to assign a number of classes to an element. This is quite useful for the board game project to style game fields according to whether or not they contain a game piece.
 - 🚩 If we want to style elements that have a particular set of classes assigned to them, we have a selector for this purpose: `.class1.class2.class3...`.
 - By setting each flag' width and height to 1/3 of the viewport width (`1vw` corresponds to 1% of the viewport width) and 1/3 of the viewport height (`1vh` corresponds to 1% of the viewport height) respectively, we ensure that our grid is always fully shown in the viewport. 
@@ -1136,7 +1134,7 @@ Once again, the browser will render the HTML document as follows (minus the anno
 
 :bangbang: Observe for yourself what happens when the `body {position: absolute}` rule is removed (spoiler: the flags will now be placed relative to the viewport)! 
 
-In our Delft weather demo many elements (the moon, the raindrops, the snow flakes) have an absolute position as they should be placed with respect to the closest absolutely positioned ancestor. In the weather demo, this is the viewport: we want the moon to always be at the top left of the viewport, the rain drops should always start at the top of the viewport and end at the bottom, etc.
+In our CSS weather demo many elements (the moon, the raindrops, the snow flakes) have an absolute position as they should be placed with respect to the closest absolutely positioned ancestor. In the CSS weather demo, this is the viewport: we want the moon to always be at the top left of the viewport, the rain drops should always start at the top of the viewport and end at the bottom, etc.
 
 #### position:fixed
 
@@ -1322,7 +1320,7 @@ We can create different style sheets for different device types and link them **
 
 ## CSS animations and transitions
 
-In general, CSS styles (states) are defined by the developer. As concrete examples, in our Delft weather demo, we define:
+In general, CSS styles (states) are defined by the developer. As concrete examples, in our CSS weather demo, we define:
 - how a rain drop looks, its starting point, end point and how quickly it should "fall";
 - the path the leaves travel and their speed;
 - the opacity levels of a `<div>` to simulate flash lightning;
@@ -1355,11 +1353,11 @@ There are several advantages to using CSS-based instead of JavaScript-based anim
 
 - CSS is relatively easy to use; debugging CSS-based animations is easier than debugging JavaScript code.
 - The rendering engines are optimized for CSS-based animations; when implementing an animation from scratch in JavaScript code would have to be optimized to reach the desired frame rate.
-- CSS animations can do much more than animating buttons. To see what is possible (beyond the Delft weather demo), head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
+- CSS animations can do much more than animating buttons. To see what is possible (beyond the CSS weather demo), head over to CodePen and look at a few [CSS animations](https://codepen.io/search/pens?q=css%20animation).
 
 ### CSS animations 
 
-We look at two CSS animation examples in more detail: a 1980s inspired splash screen for our 3x3 flags grid (let's assume we are making a *guess the country* game) and the Delft weather app. The former is focused on text-only content, the latter is heavy on non-textual content (clouds, raindrops, etc.).
+We look at two CSS animation examples in more detail: a 1980s inspired splash screen for our 3x3 flags grid (let's assume we are making a *guess the country* game) and the CSS weather demo. The former is focused on text-only content, the latter is heavy on non-textual content (clouds, raindrops, etc.).
 
 #### :bangbang: Text-heavy animations
 
@@ -1506,14 +1504,14 @@ To summarize, for our purposes the most important animation properties are the f
 | `animation-timing-function` | Specifies how a CSS animation progresses between waypoints (common  choices are `linear`, `ease-in`, `ease-out`, `steps(N)`).              |
 
 
-#### :bangbang: Animations: Delft weather app
+#### :bangbang: Animations: CSS weather demo
 
 
 ![CSS lightning animation](../img/css-lightning.png)
 
 <sup>Lightning animation sequence example.</sup>
 
-We now go over the **lightning** effect in our Delft weather app: it consists of a single `<div>` covering the viewport. The animation takes 5 seconds and for 75% of the time does nothing. Then it briefly paints the `<div>` background white with increasing opacity (that's lightning), the `<div>` becomes transparent again and then this happens a second time. So here, one animation cycle results in two *lightning bolts*.
+We now go over the **lightning** effect in our CSS weather demo: it consists of a single `<div>` covering the viewport. The animation takes 5 seconds and for 75% of the time does nothing. Then it briefly paints the `<div>` background white with increasing opacity (that's lightning), the `<div>` becomes transparent again and then this happens a second time. So here, one animation cycle results in two *lightning bolts*.
 
 Once again, we only have to define the states of the animation, the rendering engine does the rest. 
 
