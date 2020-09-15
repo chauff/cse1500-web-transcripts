@@ -1320,6 +1320,8 @@ We can create different style sheets for different device types and link them **
 
 ## CSS animations and transitions
 
+Finally we come to the most visually exciting part of CSS! How to liven up a web app with CSS animations! 
+
 In general, CSS styles (states) are defined by the developer. As concrete examples, in our CSS weather demo, we define:
 - how a rain drop looks, its starting point, end point and how quickly it should "fall";
 - the path the leaves travel and their speed;

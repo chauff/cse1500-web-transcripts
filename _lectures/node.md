@@ -443,7 +443,7 @@ npm init -y
 
 Now check with the command `ls` what happened. We have a `package.json` file in the folder which now contains basic information about the project, all filled with defaults. If you do not want the defaults, run `npm init` instead, the `-y` option ensures that you are not asked any questions. Let's assume you want to install the Express package. Run the following command:
 
-```console
+```
 npm install express --save
 ```
 
