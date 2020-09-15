@@ -8,6 +8,8 @@ collections:
   practicals:
     output: true
     sort_by: ordering
+  extras:
+    output: true
 
 warning: The materials are being updated for the 2020/21 course edition. Some content may still change.
 
