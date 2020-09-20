@@ -3,7 +3,7 @@ layout: default
 permalink: /nodejs2/
 linkname: Node.js II
 ordering: 6
-warning: true
+warning: false
 ---
 
 # Advanced Node.js <!-- omit in toc -->
@@ -26,7 +26,7 @@ warning: true
 - [Routing](#routing)
   - [Routing paths and string patterns](#routing-paths-and-string-patterns)
   - [Routing parameters](#routing-parameters)
-  - [Organizing routes](#organizing-routes)
+  - [:bug: Organizing routes](#bug-organizing-routes)
 - [Templating with EJS](#templating-with-ejs)
   - [:bangbang: A first EJS example](#bangbang-a-first-ejs-example)
   - [:bangbang: EJS and user-defined functions](#bangbang-ejs-and-user-defined-functions)
@@ -66,27 +66,27 @@ By default, *no code in a module is accessible to other modules*. Any property o
 
 ![Express npm](../img/node2-express.png)
 
-<sup>Screenshot taken on October 11, 2019.</sup>
+<sup>Screenshot taken September 19, 2020.</sup>
 
-:point_up: You see here that modules often depend on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 27,000 other modules.
+:point_up: You see here that modules often depend on a number of other modules (in this case: 30 dependencies). As Express is a very popular module, it is listed as dependency in more than 46,000 other modules.
 
- You already know how to install modules, e.g. `npm install winston` installs one of the most popular [Node loggers](https://www.npmjs.com/package/winston). You can also use the command line to search for modules to install, e.g. `npm search winston`.
+ You already know how to install modules, e.g. `npm install winston` installs one of the more popular [Node logging libraries](https://www.npmjs.com/package/winston). You can also use the command line to search for modules to install, e.g. `npm search winston`.
 
 While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern web for half a day can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
 
 ### A file-based module system
 
-In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in the [JavaScript lecture](Lecture-js.md)).
+In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in the [JavaScript lecture](js.md#design-pattern-3-module)).
 
-The module system works as follows: each Node.js file can access its so-called **module definition** through the `module` object. The module object is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or its alias `exports` is used as we will see in a second. The `module` object looks as follows (depending on the Node version and underlying operating system the object properties may vary slightly) :point_down::
+The module system works as follows: each Node.js file can access its so-called **module definition** through the `module` object. The module object is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or `exports` is used as we will see in a moment. The `module` object looks as follows (depending on the Node version and underlying operating system the property values will vary) :point_down::
 
 ```javascript
-module {
+Module {
   id: '.',
   path: '/Users/Node/Web-Teaching',
   exports: {},
   parent: null,
-  filename: '/Users/Node/Web-Teaching/tmp.js',
+  filename: '/Users/Node/Web-Teaching/myfile.js',
   loaded: false,
   children: [],
   paths: [
@@ -104,7 +104,7 @@ To see for yourself how the `module` object looks on your machine you can do one
 1. Create a Node.js script containing only the line `console.log(module);` and run it.
 2. Start the node REPL (just type `node` into the terminal) and then type `console.log(module);`.  
 
-We see that in our module object above :point_up: nothing is currently being *exported* as `exports` is empty.
+We see that in our module object above :point_up: nothing is currently being *exported* as the `exports` property has an empty object (`{}`) as value.
 
 Once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
@@ -112,7 +112,7 @@ Here is a graphical overview of the connection between `require` and `module.exp
 
 ![Modules](../img/node2-module.png)
 
-An application uses the `require` function to import module code. The module itself populates the `module.exports` variable to make certain parts of the code base in the module available to the outside world. Whatever was assigned to `module.exports` (or its alias `exports`) is then returned to the application when the application calls `require()`.
+:point_up: An application uses the `require` function to import module code. The module itself populates the `module.exports` variable to make certain parts of the code base in the module available to the outside world. Whatever was assigned to `module.exports` (or `exports` - we will get to it) is then returned to the application when the application calls `require()`.
 
 ### :bangbang: A first module example
 
@@ -138,27 +138,24 @@ console.log(fooA);          //CASE 5: ReferenceError (you will have to remove th
 console.log(module.exports);//CASE 6: {}
 ```
 
-:point_up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`).
-
-- In the `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. Which of the two assignments will our application `bar` end up with?
-- In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js` - you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
+:point_up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`). In the `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. Which of the two assignments will our application `bar` end up with? In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js` - you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
 
 Node.js runs the referenced JavaScript file :point_up: (here: `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing `foo.js`? It is the function we defined in line 3.
 
-As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned:
+:point_up: As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned:
 
-- **CASE** :one: We can call the returned function and this results in *Hi from foo!* as you would expect.
-- **CASE** :two: We can also combine lines 1 and 2 into a single line with the same result.
-- **CASE** :three: If we print out the variable `foo`, we learn that it is a function.
-- **CASE** :four: Using the `toString()` function prints out the content of the function.
-- **CASE** :five: Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. :bug: Visual Studio Code flags up this error (`fooA is not defined`) already at the code writing stage. 
-- **CASE** :six: Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
+- **CASE 1** We can call the returned function and this results in *Hi from foo!* as you would expect.
+- **CASE 2** We can also combine lines 1 and 2 into a single line with the same result.
+- **CASE 3** If we print out the variable `foo`, we learn that it is a function.
+- **CASE 4** Using the `toString()` function prints out the content of the function.
+- **CASE 5** Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. :bug: Visual Studio Code flags up this error (`fooA is not defined`) already at the code writing stage. 
+- **CASE 6** Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
 
 ### :bangbang: `require` is blocking
 
 This module setup also explains why `require` is **blocking**: once a call to `require()` is made, the referenced file's code is executed and only once that is done, does `require()` return. This is in contrast to the usual *asynchronous* nature of Node.js functions.
 
-Let's now consider what happens if a module is imported more than once :point_down::
+Let's now consider what happens if a module is imported more than once. Keep `foo.js` intact; `bar.js` now becomes :point_down::
 
 ```javascript
 var t1 = process.hrtime()[1];//returns an array with [seconds, nanoseconds]
@@ -170,9 +167,9 @@ var foo2 = require("./foo");
 console.log(process.hrtime()[1] - t2);//35012
 ```
 
-:point_up: Here, we execute `require('./foo')` twice and log both times the time it takes for `require` to return. The first time the line `require(foo.js)` is executed, the file `foo.js` is read from disk (this takes some time). In subsequent calls to `require(foo.js)`, however, the **in-memory object is returned**. Thus, `module.exports` is **cached**.
+Run `node bar.js` and observe the execution times logged to the terminal. :point_up: Here, we execute `require('./foo')` twice and log both times the time it takes for `require` to return. The first time the line `require(foo.js)` is executed, the file `foo.js` is read from disk (this takes some time). In subsequent calls to `require(foo.js)`, however, the **in-memory object is returned**. Thus, **`module.exports` is cached**.
 
-We here resort to using `process.hrtime()` wich returns an array whose first value is the time in seconds and the second is the time in nanoseconds relative to *"an arbitrary time in the past"* ([Node documentation](https://nodejs.org/api/process.html#process_process_hrtime_time)). While they are not useful to compute an absolute time, they can accurately measure the duration of code as seen in the above example. Depending on your machine, the reported nanoseconds intervals will differ, though on average it should take about ten times longer the first time we execute `require(foo.js)`.
+:point_up: We here resort to using `process.hrtime()` wich returns an array whose first value is the time in seconds and the second is the time in nanoseconds relative to *"an arbitrary time in the past"* ([Node documentation](https://nodejs.org/api/process.html#process_process_hrtime_time)). While it is not possible to compute an absolute time in this manner, we can accurately measure the duration of code as seen in the above example. Depending on your machine, the reported nanoseconds intervals will differ, though the first `require()` statement will always take significantly (10x-100x) longer than the second `require()` statement.
 
 *Note: if you are already familiar with JavaScript you may ask yourself why we do not rely on [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) to measure time differences. It returns the number of **milliseconds** that have passed since January 1, 1970 00:00:00 UTC (why this particular time? Because that is the [Unix time](https://en.wikipedia.org/wiki/Unix_time)!). On modern machines, a millisecond-based time resolution does not offer a high enough resolution to detect this difference in loading time.*
 
@@ -283,26 +280,26 @@ Assuming the Node script is started on `localhost` and port `3000`, we can then 
 
 ## Middleware in Express
 
-Middleware components are small, self-contained and reusable code pieces across applications. Imagine you have written an Express application with tens of different routes and now decide to log every single HTTP request coming in. You could add 2-3 lines of code to every route to achieve this logging OR you write a middleware logging component that gets called before any other route is called. How exactly this works in Express is discussed here.
+**Middleware components are small, self-contained and reusable code pieces across applications**. Imagine you have written an Express application with tens of different routes and now decide to log every single HTTP request coming in. You could add 2-3 lines of code to every route to achieve this logging (which leads to code duplication, generally a bad idea) or you write a middleware logging component that gets called before any other route is called (code is written only once!). How exactly the latter works in Express is discussed now.
 
 Middleware components have **three parameters**:
 
-- an HTTP request object,
-- an HTTP response object, and,
-- an optional callback function (`next()`) to indicate that the component is finished and the dispatcher (which orchestrates the order of middleware components) can move on to the next component.
+- an HTTP request object;
+- an HTTP response object;
+- an optional callback function—`next()`—to indicate that the component is finished; the **dispatcher** which orchestrates the order of middleware components can now move on to the next component.
 
-Middleware components have a number of abilities:
+Middleware components have a number of abilities. They can:
 
-- Execute code.
-- Change the request and response objects.
-- End the request-response cycle.
-- Call the next middleware function in the middleware stack.
+- execute code;
+- change the request and response objects;
+- end the request-response cycle;
+- call the next middleware function in the middleware stack.
 
 As a concrete example, imagine an Express application with a POST route `/user/moveMade` :point_down::
 
 ![Middleware components](../img/node2-middleware.png)
 
-:point_up: The first middleware to be called is the logging component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. When an HTTP response is sent (`res.end`), the middleware call chain is complete. 
+:point_up: The first middleware to be called is the logger component, followed by the bodyParser component which parses the HTTP request body; next, the static component is probed (is there a static resource that should be served to the user?) and if no static resource exists, a final custom component is called. **When an HTTP response is sent (`res.end`), the middleware call chain is complete.** Once the call chain is complete, it cannot be activated again. It is thus not possible to send two or more responses for a given HTTP request: for each request, at most one response can be generated. 
 
 ### :bangbang: Logger example
 
@@ -337,7 +334,7 @@ If you start the script and then make the following HTTP requests:
 
 your output on the terminal will look something like this:
 
-```console
+```
 2020-01-14T19:17:16.577Z        GET     /first
 -----------------
 2020-01-14T19:17:19.111Z        GET     /second
@@ -346,31 +343,32 @@ your output on the terminal will look something like this:
 -----------------
 ```
 
-:point_up: Importantly, `next()` enables us to move on to the next middleware component while `app.use(...)` registers the middleware component with the dispatcher. Try out this code for yourself and see what happens if:
+:point_up: Importantly, `next()` enables us to move on to the next middleware component while **`app.use(...)` registers the middleware component with the dispatcher**. Try out this code for yourself and see what happens if:
 
-- `app.use` is removed;
+- `app.use` is removed (spoiler: the component is not available to the dispatcher);
 - the order of the middleware components is switched, i.e. we first add `app.use(delimiter)` and then `app.use(logger)`;
 - in one or both of the middleware components the `next()` call is removed.
 
 You will observe different behaviours of the application that make clear how the middleware components interact with each other and how they should be used in an Express application.
 
-In the example above we did not actually sent an HTTP response back, but you know how to write such a code snippet yourself. So far, none of our routes have contained `next` for a simple reason: all our routes ended with an HTTP response being sent and this completes the request-response cycle; in this case there is no need for a `next()` call.
+In the example above we did not actually sent an HTTP response back, but you know how to write such a code snippet yourself. Up to this point, none of our routes had contained `next` for a simple reason: all our routes ended with an HTTP response being sent and this completes the request-response cycle; in this case there is no need for a `next()` call.
 
 
 ### :bangbang: Authorisation component example
 
-In the [node-component-ex](demo-code/node-component-ex) example application, we add an authorisation component to a simple Todo application back-end: only clients with the **correct username and password** (i.e. authorised users) should be able to receive the list of todos when requesting them. We achieve this by adding a middleware component that is activated for every single HTTP request and determines:
+In the [node-component-ex](https://github.com/chauff/demo-code/tree/master/node-component-ex) example application, we add an authorisation component to a simple wishlist application back-end: only clients with the **correct username and password** (i.e. authorised users) should be able to receive their wishlist when requesting it. We achieve this by adding a middleware component that is activated for every single HTTP request and determines:
 
 - whether the HTTP request contains an authorization header (if not, access is denied);
 - and whether the provided username and password combination is the correct one.
 
-Before we dive into the code details, install and start the server as explained [here](https://github.com/chauff/Web-Teaching/tree/master/demo-code#node-component-ex). Take a look at `app.js` before proceeding.
+Before we dive into the code details, install and start the server as explained [here](https://github.com/chauff/demo-code#node-component-ex). Take a look at `app.js` before proceeding.
 
-Once the server is started, open another terminal and use `curl` (a command line tool that provides us with a convenient way to include username and password as you will see in a second):
+Once the server is started, open another terminal and use [curl](https://github.com/curl/curl), a command line tool that provides us with a convenient way to include username and password as you will see:
 
-- Request the list of todos without authorisation, i.e. `curl http://localhost:3000/todos` - you should see an `Unauthorized access` error.
-- Request the list of todos with the correct username and password (as hardcoded in our demonstration code): `curl --user user:password http://localhost:3000/todos`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
-- Request the list of todos with an incorrect username/password combination: `curl --user test:test http://localhost:3000/todos`. You should receive a `Wrong username/password combination` error.
+- Request the list of wishes without authorization, i.e. `curl http://localhost:3000/wishlist` - you should see an `Unauthorized access` error.
+- Request the list of wishes with the correct username and password (as hard-coded in our demonstration code): `curl --user user:password http://localhost:3000/wishlist`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
+- Request the list of todos with an incorrect username/password combination: `curl --user test:test http://localhost:3000/wishlist`. You should receive a `Wrong username/password combination` error.
+- Add a wish to the wishlist: `curl --user user:password 'http://localhost:3000/addWish?type=board%20game&name=Treasure%20Hunt&priority=low'` (note that whitespaces are replaced by `%20` in URLs and the URL has to appear within quotes due to the special characters `&` in it). Did it work? If so, another execution of `curl --user user:password http://localhost:3000/wishlist` should result in a wishlist with now three wishes.
 
 Having found out how the code *behaves*, let us look at the authorization component. We here define it as an anynymous function as argument to `app.use` :point_down::
 
@@ -399,11 +397,11 @@ app.use(function (req, res, next) {
 });
 ```
 
-:point_up: This code snippet first determines whether an authorization header was included in the HTTP request (accessible at `req.headers.authorization`). If no header was sent, we pass an error to the `next()` function, for Express to catch and process, i.e. sending the appropriate HTTP response. If an authorization header is present, we now extract the username and password (remember from the http lecture that it is base64 encoded!) and determine whether they match `user` and `password` respectively. If they match, `next()` is called and the next middleware component processes the request, which in our `app.js` file is `app.get("/todos",...)`.
+:point_up: This code snippet first determines whether an authorization header was included in the HTTP request (accessible at `req.headers.authorization`). If no header was sent, we pass an error to the `next()` function, for Express to catch and process, i.e. sending the appropriate HTTP response. If an authorization header is present, we now extract the username and password (it is base64 encoded!) and determine whether they match `user` and `password` respectively. If they match, `next()` is called and the next middleware component processes the request, which in our `app.js` file is `app.get("/wishlist",...)`.
 
 ### Components are configurable
 
-One of the design goals of middleware is **reusability** across applications: once we define a logger or an authorization component, we should be able to use it in a wide range of applications without additional engineering effort. Reusable code usually has parameters that can be set. To make this happen, we can wrap the original middleware function in a *setup function* which takes the function parameters as input :point_down: (this works because of the principle of closures as briefly discussed in the JavaScript lecture):
+One of the design goals of middleware is **reusability across applications**: once we define a logger or an authorization component, we should be able to use it in a wide range of applications without additional engineering effort. Reusable code usually has parameters that can be set. To make this happen, we can wrap the original middleware function in a *setup function* which takes the function parameters as input :point_down::
 
 ```javascript
 function setup(options) {
@@ -417,7 +415,7 @@ app.use( setup({ param1 : 'value1' }) );
 
 ## Routing
 
-Routing is the mechanism by which requests are routed to the code that handles them. The routes are specified by a URL and HTTP method (most often `GET` or `POST`). You have employed routes already - every time you wrote `app.get()` you specified a so-called **route handler** and wrote code that should be executed when that route (or URL) is called.
+Routing is the mechanism by which requests are routed to the code that handles them. The routes are [specified by a URL and HTTP method](https://expressjs.com/en/api.html#app.METHOD) (most often `GET` or `POST`). You have employed routes already - every time you wrote `app.get()` you specified a so-called **route handler** for HTTP method GET and wrote code that should be executed when that route (or URL) is called.
 
 This routing paradigm is a significant departure from the past, where **file-based** routing was commonly employed. In file-based routing, we access files on the server by their actual name, e.g. if you have a web application with your contact details, you typically would write those details in a file `contact.html` and a client would access that information through a URL that ends in `contact.html`. Modern web applications are not based on file-based routing, as is evident by the fact URLs these days do not contain file endings (such as `.html` or `.asp`) anymore.
 
@@ -428,23 +426,23 @@ In terms of routes, we distinguish between request **types** (`GET /user` differ
 Let's look at an example where this makes sense :point_down::
 
 ```javascript
-//clients requests todos
-app.get("/todos", function (req, res, next) {
+//clients request their wishlists
+app.get("/wishlist", function (req, res, next) {
     //hardcoded “A-B” testing
     if (Math.random() < 0.5) {
         return next();
     }
-    console.log("Todos in schema A returned");
-    res.json(todosA);
+    console.log("Wishlist in schema A returned");
+    res.json(wishlist_A);
 });
 
-app.get("/todos", function (req, res,next) {
-    console.log("Todos in schema B returned");
-    res.json(todosB);
+app.get("/wishlist", function (req, res,next) {
+    console.log("Wishlist in schema B returned");
+    res.json(wishlist_B);
 });
 ```
 
-:point_up: We define two route handlers for the same route `/todos`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
+:point_up: We define two route handlers for the same route `/wishlist`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
 If `next` was used, the dispatcher will move on to the second route handler and here, we do not call `next`, but instead send a response to the client.
 What we have done here is to hardcode so-called *A/B testing*. Imagine you have an application and two data schemas and you aim to learn which schema your users prefer. Half of the clients making requests will receive schema A and half will receive schema B.
 
@@ -452,37 +450,43 @@ We can also provide multiple handlers in a single `app.get()` call :point_down::
 
 ```javascript
 //A-B-C testing
-app.get('/todos',
+app.get('/wishlist',
     function(req,res, next){
         if (Math.random() < 0.33) {
             return next();
         }
-        console.log("Todos in schema A returned");
-        res.json(todosA);
+        console.log("Wishlist in schema A returned");
+        res.json(wishlist_A);
     },
     function(req,res, next){
         if (Math.random() < 0.5) {
             return next();
         }
-        console.log("Todos in schema B returned");
-        res.json(todosB);
+        console.log("Wishlist in schema B returned");
+        res.json(wishlist_B);
     },
     function(req,res){
-        console.log("Todos in schema C returned");
-        res.json(todosC);
+        console.log("Wishlist in schema C returned");
+        res.json(wishlist_C);
     }
 );
 ```
 
-:point_up: This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/todos`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important to understand *when* to call `next` and *why* in this setting we have to use a `return` statement - without it, the function's code would be continued to be executed.
+:point_up: This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/wishlist`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important to understand *when* to call `next` and *why* in this setting we have to use a `return` statement - without it, the function's code would be continued to be executed.
 
 ### Routing paths and string patterns
 
-When we specify a path (like `/todos`) in a route, the path is eventually converted into a **regular expression** (short: regex) by Express. Regular expressions are patterns to match character combinations in strings. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/todos`, `/toodos`, `/todo`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
+When we specify a path (like `/wishlist`) in a route, the path is eventually converted into a **regular expression** (short: regex) by Express. Regular expressions are patterns to match character combinations in strings. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/wishlist`, `/whishlist`, `/wishlists`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
 
-Express distinguishes three different types of route paths: strings, string patterns and regular expressions. So far, we have employed just strings to set route paths. String patterns are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. Regular expressions contain the full range of common regex functionalities (routes defined through regular expressions are enclosed in `/ /`, not `' '`), allowing you to create arbitrarily complex patterns. If you are curious how complex regular expressions can become, take a look at the size of regular expressions to [validate email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression).
+Express distinguishes three different types of route paths: 
 
-Express' string pattern meta-characters have the following interpretations:
+- strings;
+- string patterns; and 
+- regular expressions. 
+
+So far, we have employed just strings to set route paths. **String patterns** are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. Regular expressions contain the full range of common regex functionalities (routes defined through regular expressions are enclosed in `/ /` instead of `' '`), allowing you to create arbitrarily complex patterns. If you are curious how complex regular expressions can become, take a look at the size of regular expressions to [validate email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression). Let's zoom in on string patterns (the full regex functionalities are beyond the scope of this class).
+
+Express' **string pattern meta-characters** have the following interpretations:
 
 | Character | Description                                      | Regex    | Matched expressions |
 |-----------|--------------------------------------------------|----------|---------------------|
@@ -494,20 +498,27 @@ Express' string pattern meta-characters have the following interpretations:
 
 It is important to realize that the use of `*` in Express' string patterns is somewhat unique. In most other languages/frameworks, whenever `*` is mentioned in relation to regular expressions, it refers to zero or more occurrences of the preceding element. In Express' string patterns, `*` is a wildcard.
 
-These meta-characters can be combined as seen here :point_down:
+These meta-characters can be combined as seen here :point_down::
 
 ```javascript
 app.get('/user(name)?s+', function(req,res){
 	res.send(…)
 });
 ```
+:point_up: The string pattern can be deciphered by parsing the pattern from left to right. It matches all routes that:
+
+- start with `user`,
+- are followed by `name` or '', and
+- end with one or more occurrences of `s`.
+
+And thus `/user` or `/names` do *not* match this pattern, but `/users` or `/usernames` do indeed match.
 
 In order to test your own string patterns, you can set up a simple server-side script such as the following :point_down:
 
 ```javascript
- var express = require("express");
+ const express = require("express");
  
- var app = express();
+ const app = express();
  
  app.get('/user(name)?s+',function(req, res){
      res.send("Yes!");
@@ -520,57 +531,69 @@ In order to test your own string patterns, you can set up a simple server-side s
  app.listen(3001);
  ```
 
- Once a string pattern is coded, you can simply open the browser, and test different routes, receiving a *Yes!* for a matching route and a *No!* for a non-matching route. 
+ Once a string pattern is coded, you can open your browser at `http://localhost:3001/`, and test different routes, receiving a *Yes!* for a matching route and a *No!* for a non-matching route. 
 
 ### Routing parameters
 
 Apart from regular expressions, routing parameters can be employed to enable **variable input** as part of the route. Consider the following code snippet :point_down::
 
 ```javascript
-var todoTypes = {
-    important: ["TI1500","ADS","Calculus"],
-    urgent: ["Dentist","Hotel booking"],
-    unimportant: ["Groceries"],
+ const express = require("express");
+ const app = express();
+ 
+ var wishlistPriorities = {
+    high: ["Wingspan","Settlers of Catan","Azul"],
+    medium: ["Munchkin"],
+    low: ["Uno", "Scrabble"]
 };
 
-app.get('/todos/:type', function (req, res, next) {
-    var todos = todoTypes[req.params.type];
-    if (!todos) {
-        return next(); // will eventually fall through to 404
+app.get('/wishlist/:priority', function (req, res, next) {
+    let list = wishlistPriorities[req.params.priority];
+    if (!list) {
+        return next();
     }
-    res.send(todos);
+    res.send(list);
 });
+
+app.get("*", function(req, res){
+    res.send("No wishlist to return");
+});
+
+app.listen(3002);
 ```
 
-:point_up: We have defined an object `todoTypes` which contains `important`, `urgent` and `unimportant` todos. We can hardcode routes, for example `/todos/important` to return only the important todos, `/todos/urgent` to return the urgent todos only and `/todos/unimportant` to return the unimportant todos. This is not a maintainable solution though (just think about objects with hundreds of properties). Instead, we create a single route that, dependent on a **routing parameter**, serves different todos. This is achieved in the code snippet shown here. The **routing parameter type** (indicated with a starting colon `:`) will match any string that does not contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `type`, we access it as `req.params.type`. The code snippet checks whether the route parameter matches a proprty of the `todoTypes` object and if it does, the correct todo list is returned in an HTTP response. If the parameter does not match any property of the `todoTypes` object, we make a call to next and move on the next route handler - e.g. a 404 page.
+:point_up: We have defined an object `wishlistPriorities` which contains `high`, `medium` and `low` priority wishes. We can hardcode routes, for example `/wishlist/high` to return only the high priority wishes, `/wishlist/medium` to return the medium priority wishes and `/wishlist/low` to return the low priority wishes. This is not a maintainable solution though (just think about objects with hundreds of properties). Instead, we create a single route that, dependent on a **routing parameter**, serves different wishlists. This is achieved in the code snippet shown here. The routing parameter `priority` (indicated with a starting colon `:`) will match any string that does **not** contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `priority` (what name we give this parameter is up to us), we access it as `req.params.priority`. The code snippet checks whether the route parameter matches a property of the `wishlistPriorities` object and if it does, the corresponding wishlist is returned in an HTTP response. If the parameter does not match any property of the `wishlistPriorities` object, we make a call to next and move on the next route handler.
 
 Routing parameters can have various levels of nesting :point_down::
 
 ```javascript
-var todoTypes = {
-    important: {
-        today: ["TI1500"],
-        tomorrow: ["ADS", "Calculus"]
+ var wishlistPriorities = {
+    high: {
+        partyGame: [],
+        gameNightGame: ["Wingspan","Settlers of Catan","Azul"]
     },
-    urgent: {
-        today: ["Dentist", "Hotel booking"],
-        tomorrow: []
+    medium: {
+        partyGame: ["Munchkin"],
+        gameNightGame: []
     },
-    unimportant: {
-        today: ["Groceries"],
-        tomorrow: []
+    low: {
+        partyGame: ["Uno"],
+        gameNightGame: ["Scrabble"]
     }
 };
-app.get('/todos/:type/:level', function (req, res, next) {
-    var todos = todoTypes[req.params.type][req.params.level];
-    if (!todos) {return next();}
-    res.send(todos);
+
+app.get('/wishlist/:priority/:gameType', function (req, res, next) {
+    let list = wishlistPriorities[req.params.priority][req.params.gameType];
+    if (!list) {
+        return next(); // will eventually fall through to 404
+    }
+    res.send(list);
 });
 ```
 
-:point_up: We do not only use the importance type for our todos, but also partition them according to their due date. The route handler now contains two routing parameters, `:type` and `:level`. Both are accessible through the HTTP request object. We now use the two parameters to access the contents of the `todoTypes` object. If the two parameters do not match properties of `todoTypes`, we call `next()` and otherwise, send the requested response.
+:point_up: We do not only use the priorities for our wishlist, but also partition them according to whether the wanted games are party games or rather something for a long game night. The route handler now contains two routing parameters, `:priority` and `:gameType`. Both are accessible through the HTTP request object. If our corresponding Node.js script runs on our own machine, we can access high priority games for a game night via `http://localhost:3002/wishlist/high/gameNightGame`. We use the two parameters to access the contents of the `wishlistPriorities` object. If the two parameters do not match properties of `wishlistPriorities`, we call `next()` and otherwise, send the requested response.
 
-### Organizing routes
+### :bug: Organizing routes
 
 Lastly, a word on how to organize your routes. Adding routes to the main application file becomes unwieldy as the codebase grows. Based on the knowledge of this lecture, you can move routes into a separate module. All you need to do is to pass the `app` instance into the module (here: `routes.js`) as an argument :point_down::
 
@@ -598,19 +621,39 @@ require('./routes.js')(app);
 
 ## Templating with EJS
 
-When we started our journey with Node.js and Express, we discussed that writing HTML in this manner :point_down::
+When we started our journey with Node.js and Express, we discussed that writing HTML in this manner (i.e. as part of our server-side script) :point_down::
 
-![HTML mixed-in](../img/node2-html-manually.png)
+```javascript
+const express = require("express");
+const url = require("url");
+const http = require("http");
+
+const port = process.argv[2];
+const app = express();
+http.createServer(app).listen(port);
+
+const htmlPrefix = "<html><head></head><body><h2>";
+const htmlSuffix = "</h2></body></html>";
+app.get("/greetme", function(req,res){
+    let query = url.parse(req.url, true).query;
+    let name = ( query["name"]!=undefined) ? query["name"] : "Anonymous";
+    res.send(`${htmlPrefix}Greetings ${name}!${htmlSuffix}`);
+})
+
+app.get("*", function(req,res){
+    res.send(`${htmlPrefix}Goodbye!${htmlSuffix}`);
+})
+```
 
 is a poor choice, as the code quickly becomes unmaintainable, hard to debug and generally a pain to work with.
 
 One approach to solve this problem is the use of **Ajax**: the HTML code is *blank* in the sense that it does not contain any user-specific data. The HTML and JavaScript (and other resources) are sent to the client and the client makes an Ajax request to retrieve the user-specific data from the server-side. 
 
-With **templating, we are able to directly send HTML with user-specific data to the client** and thus remove the extra request-response cycle that Ajax requires:
+An alternative to Ajax is **templating**. With **templating, we are able to directly send HTML with user-specific data to the client** and thus remove the extra request-response cycle that Ajax requires:
 
 ![templating](../img/node2-templating.png)
 
-With templates, our goal is to write as little HTML by hand as possible. Instead, 
+With templates, our goal is to write as little HTML by hand as possible. Instead: 
 
 - we create a **HTML template** void of any data,
 - add data, and
@@ -618,43 +661,77 @@ With templates, our goal is to write as little HTML by hand as possible. Instead
 
 This approach keeps the code clean and separates the coding logic from the presentation markup. Templates fit naturally into the *Model-View-Controller* paradigm which is designed to keep logic, data and presentation separate.
 
-This concept exists in several languages and even for Node.js alone, several template engines exist. In this course, we teach the basics of **EJS** [version 2](https://github.com/mde/ejs) - *Embedded JavaScript* - a relatively straightforward template engine and language.
+This concept exists in several languages and even for Node.js alone, several template engines exist. In this course, we teach the basics of [**EJS**](https://github.com/mde/ejs)—*Embedded JavaScript*—a relatively straightforward template engine and language.
 
 ### :bangbang: A first EJS example
 
-Let's take a first look at EJS. For this exercise, we will use Node's **REPL** (*Read-Eval-Print Loop*). It is the **Node.js shell**; any valid JavaScript which can be written in a script can be passed to the REPL as well. It useful for experimenting with Node.js, and figuring out some of JavaScript's more eccentric behaviors.
+Let's take a first look at EJS. For this exercise, we will use Node's **REPL** (*Read-Eval-Print Loop*). It is the **Node.js shell**; any valid JavaScript which can be written in a script can be passed to the REPL as well. It useful for experimenting with Node.js, and playing around with some of JavaScript's more eccentric behaviors.
 
-To start the REPL, simply type `node` in the terminal and the Node shell becomes available, indicated by `>`. Start your REPL and type each of the JavaScript code lines below :point_down: into the shell, ending each line with `<ENTER>`.
+To start the REPL, simply type `node` in the terminal. The Node shell becomes available, indicated by the `>` prompt. Start your REPL and try a few things (declare a variable, define a function, etc.) by typing into the shell, ending each line with <kbd>Enter</kbd>. You should see something like this :point_down::
 
-If you receive an `Error: Cannot find module 'ejs'` error after the `var ejs = require('ejs');` line, exit the shell (to do so, type `.exit`) and install the `ejs` module. To do this, run `npm install ejs` and then go back to the REPL.
+```
+○ → node
+Welcome to Node.js v14.11.0.
+Type ".help" for more information.
+> const s = "hello CSE1500!"
+undefined
+> s
+'hello CSE1500!'
+> 
+```
 
-If you want to avoid the constant `Undefined` messages on the REPL (which are simply the return values of the commands entered), start the REPL with `node -e "require('repl').start({ignoreUndefined:true})"`. 
+:point_up: If you want to avoid the constant `undefined` messages on the REPL (which are simply the return values of the commands entered), start the REPL as follows:
+
+```
+node -e "require('repl').start({ignoreUndefined:true})"
+```
+
+Back to EJS. Before we can use the EJS module, we need to install it as it is not part of core Node.js modules. You already know how to do this: `npm install ejs`. Then, you can start the REPL and type out the following EJS snippet :point_down::
 
 ```javascript
 var ejs = require('ejs');
-var template = '<%= message %>'; //<%= outputs the value into the template (HTML escaped)
-var context = {message: 'Hello template!'};
+var template = '<%= message %>'; //<%= outputs the value into the template
+var context = {message: 'Hello CSE1500!'};
 console.log(ejs.render(template, context));
 ```
 
-:point_up: Here, we first make the EJS object available via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello template!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called *scriptlet tag* to indicate the start of an element to be replaced with data as well as an ending tag `%>`.
+:point_up: Here, we first make the EJS object available via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello CSE1500!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called *scriptlet tag* to indicate the start of an element to be replaced with data as well as an ending tag `%>`.
 
 Ther are two types of scriptlet tags that **output values**:
 
-- `<%= ... %>` outputs the value into the template in **HTML escaped** form.
-- `<%- ... %>` outputs the value into the template in **unescaped** form. This enables cross-site scripting attacks, which we will discuss in the [security lecture](Lecture-security.md).
+- `<%= ... %>` output the value into the template in **HTML escaped** form. This means that the characters that are indicating the start/end of markup sequences (such as `<script>` and `</script>`) are converted in such a way that they are rendered as content instead of being interpeted as markup.
+- `<%- ... %>` output the value into the template in **unescaped** form. This means that a value such as `<script>` remains as-is. This enables cross-site scripting attacks, which we will discuss in the [security lecture](security.md).
 
-In order to see the difference between the two types of tags, go back to Node's REPL and try out the following code snippet twice, each time with a different variant of the `template` string :point_down::
+In order to see the difference between the two types of tags, go back to Node's REPL and try out the following code snippet :point_down::
 
 ```javascript
 var ejs = require('ejs');
-var template = '<%- message %>';        //UNESCAPED
-//var template = ‘<%= message %>';      //ESCAPED
-var context = {message: "<script>alert('hi!');</script>"};
-console.log(ejs.render(template, context));
+var unescapedTemplate = '<%- message %>';
+var escapedTemplate = '<%= message %>';
+var context = {message: "<script>alert('Hello CSE1500!');</script>"};
+
+console.log("[UNESCAPED] " + ejs.render(unescapedTemplate, context));
+console.log("[ESCAPED] " + ejs.render(escapedTemplate, context));
 ```
 
-:point_up: The HTML-escaped variant produces the output `&lt;script&gt;alert(&#39;hi&#39;);&lt;/script&gt;` while the un-escaped `template` variant produces `<script>alert('hi');</script>`. In the latter case, this is code that the browser will execute.
+:point_up: The HTML-escaped variant produces the output 
+
+```
+&lt;script&gt;alert(&#39;Hello CSE1500!&#39;);&lt;/script&gt;
+``` 
+
+:point_up: Here, we observe that the special characters in HTML are replaced by so-called [HTML entities](https://developer.mozilla.org/en-US/docs/Glossary/Entity), each one being a string starting with `&` and ending with `;`. The opening tag bracket `<` becomes `&lt;`, a single quotation mark `'` becomes `&#39;`. The browser's rendering engine *renders* these HTML entities as special characters. Try it out for yourself! Save in a `*.html` file and open it in your browser :point_down::
+
+```html
+<html>
+    <head></head>
+    <body>
+        &lt;script&gt;alert(&#39;Hello CSE1500!&#39;);&lt;/script&gt;
+    </body>
+</html>
+```
+
+In contrast, un-escaped variant produces `<script>alert('Hello CSE1500!');</script>` as output. In the latter case, this is code that the browser will execute. Once more, try it out yourself by replacing the escaped output in the HTML document above with the unescaped output. Loading the page should now result in a popup appearing in the browser.
 
 ### :bangbang: EJS and user-defined functions
 
@@ -698,7 +775,7 @@ ejs.render(template, context);
 
 ### :bangbang: Express and templates
 
- *How do templates tie in with the Express framework?* So far, we have used the REPL to show off some of EJS' capabilities. It turns out that so-called **views** can be easily configured with Express. Not only that, an application can also make use of several template engines at the same time.
+ By now you might be asking why we are doing this. So far, we have only used Node's REPL to show off some of EJS' capabilities. The REPL though is only for playing around with short code snippets, it does not bring us closer to a server-side script with templating enabled. For that, we need Express. *How do templates tie in with the Express framework?* It turns out that so-called **views** can be easily configured with Express. Not only that, an application can also make use of several template engines at the same time.
 
 Three steps are involved:
 
@@ -716,7 +793,7 @@ app.set('view engine', 'ejs');
 
 :three: We create template files.
 
-An functioning Express/EJS demo can be found at [demo-code/node-ejs-ex](demo-code/node-ejs-ex). Try it out (i.e. install and run it). Let's consider the application's `app.js` :point_down::
+An functioning Express/EJS demo can be found [here]([demo-code/node-ejs-ex](https://github.com/chauff/demo-code/tree/master/node-ejs-ex)). Try it out yourself by installing and running it. Let's consider the application's `app.js` :point_down::
 
 ```javascript
 var express = require("express");
@@ -730,40 +807,43 @@ http.createServer(app).listen(port, function () {
   console.log("Ready on port " + port);
 });
 
-var todos = [];
-todos.push({ message: 'Final exam', dueDate: 'January 2016'  });
-todos.push({ message: 'Prepare for assignment 6', dueDate: '05/01/2016' });
-todos.push({ message: 'Sign up for final exam', dueDate: '06/01/2016' });
-
+var wishlist = [];
+wishlist.push({ name: 'Wingspan', type: 'game night'  });
+wishlist.push({ name: 'Munchkin', type: 'party game' });
+wishlist.push({ name: 'Scrabble', type: 'game night' });
+wishlist.push({ name: 'Uno', type: 'party game' });
+ 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get("/todos", function (req, res) {
-  res.render('todos', { title: 'My list of TODOs', todo_array: todos });
+app.get("/wishlist", function (req, res) {
+  res.render('wishlist', { title: 'Game wishlist', input: wishlist });
 });
 ```
 
-:point_up: We first set up the views directory, then the view engine and finally we use Express' [`res.render`](https://expressjs.com/en/api.html#res.render) in order to render a view and send the rendered HTML to the client. Important to realize in this example is, that the first argument of `res.render` is a view stored in `views/todos.ejs` which the Express framework retrieves for us. The second argument is an object that holds the variables of the template, here `title` and `todo_array`. To confirm this, let's look at the template file itself, `todos.ejs` which contains the corresponding variable names :point_down::
+:point_up: We first set up the views directory, then the view engine and finally we use Express' [`res.render`](https://expressjs.com/en/api.html#res.render) in order to render a view and send the rendered HTML to the client. Important to realize in this example is, that the first argument of `res.render` is a view stored in `views/wishlist.ejs` which the Express framework retrieves for us. The second argument is an object that holds the variables of the template, here `title` and `input` (an array). To confirm this, let's look at the template file itself, `wishlist.ejs` which contains the corresponding variable names :point_down::
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
+	<title><%= title %></title>
 </head>
 <body>
-    <h1>TODOs</h1>
-    <div>
-        <% todo_array.forEach(function(todo) { %>
-        <div>
-            <h3><%=todo.dueDate%></h3>
-            <p><%=todo.message%></p>
-        </div>
-        <% }) %>
-    </div>
+	<h1>Wishlist</h1>
+	<div>
+		<% input.forEach(function(w) { %>
+		<div>
+			<h3><%=w.name%></h3>
+			<p><%=w.type%></p>
+		</div>
+		<% }) %>
+	</div>
 </body>
 </html>
 ```
+
+:point_up: This is mostly HTML, with a few scriptlet tags sprinkled in. While EJS has more capabilities than we present here, for the purposes of our board game project, this excursion into EJS is sufficient.
 
 ## 🚩Node.js in production
 
