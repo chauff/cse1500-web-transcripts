@@ -43,6 +43,7 @@ warning: false
   - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected).
   - [Atomic Design by Brad Frost](http://atomicdesign.bradfrost.com/) 
   - [Laws of UX](https://lawsofux.com/): web design principles explained in short snippets.
+  - [CodePen's September 2020 Challenges are all about HTML](https://codepen.io/challenges/2020/september/) and what you can do with 100 HTML elements of a single type.
 - Relevant scientific publications:
   - Fernandez, Adrian, Emilio Insfran, and Silvia Abrahão. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and software Technology 53.8 (2011): 789-817.
   - Sonderegger, Andreas, and Juergen Sauer. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied ergonomics 41.3 (2010): 403-410.

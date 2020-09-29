@@ -834,7 +834,7 @@ The canonical example for `data-` attributes are tooltips as they provide useful
 
 This example :point_up: also showcases the use of the [`cursor`](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) property. Hovering over the list items results in a help icon. Note, that `cursor: none` results in no cursor being rendered, though this should be used with care as it tends to confuse users. The `position`, `bottom` and `left` properties will be discussed next (in short: they determine the placement of the tooltip).
 
-As a final example, take a look at [intro.js](https://introjs.com/), a small JavaScript library whose whole purpose is to provide a step-by-step guide through a user interface. The steps are defined by adding `data-intro` attributes to HTML elements.
+As a final example, take a look at [intro.js](https://introjs.com/), a small JavaScript library whose purpose is to provide an interactive step-by-step guide through a user interface (imagine you have a web app with many features that you want new users to know about). The steps are defined by adding `data-intro` attributes to HTML elements.
 
 ## Element positioning
 
