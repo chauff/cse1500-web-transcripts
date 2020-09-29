@@ -921,7 +921,7 @@ However, it serves a purpose: it helps us to understand how the different elemen
 
 Having introduced elements' flow and block as well as inline elements, we can now move on to display types.
 
-### Display types
+### Display Types
 
 The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) property enables us to change the element type (e.g. from block-level to inline), *hide* elements from view and determine the layout of its children.
 
@@ -932,11 +932,178 @@ The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) proper
 | `display:none`   |  The element (and its descendents) are hidden from view; no space is reserved in the layout.  |
 | `display:grid`   |  The children of this element are arranged according to the grid layout.   |
 
-There are more display types, but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS. 
+There [are more display types](https://developer.mozilla.org/en-US/docs/Web/CSS/display), but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS.
 
-### Grid layout
+### `grid` Layout
+As the name suggests, a `display` type of `grid` allows you to create a two-dimensional grid layout within your page. This relatively new construct to CSS massively reduces the effort required to implement grid-like layouts. Previously, one would implement a grid through the use of `float`s, for example.
 
-//TODO grid layout basics
+To demonstrate the basics of implementing a grid layout, let's walk through creating a simple 3x3 grid. Once we have shown you the basics, we'll also demonstrate some of the more advanced functionality available.
+
+As you may expect, a CSS grid is comprised of rows and columns. Each element that you define within the grid can be likened to as a "cell". An example of the 3x3 grid is shown below for your reference.
+
+Included within the example are a series of lines. We'll be making use of these later, but for now you can use these lines to work out what column (in red) or row (in green) a particular "cell" is located at within the grid. Note that the "cell" corresponding to a column line is to its right; the "cell" corresponding to a row line is underneath it. Counting starts from the **top left corner**.
+
+![CSS grid explanation](../img/css-grid-explanation.svg)
+
+To create a grid layout, pick the element that will contain the grid. For the said container, set the `display` attribute to `grid`. Each of the child elements within the container element will act as grid cells. Example CSS and markup is shown below. Note that we also add a selector for the child elements; these are the "cells", or the elements within the `grid-container`.
+
+```css
+.grid-container {
+    display: grid;
+}
+
+.grid-container div {
+    background-color: orange;
+}
+```
+
+```html
+<div class="grid-container">
+    <div>Row 1, Column 1</div>
+    <div>Row 1, Column 2</div>
+    <div>Row 1, Column 3</div>
+    <div>Row 2, Column 1</div>
+    <div>Row 2, Column 2</div>
+    <div>Row 2, Column 3</div>
+    <div>Row 3, Column 1</div>
+    <div>Row 3, Column 2</div>
+    <div>Row 3, Column 3</div>
+</div>
+```
+
+The corresponding rendered output will look similar to the following.
+
+![CSS grid elements - step 1](../img/css-grid-step1.png)
+
+What gives? The elements are not in a grid layout; they are still block elements below one another!
+
+In order for the grid layout to work, we need to tell the grid container how many rows and columns there should be, as well as the widths/heights of each. To do so, the simplest way is to use the `grid-template-rows` and `grid-template-columns` properties.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+}
+```
+
+This has the effect of producing the desired 3x3 grid, with each "cell" being fixed as a square with 100 pixels along the sides.
+
+![CSS grid elements - step 2](../img/css-grid-step2.png)
+
+That looks more like a grid!
+
+For the two new properties that we have just added, we provide *three* values; one for each of the number of rows/columns that we desire. If we were to add a fourth value to `grid-template-rows`, this would for the example have the effect of adding an additional row to the grid.
+
+This approach is useful if you wish to provide a lop-sided grid (i.e. a table, with more rows than columns).
+
+Note that we could make the definitions more succint using the CSS `repeat()` function. The below CSS snippet has the exact same outcome as what we show above.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 100px);
+}
+```
+
+You can of course mix up providing values and using `repeat()`, too! The example below produces a grid where the first column has a width of 200 pixels, but the remaining two columns have widths of only 100 pixels (being defined with the `repeat()` function).
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: 200px repeat(2, 100px);
+}
+```
+
+Notice how the gap between columns 1 and 2 is wider than between columns 2 and 3.
+
+![CSS grid elements - step 3](../img/css-grid-step3.png)
+
+Of course, our grid currently looks a bit off as the different "cells" that we have are right next to one another. CSS grids provide the ability to easily add gaps between rows and columns via the `grid-row-gap` and `grid-column-gap` properties, respectively.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 100px);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+```
+
+This produces a much nicer looking grid, with 10 pixel gaps between each row and column.
+
+![CSS grid elements - step 4](../img/css-grid-step4.png)
+
+We could also have simply used `grid-gap` to set both the row and column gaps at the same time.
+
+As an aside, we could use some fancy CSS selectors to make the grid look more like a chessboard, with alternating black and white (or near-white) "cells". The CSS snippet below redefines the selectors for the children of the `grid-container`.
+
+```css
+.grid-container div {
+    background-color: gray;
+}
+
+.grid-container div:nth-child(2n) {
+    background-color: black;
+    color: white;
+}
+```
+
+The top selector, `.grid-container div` sets all children of the container to have a light grey background.
+
+The second selector works only every child that has a position that is a multiple of 2 (i.e. `2n`). For this selector, the background of the "cell" is set to black, with the text colour set to white. This second selector will override the background colour set in the first selector.
+
+![CSS grid elements - step 5](../img/css-grid-step5.png)
+
+Finally, we want to demonstrate how you merge "cells" together. There may be instances where a particular "cell" should span over multiple rows and columns (for example, when you have headers for groups of data in a table).
+
+Remember the lines that we defined in our simple grid illustration at the top of this section? This is where they will come in handy.
+
+Let's say we want to stretch the "cell" that belongs to *Row 3, Column 2* over to also cover *Row 3, Column 3*.
+
+![CSS grid elements - step 6](../img/css-grid-step6.png)
+
+We can achieve this by first ditching the final child element within the grid container, leaving only eight children.
+
+```html
+<div class="grid-container">
+    <div>Row 1, Column 1</div>
+    <div>Row 1, Column 2</div>
+    <div>Row 1, Column 3</div>
+    <div>Row 2, Column 1</div>
+    <div>Row 2, Column 2</div>
+    <div>Row 2, Column 3</div>
+    <div>Row 3, Column 1</div>
+    <div id="stretched">Stretched Cell</div>
+</div>
+```
+
+Note in the example above, we also applied an `id` to the cell we want to stretch. This is so we can write a CSS selector that only targets the given element.
+
+```css
+#stretched {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+```
+
+This denotes that for the element with id `stretched`, we wish the element to begin at column line 2, and end at column line 4. Please refer to the illustration at the top of this section to refresh your memory; you're looking for the red lines for this example.
+
+This has the following effect on the grid.
+
+![CSS grid elements - step 7](../img/css-grid-step7.png)
+
+Note the stretched cell at the bottom right, spanning over two columns.
+
+We can also stretch a cell over two or more rows using the `grid-row-start` and `grid-row-end` properties. Of course, we can also combine column and row stretching by using a combination of both!
+
+This provides an incredibly simple yet powerful way of keeping order in your grids.
+
+This teaser should be more than sufficient for you to get to grips with grids for this course. However, there are many other properties that are defined in the CSS specification that allow you to control grids - check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) if you are interested!
+
 
 ### CSS units and functions
 
@@ -955,7 +1122,7 @@ The `position` property has a number of possible values:
 | `position:static`   | the default                                                                            |
 | `position:relative` |  the element is adjusted on the fly, other elements are **not** affected               |
 | `position:absolute` |  the element is taken out of the normal flow (**no space is reserved for it**)         |
-| `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (=the area currently being viewed) |
+| `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (i.e. the area currently being viewed) |
 | `position:sticky`   | in-between `relative` and `fixed` (*we do not consider it further in this class*)        |
 
 Important to know when using the `position` property is the direction of the CSS coordinate system: the top-left corner is `(0,0)`. The y-axis extends **downwards**. The x-axis extends to the **right**.
