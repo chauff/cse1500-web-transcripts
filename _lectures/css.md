@@ -921,7 +921,7 @@ However, it serves a purpose: it helps us to understand how the different elemen
 
 Having introduced elements' flow and block as well as inline elements, we can now move on to display types.
 
-### Display types
+### Display Types
 
 The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) property enables us to change the element type (e.g. from block-level to inline), *hide* elements from view and determine the layout of its children.
 
@@ -932,17 +932,376 @@ The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) proper
 | `display:none`   |  The element (and its descendents) are hidden from view; no space is reserved in the layout.  |
 | `display:grid`   |  The children of this element are arranged according to the grid layout.   |
 
-There are more display types, but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS. 
+There [are more display types](https://developer.mozilla.org/en-US/docs/Web/CSS/display), but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS.
 
-### Grid layout
+### `grid` Layout
+As the name suggests, a `display` type of `grid` allows you to create a two-dimensional grid layout within your page. This relatively new construct to CSS massively reduces the effort required to implement grid-like layouts. Previously, one would implement a grid through the use of `float`s, for example.
 
-//TODO grid layout basics
+To demonstrate the basics of implementing a grid layout, let's walk through creating a simple 3x3 grid. Once we have shown you the basics, we'll also demonstrate some of the more advanced functionality available.
 
-### CSS units and functions
+As you may expect, a CSS grid is comprised of rows and columns. Each element that you define within the grid can be likened to as a "cell". An example of the 3x3 grid is shown below for your reference.
 
-//TODO essential units (px, vw, wh, fr)
+Included within the example are a series of lines. We'll be making use of these later, but for now you can use these lines to work out what column (in red) or row (in green) a particular "cell" is located at within the grid. Note that the "cell" corresponding to a column line is to its right; the "cell" corresponding to a row line is underneath it. Counting starts from the **top left corner**. This is discussed more in the *Position* section below.
 
-//TODO essential functions (calc, minmax)
+![CSS grid explanation](../img/css-grid-explanation.svg)
+
+To create a grid layout, pick the element that will contain the grid. For the said container, set the `display` attribute to `grid`. Each of the child elements within the container element will act as grid cells. Example CSS and markup is shown below. Note that we also add a selector for the child elements; these are the "cells", or the elements within the `grid-container`.
+
+```css
+.grid-container {
+    display: grid;
+}
+
+.grid-container div {
+    background-color: orange;
+}
+```
+
+```html
+<div class="grid-container">
+    <div>Row 1, Column 1</div>
+    <div>Row 1, Column 2</div>
+    <div>Row 1, Column 3</div>
+    <div>Row 2, Column 1</div>
+    <div>Row 2, Column 2</div>
+    <div>Row 2, Column 3</div>
+    <div>Row 3, Column 1</div>
+    <div>Row 3, Column 2</div>
+    <div>Row 3, Column 3</div>
+</div>
+```
+
+The corresponding rendered output will look similar to the following.
+
+![CSS grid elements - step 1](../img/css-grid-step1.png)
+
+What gives? The elements are not in a grid layout; they are still block elements below one another!
+
+In order for the grid layout to work, we need to tell the grid container how many rows and columns there should be, as well as the widths/heights of each. To do so, the simplest way is to use the `grid-template-rows` and `grid-template-columns` properties.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+}
+```
+
+This has the effect of producing the desired 3x3 grid, with each "cell" being fixed as a square with 100 pixels along the sides.
+
+![CSS grid elements - step 2](../img/css-grid-step2.png)
+
+That looks more like a grid!
+
+For the two new properties that we have just added, we provide *three* values; one for each of the number of rows/columns that we desire. If we were to add a fourth value to `grid-template-rows`, this would for the example have the effect of adding an additional row to the grid.
+
+This approach is useful if you wish to provide a lop-sided grid (i.e. a table, with more rows than columns).
+
+Note that we could make the definitions more succint using the CSS `repeat()` function. The below CSS snippet has the exact same outcome as what we show above.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 100px);
+}
+```
+
+You can of course mix up providing values and using `repeat()`, too! The example below produces a grid where the first column has a width of 200 pixels, but the remaining two columns have widths of only 100 pixels (being defined with the `repeat()` function).
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: 200px repeat(2, 100px);
+}
+```
+
+Notice how the gap between columns 1 and 2 is wider than between columns 2 and 3.
+
+![CSS grid elements - step 3](../img/css-grid-step3.png)
+
+Of course, our grid currently looks a bit off as the different "cells" that we have are right next to one another. CSS grids provide the ability to easily add gaps between rows and columns via the `grid-row-gap` and `grid-column-gap` properties, respectively.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, 100px);
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+```
+
+This produces a much nicer looking grid, with 10 pixel gaps between each row and column.
+
+![CSS grid elements - step 4](../img/css-grid-step4.png)
+
+We could also have simply used `grid-gap` to set both the row and column gaps at the same time.
+
+As an aside, we could use some fancy CSS selectors to make the grid look more like a chessboard, with alternating black and white (or near-white) "cells". The CSS snippet below redefines the selectors for the children of the `grid-container`.
+
+```css
+.grid-container div {
+    background-color: gray;
+}
+
+.grid-container div:nth-child(2n) {
+    background-color: black;
+    color: white;
+}
+```
+
+The top selector, `.grid-container div` sets all children of the container to have a light grey background.
+
+The second selector works only every child that has a position that is a multiple of 2 (i.e. `2n`). For this selector, the background of the "cell" is set to black, with the text colour set to white. This second selector will override the background colour set in the first selector.
+
+![CSS grid elements - step 5](../img/css-grid-step5.png)
+
+Finally, we want to demonstrate how you merge "cells" together. There may be instances where a particular "cell" should span over multiple rows and columns (for example, when you have headers for groups of data in a table).
+
+Remember the lines that we defined in our simple grid illustration at the top of this section? This is where they will come in handy.
+
+Let's say we want to stretch the "cell" that belongs to *Row 3, Column 2* over to also cover *Row 3, Column 3*.
+
+![CSS grid elements - step 6](../img/css-grid-step6.png)
+
+We can achieve this by first ditching the final child element within the grid container, leaving only eight children.
+
+```html
+<div class="grid-container">
+    <div>Row 1, Column 1</div>
+    <div>Row 1, Column 2</div>
+    <div>Row 1, Column 3</div>
+    <div>Row 2, Column 1</div>
+    <div>Row 2, Column 2</div>
+    <div>Row 2, Column 3</div>
+    <div>Row 3, Column 1</div>
+    <div id="stretched">Stretched Cell</div>
+</div>
+```
+
+Note in the example above, we also applied an `id` to the cell we want to stretch. This is so we can write a CSS selector that only targets the given element.
+
+```css
+#stretched {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+```
+
+This denotes that for the element with id `stretched`, we wish the element to begin at column line 2, and end at column line 4. Please refer to the illustration at the top of this section to refresh your memory; you're looking for the red lines for this example.
+
+This has the following effect on the grid.
+
+![CSS grid elements - step 7](../img/css-grid-step7.png)
+
+Note the stretched cell at the bottom right, spanning over two columns.
+
+We can also stretch a cell over two or more rows using the `grid-row-start` and `grid-row-end` properties. Of course, we can also combine column and row stretching by using a combination of both!
+
+This provides an incredibly simple yet powerful way of keeping order in your grids.
+
+This teaser should be more than sufficient for you to get to grips with grids for this course. However, there are many other properties that are defined in the CSS specification that allow you to control grids - check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) if you are interested!
+
+
+### CSS Units and Functions
+
+Up until now, we've used some pretty basic units of measurement to express the widths and heights of elements on a page, and indeed the size of fonts, for example.
+
+We've come across pixels as unit of measurement (identified with the `px` suffix). Modern screens are comprised of many pixels; this unit of measurement allows you to specify an *absolute measurement* on the screen.
+
+```css
+.some-class {
+    width: 100px;
+    height: 200px;
+}
+```
+
+We have also identified percentage units. As you may expect, these allow you to express the width/height/measurement of a particular element in percentage terms of its container. In other words, this measurement is *relative* to its container, rather than being absolute.
+
+```css
+.container {
+  width: 200px;
+  height: 100px;
+}
+
+.container div {
+  width: 50%;
+  height: 50%;
+}
+```
+
+```html
+<div class="container">
+    <div>50%!</div>
+</div>
+```
+
+For example, the above snippets define a `container` with a pixel width and height. The child `<div>` then has a width and height of 50% -- yielding an absolute width of 100 pixels, and an absolute height of 50 pixels
+
+But what about more complex units of measurement? Many different types of measurement are available as part of contemporary CSS implementations, but what are the essential ones to know?
+
+#### Essential CSS Units of Measurement
+
+Having discussed pixels (absolute) and percentages (relative) above, there are several other that you should be aware of.
+
+You can use measurements such as `mm` (for millimetres) and `cm` (for centimetres); if you like imperial measurements, inches (`in`) are also valid.
+
+However, for modern web design, we are more interested in *relative units* -- that is, units of measurement relative to the container of the element you are assigning values to.
+
+* `em` is a unit of measurement relative to the font size of the element being used. This is useful, for example, when setting the height of an element to be slightly taller than the text it contains.
+
+There are also units of measurement that are relative to the available real estate on the user's screen.
+
+* `vw` is a unit that is relative to the *width of the viewport*, where the viewport is the size of the browser/app that the page is viewed in. `1vw` is equal to 1/100 of the viewport's width.
+* `vh` is the same as above, but this time associated with the *height of the viewport*. This time, `1vh` is equal to 1/100 of the viewport's height.
+
+These units are then taken further, with two more units whose measurements are compared against potentially changing targets.
+
+* `vmin` is relative to the *smallest dimension of the viewport*. For example, if you view a page on a smartphone in portrait mode, this would be the width (as the height will be greater). `1vmin` equates to 1/100 of the viewport's smallest dimension.
+* `vmax` instead considers the *largest dimension of the viewport*. `1vmax` equates to 1/100 of the viewport's largest dimension (e.g. width when viewed on a smartphone in landscape mode).
+
+There are also a series of measurements specific to given scenarios. For example, the `grid` layout we discussed above can make use of the `fr` unit. Short for *fractional unit*, the name may suggest that this unit splits up available space into a series of fractions.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+```
+
+The above example creates three columns of equal width (1 fractional unit each). If we wished to make the first column double the width of the other two columns, we would simply double up the value for the first column.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+```
+
+For a more concrete (and advanced example), we can assign a width to the `grid-container`.
+
+```css
+.grid-container {
+    display: grid;
+    width: 520px;
+    grid-template-columns: 250px 2fr 1fr;
+}
+```
+
+With a maximum width of `520px` for the container, our first column will take nearly half of the available space (`250px`). The final two columns will then be split over three fractional units (from a remaining space of `270px`, this means three equal divisions of `90px`). As such, the second column of `2fr` will have an absolute width of `180px`, with the third column of `1fr` having an absolute width filling out the remaining `90px`.
+
+*As a general rule of thumb, you should always consider using relative units of measurement when developing responsive CSS designs. This rule of thumb will mean you don't have to worry about designing different CSS rules for different sizes of screen; everything will be relative to the size of the screen the page is being rendered on!*
+
+#### Basic CSS Functions
+
+Modern CSS allows you to make use of *built-in functions* to compute values on-the-fly for attributes you specify. Your CSS styles may have attributes whose values can only be determined at runtime. For example, we made use of the `repeat()` function when learning about CSS grids.
+
+The syntax for using a function in CSS is shown below.
+
+```css
+selector {
+    attribute: function(parameters)
+}
+```
+
+Where `function` is the function name, and `parameters` are parameters (provided as an expression) that you can pass to the function.
+
+Below, we outline a few basic functions that you can use in your stylesheets. There are [resources online](https://www.w3schools.com/cssref/css_functions.asp) which provide a detailed reference of other functions that we do not list here.
+
+The most basic (and useful) function is `calc()`. `calc()` calculates the result of a provided expression. You can add, subtract, divide and multiply values together. Values can be of different units, too. Take the example below.
+
+```css
+.container {
+    width: calc(100% - 20vw);
+}
+```
+
+The width of this `container` is set to 100% of its own container, with `20vw` units subtracted from the 100%.
+
+You can also mix relative and absolute measurements, such as in the example below.
+
+```css
+.container {
+    width: calc(100% - 50px);
+}
+```
+
+If you have followed the lecture carefully, you may also be aware of a function that was used previously to obtain variables. This function is called `var()`, and takes the name of the variable you wish to be put in place of the function call.
+
+```css
+:root {
+  --theBackgroundColour: blue;
+}
+
+.container {
+    background-color: var(--theBackgroundColour);
+}
+```
+
+This example sets the `background-color` of the `container` to `blue`.
+
+There are also functions for defining colours according to the RGB colour model.
+
+```css
+.container {
+    background-color: rgb(0, 0, 255);
+}
+```
+
+This example makes use of the `rgb()` function, which returns the colour you specify (in this case, blue!). For colours with an alpha channel (with transparency), use `rgba`.
+
+```css
+.container {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+```
+
+This has the same effect as the examples above, save for the inclusion of transparency. This final parameter is specified between `0` and `1`, with `0` being completely transparent, and `1` being completely opaque.
+
+The final function we will introduce you to here is called `minmax()`. This function is used within CSS grids, and allows you to specify a *range of acceptable values* for your grid column widths and row heights.
+
+By including this function, CSS allows you to make CSS grids that better adapt to the available viewport size as it is resized.
+
+To demonstrate this function in action, observe the following CSS and HTML snippets.
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(4, 200px);
+    grid-template-columns: repeat(4, minmax(100px, 200px));
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+}
+
+.grid-container div {
+    background-color: seagreen;
+}
+```
+
+```html
+<div class="grid-container">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+```
+
+Of particular interest here is the value assigned to `grid-template-columns` in `.grid-container`. We make use of the `repeat()` function to repeat the `minmax(100px, 200px)` function call 4 times, resulting in four column values.
+
+Here, the `minmax(100px, 200px)` function call provides a value that is a minimum of `100px`, and steadily increases as the width of the container also increases. This will increase up until a maximum of `200px` in this example.
+
+A demonstration of this in action is shown below. The CSS and markup used to generate this demo is the exact same code as used above.
+
+![CSS grid elements - step 8](../img/css-grid-step8.gif)
+
+Note that after the width of the viewport is increased past the point where each grid "cell" can fit comfortably within the viewport at its maximum width of `200px`, they no longer increase in width. This is the `max` part of the `minmax()` function in operation!
 
 ### :bangbang: Position
 
@@ -955,7 +1314,7 @@ The `position` property has a number of possible values:
 | `position:static`   | the default                                                                            |
 | `position:relative` |  the element is adjusted on the fly, other elements are **not** affected               |
 | `position:absolute` |  the element is taken out of the normal flow (**no space is reserved for it**)         |
-| `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (=the area currently being viewed) |
+| `position:fixed`    |  similar to `absolute`, but fixed to the **viewport** (i.e. the area currently being viewed) |
 | `position:sticky`   | in-between `relative` and `fixed` (*we do not consider it further in this class*)        |
 
 Important to know when using the `position` property is the direction of the CSS coordinate system: the top-left corner is `(0,0)`. The y-axis extends **downwards**. The x-axis extends to the **right**.
