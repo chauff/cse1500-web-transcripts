@@ -41,6 +41,7 @@ warning: false
 - Recommended activities:
   - An interactive ejs playground can be found [here](https://ionicabizau.github.io/ejs-playground/).
 - Recommended readings:
+  - Chapters 10, 14 and 20 of the [Web Development with Node & Express book](https://www.oreilly.com/library/view/web-development-with/9781492053507/).
   - To learn more about ejs, take a look at its [GitHub repository](https://github.com/mde/ejs).
   - To learn more about middleware and Express, take a look at the [Express documentation](http://expressjs.com/en/guide/using-middleware.html).
   - An overview of [best practices in Node.js](https://github.com/i0natan/nodebestpractices).

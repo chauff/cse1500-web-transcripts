@@ -44,7 +44,7 @@ warning: false
 - Required readings: *none*
 - Recommended activities: *none*
 - Recommended readings:
-  - //TODO: check updated chapter :closed_book: Chapter 9 of [Web Development with Node & Express](http://shop.oreilly.com/product/0636920032977.do) by Ethan Brown.
+  - Chapter 9 of the [Web Development with Node & Express book](https://www.oreilly.com/library/view/web-development-with/9781492053507/)
   - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/).
   - :tv: [Storage on the web](https://www.youtube.com/watch?v=NNuTV-gjlZQ): how to store **large amounts** of data on the modern browser.
   - An elaborate [thread of tweets](https://threadreaderapp.com/thread/1199817699116736512.html) discusses privacy implications of 1st/3rd party cookies and tracking of users through them.
