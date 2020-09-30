@@ -488,15 +488,15 @@ to be different each time, as each time, `this` refers to a different object. We
  let sum = (a,b) => {return a+b}
 ```
 
-🚩 This may look just like a more compact way of writing a function expression, but there is more to it. In particular, the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are [looking deeper](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) into the use of arrow functions! 
+:cookie: This may look just like a more compact way of writing a function expression, but there is more to it. In particular, the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are [looking deeper](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) into the use of arrow functions! 
 
-🚩 A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays:
+:cookie: A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.filter()` functions introduced in ES6 for arrays:
 
 - [`.map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map): creates a new array and populates it by calling the provided function on every element of the calling array.
 - [`.reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce): creates a single output value by calling the provided reducer function on every element of the calling array.
 - [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter): creates a new array with those elements of the calling array that pass the provided filter function.
 
-🚩 This may sound a bit abstract, but once you see an example it wil all makes sense. Consider the array `let ar=["Beat Saber", "Astro Bot Rescue Mission", "Tetris Effect", "Moss", "Falcon Age", "Trover Saves the Universe"]`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those strings of more than five characters we use `let arLong = ar.filter(x => x.length > 10)`. The `.reduce()` function is the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0);`.
+:cookie: This may sound a bit abstract, but once you see an example it wil all makes sense. Consider the array `let ar=["Beat Saber", "Astro Bot Rescue Mission", "Tetris Effect", "Moss", "Falcon Age", "Trover Saves the Universe"]`. If we want to convert all array elements to uppercase, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those strings of more than five characters we use `let arLong = ar.filter(x => x.length > 10)`. The `.reduce()` function is the hardest to wrap one's head around: it works on every element of the array and produces a single output value. For instance, all characters of the array can be computed as follows: `let reducer = (accumulator, currentValue) => accumulator + currentValue.length; let totalChars = ar.reduce(reducer,0);`.
 
 :bug: Throughout this and the coming lectures we repeatedly point to the browser's web console as a quick way to explore JavaScript. [In the words of Kyle Simpson](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#its-not-always-js):
 
@@ -674,9 +674,9 @@ g1.getID();
 g1.setID(2);
 var g2 = new Game(3);
 
-//🚩 ES6: object destructuring allows us to extract several object properties at once instead of one-by-one
+//:cookie: ES6: object destructuring allows us to extract several object properties at once instead of one-by-one
 var {totalPoints,winner,difficulty} = g1;
-//🚩 ES6: template literals to make string concatenations more readable
+//:cookie: ES6: template literals to make string concatenations more readable
 console.log(`This game reached ${totalPoints} points, was won by ${winner} and had difficulty ${diff}.`);
 ```
 
@@ -1199,7 +1199,7 @@ Let's look at how this works in practice :point_down: :
               //Concatenating strings (before ES6)
               //li.innerHTML = 'List element ' + (ul.childElementCount+1) +' '; 
 
-              //🚩 ES6: template literals to concatenate strings
+              //:cookie: ES6: template literals to concatenate strings
               li.innerHTML = `List element ${ul.childElementCount+1}`; 
               ul.appendChild(li);
             }

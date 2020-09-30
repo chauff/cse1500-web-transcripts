@@ -282,7 +282,7 @@ An alternative service is [webhint.io](https://webhint.io/) (originally coming o
 
 <sup>Screenshot taken September 2, 2020.</sup>
 
-🚩 In both examples, we see that web performance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
+:cookie: In both examples, we see that web performance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
 
 :bug: Beyond online tools, browser extensions such as [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) exist as well that allow you to gain more specific insights into your application's performance.
 

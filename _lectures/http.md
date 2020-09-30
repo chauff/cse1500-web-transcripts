@@ -174,7 +174,7 @@ Many network protocols exist, to us only three are of importance:
 
 HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it! 
 
-🚩 Note, that this setup will change in HTTP/3, which resides on top of UDP, a protocol without guarantees of message delivery and packet order. HTTP/3 itself will be responsible to ensure reliable transmissions in a highly efficient manner (which in turn will lead to speedups over HTTP/1.1 and HTTP/2).
+:cookie: Note, that this setup will change in HTTP/3, which resides on top of UDP, a protocol without guarantees of message delivery and packet order. HTTP/3 itself will be responsible to ensure reliable transmissions in a highly efficient manner (which in turn will lead to speedups over HTTP/1.1 and HTTP/2).
 
 ### :bangbang: Activity
 
@@ -220,7 +220,7 @@ The first line indicates what this message is about. In this case the keyword `G
 
 In the last line, you can see that in this request, a cookie is sent from the client to server.
 
-🚩HTTP/2 (and subsequent versions) have switched to a binary protocol.
+:cookie: HTTP/2 (and subsequent versions) have switched to a binary protocol.
 
 ### HTTP response message
 
@@ -373,7 +373,7 @@ This is where the `Expires` header field comes in. It indicates to a web cache w
 
 ![Web cache](../img/http-webcache.png)
 
-🚩Nowadays, web caching are just part of the functionality a so-called **Content Delivery Network (CDN)**, i.e. a network of geographically distributed servers which deliver fast access to web resources, provides. 
+:cookie: Nowadays, web caching are just part of the functionality a so-called **Content Delivery Network (CDN)**, i.e. a network of geographically distributed servers which deliver fast access to web resources, provides. 
 
 ### Header field Cache-Control
 
@@ -387,7 +387,7 @@ Here is an example of the header settings of [https://www.theguardian.com/intern
 
 <sup>Response header (partially shown). Firefox, August 30, 2020. </sup>
 
-Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that `Cache-Control` directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture (🚩for more information, [take a look at the `Cache-Control` MDN page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)).
+Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that `Cache-Control` directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture (:cookie: for more information, [take a look at the `Cache-Control` MDN page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)).
 
 Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any type of cache can store a copy of the response. A browser's HTTP cache is useful as it reduces the load on the origin server; for instance, a click on the browser's back button does not typically result in a new HTTP request, instead the cached resource is served. 
 
@@ -544,7 +544,7 @@ function as a teletype at the serving host.
 
 Telnet **opens a TCP connection to a web server** (this requires a port number, for now just take this information as-is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a web client and all returned data is displayed on the terminal. 
 
-🚩 While telnet is easy to use (as you will see in this activity), **it is not capable of dealing with https** (i.e. **secure** http). Keep this in mind when you are trying this activity with web resources of your own. If you want to practice HTTP requests *over https*, you need to use [openssl](https://www.openssl.org/) instead of telnet.
+:cookie: While telnet is easy to use (as you will see in this activity), **it is not capable of dealing with https** (i.e. **secure** http). Keep this in mind when you are trying this activity with web resources of your own. If you want to practice HTTP requests *over https*, you need to use [openssl](https://www.openssl.org/) instead of telnet.
 
 Ok, back to telnet!
 

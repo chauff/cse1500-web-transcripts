@@ -24,7 +24,7 @@ warning: false
   - [Cookie fields](#cookie-fields)
   - [Cookie field Domain](#cookie-field-domain)
   - [Return to sender ...](#return-to-sender)
-- [🚩 An excursion: writing a Firefox extension](#%f0%9f%9a%a9-an-excursion-writing-a-firefox-extension)
+- [:cookie: An excursion: writing a Firefox extension](#cookie-an-excursion-writing-a-firefox-extension)
 - [:bangbang: A Node.js application](#bangbang-a-nodejs-application)
 - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)
 - [A more pessimistic view on cookies](#a-more-pessimistic-view-on-cookies)
@@ -216,7 +216,7 @@ serverA.admin.wishlist.my_site.nl
 
 If you carefully look at the cookies that are sent in HTTP request/response messages you may notice that HTTP requests only contain name/value pairs (i.e., the data sent from the browser to the server consists only of name/value pairs) while the HTTP responses in addition to name/value pairs contain a variety of cookie fields. The client (in our case the browser) relies on the information in the cookie fields to determine how to store the cookies and when to send them back to the server as part of an HTTP request.
 
-## 🚩 An excursion: writing a Firefox extension
+## :cookie: An excursion: writing a Firefox extension
 
 Let's *customize* our browser now to make it easier for us to see how many cookies our browser has in its cookie storage for each URL we visit. Instead of opening the browser's developer tools every time, we want to see this information right away *whilst* browsing. We want something like this :point_down::
 
