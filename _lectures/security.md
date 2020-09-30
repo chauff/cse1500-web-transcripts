@@ -3,7 +3,7 @@ layout: default
 permalink: /security/
 linkname: Web security
 ordering: 8
-warning: true
+warning: false
 ---
 
 # Web security <!-- omit in toc -->
@@ -23,34 +23,35 @@ warning: true
 - [Most frequent vulnerabilities](#most-frequent-vulnerabilities)
 - [Juice Shop & OWASP](#juice-shop--owasp)
   - [Injection](#injection)
-    - [:bangbang: Injection attack @ Juice Shop](#bangbang-injection-attack--juice-shop)
-    - [How to avoid injection attacks](#how-to-avoid-injection-attacks)
-  - [Broken authentication](#broken-authentication)
     - [:bangbang: Juice Shop](#bangbang-juice-shop)
     - [How to avoid it](#how-to-avoid-it)
-  - [XSS](#xss)
+  - [Broken authentication and session management](#broken-authentication-and-session-management)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-1)
     - [How to avoid it](#how-to-avoid-it-1)
-  - [Improper input validation](#improper-input-validation)
+  - [XSS](#xss)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-2)
     - [How to avoid it](#how-to-avoid-it-2)
-  - [Security misconfiguration](#security-misconfiguration)
+  - [Improper input validation](#improper-input-validation)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-3)
     - [How to avoid it](#how-to-avoid-it-3)
-  - [Sensitive data exposure](#sensitive-data-exposure)
+  - [Security misconfiguration](#security-misconfiguration)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-4)
     - [How to avoid it](#how-to-avoid-it-4)
-  - [Broken access controls](#broken-access-controls)
+  - [Sensitive data exposure](#sensitive-data-exposure)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-5)
     - [How to avoid it](#how-to-avoid-it-5)
-  - [CSRF](#csrf)
-    - [How to avoid it](#how-to-avoid-it-6)
-  - [Insecure components](#insecure-components)
+  - [Broken access controls](#broken-access-controls)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-6)
+    - [How to avoid it](#how-to-avoid-it-6)
+  - [CSRF](#csrf)
+    - [Juice Shop](#juice-shop)
     - [How to avoid it](#how-to-avoid-it-7)
-  - [Unvalidated redirects](#unvalidated-redirects)
+  - [Insecure components](#insecure-components)
     - [:bangbang: Juice Shop](#bangbang-juice-shop-7)
     - [How to avoid it](#how-to-avoid-it-8)
+  - [Unvalidated redirects](#unvalidated-redirects)
+    - [:bangbang: Juice Shop](#bangbang-juice-shop-8)
+    - [How to avoid it](#how-to-avoid-it-9)
 - [Summary](#summary)
 - [Self-check](#self-check)
 
@@ -66,6 +67,7 @@ warning: true
   - [Stanford's Computer and Network Security course](https://cs155.github.io/Spring2019/) has a number of lectures on web security (PDFs: [here](https://cs155.github.io/Spring2019/lectures/08-web.pdf), [here](https://cs155.github.io/Spring2019/lectures/09-web-attacks.pdf) and [here](https://cs155.github.io/Spring2019/lectures/10-SessionMgmt.pdf)).
   - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) provides an extensive list of practical tips, best practices and further readings on the topic.
   - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d).
+  - MDN has a very good [collection of Web security articles](https://developer.mozilla.org/en-US/docs/Web/Security).
 - Relevant scientific publications:
   - Aggarwal, Gaurav, et al. [An Analysis of Private Browsing Modes in Modern Browsers](http://crypto.stanford.edu/~dabo/papers/privatebrowsing.pdf). In Proceedings of the 19th USENIX conference on Security. USENIX Association. 2010.
   - Kieyzun, Adam, et al. [Automatic creation of SQL injection and cross-site scripting attacks](https://dl.acm.org/citation.cfm?id=1555036). 31st international conference on software engineering. IEEE, 2009.
@@ -78,6 +80,8 @@ warning: true
 - Describe the most common security issues in web applications.
 - Describe and implement a number of attacks that can be executed against unsecured code.
 - Implement measures to protect a web application against such attacks.
+
+*Note that cybersecurity is a huge area of work, here at TU Delft we have a special program at the Master level dedicated to cybersecurity. In one lecture we can only give a small glimpse into the issues web developers face when it comes to security issues.*
 
 ## Introduction
 
@@ -256,7 +260,7 @@ let sqlQuery = "select * from users where name = '"+u+"' and password = '" + p +
 - The username `john'--` with any password will lead to the following SQL query `select * from users where name='john'-- and password=''`. Here, the fact that we can add comments within SQL statements is exploited to remove the requirement for the correct password.
 - The username `john` with password `anything' or '1'='1` will lead to the SQL query `select * from users where name='john' and password='anything' or '1'='1'`.
 
-#### :bangbang: Injection attack @ Juice Shop
+#### :bangbang: Juice Shop
 
 We here take up the **Login Bender** attack among all available [Juice Shop injection attacks](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/injection.html). The task is simple: try to login as the user `Bender` via an injection attack.
 
@@ -287,7 +291,7 @@ module.exports = function login () {
 
 :point_up: As we anticipated, the user input is not validated but inserted directly into an SQL query.
 
-#### How to avoid injection attacks
+#### How to avoid it
 
 Injection attacks can be avoided by **validating** user input (e.g., is this input really an email address?) and **sanitizing** it (e.g., by stripping out potential JavaScript/SQL code elements). These steps should occur **on the server-side**, as a malicious user can always circumvent client-side validation/sanitation steps.
 
@@ -298,51 +302,43 @@ var validator = require('validator');
 var isEmail = validator.isEmail('while(1)'); //false
 ```
 
-To avoid SQL injection attacks, [sqlstring](https://www.npmjs.com/package/sqlstring) is a Node.js package that escapes user provided input. Even better, instead of writing SQL queries on the fly (so-called dynamic queries as shown above), use **prepared statements** (e.g. [described here for MySQL](https://dev.mysql.com/doc/refman/8.0/en/sql-prepared-statements.html)) instead.
+To avoid SQL injection attacks, [sqlstring](https://www.npmjs.com/package/sqlstring) is a Node.js package that escapes user provided input. Even better, instead of writing SQL queries on the fly (so-called dynamic queries as shown above), use **prepared statements** as [described here for PostgreSQL](https://www.postgresql.org/docs/current/sql-prepare.html).
 
 
-### Broken authentication
+### Broken authentication and session management
 
-Recall that in order to establish *sessions*, cookies are used ([previous lecture](Lecture-sessions.md)). A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server:
+Quoting OWASP: *"Application functions related to authentication and session management are often implemented incorrectly, allowing attackers to compromise passwords, keys, or session tokens, or to exploit other implementation flaws to assume other users’ identities temporarily or permanently."*.
+
+We here focus in particular on technical weaknesses, though phishing and other social techniques are often employed to guess passwords and answers to security questions (which in turn allow password resets).
+
+[Recall](sessions.md#bangbang-sessions) that in order to establish *sessions*, cookies are used. A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server :point_down::
 
 ![Session](../img/sessions-sessions.png)
 
-An attacker can exploit broken authentication and session management functions to impersonate a user. In the latter case, the attacker only needs to acquire knowledge of a user's session cookie ID. This can happen under several conditions:
+An attacker can exploit broken authentication and session management functions to impersonate a user. In the latter case, the attacker only needs to acquire knowledge of a user's session cookie ID. This information can be revealed to an attacker in several ways:
 
-- Using **URL rewriting** to store session IDs. Imagine the following scenario: a bookshop supports URL rewriting and includes the session ID in the URL, e.g., http://mybookshop.nl/sale/sid=332frew3FF?basket=B342;B109. An authenticated user of the site (who has stored her credit card information on the site) wants to let her friends know about her buying two books. She e-mails the link without realizing that she is giving away her session ID. When her friends use the link they will use her session and are thus able to use her credit card to buy products.
-- **Storing a session ID in a cookie without informing the user**. A user may use a public computer to access a web application that requires authentication. Instead of logging out, the user simply closes the browser tab (this does NOT delete a session cookie!). An attacker uses the same browser and application a few minutes later - the original user will still be authenticated.
-- **Session ID are sent via HTTP** instead of HTTPS. In this case, an attacker can listen to the network traffic and simply read out the session ID. The attacker can then access the application without requiring the user's login/password.
-- **Session IDs are static instead of being rotated**. If session IDs are not regularly changed, they are more easily guessable.
-- **Session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can wait for a user with valuable information to pass by.
+- Via the usage of **URL rewriting** to store session IDs. Imagine the following scenario: a bookshop supports URL rewriting and includes the session ID in the URL, e.g., `http://mybookshop.nl/sale/sid=332frew3FF?basket=B342;B17`. An authenticated user of the shop (who has stored her credit card information in it) wants to let others know about her buying two books. She e-mails the link without realizing that she is giving away her session ID. Anyone with the link can use her session (at least for a short period of time) and is thus able to use her credit card to buy products.
+- When **storing a session ID in a cookie without informing the user**. A user may use a public computer to access a web application that requires authentication. Instead of logging out, the user simply closes the browser tab. Closing the browser tab does NOT delete a session cookie though. An attacker uses the same browser and application a few minutes later - the original user will still be authenticated.
+- When sending **session ID via HTTP** instead of HTTPS. In this case, an attacker can listen to the network traffic and simply read out the session ID. The attacker can then access the application without requiring the user's login/password.
+- When relying on **static session IDs** instead of regularly changing ones. If session IDs are not regularly changed, they are more easily guessable.
+- When **session IDs are predictable.** Once an attacker gains knowledge of how to generate valid session IDs, the attacker can wait for a user with valuable information to pass by.
 
 #### :bangbang: Juice Shop
 
-1. Head to Juice Shop's installation: https://juice-shop.herokuapp.com/#/login.
-2. Use the browser's dev tools to inspect the cookie storage. It allows you to view the cookies stored by the client.
-3. Login with `admin@juice-sh.op` (user) and `admin123` (password). 
-4. In the cookie storage, you will see a new cookie `token` appear.
-5. Copy the value of `token` (which will be a long random looking string). 
-6. *Experiment 1*
-    - Close the browser tab.
-    - Open a new browser tab and access https://juice-shop.herokuapp.com/. No login should be required.
-7. *Experiment 2*
-    - Open a new Incognito/Private window and go to https://juice-shop.herokuapp.com/. 
-    - View the cookie storage. No `token` cookie should be present.
-    - Add a new cookie yourself into the cookie storage: type `token` as `Name` and paste the value of the cookie in `Value`.
-    - Refresh the browser window. You will now be logged in as `admin@juice-sh.op`.
-8. *Experiment 3*
-    - Delete the session cookie `token`.
-    - In a few seconds (or after a tab refresh), a login should be required again.
+Juice Shop's [broken authentication challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-authentication.html) involve a considerable number of web searches to find information about its *users*. They also showcase the issue of weak and default passwords. We here take up the challenge of logging in with the administrator's user credentials without applying an SQL injection. This boils down to guessing the admin's username and password. This is not a completely random exercise, as there default credentials available that are often left unchanged by administrators. Even if not the default, often usernames are guessable and passwords are weak. In the case of Juice Shop, the admin email address is `admin@juice-sh.op` and the login is `admin123`. The very popular GitHub repo [SecLists](https://github.com/danielmiessler/SecLists) contains among others collections of common usernames and common passwords to aid *penetration testers* (i.e. testers evaluating the security of applications) in their work. If an application does not control the maximum number of input attempts in a certain time window (Juice Shop indeed does not), an automated script could be employed to run through all common username/password combinations until a valid username/password combination is found.
 
 #### How to avoid it
 
 - Good authentication and session management is difficult - avoid, if possible, an implementation from scratch.
-- Ensure that the session ID is never sent over the network **unencrypted**.
+- Ensure that the session ID is never sent over the network **unencrypted**. We have already learnt in the previous lecture that the `Secure` flag can be set for a cookie to ensure that.
 - Session IDs should not be visible in URLs.
 - Generate a new session ID on login and **avoid reuse**.
 - Session IDs should have a timeout and be invalidated on the server after the user ends the session.
-- Conduct a sanity check on HTTP header fields (refer, user agent, etc.).
+- Conduct a sanity check on a request's HTTP header fields (referer, user agent, etc.). Valid HTTP requests typically come from a particular set of pages within the web application. From which page a request was made is visible in the [referer](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer) request header field.
 - Ensure that users' login data is stored securely.
+- Do not allow unlimited login attempts to avoid automated scripts trialing common username/password combinations.
+- Disallow users to use known weak passwords.
+- Add two-factor (or more generally multi-factor) authentication if possible: in this manner, even a guessed username/password combination is not sufficient if the signin happens from a device that has never been used before as an additional verification step is required (e.g. a particular token sent to your phone).
 
 ### XSS
 
@@ -374,27 +370,32 @@ http://myforum.nl/search?q=<script>…
 
 #### :bangbang: Juice Shop
 
-1. Head to Juice Shop's installation at https://juice-shop.herokuapp.com/#/. 
-2. Login as `admin@juice-sh.op` (user) and `admin123` (password).
-3. Go to the profile page at https://juice-shop.herokuapp.com/profile.
-4. **Note:** Since this is a globally accessible website, chances are that someone has already attempted to do a stored-XSS attack. Hence, you *might* see an alert dialog when you go to the `/profile` page.
-5. In the Username field, type `<script>alert('Hello World!')</script>` and click <kbd>Set Username</kbd>. 
-6. Typically, this should be enough for an XSS attack. However, Juice Shop has used some defenses. 
-7. You will see under the profile picture, the username `lert('Hello World!')`, while in the input field `lert('Hello World!')</script>` remains. The server does some kind of input sanitization (or cleanup), so the attack does not succeed. However, if you look closely, the sanitization is not done properly as some part of the attack code remains. 
-8. As you will see next, it is easy to bypass server defenses if they are not configured properly. Apparently, the sanitizer looks for this pattern: `<(.)*>.` (starts with `<` sign, anything can be placed between `<>`, and one character after it) and removes the string found. So the attack code becomes ineffective.
-9. Typing `<<x>xscript>alert('Hello World!')</script>` bypasses the sanitizer as it effectively removes `<x>x` and turns the username into `<script>alert('Hello World!')</script>`, which is valid JavaScript code.
-10. Now, when you go back to the https://juice-shop.herokuapp.com/profile page, the alert dialogue pops up again as the code has been stored on the server. This is thus a *Stored XSS attack*.
+Among [Juice Shop's XSS challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/xss.html) we take a look at a reflected XSS attack.
+
+Head to your Juice Shop installation and look for the search bar. Try to search for different things (`juice`, `apple`, `pear`). You will see that the original query `XX` is always shown at the top of the search results as `Search Results - XX`. Let's see whether the search result input is sufficiently sanitized or whether it allows us to perform a reflected XSS attack. 
+
+- Try to search for `alert('hello?')` - what happens? Does an alert window pop up? Spoiler: no. So basic input sanitation is happening. 
+- What about `<IMG SRC=javascript:alert('hello?');>`? Spoiler: besides a little broken image icon not much is happening. 
+- How about `<iframe src=javascript:alert('hello?');></iframe>`? Spoiler: this one is successful, you should see a little popup! Take a look at the URL: `http://localhost:3000/#/search?q=%3Ciframe%20src%3Djavascript:alert('hello%3F');%3E%3C%2Fiframe%3E` - it is not obvious that this will lead to some JavaScript execution to the untrained eye (not to mention that when posted to services such as Twitter or Facebook the URL will be shortened and unrecognizable).
+
+Of course, such a popup does not really look malicious, in the end we just say hello. However, a malicious user will probably put other things beside a benign popup into the `<iframe>`.
 
 #### How to avoid it
 
-As before, **validation** of user input is vital. A server that generates output based on user data should **escape** it (e.g., escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
+As before, **validation** of user input is vital. Importantly, input validation has to occur on the client **and** server-side. A malicious user can bypass client-side validation by using a tool like `curl` to create HTTP requests instead of using the browser or by manipulating the requests inside the browser. Thus, client-side validation only helps actual users of the application, it offers no defense against an XSS attack.
+
+A server that generates output based on user data should **escape** it (e.g., escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
 [DOMPurify](https://www.npmjs.com/package/dompurify) is a good tool for sanitizing HTML code and therefore you can use it to protect your web application from XSS attacks. 
+
 Here is a code example of DOMPurify :point_down::
 ```javascript
-var dirty = '<script> alert("I am dangerous"); </script> Hi';
-var clean = DOMPurify.sanitize(dirty);
+let dirty = '<script> alert("I am dangerous"); </script> Hi';
+let clean = DOMPurify.sanitize(dirty);
 ```
-After execution, the variable `clean` will contain only **"Hi"**, DOMPurify will remove the `<script>` tag to prevent an XSS attack. A demo of DOMPurify is available online [here]((https://cure53.de/purify).
+
+After execution, the variable `clean` will contain only **"Hi"**, DOMPurify will remove the `<script>` tag to prevent an XSS attack. 
+
+We have shown here only a small sample of input that is usually employed to evaluate an application's XSS defenses. An elaborate list of inputs that need to be included in any such testing can be found [at OWASP](https://owasp.org/www-community/xss-filter-evasion-cheatsheet).
 
 ### Improper input validation
 
@@ -403,33 +404,28 @@ When user input is not checked or incorrectly validated, the web application may
 Improper input validation is often the root cause of other vulnerabilities, e.g., [injection](#injection) and [XSS](#xss) attacks.
 
 #### :bangbang: Juice Shop
-1. Head over to Juice Shop's installation and attempt to register as a new user: https://tud-juice-shop.herokuapp.com/#/register.
-2. Fill the registration form. You will observe that the `Repeat Password` field gives an error until the passwords are a complete match.
-3. Now, go back to the `Password` field and change it.
-4. You will see that the `Repeat Password` does not raise any error, and you can register with mismatching passwords. 
+
+Of the [input validation challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/improper-input-validation.html) we focus on the registration with mismatching passwords.
+
+Head over to your Juice Shop installation and register a new user (you find the link to the registration form on the login form). Fill in the registration form. You will observe that the `Repeat Password` field shows an error until the two passwords are a match. Now, go back to the `Password` field and change its content. You should now not be able to register due to the mismatch, but you can! The mismatched passwords do not raise an error during the user registration process.
 
 #### How to avoid it
-- User input should always be validated (e.g., is this really an email?, do the passwords match?, are the conditions met for enabling certain functionality?)
-- User input should always be sanitized (e.g., by stripping out potential JavaScript code elements).
-- A server that generates output based on user data should escape it (e.g., escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
-- These steps **should** occur on the server-side, as a malicious user can always circumvent client-side validation/sanitation steps.
+
+As stated already a few times, input validation on the client **and** server-side is vital to avoid these vulnerabilities.
 
 ### Security misconfiguration
 
-Web application engineering requires extensive knowledge of system administration and the entire web development stack. Issues can arise everywhere (web server, database, application framework, operating system, etc.):
+Web application engineering requires extensive knowledge of system administration and the entire web development stack. Security vulnerabilities can arise in all aspects of the application: the web server, the database, the application framework, the sever's operating system, etc. Common issues are the following:
 
 - Default accounts and passwords remain set.
 - Resources may be publicly accessible that should not be.
-- The root user can log in via SSH (this allows remote access).
+- The root user can log in via SSH and thus allowing remote access to privileged accounts.
 - Security patches are not applied on time.
-- Error handling is not done properly causing the application to crash abruptly.
+- Error handling is not done properly causing the application to crash.
 
 #### :bangbang: Juice Shop
-1. Go to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/#/
-2. There are multiple security misconfigurations in Juice Shop:
-    - You can access the admin account with username `admin@juice-sh.op` and an easily guessable password: `admin123`.
-    - Visit https://tud-juice-shop.herokuapp.com/rest/qwertz to see an error that was not properly handled by the developers.
-    - Visit https://tud-juice-shop.herokuapp.com/profile while *not being logged in* to see an illegal activity error. The proper way to deal with such errors is to show a customized error message, otherwise a lot of unnecessary and sensitive information also gets published.
+
+Among the [security misconfiguration challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/security-misconfiguration.html) we take a look at error handling: the task here is to find a URL that provides us with information about the server (essentially a 5XX status message). While URLs (we assume a local installation of Juice Shop) such as `http://localhost:3000/fdsfs` are handled gracefully, the REST API endpoints have issues. The URL `http://localhost:3000/rest/` will return a status code 500 with important information bout the Express version that is being run on the server-side. This information in turn can be used by a malicious user to track down security vulnerabilities of this particular Express version. The proper way to deal with such server-side errors is to show a customized error message that does not reveal unnecessary information about the server.
 
 #### How to avoid it
 
@@ -441,70 +437,69 @@ Rely on automated scanner tools to check web servers for the most common types o
 
 ### Sensitive data exposure
 
-If a web application does not use HTTPS for all authenticated routes (HTTPS is needed to protect the session cookie), a malicious user can monitor the network traffic and steal the user's session cookie.
+If a web application does not use HTTPS for all authenticated routes (recall that HTTPS is needed to protect the session cookie), a malicious user can monitor the network traffic and steal the user's session cookie.
 
 If a web application relies on outdated encryption strategies to secure sensitive data, it is just a matter of time until the encryption is broken.
 
-In addition, if sensitive documents can be accessed without authorization, or user data is backed up but is still placed on the server, all attackers need to do is look for such forgotten resources. 
+In addition, if sensitive documents can be accessed without authorization a  malicious user can run scans of likely end points that are not securied.
 
 #### :bangbang: Juice Shop
 
-1. Head over to Juice Shop's installation at https://tud-juice-shop.herokuapp.com.
-2. Access the side menu and click on <kbd>About Us</kbd>.
-3. Follow the link `Check out our boring terms of use if you are interested in such lame stuff`.
-4. You will see that the page is served by FTP (File Transfer Protocol). FTP is used for transmitting files between computers connected to the Internet. A typical user must be logged in to the FTP server in case it contains sensitive files. However, in this case, Anonymous FTP is used so anyone can access the files.
-5. Let's go one level up to see what files are available on this server using https://juice-shop.herokuapp.com/ftp/.
-6. `acquisitions.md` is a confidential document stating Juice Shop's plans for the coming years, which is readily available for anyone to access.
+Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/sensitive-data-exposure.html) we here cover the *Confidential Documen* task which is simple: access a confidential document.
+
+1. Head over to your Juice Shop installation, access the top-left side menu and click on the *About Us* link.
+2. Take a closer link at the hyperlink `Check out our boring terms of use if you are interested in such lame stuff`. It is a relative link `ftp/legal.md`. 
+3. Let's see whether there is something else in this `ftp` directory; all we have to do is slightly change our URL to `http://localhost:3000/ftp` (again, assuming a local installation of Juice Shop). Spoiler: we can access this directory (which is a huge security issue) and more importantly, we can view the confidential document `acquisitions.md` which describes Juice Shop's plans for the coming years.
 
 #### How to avoid it
 
 - All sensitive data should be encrypted across the network and when stored.
-- Only store the necessary sensitive data and discard it as soon as possible (e.g., credit card numbers, backups).
+- Only store necessary sensitive data and discard it as soon as possible (e.g., credit card numbers, backups).
 - Use strong encryption algorithms (a constantly changing target).
-- Disable autocompletion on HTML forms collecting sensitive data.
+- [Disable autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) of HTML forms collecting sensitive data.
 - Disable caching for pages containing sensitive data.
 
 ### Broken access controls
 
 A malicious user, who is authorized to access a web application (e.g., a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g., from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
-Web applications often make use of *Direct Object References* when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](Lecture-node2.md):
+Web applications often make use of *Direct Object References* when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](node2.md) :point_down::
 
 ```javascript
-var todoTypes = {
-    important: ["TI1506","OOP","Calculus"],
-    urgent: ["Dentist","Hotel booking"],
-    unimportant: ["Groceries"],
+ var wishlistPriorities = {
+    high: ["Wingspan","Settlers of Catan","Azul"],
+    medium: ["Munchkin"],
+    low: ["Uno", "Scrabble"]
 };
 
-app.get('/todos/:type', function (req, res, next) {
-    var todos = todoTypes[req.params.type];
-    if (!todos) {
-        return next(); // will eventually fall through to 404
+app.get('/wishlist/:priority', function (req, res, next) {
+    let list = wishlistPriorities[req.params.priority];
+    if (!list) {
+        return next();
     }
-    res.send(todos);
+    res.send(list);
 });
 ```
 
-Here :point_up:, we use the routing parameter `:type` as key of the `todoTypes` object. Often, applications do not verify whether a user requesting a particular route is authorized to access the target object. This leads to so-called *insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
+Here :point_up:, we use the routing parameter `:priority` as property name of the `wishlistPriorities` object. Applications that do not verify whether a user requesting a particular route is authorized to access the route face security issues. In our concrete code example, this leads to so-called *insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
 
-Consider a user who accesses her list of todos using the following URL `http://mytodos.nl/todos?id=234`. Nothing stops the user from also trying, e.g., `http://mytodos.nl/todos?id=2425353` or `http://mytodos.nl/todos?id=1`. If the id values are insecure direct object references, the user can view other users' to-do lists in this manner.
+Consider a user who accesses her wishlist using the following URL `http://mywishlist.nl/wishlist?id=234`. Nothing stops the user from also trying, e.g., `http://mywishlist.nl/wishlist?id=2425353` or `http://mywishlist.nl/wishlist?id==1`. If the id values are insecure direct object references, the user can view other users' wishlists in this manner.
 
 #### :bangbang: Juice Shop
 
-1. Go to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/#/.
-Login with `jim@juice-sh.op` (user) and `ncc-1701` (password). This is a typical user account. 
-3. Add some items to Jim's basket.
-4. Next, go to https://tud-juice-shop.herokuapp.com/#/basket where you will see the items placed in basket.
-5. Open the browser's dev tools and look into the *Session Storage*. 
-6. You will see a token with name `bid` and the value `2`. 
-7. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, we are here dealing a *horizontal privilege escalation*.
+Of the [broken access control challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-access-control.html) we cover the *View Basket* challenge: view another user's shopping basket.
+
+1. Go to your Juice Shop and login as `Bender`.
+2. Add a few items to your shopping basket and view the basket at `http://localhost:3000/#/basket` (assuming a local installation).
+4. Open the browser's dev tools and look into the *Session Storage*. 
+5. You will find a key/value pair with key `bid` and a particular numerical value. 
+6. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, we are here dealing with a *horizontal privilege escalation*.
 
 #### How to avoid it
 
-- Use of functions should always include an authorization subroutine.
 - Avoid the use of direct object references (indirect is better).
 - Avoid exposing object IDs, keys and filenames to users.
+- All routes should include an authorization subroutine.
 
 ### CSRF
 
@@ -512,13 +507,17 @@ CSRF (:speaker: *sea-surf*) stands for **Cross-Site Request Forgery**.
 
 In the words of OWASP: *"An attacker creates forged HTTP requests and tricks a victim into submitting them via image tags, XSS, or numerous other techniques. If the user is authenticated, the attack succeeds."*
 
-Here is an example scenario: imagine a web application that allows users to transfer funds from their account to other accounts: `http://mygame.nl/transferFunds?amount=100&to=342432` - the URL contains the amount and which account to send it to. The victim is already authenticated. An attacker constructs a request to transfer funds to her own account and embeds it in an image request stored on a site under her control:
+Here is an example scenario: imagine a web application that allows users to transfer funds from their account to another account via a URL such as `http://mygame.nl/transferFunds?amount=100&to=342432` - the URL contains the amount and which account to send the funds to. The victim is already authenticated. An attacker constructs a request to transfer funds to her own account and embeds it in an image request stored on a site under her control :point_down::
 
 ```html
 <img src="http://mygame.nl/transferFunds?amount=1000&to=666" width="0" height="0" />
 ```
 
 If the victim accesses the website that is under the attacker's control (e.g., because the attacker sent the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place if the web application the user is authenticated to does not defend against a CSRF attack. 
+
+#### Juice Shop
+
+There is no specific challenge on Juice Shop that showcases the CSRF attack as it requires another application.
 
 #### How to avoid it
 
@@ -542,48 +541,64 @@ Not only the application itself needs to be kept up-to-date, the server's operat
 In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vulnerability) was discovered in many open source archiving libraries. The problem arises from missing validation of archives while decompressing. As a result, any compressed archive containing file names with relative paths (e.g., `../file.txt`) went unchecked. This means that during deompression each of those files was placed at its relative address which can be outside the archive directory. Attackers can use this vulnerability to move their own versions of critical libraries to the `/root` folder.
 
 #### :bangbang: Juice Shop
-1. Create a file called `legal.md` containing string `"Hello World!"`. 
-2. Compress it into an archive with name `zipslip.zip`.
-3. Open the archive (e.g., using 7Zip) and rename `legal.md` to `../../ftp/legal.md`. Typically operating systems do nt allow file names containing `/ or \`, but no such rule applies to files present inside an archive.
-4. Now, head over to Juice Shop's installation at https://tud-juice-shop.herokuapp.com/.
-5. Log in as `jim@juice-sh.op` (user) and `ncc-1701` (password).
-6. Go to the complaints page at https://tud-juice-shop.herokuapp.com/#/complain.
-7. Write your complaint, attach `zipslip.zip`, and click <kbd>Submit</kbd>.
-8. Now, if you visit https://juice-shop.herokuapp.com/ftp/legal.md, you will see the contents of your version of `legal.md`.
+
+Among the [vulnerable components challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/vulnerable-components.html) we cover the *Vulnerable Library*: inform the shop about a vulnerable library it is using.
+
+There are many auditing tools available, a basic form of security auditing offers [`npm audit`](https://docs.npmjs.com/cli/audit), which scans all packages that depend on the application for known security issues. We first need to clone Juice Shop's GitHub repo, generate its `package-lock.json` file (which provides precise information on the required packages' dependencies) and finally run the security audit. Taken together the commands look as follows (starting with the creation of a temporary directory) :point_down::
+
+```
+→ mkdir tmpDir
+→ cd tmpDir
+→ git clone https://github.com/bkimminich/juice-shop.git
+→ cd juice-shop
+→ npm i --package-lock-only
+→ npm audit
+```
+
+Within seconds we know that several critical vulnerabilities exist, in which packages they exist, and what type of vulnerability they enable. Often, the fix seems easy: use a more recent version of an npm package. However, in practice updating an npm package can lead to a host of additional coding work due to version compatabilities. 
+
+Besides `npm audit`, commercial services such as [Snyk](https://snyk.io/) and exist to aid developers in keeping their libraries and package up to date. 
 
 #### How to avoid it
 
 - Always use latest versions of libraries.
 - Keep a look out for [potential vulnerabiltiies](https://www.cvedetails.com/) in open source software, and patch them as soon as possible.
+- Use available tools such as `npm audit`, especially when relying on many third-party packages. It is important to realize what security isuses those packages have.
 
 ### Unvalidated redirects
 
 Let's cite OWASP one last time: *"An attacker links to an unvalidated redirect and tricks victims into clicking it. Victims are more likely to click on it, since the link is to a valid site."*
 
-Here is an example scenario: imagine a web application that includes a route called `redirect`. That route takes a URL as parameter and redirects to the URL. Once an attacker finds a route that enables such redirects, the attacker creates a malicious URL that redirects users to her own site for phishing, e.g.,
+Here is an example scenario: imagine a web application that includes a route called `redirect`. That route takes a URL as parameter and redirects to that URL. Once an attacker finds a route that enables such redirects, the attacker creates a malicious URL that redirects users to her own site for phishing, for example :point_down::
 
-`http://www.mygame.nl/redirect?url=www.malicious-url.com`. 
+```
+http://www.mygame.nl/redirect?url=www.malicious-url.com
+```
 
-The user, when seeing this URL in an email or forum, might just inspect the initial part of the URL, trusts it and subsequently clicks the link as it appears to be leading to `mygame.nl`. Instead of `mygame.nl` it leads to `www.malicious-url.com` which the attacker has under control. If the user does not check the address bar anymore, she will remain under the belief to be on `mygame.nl` - and if she is asked to re-enter her credit card information, she may just do that.
+The user, when seeing this URL :point_up: in an email or forum, might just inspect the initial part of the URL, trusts it and subsequently click the link as it appears to be leading to the domain `mygame.nl`. Instead of `mygame.nl` it leads to `www.malicious-url.com` which the attacker controls. If the user does not check the address bar anymore, she will remain under the belief to be on `mygame.nl` - and if she is asked to re-enter her credit card information, she may just do that.
 
 #### :bangbang: Juice Shop
-1. Head over to Juice Shop's installation at https://juice-shop.herokuapp.com/
-2. Log in as `jim@juice-sh.op` (user) and `ncc-1701` (password).
-3. Go to payment options at https://juice-shop.herokuapp.com/#/payment/shop. You can also land here by following the procedure for *checking out*.
-4. Observe that you cannot pay using crypto currency. This used to be a feature but Juice Shop's developers decided to remove it since it was not profitable. However, they were not very good at removing this functionality.
-5. Use the browser's dev tools to view the contents of `main-es2015.js`. 
-6. Let's see if Juice Shop is vulnerable to unvalidated redirects. Search for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash`, `Ether`.
-7. Hence, if you were to click on <kbd>Pay with Bitcoin</kbd> (*now unavailable*), you will be redirected to Blockchain's website without any warning: https://tud-juice-shop.herokuapp.com/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm. The attacker can just as easily add her own malicious link to the URL after `redirect?to=`.
+
+
+Of the [unvalidated redirects challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/unvalidated-redirects.html) we cover the *Outdated Whitelist* challenge: attempt to redirect to a cypto currency address which is no longer included in the shop.
+
+1. Head over to your Juice Shop installation and log in as any user.
+2. Check out the payment options at `http://localhost:3000/#/payment/shop` (assuming a local installation). You can also land here by following the procedure for *checking out*.
+3. Observe that you cannot pay using a crypto currency. We know though that this used to be a feature in Juice Shop. Lets see whether we can still find it in the source code.
+4. Use the browser's dev tools and open the Debugger tab. It should show you a list of JavaScript files that our application requires. View the contents of `main-es2018.js`. 
+5. Search in `main-es2018.js` for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash` and `Ether`. If you were to click on <kbd>Pay with Bitcoin</kbd> (*now unavailable*), you would be redirected to Blockchain's website without any warning. Note that here some protection is enabled: while a redirect to those three cryptocurrency URLs is possible, other redirects yield an *406 Error: Unrecognized target URL for redirect*.
 
 #### How to avoid it
 
-This attack can be avoided by disallowing redirects and forwards in a web application. When redirects have to be included, users should not be allowed to redirect via URL parameters (as was possible in the phishing example above). The user-provided redirects need to be validated (does the user have access rights to the target page?).
+This attack can be avoided by disallowing redirects and forwards in a web application. When redirects have to be included, users should not be allowed to redirect via URL parameters. The user-provided redirects need to be validated: does the user have access rights to the target page?
 
 ## Summary
 
-Overall, as we have just seen, web applications offer many angles of attack. Securing a web application requires extensive knowledge in different areas. When securing a web application, start with defending against the most frequent vulnerabilities.
+Overall, as we have just seen, web applications offer many angles of attack. Securing a web application requires extensive knowledge in different areas. When securing a web application, start with defending against the most frequent vulnerabilities. Use well-known auditing tools to fix issues. Keep your application up to date as much as possible. Look into tools such as [Dependabot](https://dependabot.com/) that create automatic pull requests to keep your application's dependencies up to date.
 
 Keep in mind to sanitize and validate.
+
+As a final note, the tools and libraries we have introduced in this lecture, are only a small sample of the many, many options out there. Depending on the programming language and frameworks you prefer, other tools may be a better fit. 
 
 ## Self-check
 
