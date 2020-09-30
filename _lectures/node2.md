@@ -12,7 +12,7 @@ warning: false
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [Organization and reusability of Node.js code](#organization-and-reusability-of-nodejs-code)
   - [A file-based module system](#a-file-based-module-system)
   - [:bangbang: A first module example](#bangbang-a-first-module-example)
@@ -50,7 +50,7 @@ warning: false
   - Fard, Amin Milani, and Ali Mesbah. [JSNose: Detecting javascript code smells](https://www.computer.org/csdl/proceedings-article/2013/scam/12OmNylsZKu/12OmNwHhoWN). 13th International Working Conference on Source Code Analysis and Manipulation (SCAM). IEEE, 2013.
   - Nasehi, Seyed Mehdi, et al. [What makes a good code example?: A study of programming Q&A in StackOverflow](https://pdfs.semanticscholar.org/8b8d/4c0284f26d5e4ce08c85f98fd453762ab26d.pdf). 28th IEEE International Conference on Software Maintenance (ICSM). IEEE, 2012.
 
-## Learning goals
+## :scroll: Learning goals
 
 - Organize Node.js code into modules.
 - Understand and employ the concept of *middleware*.

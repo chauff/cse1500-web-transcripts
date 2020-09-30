@@ -12,7 +12,7 @@ warning: false
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [Introduction](#introduction)
 - [Threat examples](#threat-examples)
   - [Defacement](#defacement)
@@ -76,7 +76,7 @@ warning: false
   - Acar, Gunes, et al. [The web never forgets: Persistent tracking mechanisms in the wild](https://www.ftc.gov/system/files/documents/public_comments/2015/10/00064-98109.pdf). Proceedings of the ACM SIGSAC Conference on Computer and Communications Security. 2014.
   - Zimmermann, Markus, et al. [Small world with high risks: A study of security threats in the npm ecosystem](https://www.usenix.org/system/files/sec19-zimmermann.pdf). 28th USENIX Security Symposium. 2019.
 
-## Learning goals
+## :scroll: Learning goals
 
 - Describe the most common security issues in web applications.
 - Describe and implement a number of attacks that can be executed against unsecured code.

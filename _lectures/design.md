@@ -12,7 +12,7 @@ warning: false
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [Web sites vs. web applications vs. the web as a platform](#web-sites-vs-web-applications-vs-the-web-as-a-platform)
 - [Cross-platform applications](#cross-platform-applications)
 - [Web design basics](#web-design-basics)
@@ -51,7 +51,7 @@ warning: false
   
 
 
-## Learning goals
+## :scroll: Learning goals
 
 - Apply web design principles during the design stage of a web app.
 - Explain the ideas behind usability testing and employ it.

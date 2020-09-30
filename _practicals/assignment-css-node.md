@@ -50,11 +50,11 @@ As you might have already guessed, your CSS should reside in `myapp/public/style
 
 ### 1.1)
 
-First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 4. You can deviate from your initial design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties. Your code must include **at least** one instance of each of the following:
+First, work on your **splash screen** and style the page with CSS according to the design you produced in the previous assignment. You can deviate from your initial design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties. Your code must include **at least** one instance of each of the following:
 
 - pseudo-classes `:hover` and `:active`;
 - pseudo-elements `::after` and `::before`;
-- employ both `display:grid` and `position:absolute` at least once;
+- employ both `display:grid` and `position:absolute`;
 - include at least one CSS animation.
 
 👉 Hints:
@@ -63,6 +63,7 @@ First, work on your **splash screen** and style the page with CSS according to t
 - If you are looking at [CSS examples from CodePen](https://codepen.io/tag/css/#) or similar platforms for inspiration, be aware of the fact that CSS extensions such as [Sass](https://sass-lang.com/) exist. Do **not** use those, in this course we make use of *plain CSS*.
 - If you are unsure about what combination of colors to use for your game, take a look at [https://www.happyhues.co/](https://www.happyhues.co/) for inspiration.
 - If you are in need of icons for your game (dice, chess figures, etc.) take a look at [https://thenounproject.com](https://thenounproject.com).
+- If you want to center text vertically and horizontally within an element `el`, you can use the following CSS snippet to achieve this effect: `el { display: flex;  justify-content: center; align-items: center;}`. We do not introduce the [flexbox layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) in the lecture as there is only so much we can cover. There is thus no need to use it. If you want to center some text though (which before the introduction of flexbox was a real pain!), this snippet will make it easy.
 
 
 ### 1.2)

@@ -13,7 +13,7 @@ warning: true
 ## Table of Contents <!-- omit in toc -->
 
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [A first demo](#a-first-demo)
 - [A word of warning](#a-word-of-warning)
 - [A bit of history](#a-bit-of-history)
@@ -74,7 +74,7 @@ warning: true
   - Meyerovich, Leo A., and Rastislav Bodik. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763). Proceedings of the 19th international conference on WWW. 2010.
   - Panchekha, Pavel, and Emina Torlak. [Automated reasoning for web page layout](https://doi.org/10.1145/2983990.2984010). Proceedings of the 2016 ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications. 2016.
 
-## Learning goals
+## :scroll: Learning goals
 
 - Position and style HTML elements according to a given design of a web application.
 - Employ pseudo-classes and pseudo-elements.

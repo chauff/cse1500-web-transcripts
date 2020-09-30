@@ -14,7 +14,7 @@ warning: false
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [Takeaways of the required readings](#takeaways-of-the-required-readings)
 - [JavaScript in context](#javascript-in-context)
 - [Scripting overview](#scripting-overview)
@@ -79,7 +79,7 @@ warning: false
   - Jangda, Abhinav, et al. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
   - Chaqfeh, Moumena, et al. [JSCleaner: De-Cluttering Mobile Webpages Through JavaScript Cleanup](https://doi.org/10.1145/3366423.3380157). Proceedings of The Web Conference. 2020.
 
-## Learning goals
+## :scroll: Learning goals
 
 - Write valid JavaScript code for the browser (variables, functions, conditionals, objects).
 - Employ JavaScript design patterns.

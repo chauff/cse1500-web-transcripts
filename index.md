@@ -7,16 +7,19 @@ warning: false
 Web technology course information <!-- omit in toc -->
 ==
 
-CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/).
+<img align="right" width="150px" src="https://chauff.github.io/img/og_claudia.png">
+
+CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/). 
+
+The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquiries about the course content, exams and so on should be emailed to `cse1500-ewi@tudelft.nl` - this email reaches all responsible course instructors. If you have questions specifically about the web technology part of the course, do not forget to add *[web]* to your email subject to reach Claudia Hauff. Questions regarding your performance or grades need to come from your TU Delft email address.
 
 This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in your browser's localStorage: this means that **no data (highlights/notes) leaves your machine**. Be aware though that all this data is deleted when you clear your browser's history/cookies/storage!
 
 We cover the following languages: HTTP, HTML, CSS as well as JavaScript on the client- and server-side. Our *web stack* or web application stack, i.e. the software setup we use to implement web applications, is rather minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
 
-In the five weeks of the web technology lectures we can only cover the web programming fundamentals (and thus chose a small application stack). If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
+In the five weeks of the web technology lectures we can only cover the web programming fundamentals (and thus chose a small application stack). If you want to get a comprehensive overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
-- [Web technology instructor](#web-technology-instructor)
 - [Recommended book :closed_book:](#recommended-book-closedbook)
 - [Tooling](#tooling)
   - [Recommended](#recommended)
@@ -28,10 +31,6 @@ In the five weeks of the web technology lectures we can only cover the web progr
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [University courses with a web focus elsewhere](#university-courses-with-a-web-focus-elsewhere)
-
-## Web technology instructor
-
-The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquires about the course content, exams and so on should be emailed to `cse1500-ewi@tudelft.nl`. 
 
 ## Recommended book :closed_book:
 

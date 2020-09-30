@@ -12,7 +12,7 @@ warning: false
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [Recall the HTTP lecture](#recall-the-http-lecture)
 - [Introduction to cookies](#introduction-to-cookies)
 - [:bug: Viewing cookies in the browser](#bug-viewing-cookies-in-the-browser)
@@ -44,7 +44,7 @@ warning: false
 - Required readings: *none*
 - Recommended activities: *none*
 - Recommended readings:
-  - Chapter 9 of the [Web Development with Node & Express book](https://www.oreilly.com/library/view/web-development-with/9781492053507/)
+  - Chapters 9 and 18 (here, only the section on *Authentication*, starting on page 234) of the [Web Development with Node & Express book](https://www.oreilly.com/library/view/web-development-with/9781492053507/).
   - Instead of cookies to recognize a user, we can also resort to the more stealthy version of [browser fingerprinting](https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/).
   - :tv: [Storage on the web](https://www.youtube.com/watch?v=NNuTV-gjlZQ): how to store **large amounts** of data on the modern browser.
   - An elaborate [thread of tweets](https://threadreaderapp.com/thread/1199817699116736512.html) discusses privacy implications of 1st/3rd party cookies and tracking of users through them.
@@ -54,7 +54,7 @@ warning: false
   - Franken, Gertjan, Tom Van Goethem, and Wouter Joosen. [Who left open the cookie jar? a comprehensive evaluation of third-party cookie policies](https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-franken.pdf). In Proceedings of the 27th USENIX Security Symposium, pp. 151-168. 2018.
 
 
-## Learning goals
+## :scroll: Learning goals
 
 - Decide for a given usage scenario whether cookies or sessions are suitable.
 - Explain and implement cookie usage.

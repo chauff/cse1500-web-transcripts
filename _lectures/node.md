@@ -12,7 +12,7 @@ warning: false
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [Introduction to Node.js](#introduction-to-nodejs)
   - [Node.js vs. client-side JavaScript](#nodejs-vs-client-side-javascript)
   - [Event-driven and non-blocking](#event-driven-and-non-blocking)
@@ -48,7 +48,7 @@ warning: false
   - Sun, Haiyang, et al. [Efficient dynamic analysis for Node.js](https://doi.org/10.1145/3178372.3179527). Proceedings of the 27th International Conference on Compiler Construction. 2018.
   - Nielsen, Benjamin Barslev, Behnaz Hassanshahi, and François Gauthier. [Nodest: feedback-driven static analysis of Node.js applications](https://doi.org/10.1145/3338906.3338933). Proceedings of the 2019 27th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering. 2019.
 
-## Learning goals
+## :scroll: Learning goals
 
 - Explain the main ideas behind Node.js.
 - Implement basic network functionality with Node.js.

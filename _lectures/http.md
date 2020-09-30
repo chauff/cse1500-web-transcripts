@@ -15,7 +15,7 @@ HTTP: the language of web communication <!-- omit in toc -->
 
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Web standards](#web-standards)
-- [Learning goals](#learning-goals)
+- [:scroll: Learning goals](#scroll-learning-goals)
 - [World Wide Web vs. Internet](#world-wide-web-vs-internet)
   - [A brief history of the web](#a-brief-history-of-the-web)
   - [Key aspects of the Internet](#key-aspects-of-the-internet)
@@ -83,7 +83,7 @@ HTTP: the language of web communication <!-- omit in toc -->
 
 Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wide Web Consortium, also known as the **W3C**: what are web standards and what makes web standards so important?
 
-## Learning goals
+## :scroll: Learning goals
 
 - Describe how web servers and clients interact with each other.
 - Write HTTP messages that request web resources from web servers and understand the responses.
