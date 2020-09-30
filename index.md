@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /
-warning: true
+warning: false
 ---
 
 Web technology course information <!-- omit in toc -->
@@ -9,7 +9,7 @@ Web technology course information <!-- omit in toc -->
 
 CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year Bachelor students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/).
 
-This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in the browser's localStorage: i.e., no data leaves your machine. Be aware though that all data is deleted when you clear your browser's history/cookies/storage!
+This website contains **all materials of the web technology part** of the course. It has been updated for the 2020/21 course edition. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in the browser's localStorage: i.e., no data leaves your machine. Be aware though that all data is deleted when you clear your browser's history/cookies/storage!
 
 We cover the following languages: HTTP, HTML, JavaScript (on the client and server). Our "web stack" or web application stack, i.e. the software setup we use to implement web applications, is minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
 
@@ -23,6 +23,7 @@ In the five weeks of the web technology lectures we can only cover the web progr
   - [Required](#required)
 - [Course grading](#course-grading)
 - [Web technology topics](#web-technology-topics)
+- [Web technology Q&A](#web-technology-qa)
 - [Web technology assignments](#web-technology-assignments)
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
@@ -152,6 +153,14 @@ The web technology topics we cover (in this order) are the following:
 - Web security
 
 The order may strike you as odd, especially if you are already familiar with the basics of web programming, as typically CSS is introduced before JavaScript. Here, we introduce JavaScript as early as possible, to give you the chance to practice it a longer period of time before the exam moment.
+
+## Web technology Q&A
+
+The web technology topics start in week 2.6. In contrast to the database topics, there will be **no** lectures via Zoom. Instead, we have set up the material in a way that you can read and practice along with the transcript. Every week, there will be a one hour question & answering session on Zoom led by Claudia Hauff. This session takes place **Fridays between 11:45-12:45** in weeks 2.6, 2.7, 2.8, 2.9, and 2.10. These sessions can be used to ask questions about the lecture materials, the exam, how to study, live during Corona ... The Zoom link will be posted on Brightspace.
+
+During the *on campus* sessions you will go over old web technology exam questions. The goals here are twofold: familiarize yourself with the exam setup as well as reflect for yourself on your knowledge.
+
+//TODO: Stackoverflow forum info
 
 ## Web technology assignments
 

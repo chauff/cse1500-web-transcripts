@@ -3,7 +3,7 @@ layout: default
 permalink: /assignmentIII/
 linkname: Assignment CSS+Node
 ordering: 3
-warning: true
+warning: false
 ---
 
 # Assignment CSS+Node
@@ -37,7 +37,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistant and before the ultimate assessment deadline. This means that the outcomes of all web technology assignments are uploaded to the same directory!
 
-**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in the previous assignment) **AND with players trying to make invalid moves.** 
+**To pass this assignment, you must have employed the necessary CSS, use templating and include at least one client-side cookie. You pass if your app can deal with players executing the game as intended** (already achieved in the previous assignment) **AND with players trying to make invalid moves.** The [rubric](assignment-rubric.md) contains example questions for each assignments. During the assessment you can make use of your notes.
 
 ## 1. CSS
 
@@ -52,14 +52,10 @@ As you might have already guessed, your CSS should reside in `myapp/public/style
 
 First, work on your **splash screen** and style the page with CSS according to the design you produced in Assignment 4. You can deviate from your initial design. To ensure that everyone learns the basics of CSS, we provide a list of **must-have** CSS properties. Your code must include **at least** one instance of each of the following:
 
-//TODO: upate the list (CSS grid instead of position attributes)
-
-- Pseudo-classes `:hover` and `:active`
-- Pseudo-elements `::after` and `::before`
-- Box model: margin, padding, border
-- At least two different position attributes, e.g. `position:relative` and `position:absolute`
-- At least one CSS animation and one CSS transition.
-
+- pseudo-classes `:hover` and `:active`;
+- pseudo-elements `::after` and `::before`;
+- employ both `display:grid` and `position:absolute` at least once;
+- include at least one CSS animation.
 
 👉 Hints:
 
@@ -132,7 +128,7 @@ You now have three options:
 - Deploy your game on a publicly accessible server and let others play it!
 - Make a screencast showing off your game!
 
-## 5. Optional: game deployment / videotaping
+## 5. Optional: game deployment / video
 
 ### Short-term deployment
 
@@ -140,26 +136,11 @@ To make your game accessible to the public, it needs to be deployed somewhere - 
 
 For short-term deployments (a few minutes/hours), e.g. to show off your game quickly, [ngrok](https://ngrok.com/) is an easy solution. You can run your server on localhost and expose it through a public URL. *Please do **NOT** run any privacy-sensitive apps this way, as all traffic passes through ngrok servers!*
 
-### Production deployment
+### Longer-term deployment
 
 ngrok is not a solution for an actual deployment. [Heroku](https://www.heroku.com/) (among other platforms) is. Heroku is a cloud platform that has a free account tier, suitable for web applications without a lot of traffic. You can deploy a Node.js application following their [instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs).
 
-//TODO: check whether Heroku instructions still hold
-Deploy your app in Heroku according to the instructions linked above, but first make these changes:
-
-1. In `app.js`, replace `http.createServer(app).listen(port);` by `http.createServer(app).listen(process.env.PORT || 3000);`
-2. In `myapp` folder, create a new File called `Procfile` with this line: `web: node app.js`
-3. In the instructions you will see that to *Prepare the app* they clone an existing app to test. Instead of doing that, in that step you have to make sure that you have a local `git` repository in `myapp`. If that is not the case then install `git`, go to the `myapp` folder and type the following from the terminal:
-
-```console
-git init
-git add .
-git commit -n "First commit"
-```
-
-*If you want to deploy your game elsewhere, feel free to do so*! MDN has a good [article](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment) on deploying a Node.js/Express application to production.
-
-### Videotaping
+### Take a video
 
 As an alternative, make a screencast of your game and upload it to a video hosting platform such as [vimeo](https://vimeo.com/upload) or [YouTube](https://www.youtube.com/).
 

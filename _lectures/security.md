@@ -432,6 +432,8 @@ Among the [security misconfiguration challenges](https://bkimminich.gitbooks.io/
 
 Install the latest stable version of Node.js and Express. Install security updates. Rely on [`npm audit`](https://docs.npmjs.com/auditing-package-dependencies-for-security-vulnerabilities) (and then `npm audit fix`) to assess and fix your dependencies' security issues.
 
+[RetireJS](https://github.com/RetireJS/retire.js) is another tool to detect outdated JavaScript libraries. It does not fix anything but lists vulnerabilities with greater detail than `npm audit`.
+
 A popular package to secure Express-based applications is [Helmet](https://www.npmjs.com/package/helmet). It acts as middleware in Express applications and sets HTTP headers according to best security practices. 
 
 Rely on automated scanner tools to check web servers for the most common types of security misconfigurations.

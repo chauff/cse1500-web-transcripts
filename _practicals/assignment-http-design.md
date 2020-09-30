@@ -3,7 +3,7 @@ layout: default
 permalink: /assignmentI/
 linkname: Assignment HTTP+Design
 ordering: 1
-warning: true
+warning: false
 ---
 
 # Assignment HTTP+Design
@@ -39,7 +39,7 @@ All deliverable text/imagery (apart from 6. which are two html files) must be in
 
 The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistants and before the ultimate assessment deadline. This means that the outcomes of all web assignments are **all** uploaded to the same directory!
 
-**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.**
+**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.** The [rubric](assignment-rubric.md) contains example questions for each assignments. During the assessment you can make use of your notes.
 
 ## 1. HTTP request messages: GET/HEAD
 
@@ -57,39 +57,27 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
   - For *Close window on exit*, use *Never*.
   - It may be useful to write your commands inside an editor first, and paste them by clicking the right mouse button inside the PuTTY session (which you start using the *Open* button).
 
-//TODO: new domain for http/telnet
+Use `telnet` to request the `/career` resource from the `mit.edu` domain. Start your *conversation* with the web server by typing the following into the terminal :point_down:, and then perform HTTP requests to fetch the `/career` resource:
 
-Use `telnet` to request the contents of the Dutch rainfall radar section of the `www.weer.nl` website: [www.weer.nl/regenradar/nederland](http://www.weer.nl/regenradar/nederland). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
-
-```console
-telnet www.weer.nl 80
 ```
-
-**Exercise surfweer.nl**:
-Use `telnet` to request a list of webcams pointed at Dutch beaches from the `surfweer.nl` website: [http://surfweer.nl/surf/webcams/](http://surfweer.nl/surf/webcams/). Start your *conversation* with the web server by typing the following into the terminal, and then perform HTTP requests to fetch the contents:
-
-```console
-telnet www.surfweer.nl 80
+telnet mit.edu 80
 ```
-
-
 
 ### 1.1)
 
-Write down the HTTP requests you made, the returned responses (e.g. a page has moved or is faulty) until you receive the desired contents. Always use `HEAD` first to retrieve meta-­data about the resource. *Note that 
+Write down the HTTP requests you made, the returned responses (e.g. a page has temporarily/permanently moved or is faulty) until you receive the desired contents with status code `200 OK`. Always use `HEAD` first to retrieve meta-­data about the resource.
 
 ### 1.2)
 
-Does the content correspond to what you see when accessing the page with your browser? To check, save the response to a file, use `.html` as file ending and open it with your browser.
+Does the content you received correspond to what you see when accessing the resource `http://mit.edu/career` with your browser (and waiting a few seconds...)?
 
 ### 1.3)
 
-What is the purpose of the `X-Cache` tag in the header information? If you have not seen it (what entity serves a resource can vary), look up the purpose of the `transfer-encoding` tag instead. 
+Open your browser's developer tools head to `http://mit.edu/career` once more (and wait a few seconds). Take a look at the response header of the first resource retrieved with status code `200 OK`: what does its `Expires` header field mean?
 
 ### 1.4)
 
-What does the retrieved resource's `Cache-Control` directive mean?
-
+Continuing our look at the response header, what do we learn about the server-side framework used to implement the web site? Is it useful to distribute this knowledge to the end user? Why or why not?
 
 ## 2. HTTP request messages: PUT
 
@@ -185,13 +173,11 @@ At the end of the three web assignments, your board game application will have t
 
 The list above should tell you that you have considerable (artistic) freedom.
 
-In this course you learn how to program in "plain" JavaScript. We **do not allow external libraries or frameworks** beyond those specified in the assignments. Concretely, we **do allow** the use of a JavaScript library of your choice to determine whether a player makes a valid move as for some games (such as chess) this is considerably more difficult than for others!
+In this course you learn how to program in "plain" JavaScript. We **do not allow external libraries or frameworks** beyond those specified in the assignments and introduced in the lectures. Concretely, we **do allow** the use of a JavaScript library of your choice to determine whether a player makes a valid move as for some games (such as chess) this is considerably more difficult than for others!
 
-We also allow small simplifications to the chosen games, e.g. for Ludo an implementation for 2 players is sufficient, for chess you can ignore the [pawn promotion rule](https://en.wikipedia.org/wiki/Promotion_(chess)). Be upfront about the simplifications made. If you are in doubt whether you are simplifying the game too much, email us at `cse1500-ewi@tudelft.nl`.
+We also allow small simplifications to the chosen games, e.g. for Ludo an implementation for 2 players is sufficient, for chess you can ignore the [pawn promotion rule](https://en.wikipedia.org/wiki/Promotion_(chess)). Be upfront about the simplifications made.
 
 **Optionally**: when you have incorporated the requirements listed above without any additional libraries/framework besides those allowed and you want to keep improving your application by adding additional functionalities, you can indeed incorporate existing libraries/frameworks. Make sure to document clearly where in your code you employ them. The obvious next step to improve your app is the inclusion of a semi-intelligent computer opponent: while for the game of Ludo it would not be too difficult to come up with a number of rules to create a decent computer opponent, for chess this would not be possible in the time you have; here, a chess engine such as [Stockfish](https://github.com/nmrugg/stockfish.js/) helps.
-
-*If your team has a different idea and wants to implement another board game that has the functionalities listed above, please ask for permission before you start doing any work by emailing (`cse1500-ewi@tudelft.nl`). Include your team ID and a short description of the game you have in mind in your email.*
 
 ### 4.1)
 
@@ -209,12 +195,9 @@ Which *game features* in the game examples of 4.2) stand out positively and whic
 
 Having looked at at least three existing implementations of your chosen board game (Exercise 4.2), you are now in a position to design your own game interface. 
 
-//TODO: wireframe demo game link
-
-Similar to the wireframe example of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. As pointed out already, your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose ... online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/), [excalidraw](https://excalidraw.com/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
+Similar to the [splash](https://github.com/chauff/balloons-game/blob/master/wireframes/splash.png) and [game](https://github.com/chauff/balloons-game/blob/master/wireframes/game.png) screen wireframes of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. Your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. If you do not have any software installed on your machine that can be used for this purpose, online platforms specifically for wireframe design are just a web search away, e.g. the simple [wireframe.cc](https://wireframe.cc/), [excalidraw](https://excalidraw.com/) or the more elaborate [NinjaMock](https://ninjamock.com/) and [Gliffy](https://www.gliffy.com/).
 
 ### 5.1)
-
 
 Create a design for the splash screen (also known as *entry page*): think of a name for your application, a short description & a logo. Feel free to use media (images, sound) with a Creative Commons license. [You can start your resource search here](https://search.creativecommons.org/). The [noun project](https://thenounproject.com/) can be a useful resource for game pieces.
 
@@ -231,6 +214,4 @@ Once you have completed the design of your app, head over to CSE1500's 💡 Brig
 
 ## 6. Your own board game app: HTML
 
-//TODO: update demo game link
-
-Similar to the demo game, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. To get an idea on the expected amount of content (it is not a lot!), check [`game.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/game.html) and [`splash.html`](https://github.com/chauff/Web-Teaching/blob/master/demo-code/balloons-game/public/splash.html) of the demo board game. Ignore the few lines of code loading JavaScript and CSS files, these will be covered in the two later assignments.
+Similar to the demo game, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. To get an idea of the expected amount of content (it is not a lot!), take a look at our demo game's [`game.html`](https://github.com/chauff/balloons-game/blob/master/public/game.html) and [`splash.html`](https://github.com/chauff/balloons-game/blob/master/public/splash.html). Ignore the few lines of code loading JavaScript and CSS files, these will be covered in the two later assignments.

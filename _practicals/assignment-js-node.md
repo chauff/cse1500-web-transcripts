@@ -3,7 +3,7 @@ layout: default
 permalink: /assignmentII/
 linkname: Assignment JS+Node
 ordering: 2
-warning: true
+warning: false
 ---
 
 # Assignment JS+Node
@@ -120,9 +120,7 @@ Node.js has become a very popular framework for server-side programming; here is
 
 Before you start coding, you need to have a *plan* of what needs to be done. Focus on your `game.html` page. We will deal with `splash.html` in the next assignment. **Check the required functionalities of your game listed in [Assignment HTTP+Design](assignment-http-design.md) once again**. Make a list of *all* interactive UI elements you need and their functionality. 
 
-//TODO: update demo game link
-
-Here is one example item for the [word guesser demo game](demo-code/balloons-game) to help you get started:
+Here is one example item for the [word guesser demo game](https://github.com/chauff/balloons-game) to help you get started:
 
 - mouse click on a letter in the `div` element with `id=alphabet`: first, check whether the letter is still available (enabled); if so, check whether the letter occurs in the target string (the hidden word); if yes, reveal the letter, if not, remove a balloon; disable the letter; if the guessed letter was wrong, check wether the game is lost.
 
@@ -224,8 +222,6 @@ Instead of using the command line, you can also start your server from within VS
 
 In the next step, let's make our two HTML files available with modern web tech, i.e. routes:
 
-//TODO: add example of Jekyll site setup
-
 URLs ending in  `*.html` are considered old-fashioned, modern web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. If you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute. Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
 
 In our boilerplate setup, a folder `routes` was generated; you can store your routes in files within this folder. The [demo game](demo-code/balloons-game) shows you how to do this and how to import the routes in `app.js`. This is typically done to make the code more maintainable. You can also write out all routes directly in `app.js` (as we often do in the toy code examples presented in the lectures), however once you are working on a larger project this quickly becomes tedious.
@@ -236,9 +232,7 @@ Before you are implementing the client-server communication via WebSockets, it i
 
 For example, your game may have different types of players (in the demo game, we have two types of players, a *word creator* and a *word guesser*) and the type of player a client corresponds to, should be communicated to each client. The moves need to be communicated between clients, facilitated by the server (the **word guesser** wants to send the character guessed to the **word creator**). Who won the game may be important for the server to log and here one player type may be responsible for communicating this to the server; and so on.
 
-//TODO: update link to demo game
-
-Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need, depends on your chosen game to implement. As a concrete example, in the demo game, all message types are listed in [messages.js](demo-code/balloons-game/public/javascripts/messages.js).
+Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need, depends on your chosen game to implement. As a concrete example, in the demo game, all message types are listed in [messages.js](https://github.com/chauff/balloons-game/blob/master/public/javascripts/messages.js).
 
 ### 3.4) WebSockets: a minimum viable examples
 
@@ -250,9 +244,7 @@ First, let's install it (the `--save` option ensures that the dependency gets ad
 npm install --save ws
 ````
 
-//TODO: update example link
-
-Before you implement anything for your board game, we suggest you take a look at this [example](demo-code/node-websocket-ex) of a WebSocket-based app - **it is completely independent of your board game application code**. In this minimum viable example, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. 
+Before you implement anything for your board game, we suggest you take a look at this [example](https://github.com/chauff/demo-code/tree/master/node-websocket-ex) of a WebSocket-based app - **it is completely independent of your board game application code**. In this minimum viable example, a client establishes a WebSocket connection with a WebSocket handshake. It sends a *Hello from the client* message to the server, which responds with a *Hello to you too!* and logs the client's message. WebSocket programming thus requires both changes in the client-side and server-side code. 
 
 ### 3.5) WebSockets: implementing your game
 
@@ -264,7 +256,6 @@ Having seen and run the minimal WebSocket example, it is now time to implement c
 - Once a game is finished, the winner(s) and loser(s) receive a status update.
 - The server keeps track of certain game statistics (pick three statistics you want to report).
 - The players communicate with each other (i.e. their moves) via WebSockets.
-
 
 👉 Hints:
 
