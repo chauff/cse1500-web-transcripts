@@ -21,7 +21,7 @@ warning: false
 - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
 - [Middleware in Express](#middleware-in-express)
   - [:bangbang: Logger example](#bangbang-logger-example)
-  - [:bangbang: Authorisation component example](#bangbang-authorisation-component-example)
+  - [:bangbang: Authorization component example](#bangbang-authorization-component-example)
   - [Components are configurable](#components-are-configurable)
 - [Routing](#routing)
   - [Routing paths and string patterns](#routing-paths-and-string-patterns)
@@ -170,7 +170,7 @@ console.log(process.hrtime()[1] - t2);//35012
 
 Run `node bar.js` and observe the execution times logged to the terminal. :point_up: Here, we execute `require('./foo')` twice and log both times the time it takes for `require` to return. The first time the line `require(foo.js)` is executed, the file `foo.js` is read from disk (this takes some time). In subsequent calls to `require(foo.js)`, however, the **in-memory object is returned**. Thus, **`module.exports` is cached**.
 
-:point_up: We here resort to using `process.hrtime()` wich returns an array whose first value is the time in seconds and the second is the time in nanoseconds relative to *"an arbitrary time in the past"* ([Node documentation](https://nodejs.org/api/process.html#process_process_hrtime_time)). While it is not possible to compute an absolute time in this manner, we can accurately measure the duration of code as seen in the above example. Depending on your machine, the reported nanoseconds intervals will differ, though the first `require()` statement will always take significantly (10x-100x) longer than the second `require()` statement.
+:point_up: We here resort to using `process.hrtime()` which returns an array whose first value is the time in seconds and the second is the time in nanoseconds relative to *"an arbitrary time in the past"* ([Node documentation](https://nodejs.org/api/process.html#process_process_hrtime_time)). While it is not possible to compute an absolute time in this manner, we can accurately measure the duration of code as seen in the above example. Depending on your machine, the reported nanoseconds intervals will differ, though the first `require()` statement will always take significantly (10x-100x) longer than the second `require()` statement.
 
 *Note: if you are already familiar with JavaScript you may ask yourself why we do not rely on [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) to measure time differences. It returns the number of **milliseconds** that have passed since January 1, 1970 00:00:00 UTC (why this particular time? Because that is the [Unix time](https://en.wikipedia.org/wiki/Unix_time)!). On modern machines, a millisecond-based time resolution does not offer a high enough resolution to detect this difference in loading time.*
 
@@ -350,14 +350,14 @@ your output on the terminal will look something like this:
 - the order of the middleware components is switched, i.e. we first add `app.use(delimiter)` and then `app.use(logger)`;
 - in one or both of the middleware components the `next()` call is removed.
 
-You will observe different behaviours of the application that make clear how the middleware components interact with each other and how they should be used in an Express application.
+You will observe different behaviors of the application that make clear how the middleware components interact with each other and how they should be used in an Express application.
 
 In the example above we did not actually sent an HTTP response back, but you know how to write such a code snippet yourself. Up to this point, none of our routes had contained `next` for a simple reason: all our routes ended with an HTTP response being sent and this completes the request-response cycle; in this case there is no need for a `next()` call.
 
 
-### :bangbang: Authorisation component example
+### :bangbang: Authorization component example
 
-In the [node-component-ex](https://github.com/chauff/demo-code/tree/master/node-component-ex) example application, we add an authorisation component to a simple wishlist application back-end: only clients with the **correct username and password** (i.e. authorised users) should be able to receive their wishlist when requesting it. We achieve this by adding a middleware component that is activated for every single HTTP request and determines:
+In the [node-component-ex](https://github.com/chauff/demo-code/tree/master/node-component-ex) example application, we add an authorization component to a simple wishlist application back-end: only clients with the **correct username and password** (i.e. authorized users) should be able to receive their wishlist when requesting it. We achieve this by adding a middleware component that is activated for every single HTTP request and determines:
 
 - whether the HTTP request contains an authorization header (if not, access is denied);
 - and whether the provided username and password combination is the correct one.
@@ -367,8 +367,8 @@ Before we dive into the code details, install and start the server as explained 
 Once the server is started, open another terminal and use [curl](https://github.com/curl/curl), a command line tool that provides us with a convenient way to include username and password as you will see:
 
 - Request the list of wishes without authorization, i.e. `curl http://localhost:3000/wishlist` - you should see an `Unauthorized access` error.
-- Request the list of wishes with the correct username and password (as hard-coded in our demonstration code): `curl --user user:password http://localhost:3000/wishlist`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work and you should receive the list of todos.
-- Request the list of todos with an incorrect username/password combination: `curl --user test:test http://localhost:3000/wishlist`. You should receive a `Wrong username/password combination` error.
+- Request the list of wishes with the correct username and password (as hard-coded in our demonstration code): `curl --user user:password http://localhost:3000/wishlist`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work.
+- Request the list of wishes with an incorrect username/password combination: `curl --user test:test http://localhost:3000/wishlist`. You should receive a `Wrong username/password combination` error.
 - Add a wish to the wishlist: `curl --user user:password 'http://localhost:3000/addWish?type=board%20game&name=Treasure%20Hunt&priority=low'` (note that whitespaces are replaced by `%20` in URLs and the URL has to appear within quotes due to the special characters `&` in it). Did it work? If so, another execution of `curl --user user:password http://localhost:3000/wishlist` should result in a wishlist with now three wishes.
 
 Having found out how the code *behaves*, let us look at the authorization component. We here define it as an anynymous function as argument to `app.use` :point_down::
@@ -477,7 +477,7 @@ app.get('/wishlist',
 
 ### Routing paths and string patterns
 
-When we specify a path (like `/wishlist`) in a route, the path is eventually converted into a **regular expression** (short: regex) by Express. Regular expressions are patterns to match character combinations in strings. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access todos via a number of similar looking routes (such as `/wishlist`, `/whishlist`, `/wishlists`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
+When we specify a path (like `/wishlist`) in a route, the path is eventually converted into a **regular expression** (short: regex) by Express. Regular expressions are patterns to match character combinations in strings. They are very powerful and allow us to specify **matching patterns** instead of hard-coding all potential routes. For example, we may want to allow users to access wishlists via a number of similar looking routes (such as `/wishlist`, `/whishlist`, `/wishlists`). Instead of duplicating code three times for three routes, we can employ a regular expression to capture all of those similarly looking routes in one expression.
 
 Express distinguishes three different types of route paths: 
 
@@ -698,9 +698,9 @@ console.log(ejs.render(template, context));
 
 :point_up: Here, we first make the EJS object available via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello CSE1500!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called *scriptlet tag* to indicate the start of an element to be replaced with data as well as an ending tag `%>`.
 
-Ther are two types of scriptlet tags that **output values**:
+There are two types of scriptlet tags that **output values**:
 
-- `<%= ... %>` output the value into the template in **HTML escaped** form. This means that the characters that are indicating the start/end of markup sequences (such as `<script>` and `</script>`) are converted in such a way that they are rendered as content instead of being interpeted as markup.
+- `<%= ... %>` output the value into the template in **HTML escaped** form. This means that the characters that are indicating the start/end of markup sequences (such as `<script>` and `</script>`) are converted in such a way that they are rendered as content instead of being interpreted as markup.
 - `<%- ... %>` output the value into the template in **unescaped** form. This means that a value such as `<script>` remains as-is. This enables cross-site scripting attacks, which we will discuss in the [security lecture](security.md).
 
 In order to see the difference between the two types of tags, go back to Node's REPL and try out the following code snippet :point_down::

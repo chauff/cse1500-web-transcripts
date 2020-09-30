@@ -8,14 +8,14 @@ warning: false
 
 # JavaScript: the language of browser interactions <!-- omit in toc -->
 
-*This is the densest web technlogy lecture of this course. Learning how to program takes time. Don't get frustrated if it is hard in the beginning. We introduce JavaScript this early in the web technology lectures to give you the time to learn it.*
+*This is the densest web technology lecture of this course. Learning how to program takes time. Do not get frustrated if it is hard in the beginning. We introduce JavaScript this early in the web technology lectures to give you the time to learn it.*
 
 {% include_relative explanation.md %}
 
 ## Table of Contents <!-- omit in toc -->
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Learning goals](#learning-goals)
-- [Take-aways of the required readings](#take-aways-of-the-required-readings)
+- [Takeaways of the required readings](#takeaways-of-the-required-readings)
 - [JavaScript in context](#javascript-in-context)
 - [Scripting overview](#scripting-overview)
   - [Server-side vs. client-side scripting](#server-side-vs-client-side-scripting)
@@ -86,9 +86,9 @@ warning: false
 - Employ the principle of callbacks.
 - Write interactive web applications based on click, mouse and keystroke events.
 
-## Take-aways of the required readings
+## Takeaways of the required readings
 
-Haing worked through the required reading in preparation for this lecture, you should know:
+Having worked through the required reading in preparation for this lecture, you should know:
 
 - the basics of JavaScript;
 - how to include JavaScript in your web application;
@@ -133,12 +133,12 @@ In this course we include just a few **ES6** features, as we only have one lectu
 
 ![Studying JavaScript is quite a task!](../img/js-mountain.png)
 
-So please, do not be disheartened if you are trying to find the answer to a JavaScript question and encounter five new concepts you have not heard before. This is normal. The JavaScript ecoysystem contains many moving pieces and understanding how they all fit together is quite an undertaking.
+So please, do not be disheartened if you are trying to find the answer to a JavaScript question and encounter five new concepts you have not heard before. This is normal. The JavaScript ecosystem contains many moving pieces and understanding how they all fit together is quite an undertaking.
 
 In this course we cover *plain JavaScript*, but it is worthwhile to know that [many](https://github.com/jashkenas/coffeescript/wiki/list-of-languages-that-compile-to-js) languages compile into JavaScript.
 Three of the most well-known languages are [CoffeeScript](https://coffeescript.org/), [TypeScript](https://www.typescriptlang.org/) and [Dart](https://www.dartlang.org/); all three fill one or more gaps of the original JavaScript language. Once you work on complex projects in collaboration, these higher-level languages can make a difference, especially when it comes to debugging.
 
-Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**. If that all sounds incomprehendible right now, don't worry. Here is a concrete example that should make things clear. Consider this **Java** code snippet :point_down::
+Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you *know* what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**. If that all sounds incomprehensible right now, don't worry. Here is a concrete example that should make things clear. Consider this **Java** code snippet :point_down::
 
 ```java
 public class MyTest {
@@ -279,7 +279,7 @@ b[0] = -1; //OK, the originally assigned array is changed
 console.log(b); //Array(3) [ -1, 5, 6 ]
 ```
 
-Before **ES6** there was no **block scope**, we only had two scopes available: local and global. Having only two scopes available resulted in code behaviour that does not always seem intuitive. Let's look at one popular example: imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript 👇:
+Before **ES6** there was no **block scope**, we only had two scopes available: local and global. Having only two scopes available resulted in code behavior that does not always seem intuitive. Let's look at one popular example: imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript 👇:
 
 ```javascript
 for (var i = 1; i <= 10; i++) {
@@ -426,7 +426,7 @@ As you know, in Java, `this` refers to the current object.
 
 We also have the option to set the value of a function's `this` independent of how the function was called, using the [`bind` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind). 
 
-Let's walk through this concrete code example to showcase the behaviour of `this` :point_down: :
+Let's walk through this concrete code example to showcase the behavior of `this` :point_down: :
 
 ```javascript
  //We assume execution in the browser's Web Console, we thus
@@ -621,7 +621,7 @@ Let's go back to object literals: what happens if we need 1000 objects of the sa
 
 :flag: One idea could be to simply *copy* an object over and over again, however that turns out to be quite complicated. This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. 
 
-Let's look at three design patterns to simplify this work for us! The first one should be the most familiar to you, as it looks similar to the object creation pattnern we use in Java.
+Let's look at three design patterns to simplify this work for us! The first one should be the most familiar to you, as it looks similar to the object creation pattern we use in Java.
 
 ### Design pattern I: Basic constructor
 
@@ -1120,7 +1120,7 @@ Here :point_down: we have a page with two elements: a button and a text box. A c
 </html>
 ```
 
-This code :point_up: is of course not ideal as we are writting JavaScript code in the middle of HTML elements, so let us refactor to achieve a better code separation :point_down::
+This code :point_up: is of course not ideal as we are writing JavaScript code in the middle of HTML elements, so let us refactor to achieve a better code separation :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -1138,7 +1138,7 @@ This code :point_up: is of course not ideal as we are writting JavaScript code i
                  * We define what happens when button #b is clicked.
                  */
                 document.getElementById("b").addEventListener('click', function(){
-                    document.getElementById("out").value = "Helo World!";
+                    document.getElementById("out").value = "Hello World!";
                 });
             });
         </script>
@@ -1208,7 +1208,7 @@ Let's look at how this works in practice :point_down: :
 </html>
 ```
 
-:point_up: The HTML initally contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it. :flag: The code example also shows off [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which were introduced in ES6: they allow us to plug variables (here: `ul.childElementCount+1`) into strings (demarked with *backticks*) in a more readable manner. 
+:point_up: The HTML initially contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it. :flag: The code example also shows off [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which were introduced in ES6: they allow us to plug variables (here: `ul.childElementCount+1`) into strings (demarked with *backticks*) in a more readable manner. 
 
 We can of course also remove elements :point_down::
 
@@ -1503,7 +1503,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
 
           document.getElementById("typed").addEventListener('keypress', checkTextAtKeyPress);
 
-          //e refers to the event (we need it to extradt the char typed)
+          //e refers to the event (we need it to extract the char typed)
           function checkTextAtKeyPress(e) {
 
             let textToType = document.getElementById(givenText).value;

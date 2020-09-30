@@ -119,7 +119,7 @@ Another example is the [2015 defacement attack against Lenovo](https://www.thegu
 
 ### Data disclosure
 
-Data disclosure is a threat that is in the news, when a large company fails to protect sensitive or confedential information from users who should not have access to it - a recent example being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
+Data disclosure is a threat that is in the news, when a large company fails to protect sensitive or confidential information from users who should not have access to it - a recent example being [Facebook's leak of 419 million users' phone numbers](https://techcrunch.com/2019/09/04/facebook-phone-numbers-exposed/).
 
 A less well-known example is a [2015 attack against VTech](http://www.computerworld.com/article/3009236/cybercrime-hacking/massive-vtech-hack-exposes-data-of-nearly-5-million-parents-and-over-200-000-kids.html), a global toy producer. In this instance the attackers gained access to nearly 5 million records of parents including their email addresses and passwords. Worst of all, while the passwords were stored encrypted, the security questions were stored in plain text, making them an easy target to exploit. This is problematic because many people reuse the same passwords and security questions across applications.
 
@@ -179,7 +179,7 @@ Taking a slightly higher-level view, the top five violated security categories a
 
 ![Top 5 violated security categories](../img/security-security-report-3.png)
 
-<sup>Top 5 violoated security categories. Figure taken from page 59, CSRHPE.</sup>
+<sup>Top 5 violated security categories. Figure taken from page 59, CSRHPE.</sup>
 
 :point_up: The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
 
@@ -416,7 +416,7 @@ As stated already a few times, input validation on the client **and** server-sid
 
 ### Security misconfiguration
 
-Web application engineering requires extensive knowledge of system administration and the entire web development stack. Security vulnerabilities can arise in all aspects of the application: the web server, the database, the application framework, the sever's operating system, etc. Common issues are the following:
+Web application engineering requires extensive knowledge of system administration and the entire web development stack. Security vulnerabilities can arise in all aspects of the application: the web server, the database, the application framework, the server's operating system, etc. Common issues are the following:
 
 - Default accounts and passwords remain set.
 - Resources may be publicly accessible that should not be.
@@ -444,11 +444,11 @@ If a web application does not use HTTPS for all authenticated routes (recall tha
 
 If a web application relies on outdated encryption strategies to secure sensitive data, it is just a matter of time until the encryption is broken.
 
-In addition, if sensitive documents can be accessed without authorization a  malicious user can run scans of likely end points that are not securied.
+In addition, if sensitive documents can be accessed without authorization a  malicious user can run scans of likely end points that are not secured.
 
 #### :bangbang: Juice Shop
 
-Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/sensitive-data-exposure.html) we here cover the *Confidential Documen* task which is simple: access a confidential document.
+Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/sensitive-data-exposure.html) we here cover the *Confidential Document* task which is simple: access a confidential document.
 
 1. Head over to your Juice Shop installation, access the top-left side menu and click on the *About Us* link.
 2. Take a closer link at the hyperlink `Check out our boring terms of use if you are interested in such lame stuff`. It is a relative link `ftp/legal.md`. 
@@ -541,7 +541,7 @@ Vulnerabilities of software libraries and frameworks are continuously being disc
 
 Not only the application itself needs to be kept up-to-date, the server's operating system also needs to be continuously patched, as well as any other software used to support the web server (e.g., Redis, MongoDB, Nginx).
 
-In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vulnerability) was discovered in many open source archiving libraries. The problem arises from missing validation of archives while decompressing. As a result, any compressed archive containing file names with relative paths (e.g., `../file.txt`) went unchecked. This means that during deompression each of those files was placed at its relative address which can be outside the archive directory. Attackers can use this vulnerability to move their own versions of critical libraries to the `/root` folder.
+In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vulnerability) was discovered in many open source archiving libraries. The problem arises from missing validation of archives while decompressing. As a result, any compressed archive containing file names with relative paths (e.g., `../file.txt`) went unchecked. This means that during decompression each of those files was placed at its relative address which can be outside the archive directory. Attackers can use this vulnerability to move their own versions of critical libraries to the `/root` folder.
 
 #### :bangbang: Juice Shop
 
@@ -558,15 +558,15 @@ There are many auditing tools available, a basic form of security auditing offer
 → npm audit
 ```
 
-Within seconds we know that several critical vulnerabilities exist, in which packages they exist, and what type of vulnerability they enable. Often, the fix seems easy: use a more recent version of an npm package. However, in practice updating an npm package can lead to a host of additional coding work due to version compatabilities. 
+Within seconds we know that several critical vulnerabilities exist, in which packages they exist, and what type of vulnerability they enable. Often, the fix seems easy: use a more recent version of an npm package. However, in practice updating an npm package can lead to a host of additional coding work due to version compatibilities. 
 
 Besides `npm audit`, commercial services such as [Snyk](https://snyk.io/) and exist to aid developers in keeping their libraries and package up to date. 
 
 #### How to avoid it
 
 - Always use latest versions of libraries.
-- Keep a look out for [potential vulnerabiltiies](https://www.cvedetails.com/) in open source software, and patch them as soon as possible.
-- Use available tools such as `npm audit`, especially when relying on many third-party packages. It is important to realize what security isuses those packages have.
+- Keep a look out for [potential vulnerabilities](https://www.cvedetails.com/) in open source software, and patch them as soon as possible.
+- Use available tools such as `npm audit`, especially when relying on many third-party packages. It is important to realize what security issues those packages have.
 
 ### Unvalidated redirects
 
@@ -583,7 +583,7 @@ The user, when seeing this URL :point_up: in an email or forum, might just inspe
 #### :bangbang: Juice Shop
 
 
-Of the [unvalidated redirects challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/unvalidated-redirects.html) we cover the *Outdated Whitelist* challenge: attempt to redirect to a cypto currency address which is no longer included in the shop.
+Of the [unvalidated redirects challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/unvalidated-redirects.html) we cover the *Outdated Whitelist* challenge: attempt to redirect to a crypto currency address which is no longer included in the shop.
 
 1. Head over to your Juice Shop installation and log in as any user.
 2. Check out the payment options at `http://localhost:3000/#/payment/shop` (assuming a local installation). You can also land here by following the procedure for *checking out*.
@@ -616,7 +616,7 @@ Here are a few questions you should be able to answer after having followed the 
   - The attacker can modify HTTP requests bound for your server.
   - The attacker can drop (i.e. delete) HTTP requests bound for your server. 
   
-  You have developed a popular Web-based newsticker application that in real-time sends the latest news (received from one hundred different news agencies) to its users when opening the newsticker Website in the browser. Which of the listed abilities is required for an attacker to conduct a denial-of-service attack against your application?
+  You have developed a popular Web-based news-ticker application that in real-time sends the latest news (received from one hundred different news agencies) to its users when opening the news-ticker Website in the browser. Which of the listed abilities is required for an attacker to conduct a denial-of-service attack against your application?
 </summary>
   None of these abilities are required.
 </details>

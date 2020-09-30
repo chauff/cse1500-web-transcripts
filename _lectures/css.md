@@ -17,7 +17,7 @@ warning: true
 - [A first demo](#a-first-demo)
 - [A word of warning](#a-word-of-warning)
 - [A bit of history](#a-bit-of-history)
-- [Take-aways of the required readings](#take-aways-of-the-required-readings)
+- [Takeaways of the required readings](#takeaways-of-the-required-readings)
 - [Pseudo-classes](#pseudo-classes)
   - [:bangbang: nth-child(X) and nth-of-type(X)](#bangbang-nth-childx-and-nth-of-typex)
   - [:bangbang: :root](#bangbang-root)
@@ -115,7 +115,7 @@ The CSS - or **Cascading Style Sheets** - language describes how elements in the
 
 Any CSS module developed after CSS2.1 can be considered as CSS3. There will not be a monolithic CSS4, instead the different modules of the CSS specification will each continue to develop at their own pace.
 
-## Take-aways of the required readings
+## Takeaways of the required readings
 
 Having worked through the required readings, you should be able to style HTML elements with CSS. You know that style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
 
@@ -241,7 +241,7 @@ Firefox's developer tools do not only allow us to inspect the CSS, but also to:
 - switch off the CSS (hover over a `property:value` listing and a checkbox appears to switch that listing on/off);
 - **change the CSS** in the editor (change a value, add a `property:value`) and view the immediate effect of those changes.
 
-:bug: The last point makes for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the browser tab is closed. In addition, Visual Studio Code has also good code commentary for CSS: it not only flags misspellt properties but also flags rules that are incompatible with each other.
+:bug: The last point makes for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the browser tab is closed. In addition, Visual Studio Code has also good code commentary for CSS: it not only flags misspelt properties but also flags rules that are incompatible with each other.
 
 ### :bangbang: :root
 
@@ -298,7 +298,7 @@ In fact, since 2016 (*yes, it took that long*), [CSS variables](https://develope
 </html>
 ```
 
-:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custum prefix `--` and can be accessed using the `var()` function. Non-global CSS variables can be added in the same manner to any element, though they are then only available within their `{....}` block.
+:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custom prefix `--` and can be accessed using the `var()` function. Non-global CSS variables can be added in the same manner to any element, though they are then only available within their `{....}` block.
 
 For our course homepage we developed several themes (screenshots of all of them can be found in [this GitHub repo](https://github.com/chauff/cse-theme)), before settling on the final one you are seeing now. In order to make the creation of different themes efficient, we created variables for everything customizable  (mostly colors). Take a look at the page inspector and explore the 39 variables we created for this purpose :point_down::
 
@@ -471,7 +471,7 @@ So far, we have dealt with individual selectors such as `button` or `div`. As th
 | e1 e2    | Selects all `<e2>` elements within `<e1>`                   |
 | e1,e2    | Selects all `<e1>` elements and all `<e2>` elements         |
 | e1>e2    | Selects all `<e2>` elements that have `<e1>` as parent      |
-| e1+e2    | Selects all `<e2>` elements that follow `<e1>` immmediately |
+| e1+e2    | Selects all `<e2>` elements that follow `<e1>` immediately |
 
 Let's slightly revise our running game statistics example to clarify what each of the selector combinations means. We now consider this DOM tree which showcases three different selector combinations :point_down::
 
@@ -482,7 +482,7 @@ Let's slightly revise our running game statistics example to clarify what each o
 Let's walk through the three examples:
 - In order to select all `<span>` elements that appear *inside* a button, we use the selector `button span`: it selects all `span` elements within `button`.
 - To select all elements that are neither a button nor inside of one, we use `h1, body>span`: it selects all `<h1>` elements and all `<span>` elements that have `<body>` as parent.
-- Finally, to select the last two `<span>` elements we use `span+span`: it selects all `<span>` elements that follow immedately after a `<span>` element.
+- Finally, to select the last two `<span>` elements we use `span+span`: it selects all `<span>` elements that follow immediately after a `<span>` element.
 
 There may of course be other selectors that lead to the same subset of selected elements. Here are three questions to test your selector combination knowledge without resorting to `class` or `id` attributes. Remember that your solution may differ from what is shown here. The questions revolve around the above DOM tree visualization.
 
@@ -583,7 +583,7 @@ In order to distinguish pseudo-classes and pseudo-elements, the double-colon (`:
 
 ### :bangbang: ::first-letter and ::first-line
 
-So, what are abstractions that go beyond what is specified in the document language? Two popular examples are the `::first-letter` and the `::first-line` pseudo-elements. They do exactly what the names suggests, enabling you to style the first letter and first line respectively. Without those pseudo-elements, you would have to wrap the first letter in a `<span>` (or similar) element. This may only be mildly annoying, however, determining what constitutes the first line of a piece of text requires a clever way of computing at which word exactly the line ends while taking into acount changing viewport sizes (to then again, wrap that part of the text in a `<span>` element). Let's look at an example :point_down::
+So, what are abstractions that go beyond what is specified in the document language? Two popular examples are the `::first-letter` and the `::first-line` pseudo-elements. They do exactly what the names suggests, enabling you to style the first letter and first line respectively. Without those pseudo-elements, you would have to wrap the first letter in a `<span>` (or similar) element. This may only be mildly annoying, however, determining what constitutes the first line of a piece of text requires a clever way of computing at which word exactly the line ends while taking into account changing viewport sizes (to then again, wrap that part of the text in a `<span>` element). Let's look at an example :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -931,7 +931,7 @@ The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) proper
 |----------------|-----------------------------------------------------------------------------------------------|
 | `display:inline` |  The element is treat as an inline element.                      |
 | `display:block`  |  The element is treated as a block element (line breaks before and after the element).                     |
-| `display:none`   |  The element (and its descendents) are hidden from view; no space is reserved in the layout.  |
+| `display:none`   |  The element (and its descendants) are hidden from view; no space is reserved in the layout.  |
 | `display:grid`   |  The children of this element are arranged according to the grid layout.   |
 
 There [are more display types](https://developer.mozilla.org/en-US/docs/Web/CSS/display), but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS.
@@ -999,7 +999,7 @@ For the two new properties that we have just added, we provide *three* values; o
 
 This approach is useful if you wish to provide a lop-sided grid (i.e. a table, with more rows than columns).
 
-Note that we could make the definitions more succint using the CSS `repeat()` function. The below CSS snippet has the exact same outcome as what we show above.
+Note that we could make the definitions more succinct using the CSS `repeat()` function. The below CSS snippet has the exact same outcome as what we show above.
 
 ```css
 .grid-container {
@@ -1148,7 +1148,7 @@ But what about more complex units of measurement? Many different types of measur
 
 Having discussed pixels (absolute) and percentages (relative) above, there are several other that you should be aware of.
 
-You can use measurements such as `mm` (for millimetres) and `cm` (for centimetres); if you like imperial measurements, inches (`in`) are also valid.
+You can use measurements such as `mm` (for millimeters) and `cm` (for centimeters); if you like imperial measurements, inches (`in`) are also valid.
 
 However, for modern web design, we are more interested in *relative units* -- that is, units of measurement relative to the container of the element you are assigning values to.
 
@@ -1501,7 +1501,7 @@ In our CSS weather demo many elements (the moon, the raindrops, the snow flakes)
 
 #### position:fixed
 
-:point_down: The `position:fixed` setting is similar to `position:absolute`, but now the containing element is **always** the **viewport**. This means that elements with `position:fixed` always remain visible. We now add another `<div>` element to show some information about the flags that should always remain at the same position, no matter the amount of scrolling. The HTML document looks as follows (all updated lines compared to the inital code listing contain comments) :point_down::
+:point_down: The `position:fixed` setting is similar to `position:absolute`, but now the containing element is **always** the **viewport**. This means that elements with `position:fixed` always remain visible. We now add another `<div>` element to show some information about the flags that should always remain at the same position, no matter the amount of scrolling. The HTML document looks as follows (all updated lines compared to the initial code listing contain comments) :point_down::
 
 ```html
 <!DOCTYPE html>
@@ -1859,7 +1859,7 @@ A few remarks about the code :point_up::
 
 To summarize, for our purposes the most important animation properties are the following:
 
-| Property                  | Despcription                                                                                                                       |
+| Property                  | Description                                                                                                                       |
 |---------------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | `animation-iteration-count` | Number of times an animation is executed (default: 1);  the value is either a positive number or `infinite`.                         |
 | `animation-direction`       | By default the animation restarts at the starting keyframe;  if set to `alternate` the animation direction changes every  iteration. |
@@ -1916,7 +1916,7 @@ Once again, we only have to define the states of the animation, the rendering en
 }
 ```
 
-Beyond lightning, we also have an animated moon: it appears to be radiating continously if you look closely. This is a simple animation of the moon's `box-shadow` property. The moon itself is a `<div>` element with a `border-radius` set such that it results in a perfect circle :point_down: :
+Beyond lightning, we also have an animated moon: it appears to be radiating continuously if you look closely. This is a simple animation of the moon's `box-shadow` property. The moon itself is a `<div>` element with a `border-radius` set such that it results in a perfect circle :point_down: :
 
 ```css
 
@@ -2057,7 +2057,7 @@ We actually have been using transitions all this time already, e.g. when definin
 
 We can make use of the [`transition`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) property to control the animation between the start and end state. The example below :point_down: shows off what the impact of `transition` is: we define two boxes which, when being hovered over, change their rotation by 70 degrees.
 
-- `#box1` has no `transition` property, which makes the style change instanteneous;
+- `#box1` has no `transition` property, which makes the style change instantaneous;
 - `#box2` has the `transition` property which determines how fast the transition for different properties takes place and we see a smooth animation when hovering.
 
 ```html

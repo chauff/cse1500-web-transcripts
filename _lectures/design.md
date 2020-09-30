@@ -100,7 +100,7 @@ If you ever wanted to know how *Windows 95* looks like, there is an [Electron ap
 
 On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. More concretely, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](https://www.technologytips.com/windows-system-requirements/).
 
-While Electron focuses on **cross-platform desktop applications**, initiatives with a similar goal for the mobile world (i.e. generating native apps for Android/iOS from HTML/CSS/JavaScript) exist as well. By far the most popular is [React Native](https://reactnative.dev/). Before you can use it though you will have to learn [React](https://reactjs.org/), a very popular JavaScript library for building user interfaces that is beingd develped by Facebook.
+While Electron focuses on **cross-platform desktop applications**, initiatives with a similar goal for the mobile world (i.e. generating native apps for Android/iOS from HTML/CSS/JavaScript) exist as well. By far the most popular is [React Native](https://reactnative.dev/). Before you can use it though you will have to learn [React](https://reactjs.org/), a very popular JavaScript library for building user interfaces that is being developed by Facebook.
 
 
 ## Web design basics
@@ -282,7 +282,7 @@ An alternative service is [webhint.io](https://webhint.io/) (originally coming o
 
 <sup>Screenshot taken September 2, 2020.</sup>
 
-🚩 In both examples, we see that web peformance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
+🚩 In both examples, we see that web performance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
 
 :bug: Beyond online tools, browser extensions such as [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) exist as well that allow you to gain more specific insights into your application's performance.
 
@@ -356,7 +356,7 @@ properties and any other data one might conceive of.
 
 ### Who decides the HTML standard
 
-HTML is widely used, which makes standardisation a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (Microsoft, Google, Mozilla, Nokia, Baidu, Yandex, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required:
+HTML is widely used, which makes standardization a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (Microsoft, Google, Mozilla, Nokia, Baidu, Yandex, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required:
 
 1. **Working Draft**: *a document that W3C has published for review by the community, including W3C Members, the public, and other technical organizations.*
 2. **Candidate Recommendation**: *a document that W3C believes has been widely reviewed and satisfies the Working Group's technical requirements. W3C publishes a Candidate Recommendation to gather implementation experience.*

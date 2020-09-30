@@ -137,7 +137,7 @@ privacy the Cookie and Set-Cookie header fields are widely used on the Internet.
 
 Overall, security and privacy are not strong points of cookies and as long as we are aware of this and do not try to transmit sensitive or compromising information within cookies, the potential risks are limited. This RFC excerpt also tells us how cookies are sent and received: in the HTTP header fields `Set-Cookie` and in `Cookie` respectively.
 
-The private browsing mode (also known as incognito mode) of modern browsers still allows to receive/send cookies. The cookies though are only held in memory (not stored on disk, independent of the cookie type) and are completely separated from the cookie storage of the regular browsing mode. All cookies are discarded once the private/incognito browser session ends. *Note, that the incognito/private browsing mode does **not** make you anonymousto servers, instead it makes your data/browsing activities untrackable to other people with physical access to your device and browser.*
+The private browsing mode (also known as incognito mode) of modern browsers still allows to receive/send cookies. The cookies though are only held in memory (not stored on disk, independent of the cookie type) and are completely separated from the cookie storage of the regular browsing mode. All cookies are discarded once the private/incognito browser session ends. *Note, that the incognito/private browsing mode does **not** make you anonymous to servers, instead it makes your data/browsing activities untrackable to other people with physical access to your device and browser.*
 
 ## Cookies vs. sessions
 
@@ -167,7 +167,7 @@ Cookies can either be transient or persistent.
 
 **Persistent cookies** on the other hand remain intact after the browser is closed, they are **stored on disk**. They do have a maximum age and are send back from client to server only as long as they are **valid**. They are valid when they have not yet exceeded their maximum age.
 
-*Note: modern browsers offer to **restore** the session after a browser crash. In this case, transient cookies are often restored as well as the browser session is continued. This though is implemented inconsistently across different browers.*
+*Note: modern browsers offer to **restore** the session after a browser crash. In this case, transient cookies are often restored as well as the browser session is continued. This though is implemented inconsistently across different browsers.*
 
 ### Cookie fields
 
@@ -319,13 +319,13 @@ Evidently, an extension is a piece of JavaScript that looks very much like any o
 }
 ```
 
-The last step then is the deployment of the extension: we have a manifest file and a JavaScript file (here called `showCookies.js`) on local disk in a single folder. Now all we have to do is open Firefox's `about:debugging` pane, click <kbd>This Firefox</kbd> and then register our manifest file as temporary extension. If done succesfully, you should see something like this :point_down::
+The last step then is the deployment of the extension: we have a manifest file and a JavaScript file (here called `showCookies.js`) on local disk in a single folder. Now all we have to do is open Firefox's `about:debugging` pane, click <kbd>This Firefox</kbd> and then register our manifest file as temporary extension. If done successfully, you should see something like this :point_down::
 
 ![Firefox about debugging](../img/sessions-aboutdebugging.png)
 
 <sup>Firefox's about:debugging screen. One temporary extension has been installed.</sup>
 
-Whenver you make code changes, you will have to click <kbd>Reload</kbd> in order to see the effects. That's it, now have a fully working Firefox extension. A click on <kbd>Remove</kbd> will remove the extension again. Try out different URLs with this extension enabled to observe the amount of cookies accessible to JavaScript, e.g. `coolblue.nl`, `nytimes.com`, `tudelft.nl`, `duckduckgo.com` (which sets just *one* cookie!), `twitter.com` or `volkskrant.nl` (which sets 35+ accessible cookies).
+Whenever you make code changes, you will have to click <kbd>Reload</kbd> in order to see the effects. That's it, now have a fully working Firefox extension. A click on <kbd>Remove</kbd> will remove the extension again. Try out different URLs with this extension enabled to observe the amount of cookies accessible to JavaScript, e.g. `coolblue.nl`, `nytimes.com`, `tudelft.nl`, `duckduckgo.com` (which sets just *one* cookie!), `twitter.com` or `volkskrant.nl` (which sets 35+ accessible cookies).
 
 We have here just shown a very simple example of what an extension can do. But as with all web technologies, much more is possible than we cover in this class. For Firefox, [this page](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons) offers a good starting point into how to modify Firefox. Similarly for Chrome, you should start [here](https://developer.chrome.com/extensions). The new Microsoft Edge extension guide can be found [here](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/).
 
@@ -453,7 +453,7 @@ for(var i=0; i < cookiesArray.length; i++) {
 }
 ```
 
-On our [CSE1500](https://chauff.github.io/Web-Teaching) it is possible to highlight pieces of text and add a few notes. You may have noticed that you were not asked to provide a username/password to enable highlighting. If we would have chosen to store those highlights/notes on a server, it would have been necessary to add an authorization step (you probably only want to receive your own notes and higlights!). Here, we store all this information on the client-side only. We could have used cookies for this purpose but there is a more recent solution: [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Local storage persists data on disk and has an intuitive programming interface:
+On our [CSE1500](https://chauff.github.io/Web-Teaching) it is possible to highlight pieces of text and add a few notes. You may have noticed that you were not asked to provide a username/password to enable highlighting. If we would have chosen to store those highlights/notes on a server, it would have been necessary to add an authorization step (you probably only want to receive your own notes and highlights!). Here, we store all this information on the client-side only. We could have used cookies for this purpose but there is a more recent solution: [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Local storage persists data on disk and has an intuitive programming interface:
 
 ```javascript
 localStorage.setItem('1600637','Why not use something else?'); //add a data item (key/value must be strings)

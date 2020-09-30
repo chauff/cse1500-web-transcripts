@@ -15,5 +15,13 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "cSpell.words": [
+        "bangbang",
+        "crowdsourcing",
+        "cybersecurity",
+        "mousemove",
+        "templating",
+        "whitespaces"
+    ]
 }

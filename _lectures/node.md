@@ -199,7 +199,7 @@ Although the piece of code :point_up: is small, it has a few interesting compone
 
 - Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [a later lecture](Lecture-node2.md)). In this case, `fs` is our entry point to the file system.
 - You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) is used with two arguments: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous (though nothing prevents us from giving the function a name) and executed asynchronously. [`fs.access`](https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback) (used to determine whether the file exists) takes three arguments in our example.
-- As the filesystem access requires operating system specific code, the behaviour can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation.
+- As the filesystem access requires operating system specific code, the behavior can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation.
 - 🚩 The color styling of the console output is **not** Node-specific. Providing these [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) to the terminal let's us change the terminal look and feel. In our case, we only use escape codes to change the font color. This may not work in all terminals, and there are (of course) libraries that do this in a more platform-independent manner but for a quick prototype those escape codes are usually sufficient.
 
 A note on Node terminology: you will often find references to **Node modules** and **Node packages**. They differ slightly in meaning:
@@ -340,7 +340,7 @@ server.listen(port, function () {
 
 A few remarks on the code piece above :point_up::
 
-- We here utilize's Node's core [HTTP module](https://nodejs.org/api/http.html) which provides us with all necessary functionalities related to HTTP.
+- We here utilize Node's core [HTTP module](https://nodejs.org/api/http.html) which provides us with all necessary functionalities related to HTTP.
 - We create a **web server** with the call `http.createServer`.
 - The **callback** function we define has two parameters: an **HTTP request object** and an **HTTP response object**. The callback is executed when an HTTP request comes in.
 - Within the callback function we create an HTTP response (making use of the response object, which provides us with the necessary methods such as `writeHead` to write HTTP header information in JSON format) and sending it with the call to `res.end`.
@@ -448,7 +448,7 @@ Now check with the command `ls` what happened. We have a `package.json` file in 
 npm install express --save
 ```
 
-Again, use `ls` to see whether something happened in your current folder. We have just installed Express in the folder `node_modules`, which has automatically been created within your current folder; as Express depends on many other packages, you will find more than just Express in there (take a look by issueing the command `ls node_modules`). The `--save` option ensures that the `package.json` file is altered, it now contains the entry similar to this one :point_down::
+Again, use `ls` to see whether something happened in your current folder. We have just installed Express in the folder `node_modules`, which has automatically been created within your current folder; as Express depends on many other packages, you will find more than just Express in there (take a look by issuing the command `ls node_modules`). The `--save` option ensures that the `package.json` file is altered, it now contains the entry similar to this one :point_down::
 
 ```javascript
 {
@@ -503,7 +503,7 @@ app.get("/*", function(req, res){
 })
 ```
 
-Start the server (by now you have learnt how to do this!) and try a few URLs yourself!
+Start the server (by now you have learned how to do this!) and try a few URLs yourself!
 
 A few remarks :point_up::
 
@@ -631,7 +631,7 @@ With the data exchange format out of the way, we can now turn back to Ajax.
 
 Ajax stands for **Asynchronous JavaScript and XML**. XML is in the name, and in the name only. XML is not commonly used as Ajax data exchange format anymore (JSON is!).  
 
-**Asynchronous Javascript:** In synchronous programming, things happen one at a time. When a function needs information from another function, it has to wait for it to finish and this delays the whole program. This is a bad use of your computer's resources, there's no point waiting for a process to finish especially in an era where computer processors are equipped with multiple cores. This is where asynchronous programming steps up. A function that takes too long to finish is seperated from the main application and when it is done, it notifies the main program if it was successful or not. 
+**Asynchronous Javascript:** In synchronous programming, things happen one at a time. When a function needs information from another function, it has to wait for it to finish and this delays the whole program. This is a bad use of your computer's resources, there's no point waiting for a process to finish especially in an era where computer processors are equipped with multiple cores. This is where asynchronous programming steps up. A function that takes too long to finish is separated from the main application and when it is done, it notifies the main program if it was successful or not. 
 
 Ajax is a **JavaScript mechanism** that enables the dynamic loading of content **without having to refetch/reload the page manually**. Ajax is a technology that **injects** new data into an existing web document. Ajax is not a language. Ajax is also not a product. Let's take the Bing search engine as an example: once you start typing a query, with each letter typed a new set of query suggestions will become available :point_down:. If we keep the browser's web dev tools open (in particular the [Network Monitor](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor)), we observe that each keystroke will lead to a new request/response message pair (and the request contains the currently typed query as visible on the Headers pane):
 
@@ -716,7 +716,7 @@ In a nutshell, Ajax - without the high-level encapsulation through `axios` - wor
 
 :four: On the client, JavaScript code injects the data into the page.
 
-Importantly, with Ajax, the number of complete page reloads is vastly reduced. **Only the newly available** (e.g. a new set of query suggestions based on the current query) or **changed data** needs to be retrieved from the server, instead of the complete document. Ajax was and remains an important technology to move from web pages to web applications - imagine every time you type a character into your favourite search engine you would have to wait for the page to reload in order to get the latest query suggestions. We would quickly abolish query suggestions.
+Importantly, with Ajax, the number of complete page reloads is vastly reduced. **Only the newly available** (e.g. a new set of query suggestions based on the current query) or **changed data** needs to be retrieved from the server, instead of the complete document. Ajax was and remains an important technology to move from web pages to web applications - imagine every time you type a character into your favorite search engine you would have to wait for the page to reload in order to get the latest query suggestions. We would quickly abolish query suggestions.
 
 In practice, implementing Ajax calls correctly can be tricky, due to Ajax's security model. In our game list code example, we have conveniently requested data from *our* web server. In fact, a security restriction of Ajax (at least by default) is that it can only fetch files or request routes from the same web server as the calling page (this is called **same-origin policy**).
 
@@ -726,7 +726,7 @@ The same-origin policy is fulfilled when the **protocol, port and host** are the
 
 While Ajax is a mainstay of today's web, it has issues:
 
-- The server cannot **push** data to the client, it can only respond to HTTP requests, thus requiring a form of **polling** to simulate the desired push-based behaviour (for example, a user's Twitter timeline is updated by making requests to Twitter's servers every few seconds). This is resource-intensive on both the client and the server-side.
+- The server cannot **push** data to the client, it can only respond to HTTP requests, thus requiring a form of **polling** to simulate the desired push-based behavior (for example, a user's Twitter timeline is updated by making requests to Twitter's servers every few seconds). This is resource-intensive on both the client and the server-side.
 - Every time data is requested and sent, an entire HTTP message is required - this has a considerable amount of overhead if the data to send is only a few bytes (as an example, in a chess game, we may just send a single move such as `b2b4` at a time - that's four characters in total).
 - The client-side script has to track the mapping from outgoing connections to the incoming connection in cases where a client makes requests to multiple servers.
 
@@ -983,7 +983,7 @@ Here are a few questions you should be able to answer after having followed the 
 </details>
 
 <details> 
-  <summary>True or False? The WebSocket protocol relies on long polling to enable bidirectional communi- cation between client and server.</summary>
+  <summary>True or False? The WebSocket protocol relies on long polling to enable bidirectional communication between client and server.</summary>
   False.
 </details>
 

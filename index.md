@@ -7,13 +7,13 @@ warning: false
 Web technology course information <!-- omit in toc -->
 ==
 
-CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year Bachelor students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/).
+CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/).
 
-This website contains **all materials of the web technology part** of the course. It has been updated for the 2020/21 course edition. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in the browser's localStorage: i.e., no data leaves your machine. Be aware though that all data is deleted when you clear your browser's history/cookies/storage!
+This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in your browser's localStorage: this means that **no data (highlights/notes) leaves your machine**. Be aware though that all this data is deleted when you clear your browser's history/cookies/storage!
 
-We cover the following languages: HTTP, HTML, JavaScript (on the client and server). Our "web stack" or web application stack, i.e. the software setup we use to implement web applications, is minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
+We cover the following languages: HTTP, HTML, CSS as well as JavaScript on the client- and server-side. Our *web stack* or web application stack, i.e. the software setup we use to implement web applications, is rather minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
 
-In the five weeks of the web technology lectures we can only cover the web programming fundamentals (and thus the minimal stack). If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
+In the five weeks of the web technology lectures we can only cover the web programming fundamentals (and thus chose a small application stack). If you want to get an overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
 - [Web technology instructor](#web-technology-instructor)
@@ -77,7 +77,7 @@ Telnet (for your first web technology assignment).
 
 ## Course grading
 
-The entire course (covering both database and web technoloogy topics) is graded as follows:
+The entire course (covering both database and web technology topics) is graded as follows:
 
 ![grading](img/RME-grading.png)
 
@@ -160,7 +160,7 @@ The web technology topics start in week 2.6. In contrast to the database topics,
 
 During the *on campus* sessions you will go over old web technology exam questions. The goals here are twofold: familiarize yourself with the exam setup as well as reflect for yourself on your knowledge.
 
-//TODO: Stackoverflow forum info
+Just like in Q1, TU Delft students can make use of a dedicated Stack Overflow community to help each other: [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs). Please keep the guidelines from Q1 in mind, such as that you remain polite, tag the question with the correct course, do not share (partial) solutions to graded work, and upvote/accept answers that have helped you.
 
 ## Web technology assignments
 
@@ -221,4 +221,4 @@ Lastly, the materials we present here are only one way of introducing the fundam
 - [Web Technologies /U Texas (2015)](http://www.cs.utsa.edu/~cs4413/)
 - [Web Programming /U Washington](https://courses.cs.washington.edu/courses/cse154/20su/)
 - [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
-- [Javascript /UPenn](http://www.seas.upenn.edu/~cis197/)
+- [JavaScript /UPenn](http://www.seas.upenn.edu/~cis197/)

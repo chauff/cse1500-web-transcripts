@@ -324,7 +324,7 @@ Diverse MIME types exist. Below is a list of some of the most popular and least 
 | application/xml       | application/vnd.ms-powerpoint |
 | text/calendar         | application/pgp-signature   |
 
-You should be able to recognise most of the popular types apart from `application/rss+xml` and `application/atom+xml` - those are two popular types of web feed standards. 
+You should be able to recognize most of the popular types apart from `application/rss+xml` and `application/atom+xml` - those are two popular types of web feed standards. 
 
 If a server does not include a specific MIME type in the HTTP response header, the default setting of `unknown/unknown` is used.
 
@@ -391,7 +391,7 @@ Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sen
 
 Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any type of cache can store a copy of the response. A browser's HTTP cache is useful as it reduces the load on the origin server; for instance, a click on the browser's back button does not typically result in a new HTTP request, instead the cached resource is served. 
 
-:bug: A browser's HTTP cache is at times the source of immense frustration for web developers. If you are updating the code of your web application, deploying it and testing it in your browser, it may appear to not have any effect. And then a round of debugging starts. However, there may be nothing wrong with your code, instead your browser may simply be relying on the cached version of your web application source code files. For development purposes, the browser's HTTP cache should be switched off. For Firefox, this means (1) opening a new tab and (2) typing `about:config` in the address bar. This gives you access to advanced configuration proferences. Then, (3) search for the preference name `http-cache` and (4) set it to false.  Note, that this is only useful for development purposes, if you are also wanting to ensure that your application's users are not served cached versions, there are different ways to go about this (this is beyond the scope of this lecture, but you can take a look at this [StackOverflow question and its answers](https://stackoverflow.com/questions/49547/how-do-we-control-web-page-caching-across-all-browsers) for a start; bottom line: there is no easy one-size-fits-all solution).
+:bug: A browser's HTTP cache is at times the source of immense frustration for web developers. If you are updating the code of your web application, deploying it and testing it in your browser, it may appear to not have any effect. And then a round of debugging starts. However, there may be nothing wrong with your code, instead your browser may simply be relying on the cached version of your web application source code files. For development purposes, the browser's HTTP cache should be switched off. For Firefox, this means (1) opening a new tab and (2) typing `about:config` in the address bar. This gives you access to advanced configuration preferences. Then, (3) search for the preference name `http-cache` and (4) set it to false.  Note, that this is only useful for development purposes, if you are also wanting to ensure that your application's users are not served cached versions, there are different ways to go about this (this is beyond the scope of this lecture, but you can take a look at this [StackOverflow question and its answers](https://stackoverflow.com/questions/49547/how-do-we-control-web-page-caching-across-all-browsers) for a start; bottom line: there is no easy one-size-fits-all solution).
 
 
 ### Header field Last-Modified
@@ -400,7 +400,7 @@ The `Last-Modified` header field contains the date when the web resource was las
 
 It is often used in combination with the [`If-Modified-Since`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) header. When web caches actively try to revalidate web resources they cache, they only want the web resource sent by the origin server if it has changed since the `Last-Modified` date. If nothing has changed, the origin server simply returns a `304 Not Modified` response; otherwise the updated web resource is sent to the web cache.
 
-`Last-Modified` dates have to be taken with a grain of salt. They are not always reliable, and can be manipulated by the origin server to ensure high cache validation rates. This in turn indicates that the origin server is serving novel content regularly which is rumored to help search engine rankings (it is only a rumor as search engines continously update their result ranking algorithms).
+`Last-Modified` dates have to be taken with a grain of salt. They are not always reliable, and can be manipulated by the origin server to ensure high cache validation rates. This in turn indicates that the origin server is serving novel content regularly which is rumored to help search engine rankings (it is only a rumor as search engines continuously update their result ranking algorithms).
 
 ### Header fields Connection & Upgrade
 
@@ -640,7 +640,7 @@ The entity responsible for translating a domain name into an IP address is calle
 Several public DNS servers exist, a popular one is operated by Google, called [Public DNS](https://developers.google.com/speed/public-dns/).
 Version 4 IP addresses (IPv4), just as the one shown above, consist of 32 bits; they are divided into 4 blocks of 8 bits each. 8 bit can encode all numbers between 0 and 255. This means, that in this format, a total of **2^32 unique IP addresses** or just shy of 4.3 billion unique IP addresses can be generated.
 
-This might sound like a lot, but just think about how many devices you own that connect to the Internet ... This problem was foreseen already in the early 1990s and over time a new standard was developed by the IETF and published in 1998: [the **IPv6** standard](https://tools.ietf.org/html/rfc8200). An IPv6 address consists of 128 bit, organised into 8 groups of four hexadecimal digits. This means, that up to 2^128 unique addresses can be generated, that is such a large number that meaningful comparisons are hard to come by. In decimal form, 2^128 is a number with 39 digits! A large enough address space to last us almost forever.
+This might sound like a lot, but just think about how many devices you own that connect to the Internet ... This problem was foreseen already in the early 1990s and over time a new standard was developed by the IETF and published in 1998: [the **IPv6** standard](https://tools.ietf.org/html/rfc8200). An IPv6 address consists of 128 bit, organized into 8 groups of four hexadecimal digits. This means, that up to 2^128 unique addresses can be generated, that is such a large number that meaningful comparisons are hard to come by. In decimal form, 2^128 is a number with 39 digits! A large enough address space to last us almost forever.
 
 Why are we still using IPv4? Because transitioning to the new standard takes time - a lot of devices require software upgrades (and nobody can force the maintainers to upgrade) and things still work, so there is no immediate sense of urgency.
 
@@ -748,7 +748,7 @@ worldwide interchange, processing, and display of the written texts of the
 diverse languages and technical disciplines of the modern world.
 ```
 
-As of 2020, more than 140,000 characters have been included in the Unicode stanard.
+As of 2020, more than 140,000 characters have been included in the Unicode standard.
 
 How does this help us to use URLs with non-Latin characters? IETF comes once again to the rescue! **Punycode** ([RFC 3492](https://www.ietf.org/rfc/rfc3492.txt)) was developed to allow URLs with unicode characters to be translated **uniquely and reversibly** into an ASCII string. Quoting the RFC abstract:
 
@@ -825,7 +825,7 @@ Let's look at this concept one more time, based on the following toy example :po
 
 <sup>Usage of fat URLs: a toy example.</sup>
 
-On the left :point_up: you see a shop web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page `my-shop.nl`, the server recognizes the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server. This authenticaion approach is still to weak though as the user can simply navigate to `my-shop.nl` again and to receive a new unique identifier.
+On the left :point_up: you see a shop web site, consisting of the entry page `my-shop.nl` and two other pages, one for books and one for gifts. The entry page links to both of those pages. These URLs do not contain a fat element. The first time a user requests the entry page `my-shop.nl`, the server recognizes the lack of an identifier in the URL and generates one. Specifically for that user, it also rewrites the HTML of the entry page: its hyperlinks now contain the unique ID. The server then redirects the user to `my-shop.nl/43233` and serves the changed HTML content. In this manner, as long as the user browses through the shop, the user remains authenticated to the server. This authentication approach is still to weak though as the user can simply navigate to `my-shop.nl` again and to receive a new unique identifier.
 
 **Fat URLs have issues**:
 
