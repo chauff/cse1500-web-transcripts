@@ -145,6 +145,6 @@ ngrok is not a solution for an actual deployment. [Heroku](https://www.heroku.co
 
 As an alternative, make a screencast of your game and upload it to a video hosting platform such as [vimeo](https://vimeo.com/upload) or [YouTube](https://www.youtube.com/).
 
-Once you have deployed or videotaped your app, head over to CSE1500's 💡 Brightspace, go to *Discussions* and the forum **DEPLOYED/VIDEOTAPED GAMES**. Add the URL of your deployed app or video.
+Once you have deployed or videotaped your app, head over to our TUD Stack Overflow community [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs), find your article and post the URL to the game and/or video. Add the tag `video` if you have a video to show off, or `deployed` if you deployed your game for others to play - this makes it easier for everyone else to find your final product!
 
 🎮 👾 And now, it's time to play some games of your fellow study colleagues! 👾 🎮
