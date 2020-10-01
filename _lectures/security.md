@@ -375,9 +375,9 @@ Among [Juice Shop's XSS challenges](https://bkimminich.gitbooks.io/pwning-owasp-
 
 Head to your Juice Shop installation and look for the search bar. Try to search for different things (`juice`, `apple`, `pear`). You will see that the original query `XX` is always shown at the top of the search results as `Search Results - XX`. Let's see whether the search result input is sufficiently sanitized or whether it allows us to perform a reflected XSS attack. 
 
-- Try to search for `alert('hello?')` - what happens? Does an alert window pop up? Spoiler: no. So basic input sanitation is happening. 
-- What about `<IMG SRC=javascript:alert('hello?');>`? Spoiler: besides a little broken image icon not much is happening. 
-- How about `<iframe src=javascript:alert('hello?');></iframe>`? Spoiler: this one is successful, you should see a little popup! Take a look at the URL: `http://localhost:3000/#/search?q=%3Ciframe%20src%3Djavascript:alert('hello%3F');%3E%3C%2Fiframe%3E` - it is not obvious that this will lead to some JavaScript execution to the untrained eye (not to mention that when posted to services such as Twitter or Facebook the URL will be shortened and unrecognizable).
+- Try to search for `alert('hello?')` - what happens? Does an alert window pop up? <span class="spoiler">No. Basic input sanitation is happening.</span>
+- What about `<IMG SRC=javascript:alert('hello?');>`? <span class="spoiler">Besides a little broken image icon not much is happening.</span>
+- How about `<iframe src=javascript:alert('hello?');></iframe>`? <span class="spoiler">This attack is successful, you should see a little popup! Take a look at the URL - it is not obvious that this will lead to some JavaScript execution to the untrained eye (not to mention that when posted to services such as Twitter or Facebook the URL will be shortened and unrecognizable).</span>
 
 Of course, such a popup does not really look malicious, in the end we just say hello. However, a malicious user will probably put other things beside a benign popup into the `<iframe>`.
 
@@ -452,7 +452,7 @@ Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwnin
 
 1. Head over to your Juice Shop installation, access the top-left side menu and click on the *About Us* link.
 2. Take a closer link at the hyperlink `Check out our boring terms of use if you are interested in such lame stuff`. It is a relative link `ftp/legal.md`. 
-3. Let's see whether there is something else in this `ftp` directory; all we have to do is slightly change our URL to `http://localhost:3000/ftp` (again, assuming a local installation of Juice Shop). Spoiler: we can access this directory (which is a huge security issue) and more importantly, we can view the confidential document `acquisitions.md` which describes Juice Shop's plans for the coming years.
+3. Let's see whether there is something else in this `ftp` directory; all we have to do is slightly change our URL to `http://localhost:3000/ftp` (again, assuming a local installation of Juice Shop). <span class="spoiler">We can access this directory (which is a huge security issue) and more importantly, we can view the confidential document `acquisitions.md` which describes Juice Shop's plans for the coming years.</span>
 
 #### How to avoid it
 

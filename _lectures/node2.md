@@ -346,7 +346,7 @@ your output on the terminal will look something like this:
 
 :point_up: Importantly, `next()` enables us to move on to the next middleware component while **`app.use(...)` registers the middleware component with the dispatcher**. Try out this code for yourself and see what happens if:
 
-- `app.use` is removed (spoiler: the component is not available to the dispatcher);
+- `app.use` is removed <span class="spoiler">(the component is not available to the dispatcher)</span>;
 - the order of the middleware components is switched, i.e. we first add `app.use(delimiter)` and then `app.use(logger)`;
 - in one or both of the middleware components the `next()` call is removed.
 

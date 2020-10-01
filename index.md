@@ -34,13 +34,15 @@ In the five weeks of the web technology lectures we can only cover the web progr
 
 ## Recommended book :closed_book:
 
+<img align="right" width="150px" src="img/node-book.png">
+
 The one book we *recommend* for this part of the course is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). 
 
 **It is not required though** - there are no required readings from this book and we do not come close to covering the majority of the book's content. To give you an idea, the book contains 22 content chapters and we include nine of them in our recommended readings list.
 
-We recommend the book as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in **production settings**. Thus, this books goes well beyond what you need to know for this class and includes chapters on code maintenance, quality assurance and how to deploy an application in production. The book already assumes your familiarity with basic web programming; you will not find an introduction to CSS or JavaScript in it.
+We recommend the book as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in **production settings**. Thus, this books goes well beyond what you need to know for this class and includes chapters on code maintenance, quality assurance and how to deploy an application in production. The book already assumes familiarity with basic web programming; you will not find an introduction to CSS or JavaScript in it.
 
-**There is not one recommended book to cover the basics of HTML, CSS or JavaScript.** Instead, we point you to a number of introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
+**There is no recommended book to introduce HTML, CSS and JavaScript.** Instead, we point you to a number of introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
 
 ## Tooling
 
@@ -52,15 +54,15 @@ It is also [the most popular IDE](https://insights.stackoverflow.com/survey/2019
 
 ![Visual Studio Code](img/RME-vsc.png)
 
-VSC offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this may be a bit overwhelming, we made a short list of the extensions we recommend to install for this course. For the programming assignments we recommend the **VS Live Share** extension for those students that do not want to dive into `git` yet! 
+VSC offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this may be a bit overwhelming, we made a short list of the extensions we recommend to install for this course:
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), a popular *linting utility* for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables) - use it to improve your code.
 - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) does what the name suggests.
 - [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a great tool to try out JavaScript snippets without hassle.
-- [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension (especially useful if a student team works mostly remotely).
+- [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension. If your team does not want to dive into `git` yet, this is the way to go to work collaboratively and remotely together.
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier.
-- If you like to add TODOs to your code, try [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree), it makes sure you don't overlook any of your TODOs!
-- Finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea. [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. [Cobalt2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2) is also nice. If you want to pick based on visuals, head over to [https://vscodethemes.com/](https://vscodethemes.com/).
+- If you like to add TODOs to your code, try [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree), it makes sure you do not overlook any of your TODOs!
+- Finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea. [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. [Cobalt2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2) is also nice. If you want to pick based on visuals, head to [https://vscodethemes.com/](https://vscodethemes.com/).
 
 If you are new to team programming, and want to use VSC's features efficiently, [read our VSC guide](How-to-use-VSC.md).
 
@@ -159,39 +161,39 @@ The web technology topics start in week 2.6. In contrast to the database topics,
 
 During the *on campus* sessions you will go over old web technology exam questions. The goals here are twofold: familiarize yourself with the exam setup as well as reflect for yourself on your knowledge.
 
-Just like in Q1, TU Delft students can make use of a dedicated Stack Overflow community to help each other: [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs). Please keep the guidelines from Q1 in mind, such as that you remain polite, tag the question with the correct course, do not share (partial) solutions to graded work, and upvote/accept answers that have helped you.
+Just like in Q1, as TU Delft students you can make use of a dedicated Stack Overflow community: [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs). Please keep the guidelines from Q1 in mind, such as that you remain polite, tag the question with the correct course, do not share (partial) solutions to graded work, and upvote/accept answers that have helped you.
 
 ## Web technology assignments
 
-There are three web technology assignments, each one covering the material of 2-3 lectures:
+There are three web technology assignments, each one covering the material of two to three lectures:
 
 - [The first web technology assignment covers HTTP and web design](_practicals/assignment-http-design.md).
-- [The second web technology assignment asks you to implement client-side and server-side JavaScript (i.e. Node.js) code](_practicals/assignment-js-node.md).
+- [The second web technology assignment asks you to write client-side and server-side JavaScript code](_practicals/assignment-js-node.md).
 - [The last web technology assignment focuses on server-side JavaScript and CSS](_practicals/assignment-css-node.md).
 
-The three assignments build on each other - over the course of them you are tasked with implementing a small multi-player game. In previous years, roughly 90% of groups passed one assignment, 60% passed two web technology assignments and 30% of groups passed all three web technology assignments.
+The three assignments build on each other - over the course of them you are tasked with implementing a small multi-player game :game_die:. In previous years, roughly 90% of student teams passed one assignment, 60% passed two web technology assignments and 30% of teams passed all three web technology assignments.
 
 ## Web development resources
 
-The practical assignments of this work often require looking up Web development specifics. Two good resources, in general, for Web engineering are [Mozilla's MDN portal](https://developer.mozilla.org/en-US/) and [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).
+The practical assignments of this work often require looking up web development specifics. Two good resources for web engineering are [Mozilla's MDN portal](https://developer.mozilla.org/en-US/) and [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).
 
 If you want to hear the latest and greatest about the web stack, Twitter is a good source of information.
-Here is a list of accounts to follow:
+Here is a list of useful accounts to follow:
 
-- [Franziska Hinkelmann](https://twitter.com/fhinkel), working on Node.js at Google
-- [Lin Clark](https://twitter.com/linclark) makes technical challenges accessible to the wider public for Mozilla
-- [V8](https://twitter.com/v8js), Google's JavaScript engine
-- [JavaScript Daily](https://twitter.com/JavaScriptDaily), does exactly as the name suggests
-- [AmsterdamJS](https://twitter.com/amsterdamjs), local JavaScript community
-- [Node.js](https://twitter.com/nodejs) (of course)
-- [Axel Rauschmeyer](https://twitter.com/rauschma), an author of popular JavaScript books
-- [Addy Osmani](https://twitter.com/addyosmani), working on Google Chrome and well known for his JavaScript design patterns book
-- [Wes Bos](https://twitter.com/wesbos), a popular teacher of the web stack
-- [Mozilla Hacks](https://twitter.com/mozhacks), official Mozilla account for web developers
-- [Visual Studio Code](https://twitter.com/code) (of course)
-- [JavaScript Conference Series](https://twitter.com/jsconf) - look out for their conference talks, usually posted on YouTube
-- [Chrome DevTools](https://twitter.com/ChromeDevTools), tips and tricks of the dev tool trade
-- [Syntax](https://twitter.com/syntaxfm), podcasts for web developers
+- [Franziska Hinkelmann](https://twitter.com/fhinkel), working on Node.js at Google;
+- [Lin Clark](https://twitter.com/linclark) makes technical challenges accessible to the wider public for Mozilla;
+- [V8](https://twitter.com/v8js), Google's JavaScript engine;
+- [JavaScript Daily](https://twitter.com/JavaScriptDaily), does exactly as the name suggests;
+- [AmsterdamJS](https://twitter.com/amsterdamjs);
+- [Node.js](https://twitter.com/nodejs);
+- [Axel Rauschmeyer](https://twitter.com/rauschma), an author of popular JavaScript books;
+- [Addy Osmani](https://twitter.com/addyosmani), working on Google Chrome and well known for his JavaScript design patterns book;
+- [Wes Bos](https://twitter.com/wesbos), a popular teacher of the web stack;
+- [Mozilla Hacks](https://twitter.com/mozhacks), official Mozilla account for web developers;
+- [Visual Studio Code](https://twitter.com/code);
+- [JavaScript Conference Series](https://twitter.com/jsconf) - look out for their conference talks, usually posted on YouTube;
+- [Chrome DevTools](https://twitter.com/ChromeDevTools), tips and tricks of the dev tool trade;
+- [Syntax](https://twitter.com/syntaxfm), podcasts for web developers.
 
 ## Lecture material types
 
