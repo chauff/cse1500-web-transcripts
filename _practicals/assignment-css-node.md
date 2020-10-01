@@ -23,11 +23,11 @@ Remember that this is a group assignment! Work efficiently as a team! Both team 
 | 1.1  | CSS                                                |
 | 1.2  | CSS                                                |
 | 1.3  | CSS                                                |
-| 1.4  | →→→ upload 1.1 / 1.2 to 💡 Brightspace forum            |
+| 1.4  | →→→ upload 1.1 / 1.2 to TUD's Stack Overflow community            |
 | 2    | Source code                                        |
 | 3    | Source code                                        |
 | 4    | -                                                  |
-| 5 (optional) | →→→ upload URL to 💡 Brightspace forum         |
+| 5 (optional) | →→→ upload URL to TUD's Stack Overflow community         |
 
 This assignment requires you to finalize your application's source code and thus there is **no** PDF to submit.
 
@@ -83,7 +83,7 @@ To ensure that your players are aware of the screen size limitations (i.e. the g
 
 ### 1.4)
 
-Once you have completed the CSS of your app, head over to CSE1500's 💡 Brightspace, go to *Discussions* and then once more the forum **BOARD GAME APP DESIGNS**. **Find the thread you uploaded your wireframes too.** Add your implemented design screenshots to your 💡 Brightspace discussion forum thread. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
+Once you have completed the CSS of your app, head over to TUD's Stack Overflow community [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs) and find the article you posted your initial wireframe designs in. Add your implemented design screenshots to your article. *Does your implementation deviate significantly from your initial design?* If so, write a paragraph comparing the two.
 
 *Feel free to browse your colleagues' designs and implementations and comment on them!*
 

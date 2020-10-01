@@ -152,19 +152,22 @@ On the web, clients and servers communicate with each other through **HTTP reque
 
 ![HTTP request and response](../img/http-http-req-res.png)
 
-How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many client requests at the same time. Servers host **web resources**, that is any kind of content with an identity on the web. This can be static files, web services, but also dynamically generated content. As long as they are accessible through an identifier, they can be considered as web resources.
+<sup>Client-server communication on the web.</sup>
+
+How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many HTTP requests at the same time. Servers host **web resources**, that is any kind of content with an identity on the web. This can be static files, web services, but also dynamically generated content. As long as they are accessible through an identifier, they can be considered as web resources.
+
 The **client always initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
 **HTTP proxies** are part of the Internet's infrastructure - there are many devices between a client and server that forward or process (e.g. filtering of requests, caching of responses) the HTTP requests and responses. 
 
 ### Network communication
 
-Where does HTTP fit into the **network stack**, i.e. the set of protocols ("stacked" on top of each other) that together define how communication over the Internet happens? A common representation of the network stack is the **OSI model**, the *Open Systems Interconnection model*:
+Lets now consider where HTTP fits into the **network stack**, i.e. the set of protocols ("stacked" on top of each other) that together define how communication over the Internet happens. A common representation of the network stack is the *Open Systems Interconnection model* (or *OSI model*) :point_down::
 
 ![Zimmermann's OSI model](../img/http-OSI.png)
 
 <sup>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702). For our purposes the two outer stacks can be considered client and server, the middle ones are HTTP proxies. An HTTP message travels down the network stack on the device being transformed in every layer potentially into multiple messages which are then transmitted via the physical network. At the other end, these messages travel up the device's network stack again, being transformed in every layer and then at the final layer the HTTP message is reassembled.</sup>
 
- It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails. 
+:point_up: It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails. 
 
 Many network protocols exist, to us only three are of importance:
 
@@ -172,21 +175,21 @@ Many network protocols exist, to us only three are of importance:
 - the Transmission Control Protocol (**TCP**), and
 - the HyperText Transfer Protocol (**HTTP**).
 
-HTTP is at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it! 
+HTTP resides at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it! 
 
 :cookie: Note, that this setup will change in HTTP/3, which resides on top of UDP, a protocol without guarantees of message delivery and packet order. HTTP/3 itself will be responsible to ensure reliable transmissions in a highly efficient manner (which in turn will lead to speedups over HTTP/1.1 and HTTP/2).
 
 ### :bangbang: Activity
 
-Open a modern browser and use its built-in **web development tools** to see what **HTTP messages** are exchanged when loading a web site. 
+Open a modern browser and use its built-in **web development tools** to see what **HTTP messages** are exchanged when accessing a URL.
 
-The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to ``Tools » Web Developer``. The Chrome Developer tools can be reached via the toolbar, navigating to ``View » Developer » Developer Tools``. There are several panels, we here take a look at the **Network panel** on Firefox and how it looks after the user requested the web page residing at the URL [https://www.tudelft.nl/](https://www.tudelft.nl/) :point_down::
+The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to ``Tools » Web Developer``. The Chrome Developer tools can be reached via the toolbar, navigating to ``View » Developer » Developer Tools``. There are several panels, we here take a look at the **Network panel** on Firefox and how it looks after the user requested the URL [https://www.tudelft.nl/](https://www.tudelft.nl/) :point_down::
 
 ![Browser built-in web dev tools](../img/http-devtools.png)
 
 <sup>Firefox's dev tools. Screenshot taken August 28, 2020.</sup>
 
-:point_up: You can see that the resource initially requested (`/`, i.e. the page residing at the URL [https://www.tudelft.nl/]((https://www.tudelft.nl/)) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (33 to be exact as shown in the bottom left of the network panel). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each HTTP request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than one second to receive a response from the server when requesting `/` and about three seconds to complete all requests. This is actually not a lot of resources; head over to a site like [Volkskrant](https://www.volkskrant.nl/), [NYTimes](https://www.nytimes.com/) or the [Guardian](https://www.theguardian.com/international) and look at the cascade of resource requests - it is not uncommon to end up with 100+ requests.
+:point_up: You can see that the resource initially requested (`/`, i.e. the resource residing at the URL [https://www.tudelft.nl/](https://www.tudelft.nl/)) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (33 to be exact as shown in the bottom left of the network panel). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each HTTP request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than one second to receive a response from the server when requesting `/` and about three seconds to complete all requests. This is actually not a lot of resources; head to [https://www.volkskrant.nl/](https://www.volkskrant.nl/), [https://www.nytimes.com/](https://www.nytimes.com/) or [https://www.theguardian.com/international](https://www.theguardian.com/international) and look at the cascade of resource requests - it is not uncommon to end up with 100+ requests.
 
 Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in Firefox's *Headers panel* (which appears within the Network panel) when clicking on a particular resource row :point_down::
 
@@ -196,11 +199,11 @@ Each resource is requested through an **HTTP request**. How exactly such a reque
 
 :point_up: The **Response Headers** panel is neatly organized. To see the actual "raw" format of the headers that are sent as part of HTTP messages, toggle the *Raw Headers* button.
 
-Now that you have a first idea of what HTTP messages are about, let's dive into the details!
+Now that you have a first idea of what HTTP messages are about we can take a look at some of the details.
 
 ### HTTP request message
 
-Remember that HTTP request messages are always sent by the client. Below is a typical HTTP request message:
+Remember that HTTP request messages are always sent by the client. Below is a typical HTTP request message :point_down::
 
 ```
 GET / HTTP/1.1
@@ -213,12 +216,8 @@ DNT: 1
 Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 ```
 
-:point_uHTTP/1.1 is a **plain text protocol** and **line-oriented**.
-The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number `1.1` indicates the highest version of HTTP that an application supports.  
-
-:point_up: What are we requesting? Line 2 answers this question, we are requesting the web resource at `www.tudelft.nl`. Once you start creating your own HTTP request messages, you may wonder why we need the `host` header, given that we provide a domain name or IP address (what this exactly means is explained later on in this transcript) before creating HTTP messages. We need the `host` header, it enables **several domains** to reside at **the same IP address** (this is also called server colocation). The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on.
-
-In the last line, you can see that in this request, a cookie is sent from the client to server.
+:point_up: HTTP/1.1 is a **plain text protocol** and **line-oriented**.
+The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number `1.1` indicates the highest version of HTTP that an application supports. What are we requesting? Line 2 answers this question: we are requesting the web resource at `www.tudelft.nl`. Once you start creating your own HTTP request messages, you may wonder why we need the `host` header, given that we provide a domain name or IP address (what this exactly means is explained later on in this transcript) before creating HTTP messages. We need the `host` header, because it enables **several domains** to reside at **the same IP address**. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on. In the last line, you can see that in this request, a cookie is sent from the client to server.
 
 :cookie: HTTP/2 (and subsequent versions) have switched to a binary protocol.
 

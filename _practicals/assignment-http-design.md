@@ -32,7 +32,7 @@ If you get lost within the assignment, use this overview of deliverables to get 
 | 4.3  | Description of six (three pos., three neg.) game features                   |
 | 5.1  | Splash screen design (wireframe)                   |
 | 5.2  | Game screen design (wireframe)                     |
-| 5.3  | →→→ upload 5.1/5.2 to 💡 Brightspace forum               |
+| 5.3  | →→→ upload 5.1/5.2 to 💡 TUD's Stack Overflow community               |
 | 6  | Two html files                                     |
 
 All deliverable text/imagery (apart from 6. which are two html files) must be included in a single PDF file. The first page of this PDF must contain the names and student numbers of the two team members as well as the team id (the group you signed up for on Brightspace).
@@ -210,7 +210,7 @@ You have a lot of artistic freedom in designing the board and game information.
 
 ### 5.3)
 
-Once you have completed the design of your app, head over to CSE1500's 💡 Brightspace, go to *Discussions* and then the forum **BOARD GAME APP DESIGNS**. Create a thread with your team's name as subject/title (e.g. `CSE234`) and post your team's proposed splash screen and game screen. Feel free to also add a paragraph describing your choices.
+Once you have completed the design of your app, head over to our TUD Stack Overflow community [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs) and post your designs as an [**article**](https://stackoverflow.com/c/tud-cs/articles/create) (of type *knowledge article*) with tags `cse1500` and `game-design`. Include the splash and game screens in the article and add a paragraph describing your choices. Feel free to comment on the designs of your fellow study colleagues.
 
 ## 6. Your own board game app: HTML
 

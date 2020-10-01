@@ -157,7 +157,7 @@ The order may strike you as odd, especially if you are already familiar with the
 
 ## Web technology Q&A
 
-The web technology topics start in week 2.6. In contrast to the database topics, there will be **no** lectures via Zoom. Instead, we have set up the material in a way that you can read and practice along with the transcript. Every week, there will be a one hour question & answering session on Zoom led by Claudia Hauff. This session takes place **Fridays between 11:45-12:45** in weeks 2.6, 2.7, 2.8, 2.9, and 2.10. These sessions can be used to ask questions about the lecture materials, the exam, how to study, live during Corona ... The Zoom link will be posted on Brightspace.
+The web technology topics start in week 2.6. In contrast to the database topics, there will be **no** lectures via Zoom. Instead, we have set up the material in a way that you can read and practice along with the transcript. Every week, there will be a one hour question & answering session on Zoom led by Claudia Hauff. This session takes place **Fridays between 12:00-13:00** in weeks 2.6, 2.7, 2.8, 2.9, and 2.10. These sessions can be used to ask questions about the lecture materials, the exam, how to study, live during Corona ... The Zoom link will be posted on Brightspace.
 
 During the *on campus* sessions you will go over old web technology exam questions. The goals here are twofold: familiarize yourself with the exam setup as well as reflect for yourself on your knowledge.
 
