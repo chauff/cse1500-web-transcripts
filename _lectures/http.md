@@ -137,18 +137,18 @@ To many, the IETF is a lesser known organization, and while you may not often co
 
 Let's now turn to HTTP, the hypertext transfer protocol, the focus of this lecture. [Important versions](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP) of the protocol are the following:
 
-- **HTTP/0.9** was the first version the protocol (very limited in power, developed between 1989-1991).
+- **HTTP/0.9** was the first version of the protocol (very limited in power, developed between 1989-1991).
 - **HTTP/1.1** is governed by [RFC 2068](https://www.ietf.org/rfc/rfc2068.txt); it was standardized in 1997. HTTP/1.1 is the first **standardized** version of HTTP.
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
 - **HTTP/3** has not been standardized yet, though an [RFC draft](https://tools.ietf.org/html/draft-ietf-quic-http-29) already exists.
 
-HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as SPDY protocol (*speedy protocol*); [more details here](https://developers.google.com/web/fundamentals/performance/http2/).For those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses. 
+HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as [SPDY protocol](https://developers.google.com/web/fundamentals/performance/http2/) (*speedy protocol*). For those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses. 
 
-**As HTTP/1.1 is still the dominant protocol type on the web, we focus on it in this lecture. Unless stated otherwise, the following contents is all about HTTP/1.1.**
+**As HTTP/1.1 is still the dominant protocol version on the web, we focus on it in this lecture. Unless stated otherwise, the following contents is all about HTTP/1.1.**
 
 ### Web servers and clients
 
-On the web, clients and servers communicate with each other through **HTTP requests** and **HTTP responses**. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/`, your web browser is acting as the **client** sending an HTTP request. Your email provider is acting as the **server**, sending an HTTP response. 
+On the web, clients and servers communicate with each other through **HTTP requests** and **HTTP responses**. If you open a web browser and type in the URL of your email provider, e.g. `https://gmail.com/`, your web browser is acting as the **client** sending an HTTP request. Your email provider is acting as the **server**, sending an HTTP response :point_down::
 
 ![HTTP request and response](../img/http-http-req-res.png)
 
