@@ -70,7 +70,7 @@ HTTP: the language of web communication <!-- omit in toc -->
   - A detailed overview of the [history of web standards](https://www.smashingmagazine.com/2019/01/web-standards-guide/) and how to make use of them.
 - Relevant scientific publications:
   - Ihm, Sunghwan, and Vivek S. Pai. [Towards understanding modern web traffic](https://conferences.sigcomm.org/imc/2011/docs/p295.pdf). Proceedings of the 2011 ACM SIGCOMM conference on Internet measurement conference. 2011.
-  - Naylor, David, et al. [The cost of the S in HTTPS](https://davidtnaylor.com/CostOfTheS.pdf). Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies. 2014.
+  - Naylor, David, et al. [The cost of the S in HTTPS](https://dl.acm.org/doi/10.1145/2674005.2674991). Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies. 2014.
   - Falaki, Hossein, et al. [A first look at traffic on smartphones](http://conferences.sigcomm.org/imc/2010/papers/p281.pdf). Proceedings of the 10th ACM SIGCOMM conference on Internet measurement. 2010.
   - Mishra, Vikas, et al. [Don't Count Me Out: On the Relevance of IP Address in the Tracking Ecosystem](https://doi.org/10.1145/3366423.3380161). Proceedings of The Web Conference. 2020.
 
@@ -354,7 +354,7 @@ Data corruption occurs regularly, the Internet spans the entire globe, billions 
 
 MD5 stands for **message digest** and acts as a sanity check: the HTTP message content is hashed into a 128 bit value (the checksum). *Hashing* simply means that data of arbitrary size is mapped to data of fixed size in a deterministic manner. The MD5 checksum algorithm is described in [RFC 1321](https://tools.ietf.org/html/rfc1321). Once a client receives an HTTP response message that contains an MD5 checksum (computed by the server based on the message body), it then computes the checksum of the messages body as well and compares it with the server-provided value. If there is a mismatch, the client should assume that the content has been corrupted along the way and thus it should request the web resource again.
 
-`Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUT.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
+`Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
 
 ```
 The Content-MD5 header field has been removed because it was inconsistently
@@ -739,7 +739,7 @@ The development of the Internet had largely been driven by US companies and orga
 
 Later, **character encoding** was added, e.g. a whitespace becomes `%20`. If a URL such as `https://www.tudelft.nl.nl/event calendar 2020.pdf` is entered into a modern browser, it is automatically translated into `https://www.tudelft.nl.nl/event%20calendar%202020.pdf` before the HTTP request is made. Thus, in this manner, characters that are not part of ASCII can be encoded through a **combination** of ASCII characters.
 
-Character encodings are not sufficient though, what about languages that are not based on the Latin alphabet (what about URLs like `http://правительство.рф` which uses the cyrillic script)? Ideally, URLs should allow non-Latin characters as well, which today boils down to the use of the [Unicode standard](http://www.unicode.org/versions/Unicode13.0.0/):
+Character encodings are not sufficient though, what about languages that are not based on the Latin alphabet (what about URLs like `http://правительство.рф` which uses the cyrillic script)? Ideally, URLs should allow non-Latin characters as well, which today boils down to the use of the [Unicode standard](https://www.unicode.org/versions/Unicode13.0.0/):
 
 ```
 The Unicode Standard is a character coding system designed to support the 

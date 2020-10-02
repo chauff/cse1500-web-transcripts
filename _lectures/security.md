@@ -355,7 +355,7 @@ XSS attacks come in two flavours: stored XSS and reflected XSS.
 
 A common example :point_down: of stored XSS are forum posts: if a malicious user is able to add a comment to a page that is not validated by the server, the comment can contain JavaScript code. The next user (victim) that views the forum posts receives the forum data from the server, which now includes the malicious code. This code is then executed by the victim's browser.
 
-```console
+```
 http://myforum.nl/add_comment?c=Let+me+…
 http://myforum.nl/add_comment?c=<script>…
 ```
@@ -364,7 +364,7 @@ In a **reflected XSS** attack (also known as **non-persistent or Type-II** attac
 
 In the example :point_down: the tainted URL contains JavaScript code as query. An unsuspecting user (the victim) may receive this URL in an email and trust it, because she trusts http://myforum.nl. The malicious code is reflected off the server and ends up in the victim's browser, which executes it.
 
-```console
+```
 http://myforum.nl/search?q=Let+me+…
 http://myforum.nl/search?q=<script>…
 ```

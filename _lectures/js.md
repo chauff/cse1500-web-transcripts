@@ -51,7 +51,7 @@ warning: false
   - [JavaScript strings @MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings) (**skip over** the *Template literals* section).
   - [Manipulating documents @MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents) (**skip over** the *Manipulate styles* section, this will be covered in a later lecture).
 - Recommended activities:
-  - [Interactive JavaScript exercises](../_practicals/nodeschool-exercises.mdnodeschool-exercises.md).
+  - [Interactive JavaScript exercises](../_practicals/nodeschool-exercises.md).
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
   - [JavaScript30](https://javascript30.com/): 30 day vanilla JS coding challenges
 - Recommended readings:

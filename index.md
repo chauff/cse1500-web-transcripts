@@ -9,7 +9,7 @@ Web technology course information <!-- omit in toc -->
 
 <img align="right" width="150px" src="https://chauff.github.io/img/og_claudia.png">
 
-CSE1500 is the [Web and Database Technology course](https://studiegids.tudelft.nl/a101_displayCourse.do?course_id=51307), that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/). 
+CSE1500 is the **Web and Database Technology course**, that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/). 
 
 The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquiries about the course content, exams and so on should be emailed to `cse1500-ewi@tudelft.nl` - this email reaches all responsible course instructors. If you have questions specifically about the web technology part of the course, do not forget to add *[web]* to your email subject to reach Claudia Hauff. Questions regarding your performance or grades need to come from your TU Delft email address.
 

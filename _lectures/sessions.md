@@ -453,7 +453,7 @@ for(var i=0; i < cookiesArray.length; i++) {
 }
 ```
 
-On our [CSE1500](https://chauff.github.io/Web-Teaching) it is possible to highlight pieces of text and add a few notes. You may have noticed that you were not asked to provide a username/password to enable highlighting. If we would have chosen to store those highlights/notes on a server, it would have been necessary to add an authorization step (you probably only want to receive your own notes and highlights!). Here, we store all this information on the client-side only. We could have used cookies for this purpose but there is a more recent solution: [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Local storage persists data on disk and has an intuitive programming interface:
+On our [CSE1500](https://chauff.github.io/Web-Teaching/) it is possible to highlight pieces of text and add a few notes. You may have noticed that you were not asked to provide a username/password to enable highlighting. If we would have chosen to store those highlights/notes on a server, it would have been necessary to add an authorization step (you probably only want to receive your own notes and highlights!). Here, we store all this information on the client-side only. We could have used cookies for this purpose but there is a more recent solution: [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Local storage persists data on disk and has an intuitive programming interface:
 
 ```javascript
 localStorage.setItem('1600637','Why not use something else?'); //add a data item (key/value must be strings)
