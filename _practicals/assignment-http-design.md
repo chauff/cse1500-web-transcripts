@@ -12,7 +12,7 @@ The first part of this assignment gives you hands-on experience with **HTTP**. I
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md). Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.
+Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](../_practicals/vsc-usage.md). Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.
 
 ### Overview of deliverables and upload procedure
 
@@ -39,14 +39,14 @@ All deliverable text/imagery (apart from 6. which are two html files) must be in
 
 The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistants and before the ultimate assessment deadline. This means that the outcomes of all web assignments are **all** uploaded to the same directory!
 
-**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.** The [rubric](assignment-rubric.md) contains example questions for each assignments. During the assessment you can make use of your notes.
+**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.** The [rubric](../_practicals/assignment-rubric.md) contains example questions for each assignment. During the assessment you can make use of your notes.
 
 ## 1. HTTP request messages: GET/HEAD
 
-👉 Let's start with a few hints:
+👉 Let us start with a few hints:
 
 - This assignment requires you to work on the shell. If you are not familiar with this type of command line interface, take a look at this [MIT class](https://missing.csail.mit.edu/); it covers the *missing semester of computer science education* and introduces a range of practical tools, including in lesson 1 [the shell](https://missing.csail.mit.edu/2020/course-shell/).
-- To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.ard.de 80|tee out` will save all output to a file called `out`.
+- To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.tudelft.nl 80|tee out` will save all output to a file called `out`.
 - To exit a telnet session, first press <kbd>CTRL</kbd>+<kbd>]</kbd>. This brings you to a `telnet>` prompt and you can type `close` to end the session.
 - Telnetting `www.domain.com` is usually not the same as telnetting `domain.com`. Make sure your `host` header information matches exactly the domain you telnetted into.
 - [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when an empty line is expected. Press `<Enter>` to add it.

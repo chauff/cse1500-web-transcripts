@@ -11,13 +11,13 @@ Web technology course information <!-- omit in toc -->
 
 CSE1500 is the **Web and Database Technology course**, that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/). 
 
-The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquiries about the course content, exams and so on should be emailed to `cse1500-ewi@tudelft.nl` - this email reaches all responsible course instructors. If you have questions specifically about the web technology part of the course, do not forget to add *[web]* to your email subject to reach Claudia Hauff. Questions regarding your performance or grades need to come from your TU Delft email address.
+The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquiries about the course content, exams and so on should be emailed to `cse1500-ewi["at"]tudelft.nl`; this email reaches all responsible course instructors. If you have questions specifically about the web technology part of the course, do not forget to add `[WEB]` to your email subject to reach Claudia Hauff. Questions regarding your performance or grades in the course need to come from your TU Delft email address.
 
-This website contains **all materials of the web technology part** of the course. We opted to not distribute the materials via Brightspace due to the many code examples that are much more easily maintained and updated on GitHub. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in your browser's localStorage: this means that **no data (highlights/notes) leaves your machine**. Be aware though that all this data is deleted when you clear your browser's history/cookies/storage!
+This website contains **all materials of the web technology part** of the course. We opted to distribute the materials via GitHub due to the many code examples that are much more easily maintained and updated on a platform made for this purpose. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in your browser's localStorage: this means that **no data (highlights/notes) leaves your machine**. Be aware though that all this data is deleted when you clear your browser's storage.
 
-We cover the following languages: HTTP, HTML, CSS as well as JavaScript on the client- and server-side. Our *web stack* or web application stack, i.e. the software setup we use to implement web applications, is rather minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
+We cover the following languages: HTTP, HTML, CSS as well as JavaScript on the client- and server-side. Our *web application stack*, that is, the software setup we use to implement web applications, is rather minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
 
-In the five weeks of the web technology lectures we can only cover the web programming fundamentals (and thus chose a small application stack). If you want to get a comprehensive overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
+In the five weeks of the web technology lectures we can only cover the web programming fundamentals and thus chose a small application stack. If you want to get a comprehensive overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
 - [Recommended book :closed_book:](#recommended-book-closedbook)
@@ -36,11 +36,11 @@ In the five weeks of the web technology lectures we can only cover the web progr
 
 <img align="right" width="150px" src="img/node-book.png">
 
-The one book we *recommend* for this part of the course is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). 
+The book we *recommend* for this part of the course is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). 
 
 **It is not required though** - there are no required readings from this book and we do not come close to covering the majority of the book's content. To give you an idea, the book contains 22 content chapters and we include nine of them in our recommended readings list.
 
-We recommend the book as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in **production settings**. Thus, this books goes well beyond what you need to know for this class and includes chapters on code maintenance, quality assurance and how to deploy an application in production. The book already assumes familiarity with basic web programming; you will not find an introduction to CSS or JavaScript in it.
+We recommend the book as it shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in **production settings**. The book goes well beyond what you need to know for this class and includes chapters on code maintenance, quality assurance and how to deploy an application in production. The book already assumes familiarity with basic web programming; you will not find an introduction to CSS or JavaScript in it.
 
 **There is no recommended book to introduce HTML, CSS and JavaScript.** Instead, we point you to a number of introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
 
@@ -54,19 +54,19 @@ It is also [the most popular IDE](https://insights.stackoverflow.com/survey/2019
 
 ![Visual Studio Code](img/RME-vsc.png)
 
-VSC offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this may be a bit overwhelming, we made a short list of the extensions we recommend to install for this course:
+VSC offers **many extensions**. You can find a guide on how to browse and install them [here](https://code.visualstudio.com/docs/editor/extension-gallery). A list with all kinds of "delightful" extensions can be found [here](https://github.com/viatsko/awesome-vscode). Since this list can be pretty overwhelming, we made a short list of the extensions we recommend to install for this course:
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), a popular *linting utility* for JavaScript (a linter is a tool that analyzes source code to flag potentially poor code such as unused variables) - use it to improve your code.
 - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) does what the name suggests.
-- [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a great tool to try out JavaScript snippets without hassle.
+- [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode) - a tool to try out JavaScript snippets without hassle.
 - [VS Live Share](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) - a collaborative real-time coding extension. If your team does not want to dive into `git` yet, this is the way to go to work collaboratively and remotely together.
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) to make finding the file you are after in your app directory a bit easier.
 - If you like to add TODOs to your code, try [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree), it makes sure you do not overlook any of your TODOs!
-- Finally, a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable is also not a bad idea. [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. [Cobalt2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2) is also nice. If you want to pick based on visuals, head to [https://vscodethemes.com/](https://vscodethemes.com/).
+- Finally, install a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable. [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. [Cobalt2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2) is also nice. If you want to pick based on visuals, head to [https://vscodethemes.com/](https://vscodethemes.com/).
 
-If you are new to team programming, and want to use VSC's features efficiently, [read our VSC guide](How-to-use-VSC.md).
+If you are new to team programming, and want to use VSC's features efficiently, [read our VSC guide](../Web-Teaching/_practicals/vsc-usage.md).
 
-**Browser developer tools** are integrated in all modern browsers; familiarize yourself with the developer tools of your favorite browser. In our lectures, we will showcase [Firefox's](https://developer.mozilla.org/en-US/docs/Tools) and [Chrome's](https://developers.google.com/web/tools/chrome-devtools) developer tools.
+**Browser developer tools** are integrated in all modern browsers; familiarize yourself with the developer tools of your favorite browser. In our transcripts, we will showcase [Firefox's](https://developer.mozilla.org/en-US/docs/Tools) and from time to [Chrome's](https://developers.google.com/web/tools/chrome-devtools) developer tools.
 
 ### Required 
 
@@ -153,32 +153,36 @@ The web technology topics we cover (in this order) are the following:
 - Cookies and sessions
 - Web security
 
-The order may strike you as odd, especially if you are already familiar with the basics of web programming, as typically CSS is introduced before JavaScript. Here, we introduce JavaScript as early as possible, to give you the chance to practice it a longer period of time before the exam moment.
+The order may strike you as odd, especially if you are already familiar with the basics of web programming, as typically CSS is introduced before JavaScript. We introduce JavaScript as early as possible, to give you the chance to practice it a longer period of time before the exam moment.
 
 ## Web technology Q&A
 
-The web technology topics start in week 2.6. In contrast to the database topics, there will be **no** lectures via Zoom. Instead, we have set up the material in a way that you can read and practice along with the transcript. Every week, there will be a one hour question & answering session on Zoom led by Claudia Hauff. This session takes place **Fridays between 12:00-13:00** in weeks 2.6, 2.7, 2.8, 2.9, and 2.10. These sessions can be used to ask questions about the lecture materials, the exam, how to study, live during Corona ... The Zoom link will be posted on Brightspace.
+<img align="right" width="150px" src="https://chauff.github.io/img/no_zoom.png">
 
-During the *on campus* sessions you will go over old web technology exam questions. The goals here are twofold: familiarize yourself with the exam setup as well as reflect for yourself on your knowledge.
+The web technology topics start in week 2.6. In contrast to the database topics, there will be **no lectures** via Zoom. Instead, we have set up the materials so that you can read and practice along with the transcript. 
 
-Just like in Q1, as TU Delft students you can make use of a dedicated Stack Overflow community: [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs). Please keep the guidelines from Q1 in mind, such as that you remain polite, tag the question with the correct course, do not share (partial) solutions to graded work, and upvote/accept answers that have helped you.
+Every week, there will be a **one hour question & answering session on Zoom** led by Claudia Hauff. This session takes place **Fridays between 12:00-13:00** in weeks 2.6, 2.7, 2.8 and 2.9. These sessions can be used to ask questions about the lecture materials, the exam, how to study, live during Corona ... The Zoom link is available on Brightspace.
+
+During the *on campus* sessions the course assistants go over old web technology exam questions with you. The goals here are twofold: familiarize yourself with the exam setup as well as reflect for yourself on your existing knowledge.
+
+Just like in Q1, as TU Delft students you can make use of a dedicated Stack Overflow community: [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs). Please keep the guidelines from Q1 in mind, such as that you remain polite, tag your questions with the correct course code (`cse1500`), do not share (partial) solutions to graded work, and upvote/accept answers that have helped you.
 
 ## Web technology assignments
 
-There are three web technology assignments, each one covering the material of two to three lectures:
+There are three web technology assignments, each one covering the contents of two to three lectures:
 
 - [The first web technology assignment covers HTTP and web design](_practicals/assignment-http-design.md).
 - [The second web technology assignment asks you to write client-side and server-side JavaScript code](_practicals/assignment-js-node.md).
 - [The last web technology assignment focuses on server-side JavaScript and CSS](_practicals/assignment-css-node.md).
 
-The three assignments build on each other - over the course of them you are tasked with implementing a small multi-player game :game_die:. In previous years, roughly 90% of student teams passed one assignment, 60% passed two web technology assignments and 30% of teams passed all three web technology assignments.
+The three assignments build on each other - over the course of them you are tasked with implementing a **multi-player board game** :game_die:. In previous years, roughly 90% of student teams passed the first web assignment, 60% passed the first two and 30% of teams passed all three web assignments.
 
 ## Web development resources
 
 The practical assignments of this work often require looking up web development specifics. Two good resources for web engineering are [Mozilla's MDN portal](https://developer.mozilla.org/en-US/) and [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).
 
 If you want to hear the latest and greatest about the web stack, Twitter is a good source of information.
-Here is a list of useful accounts to follow:
+Here is a list of useful Twitter accounts to follow:
 
 - [Franziska Hinkelmann](https://twitter.com/fhinkel), working on Node.js at Google;
 - [Lin Clark](https://twitter.com/linclark) makes technical challenges accessible to the wider public for Mozilla;
@@ -201,8 +205,8 @@ Here is a list of useful accounts to follow:
 
 For each lecture we provide a range of materials:
 
-- **Required readings**: please read the required readings **before** tackling the lecture, especially if you are starting out in web technology. The required readings are typically introductions to the different languages we cover. The lecture materials go beyond the contents of the required readings.
-- **Recommended activities**: activities that we think will help you get a better grasp of the different web technologies. Activities are either programming exercises or podcasts (there are some great ones out there!). Don't see those as a complete list to work through, that is impossible given the time!
+- **Required readings**: please read the required readings **before** tackling the lecture transcript, especially if you are starting out in web technology. The required readings are typically introductions to the different languages we cover. The lecture materials go beyond the contents of the required readings.
+- **Recommended activities**: activities that we think will help you get a better grasp of the different web technologies. Activities are either programming exercises or podcasts (there are some great ones out there!). Don't see those as a complete list to work through, that is impossible given the time you have.
 - **Recommended readings**: these may be tweets, blog posts or book chapters that help you understand some of the introduced concepts better; again, do not attempt to read all of the materials.
 - **Relevant scientific publications**: we are often asked why this kind of course is part of the computer science curriculum. Isn't this *just* programming? To showcase how web technologies are researched, we here list a number of scientific publications that contribute to our understanding of (the use of) web technologies.
 
