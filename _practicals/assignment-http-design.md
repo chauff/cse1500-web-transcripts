@@ -12,7 +12,7 @@ The first part of this assignment gives you hands-on experience with **HTTP**. I
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](../_practicals/vsc-usage.md). Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.
+Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](https://chauff.github.io/Web-Teaching/vsc/). Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.
 
 ### Overview of deliverables and upload procedure
 
@@ -39,7 +39,7 @@ All deliverable text/imagery (apart from 6. which are two html files) must be in
 
 The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistants and before the ultimate assessment deadline. This means that the outcomes of all web assignments are **all** uploaded to the same directory!
 
-**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.** The [rubric](../_practicals/assignment-rubric.md) contains example questions for each assignment. During the assessment you can make use of your notes.
+**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.** The [rubric](https://chauff.github.io/Web-Teaching/rubric/) contains example questions for each assignment. During the assessment you can make use of your notes.
 
 ## 1. HTTP request messages: GET/HEAD
 

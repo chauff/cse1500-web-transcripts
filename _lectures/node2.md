@@ -77,7 +77,7 @@ While it is beyond the scope of this course to dive into the details of the npm 
 
 ### A file-based module system
 
-In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in the [JavaScript lecture](js.md#design-pattern-3-module)).
+In Node.js each file is its own module. This means that the code we write in a file does not pollute the *global namespace*. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in the [JavaScript lecture](https://chauff.github.io/Web-Teaching/js/#javascript-design-patterns)).
 
 The module system works as follows: each Node.js file can access its so-called **module definition** through the `module` object. The module object is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or `exports` is used as we will see in a moment. The `module` object looks as follows (depending on the Node version and underlying operating system the property values will vary) :point_down::
 
@@ -701,7 +701,7 @@ console.log(ejs.render(template, context));
 There are two types of scriptlet tags that **output values**:
 
 - `<%= ... %>` output the value into the template in **HTML escaped** form. This means that the characters that are indicating the start/end of markup sequences (such as `<script>` and `</script>`) are converted in such a way that they are rendered as content instead of being interpreted as markup.
-- `<%- ... %>` output the value into the template in **unescaped** form. This means that a value such as `<script>` remains as-is. This enables cross-site scripting attacks, which we will discuss in the [security lecture](security.md).
+- `<%- ... %>` output the value into the template in **unescaped** form. This means that a value such as `<script>` remains as-is. This enables cross-site scripting attacks, which we will discuss in the [security lecture](https://chauff.github.io/Web-Teaching/security/).
 
 In order to see the difference between the two types of tags, go back to Node's REPL and try out the following code snippet :point_down::
 

@@ -36,7 +36,7 @@ warning: false
 - Required readings:
   - None.
 - Recommended activities:
-  - [Interactive Node.js exercises](../_practicals/nodeschool-exercises.md).
+  - [Interactive Node.js exercises](https://chauff.github.io/Web-Teaching/nodeschool/).
   - [Microsoft's beginner-friendly tutorial on building JavaScript applications with Node.js](https://docs.microsoft.com/en-us/learn/paths/build-javascript-applications-nodejs/)
 - Recommended readings:
   - Chapters 1, 2, 3 and 6 of the [Web Development with Node & Express book](https://www.oreilly.com/library/view/web-development-with/9781492053507/).
@@ -197,7 +197,7 @@ fs.access(file, fs.constants.F_OK, function(err){
 
 Although the piece of code :point_up: is small, it has a few interesting components:
 
-- Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [a later lecture](Lecture-node2.md)). In this case, `fs` is our entry point to the file system.
+- Line 1 provides us with access to the filesystem object. The corresponding **Node module** is `fs`. A module is a **self-contained** piece of code that provides **reusable functionality**. The function `require()` usually returns a JavaScript object (we cover `require` in more detail in [a later lecture](https://chauff.github.io/Web-Teaching/nodejs2/)). In this case, `fs` is our entry point to the file system.
 - You should have recognized that [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) is used with two arguments: the path to the file to watch and a **callback** function that is executed when a file change has occurred. The callback function is anonymous (though nothing prevents us from giving the function a name) and executed asynchronously. [`fs.access`](https://nodejs.org/api/fs.html#fs_fs_access_path_mode_callback) (used to determine whether the file exists) takes three arguments in our example.
 - As the filesystem access requires operating system specific code, the behavior can vary across file systems; the underlying operating system calls are outlined in the [`fs.watch`](https://nodejs.org/docs/latest/api/fs.html#fs_fs_watch_filename_options_listener) documentation.
 - :cookie: The color styling of the console output is **not** Node-specific. Providing these [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) to the terminal let's us change the terminal look and feel. In our case, we only use escape codes to change the font color. This may not work in all terminals, and there are (of course) libraries that do this in a more platform-independent manner but for a quick prototype those escape codes are usually sufficient.
@@ -226,7 +226,7 @@ Although not very useful, our `watching.js` script above can be considered a mod
 
 ### :bangbang: Low-level networking with Node.js
 
-Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number (if you don't know what these two concepts refer to, have a look at [the HTTP lecture](Lecture-http.md) again).
+Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number (if you don't know what these two concepts refer to, have a look at [the HTTP lecture](https://chauff.github.io/Web-Teaching/http/) again).
 
 TCP socket connections have **two endpoints**:
 
@@ -365,7 +365,7 @@ server.listen(port, function () {
 });
 ```
 
-To make this example more interesting, let's return different responses depending on the URL path (if you are unsure about the components that make up a URL, head to the [HTTP lecture](http.md)). The task is now to return a greeting for the `/greetme` path and a `404 Not Found` error otherwise. If the URL query (i.e. the part of the URL that assigns values to parameters) contains a parameter named `name`, we greet by name, and otherwise use `Anonymous`. Our script now looks as follows :point_down::
+To make this example more interesting, let's return different responses depending on the URL path (if you are unsure about the components that make up a URL, head to the [HTTP lecture](https://chauff.github.io/Web-Teaching/http/)). The task is now to return a greeting for the `/greetme` path and a `404 Not Found` error otherwise. If the URL query (i.e. the part of the URL that assigns values to parameters) contains a parameter named `name`, we greet by name, and otherwise use `Anonymous`. Our script now looks as follows :point_down::
 
 ```javascript
 const http = require("http");
@@ -539,7 +539,7 @@ Small web applications (such as your own board game project) are often structure
 
 <sup>The client-side code of the web application resides within the `/public` folder. Within it, three subfolders exist: one for any data for the client, one for all JavaScript files and one for the stylesheets. Here, as we have only two HTML files (the splash screen and the game screen) we opted to not create a separate subfolder for them. All other `.js` files (i.e. anything not in `/public`) refer to server-side code.</sup>
 
-In the [JS+Node assignment](../_practicals/assignment-js-node.md) you will learn how to create such a folder structure **automatically**, according to accepted best practices.
+In the [JS+Node assignment](https://chauff.github.io/Web-Teaching/assignmentII/) you will learn how to create such a folder structure **automatically**, according to accepted best practices.
 
 ## Adding interactivity between client and server via Ajax
 

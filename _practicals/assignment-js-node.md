@@ -12,7 +12,7 @@ In this assignment you will build the backbone of your application. In the first
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! Both team members **must contribute to the code** and **both team members must understand the code**. The group interview will focus on having the required functionality and showing off your understanding of the code. If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](How-to-use-VSC.md).
+Remember that this is a group assignment! Work efficiently as a team! Both team members **must contribute to the code** and **both team members must understand the code**. The group interview will focus on having the required functionality and showing off your understanding of the code.
 
 ### Overview of deliverables and upload procedure
 
@@ -43,45 +43,43 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 
 In this exercise we walk you through how to set up your game project. Once you have completed this exercise you can start coding!
 
-Web applications tend to have specific file and folder structures, which are often generated automatically - you can consider those to be current best practices of how to set up a web application project with your chosen set of libraries and frameworks. This automatically generated code is called *boilerplate code*. In this course we will use [Express](https://expressjs.com/), a *fast, unopinionated, minimalist web framework for Node.js*. Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).
+Web applications tend to have specific file and folder structures, which are often generated automatically - you can consider those to be current best practices of how to set up a web application project with your chosen set of libraries and frameworks. This automatically generated code is called *boilerplate code*. In this course we will use [express](https://expressjs.com/), a *fast, unopinionated, minimalist web framework for Node.js*. Express comes with its own [application generator tool](https://expressjs.com/en/starter/generator.html).
 
 We will use it to set up the code structure of our game application.
 
-First of all, create a directory for this course and `cd` into it. If you are not familiar with the `cd` command, take a look at the [10 basic Linux commands you should know](https://www.redhat.com/sysadmin/basic-linux-commands).
+First of all, open a terminal, create a directory (possible via `mkdir`) for this course and `cd` into it. If you are not familiar with the `mkdir` or `cd` commands, take a look at the [10 basic Linux commands you should know](https://www.redhat.com/sysadmin/basic-linux-commands).
 
 Then, install the necessary npm package `express-generator`. You can use one of two installation types: global or local installation. We recommend the global installation, as `express-generator` will be used from the command line, is useful for many [Node.js](https://nodejs.org/) projects and should thus be accessible from any directory (in line with [npm guidelines](https://docs.npmjs.com/getting-started/installing-npm-packages-globally)). Packages that are only useful for the current project you are working on should be installed locally.
 
-For a **local** installation (i.e. the package is installed in a folder in the current directory), use:
+For a **local** installation (i.e. the package is installed in a folder in the current directory), use :point_down::
 
-```console
+```
 npm install express-generator
 ```
 
-For a **global** installation of the package (the package is accessible from any directory), use:
+For a **global** installation of the package (the package is accessible from any directory), use :point_down::
 
-```console
+```
 npm install --global express-generator
 ```
 
-In the local case (no `--global` option) the package will be installed in the current directory under `node_modules`. If in the global installation case you receive an error of insufficient access rights, you can either use `sudo npm install --global express-generator` to install the package with sufficient privileges or [change the global package installation directory to one that you can access without root access](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
+In the local case, the package will be installed in the current directory under `node_modules`. If in the global installation case you receive an error of insufficient access rights, you can either use `sudo npm install --global express-generator` to install the package with sufficient privileges or [change the global package installation directory to one that you can access without root access](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
 
-Think of a name for your application, e.g. `myapp` and then generate the boilerplate. If you have opted for the global installation of `express-generator`, run:
+Think of a name for your application, e.g. `myapp` and then generate the boilerplate. If you have opted for the global installation of `express-generator`, run :point_down::
 
-```console
+```
 express --view=ejs myapp
 ```
 
-If you have opted for the local installation of `express-generator`, run:
+If you have opted for the local installation of `express-generator`, run :point_down::
 
-```console
+```
 node node_modules/express-generator/bin/express-cli.js --view=ejs myapp
 ```
 
-_Note: if you already created a directory for your app in VSC, let's say 'myapp', and it is empty, you can still generate the boilerplate code as explained above._
+Your terminal should show something like this :point_down::
 
-Your terminal should show something like this:
-
-```console
+```
    create : myapp/
    create : myapp/public/
    create : myapp/public/javascripts/
@@ -104,21 +102,19 @@ We use [ejs](http://ejs.co/) as our view engine - you will hear more about it in
 
 In order to install those, `cd` into the `myapp` directory and execute:
 
-```console
+```
 npm install
 ``` 
 
 Now, `node_modules` is created and populated with the required packages. The Node environment will install all packages listed in `package.json`.
 
-Place the `game.html` and `splash.html` documents created in Assignment 4 in the folder `myapp/public/`. This completes the initial setup.
-
-Node.js has become a very popular framework for server-side programming; here is a good overview of [best practices](https://github.com/i0natan/nodebestpractices). VSC comes with a good debugging support for Node.js by default as outlined in our [VSC guide](How-to-use-VSC.md). If you are more of a command line person, you find [here](https://www.clarkio.com/2017/04/25/debugging-in-nodejs/) a good tutorial of how to debug Node.js applications in the terminal.
+Move the `game.html` and `splash.html` documents created in the previous assignment into folder `myapp/public/`. This completes the initial setup.
 
 ## 2. Client-side JavaScript
 
 ### 2.1)
 
-Before you start coding, you need to have a *plan* of what needs to be done. Focus on your `game.html` page. We will deal with `splash.html` in the next assignment. **Check the required functionalities of your game listed in [Assignment HTTP+Design](assignment-http-design.md) once again**. Make a list of *all* interactive UI elements you need and their functionality. 
+Before you start coding, you need to have a *plan* of what needs to be done. Focus on your `game.html` page. We will deal with `splash.html` in the next assignment. **Check the required functionalities of your game listed in [Assignment HTTP+Design](assignmentI) once again**. Make a list of *all* interactive UI elements you need and their functionality. 
 
 Here is one example item for the [word guesser demo game](https://github.com/chauff/balloons-game) to help you get started:
 
@@ -150,9 +146,9 @@ Now that you have made your plan and decided on the use of the design patterns, 
 
 👉 Hints:
 
-- You do not have to incorporate style elements yet (CSS), we will cover styling of HTML elements in the next assignment. If despite this, you choose to incorporate CSS, be aware that we have certain requirements for CSS, so if you want to use CSS already, [check the requirements](assignment-css-node.md) to avoid duplicate work later on.
-- In class we teach few ES6 features. You can, but do not have to use ES6+ features. Check http://es6-features.org if you are interested in what ES6 has to offer (although we are now up to ES10, ES6 brought about by far the largest number of complex language feature additions). The two features of ES6 we recommend to use at minimum are `let` and `const`; the [scoping section of the JavaScript lecture](../_lectures/js.md#scoping) explains why.
-- Be mindful of the time you have for your implementation. Go for the fast solution if one is available, and move on to the next item to implement instead of being hung up on one feature for too long. For example, the [word guessing demo game](demo-code/balloons-game) requires player 1 to enter a word that player 2 has to guess. There are different ways to ask the player to provide a word, the simplest is the use of [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt). Unarguably there are visually more appealing solutions, however, this requires only one line of code, and is sufficient for our project. When you have time left, you can always go back to a feature and improve it.
+- You do not have to incorporate style elements yet (CSS), we will cover styling of HTML elements in the next assignment. If despite this, you choose to incorporate CSS, be aware that we have certain requirements for CSS, so if you want to use CSS already, [check the requirements](https://chauff.github.io/Web-Teaching/assignmentIII/) to avoid duplicate work later on.
+- In class we teach few ES6 features. You can, but do not have to use ES6+ features. Check http://es6-features.org if you are interested in what ES6 has to offer (although we are now up to ES10, ES6 brought about by far the largest number of complex language feature additions). The two features of ES6 we recommend to use at minimum are `let` and `const`; the [scoping section of the JavaScript lecture](https://chauff.github.io/Web-Teaching/js/#scoping-hoisting-and-this) explains why.
+- Be mindful of the time you have for your implementation. Go for the fast solution if one is available, and move on to the next item to implement instead of being hung up on one feature for too long. For example, the [word guessing demo game](https://github.com/chauff/balloons-game) requires player 1 to enter a word that player 2 has to guess. There are different ways to ask the player to provide a word, the simplest is the use of [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt). Unarguably there are visually more appealing solutions, however, this requires only one line of code, and is sufficient for our project. When you have time left, you can always go back to a feature and improve it.
 - When you test your code's functionality, test it in two browsers. If it works in one, but not the other, check the browser's [Web Console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) output; you will learn quickly whether you used a feature in your code that only one of your chosen browsers supported.
 - JavaScript is a dynamic language, keep this in mind when you are debugging. In VSC, if you add `// @ts-check` to the top of your JavaScript file, you get type checking for free. 
 - The browser development tools are very helpful to debug client-side JavaScript. Use them.
