@@ -85,7 +85,7 @@ While `GET` and `HEAD` are request methods accepted by virtually all web servers
 
 To test your skills in uploading data, we will make use of [http://httpbin.org/](http://httpbin.org/), a popular site designed to test HTTP messages.
 
-Below is an example of how to upload data to the server with `PUT` (before you type it out, please read the explanations below):
+Below is an example of how to upload data to the server with `PUT` (before you type it out, please read the explanations below) :point_down::
 
 ```
 telnet httpbin.org 80
@@ -99,9 +99,9 @@ Hello World!
 <carriage return>
 ```
 
-*Reminder: [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets indicates when an empty line is expected. Press `<Enter>` to add it.*
+<sup>[Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets indicates when an empty line is expected. Press `<Enter>` to add it.</sup>
 
-With this code, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. **The httpbin server sends back in the response the data just uploaded** -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. Try it for yourself!
+With this code :point_up:, we have modified the resource accessible at `/put` to now hold the string `Hello World!`. **The httpbin server sends back in the response the data just uploaded** -­ the response is of content-­type JSON; we are interested in the `data` field, which should contain `Hello World!` if everything worked correctly. :bangbang: Try it for yourself!
 
 `PUT` though is not only able to modify an existing resource, it can also **create** a resource on the server. The status code in the response tells us whether a resource was modified (`200 OK`) or created (`201 Create`). More information can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT). What happens if you try to replace `/put` in this exercise with another resource (e.g. `/myfile`)? Does the httpbin.org server allow the creation of a new resource?
 
@@ -116,13 +116,13 @@ Let us now try to request a page, that is set up with HTTP basic authentication.
 
 ### 3.1)
 
-First, open http://httpbin.org/basic-auth/user/passwd in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password (*it is just a coincidence that the actual username and password is the same as the URL path*). Reload the web page -­ do you have to fill in the login details again? Why or why not?
+First, open [http://httpbin.org/basic-auth/user/passwd](http://httpbin.org/basic-auth/user/passwd) in your browser. You should see a dialogue, requesting username and password. Use `user` as username and `passwd` as password (*it is just a coincidence that the actual username and password is the same as the URL path*). Reload the web page -­ do you have to fill in the login details again? Why or why not?
 
 ### 3.2)
 
-Now let's see how this works with actual HTTP messages. Go back to telnet and start off with a `HEAD` method to inspect the web page; document all following steps (requests and responses):
+Now let's see how this works with actual HTTP messages. Go back to telnet and start off with a `HEAD` method to inspect the web page; document all following steps (requests and responses) :point_down::
 
-```console
+```
 telnet httpbin.org 80
 
 HEAD /basic-auth/user/passwd HTTP/1.1
@@ -132,12 +132,12 @@ host:httpbin.org
 
 Which status code do you receive now? 
 
-Next, use the `Authorization: Basic [base-64 encoded username/password string]` header field (you can type it out right after the `host:httpbin.org` line above) to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders, e.g. https://codebeautify.org/base64-encode.
+Next, use the `Authorization: Basic [base-64 encoded username/password string]` header field (you can type it out right after the `host:httpbin.org` line above) to provide username and password to the server. To encode the username and password, you can use any of the freely available base-­64 en/decoders online.
 Remember that username and password need to be combined as `username:password` **before** they are encoded in base-64.
 
-Now close the TCP connection and start a new one, using again:
+Now close the TCP connection and start a new one, using again :point_down::
 
-````console
+````
 telnet httpbin.org 80
 ````
 
@@ -156,24 +156,25 @@ You can choose from six games:
 5. [Hex](https://en.wikipedia.org/wiki/Hex_(board_game)): 2 players
 6. [Reversi](https://en.wikipedia.org/wiki/Reversi): 2 players
 
-At the end of the three web assignments, your board game application will have the following functionalities:
+At the end of the three web assignments, your board game application should have the following functionalities :point_down::
 
 - The game is for 2+ players and in 2D.
-- The game works 2+ modern browsers (e.g. Firefox and Chrome).
-- It works well on a laptop/desktop device, i.e. we are considering screen resolutions of ~1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices or apps with a responsive design.
-- Upon entering your web application's URL, a **splash screen** is shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc. - **pick three statistics you want to report**), a brief description of how-to-play on your platform and a *Play* button (or something to that effect).
+- The game works in 2+ modern browsers (e.g. Firefox and Chrome).
+- It works well on a laptop/desktop device. We are considering screen resolutions of ~1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices or apps with a responsive design.
+- Upon entering your web application's URL, a **splash screen** is shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.). **Pick three statistics you want to report**. Add a brief description of how-to-play on your platform and a *Play* button.
 - Upon pressing *Play*, the user enters the **game screen** and waits for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
-- Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
-- The splash and game screens need to look good (we do realize that this is subjective and we handle this requirement very leniently!); all required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
+- Once there are sufficiently many players, the game automatically starts and the players play against each other. 
+- The server supports multiple games to take place at the same time.
 - Once a player makes a move, the validity of the move is checked and invalid moves are rejected. Once a player wins the game, this information is announced to all players participating in the game.
-- Players see basic information about the ongoing game, e.g. the time passed since starting the game or number of lost/won pieces.
-- Players play the game with the mouse (i.e. you are mostly focusing on `click` events).
 - Once a player drops out of a game, the game is aborted; this is announced to all players currently active in the game.
-- The game has at least one sound effect (e.g. a *ping* every time a move is made).
+- Players see **two basic pieces of information** about the ongoing game, e.g. the time passed since starting the game and the number of lost/won pieces.
+- Players play the game with the mouse (i.e. you are mostly focusing on `click` events).
+- The splash and game screens need to look good. We do realize that this is subjective and we handle this requirement very leniently! All required game elements need to be visible (e.g. if a game requires a dice, a dice element needs to be visible).
+- Include at least one sound effect.
 
 The list above should tell you that you have considerable (artistic) freedom.
 
-In this course you learn how to program in "plain" JavaScript. We **do not allow external libraries or frameworks** beyond those specified in the assignments and introduced in the lectures. Concretely, we **do allow** the use of a JavaScript library of your choice to determine whether a player makes a valid move as for some games (such as chess) this is considerably more difficult than for others!
+In this course you learn how to program in "plain" JavaScript. In principle, we **do not allow external libraries or frameworks** beyond those specified in the assignments and introduced in the lectures. There is one exception to this rule: we **do allow** the use of a JavaScript library of your choice to determine whether a player makes a valid move as for some games (such as chess) this is considerably more difficult task than for others!
 
 We also allow small simplifications to the chosen games, e.g. for Ludo an implementation for 2 players is sufficient, for chess you can ignore the [pawn promotion rule](https://en.wikipedia.org/wiki/Promotion_(chess)). Be upfront about the simplifications made.
 
@@ -185,11 +186,11 @@ We also allow small simplifications to the chosen games, e.g. for Ludo an implem
 
 ### 4.2)
 
-Find **three** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the web application's design (focus on the game screen) based on the **web design principles** covered in class: to what extent do they fulfill them?. Record the game URLs. 
+Find **three** examples of your chosen board game (in 2D) that can be played online in a modern browser (laptop or desktop, not a mobile device). Consider the web application's design (focus on the game screen) based on the **web design principles** covered in class: to what extent do they fulfill them? Record the game URLs. 
 
 ### 4.3)
 
-Which *game features* in the game examples of 4.2) stand out positively and which stand out negatively? (e.g. particular animations, sounds, information conveyed about the game to the players ...). Why? Discuss **three** positive and **three** negative features.
+Which *game features* in the game examples of 4.2) stand out positively and which stand out negatively (e.g. particular animations, sounds, information conveyed about the game to the players ...)? Why? Discuss **three** positive and **three** negative features.
 
 ## 5. Design your own board game app
 
@@ -210,7 +211,7 @@ You have a lot of artistic freedom in designing the board and game information.
 
 ### 5.3)
 
-Once you have completed the design of your app, head over to our TUD Stack Overflow community [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs) and post your designs as an [**article**](https://stackoverflow.com/c/tud-cs/articles/create) (of type *knowledge article*) with tags `cse1500` and `game-design`. Include the splash and game screens in the article and add a paragraph describing your choices. Feel free to comment on the designs of your fellow study colleagues.
+Once you have completed the design of your app, head over to our TUD Stack Overflow community [https://stackoverflow.com/c/tud-cs](https://stackoverflow.com/c/tud-cs) and post your designs as an [**article**](https://stackoverflow.com/c/tud-cs/articles/create) (of type *knowledge article*) with tags `cse1500` and `game-design`. Include images of the splash and game screens in the article and add a paragraph describing your choices. Feel free to comment on the designs of your fellow study colleagues.
 
 ## 6. Your own board game app: HTML
 
