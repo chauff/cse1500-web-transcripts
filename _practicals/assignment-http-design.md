@@ -48,8 +48,8 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 - This assignment requires you to work on the shell. If you are not familiar with this type of command line interface, take a look at this [MIT class](https://missing.csail.mit.edu/); it covers the *missing semester of computer science education* and introduces a range of practical tools, including in lesson 1 [the shell](https://missing.csail.mit.edu/2020/course-shell/).
 - To store `telnet`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.tudelft.nl 80|tee out` will save all output to a file called `out`.
 - To exit a telnet session, first press <kbd>CTRL</kbd>+<kbd>]</kbd>. This brings you to a `telnet>` prompt and you can type `close` to end the session.
-- Telnetting `www.domain.com` is usually not the same as telnetting `domain.com`. Make sure your `host` header information matches exactly the domain you telnetted into.
-- [Carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when an empty line is expected. Press `<Enter>` to add it.
+- telneting `www.domain.com` is usually not the same as telneting `domain.com`. Make sure your `host` header information matches exactly.
+- A [carriage return](https://developer.mozilla.org/en-US/docs/Glossary/CRLF) in the code snippets below indicates when an empty line is expected. Press `<Enter>` to add it.
 - Be aware of the **backspace key** when *telneting*: while on a normal command line a backspace deletes the last character typed, within the `telnet` environment this key may be forwarded to the server instead. Be aware!
 - This exercise requires you to use `telnet`. If you use a Linux derivative (e.g. Ubuntu, older versions of Mac OS), open a terminal and you are good to go; for new Mac OS versions you may need to [install telnet](https://medium.com/ayuth/bring-telnet-back-on-macos-high-sierra-11de98de1544) yourself. 
 - If you are a Windows user, use the Windows Subsystem for Linux. As an alternative (if you really do not want to use Linux), use [PuTTY](https://www.putty.org/) with the following settings:
@@ -73,7 +73,7 @@ Does the content you received correspond to what you see when accessing the reso
 
 ### 1.3)
 
-Open your browser's developer tools head to `http://mit.edu/career` once more (and wait a few seconds). Take a look at the response header of the first resource retrieved with status code `200 OK`: what does its `Expires` header field mean?
+Open your browser's developer tools and head to `http://mit.edu/career` once more (and wait a few seconds). Take a look at the response header of the first resource retrieved with status code `200 OK`: what does its `Expires` header field mean?
 
 ### 1.4)
 
@@ -83,11 +83,11 @@ Continuing our look at the response header, what do we learn about the server-si
 
 While `GET` and `HEAD` are request methods accepted by virtually all web servers, `PUT`, `POST` and `DELETE` are less often available, due to the implications these methods have on the server.
 
-To test your skills in uploading data, we will make use of http://httpbin.org/, a popular site designed to test HTTP messages.
+To test your skills in uploading data, we will make use of [http://httpbin.org/](http://httpbin.org/), a popular site designed to test HTTP messages.
 
 Below is an example of how to upload data to the server with `PUT` (before you type it out, please read the explanations below):
 
-```console
+```
 telnet httpbin.org 80
 
 PUT /put HTTP/1.1
