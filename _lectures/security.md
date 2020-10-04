@@ -667,21 +667,12 @@ Here are a few questions you should be able to answer after having followed the 
 </details>
 
 <details> 
-  <summary>What does the `same-origin` policy refer to, in particular Ajax)? How is this related to web security?</summary>
-  ...
-</details>
-
-<details> 
   <summary>Which attack type does this scenario describe: An attacker can browse through other users' Facebook timelines by URL manipulation.</summary>
-  ...
+  Broken access controls.
 </details>
 
 <details>
 <summary>You have written a web application with a server-side component (a Node.js script). The web app requires a number of cookies (all set by the server-side component) to function properly. To minimize the chance of attack you have an idea: you develop a secret function F that computes for each cookie value a checksum. F is only known to you (the owner of the web application); F cannot be guessed. Initially when each cookie is created, the checksum is appended to the cookie value. When clients send existing cookies back to the server, your server-side component recomputes the checksum of the cookie value (without taking the appended checksum into account) - if the computed checksum is at least as large as the one sent back with the cookie, your application accepts the cookie as valid and non-malicious. How useful is this protection?</summary>
-...
+Not very useful, the exact checksum needs to be computed to protect against cookie manipulation.
 </details>
 
-<details>
-<summary>Which vulnerability does this scenario describe: A company *AlphaShoes* followed all the security principles for designing their website. They tested it thoroughly, and applied protection against all attacks. An attacker still manages to bypass the security of the website due to an underlying vulnerability. </summary>
-...
-</details> 
