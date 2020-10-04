@@ -114,13 +114,14 @@ Move the `game.html` and `splash.html` documents created in the previous assignm
 
 ### 2.1)
 
-Before you start coding, you need to have a *plan* of what needs to be done. Focus on your `game.html` page. We will deal with `splash.html` in the next assignment. **Check the required functionalities of your game listed in [Assignment HTTP+Design](assignmentI) once again**. Make a list of *all* interactive UI elements you need and their functionality. 
+Before you start coding, you need to have a *plan* of what needs to be done. Focus on your `game.html` page. We will deal with `splash.html` in the next assignment. **Check the required functionalities of your game listed in the [Assignment HTTP+Design](https://chauff.github.io/Web-Teaching/assignmentI/) once again**. Make a list of *all* interactive UI elements you need and their functionality. 
 
 Here is one example item for the [word guesser demo game](https://github.com/chauff/balloons-game) to help you get started:
 
-- mouse click on a letter in the `div` element with `id=alphabet`: first, check whether the letter is still available (enabled); if so, check whether the letter occurs in the target string (the hidden word); if yes, reveal the letter, if not, remove a balloon; disable the letter; if the guessed letter was wrong, check wether the game is lost.
+- mouse click on a letter by the player who makes guesses: first, check whether the letter is still available (enabled); if so, check whether the letter occurs in the word to be guessed; if yes, reveal the letter, if not, remove a balloon; disable the letter; if the guessed letter was wrong, check wether the game is lost; send the guessed letter to the server.
 
-The plan should include all UI actions possible in the game interface. Check one more time whether you have taken care of all required functionalities.
+The plan should include all UI actions possible in the game interface.
+
 
 ### 2.2)
 
@@ -128,10 +129,9 @@ Think about the design of your JavaScript code – which aspects of your action 
 
 - the game state;
 - the game board;
-- the game items (e.g. an alphabet or a dice);
-- and the specific UI elements that correspond to them.
+- the game items (e.g. an alphabet or a dice).
 
-Choose at **least one of the object design patterns introduced in the lecture and implement your objects accordingly**. The basic constructor pattern is the simplest one to implement, the module pattern is more complex but preferrable for code maintainability. Feel free to try more than one design pattern. This is your chance to use and learn about the introduced design patterns in more detail!
+Choose at **least one of the object design patterns introduced in the lecture and implement your objects accordingly**. The basic constructor pattern is the simplest one to implement, the module pattern is more complex but preferable for code maintainability. Feel free to try more than one design pattern. This is your chance to use and learn about the introduced design patterns in more detail!
 
 ### 2.3)
 
@@ -140,20 +140,19 @@ Now that you have made your plan and decided on the use of the design patterns, 
 - Use *plain* JavaScript (i.e., no TypeScript or any other language compiling into JavaScript).
 - The game has to work in two modern browsers.
 - Players play the game with the mouse.
-- Reduce the redundancy in the code as much as possible (improves code maintainability).
-- Create as few global variables as possible (improves code maintainability).
+- Create as few global variables as possible (this improves code maintainability).
+- Keep code duplication to a minimum. As we are working in a single language on the client and server, we can share some code between them.
 - Achieve a separation between content and interaction: the client-side JavaScript must not be present in `game.html` (besides the obligatory script loading tags) but instead reside in the corresponding `myapp/public/javascripts` folder.
 
 👉 Hints:
 
 - You do not have to incorporate style elements yet (CSS), we will cover styling of HTML elements in the next assignment. If despite this, you choose to incorporate CSS, be aware that we have certain requirements for CSS, so if you want to use CSS already, [check the requirements](https://chauff.github.io/Web-Teaching/assignmentIII/) to avoid duplicate work later on.
-- In class we teach few ES6 features. You can, but do not have to use ES6+ features. Check http://es6-features.org if you are interested in what ES6 has to offer (although we are now up to ES10, ES6 brought about by far the largest number of complex language feature additions). The two features of ES6 we recommend to use at minimum are `let` and `const`; the [scoping section of the JavaScript lecture](https://chauff.github.io/Web-Teaching/js/#scoping-hoisting-and-this) explains why.
-- Be mindful of the time you have for your implementation. Go for the fast solution if one is available, and move on to the next item to implement instead of being hung up on one feature for too long. For example, the [word guessing demo game](https://github.com/chauff/balloons-game) requires player 1 to enter a word that player 2 has to guess. There are different ways to ask the player to provide a word, the simplest is the use of [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt). Unarguably there are visually more appealing solutions, however, this requires only one line of code, and is sufficient for our project. When you have time left, you can always go back to a feature and improve it.
+- In class we teach few ES6 features. You can, but do not have to use ES6+ features. Check [http://es6-features.org](http://es6-features.org) if you are interested in what ES6 has to offer. Although we are now up to ES10, ES6 brought about by far the largest number of complex language feature additions. The two features of ES6 we recommend to use at minimum are `let` and `const`; the [scoping section of the JavaScript lecture](https://chauff.github.io/Web-Teaching/js/#scoping-hoisting-and-this) explains why.
+- Be mindful of the time you have for your implementation. Go for the fast solution if one is available, and move on to the next item to implement instead of being hung up on one feature for too long. For example, the [word guessing demo game](https://github.com/chauff/balloons-game) requires player 1 to enter a word that player 2 has to guess. There are different ways to ask a player to provide a word, the simplest is the use of [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt). Unarguably there are visually more appealing solutions, however, this requires only one line of code, and is sufficient for our project. When you have time left, you can always go back to a feature and improve it.
 - When you test your code's functionality, test it in two browsers. If it works in one, but not the other, check the browser's [Web Console](https://developer.mozilla.org/en-US/docs/Tools/Web_Console) output; you will learn quickly whether you used a feature in your code that only one of your chosen browsers supported.
-- JavaScript is a dynamic language, keep this in mind when you are debugging. In VSC, if you add `// @ts-check` to the top of your JavaScript file, you get type checking for free. 
+- JavaScript is a dynamic language, keep this in mind when you are debugging. In VSC, if you add `// @ts-check` to the top of a JavaScript file, you get type checking for free. 
 - The browser development tools are very helpful to debug client-side JavaScript. Use them.
-- Do not be afraid to use place-holders (e.g. in our demo game, we start off with a fixed string to guess).
-- You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is expected. For instance, for now you may want to check the validity of players' moves on the client-side (which is fine), but you may later decide to move this functionality to the server-side.
+- You will have to refactor/rework your code a few times as the server-side and other client-side components are added; this is expected. For instance, for now you may want to check the validity of players' moves on the client-side, but you may later decide to move this functionality to the server-side.
 - If you are using `console.log`, familiarize yourself with the other abilities of the [`Console`](https://developer.mozilla.org/en-US/docs/Web/API/Console) object as well, they are useful for client-side JavaScript debugging in the browser. `console.table` makes the output more readable. `console.assert` is good for sanity checks of your code: e.g. if you have functions that expect an array, you can add an assert statement to check whether the argument is indeed of the expected type. [Some people get angry about the usage of `console.log` for debugging purposes](https://hackernoon.com/please-stop-using-console-log-its-broken-b5d7d396cf15), as there are better debugging tools available in the web development tools of the browser and VSC. Ideally, you make use of those debugging options, however, this takes time to learn.
 - You can use ESLint to help you write cleaner code. You can install it as an [extension of VSC](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), resulting in immediate feedback from the linter while coding (underlined in red). In order to use ESLint, you need to create a configuration file for the client-side JavaScript and another one for the Node.js code on the server. In the VSC extension, open `View::Command Palette` and type `Create ESLint configuration`, once in the `myapp/public/javascript` folder for the client-side JavaScript code, and once in the root folder of the app for the Node.js code.
 
@@ -161,7 +160,7 @@ Now that you have made your plan and decided on the use of the design patterns, 
 
 ### 3.1) Your first server
 
-Now it is time to start your server. To get you started we walk you through the setup of a basic web server. Make sure you have completed task 1 and:
+Now it is time to start your server. To get you started we walk you through the setup of a basic web server. Make sure you have completed the following tasks:
 - generated the boilerplate code;
 - installed the packages required to run the generated boilerplate (`npm install`);
 - copied `game.html` and `splash.html` in the `myapp/public` directory.
@@ -181,60 +180,42 @@ http.createServer(app).listen(port);
 
 This is all the code you need for your server-side for now. Save the file, and start the server in the terminal (your current directory should be `myapp`):
 
-```console
+```
 node app.js 3000
 ```
 
-Here, `3000` is the port number, you can safely use integers above 1024. Just make sure that no other application binds to the same port. Then, open your browser and use the following URLs (change the port number if you used a different one):
+Here, `3000` is the port number, you can safely use integers above 1024. Just make sure that no other application binds to the same port (you will see the error `Error: listen EADDRINUSE` if another application is bound to the port already). Then, open your browser and use the following URLs (change the port number if you did not use `3000`):
 
 - http://localhost:3000/game.html
 - http://localhost:3000/splash.html
 
 If you see the two HTML files, then, congratulations, you have successfully implemented your first Node.js server!
 
-You can also use `npm start`. This command runs an arbitrary command specified in `package.json`'s `start` property. By default this property contains `"start": "node ./bin/www"`. Replace this line by `"start": "node app.js"` in order to execute your program entry point which, in this case, is `app.js`. Since we require your submission to be runnable with `npm start`, please make sure you have followed these steps! 
+An alternative to starting the server via `node app.js 3000` is the use of `npm start`. This command runs an arbitrary command specified in `package.json`'s `start` property. What does it say in the generated `package.json` file? Take a look! By default this property contains `"start": "node ./bin/www"`. Replace this line by `"start": "node app.js"` in order to execute your program entry point which, in this case, is `app.js`. Since we require your submission to be runnable with `npm start`, please make sure you have followed these steps! This may look like an extra step without much use, however, think about what happens when you want others to use your code - instead of digging around in the documentation or the source code files to find out how to start your program, `npm start` can be considered an almost universal command to start Node.js programs.
 
-Instead of using the command line, you can also start your server from within VSC. Use the debug panel; a `launch.json` file will be generated for you, which needs to be updated with program specific property values. As an example, for the demo game, my `launch.json` file looks follows:
-
-```
-{
-    "version": "0.1.0",
-    "configurations": [
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/demo-code/balloons-game/app.js",
-            "cwd": "${workspaceFolder}/demo-code/balloons-game",
-            "args": [
-                "3000"
-            ]
-        }
-    ]
-}
-```
+Finally, instead of using the command line, you can also start your server from within VSC.
 
 ### 3.2) Your first routes
 
-In the next step, let's make our two HTML files available with modern web tech, i.e. routes:
+In the next step, let's make our two HTML files available via routes:
 
-URLs ending in  `*.html` are considered old-fashioned, modern web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. If you are using the HTML `<button>` element here, you can simply enclose it in an HTML `<form>` with an appropriate `action` attribute. Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
+URLs ending in  `*.html` are considered old-fashioned, modern web frameworks avoid this and use *routes* instead. Add a route (i.e. `app.get("/",...)`) so that `splash.html` is served for the URL `http://localhost:3000/`. You can make use of `res.sendFile("splash.html", {root: "./public"});`. A click on the `Play` button (or your equivalent) in the splash screen will return the `game.html` content. If you are using the HTML `<button>` element here, you can enclose it in an HTML `<form>` with an appropriate `action` attribute. Together with the `app.use(express.static(__dirname + "/public"));` line in your server, this is sufficient to serve your HTML and client-side JavaScript.
 
-In our boilerplate setup, a folder `routes` was generated; you can store your routes in files within this folder. The [demo game](demo-code/balloons-game) shows you how to do this and how to import the routes in `app.js`. This is typically done to make the code more maintainable. You can also write out all routes directly in `app.js` (as we often do in the toy code examples presented in the lectures), however once you are working on a larger project this quickly becomes tedious.
+In our boilerplate setup, a folder `routes` was generated; you can store your routes in files within this folder. The [demo game](https://github.com/chauff/balloons-game) shows you how to do this and how to import the routes in `app.js`. This is typically done to make the code more maintainable. You can also write out all routes directly in `app.js` as we often do in the toy code examples presented in the lecture transcripts.
 
 ### 3.3) WebSockets: communication between client and server
 
 Before you are implementing the client-server communication via WebSockets, it is important to work out which entity communicates what.
 
-For example, your game may have different types of players (in the demo game, we have two types of players, a *word creator* and a *word guesser*) and the type of player a client corresponds to, should be communicated to each client. The moves need to be communicated between clients, facilitated by the server (the **word guesser** wants to send the character guessed to the **word creator**). Who won the game may be important for the server to log and here one player type may be responsible for communicating this to the server; and so on.
+For example, your game may have different types of players (in the demo game, we have two types of players, a *word creator* and a *word guesser*) and the type of player a client corresponds to, should be communicated to each client. The moves need to be communicated between clients, facilitated by the server. Who won the game may be important for the server to log and here one player type may be responsible for communicating this to the server; and so on.
 
 Create a list of message types (e.g. game-start, game-move, player-type, abort-game, ...) and work out who (server, client-A, client-B) communicates it to whom. How many and what types of messages you need, depends on your chosen game to implement. As a concrete example, in the demo game, all message types are listed in [messages.js](https://github.com/chauff/balloons-game/blob/master/public/javascripts/messages.js).
 
-### 3.4) WebSockets: a minimum viable examples
+### 3.4) WebSockets: a minimum viable example
 
-Let us now connect our gamers to each other: time for the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws), a popular WebSocket implementations for Node.js.
+Let us now connect our gamers to each other via the [WebScoket API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API). We use [ws](https://github.com/websockets/ws), a popular WebSocket implementations for Node.js.
 
-First, let's install it (the `--save` option ensures that the dependency gets added to your project's `package.json` file). We assume once more that your terminal's current directory is `myapp`:
+First, let's install `ws` (the `--save` option ensures that the dependency gets added to your project's `package.json` file). We assume once more that your terminal's current directory is `myapp`:
 
 ````console
 npm install --save ws
@@ -247,7 +228,7 @@ Before you implement anything for your board game, we suggest you take a look at
 Having seen and run the minimal WebSocket example, it is now time to implement client-server communication in your game application via WebSockets. Here is what we want to achieve:
 
 - Upon clicking the *Play* button, the user will enter the **game screen** and wait for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
-- Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time. Some games require a setup phase which may differ between players (e.g., in [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)) one player is the codemaker and one is the codebreaker).
+- Once there are sufficiently many players, the game automatically starts and the players play against each other. Multiple games can take place at the same time.
 - Once a player drops out of an ongoing game, the other players are alerted and the game is aborted.
 - Once a game is finished, the winner(s) and loser(s) receive a status update.
 - The server keeps track of certain game statistics (pick three statistics you want to report).

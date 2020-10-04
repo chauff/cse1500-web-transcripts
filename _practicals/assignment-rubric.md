@@ -74,19 +74,15 @@ The rubric below contains example questions/tasks for each assignment **as well 
 - Start the server and open the browser to play the game (splash screen has a play button, N players are randomly paired to play the game, the players can execute moves, **invalid moves are rejected**).
 - Show off the implemented CSS animation and explain the code.
 - Show off the use of templating and explain the code.
-- Show off the use of two different position attributes.
-- What is the difference between a CSS animation and transition?
+- Show off the use of the `display:grid` and `position:absolute`.
 - How are the board game tiles styled with CSS? How are the movements of game elements implemented?
 - Show off the employed media query and explain its use.
-- Show off the fullscreen game functionality and explain its use.
-- Explain the cookie code.
 
 ### Passing requirements
 
 - The student is able to answer most of the TA's questions correctly.
 - The deliverables are uploaded to Brightspace.
-- The implementation contains the necessary CSS elements (A3, 1.1).
+- The implementation contains the necessary CSS elements.
 - The splash and game screen have a consistent design.
 - Templating (EJS) has been used.
-- At least one client-side cookie has been implemented.
-- The game forbids players to make invalid moves.
+- The game forbids players to make at least some invalid moves.
