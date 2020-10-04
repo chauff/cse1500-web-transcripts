@@ -157,7 +157,7 @@ The order may strike you as odd, especially if you are already familiar with the
 
 ## Web technology Q&A
 
-<img align="right" width="150px" src="https://chauff.github.io/img/no_zoom.png">
+<img align="right" width="150px" src="img/no_zoom.png">
 
 The web technology topics start in week 2.6. In contrast to the database topics, there will be **no lectures** via Zoom. Instead, we have set up the materials so that you can read and practice along with the transcript. 
 
