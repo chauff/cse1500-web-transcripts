@@ -169,6 +169,8 @@ Just like in Q1, as TU Delft students you can make use of a dedicated Stack Over
 
 ## Web technology assignments
 
+<img align="right" width="150px" src="img/board-game.png">
+
 There are three web technology assignments, each one covering the contents of two to three lectures:
 
 - [The first web technology assignment covers HTTP and web design](_practicals/assignment-http-design.md).
