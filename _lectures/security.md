@@ -151,6 +151,8 @@ A common example (also described in this [attack on the US State Department](htt
 
 Unauthorized access can also be achieved by probing web applications for functionalities that should not be accessible to the average user. An example is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web while it should have only been accessible from the internal Instagram network.  
 
+The npm registry has its share of *typosquatting attacks* (e.g. [here](https://securityreport.com/nodejs-malware-caught-exfiltrating-ips-username-and-device-information-on-github/), [here](https://thenewstack.io/npm-cleans-typosquatting-malware/) and [here](https://threatpost.com/attackers-use-typo-squatting-to-steal-npm-credentials/127235/)): malicious users upload packages to the npm registry with names that are typos of popular repository names (e.g. `electorn` instead of `electron`). If an unsuspecting developer is not careful and types `npm install electorn` instead of the wanted `npm install electron`, and starts up a Node.js script with this package included, undesired code is executed. In the case of [`electorn`](https://www.npmjs.com/package/electorn), npm's security team has removed the malicious code from the registry but maintained a placeholder.
+
 ## Most frequent vulnerabilities
 
 In order to effectively secure a web application, it helps to know what the most frequent security issues are. 
