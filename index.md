@@ -25,7 +25,7 @@ In the five weeks of the web technology lectures we can only cover the web progr
   - [Recommended](#recommended)
   - [Required](#required)
 - [Course grading](#course-grading)
-- [Web technology topics](#web-technology-topics)
+- [Web technology topics and schedule](#web-technology-topics-and-schedule)
 - [Web technology Q&A](#web-technology-qa)
 - [Web technology assignments](#web-technology-assignments)
 - [Web development resources](#web-development-resources)
@@ -140,7 +140,7 @@ Generally: no. If you think you have a very good reason for an exception, please
 </details>
 
 
-## Web technology topics
+## Web technology topics and schedule
 
 The web technology topics we cover (in this order) are the following:
 
@@ -154,6 +154,14 @@ The web technology topics we cover (in this order) are the following:
 - Web security
 
 The order may strike you as odd, especially if you are already familiar with the basics of web programming, as typically CSS is introduced before JavaScript. We introduce JavaScript as early as possible, to give you the chance to practice it a longer period of time before the exam moment.
+
+All the materials are available to you at once. This means that you can go through the materials at your own pace. We do have a suggested schedule though for each of the course weeks (starting with week 2.6):
+
+- **Week 2.6**: [HTTP lecture](https://chauff.github.io/Web-Teaching/http/), [HTML and web design lecture](https://chauff.github.io/Web-Teaching/html/); [first web technology assignment](https://chauff.github.io/Web-Teaching/assignmentI/);
+- **Week 2.7**: [JavaScript lecture](https://chauff.github.io/Web-Teaching/js/), [Node.js lecture](https://chauff.github.io/Web-Teaching/nodejs/); [second web technology assignment](https://chauff.github.io/Web-Teaching/assignmentII/);
+- **Week 2.8**: [CSS lecture](https://chauff.github.io/Web-Teaching/css/), [Node.js (advanced) lecture](https://chauff.github.io/Web-Teaching/nodejs2/); [third web technology assignment](https://chauff.github.io/Web-Teaching/assignmentIII/);
+- **Week 2.9**: [Sessions et al. lecture](https://chauff.github.io/Web-Teaching/sessions/), [web security lecture](https://chauff.github.io/Web-Teaching/security/).
+
 
 ## Web technology Q&A
 
