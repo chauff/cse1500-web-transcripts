@@ -7,6 +7,8 @@ ordering: 7
 
 # Sample exams
 
+<img align="right" width="100px" src="../img/exam.png">
+
 **Exam topics are all topics covered in the lectures and the required readings.** The content of the recommended activitivies/readings that goes beyond what is covered in the lectures/course book is not exam material.
 
 The web technology exam usually contains about 40 multiple-choice questions; the resit is shorter with about 30 questions (due to the time constraints of the resit week).

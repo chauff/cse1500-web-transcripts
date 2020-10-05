@@ -145,6 +145,13 @@ Request the same page without the `Authorization` header field - what happens? I
 
 ## 4. Web programming project: board game app
 
+<img width="150px" src="../img/boardgame-mastermind.png">
+<img width="150px" src="../img/boardgame-chess.png">
+<img width="150px" src="../img/boardgame-reversi.png">
+<img width="150px" src="../img/boardgame-draughts.png">
+<img width="150px" src="../img/boardgame-hex.png">
+<img width="150px" src="../img/boardgame-ludo.png">
+
 In this, and the upcoming two assignments, you will complete a web programming project. This year, this is the implementation of a classic **board game**.
 
 You can choose from six games:
