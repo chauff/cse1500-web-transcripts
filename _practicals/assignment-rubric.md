@@ -33,7 +33,6 @@ The rubric below contains example questions/tasks for each assignment **as well 
 - Show off a `HEAD` and `GET` request via telnet. What is the difference between the two?
 - Execute the `PUT` request.
 - What is the difference between authentication using telnet vs. a browser?
-- What does the site's Cache-Control directive mean?
 - Show off the board game design.
 - Show off the four board game examples and discuss a positive and negative feature.
 - Show off the HTML. How did you decide to use 'those tags' for your board game?
@@ -41,7 +40,7 @@ The rubric below contains example questions/tasks for each assignment **as well 
 ### Passing requirements
 
 - The student is able to answer most of the TA's questions correctly.
-- The board game design is available on the Brightspace forum. The deliverables are uploaded to Brightspace.
+- The board game design is available on TUD's Stack Overflow instance. The deliverables are uploaded to Brightspace.
 - The splash / board game design fulfils the board game requirements (listed in the first web technology assignment).
 
 ## Assignment JS+Node
@@ -53,8 +52,7 @@ The rubric below contains example questions/tasks for each assignment **as well 
 - Explain randomly chosen functions in your code.
 - Explain the data structure(s) used to keep track of the game state on the server.
 - How was it made possible for several players to play games at the same time?
-- If `jQuery` was used on the client-side ... what does `$` refer to? 
-- Discuss the design pattern(s) (we discussed three in class) chosen for the game.
+- Discuss the design pattern(s) chosen for the game.
 - Show off the messages client and server exchange to communicate the game state and discuss advantages/disadvantages.
 
 ### Passing requirements
