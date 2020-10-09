@@ -46,6 +46,7 @@ warning: true
     - [:bangbang: Animations: CSS weather demo](#bangbang-animations-css-weather-demo)
   - [:cookie: Transitions](#cookie-transitions)
 - [:cookie: Vendor prefixes](#cookie-vendor-prefixes)
+- [:cookie: CSS frameworks and APIs](#cookie-css-frameworks-and-apis)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -2131,6 +2132,12 @@ An alternative is [caniuse.com](https://caniuse.com/) which not only provides in
 ![caniuse.com user-select](../img/css-user-select.png)
 
 A tedious and boring task (i.e. to check for the need of vendor-specific prefixes) that does not require any type of creativity and requires lookups in a large database? *A perfect setup for automation.* The npm package [Autoprefixer](https://www.npmjs.com/package/autoprefixer) is a popular tool to do exactly that: it parses vendor-less CSS and automatically adds the correct vendor prefixes. While in our small-scale class project this is not needed, in production-level code such automation (likely part of a much larger chain of processes to convert handwritten code) is highly recommended.
+
+## :cookie: CSS frameworks and APIs
+
+Frameworks designed to make CSS easier to handle exist. A popular front-end framework is [Bootstrap](https://getbootstrap.com/) which originally came out of Twitter. It contains a whole host of templates that make interface design less painful: instead of sweating about each and every CSS detail, you can make use of a large set of predefined components and thus focus on the bigger picture (the interface as a whole). While Bootstrap is still the most popular front-end framework, [Tailwind CSS](https://tailwindcss.com/) is starting to draw a large user base. It is more low-level than Bootstrap and thus allows the front-end to look more unique (designs based on Bootstrap often have a particular look and feel) while taking care of the painful details. 
+
+While frameworks provide the developer with a more high-level view of CSS, [CSS Houdini](https://developer.mozilla.org/en-US/docs/Web/Houdini) goes in the opposite direction: it provides low-level API access to the CSS engine inside the browser! 
 
 
 ## Self-check
