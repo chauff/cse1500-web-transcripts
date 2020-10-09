@@ -93,3 +93,5 @@ The execution will stop at each breakpoint you have defined. Once the execution 
 Since JavaScript is [dynamically typed](https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_typing) a lot of common programming mistakes can remain unnoticed before running js code. [`@ts-check`](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript) is a good tool to catch some of these mistakes at the very moment you type your code.
 
 You can find more information about debugging in VSC [here](https://code.visualstudio.com/docs/editor/debugging).
+
+To debug the client-side, use the [`Debug: Open Link`](https://code.visualstudio.com/updates/v1_48#_debug-open-link-command) command from the VSC command palette.
