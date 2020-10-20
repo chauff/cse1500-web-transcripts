@@ -65,6 +65,7 @@ warning: true
   - If you are looking for styling challenges, take a look at the weekly [CodePen Challenges](https://codepen.io/challenges/).
   - At [https://flukeout.github.io/](https://flukeout.github.io/) you find a small game that allows you to practice CSS selectors.
 - Recommended readings:
+  - [The state of CSS 2019](https://2019.stateofcss.com/): a developer survey on the CSS features that are being used and seen as important going forward.
   - [Extensive post](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS) on Firefox's developer tools for CSS.
   - :closed_book: Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
   - [A blog post on the history of CSS: Old CSS, new CSS](https://eev.ee/blog/2020/02/01/old-css-new-css/)
