@@ -31,9 +31,9 @@ warning: true
 - [Element positioning](#element-positioning)
   - [Display Types](#display-types)
   - [`grid` Layout](#grid-layout)
-  - [CSS Units and Functions](#css-units-and-functions)
-    - [Essential CSS Units of Measurement](#essential-css-units-of-measurement)
-    - [Basic CSS Functions](#basic-css-functions)
+  - [:cookie: CSS units and functions](#cookie-css-units-and-functions)
+    - [Essential CSS units of measurement](#essential-css-units-of-measurement)
+    - [Basic CSS functions](#basic-css-functions)
   - [:bangbang: Position](#bangbang-position)
     - [position:relative](#positionrelative)
     - [position:absolute](#positionabsolute)
@@ -939,17 +939,16 @@ The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) proper
 There [are more display types](https://developer.mozilla.org/en-US/docs/Web/CSS/display), but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS.
 
 ### `grid` Layout
-As the name suggests, a `display` type of `grid` allows you to create a two-dimensional grid layout within your page. This relatively new construct to CSS massively reduces the effort required to implement grid-like layouts. Previously, one would implement a grid through the use of `float`s, for example.
 
-To demonstrate the basics of implementing a grid layout, let's walk through creating a simple 3x3 grid. Once we have shown you the basics, we'll also demonstrate some of the more advanced functionality available.
+As the name suggests, a `display` type of `grid` allows us to create a two-dimensional grid layout within a page. This relatively new construct to CSS reduces the effort required to implement grid-like layouts. Previously, one would implement a grid through the use of `float`s, for example.
 
-As you may expect, a CSS grid is comprised of rows and columns. Each element that you define within the grid can be likened to as a "cell". An example of the 3x3 grid is shown below for your reference.
-
-Included within the example are a series of lines. We'll be making use of these later, but for now you can use these lines to work out what column (in red) or row (in green) a particular "cell" is located at within the grid. Note that the "cell" corresponding to a column line is to its right; the "cell" corresponding to a row line is underneath it. Counting starts from the **top left corner**. This is discussed more in the *Position* section below.
+To demonstrate the basics of implementing a grid layout, let's walk through creating a simple 3x3 grid. A CSS grid is comprised of rows and columns. Each element that we define within the grid can be likened to as a *cell*. An example of the 3x3 grid is shown below :point_down::
 
 ![CSS grid explanation](../img/css-grid-explanation.svg)
 
-To create a grid layout, pick the element that will contain the grid. For the said container, set the `display` attribute to `grid`. Each of the child elements within the container element will act as grid cells. Example CSS and markup is shown below. Note that we also add a selector for the child elements; these are the "cells", or the elements within the `grid-container`.
+:point_up: Included within the example are a series of lines. We will be making use of these later, but for now you can use these lines to work out what column (in red) or row (in green) a particular cell is located at within the grid. Note that the cell corresponding to a column line is to its right; the cell corresponding to a row line is underneath it. Counting starts from the **top left corner**. 
+
+To create a grid layout, pick the element that will contain the grid. For the said container, set the `display` attribute to `grid`. Each of the child elements within the container element will act as grid cells. Consider this example :point_down:. Note that we also add a selector for the child elements; these are the cells, or the elements within the `grid-container`.
 
 ```css
 .grid-container {
@@ -975,13 +974,13 @@ To create a grid layout, pick the element that will contain the grid. For the sa
 </div>
 ```
 
-The corresponding rendered output will look similar to the following. :point_down:
+The corresponding rendered output looks as follows :point_down::
 
 ![CSS grid elements - step 1](../img/css-grid-step1.png)
 
 What gives? The elements are not in a grid layout; they are still block elements below one another!
 
-In order for the grid layout to work, we need to tell the grid container how many rows and columns there should be, as well as the widths/heights of each. To do so, the simplest way is to use the `grid-template-rows` and `grid-template-columns` properties. :point_down:
+In order for the grid layout to work, we need to tell the grid container how many rows and columns there should be, as well as the widths/heights of each. To do so, the simplest way is to use the `grid-template-rows` and `grid-template-columns` properties :point_down::
 
 ```css
 .grid-container {
@@ -991,17 +990,17 @@ In order for the grid layout to work, we need to tell the grid container how man
 }
 ```
 
-This :point_up: has the effect of producing the desired 3x3 grid, with each "cell" being fixed as a square with 100 pixels along the sides.
+This :point_up: has the effect of producing the desired 3x3 grid, with each cell being fixed as a square with 100 pixels along the sides:
 
 ![CSS grid elements - step 2](../img/css-grid-step2.png)
 
-That looks more like a grid! :point_up:
+:point_up: That looks more like a grid! 
 
 For the two new properties that we have just added, we provide *three* values; one for each of the number of rows/columns that we desire. If we were to add a fourth value to `grid-template-rows`, this would for the example have the effect of adding an additional row to the grid.
 
 This approach is useful if you wish to provide a lop-sided grid (i.e. a table, with more rows than columns).
 
-Note that we could make the definitions more succinct using the CSS `repeat()` function. The below CSS snippet :point_down: has the exact same outcome as what we show above.
+Note that we could make the definitions more succinct using the CSS `repeat()` function. The below CSS snippet :point_down: has the exact same outcome as what we show above point_down::
 
 ```css
 .grid-container {
@@ -1011,7 +1010,7 @@ Note that we could make the definitions more succinct using the CSS `repeat()` f
 }
 ```
 
-You can of course mix up providing values and using `repeat()`, too! The example below produces a grid where the first column has a width of 200 pixels, but the remaining two columns have widths of only 100 pixels (being defined with the `repeat()` function).
+You can of course mix up providing values and using `repeat()`, too! The example below :point_down: produces a grid where the first column has a width of 200 pixels, but the remaining two columns have widths of only 100 pixels (being defined with the `repeat()` function).
 
 ```css
 .grid-container {
@@ -1021,11 +1020,11 @@ You can of course mix up providing values and using `repeat()`, too! The example
 }
 ```
 
-Notice how the gap between columns 1 and 2 is wider than between columns 2 and 3. :point_down:
+Notice how the gap between columns 1 and 2 is wider than between columns 2 and 3 :point_down::
 
 ![CSS grid elements - step 3](../img/css-grid-step3.png)
 
-Of course, our grid currently looks a bit off as the different "cells" that we have are right next to one another. CSS grids provide the ability to easily add gaps between rows and columns via the `grid-row-gap` and `grid-column-gap` properties, respectively.
+Of course, our grid currently looks a bit off as the different cells that we have are right next to one another. CSS grids provide the ability to easily add gaps between rows and columns via the `grid-row-gap` and `grid-column-gap` properties, respectively point_down::
 
 ```css
 .grid-container {
@@ -1037,13 +1036,13 @@ Of course, our grid currently looks a bit off as the different "cells" that we h
 }
 ```
 
-This produces a much nicer looking grid, with 10 pixel gaps between each row and column. :point_down:
+This :point_up: produces a much nicer looking grid, with 10 pixel gaps between each row and column :point_down::
 
 ![CSS grid elements - step 4](../img/css-grid-step4.png)
 
 We could also have used `grid-gap` to set both the row and column gaps at the same time.
 
-As an aside, we could use some fancy CSS selectors to make the grid look more like a chessboard, with alternating black and white (or near-white) "cells". The CSS snippet below redefines the selectors for the children of the `grid-container`. :point_down:
+As an aside, we could use some fancy CSS selectors to make the grid look more like a chessboard, with alternating black and white (or near-white) cells. The CSS snippet below redefines the selectors for the children of the `grid-container` :point_down::
 
 ```css
 .grid-container div {
@@ -1056,21 +1055,15 @@ As an aside, we could use some fancy CSS selectors to make the grid look more li
 }
 ```
 
-The top selector, `.grid-container div` sets all children of the container to have a light grey background.
-
-The second selector works only every child that has a position that is a multiple of 2 (i.e. `2n`). For this selector, the background of the "cell" is set to black, with the text colour set to white. This second selector will override the background colour set in the first selector.
+:point_up: The top selector, `.grid-container div` sets all children of the container to have a light grey background. The second selector works only every child that has a position that is a multiple of 2 (i.e. `2n`). For this selector, the background of the cell is set to black, with the text colour set to white. This second selector will override the background colour set in the first selector. The rendered output looks as follows :point_down::
 
 ![CSS grid elements - step 5](../img/css-grid-step5.png)
 
-Finally, we want to demonstrate how you merge "cells" together. There may be instances where a particular "cell" should span over multiple rows and columns (for example, when you have headers for groups of data in a table).
-
-Remember the lines that we defined in our simple grid illustration at the top of this section? This is where they will come in handy.
-
-Let's say we want to stretch the "cell" that belongs to *Row 3, Column 2* over to also cover *Row 3, Column 3*.
+Finally, we want to demonstrate how you merge cells together. There may be instances where a particular cell should span over multiple rows and columns (for example, when you have headers for groups of data in a table). Remember the lines that we defined in our simple grid illustration at the top of this section? This is where they will come in handy. Let's say we want to stretch the cell that belongs to *Row 3, Column 2* over to also cover *Row 3, Column 3* :point_down::
 
 ![CSS grid elements - step 6](../img/css-grid-step6.png)
 
-We can achieve this by first ditching the final child element within the grid container, leaving only eight children.
+We can achieve this by first ditching the final child element within the grid container, leaving only eight children :point_down::
 
 ```html
 <div class="grid-container">
@@ -1085,7 +1078,7 @@ We can achieve this by first ditching the final child element within the grid co
 </div>
 ```
 
-Note in the example above, we also applied an `id` to the cell we want to stretch. This is so we can write a CSS selector that only targets the given element.
+:point_up: Note, that we also applied an `id` to the cell we want to stretch. This is so we can write a CSS selector that only targets the given element :point_down::
 
 ```css
 #stretched {
@@ -1094,26 +1087,20 @@ Note in the example above, we also applied an `id` to the cell we want to stretc
 }
 ```
 
-This denotes that for the element with id `stretched`, we wish the element to begin at column line 2, and end at column line 4. Please refer to the illustration at the top of this section to refresh your memory; you're looking for the red lines for this example.
-
-This has the following effect on the grid. :point_down:
+:point_up: This denotes that for the element with id `stretched`, we wish the element to begin at column line 2, and end at column line 4. This has the following effect on the grid :point_down::
 
 ![CSS grid elements - step 7](../img/css-grid-step7.png)
 
 Note the stretched cell at the bottom right, spanning over two columns.
 
-We can also stretch a cell over two or more rows using the `grid-row-start` and `grid-row-end` properties. Of course, we can also combine column and row stretching by using a combination of both!
+We can also stretch a cell over two or more rows using the `grid-row-start` and `grid-row-end` properties. Of course, we can also combine column and row stretching by using a combination of both! This provides an incredibly powerful way of keeping order in your grids.
 
-This provides an incredibly simple yet powerful way of keeping order in your grids.
-
-This teaser should be more than sufficient for you to get to grips with grids for this course. However, there are many other properties that are defined in the CSS specification that allow you to control grids - check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) if you are interested!
+As always, we have only scratched the surface with our introduction of CSS grids. There are many other properties that are defined in the CSS specification that allow you to control grids - check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) if you are interested!
 
 
-### CSS Units and Functions
+### :cookie: CSS units and functions
 
-Up until now, we've used some pretty basic units of measurement to express the widths and heights of elements on a page, and indeed the size of fonts, for example.
-
-We've come across pixels as unit of measurement (identified with the `px` suffix). Modern screens are comprised of many pixels; this unit of measurement allows you to specify an *absolute measurement* on the screen.
+Up until now, we've used some pretty basic units of measurement to express the widths and heights of elements on a page, and indeed the size of fonts, for example. We have come across pixels as unit of measurement (identified with the `px` suffix). Modern screens are comprised of many pixels; this unit of measurement allows you to specify an *absolute measurement* on the screen :point_down::
 
 ```css
 .some-class {
@@ -1122,7 +1109,7 @@ We've come across pixels as unit of measurement (identified with the `px` suffix
 }
 ```
 
-We have also identified percentage units. As you may expect, these allow you to express the width/height/measurement of a particular element in percentage terms of its container. In other words, this measurement is *relative* to its container, rather than being absolute.
+We have also identified percentage units. As you may expect, these allow you to express the width/height/measurement of a particular element in percentage terms of its container. In other words, this measurement is *relative* to its container, rather than being absolute :point_down::
 
 ```css
 .container {
@@ -1142,31 +1129,29 @@ We have also identified percentage units. As you may expect, these allow you to 
 </div>
 ```
 
-For example, the above snippets define a `container` with a pixel width and height. The child `<div>` then has a width and height of 50% -- yielding an absolute width of 100 pixels, and an absolute height of 50 pixels
+:point_up: Here, we define a `container` with a pixel width and height. The child `<div>` then has a width and height of 50% -- yielding an absolute width of 100 pixels, and an absolute height of 50 pixels.
 
 But what about more complex units of measurement? Many different types of measurement are available as part of contemporary CSS implementations, but what are the essential ones to know?
 
-#### Essential CSS Units of Measurement
+#### Essential CSS units of measurement
 
-Having discussed pixels (absolute) and percentages (relative) above, there are several other that you should be aware of.
-
-You can use measurements such as `mm` (for millimeters) and `cm` (for centimeters); if you like imperial measurements, inches (`in`) are also valid.
+Having discussed pixels (absolute) and percentages (relative) above, there are several other that you should be aware of. You can use measurements such as `mm` (for millimeters) and `cm` (for centimeters); if you like imperial measurements, inches (`in`) are also valid.
 
 However, for modern web design, we are more interested in *relative units* -- that is, units of measurement relative to the container of the element you are assigning values to.
 
 * `em` is a unit of measurement relative to the font size of the element being used. This is useful, for example, when setting the height of an element to be slightly taller than the text it contains.
 
-There are also units of measurement that are relative to the available real estate on the user's screen.
+There are also units of measurement that are relative to the available real estate on the user's screen:
 
 * `vw` is a unit that is relative to the *width of the viewport*, where the viewport is the size of the browser/app that the page is viewed in. `1vw` is equal to 1/100 of the viewport's width.
 * `vh` is the same as above, but this time associated with the *height of the viewport*. This time, `1vh` is equal to 1/100 of the viewport's height.
 
-These units are then taken further, with two more units whose measurements are compared against potentially changing targets.
+These units are then taken further, with two more units whose measurements are compared against potentially changing targets:
 
 * `vmin` is relative to the *smallest dimension of the viewport*. For example, if you view a page on a smartphone in portrait mode, this would be the width (as the height will be greater). `1vmin` equates to 1/100 of the viewport's smallest dimension.
 * `vmax` instead considers the *largest dimension of the viewport*. `1vmax` equates to 1/100 of the viewport's largest dimension (e.g. width when viewed on a smartphone in landscape mode).
 
-There are also a series of measurements specific to given scenarios. For example, the `grid` layout we discussed above can make use of the `fr` unit. Short for *fractional unit*, the name may suggest that this unit splits up available space into a series of fractions.
+There are also a series of measurements specific to given scenarios. For example, the `grid` layout we discussed above can make use of the `fr` unit. Short for *fractional unit*, the name may suggest that this unit splits up available space into a series of fractions:
 
 ```css
 .grid-container {
@@ -1196,13 +1181,13 @@ For a more concrete (and advanced example), we can assign a width to the `grid-c
 
 With a maximum width of `520px` for the container, our first column will take nearly half of the available space (`250px`). The final two columns will then be split over three fractional units (from a remaining space of `270px`, this means three equal divisions of `90px`). As such, the second column of `2fr` will have an absolute width of `180px`, with the third column of `1fr` having an absolute width filling out the remaining `90px`.
 
-*As a general rule of thumb, you should always consider using relative units of measurement when developing responsive CSS designs. This will mean you don't have to worry about designing different CSS rules for different sizes of screen; everything will be relative to the size of the screen the page is being rendered on!*
+*As a general rule of thumb, you should consider using relative units of measurement when developing responsive CSS designs. This will mean you do not have to worry about designing different CSS rules for different sizes of screen; everything will be relative to the size of the screen the page is being rendered on!*
 
-#### Basic CSS Functions
+#### Basic CSS functions
 
 Modern CSS allows you to make use of *built-in functions* to compute values on-the-fly for attributes you specify. Your CSS styles may have attributes whose values can only be determined at runtime. For example, we made use of the `repeat()` function when learning about CSS grids.
 
-The syntax for using a function in CSS is shown below.
+The syntax for using a function in CSS is as follows :point_down::
 
 ```css
 selector {
@@ -1210,11 +1195,9 @@ selector {
 }
 ```
 
-Where `function` is the function name, and `parameters` are parameters (usually provided as an expression) that you can pass to the function.
+:point_up: Here, `function` is the function name, and `parameters` are parameters (usually provided as an expression) that you can pass to the function.
 
-Below, we outline a few basic functions that you can use in your stylesheets. There are [resources online](https://www.w3schools.com/cssref/css_functions.asp) which provide a detailed reference of other functions that we do not list here.
-
-The most basic (and useful) function is `calc()`. `calc()` calculates the result of a provided expression. You can add, subtract, divide and multiply values together. Values can be of different units, too. Take the example below. :point_down:
+A useful function is `calc()`: it calculates the result of a provided expression. You can add, subtract, divide and multiply values together. Values can be of different units, too :point_down::
 
 ```css
 .container {
@@ -1222,9 +1205,9 @@ The most basic (and useful) function is `calc()`. `calc()` calculates the result
 }
 ```
 
-The width of this `container` is set to 100% of its own container, with `20vw` units subtracted from the 100%.
+:point_up: The width of this `container` is set to 100% of its own container, with `20vw` units subtracted from the 100%.
 
-You can also mix relative and absolute measurements, such as in the example below. :point_down:
+You can also mix relative and absolute measurements :point_down::
 
 ```css
 .container {
@@ -1232,7 +1215,7 @@ You can also mix relative and absolute measurements, such as in the example belo
 }
 ```
 
-If you have followed the lecture carefully, you may also be aware of a function that was used previously to obtain variables. This function is called `var()`, and takes the name of the variable you wish to be put in place of the function call.
+If you have followed the lecture carefully, you may also be aware of a function that was used previously to obtain variables. This function is called `var()`, and takes the name of the variable you wish to be put in place of the function call :point_down::
 
 ```css
 :root {
@@ -1244,9 +1227,7 @@ If you have followed the lecture carefully, you may also be aware of a function 
 }
 ```
 
-This example sets the `background-color` of the `container` to `blue`.
-
-There are also functions for defining colours according to the RGB colour model.
+There are also functions for defining colours according to the RGB colour model :point_down::
 
 ```css
 .container {
@@ -1254,7 +1235,7 @@ There are also functions for defining colours according to the RGB colour model.
 }
 ```
 
-This example makes use of the `rgb()` function, which returns the colour you specify (in this case, blue!). For colours with an alpha channel (with transparency), use `rgba`. :point_down:
+:point_up: This example makes use of the `rgb()` function, which returns the colour you specify (in this case, blue!). For colours with an alpha channel (with transparency), use `rgba` :point_down::
 
 ```css
 .container {
@@ -1262,13 +1243,11 @@ This example makes use of the `rgb()` function, which returns the colour you spe
 }
 ```
 
-This has the same effect as the examples above, save for the inclusion of transparency. This final parameter is specified between `0` and `1`, with `0` being completely transparent, and `1` being completely opaque.
+:point_up: This has the same effect as the examples above, except for the inclusion of transparency. This final parameter is specified between `0` and `1`, with `0` being completely transparent, and `1` being completely opaque.
 
-The final function we will introduce you to here is called `minmax()`. This function is used within CSS grids, and allows you to specify a *range of acceptable values* for your grid column widths and row heights.
+The final function we introduce here is called `minmax()`. This function is used within CSS grids, and allows you to specify a *range of acceptable values* for your grid column widths and row heights. By including this function, CSS allows you to make CSS grids that better adapt to the available viewport size as it is resized.
 
-By including this function, CSS allows you to make CSS grids that better adapt to the available viewport size as it is resized.
-
-To demonstrate this function in action, observe the following CSS and HTML snippets. :point_down:
+To demonstrate this function in action, observe the following CSS and HTML snippets :point_down::
 
 ```css
 .grid-container {
@@ -1297,15 +1276,13 @@ To demonstrate this function in action, observe the following CSS and HTML snipp
 </div>
 ```
 
-Of particular interest here is the value assigned to `grid-template-columns` in `.grid-container`. We make use of the `repeat()` function to repeat the `minmax(100px, 200px)` function call 4 times, resulting in four column values.
+:point_up: Of particular interest here is the value assigned to `grid-template-columns` in `.grid-container`. We make use of the `repeat()` function to repeat the `minmax(100px, 200px)` function call 4 times, resulting in four column values. The `minmax(100px, 200px)` function call provides a value that is a minimum of `100px`, and steadily increases as the width of the container also increases. This will increase up until a maximum of `200px` in this example.
 
-Here, the `minmax(100px, 200px)` function call provides a value that is a minimum of `100px`, and steadily increases as the width of the container also increases. This will increase up until a maximum of `200px` in this example.
-
-A demonstration of this in action is shown below. :point_down: The CSS and markup used to generate this demo is the exact same code as used above.
+A demonstration of this in action is shown below :point_down::
 
 ![CSS grid elements - step 8](../img/css-grid-step8.gif)
 
-Note that after the width of the viewport is increased past the point where each grid "cell" can fit comfortably within the viewport at its maximum width of `200px`, they no longer increase in width. This is the `max` part of the `minmax()` function in operation!
+:point_up: Note that after the width of the viewport is increased past the point where each grid "cell" can fit comfortably within the viewport at its maximum width of `200px`, they no longer increase in width. This is the `max` part of the `minmax()` function in operation!
 
 ### :bangbang: Position
 
