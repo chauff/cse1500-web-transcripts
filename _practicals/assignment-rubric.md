@@ -58,7 +58,7 @@ The rubric below contains example questions/tasks for each assignment **as well 
 ### Passing requirements
 
 - The student is able to answer most of the TA's questions correctly.
-- The required client-side and server-side components are implemented.
+- The required client-side and server-side components are implemented with the languages/frameworks (i.e. JavaScript and Node.js) introduced in the course.
 - The communication is based on WebSockets.
 - One of the three design patterns discussed in class is used at least once.
 - The deliverables are uploaded to Brightspace.
@@ -84,3 +84,4 @@ The rubric below contains example questions/tasks for each assignment **as well 
 - The splash and game screen have a consistent design.
 - Templating (EJS) has been used.
 - The game forbids players to make at least some invalid moves.
+- Beyond CSS, the required components are implemented with the languages/frameworks (i.e. JavaScript and Node.js) introduced in the course.
