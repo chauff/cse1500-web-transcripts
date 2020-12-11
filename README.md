@@ -4,6 +4,10 @@ This repository contains the web technology course materials for the CSE1500 Web
 
 The course page can be found at https://chauff.github.io/Web-Teaching/.
 
+## Contributors
+
+Creating such transcripts is not the job for a single person, but a group effort! All contributors to this repository can be found on the [Contributors](https://github.com/chauff/Web-Teaching/graphs/contributors) tab!
+
 ## Related repositories
 
 - [CSE1500 demo game](https://github.com/chauff/balloons-game)
