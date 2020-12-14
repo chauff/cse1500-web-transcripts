@@ -564,9 +564,11 @@ HEAD / HTTP/1.1
 host:mit.edu
 <carriage return>
     HTTP/1.1 302 Moved Temporarily
+    Server: AkamaiGHost
     Content-Length: 0
     Location: http://web.mit.edu/
-    Date: Mon, 31 Aug 2020 21:14:46 GMT
+    Date: Mon, 14 Dec 2020 18:01:44 GMT
+    Connection: keep-alive
     ...
 ```
 
@@ -580,31 +582,30 @@ telnet web.mit.edu 80
 HEAD / HTTP/1.1
 host:web.mit.edu
 <carriage return>
-    HTTP/1.1 200 OK
-    Last-Modified: Mon, 31 Aug 2020 04:00:29 GMT
-    Content-Type: text/html
-    ...
-```
-
-**Use `HEAD` once again to investigate the new location** :point_down::
-
-```
-telnet web.mit.edu 80
-    Trying 104.73.43.233...
-    Connected to e9566.dscb.akamaiedge.net.
-    Escape character is ‘^]’
-GET / HTTP/1.1
-host:web.mit.edu
-<carriage return>
-HTTP/1.1 301 Moved Permanently
+    HTTP/1.1 301 Moved Permanently
     Server: AkamaiGHost
     Content-Length: 0
     Location: https://web.mit.edu/
+    Date: Mon, 14 Dec 2020 18:02:23 GMT
     Connection: keep-alive
     ...
 ```
 
-At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path (*lecture transcript changed as of Dec. 14, 2020*).
+:cookie: At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path and retrieve the content available at the URL's location (*lecture transcript changed as of Dec. 14, 2020*). Note the changed port number (443); this is the default port for https. We use `GET` to retrieve the content:
+
+```
+openssl s_client -crlf -connect web.mit.edu:443
+    ...
+    ...
+GET / HTTP/1.1
+host:web.mit.edu
+<carriage return>
+    HTTP/1.1 200 OK
+    Server: Apache
+    Last-Modified: Mon, 14 Dec 2020 05:02:53 GMT
+    ETag: "10e8a584-89a9-5fd6f1fd"
+    ...
+```
 
 Finally, for those that want to see to what extremes people go to make fun (or use) of telnet, try out the following :point_down::
 
