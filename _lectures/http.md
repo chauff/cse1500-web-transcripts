@@ -586,7 +586,7 @@ host:web.mit.edu
     ...
 ```
 
-**Use `GET` to retrieve the content** (the printout on the terminal is not very insightful to us, it is just the requested resource) :point_down::
+**Use `HEAD` once again to investigate the new location** :point_down::
 
 ```
 telnet web.mit.edu 80
