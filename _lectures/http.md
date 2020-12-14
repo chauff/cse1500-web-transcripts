@@ -570,7 +570,7 @@ host:mit.edu
     ...
 ```
 
-**Use `HEAD` to see what is at the moved location** (note that `mit.edu` and `web.mit.edu` refer to different lcoations) :point_down::
+**Use `HEAD` to see what is at the moved location** (note that `mit.edu` and `web.mit.edu` refer to different locations) :point_down::
 
 ```
 telnet web.mit.edu 80
@@ -596,12 +596,15 @@ telnet web.mit.edu 80
 GET / HTTP/1.1
 host:web.mit.edu
 <carriage return>
-    HTTP/1.1 200 OK
-    Last-Modified: Mon, 31 Aug 2020 04:00:29 GMT
-    Content-Type: text/html
-    Content-Length: 35124
+HTTP/1.1 301 Moved Permanently
+    Server: AkamaiGHost
+    Content-Length: 0
+    Location: https://web.mit.edu/
+    Connection: keep-alive
     ...
 ```
+
+At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path (*changed as of Dec. 14, 2020*).
 
 Finally, for those that want to see to what extremes people go to make fun (or use) of telnet, try out the following :point_down::
 
