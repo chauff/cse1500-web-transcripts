@@ -6,7 +6,11 @@ The course page can be found at https://chauff.github.io/Web-Teaching/.
 
 ## Contributors
 
-Creating such transcripts is not a job for a single person, but a group effort! All contributors to this repository can be found on the [Contributors](https://github.com/chauff/Web-Teaching/graphs/contributors) tab!
+Creating such transcripts is not a job for a single person, but a group effort! All contributors to this repository can be found on the [Contributors](https://github.com/chauff/Web-Teaching/graphs/contributors) tab! 
+
+## Inspired by
+
+The transcript grew initially out of course material derived from the [Learning Web App Development](https://www.oreilly.com/library/view/learning-web-app/9781449371388/) book. Over the years it has been refined.
 
 ## Related repositories
 
