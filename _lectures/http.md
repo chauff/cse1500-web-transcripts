@@ -604,7 +604,7 @@ HTTP/1.1 301 Moved Permanently
     ...
 ```
 
-At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path (*changed as of Dec. 14, 2020*).
+At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path (*lecture transcript changed as of Dec. 14, 2020*).
 
 Finally, for those that want to see to what extremes people go to make fun (or use) of telnet, try out the following :point_down::
 
