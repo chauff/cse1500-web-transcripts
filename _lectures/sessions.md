@@ -564,7 +564,7 @@ There are two drawbacks though:
 
 The protocol that governs most third-party authentication services today is the **OAuth 2.0 Authorization Framework**, standardized in [RFC6749](https://tools.ietf.org/html/rfc6749). Its purpose is the following:
 
-```console
+```
 The OAuth 2.0 authorization framework enables a third-party application
 to obtain limited access to an HTTP service, either on behalf of a resource
 owner by orchestrating an approval interaction between the resource owner
