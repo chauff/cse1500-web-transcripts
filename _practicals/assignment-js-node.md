@@ -217,7 +217,7 @@ Let us now connect our gamers to each other via the [WebScoket API](https://deve
 
 First, let's install `ws` (the `--save` option ensures that the dependency gets added to your project's `package.json` file). We assume once more that your terminal's current directory is `myapp`:
 
-````console
+````
 npm install --save ws
 ````
 
