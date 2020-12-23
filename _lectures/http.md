@@ -499,7 +499,7 @@ Status codes in the three hundred range most often point to a redirect: a resour
 
 <sup>Network panel after entering `http://delft.nl` into the address bar. Firefox, August 31, 2020.</sup>
 
-:point_up: Here, the URL [http://delft.nl](http://delft.nl) was entered into the browser's address bar. The browser renders the expected page (the homepage of the city of Delft), however, in the background it took three HTTP requests to retrieve the resource at path `/`. The status codes `302 Moved Temporarily` and `301 Moved Permanently` indicate that the resource at `http://delft.nl` has been moved elsewhere: first to `https://delft/nl` and then to `https://www.delft.nl`. Each time, the `Location` header tells us the new location.
+:point_up: Here, the URL [http://delft.nl](http://delft.nl) was entered into the browser's address bar. The browser renders the expected page (the homepage of the city of Delft), however, in the background it took three HTTP requests to retrieve the resource at path `/`. The status codes `302 Moved Temporarily` and `301 Moved Permanently` indicate that the resource at `http://delft.nl` has been moved elsewhere: first to `https://delft.nl` and then to `https://www.delft.nl`. Each time, the `Location` header tells us the new location.
 
 Status codes starting with 4 indicate an error on the client side - most well known here is `404: Not Found`, that is, the web resource or entity the client requests, does not exist on the server.
 
