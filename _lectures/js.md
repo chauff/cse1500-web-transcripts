@@ -432,7 +432,7 @@ Let's walk through this concrete code example to showcase the behavior of `this`
  //We assume execution in the browser's Web Console, we thus
 //know the global window object exists (it is provided by the browser).
 
-//h is now a property of the global `window` variable;
+//name is a property of the  global `window` variable;
 //it can also be accessed as window.h
 var name = "Beat Saber";
 
