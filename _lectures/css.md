@@ -2164,7 +2164,7 @@ CSS media queries enable the use of device/media-type dependent style sheets and
 
 <details>
   <summary>What does the selector combination e1+e2 mean?</summary>
-This combination selects all `<e2>` elements that follow `<e1>` immediately.
+This combination selects all `e2` elements that follow `e1` immediately.
 </details>
 
 <details>
