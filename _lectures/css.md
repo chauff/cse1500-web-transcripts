@@ -2143,47 +2143,36 @@ Here are a few questions you should be able to answer after having followed the 
 </details>
 
 <details>
-  <summary>What are the differences between CSS animations and CSS transitions?</summary>
-  ...
-</details>
-
-<details>
   <summary>What is the difference between an inline and a block element?</summary>
-  ...
+Block-level elements are surrounded by line-breaks. They can contain block-level and inline elements. Inline elements can be placed within block-level or inline elements. They can contain other inline elements.
 </details>
 
 <details>
-  <summary>What is the difference between nth-of-type and nth-child?</summary>
-...
+  <summary>What is the difference between `nth-of-type` and `nth-child`?</summary>
+`nth-child(X)` is any element that is the Xth child element of its parent; `nth-of-type(X)` is any element that is the Xth sibling of its type.
 </details>
 
 <details>
   <summary>What is the purpose of CSS media queries</summary>
-  ...
+CSS media queries enable the use of device/media-type dependent style sheets and rules. While the HTML document is written once, the CSS is written once per device type. 
 </details>
 
 <details>
-  <summary>What is the difference between pseudo-elements hover and active?</summary>
-  ...
+  <summary>What is the difference between pseudo-classes `hover` and `active`?</summary>
+`hover` is a selector that becomes active when a mouseover on the respective element occurs. In contrast, `active` is a selector that is triggered when the element is activated.
 </details>
 
 <details>
   <summary>What does the selector combination e1+e2 mean?</summary>
-  ...
+This combination selects all `<e2>` elements that follow `<e1>` immediately.
 </details>
 
 <details>
-  <summary>Explain the difference between position:absolute and position:relative.</summary>
-  ...
+  <summary>Explain the difference between `position:absolute` and `position:relative`.</summary>
+The difference lies in the element flow. With `position:relative`, the element is adjusted on the fly, other elements are not affected. In contrast, with `position:absolute`, the element is taken out of the normal flow (no space is reserved for it).
 </details>
 
 <details>
-  <summary>When should position:fixed be used?</summary>
-  ...
-</details>
-
-
-<details>
-  <summary>Explain the meaning of units vw and vh.</summary>
-  ...
+  <summary>When should `position:fixed` be used?</summary>
+A major use case are elements that should be visible at all times to the user, no matter the scrolling behavior.
 </details>
