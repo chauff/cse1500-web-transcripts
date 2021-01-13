@@ -453,7 +453,7 @@ We can also provide multiple handlers in a single `app.get()` call :point_down::
 //A-B-C testing
 app.get('/wishlist',
     function(req,res, next){
-        if (Math.random() < 0.33) {
+        if (Math.random() > 0.33) {
             return next();
         }
         console.log("Wishlist in schema A returned");
