@@ -666,29 +666,3 @@ Set-Cookie: view=mobile; Path=/; Domain=tudelft.nl; secure
   <summary>The browser B currently has no stored cookies. The server sends the four cookies above to B (assume this is happening today). B crashes 10 minutes later and the user restarts B. How many cookies can the user access after the restart with client-side JavaScript?</summary>
   0
 </details>
-
-<details> 
-  <summary>True or False? Third-party cookies and first-party cookies are stored in different cookie storage facilities within the browser.</summary>
-  False.
-</details>
-
-<details> 
-  <summary>True or False? Third-party cookies originate from a different domain than first-party cookies.</summary>
-  True.
-</details>
-
-<details> 
-  <summary>True or False? Third-party cookies have a lower priority than first-party cookies and are returned to the server
-only after any first-party cookies.</summary>
-  False.
-</details>
-
-<details> 
-  <summary>A server-side application uses sessions instead of cookies to track users. What is a common approach to determine the end of a session?</summary>
-  If x seconds have passed without a request from the client, the server ends the session.
-</details>
-
-<details> 
-  <summary>What is the main purpose of the "consumer secret" (or client secret") in third-party authentication?</summary>
-  It ensures that only authorized applications query the authentication server for an access token.
-</details>
