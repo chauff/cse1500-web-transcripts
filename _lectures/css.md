@@ -233,8 +233,8 @@ The corresponding HTML document with *inline* styling showcases the pseudo-class
 
 The list of game statistics :point_up: is rendered with alternating colors as was our goal. We also see here how `:nth-child` and `:nth-of-type` differ (note that in the code above, `X=3` in both cases, though the element they refer to differs):
 
-- the second `<div>` (*231 games ...*) element is the third child of its parent `<body>` and thus rendered with a dashed black border.
-- the third `<div>` (*17 games waiting ...*) element is the third element of its type and thus is rendered with a solid black border;
+- the second `<div>` (*231 games ...*) element is the third child of its parent `<body>` and thus rendered with a dashed black border;
+- the third `<div>` (*17 games waiting ...*) element is the third element of its type and thus is rendered with a solid black border.
 
 If we were to remove the `<h1>` element in our code snippet, `:nth-child(X)` and `:nth-of-type(X)` would point to the same `<div>` element. Lastly, we want to point out that basic text alignment (in our game stats example all counts are right-aligned) can be achieved by a combination of [`white-space:pre`](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space) (which preserves the sequence of whitespaces in the HTML document, which is **not** the case in the default setting) and [`font-family:monospace`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family) (which applies a font where all glyphs have the same width). 
 
