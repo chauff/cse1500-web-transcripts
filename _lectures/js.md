@@ -243,7 +243,7 @@ If you compare this to how Java treats functions (or methods), you should realiz
 
 ## Scoping, hoisting and this
 
-We now cover three JavaScript principles that often lead to confusion and log debugging sessions.
+We now cover three JavaScript principles that often lead to confusion and long debugging sessions.
 
 ### Scoping
 
