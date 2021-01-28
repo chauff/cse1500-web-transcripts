@@ -902,7 +902,7 @@ app.get('/whaa+[dt]s+upp*', function(req,res){
 ```
 <details> 
   <summary>Name three different routes, the above handler matches.</summary>
-  ...
+  If you want to be sure of your routes, you can test them in [here](https://regex101.com/r/PdX19I/1).
 </details>
 
 ```javascript
@@ -923,7 +923,7 @@ console.log(ejs.render(template, context));
 ```
 <details> 
   <summary>What is the output of the code snippet above?</summary>
-  ...
+  Wolverine
 </details>
 
 ```javascript
@@ -945,5 +945,6 @@ console.log(constants3.pi);
 
 <details> 
   <summary>Consider two files above, `constants.js` and `bar.js`. What is the console output of `node bar.js`?</summary>
-  ...
+  admin
+  3
 </details>
