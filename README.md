@@ -22,7 +22,7 @@ The transcript grew initially out of course material derived from the [Learning 
 
 Two Visual Studio Code extensions are important for this setup to remain efficient: [Markdown PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) (to generate PDFs of the lectures and assignments) and [Markdown All In One](https://github.com/yzhang-gh/vscode-markdown) to automatically create/update table of contents.
 
-The PDFs are no longer available on GitHub (in order to limit the repository's size). They are available on Brightspace. They can also be generated with the Markdown PDF Visual Studio Code extension.
+The PDFs are no longer available on GitHub (in order to limit the repository's size). They can be generated with the Markdown PDF Visual Studio Code extension.
 
 The transcripts are written in US English.
 
