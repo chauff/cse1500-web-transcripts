@@ -1,4 +1,4 @@
-# Web Technology Course Materials
+# Web technology course materials
 
 This repository contains the web technology course materials for the CSE1500 Web and Database Technology course at TU Delft, running in Q2 of the academic year 2020/21.
 
@@ -18,7 +18,7 @@ The transcript grew initially out of course material derived from the [Learning 
 - [CSE1500 code examples](https://github.com/chauff/demo-code)
 - [CSE1500 website theme](https://github.com/chauff/cse-theme/)
 
-# Setup Notes
+# Setup notes
 
 Two Visual Studio Code extensions are important for this setup to remain efficient: [Markdown PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) (to generate PDFs of the lectures and assignments) and [Markdown All In One](https://github.com/yzhang-gh/vscode-markdown) to automatically create/update table of contents.
 
