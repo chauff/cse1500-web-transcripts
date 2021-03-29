@@ -12,6 +12,7 @@ HTTP: the language of web communication <!-- omit in toc -->
 {% include_relative explanation.md %}
 
 ## Table of Contents <!-- omit in toc -->
+
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Web standards](#web-standards)
 - [:scroll: Learning goals](#scroll-learning-goals)
@@ -54,9 +55,7 @@ HTTP: the language of web communication <!-- omit in toc -->
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
-
 - Required readings: *none*
-
 - Recommended activity:
   - :headphones: Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
   - :tv: A [short video](https://www.youtube.com/watch?v=fXUni9WrUuw) (in Dutch) by CWI (Centrum Wiskunde & Informatica) to celebrate 30 years since the Netherlands was connected to the public Internet!
