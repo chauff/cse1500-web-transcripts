@@ -12,7 +12,6 @@ HTTP: the language of web communication <!-- omit in toc -->
 {% include_relative explanation.md %}
 
 ## Table of Contents <!-- omit in toc -->
-
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [Web standards](#web-standards)
 - [:scroll: Learning goals](#scroll-learning-goals)
