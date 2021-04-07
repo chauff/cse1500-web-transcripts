@@ -12,7 +12,7 @@ collections:
     output: true
 
 warning: The materials are being updated for the 2020/21 course edition. Some content may still change.
-exam: false
+exam: true
 
 footerImage: ../images/tudelft-ewi-light-footer.svg
 headerImage: ../images/tudelft_ewi_bw.jpg
