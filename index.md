@@ -1,10 +1,10 @@
 ---
 layout: default
 permalink: /
-warning: false
+warning: true
 ---
 
-Web technology course information 2020/21 <!-- omit in toc -->
+Web technology course information <!-- omit in toc -->
 ==
 
 <img align="right" width="150px" src="https://chauff.github.io/img/og_claudia.png">
@@ -20,7 +20,7 @@ We cover the following languages: HTTP, HTML, CSS as well as JavaScript on the c
 In the five weeks of the web technology lectures we can only cover the web programming fundamentals and thus chose a small application stack. If you want to get a comprehensive overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
-- [Recommended book :closed_book:](#recommended-book-closedbook)
+- [Recommended book :closed_book:](#recommended-book-closed_book)
 - [Tooling](#tooling)
   - [Recommended](#recommended)
   - [Required](#required)
