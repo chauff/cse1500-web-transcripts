@@ -11,7 +11,11 @@ collections:
   extras:
     output: true
 
-warning: The materials are being updated for the 2020/21 course edition. Some content may still change.
+line1Title: CSE1500   
+line2Title: Web Technology 
+line3Title: Node.js, JavaScript, CSS, HTTP, HTML
+tabTitle: CSE1500 TU Delft course materials.
+warning: The materials are currently being updated for the 2020/21 course edition. Some content may still change.
 exam: false
 
 footerImage: ../images/tudelft-ewi-light-footer.svg
