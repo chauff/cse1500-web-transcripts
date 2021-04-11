@@ -4,7 +4,7 @@ permalink: /
 warning: false
 ---
 
-Web technology course information <!-- omit in toc -->
+Web technology course information 2020/21 <!-- omit in toc -->
 ==
 
 <img align="right" width="150px" src="https://chauff.github.io/img/og_claudia.png">
