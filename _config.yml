@@ -20,7 +20,7 @@ exam: false
 
 footerImage: ../images/tudelft-ewi-dark-footer.svg
 #headerImage: ../images/tudelft_ewi_bw.jpg
-headerImage: ../../images/noun_landscape_1647184.png
+headerImage: https://raw.githubusercontent.com/chauff/Web-Teaching/master/images/noun_landscape_1647184.png
 cssTheme: themes/light-red.css
 cssCodeTheme: themes/code/dracula.css
 
