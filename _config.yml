@@ -19,7 +19,8 @@ warning: The materials are currently being updated for the 2020/21 course editio
 exam: false
 
 footerImage: ../images/tudelft-ewi-light-footer.svg
-headerImage: ../images/tudelft_ewi_bw.jpg
+#headerImage: ../images/tudelft_ewi_bw.jpg
+headerImage: images/noun_landscape_1647184.png
 cssTheme: themes/light-grey.css
 cssCodeTheme: themes/code/dracula.css
 
