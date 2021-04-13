@@ -18,6 +18,8 @@ tabTitle: CSE1500 TU Delft course materials.
 warning: The materials are currently being updated for the 2021/22 course edition. Some content may still change.
 exam: false
 smallNavbar: true
+timeSpent: true
+idleTimeout: 60
 
 footerImage: ../images/tudelft-ewi-light-footer.svg
 headerImage: ../images/tudelft_ewi_bw.jpg
