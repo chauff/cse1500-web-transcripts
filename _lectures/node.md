@@ -29,7 +29,7 @@ warning: false
 - [WebSockets](#websockets)
   - [:bangbang: A first WebSocket example](#bangbang-a-first-websocket-example)
   - [WebSockets for multi-player games](#websockets-for-multi-player-games)
-- [To conclude ....](#to-conclude)
+- [To conclude ....](#to-conclude-)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -136,6 +136,8 @@ What this example showcases is Node's very efficient way of handling I/O request
 Node's focus on making so-called **I/O bound programs** (that is, programs constrained by data access where adding more CPU power will not lead to speedups) efficient comes at a price: programs that require heavy CPU usage and contain few I/O requests may be better served on other platforms.
 
 As the typical web application is indeed I/O bound, Node.js has become a popular choice of server-side framework. Another positive side effect of Node is the *reuse* of the language: instead of learning JavaScript for the client-side and PHP (or another language) for the server-side part of an application, we restrict ourselves to a single language and can even *share code* between client and server efficiently.
+
+:cookie: If you want to check your understanding of the event loop (which is not just making an appearance in JavaScript but also Python among others), you may want to take a look [at this quiz by Julia Evans](https://questions.wizardzines.com/event-loops.html).
 
 ## Node.js in examples
 
