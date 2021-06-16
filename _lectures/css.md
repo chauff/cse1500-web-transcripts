@@ -88,7 +88,7 @@ warning: false
 
 ![Weather app](../img/css-weather.png)
 
-<sup>Screenshot of our [CSS weather demo](https://codepen.io/charlottehase/full/abzYoQp).</sup>
+<sup>Screenshot of the [CSS weather demo](https://codepen.io/charlottehase/full/abzYoQp).</sup>
 
 At [CodePen](https://codepen.io/) you find our [CSS weather demo](https://codepen.io/charlottehase/full/abzYoQp) that shows off some of CSS capabilities. Throughout this transcript we will refer to it from time to time, especially when it comes to discussing CSS animations; by the end of this lecture you will be able to create similar animations yourself. We added elaborate comments that should help you get started to explore the demo code. This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
 
