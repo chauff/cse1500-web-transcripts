@@ -1,4 +1,4 @@
-baseurl: "/Web-Teaching/"
+baseurl: "/cse1500-web-transcripts/"
 remote_theme: chauff/cse-theme
 
 collections:
