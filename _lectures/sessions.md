@@ -3,7 +3,7 @@ layout: default
 permalink: /sessions/
 linkname: Sessions et al.
 ordering: 7
-warning: false
+warning: true
 ---
 
 # Cookies, sessions and third-party authentication <!-- omit in toc -->
@@ -23,7 +23,7 @@ warning: false
   - [Transient vs. persistent cookies](#transient-vs-persistent-cookies)
   - [Cookie fields](#cookie-fields)
   - [Cookie field Domain](#cookie-field-domain)
-  - [Return to sender ...](#return-to-sender)
+  - [Return to sender ...](#return-to-sender-)
 - [:cookie: An excursion: writing a Firefox extension](#cookie-an-excursion-writing-a-firefox-extension)
 - [:bangbang: A Node.js application](#bangbang-a-nodejs-application)
 - [Accessing and deleting cookies in Express](#accessing-and-deleting-cookies-in-express)

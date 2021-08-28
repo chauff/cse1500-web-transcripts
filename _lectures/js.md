@@ -3,7 +3,7 @@ layout: default
 permalink: /js/
 linkname: JavaScript
 ordering: 3
-warning: false
+warning: true
 ---
 
 # JavaScript: the language of browser interactions <!-- omit in toc -->
@@ -31,7 +31,7 @@ warning: false
   - [Object literals](#object-literals)
   - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
   - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
-  - [Design pattern 3:  Module](#design-pattern-3-module)
+  - [Design pattern 3:  Module](#design-pattern-3--module)
 - [Events and the DOM](#events-and-the-dom)
   - [Document Object Model](#document-object-model)
     - [:bangbang: Example 1: document.getElementById / document.querySelector](#bangbang-example-1-documentgetelementbyid--documentqueryselector)
@@ -40,7 +40,7 @@ warning: false
     - [:bangbang: Example 4: mouse events](#bangbang-example-4-mouse-events)
     - [:bangbang: Example 5: a crowdsourcing interface](#bangbang-example-5-a-crowdsourcing-interface)
     - [:bangbang: Example 6: a typing game](#bangbang-example-6-a-typing-game)
-  - [Final notes ...](#final-notes)
+  - [Final notes ...](#final-notes-)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
