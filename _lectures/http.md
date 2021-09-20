@@ -176,7 +176,9 @@ Many network protocols exist, to us only three are of importance:
 
 HTTP resides at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it! 
 
-:cookie: Note, that this setup will change in HTTP/3, which resides on top of UDP, a protocol without guarantees of message delivery and packet order. HTTP/3 itself will be responsible to ensure reliable transmissions in a highly efficient manner (which in turn will lead to speedups over HTTP/1.1 and HTTP/2).
+<optional-info>
+Note, that this setup will change in HTTP/3, which resides on top of UDP, a protocol without guarantees of message delivery and packet order. HTTP/3 itself will be responsible to ensure reliable transmissions in a highly efficient manner (which in turn will lead to speedups over HTTP/1.1 and HTTP/2).
+</optional-info>
 
 ### :bangbang: Activity
 
@@ -218,7 +220,7 @@ Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 :point_up: HTTP/1.1 is a **plain text protocol** and **line-oriented**.
 The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number `1.1` indicates the highest version of HTTP that an application supports. What are we requesting? Line 2 answers this question: we are requesting the web resource at `www.tudelft.nl`. Once you start creating your own HTTP request messages, you may wonder why we need the `host` header, given that we provide a domain name or IP address (what this exactly means is explained later on in this transcript) before creating HTTP messages. We need the `host` header, because it enables **several domains** to reside at **the same IP address**. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on. In the last line, you can see that in this request, a cookie is sent from the client to server.
 
-:cookie: HTTP/2 (and subsequent versions) have switched to a binary protocol.
+<optional-info>HTTP/2 (and subsequent versions) have switched to a binary protocol.</optional-info>
 
 ### HTTP response message
 
@@ -371,7 +373,9 @@ This is where the `Expires` header field comes in. It indicates to a web cache w
 
 ![Web cache](../img/http-webcache.png)
 
-:cookie: Nowadays, web caching are just part of the functionality a so-called **Content Delivery Network (CDN)**, i.e. a network of geographically distributed servers which deliver fast access to web resources, provides. 
+<optional-info> 
+Nowadays, web caching are just part of the functionality a so-called **Content Delivery Network (CDN)**, i.e. a network of geographically distributed servers which deliver fast access to web resources, provides. 
+</optional-info>
 
 ### Header field Cache-Control
 
@@ -385,11 +389,13 @@ Here is an example of the header settings of [https://www.theguardian.com/intern
 
 <sup>Response header (partially shown). Firefox, August 30, 2020. </sup>
 
-Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that `Cache-Control` directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture (:cookie: for more information, [take a look at the `Cache-Control` MDN page](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control)).
+Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture. 
 
 Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any type of cache can store a copy of the response. A browser's HTTP cache is useful as it reduces the load on the origin server; for instance, a click on the browser's back button does not typically result in a new HTTP request, instead the cached resource is served. 
 
-:bug: A browser's HTTP cache is at times the source of immense frustration for web developers. If you are updating the code of your web application, deploying it and testing it in your browser, it may appear to not have any effect. And then a round of debugging starts. However, there may be nothing wrong with your code, instead your browser may be relying on the cached version of your web application source code files. For development purposes, the browser's HTTP cache should be switched off. For Firefox, this means (1) opening a new tab and (2) typing `about:config` in the address bar. This gives you access to advanced configuration preferences. Then, (3) search for the preference name `http-cache` and (4) set it to false.  Note, that this is only useful for development purposes, if you are also wanting to ensure that your application's users are not served cached versions, there are different ways to go about this (this is beyond the scope of this lecture, but you can take a look at this [StackOverflow question and its answers](https://stackoverflow.com/questions/49547/how-do-we-control-web-page-caching-across-all-browsers) for a start; bottom line: there is no easy one-size-fits-all solution).
+<debug-info>
+A browser's HTTP cache is at times the source of immense frustration for web developers. If you are updating the code of your web application, deploying it and testing it in your browser, it may appear to not have any effect. And then a round of debugging starts. However, there may be nothing wrong with your code, instead your browser may be relying on the cached version of your web application source code files. For development purposes, the browser's HTTP cache should be switched off. For Firefox, this means (1) opening a new tab and (2) typing `about:config` in the address bar. This gives you access to advanced configuration preferences. Then, (3) search for the preference name `http-cache` and (4) set it to false.  Note, that this is only useful for development purposes, if you are also wanting to ensure that your application's users are not served cached versions, there are different ways to go about this (this is beyond the scope of this lecture, but you can take a look at this [StackOverflow question and its answers](https://stackoverflow.com/questions/49547/how-do-we-control-web-page-caching-across-all-browsers) for a start; bottom line: there is no easy one-size-fits-all solution).
+</debug-info>
 
 
 ### Header field Last-Modified
@@ -542,9 +548,9 @@ function as a teletype at the serving host.
 
 Telnet **opens a TCP connection to a web server** (this requires a port number, for now just take this information as-is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a web client and all returned data is displayed on the terminal. 
 
-:cookie: While telnet is easy to use (as you will see in this activity), **it is not capable of dealing with https** (i.e. **secure** http). Keep this in mind when you are trying this activity with web resources of your own. If you want to practice HTTP requests *over https*, you need to use [openssl](https://www.openssl.org/) instead of telnet.
-
-Ok, back to telnet!
+<optional-info>
+While telnet is easy to use (as you will see in this activity), **it is not capable of dealing with https** (i.e. **secure** http). Keep this in mind when you are trying this activity with web resources of your own. If you want to practice HTTP requests *over https*, you need to use [openssl](https://www.openssl.org/) instead of telnet.
+</optional-info>
 
 Try out the following examples yourself. Every line of the protocol is completed with a *carriage return* (that means for you to press <kbd>Enter</kbd>). The protocol also has *empty lines*, those are indicated below with a `<carriage return>` tag (again, just press <kbd>Enter</kbd>). **All indented lines are returned by the server and do not have to be typed out.**
 
@@ -590,7 +596,8 @@ host:web.mit.edu
     ...
 ```
 
-:cookie: At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path and retrieve the content available at the URL's location (*lecture transcript changed as of Dec. 14, 2020*). Note the changed port number (443); this is the default port for https. We use `GET` to retrieve the content:
+<optional-info>
+At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path and retrieve the content available at the URL's location (*lecture transcript changed as of Dec. 14, 2020*). Note the changed port number (443); this is the default port for https. We use `GET` to retrieve the content:
 
 ```
 openssl s_client -crlf -connect web.mit.edu:443
@@ -631,6 +638,7 @@ and wait for the movie to start (it may take a few seconds). After a while you s
       _________|______|_____  @   @@@@@ @   @   @  _____|______|_________
 
 ```
+</optional-info>
 
 ### From domain to IP address
 
