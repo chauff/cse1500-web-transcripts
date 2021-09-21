@@ -31,7 +31,7 @@ warning: true
 - [Element positioning](#element-positioning)
   - [Display Types](#display-types)
   - [`grid` Layout](#grid-layout)
-  - [:cookie: CSS units and functions](#cookie-css-units-and-functions)
+  - [CSS units and functions](#css-units-and-functions)
     - [Essential CSS units of measurement](#essential-css-units-of-measurement)
     - [Basic CSS functions](#basic-css-functions)
   - [:bangbang: Position](#bangbang-position)
@@ -239,12 +239,12 @@ The list of game statistics :point_up: is rendered with alternating colors as wa
 
 If we were to remove the `<h1>` element in our code snippet, `:nth-child(X)` and `:nth-of-type(X)` would point to the same `<div>` element. Lastly, we want to point out that basic text alignment (in our game stats example all counts are right-aligned) can be achieved by a combination of [`white-space:pre`](https://developer.mozilla.org/en-US/docs/Web/CSS/white-space) (which preserves the sequence of whitespaces in the HTML document, which is **not** the case in the default setting) and [`font-family:monospace`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family) (which applies a font where all glyphs have the same width).
 
+<debug-info markdown="block">
 Firefox's developer tools do not only allow us to inspect the CSS, but also to:
 
 - switch off the CSS (hover over a `property:value` listing and a checkbox appears to switch that listing on/off);
 - **change the CSS** in the editor (change a value, add a `property:value`) and view the immediate effect of those changes.
 
-<debug-info markdown="block">
 The last point makes for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the browser tab is closed. In addition, Visual Studio Code has also good code commentary for CSS: it not only flags misspelt properties but also flags rules that are incompatible with each other.
 </debug-info>
 
@@ -797,11 +797,11 @@ The HTML document leading to this rendering looks as follows :point_down::
 :point_up: Important to remember: only attributes that start with the prefix `data-` can be surfaced in CSS via the `attr()` function.
 
 <debug-info markdown="block">
-:point_up Remember that we stated earlier on that `position:absolute` positions an element relative to its closest **positioned** ancestor. Observe what happens if the line `position: relative` is removed from the `button` selector: the positioning of the button elements does not change but the pseudo-elements holding our data are now positioned with respect to the `<body>` element as it is the closest ancestor with a position. If your positioning of pseudo-elements is not where you think it should be, make sure to have set the `position` property in its parent!
+:point_up: Remember that we stated earlier on that `position:absolute` positions an element relative to its closest **positioned** ancestor. Observe what happens if the line `position: relative` is removed from the `button` selector: the positioning of the button elements does not change but the pseudo-elements holding our data are now positioned with respect to the `<body>` element as it is the closest ancestor with a position. If your positioning of pseudo-elements is not where you think it should be, make sure to have set the `position` property in its parent!
 </debug-info>
 
 <optional-info markdown="block">
-:point_up Once we *switch off* the button's pseudo-element `::after` (as indicated above, it is sufficient to remove the `content` property for this purpose) and then focus on the text inside each button, we observe that with decreasing browser window width, the full text is cut down and partially replaced by a ellipsis (...) and thus avoid an overflow of the text. This is achieved through the property/value pairs of [`overflow:hidden`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) and [`text-overflow:ellipsis`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow). Without `overflow:hidden` the text will flow over the edge of the button. Once it is set, the text is cut off at the end of the button's content area. This does not look great. Adding `text-overflow:ellipsis` ensures that the user sees ... instead of the sudden clipping of the text. The renderings below should make the differences clear.
+:point_up: Once we *switch off* the button's pseudo-element `::after` (as indicated above, it is sufficient to remove the `content` property for this purpose) and then focus on the text inside each button, we observe that with decreasing browser window width, the full text is cut down and partially replaced by a ellipsis (...) and thus avoid an overflow of the text. This is achieved through the property/value pairs of [`overflow:hidden`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) and [`text-overflow:ellipsis`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow). Without `overflow:hidden` the text will flow over the edge of the button. Once it is set, the text is cut off at the end of the button's content area. This does not look great. Adding `text-overflow:ellipsis` ensures that the user sees ... instead of the sudden clipping of the text. The renderings below should make the differences clear.
 
 ![CSS text overflow](../img/css-overflow-ellipsis.png)
 
@@ -1106,7 +1106,8 @@ We can also stretch a cell over two or more rows using the `grid-row-start` and 
 
 As always, we have only scratched the surface with our introduction of CSS grids. There are many other properties that are defined in the CSS specification that allow you to control grids - check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) if you are interested!
 
-### :cookie: CSS units and functions
+<optional-info markdown="block">
+### CSS units and functions
 
 Up until now, we've used some pretty basic units of measurement to express the widths and heights of elements on a page, and indeed the size of fonts, for example. We have come across pixels as unit of measurement (identified with the `px` suffix). Modern screens are comprised of many pixels; this unit of measurement allows you to specify an _absolute measurement_ on the screen :point_down::
 
@@ -1291,6 +1292,8 @@ A demonstration of this in action is shown below :point_down::
 ![CSS grid elements - step 8](../img/css-grid-step8.gif)
 
 :point_up: Note that after the width of the viewport is increased past the point where each grid "cell" can fit comfortably within the viewport at its maximum width of `200px`, they no longer increase in width. This is the `max` part of the `minmax()` function in operation!
+
+</optional-info>
 
 ### :bangbang: Position
 

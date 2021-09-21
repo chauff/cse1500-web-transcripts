@@ -1007,23 +1007,26 @@ Here are a few questions you should be able to answer after having followed the 
   False.
 </details>
 
-```javascript
-var fs = require("fs");
-var n = -1;
+<details> 
+  <summary>Executing the below Node.js code yields which console output?
+  <div markdown="block">
+    ```javascript
+  var fs = require("fs");
+  var n = -1;
 
 function f() {
-  //asynchronous
-  fs.readFile("n.txt", function (err, content) {
-    n = parseInt(content); //n.txt contains 42
-    n++;
-  });
+//asynchronous
+fs.readFile("n.txt", function (err, content) {
+n = parseInt(content); //n.txt contains 42
+n++;
+});
 }
 f();
 console.log(n);
-```
 
-<details> 
-  <summary>Executing the below Node.js code yields which console output?
+````
+  </div>
+
   </summary>
   <span markdown="span">-1</span>
 </details>
@@ -1042,7 +1045,7 @@ function f(done) {
 f(function (n) {
   console.log(n);
 });
-```
+````
 
 <details> 
   <summary>Executing the above Node.js code yields which console output?</summary>

@@ -629,7 +629,7 @@ Continuing the debugging theme, another worthwhile function to know about is [`c
 
 Let's go back to object literals: what happens if we need 1000 objects of the same kind? What happens if a method needs to be added to all objects? We can hardly copy and paste a method to all objects.
 
-<optional-info markdown="1"> 
+<optional-info markdown="block"> 
 One idea could be to *copy* an object over and over again, however that turns out to be quite complicated. This [guide](https://dassur.ma/things/deep-copy/) explains in detail how to create deep copies of objects in JavaScript. 
 </optional-info>
 
@@ -1679,7 +1679,6 @@ Here are a few questions you should be able to answer after having followed the 
 <details> 
   <summary>After executing the JavaScript below in the browser, what is the Web Console output?
   <div markdown="1">
-  </div>
   ```javascript
   function m(fn,ar){ 
       let result = [];
@@ -1690,6 +1689,7 @@ Here are a few questions you should be able to answer after having followed the 
   }
   console.log( m(function(x){return 2*x;},[1,4,6,7]) );
   ```
+  </div>
   </summary>
   <span markdown="span">`[ 2, 8, 12, 14 ]`</span>
 </details>
