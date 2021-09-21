@@ -197,7 +197,7 @@ Each resource is requested through an **HTTP request**. How exactly such a reque
 
 <sup>Firefox's dev tools. Screenshot taken August 28, 2020.</sup>
 
-:point_up: The **Response Headers** panel is neatly organized. To see the actual "raw" format of the headers that are sent as part of HTTP messages, toggle the _Raw Headers_ button.
+:point*up: The **Response Headers** panel is neatly organized. To see the actual "raw" format of the headers that are sent as part of HTTP messages, toggle the \_Raw Headers* button.
 
 Now that you have a first idea of what HTTP messages are about we can take a look at some of the details.
 
@@ -219,9 +219,7 @@ Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 :point_up: HTTP/1.1 is a **plain text protocol** and **line-oriented**.
 The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number `1.1` indicates the highest version of HTTP that an application supports. What are we requesting? Line 2 answers this question: we are requesting the web resource at `www.tudelft.nl`. Once you start creating your own HTTP request messages, you may wonder why we need the `host` header, given that we provide a domain name or IP address (what this exactly means is explained later on in this transcript) before creating HTTP messages. We need the `host` header, because it enables **several domains** to reside at **the same IP address**. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on. In the last line, you can see that in this request, a cookie is sent from the client to server.
 
-<optional-info markdown="block">
 HTTP/2 (and subsequent versions) have switched to a binary protocol.
-</optional-info>
 
 ### HTTP response message
 
