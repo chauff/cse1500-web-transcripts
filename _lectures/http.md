@@ -6,8 +6,7 @@ ordering: 1
 warning: true
 ---
 
-HTTP: the language of web communication <!-- omit in toc -->
-==
+# HTTP: the language of web communication <!-- omit in toc -->
 
 {% include_relative explanation.md %}
 
@@ -55,7 +54,8 @@ HTTP: the language of web communication <!-- omit in toc -->
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
-- Required readings: *none*
+
+- Required readings: _none_
 - Recommended activity:
   - :headphones: Listen to [this podcast](https://syntax.fm/show/044/how-to-learn-new-things-quickly) on how to learn new things quickly in the Web technology world.
   - :tv: A [short video](https://www.youtube.com/watch?v=fXUni9WrUuw) (in Dutch) by CWI (Centrum Wiskunde & Informatica) to celebrate 30 years since the Netherlands was connected to the public Internet!
@@ -72,7 +72,6 @@ HTTP: the language of web communication <!-- omit in toc -->
   - Naylor, David, et al. [The cost of the S in HTTPS](https://dl.acm.org/doi/10.1145/2674005.2674991). Proceedings of the 10th ACM International on Conference on emerging Networking Experiments and Technologies. 2014.
   - Falaki, Hossein, et al. [A first look at traffic on smartphones](http://conferences.sigcomm.org/imc/2010/papers/p281.pdf). Proceedings of the 10th ACM SIGCOMM conference on Internet measurement. 2010.
   - Mishra, Vikas, et al. [Don't Count Me Out: On the Relevance of IP Address in the Tracking Ecosystem](https://doi.org/10.1145/3366423.3380161). Proceedings of The Web Conference. 2020.
-
 
 ## Web standards
 
@@ -93,11 +92,11 @@ Take a look at this [video pitch](https://vimeo.com/110256895) from the World Wi
 
 ### A brief history of the web
 
-The vision of the World Wide Web was already developed in the 1940s by Vannevar Bush, an American engineer who described his idea of a *memex* (a combination of memory and index) in the article [As We May Think](https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/).
+The vision of the World Wide Web was already developed in the 1940s by Vannevar Bush, an American engineer who described his idea of a _memex_ (a combination of memory and index) in the article [As We May Think](https://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881/).
 
-In the 1960s, the first steps from vision to reality were made by DARPA, the *Defense Advanced Research Projects Agency* of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate.
+In the 1960s, the first steps from vision to reality were made by DARPA, the _Defense Advanced Research Projects Agency_ of the US department of defense. The so-called ARPANET was built for mail and file transfer and designed to withstand the loss of a portion of the network; as long as some connections remain, the remaining connected parties should still be able to communicate.
 
-It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the *European Organisation for Nuclear Research*. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). **This protocol (and how it enables the web to function as we know it today) is what this lecture is all about.**  The web can at its basic level be described as **a system of interconnected hypertext documents, available via the Internet**. Tim Berners-Lee remains an important figure in the web community; he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
+It took about 30 years before the Internet was opened to the public (in the late 1980s) and among the first non-military participants were universities and organizations such as [CERN](https://home.cern/), the _European Organisation for Nuclear Research_. In fact, at CERN, Tim Berners-Lee **created** the World Wide Web: he was the first to successfully implement client-server communication on the Internet via the **hypertext transfer protocol** (or HTTP). **This protocol (and how it enables the web to function as we know it today) is what this lecture is all about.** The web can at its basic level be described as **a system of interconnected hypertext documents, available via the Internet**. Tim Berners-Lee remains an important figure in the web community; he is the [current director of the Word Wide Web Consortium](https://www.w3.org/Consortium/facts#people).
 
 In the early days of the web, browsers looked nothing like they do today; one of the earliest one was [Lynx](http://lynx.invisible-island.net/), a text-based browser that is functioning to this day. Take a look at how `google.com` and `amazon.com` are rendered on Lynx :point_down::
 
@@ -111,9 +110,9 @@ In the early days of the web, browsers looked nothing like they do today; one of
 
 If you are inclined to try text-based browsers yourself, take a look at [browsh](https://www.brow.sh), a modern-day text-based browser.
 
-Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft's Internet Explorer. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. [Brave](https://brave.com/) was launched in 2016, advertised as browser that takes users' privacy seriously. 
+Browsers with graphical user interfaces started to appear in 1994, the front-runner being Netscape, quickly followed by Microsoft's Internet Explorer. The first version of Mozilla Firefox was released in 2002, Google Chrome started out in 2008. [Brave](https://brave.com/) was launched in 2016, advertised as browser that takes users' privacy seriously.
 
-The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels *Best viewed with Netscape* or *Best viewed with Internet Explorer* were a common occurrence.
+The late 90s and early 2000s were hampered by the so-called [browser wars](https://en.wikipedia.org/wiki/Browser_wars) - the browser companies actively working against each other to gain a competitive advantage. Instead of adhering to a shared standard (as published by the Word Wide Web Consortium), different browser vendors implemented very different features and the labels _Best viewed with Netscape_ or _Best viewed with Internet Explorer_ were a common occurrence.
 
 ### Key aspects of the Internet
 
@@ -141,7 +140,7 @@ Let's now turn to HTTP, the hypertext transfer protocol, the focus of this lectu
 - **HTTP/2** is governed by [RFC 7540](https://tools.ietf.org/html/rfc7540); it was standardized in 2015.
 - **HTTP/3** has not been standardized yet, though an [RFC draft](https://tools.ietf.org/html/draft-ietf-quic-http-29) already exists.
 
-HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as [SPDY protocol](https://developers.google.com/web/fundamentals/performance/http2/) (*speedy protocol*). For those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses. 
+HTTP/2 is the first new version of HTTP since HTTP/1.1. It originated at Google where it was developed as [SPDY protocol](https://developers.google.com/web/fundamentals/performance/http2/) (_speedy protocol_). For those interested, here is a [history lesson in the form of a Twitter thread](https://threadreaderapp.com/thread/1177480451193131009.html) about how HTTP/3 came to pass and what issues of earlier HTTP versions it addresses.
 
 **As HTTP/1.1 is still the dominant protocol version on the web, we focus on it in this lecture. Unless stated otherwise, the following contents is all about HTTP/1.1.**
 
@@ -156,17 +155,17 @@ On the web, clients and servers communicate with each other through **HTTP reque
 How does the communication between the two devices work? Servers wait for data requests continuously and are able to serve many HTTP requests at the same time. Servers host **web resources**, that is any kind of content with an identity on the web. This can be static files, web services, but also dynamically generated content. As long as they are accessible through an identifier, they can be considered as web resources.
 
 The **client always initiates the communication**, sending an **HTTP request** to the server, e.g. to access a particular file. The server sends an **HTTP response** - if indeed it has this file and the client is authorized to access it, it will send the file to the client, otherwise it will send an error message. The client, i.e. most often the web browser, will then initiate an action, depending on the type of content received - HTML files are rendered, music files are played and executables are executed.
-**HTTP proxies** are part of the Internet's infrastructure - there are many devices between a client and server that forward or process (e.g. filtering of requests, caching of responses) the HTTP requests and responses. 
+**HTTP proxies** are part of the Internet's infrastructure - there are many devices between a client and server that forward or process (e.g. filtering of requests, caching of responses) the HTTP requests and responses.
 
 ### Network communication
 
-Lets now consider where HTTP fits into the **network stack**, i.e. the set of protocols ("stacked" on top of each other) that together define how communication over the Internet happens. A common representation of the network stack is the *Open Systems Interconnection model* (or *OSI model*) :point_down::
+Lets now consider where HTTP fits into the **network stack**, i.e. the set of protocols ("stacked" on top of each other) that together define how communication over the Internet happens. A common representation of the network stack is the _Open Systems Interconnection model_ (or _OSI model_) :point_down::
 
 ![Zimmermann's OSI model](../img/http-OSI.png)
 
 <sup>Image sourced from the [OSI reference model paper](https://ieeexplore.ieee.org/abstract/document/1094702). For our purposes the two outer stacks can be considered client and server, the middle ones are HTTP proxies. An HTTP message travels down the network stack on the device being transformed in every layer potentially into multiple messages which are then transmitted via the physical network. At the other end, these messages travel up the device's network stack again, being transformed in every layer and then at the final layer the HTTP message is reassembled.</sup>
 
-:point_up: It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails. 
+:point_up: It is a simplification of the true network stack, and today mostly a textbook model, but it shows the main idea of network communication very well. Network protocols are matched into different layers, starting at the bottom layer, the **physical layer**, where we talk about bits, i.e. 0s and 1s that pass through the physical network, and ending at the **application layer**, were we deal with **semantic units** such as video segments and emails.
 
 Many network protocols exist, to us only three are of importance:
 
@@ -174,7 +173,7 @@ Many network protocols exist, to us only three are of importance:
 - the Transmission Control Protocol (**TCP**), and
 - the HyperText Transfer Protocol (**HTTP**).
 
-HTTP resides at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it! 
+HTTP resides at the top of the stack, and TCP builds on top of IP. Important to know is that HTTP is **reliable** - it inherits this property from TCP, which is reliable (in contrast to IP, which is not). This means, that the data appears **in order** and **undamaged**! This guarantee allows video streaming and other applications: HTTP **guarantees** that the video segments arrive at the client in the correct order; without this guarantee, all segments of a video would have to be downloaded and then assembled in the right order, before you could watch it!
 
 <optional-info markdown="block">
 Note, that this setup will change in HTTP/3, which resides on top of UDP, a protocol without guarantees of message delivery and packet order. HTTP/3 itself will be responsible to ensure reliable transmissions in a highly efficient manner (which in turn will lead to speedups over HTTP/1.1 and HTTP/2).
@@ -184,7 +183,7 @@ Note, that this setup will change in HTTP/3, which resides on top of UDP, a prot
 
 Open a modern browser and use its built-in **web development tools** to see what **HTTP messages** are exchanged when accessing a URL.
 
-The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to ``Tools » Web Developer``. The Chrome Developer tools can be reached via the toolbar, navigating to ``View » Developer » Developer Tools``. There are several panels, we here take a look at the **Network panel** on Firefox and how it looks after the user requested the URL [https://www.tudelft.nl/](https://www.tudelft.nl/) :point_down::
+The Firefox Developer Tools can be reached from within the browser by heading to the toolbar and navigating to `Tools » Web Developer`. The Chrome Developer tools can be reached via the toolbar, navigating to `View » Developer » Developer Tools`. There are several panels, we here take a look at the **Network panel** on Firefox and how it looks after the user requested the URL [https://www.tudelft.nl/](https://www.tudelft.nl/) :point_down::
 
 ![Browser built-in web dev tools](../img/http-devtools.png)
 
@@ -192,13 +191,13 @@ The Firefox Developer Tools can be reached from within the browser by heading to
 
 :point_up: You can see that the resource initially requested (`/`, i.e. the resource residing at the URL [https://www.tudelft.nl/](https://www.tudelft.nl/)) links to a myriad of additional web resources, which are then automatically requested by the web browser, leading to a **cascade of resource requests** (33 to be exact as shown in the bottom left of the network panel). Another vital piece of information when developing resource-intensive web applications is the [timing information](https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor/request_details) (broken down into different stages) available for each HTTP request. It allows us to identify resources that are (too) slow to load. In this example we see that it takes more than one second to receive a response from the server when requesting `/` and about three seconds to complete all requests. This is actually not a lot of resources; head to [https://www.volkskrant.nl/](https://www.volkskrant.nl/), [https://www.nytimes.com/](https://www.nytimes.com/) or [https://www.theguardian.com/international](https://www.theguardian.com/international) and look at the cascade of resource requests - it is not uncommon to end up with 100+ requests.
 
-Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in Firefox's *Headers panel* (which appears within the Network panel) when clicking on a particular resource row :point_down::
+Each resource is requested through an **HTTP request**. How exactly such a request looks like can be seen in Firefox's _Headers panel_ (which appears within the Network panel) when clicking on a particular resource row :point_down::
 
 ![Browser built-in web dev tools](../img/http-devtools2.png)
 
 <sup>Firefox's dev tools. Screenshot taken August 28, 2020.</sup>
 
-:point_up: The **Response Headers** panel is neatly organized. To see the actual "raw" format of the headers that are sent as part of HTTP messages, toggle the *Raw Headers* button.
+:point_up: The **Response Headers** panel is neatly organized. To see the actual "raw" format of the headers that are sent as part of HTTP messages, toggle the _Raw Headers_ button.
 
 Now that you have a first idea of what HTTP messages are about we can take a look at some of the details.
 
@@ -220,7 +219,9 @@ Cookie: __utma=1.20923577936111.16111.19805.2;utmcmd=(none);
 :point_up: HTTP/1.1 is a **plain text protocol** and **line-oriented**.
 The first line indicates what this message is about. In this case the keyword `GET` indicates that we are requesting something. The version number `1.1` indicates the highest version of HTTP that an application supports. What are we requesting? Line 2 answers this question: we are requesting the web resource at `www.tudelft.nl`. Once you start creating your own HTTP request messages, you may wonder why we need the `host` header, given that we provide a domain name or IP address (what this exactly means is explained later on in this transcript) before creating HTTP messages. We need the `host` header, because it enables **several domains** to reside at **the same IP address**. The client sending this request also provides additional information, such as which type of content it accepts, whether or not it is able to read encoded content, and so on. In the last line, you can see that in this request, a cookie is sent from the client to server.
 
-<optional-info markdown="block">HTTP/2 (and subsequent versions) have switched to a binary protocol.</optional-info>
+<optional-info markdown="block">
+HTTP/2 (and subsequent versions) have switched to a binary protocol.
+</optional-info>
 
 ### HTTP response message
 
@@ -249,18 +250,18 @@ The header fields contain important information for the client to understand the
 
 More than fifty header fields exist, a number of well-known ones (though to some extent this remains an arbitrary choice) are the following:
 
-| Header field     | Description                                         |
-|------------------|-----------------------------------------------------|
-| **Content-Type**     | Entity type                                         |
-| **Content-Length**   | Length/size of the message                          |
-| **Content-Encoding** | Data transformations applied to the entity          |
-| Content-Location | Alternative location of the entity                  |
-| Content-Range    | For partial entities, range defines the pieces sent |
-| **Content-MD5**      | Checksum of the content                             |
-| **Last-Modified**    | Date on which this entity was created/modified      |
-| **Expires**          | Date at which the entity will become stale          |
-| Allow            | Lists the legal request methods for the entity      |
-| **Connection & Upgrade**       | Protocol upgrade  |
+| Header field             | Description                                         |
+| ------------------------ | --------------------------------------------------- |
+| **Content-Type**         | Entity type                                         |
+| **Content-Length**       | Length/size of the message                          |
+| **Content-Encoding**     | Data transformations applied to the entity          |
+| Content-Location         | Alternative location of the entity                  |
+| Content-Range            | For partial entities, range defines the pieces sent |
+| **Content-MD5**          | Checksum of the content                             |
+| **Last-Modified**        | Date on which this entity was created/modified      |
+| **Expires**              | Date at which the entity will become stale          |
+| Allow                    | Lists the legal request methods for the entity      |
+| **Connection & Upgrade** | Protocol upgrade                                    |
 
 The header fields **in bold** will be covered below in more detail. Let's briefly describe the other fields:
 
@@ -272,17 +273,17 @@ The header fields **in bold** will be covered below in more detail. Let's briefl
 
 This header field informs the client what type of content is being sent. We use **MIME types** for this purpose.
 
-**MIME** stands for *Multipurpose Internet Mail Extensions* (governed by RFCs [2045](https://tools.ietf.org/html/rfc2045) and [2046](https://tools.ietf.org/html/rfc2046)) and was designed to solve problems when moving messages between electronic mail systems; it worked well and was adopted by HTTP to label its content.
+**MIME** stands for _Multipurpose Internet Mail Extensions_ (governed by RFCs [2045](https://tools.ietf.org/html/rfc2045) and [2046](https://tools.ietf.org/html/rfc2046)) and was designed to solve problems when moving messages between electronic mail systems; it worked well and was adopted by HTTP to label its content.
 
 MIME **types** determine how the client reacts: html is rendered, videos are played, and so on.
 The pattern is always the same: each MIME type has a **primary object type** and a **subtype**.
 Here are a few typical examples: `text/plain`, `text/html`, `image/jpeg`, `video/quicktime`, `application/vnd.ms-powerpoint`. As you can see in the `text/*` cases, the primary object type can have several subtypes.
 
-<!--- 
+<!---
 1. download CC-*warc.wat files
-2. extract the relevant json: more CC-MAIN-*wat |grep "^{" > tmp.txt 
+2. extract the relevant json: more CC-MAIN-*wat |grep "^{" > tmp.txt
 3. extract the mime types, count them up and list them in sorted order
-4. 
+4.
 const file = process.argv[2];
 var lineReader = require('readline').createInterface({
         input: require('fs').createReadStream(file)
@@ -292,7 +293,7 @@ lineReader.on('line', function (line) {
         let obj = JSON.parse(line);
         if( obj.Envelope["WARC-Header-Metadata"]["WARC-Identified-Payload-Type"]){
                 let mime = obj.Envelope["WARC-Header-Metadata"]["WARC-Identified-Payload-Type"]
-                let count = 1;  
+                let count = 1;
                 if( map[mime]){
                         count = count + map[mime];
                 }
@@ -310,24 +311,24 @@ lineReader.on('close', function(line) {
         console.log(sortable);
 });
  --->
+
 Diverse MIME types exist. Below is a list of some of the most popular and least popular MIME types among 170K web resources sampled from a 2019 large-scale [web crawl](http://commoncrawl.org/):
 
-| Most popular          | Least popular               |
-|-----------------------|-----------------------------|
-| text/html             | video/quicktime             |
-| application/xhtml+xml | text/rdf+n3                 |
-| application/pdf       | application/postscript      |
-| application/rss+xml   | application/x-bzip2         |
-| image/jpeg            | application/msword          |
-| application/atom+xml  | application/coreldraw       |
-| text/plain            | audio/midi                  |
+| Most popular          | Least popular                 |
+| --------------------- | ----------------------------- |
+| text/html             | video/quicktime               |
+| application/xhtml+xml | text/rdf+n3                   |
+| application/pdf       | application/postscript        |
+| application/rss+xml   | application/x-bzip2           |
+| image/jpeg            | application/msword            |
+| application/atom+xml  | application/coreldraw         |
+| text/plain            | audio/midi                    |
 | application/xml       | application/vnd.ms-powerpoint |
-| text/calendar         | application/pgp-signature   |
+| text/calendar         | application/pgp-signature     |
 
-You should be able to recognize most of the popular types apart from `application/rss+xml` and `application/atom+xml` - those are two popular types of web feed standards. 
+You should be able to recognize most of the popular types apart from `application/rss+xml` and `application/atom+xml` - those are two popular types of web feed standards.
 
 If a server does not include a specific MIME type in the HTTP response header, the default setting of `unknown/unknown` is used.
-
 
 ### Header field Content-Length
 
@@ -353,7 +354,7 @@ But why bother with encodings at all? If an image or video is compressed by the 
 
 Data corruption occurs regularly, the Internet spans the entire globe, billions of devices are connected to it. To route a message it has to pass through several devices, all of which run on software. And software is buggy (which in the worst case can lead to [catastrophic errors](https://raygun.com/blog/costly-software-errors-history/)).
 
-MD5 stands for **message digest** and acts as a sanity check: the HTTP message content is hashed into a 128 bit value (the checksum). *Hashing* means that data of arbitrary size is mapped to data of fixed size in a deterministic manner. The MD5 checksum algorithm is described in [RFC 1321](https://tools.ietf.org/html/rfc1321). Once a client receives an HTTP response message that contains an MD5 checksum (computed by the server based on the message body), it then computes the checksum of the messages body as well and compares it with the server-provided value. If there is a mismatch, the client should assume that the content has been corrupted along the way and thus it should request the web resource again.
+MD5 stands for **message digest** and acts as a sanity check: the HTTP message content is hashed into a 128 bit value (the checksum). _Hashing_ means that data of arbitrary size is mapped to data of fixed size in a deterministic manner. The MD5 checksum algorithm is described in [RFC 1321](https://tools.ietf.org/html/rfc1321). Once a client receives an HTTP response message that contains an MD5 checksum (computed by the server based on the message body), it then computes the checksum of the messages body as well and compares it with the server-provided value. If there is a mismatch, the client should assume that the content has been corrupted along the way and thus it should request the web resource again.
 
 `Content-MD5` remains in use today as a simple checking mechanism (e.g. [Amazon's S3 service relies on it](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)), although it has been removed in the HTTP/1.1 revision of 2014, as indicated in [RFC 7231, Appendix B](https://tools.ietf.org/html/rfc7231):
 
@@ -379,7 +380,7 @@ Nowadays, web caching are just part of the functionality a so-called **Content D
 
 ### Header field Cache-Control
 
-There is another header that is similar to the `Expires` header: `Cache-Control`. For our purposes, the most important difference is the manner they indicate staleness to the web cache: `Expires` uses an **absolute expiration date**, e.g. *December 1, 2021*, while `Cache-Control` uses a **relative time**, `max-age=<seconds>` since being sent. If both header fields are set, `Cache-Control` takes precedence.
+There is another header that is similar to the `Expires` header: `Cache-Control`. For our purposes, the most important difference is the manner they indicate staleness to the web cache: `Expires` uses an **absolute expiration date**, e.g. _December 1, 2021_, while `Cache-Control` uses a **relative time**, `max-age=<seconds>` since being sent. If both header fields are set, `Cache-Control` takes precedence.
 
 Enabling the origin server to fix in advance how quickly a cached version of a resource goes stale was an important design decision. The alternative would have been to solely rely on web caches to query the origin server to determine whether or not the cached resources are out of date - this would be inefficient though as these kind of enquiries would have to happen very frequently.
 
@@ -389,14 +390,13 @@ Here is an example of the header settings of [https://www.theguardian.com/intern
 
 <sup>Response header (partially shown). Firefox, August 30, 2020. </sup>
 
-Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture. 
+Thus, the Guardian homepage goes stale after sixty seconds in a web cache, a sensible timing, given the nature of the news web site. You also see here that [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) directives can contain more than just the seconds-until-stale though most of these directives are beyond the scope of this lecture.
 
-Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a *private cache* as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any type of cache can store a copy of the response. A browser's HTTP cache is useful as it reduces the load on the origin server; for instance, a click on the browser's back button does not typically result in a new HTTP request, instead the cached resource is served. 
+Finally, we note that modern browsers have an [HTTP cache](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching) as well, which works analogously to the introduced web cache, relying on the same HTTP header fields to make caching decisions. The browser's cache can be considered as a _private cache_ as it exists only on the local machine. The directive `private` in the Guardian's `Cache-Control` settings :point_up: tells the caches which ones are allowed to cache the response: in this case only the browser cache. In contrast, the directive `public` means that any type of cache can store a copy of the response. A browser's HTTP cache is useful as it reduces the load on the origin server; for instance, a click on the browser's back button does not typically result in a new HTTP request, instead the cached resource is served.
 
 <debug-info markdown="block">
 A browser's HTTP cache is at times the source of immense frustration for web developers. If you are updating the code of your web application, deploying it and testing it in your browser, it may appear to not have any effect. And then a round of debugging starts. However, there may be nothing wrong with your code, instead your browser may be relying on the cached version of your web application source code files. For development purposes, the browser's HTTP cache should be switched off. For Firefox, this means (1) opening a new tab and (2) typing `about:config` in the address bar. This gives you access to advanced configuration preferences. Then, (3) search for the preference name `http-cache` and (4) set it to false.  Note, that this is only useful for development purposes, if you are also wanting to ensure that your application's users are not served cached versions, there are different ways to go about this (this is beyond the scope of this lecture, but you can take a look at this [StackOverflow question and its answers](https://stackoverflow.com/questions/49547/how-do-we-control-web-page-caching-across-all-browsers) for a start; bottom line: there is no easy one-size-fits-all solution).
 </debug-info>
-
 
 ### Header field Last-Modified
 
@@ -414,7 +414,7 @@ In HTTP/1.1 the client **always** initiates the conversation with the server via
 
 ![Twitter update](../img/http-twitter-example.png)
 
-In both examples, the encircled numbers are updated *on the fly*, without the user having to manually refresh the page.
+In both examples, the encircled numbers are updated _on the fly_, without the user having to manually refresh the page.
 
 This can be achieved through **polling**: the client **regularly** sends an HTTP request to the server, the server in turn sends its HTTP response and if the numbers have changed, the client renders the updated numbers. This of course is a wasteful approach - the client might send hundreds or thousands of HTTP requests (depending on the chosen update frequency) that always lead to the same HTTP response.
 
@@ -435,9 +435,9 @@ not rely on opening multiple HTTP connections (e.g., using
 XMLHttpRequest or <iframe>s and long polling).
 ```
 
-Thus, WebSockets finally enable **bidirectional communication** between client and server! The server no longer has to wait for an HTTP request to send data to a client, but can do so *any time* - **as long as both client and server agree to use the WebSocket protocol**.
+Thus, WebSockets finally enable **bidirectional communication** between client and server! The server no longer has to wait for an HTTP request to send data to a client, but can do so _any time_ - **as long as both client and server agree to use the WebSocket protocol**.
 
-Client and server agree to this new protocol as follows: the client initiates the protocol *upgrade* by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
+Client and server agree to this new protocol as follows: the client initiates the protocol _upgrade_ by sending a HTTP request with at least two headers: `Connection: Upgrade` (the client requests an upgrade) and `Upgrade: [protocols]` (one or more protocol names in order of the client's preference). Depending on the protocol the client requests, additional headers may be sent. The server then either responds with `101 Switching Protocols` if the server agrees to this upgrade or with `200 OK` if the upgrade request is ignored.
 
 For a concrete example, explore the HTTP request/response headers of our [demo game](https://github.com/chauff/balloons-game). It relies on WebSockets to enable bidirectional communication between client and server. Firefox's network panel allows you once more to investigate the protocol specifics :point_down::
 
@@ -474,7 +474,7 @@ Connection: Upgrade
 Sec-WebSocket-Accept: b3yldD7Y6THeWnQGTJYzO1l4F3g=
 ```
 
-The `Sec-WebSocket-Accept` value is derived from the hashed concatenation of the `Sec-WebSocket-Key` the client sent and the *magic string* `258EAFA5-E914-47DA-95CA-C5AB0DC85B11` (i.e. a fixed string, as stated in the [WebSocket RFC](https://tools.ietf.org/html/rfc6455#section-11.3.3)); if the server sends the correct `Sec-WebSocket-Accept` response, the client has assurance that the server actually supports WebSockets (instead of wrongly interpreting HTTP header fields).
+The `Sec-WebSocket-Accept` value is derived from the hashed concatenation of the `Sec-WebSocket-Key` the client sent and the _magic string_ `258EAFA5-E914-47DA-95CA-C5AB0DC85B11` (i.e. a fixed string, as stated in the [WebSocket RFC](https://tools.ietf.org/html/rfc6455#section-11.3.3)); if the server sends the correct `Sec-WebSocket-Accept` response, the client has assurance that the server actually supports WebSockets (instead of wrongly interpreting HTTP header fields).
 
 Lastly it is worth to mention that besides switching to the WebSocket protocol, another common switch is from HTTP/1.1 to HTTP/2.
 
@@ -486,13 +486,13 @@ If you look at the [first HTTP response example](#http-response-message) again, 
 
 Different status codes exist that provide the client with some level of information on what is going on. Response status codes can be classified into five categories:
 
-| Status codes         |                 |
-|----------------------|------------------------------|
-| `1xx`                  | Informational                |
-| `2xx`                  | Success             |
-| `3xx`                  | Redirected                   |
-| `4xx`                  | Client error |
-| `5xx`                  | Server error                 |
+| Status codes |               |
+| ------------ | ------------- |
+| `1xx`        | Informational |
+| `2xx`        | Success       |
+| `3xx`        | Redirected    |
+| `4xx`        | Client error  |
+| `5xx`        | Server error  |
 
 Status codes starting with 100 provide information to the client, e.g. `100 Continue` tells the client that the request is still ongoing and has not been rejected by the server.
 
@@ -542,22 +542,22 @@ One tool to practice HTTP request writing is `telnet`. Telnet is defined in [RFC
 
 ```
 A sub-system called "Telnet" is proposed which is a shell program around the network
-system primitives, allowing a teletype or similar terminal at a remote host to 
+system primitives, allowing a teletype or similar terminal at a remote host to
 function as a teletype at the serving host.
 ```
 
-Telnet **opens a TCP connection to a web server** (this requires a port number, for now just take this information as-is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a web client and all returned data is displayed on the terminal. 
+Telnet **opens a TCP connection to a web server** (this requires a port number, for now just take this information as-is, you will learn more about port numbers in a bit) and anything you type into the telnet terminal is sent to the server. The server treats telnet as a web client and all returned data is displayed on the terminal.
 
 <optional-info markdown="block">
 While telnet is easy to use (as you will see in this activity), **it is not capable of dealing with https** (i.e. **secure** http). Keep this in mind when you are trying this activity with web resources of your own. If you want to practice HTTP requests *over https*, you need to use [openssl](https://www.openssl.org/) instead of telnet.
 </optional-info>
 
-Try out the following examples yourself. Every line of the protocol is completed with a *carriage return* (that means for you to press <kbd>Enter</kbd>). The protocol also has *empty lines*, those are indicated below with a `<carriage return>` tag (again, just press <kbd>Enter</kbd>). **All indented lines are returned by the server and do not have to be typed out.**
+Try out the following examples yourself. Every line of the protocol is completed with a _carriage return_ (that means for you to press <kbd>Enter</kbd>). The protocol also has _empty lines_, those are indicated below with a `<carriage return>` tag (again, just press <kbd>Enter</kbd>). **All indented lines are returned by the server and do not have to be typed out.**
 
 In order to close a telnet session, enter the telnet prompt. To do so, press <kbd>Ctrl</kbd> + <kbd>]</kbd>. This You should now see `telnet>` on your terminal; type `quit` and press <kbd>Enter</kbd> to close the session.
 
-We are conducting our telnet activity on [mit.edu](http://mit.edu), the homepage of the Massachusetts Institute of Technology - we use it as it is one of the more popular URLs that are still accessible over http (instead of only over https) *as of August 2020*. 
- 
+We are conducting our telnet activity on [mit.edu](http://mit.edu), the homepage of the Massachusetts Institute of Technology - we use it as it is one of the more popular URLs that are still accessible over http (instead of only over https) _as of August 2020_.
+
 **Use `HEAD` to get information about the page** :point_down::
 
 ```
@@ -623,26 +623,27 @@ and wait for the movie to start (it may take a few seconds). After a while you s
 
 ```
 
-      .....                    @@@@@    @@@@@            ...........     
-      ......                  @     @  @     @           ..........      
-      .......                    @@@   @     @           .........       
-      ........                 @@      @     @            .......        
-       ........               @@@@@@@   @@@@@  th         ......         
-         .......            -----------------------       ......         
-           ......             C  E  N  T  U  R  Y          ....          
-             .....          -----------------------        ....          
-                ...         @@@@@ @@@@@ @   @ @@@@@        ...           
-                  ==          @   @      @ @    @          ==            
-                __||__        @   @@@@    @     @        __||__          
-               |      |       @   @      @ @    @       |      |         
+      .....                    @@@@@    @@@@@            ...........
+      ......                  @     @  @     @           ..........
+      .......                    @@@   @     @           .........
+      ........                 @@      @     @            .......
+       ........               @@@@@@@   @@@@@  th         ......
+         .......            -----------------------       ......
+           ......             C  E  N  T  U  R  Y          ....
+             .....          -----------------------        ....
+                ...         @@@@@ @@@@@ @   @ @@@@@        ...
+                  ==          @   @      @ @    @          ==
+                __||__        @   @@@@    @     @        __||__
+               |      |       @   @      @ @    @       |      |
       _________|______|_____  @   @@@@@ @   @   @  _____|______|_________
 
 ```
+
 </optional-info>
 
 ### From domain to IP address
 
-Have you noticed something in the activity you just completed? We connected to the domain `mit.edu` on port `80` and immediately got the response: `Trying 88.221.9.235`. This is called an **IP address** or *Internet Protocol address*.
+Have you noticed something in the activity you just completed? We connected to the domain `mit.edu` on port `80` and immediately got the response: `Trying 88.221.9.235`. This is called an **IP address** or _Internet Protocol address_.
 
 The Internet maintains two principal namespaces: the **domain name hierarchy** and the **IP address system**. While domain names are handy for humans, the IP address system is used for the communication among devices.
 
@@ -658,7 +659,7 @@ Why are we still using IPv4? Because transitioning to the new standard takes tim
 
 ## Uniform Resource Locators (URLs)
 
-Let's now take a closer look at the format of *Uniform Resource Locators*, more commonly known by their abbreviation "URLs". You are probably typing those into your browser at least a few times a day, let's see how well you know them! To get you started, here is a short quiz.
+Let's now take a closer look at the format of _Uniform Resource Locators_, more commonly known by their abbreviation "URLs". You are probably typing those into your browser at least a few times a day, let's see how well you know them! To get you started, here is a short quiz.
 
 **How many of the following URLs are valid?**
 
@@ -719,12 +720,12 @@ In contrast, a relative URL is typically found in HTML documents (we show here a
 ```html
 <h1>Resources</h1>
 <ol>
-    <li><a href="brightspace">Brightspace</a></li>
-    <li><a href=" ../disclaimer">Disclaimer</a></li>
+  <li><a href="brightspace">Brightspace</a></li>
+  <li><a href=" ../disclaimer">Disclaimer</a></li>
 </ol>
 ```
 
-If we consider the absolute URL above as our *base URL*, we can derive from relative plus base URLs the respective absolute URLs :point_down::
+If we consider the absolute URL above as our _base URL_, we can derive from relative plus base URLs the respective absolute URLs :point_down::
 
 ```
 https://www.tudelft.nl/students/brightspace
@@ -746,15 +747,15 @@ When URLs were first developed they had two basic design goals:
 1. to be **portable across protocols**;
 2. to be **human readable**, i.e. they should not contain invisible or non-printing characters.
 
-The development of the Internet had largely been driven by US companies and organization and thus it made sense - at the time - to limit URL characters to the [ASCII alphabet](https://en.wikipedia.org/wiki/ASCII): this alphabet includes the Latin alphabet and additional reserved characters (such as `!`, `(`, `)`, etc.). The limitation is already apparent in the name: ASCII stands for *American Standard Code for Information Interchange* and thus heavily favours the English language.
+The development of the Internet had largely been driven by US companies and organization and thus it made sense - at the time - to limit URL characters to the [ASCII alphabet](https://en.wikipedia.org/wiki/ASCII): this alphabet includes the Latin alphabet and additional reserved characters (such as `!`, `(`, `)`, etc.). The limitation is already apparent in the name: ASCII stands for _American Standard Code for Information Interchange_ and thus heavily favours the English language.
 
 Later, **character encoding** was added, e.g. a whitespace becomes `%20`. If a URL such as `https://www.tudelft.nl.nl/event calendar 2020.pdf` is entered into a modern browser, it is automatically translated into `https://www.tudelft.nl.nl/event%20calendar%202020.pdf` before the HTTP request is made. Thus, in this manner, characters that are not part of ASCII can be encoded through a **combination** of ASCII characters.
 
 Character encodings are not sufficient though, what about languages that are not based on the Latin alphabet (what about URLs like `http://правительство.рф` which uses the cyrillic script)? Ideally, URLs should allow non-Latin characters as well, which today boils down to the use of the [Unicode standard](https://www.unicode.org/versions/Unicode13.0.0/):
 
 ```
-The Unicode Standard is a character coding system designed to support the 
-worldwide interchange, processing, and display of the written texts of the 
+The Unicode Standard is a character coding system designed to support the
+worldwide interchange, processing, and display of the written texts of the
 diverse languages and technical disciplines of the modern world.
 ```
 
@@ -774,7 +775,7 @@ hyphens).
 
 The cyrillic URL example above transforms into the following ASCII URL: `http://xn--80aealotwbjpid2k.xn--p1ai/`. A URL already in ASCII format remains the same after Punycode encoding.
 
-One word of caution though: **mixed scripts** (i.e. using different alphabets in a single URL) are a potential security issue! Consider the following URL: `https://рayрal.com`. It looks like `https://paypal.com`, the well-known e-payment website. It is not! **Don't take our word for it, try it out in your own browser.** Notice that the Russian letter *r* looks very much like a latin *p* and a potential attacker can use this knowledge to create a fake paypal website (to gather credit card information) and lead users on with the malicious, but on first sight correctly looking paypal URL.
+One word of caution though: **mixed scripts** (i.e. using different alphabets in a single URL) are a potential security issue! Consider the following URL: `https://рayрal.com`. It looks like `https://paypal.com`, the well-known e-payment website. It is not! **Don't take our word for it, try it out in your own browser.** Notice that the Russian letter _r_ looks very much like a latin _p_ and a potential attacker can use this knowledge to create a fake paypal website (to gather credit card information) and lead users on with the malicious, but on first sight correctly looking paypal URL.
 
 ## Authentication
 
@@ -789,19 +790,19 @@ But of course, this is not how today's web works: servers **do** identify device
 - user login;
 - fat URLs.
 
-If you are already familiar with web development you may miss in this list several other options (such as cookies). We cover these concepts in a later lecture. Let's now turn to the four options listed above. 
+If you are already familiar with web development you may miss in this list several other options (such as cookies). We cover these concepts in a later lecture. Let's now turn to the four options listed above.
 
 ### Authentication by user-related HTTP header fields
 
 The HTTP header fields we have seen so far were only a few of all possible ones. Several HTTP header fields can be used to provide information about the user or her context. Some are shown here :point_down::
 
 | Request header field | Description                 |
-|----------------------|-----------------------------|
-| `From`                 | User's email address        |
-| `User-Agent`           | User's browser              |
-| `Referer`              | Resource the user came from |
-| `Client-IP`           | Client's IP address         |
-| `Authorization`        | Username and password       |
+| -------------------- | --------------------------- |
+| `From`               | User's email address        |
+| `User-Agent`         | User's browser              |
+| `Referer`            | Resource the user came from |
+| `Client-IP`          | Client's IP address         |
+| `Authorization`      | Username and password       |
 
 All of the shown header fields are request header fields, i.e. sent from the client to the server.
 
@@ -825,7 +826,7 @@ To conclude, in this day and age, IP addresses cannot be used anymore to provide
 
 That brings us to fat URLs. The options we have covered so far are not good choices for authentication, fat URLs on the other hand are in use to this day.
 
-The principle of fat URLs is simple: users are tracked through the generation of **unique URLs for each user**. If a user visits a web site for the first time, the server recognizes the URL as not containing a *fat element* and assumes the user has not visited the site before. It generates a unique ID for the user. The server then redirects the user to that fat URL. Crucially, in the last step, the server **on the fly rewrites the HTML** for every single user, adding the user's ID to each and every hyperlink. A rewritten HTML link may look like this: `<a href="/browse/002-1145265-8016838">Gifts</a>` (note the random numbers string at the end).
+The principle of fat URLs is simple: users are tracked through the generation of **unique URLs for each user**. If a user visits a web site for the first time, the server recognizes the URL as not containing a _fat element_ and assumes the user has not visited the site before. It generates a unique ID for the user. The server then redirects the user to that fat URL. Crucially, in the last step, the server **on the fly rewrites the HTML** for every single user, adding the user's ID to each and every hyperlink. A rewritten HTML link may look like this: `<a href="/browse/002-1145265-8016838">Gifts</a>` (note the random numbers string at the end).
 
 In this manner, different HTTP requests can be tied together into a single **logical session**: the server is aware which requests are coming from the same user through the ID inside the fat URLs.
 
@@ -841,7 +842,7 @@ On the left :point_up: you see a shop web site, consisting of the entry page `my
 
 1. First of all, they are "ugly", instead of short and easy to remember URLs you are left with overly long ones.
 2. Fat URLs should not be shared - you never know what kind of history information you share with others if you hand out the URLs generated for you!
-3. Fat URLs are also not a good idea when it comes to web caches - these caches rely on the *one page per request* paradigm; fat URLs though follow the *one page per user* paradigm.
+3. Fat URLs are also not a good idea when it comes to web caches - these caches rely on the _one page per request_ paradigm; fat URLs though follow the _one page per user_ paradigm.
 4. Dynamically generating HTML every time a user requests a web resource adds to the server load.
 5. All of this effort does not completely avoid loosing the user: as soon as the user navigates away from the web site, the user's identification is lost.
 
@@ -860,7 +861,7 @@ Here is a concrete example of HTTP basic authentication :point_down: :
 
 We have the usual server (on the left) and client (on the right) setup :point_up:. The client sends an HTTP request to access a particular web resource, in this case the `index.html` page residing at `www.microsoft.com`.
 
-The server sends back a `401 Unauthorized` status code, indicating to the client that this web resource requires authentication. It also sends back information about the supported authentication scheme (in this case: `Basic`). There are several authentication schemes, but we will only consider the basic one here. The *realm* describes the protection area: if several web resources on the same server require authentication within the same realm, a single user/password combination should be sufficient to access all of them.
+The server sends back a `401 Unauthorized` status code, indicating to the client that this web resource requires authentication. It also sends back information about the supported authentication scheme (in this case: `Basic`). There are several authentication schemes, but we will only consider the basic one here. The _realm_ describes the protection area: if several web resources on the same server require authentication within the same realm, a single user/password combination should be sufficient to access all of them.
 
 In response to the `401` status code, the client presents a login screen to the user, requesting the username and password. The client sends username and password encoded (**but not encrypted**) to the server via the HTTP `Authorization` header field.
 
@@ -868,11 +869,11 @@ If the username/password combination is correct, and the user is allowed to acce
 
 For future HTTP requests to the site, the browser **automatically sends along** the stored username/password. It does not wait for another request.
 
-As just mentioned, the username/password combination are encoded by the client, before being passed to the server. The **encoding scheme** is simple: the username and password are joined together by a colon and converted into **base-64 encoding** (described in detail in [RFC 4648](https://tools.ietf.org/html/rfc4648#section-4)). It is a simple *binary-to-text* encoding scheme that ensures that only HTTP compatible characters are entered into the message.
+As just mentioned, the username/password combination are encoded by the client, before being passed to the server. The **encoding scheme** is simple: the username and password are joined together by a colon and converted into **base-64 encoding** (described in detail in [RFC 4648](https://tools.ietf.org/html/rfc4648#section-4)). It is a simple _binary-to-text_ encoding scheme that ensures that only HTTP compatible characters are entered into the message.
 
-For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`. 
+For example, in base-64 encoding `Normandië` becomes `Tm9ybWFuZGnDqw==` and `Delft` becomes `RGVsZnQ=`.
 
-It has to be emphasized once more that encoding has nothing to do with encryption. The username and password sent via basic authentication can be decoded trivially, they are sent over the network *in the clear*.
+It has to be emphasized once more that encoding has nothing to do with encryption. The username and password sent via basic authentication can be decoded trivially, they are sent over the network _in the clear_.
 This by itself is not critical, as long as users are aware of this. However, users tend to be lazy, they tend to reuse the same or similar login/password combinations for a wide range of websites of highly varying criticality. Even though the username/password for site `A` may be worthless to an attacker, if the user only made a slight modification to her usual username/password combination to access site `B`, let's say her online bank account, the user will be in trouble.
 
 Overall, basic authentication is the best of the four authentication options discussed; it prevents accidental or casual access by curious users to content where privacy is desired but not essential. Basic authentication is useful for personalization and access control within a friendly environment such as an intranet.
@@ -881,7 +882,7 @@ In the wild, i.e. the general web, basic authentication should only be used in c
 
 ## Secure HTTP
 
-So far we have seen *lightweight authentication* approaches. Those are not useful for bank transactions or confidential data. Secure HTTP should provide:
+So far we have seen _lightweight authentication_ approaches. Those are not useful for bank transactions or confidential data. Secure HTTP should provide:
 
 - server authentication (client is sure to talk to the right server);
 - client authentication (server is sure to talk to the right client);
@@ -897,7 +898,6 @@ Importantly, client and server have to **negotiate** the cryptographic protocol 
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture (click the question to check the answer):
-
 
 <details> 
   <summary>True or False? The <span markdown="span">Content-MD5</span> header field in an HTTP response provides a public key to decrypt the message body.</summary>
@@ -952,7 +952,6 @@ is not compressed.
   It is invalid as the syntax of the first line is incorrect. The correct syntax is the following: <span markdown="span">GET / HTTP/1.1</span>.
 </details>
 
-
 <details> 
   <summary>If an HTTP request message contains the following line, what does this mean?
   <div markdown="1">
@@ -988,4 +987,3 @@ is not compressed.
   <summary>True or False? PUT sends data from server to client; the client determines how to handle the data.</summary>
   False.
 </details>
-
