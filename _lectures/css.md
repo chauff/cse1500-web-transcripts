@@ -1501,7 +1501,7 @@ Once again, the browser will render the HTML document as follows (minus the anno
 Remember that CSS rule ordering matters when you are trying to update properties with seemingly no effect. Important to know though, CSS rule precedence is more complicated than _later rules trump earlier ones_ when the selectors are not exactly the same (as is the case for us): [take a look at this article](http://vanseodesign.com/css/css-specificity-inheritance-cascaade/) to learn more.
 </optional-info>
 
-:bangbang: Observe for yourself what happens when the `body {position: absolute}` rule is removed. <span class="spoiler">The flags will now be placed relative to the viewport!</span>
+:bangbang: Observe for yourself what happens when the `body {position: absolute}` rule is removed. <spoiler-info>The flags will now be placed relative to the viewport!</spoiler-info>
 
 In our CSS weather demo many elements (the moon, the raindrops, the snow flakes) have an absolute position as they should be placed with respect to the closest absolutely positioned ancestor. In the CSS weather demo, this is the viewport: we want the moon to always be at the top left of the viewport, the rain drops should always start at the top of the viewport and end at the bottom, etc.
 
