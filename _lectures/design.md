@@ -282,9 +282,11 @@ An alternative service is [webhint.io](https://webhint.io/) (originally coming o
 
 <sup>Screenshot taken September 2, 2020.</sup>
 
-:cookie: In both examples, we see that web performance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
+In both examples, we see that web performance only delivers part of the picture. There are many more metrics beyond those related to an application's *performance*. Other important types of web metrics revolve around accessibility and security.
 
-:bug: Beyond online tools, browser extensions such as [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) exist as well that allow you to gain more specific insights into your application's performance.
+<debug-info markdown="block">
+Beyond online tools, browser extensions such as [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) exist as well that allow you to gain more specific insights into your application's performance.
+</debug-info>
 
 ## HTML5
 
@@ -348,11 +350,13 @@ The Semantic Web is a Web of data — of dates and titles and part numbers and c
 properties and any other data one might conceive of.
 ```
 
-:bug: If you are interested in how web applications are structured, the browser's dev tools are your friend! In Firefox, open the web developer tools and head to the *Inspector* tab. Hovering with the mouse over elements of the web application will highlight the corresponding HTML (and vice versa) as shown here for our course home page :point_down::
+<debug-info markdown="block">
+If you are interested in how web applications are structured, the browser's dev tools are your friend! In Firefox, open the web developer tools and head to the *Inspector* tab. Hovering with the mouse over elements of the web application will highlight the corresponding HTML (and vice versa) as shown here for our course home page :point_down::
 
 ![Firefox web dev inspector tab](../img/design-inspector.png)
 
 <sup>Firefox web dev tooling. Inspector tab. Screenshot taken September 2, 2020.</sup>
+</debug-info>
 
 ### Who decides the HTML standard
 
@@ -402,7 +406,7 @@ Here are a few questions you should be able to answer after having followed the 
 </details>
 
 <details> 
-  <summary>True or False? The `action` attribute of an HTML form defines how the form is accessed on the client: either as a HTTP POST request or an HTTP GET request.</summary>
+  <summary>True or False? The <span markdown="span">action</span> attribute of an HTML form defines how the form is accessed on the client: either as a HTTP POST request or an HTTP GET request.</summary>
   False.
 </details>
 
