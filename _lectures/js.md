@@ -141,7 +141,7 @@ Three of the most well-known languages are [CoffeeScript](https://coffeescript.o
 
 Here is one example of what TypeScript offers: JavaScript is a **dynamic language**, this means that you have no way of enforcing a certain **type** on a variable. Instead, a variable can hold any type, a String, a Number, an Array ... but of course often you _know_ what you want the type to be (for instance function parameters). It is useful to provide this knowledge upfront. TypeScript allows you to do that, by **enabling static type checking**. If that all sounds incomprehensible right now, don't worry. Here is a concrete example that should make things clear. Consider this **Java** code snippet :point_down::
 
-<textarea class="java-code">
+```java
 public class MyTest {
     public static void main(String args[]){
         String s = "hello";
@@ -149,7 +149,7 @@ public class MyTest {
         System.out.println(s);
     }
 }
-</textarea>
+```
 
 Compiling this code will lead to an error because Java has static type checking :point_down::
 
@@ -163,13 +163,13 @@ MyTest.java:4: error: incompatible types: int cannot be converted to String
 
 In JavaScript, the assignment of a number to a string goes down without problems, the JavaScript runtime engine does its best to infer the correct type :point_down::
 
-<textarea class="javascript-code">
+```javascript
 let s = "hello";
 typeof s; // 'string'
 s = 5;
 typeof s; // 'number'
 console.log(s); // 5
-</textarea>
+```
 
 ## Scripting overview
 
@@ -207,7 +207,7 @@ On to the two questions ...
 
 Executing the JavaScript code snippet 👇 yields what output?
 
-<textarea class="javascript-code">
+```javascript
 function giveMe(x) {
   return function (y) {
     return x * y;
@@ -216,7 +216,7 @@ function giveMe(x) {
 var giveMe5 = giveMe(5);
 
 console.log(giveMe5(10));
-</textarea>
+```
 
 <details> 
   <summary>Click to find out the answer! </summary>
@@ -225,7 +225,7 @@ console.log(giveMe5(10));
 
 Executing the JavaScript code snippet 👇 yields what output?
 
-<textarea class="javascript-code">
+```javascript
 function toPrint(x) {
   console.log(x);
 }
@@ -235,7 +235,7 @@ function my_func(x, y) {
 }
 
 my_func(5, toPrint);
-</textarea>
+```
 
 <details> 
   <summary>Click to find out the answer! </summary>
@@ -270,7 +270,7 @@ The scopes of values and expressions depend on _where_ and _how_ they are declar
 
 The difference between `let` and `const` is that `const` does not allow the reassignment or redeclaration of a variable. The originally assigned element though **can** change. An example should make this clear :point_down::
 
-<textarea class="javascript-code">
+```javascript
 let a = [1, 2, 3]; //array with 3 numbers
 const b = [4, 5, 6]; //array with 3 numbers
 
@@ -280,31 +280,31 @@ b = "hello world"; //Uncaught TypeError: invalid assignment to const 'b'
 
 b[0] = -1; //OK, the originally assigned array is changed
 console.log(b); //Array(3) [ -1, 5, 6 ]
-</textarea>
+```
 
 Before **ES6** there was no **block scope**, we only had two scopes available: local and global. Having only two scopes available resulted in code behavior that does not always seem intuitive. Let's look at one popular example: imagine we want to print out the numbers 1 to 10. This is easy to achieve in JavaScript 👇:
 
-<textarea class="javascript-code">
+```javascript
 for (var i = 1; i <= 10; i++) {
   console.log(i);
 }
-</textarea>
+```
 
 Let's now imagine that the print outs should happen each after a delay of one second. Once you know that `setTimeout(fn, delay)` initiates a timer that calls the specified function `fn` (below: an **anonymous function**) after a `delay` (specified in milliseconds) you might expect the following piece of code 👇 to print out the numbers 1 to 10 with each number appearing after roughly a second (_roughly_, as [JavaScript timers are not overly precise due to JavaScript's single-thread nature](https://johnresig.com/blog/how-javascript-timers-work/)):
 
-<textarea class="javascript-code">
+```javascript
 for (var i = 1; i <= 10; i++) {
   setTimeout(function () {
     console.log(i);
   }, 1000);
 }
-</textarea>
+```
 
 ☝️ When you run the code you will actually find it to behave very differently: after around one second delay, you will see ten print outs of the number `11`. Make sure to try this out for yourself! Here is why: `setTimeout` is executed ten times without delay. Defined within `setTimeout` is a **callback**, i.e. the function to execute when the condition (the delay) is met. After the tenth time, the `for` loop executes `i++` and then breaks as the `i<=10` condition is no longer fulfilled. This means `i` is `11` at the end of the `for` loop. As `i` has **global scope** (recall: `var i` is declared outside a function), every single callback refers to the same variable. After a bit more time passes (reaching ~1 second), each of the function calls within `setTimeout` is now being executed. Every single function just prints out `i`. Since `i` is `11`, we will end up with ten print outs of `11`.
 
 Let's fix the two issues (printing 11s instead of 1...10 and waiting a second _between print outs_ one by one). In the code above, `var i` has **global** scope, but we actually need it to be of **local scope** such that every function has its own local copy of it. In addition, we increment the delay with each increment of `i`. Before **ES6** the following code snippet 👇 was the established solution:
 
-<textarea class="javascript-code">
+```javascript
 function fn(i) {
   setTimeout(function () {
     console.log(i);
@@ -312,43 +312,43 @@ function fn(i) {
 }
 
 for (var i = 1; i <= 10; i++) fn(i);
-</textarea>
+```
 
 ☝️ You will find this construct in all kinds of code bases. We first define a function `fn` with one parameter and then use `setTimeout` within `fn`. JavaScript passes the value of a variable in a function; if the variable refers to an array or object, the value is the **reference** to the object. Here, `i` is a `number` and thus every call to `fn` has its own local copy of `i`.
 
 With the introduction of **ES6** and `let`, we no longer need this additional function construct as `let` has block scope and thus every `i` referred to within `setTimeout` is a different variable. This now works as we would expect 👇:
 
-<textarea class="javascript-code">
+```javascript
 for (let i = 1; i <= 10; i++)
   setTimeout(function () {
     console.log(i);
   }, 1000 * i);
-</textarea>
+```
 
 Scoping is also important when it comes to larger programming projects: imagine that you are working on a large project which makes use of a dozen or more JavaScript libraries. If all of these libraries would fill up the global namespace, inevitably at some point your code would stop working due to collisions in the global namespace.
 
 Here is a toy example to showcase this issue 👇:
 
-<textarea class="html-code">
-&lt;!DOCTYPE html>
-&lt;html>
-  &lt;head>
-    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    &lt;script>
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
       $(document).ready(function () {
         //$ = "overwriting";
         $("#b").click(function () {
           $("#b").hide();
         });
       });
-    &lt;/script>
-  &lt;/head>
-  &lt;body>
-    &lt;h1>Hide this button</h1>
-    &lt;button id="b">Hide me forever</button>
-  &lt;/body>
-&lt;/html>
-</textarea>
+    </script>
+  </head>
+  <body>
+    <h1>Hide this button</h1>
+    <button id="b">Hide me forever</button>
+  </body>
+</html>
+```
 
 :point_up: This code uses the jQuery JavaScript library which used to be extremely popular as it simplifies DOM traversal and manipulation (among others). It is still being used, but less so, as other libraries exist and the JavaScript runtime engines have improved. Here, the first `script` tag directs the browser to load an external script. The second time the `script` tag is used, we embed code directly within the HTML document. You may wonder why we place the `script` tag within the `<head>` element after stating that we will place it right before the closing `<body>` tag earlier on. This is simply to show that this is possible too.
 
@@ -360,7 +360,8 @@ Here is a toy example to showcase this issue 👇:
 
 [Hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting) is best explained with a concrete example. Consider this JavaScript code snippet :point_down:. What kind of console output do you expect after executing this snippet?
 
-<textarea class="javascript-code">
+
+```javascript
 var x = six();
 
 //function declaration
@@ -376,7 +377,7 @@ var seven = function () {
 };
 
 console.log(x + " - " + y);
-</textarea>
+```
 
 In both cases we seem to be executing a function (`six()` and `seven()` respectively) before they are defined. You may either believe that the JavaScript runtime does not care about when something is declared and the output will be `6 - 7` or you may believe that the JavaScript runtime does indeed care and the output will be a `TypeError: six is not a function`. Neither of these two options are correct however (verify for yourself in the browser by copying the entire snippet at once into the web console!), the output will be a `TypeError: seven is not a function`. This means that while `var x = six();` works (i.e., we can call `six()` before declaring it), `var y = seven();` does not.
 
@@ -394,7 +395,7 @@ Once more:
 
 This is not only the case for functions, also variable declarations are hoisted. Consider this example :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function f() {
   x = 5;
   y = 3;
@@ -402,13 +403,13 @@ function f() {
 f();
 console.log(x);
 console.log(y);
-</textarea>
+```
 
 :point_up: Variables `x` and `y` have global scope as they are not prefixed by `var` or `let` or `const`. And so the console output will be `5` and `3`.
 
 But what happens in this slightly changed piece of code? :point_down:
 
-<textarea class="javascript-code">
+```javascript
 function f() {
   a = 5;
   b = 3;
@@ -417,7 +418,7 @@ function f() {
 f();
 console.log(a);
 console.log(b);
-</textarea>
+```
 
 Now we will end up with a `ReferenceError: a is not defined` as the `var a` declaration at the end of function `f` is **hoisted** to the top of the function. The same applies to `b`. Both variables `a` and `b` thus have local scope and are not accessible to the `console.log` calls.
 
@@ -431,7 +432,7 @@ We also have the option to set the value of a function's `this` independent of h
 
 Let's walk through this concrete code example to showcase the behavior of `this` :point_down: :
 
-<textarea class="javascript-code">
+```javascript
 //We assume execution in the browser's Web Console, we thus
 //know the global window object exists (it is provided by the browser).
 
@@ -461,15 +462,15 @@ printName(); // this.name = "Beat Saber"
 //Fixing 'this' of the printName function
 var boundPrintName = printName.bind({ name: "Tetris Effect" });
 boundPrintName(); // this.name = "Tetris Effect"
-</textarea>
+```
 
 :point_up: If you execute this code in the browser's Web Console, you will observe the output of the `printName` function, originally defined inside the `game` function :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function(){
     console.log(this.name);
 }
-</textarea>
+```
 
 to be different each time, as each time, `this` refers to a different object. We called the function in three different ways:
 
@@ -481,19 +482,19 @@ We will come across a number of other examples in this and the following lecture
 
 In ES6 so-called **arrow functions** were introduced. Instead of writing :point_down::
 
-<textarea class="javascript-code">
+```javascript
 let sum = function (a, b) {
   return a + b;
 };
-</textarea>
+```
 
 we can shorten it to :point_down::
 
-<textarea class="javascript-code">
+```javascript
 let sum = (a, b) => {
   return a + b;
 };
-</textarea>
+```
 
 <optional-info markdown="block">
 This may look just like a more compact way of writing a function expression, but there is more to it. In particular, the way `this` behaves in this context is different to that of regular functions! Be aware of this if you are [looking deeper](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) into the use of arrow functions!
@@ -529,7 +530,7 @@ There are many different design patterns, some are known to work across language
 
 In JavaScript, **functions are first-class citizens** of the language. This means that **functions can be passed as parameters**, they can be **returned from functions** and they can be **assigned to a variable** :point_down::
 
-<textarea class="javascript-code">
+```javascript
 //a function is passed as second parameter
 function cutoffStringAt(c, fn) {
   //a function is returned
@@ -542,7 +543,7 @@ function cutoffStringAt(c, fn) {
 var cutoffStringAt5 = cutoffStringAt(5, function (s) {
   console.log(s);
 });
-</textarea>
+```
 
 This is quite a difference to Java for example, where functions cannot be passed around.
 
@@ -558,7 +559,7 @@ JavaScript objects can be created in different ways. This is very much unlike Ja
 
 Let's start with the creation of objects. Here you see one way of creating objects in JavaScript :point_down::
 
-<textarea class="javascript-code">
+```javascript
 var game = new Object();
 game["id"] = 1;
 game["player1"] = "Alice";
@@ -573,7 +574,7 @@ game.printID = function () {
 };
 game["printID"](); // prints out "1"
 game.printID(); //prints out "1"
-</textarea>
+```
 
 :point_up: We first create an empty object with `new Object()` that we can then assign name/value pairs. Here, `id`, `player1`, etc. are the object's **properties** and their name must be a valid JavaScript identifier (basically a string that does not start with a number). Note, that `printID` is also an object property, although it is often also referred to as a method because we define a function as part of an object. As seen here, JavaScript makes it easy to add methods, by assigning a function to the property of an object.
 
@@ -583,7 +584,7 @@ We have two ways to set and get an object's properties: either through the brack
 
 There is a second way to create objects and that is via **object literals**. An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces :point_down::
 
-<textarea class="javascript-code">
+```javascript
 var game = {
   id: 1,
   player1: "Alice",
@@ -593,13 +594,13 @@ var game = {
     console.log(this.id);
   },
 };
-</textarea>
+```
 
 This time, `"won lost"` is a valid property name, but only if enclosed in quotation marks. _Instead of remembering when whitespaces are allowed, it is best to avoid them at all when assigning property names._
 
 Object literals can be complex, they can contain objects themselves :point_down::
 
-<textarea class="javascript-code">
+```javascript
 var paramModule = {
   /* parameter literal */
   Param: {
@@ -611,7 +612,7 @@ var paramModule = {
     console.table(this.Param);
   },
 };
-</textarea>
+```
 
 <debug-info markdown="block">
 For debugging purposes, the function [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/Console/table) is a good alternative to `console.log`, especially for objects and arrays, as it displays tabular data as a table :point_down::
@@ -645,7 +646,7 @@ First, let's quickly recap what classes in Java offer us:
 
 Here is a **Java** example :point_down::
 
-<textarea class="java-code">
+```java
 public class Game {
     private int id; /* encapsulate private members */
 
@@ -662,11 +663,11 @@ public class Game {
         this.id = id;
     }
 }
-</textarea>
+```
 
 And here is how we do the same in JavaScript :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function Game(id) {
   this.id = id;
   this.totalPoints = 0;
@@ -680,11 +681,11 @@ function Game(id) {
     this.id = id;
   };
 }
-</textarea>
+```
 
 **We use functions as constructors and rely on `this`**. We rely on the keyword `new` to initialize a new object similar to what you have already seen before :point_down::
 
-<textarea class="javascript-code">
+```javascript
 var g1 = new Game(1);
 g1.getID();
 g1.setID(2);
@@ -696,7 +697,7 @@ var { totalPoints, winner, difficulty } = g1;
 console.log(
   `This game reached ${totalPoints} points, was won by ${winner} and had difficulty ${diff}.`
 );
-</textarea>
+```
 
 **In JavaScript, an object constructor is just a normal function**. When the `new` keyword appears, the JavaScript runtime executes two steps:
 
@@ -705,7 +706,7 @@ console.log(
 
 A common error is to forget the `new` keyword. The JavaScript runtime will not alert you to this mistake, in fact, the JavaScript runtime will execute the function as-is. Let's take a look at what happens when you copy and paste the following code into your browser's Web Console :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function Game(id) {
   this.id = id;
   this.getID = function () {
@@ -722,7 +723,7 @@ console.log(id); //prints out "ONE"
 g1.setID(2);
 
 var g2 = Game("TWO"); //what does "this" refer to now?
-</textarea>
+```
 
 :point_up: In this code snippet we created a new object assigned to variable `g1`, but for `g2` we forgot the keyword `new` and thus no object was created or assigned to `g2`. If you check what was assigned to `g2` you will find it to be `undefined` (the variable was declared but not defined). So, what happened to the line `this.id = id`? What did `this` refer to in this case? It turns out that without an object, in the browser context, `this` refers to the global `window` object (which represents the window in which the script is running). If you type `window.id` you will find the property to exist and hold the value of `TWO`. Of course, this is not desired as you may accidentally overwrite important properties of the `window` object.
 
@@ -730,7 +731,7 @@ Lesson here: be sure to know when to use `new` and what `this` refers to when.
 
 Another interesting feature of JavaScript is the possibility to add new properties and methods **on the fly**, after object creation. In Java, once we have written our class and instantiated objects from the class, we cannot rewrite the class blueprint to affect the already created objects. JavaScript is a **prototype-based language** and here we can actually change our objects on the fly :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function Game(id) {
   this.id = id;
   this.getID = function () {
@@ -758,7 +759,7 @@ g1.hasOwnProperty("printPlayer"); //true
 g2.hasOwnProperty("printPlayer"); //false
 
 g1.toString(); //"[object Object]" (we never defined it, but it is there)
-</textarea>
+```
 
 Here is a quick summary of the basic constructor:
 
@@ -784,7 +785,7 @@ So, why is this important and how can you make use of this knowledge? Recall, th
 
 This is exactly what the prototype-based constructor provides. Let's look at an example :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function Game(id) {
   this.id = id;
 }
@@ -814,7 +815,7 @@ g1.setID(4);
 
 console.log(g1.getID()); //ID4
 console.log(g2.getID()); //3
-</textarea>
+```
 
 :point_up: All we have to do to make properties available to all objects is to use the `.prototype` property to walk up the prototype chain and assign a property to `Game.prototype`.
 When the two game objects are created and `setID()` is called, the JavaScript runtime walks up the prototype chain and "finds" the **first** property that matches the desired property name.
@@ -823,7 +824,7 @@ This explanation should also answer the following question: what happens if a pr
 
 Changes made to the prototype are also reflected in existing objects :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function Game(id) {
   this.id = id;
 }
@@ -847,7 +848,7 @@ Game.prototype.setID = function (id) {
 };
 
 g1.setID("3"); //leads to "Assertion failed: Expecting a number"
-</textarea>
+```
 
 The prototype chaining allows us to set up **inheritance through prototyping**. This requires two steps:
 
@@ -856,7 +857,7 @@ The prototype chaining allows us to set up **inheritance through prototyping**. 
 
 Let's assume we want to inherit from `Game` to create a more specialized two-player game variant :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function Game(id) {
   this.id = id;
 }
@@ -887,21 +888,21 @@ TwoPlayerGame.prototype.constructor = TwoPlayerGame;
 var TPGame = new TwoPlayerGame(1, "Alice", "Bob");
 console.log(TPGame.getID()); //prints out "1"
 console.log(TPGame.p1); //prints out "Alice"
-</textarea>
+```
 
 :point_up: Why do we need to redirect the prototype? Recall the prototype chain: when we make the call to `TPGame.getID()` the JavaScript runtime finds `getID()` to not be a property of `TPGame`. So it attempts to walk up the prototype chain and in order to make `Game` part of the `TPGame` prototype chain we have to manually set it.
 
 Why do we have to also set the `constructor` property? You will see if you run this piece of code and remove the line :point_down::
 
-<textarea class="javascript-code">
+```javascript
 TwoPlayerGame.prototype.constructor = TwoPlayerGame;
-</textarea>
+```
 
 the code still works as expected. Why do we even add this line? If we do not add this line, then the `constructor` of `TwoPlayerGame.prototype` will be `Game` (check it out for yourself). With this extra line of code we "hand-wire" the correct constructor (which for `TwoPlayerGame.prototype` should be `TwoPlayerGame`). You can think of this as making sure the wiring is correct, even if your code does not rely on this wiring at the moment.
 
 Here is one example where it does indeed matter whether whether this wiring is correct :point_down::
 
-<textarea class="javascript-code">
+```javascript
 function Game() {}
 function TwoPlayerGame() {}
 
@@ -913,7 +914,7 @@ TwoPlayerGame.prototype.create = function create() {
 
 var o = new TwoPlayerGame().create();
 console.log(o instanceof TwoPlayerGame); //prints out "false" as long as the constructor is not set to TwoPlayerGame
-</textarea>
+```
 
 As a rule of thumb: when using prototypical inheritance, always set up both the `prototype` and `prototype.constructor`; in this manner the wiring is correct, no matter how you will use the inheritance chain later on.
 
@@ -937,7 +938,7 @@ The module pattern has the following goals:
 
 We start with a concrete example of the **module pattern** :point_down::
 
-<textarea class="javascript-code">
+```javascript
 /* creating a module */
 var gameStatModule = (function () {
   /* private members */
@@ -960,17 +961,17 @@ var gameStatModule = (function () {
 gameStatModule.incrGamesStarted();
 console.log(gameStatModule.getNumGamesStarted()); //prints out "1"
 console.log(gameStatModule.gamesStarted); //prints out "undefined"
-</textarea>
+```
 
 In this code snippet :point*up:, we are defining a variable `gameStatModule` which is assigned a `function` expression that is immediately invoked. This is known as an \_Immediately Invoked Function Expression* (or [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)).
 
 An IIFE itself is also a design pattern, it looks as follows :point_down::
 
-<textarea class="javascript-code">
+```javascript
 (function () {
   //statements
 })();
-</textarea>
+```
 
 :point_up: The function is **anonymous** (it does not have a name and it does not need a name, as it is immediately invoked) and the final pair of brackets `()` leads to its immediate execution. The brackets surrounding the function are not strictly necessary, but they are commonly used.
 
@@ -979,9 +980,9 @@ Going back to our `gameStatModule` :point*up::point_up:, we immediately execute 
 <debug-info markdown="block">
 A common error in the module pattern is to forget to add the final bracket pair `()` when defining the IIFE. Those issues will be caught at runtime when the code does not work as expected. In our game module example, the line `gameStatModule.incrGamesStarted();` will lead to the error `TypeError: gameStatModule.incrGamesStarted is not a function` if we remove the final IIFE bracket pair (try it out!). VSC offers a simple way to catch those errors already when coding. We add the line:
 
-<textarea class="javascript-code">
+```
 //@ts-check
-</textarea>
+```
 
 at the top of any JavaScript file we want to have type-checked. The error of the missing bracket pair is now caught:
 
@@ -992,7 +993,7 @@ We thus borrow the type checker of TypeScript to make sure to catch - at least s
 
 Finally we note that in the module pattern, the encapsulating function can also contain parameters (here: arguments `1, 1, 1`) :point_down::
 
-<textarea class="javascript-code">
+```javascript
 /* creating a module */
 var gameStatModule = (function (s, c, a) {
   /* private members */
@@ -1026,7 +1027,7 @@ gameStatModule.decrGamesStarted = function () {
  * methods added on-the-fly cannot access 'private' variables
  */
 gameStatModule.decrGamesStarted();
-</textarea>
+```
 
 Summarizing the module pattern:
 
@@ -1051,7 +1052,7 @@ The last two ways of selecting DOM elements allow complex selector rules to be s
 
 Let's look at a simple example of the DOM and DOM events using the already familiar hide-the-button example :point_down::
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1088,7 +1089,7 @@ Let's look at a simple example of the DOM and DOM events using the already famil
     </script>
   </body>
 </html>
-</textarea>
+```
 
 :point*up: Here, two elements are rendered by the browser, a heading (\_Hide this button*) and a button. Clicking on the button will hide both the heading and the button. Importantly, the browser provides us with an API to access keyboard and mouse events among others. As web developers we can start working from the point of _what happens when a click event has occurred?_. The code snippet thus shows off the **callback principle**, which we come across in all of JavaScript: we define **what happens _when_ an event fires**. How can we connect events (e.g. a click) and actions (e.g. hiding an element)? Most often we will use [targetEl.addEventListener(eventType, fn)](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) which takes a function (`fn`) as input that is called whenever the desired `eventTyp` has been recorded for `targetEl`. In the example above, it becomes clear that in this manner multiple events can be attached to a single element. This is in contrast to using the `onclick` property to attach an event handler to an element: only one event can be attached to an element.
 
@@ -1142,7 +1143,7 @@ They overlap with what is discussed in the required readings.
 
 Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box. As you can see there are different ways (we have listed four here) of pinpointing a DOM element:
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1164,11 +1165,11 @@ Here :point_down: we have a page with two elements: a button and a text box. A c
     <input id="out" type="text" />
   </body>
 </html>
-</textarea>
+```
 
 This code :point_up: is of course not ideal as we are writing JavaScript code in the middle of HTML elements, so let us refactor to achieve a better code separation :point_down::
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1194,7 +1195,7 @@ This code :point_up: is of course not ideal as we are writing JavaScript code in
     <input id="out" type="text" />
   </body>
 </html>
-</textarea>
+```
 
 :point_up: Although all code is still in a single file, we have now moved all JavaScript code within `<script>` tags. Try the code out yourself! Be sure to check out what happens if `window.addEventListener('load',...)` is removed. The code will produce the error message `Uncaught TypeError: document.getElementById(...) is null` as the HTML document is parsed sequentially from top to bottom; without the `window.addEventListener('load',...)` event handler the browser engine will try to acess the button element before it has been defined, leading to an error.
 
@@ -1221,7 +1222,7 @@ To achieve step :two:, a number of methods are available to every DOM element:
 
 Let's look at how this works in practice :point_down: :
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1251,7 +1252,7 @@ Let's look at how this works in practice :point_down: :
     </script>
   </body>
 </html>
-</textarea>
+```
 
 :point_up: The HTML initially contains an **empty `<ul>` element**. Instead of directly adding `<li>` elements, we could have also added a single child `<ul>` to the `<body>` node and then started adding children to it.
 
@@ -1261,7 +1262,7 @@ The code example also shows off [template literals](https://developer.mozilla.or
 
 We can of course also remove elements :point_down::
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1300,7 +1301,7 @@ We can of course also remove elements :point_down::
     </script>
   </body>
 </html>
-</textarea>
+```
 
 Important to note here is that there are often methods available for DOM elements which look similar, but are leading to quite different behaviors. Case in point: in the example :point*up: we used `ul.firstElementChild` and `ul.lastElementChild`. Instead, we could have also used `ul.firstChild` and `ul.lastChild`. And this will work to - \_at least with every second click*, as those methods also keep track of a node's children that are comments or text nodes, instead of just `li` nodes as we intend with our code.
 
@@ -1314,17 +1315,17 @@ Imagine you want to create a multiplication app that has one text input box and 
 
 We could write three different functions and then separately attach each of them to the correct button :point_down::
 
-<textarea class="javascript-code">
+```javascript
 document.getElementById("button10").addEventListener("click", computeTimes10);
 document.getElementById("button23").addEventListener("click", computeTimes23);
 document.getElementById("button76").addEventListener("click", computeTimes76);
-</textarea>
+```
 
 This leads to code duplication, is tedious, error prone and not maintainable (what if you need a hundred buttons ...).
 
 We can avoid code duplication with the use of `this` in order to _read out_ the button's label :point_down::
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1359,7 +1360,7 @@ We can avoid code duplication with the use of `this` in order to _read out_ the 
     </script>
   </body>
 </html>
-</textarea>
+```
 
 :point_up: Depending on which button is clicked, `this` refers to the corresponding DOM tree element and [`.innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) allows us to examine the label text. The [`parseInt` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is here used to strip out the " times" string suffix, forcing a conversion to type `number`.
 
@@ -1383,7 +1384,7 @@ A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, .
 
 Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer starts and remains active as long as the mouse pointer hovers over the button element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1424,7 +1425,7 @@ Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer sta
     </script>
   </body>
 </html>
-</textarea>
+```
 
 _Mouse events can be tricky, the more complex ones are not consistently implemented across browsers._
 
@@ -1434,7 +1435,7 @@ _Mouse events can be tricky, the more complex ones are not consistently implemen
 
 Here is another event that can be useful, especially for text-heavy interfaces: `onselect`. Here :point_down:, we have an interface with a read-only text that the user can select passages in. If enough passages have been selected, the user can submit the selected passages:
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1522,7 +1523,7 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
     </script>
   </body>
 </html>
-</textarea>
+```
 
 #### :bangbang: Example 6: a typing game
 
@@ -1532,7 +1533,7 @@ The last example is a typing game :point_down:. Given a piece of text, type it c
 
 In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those line on the `.style` properties.
 
-<textarea class="html-code">
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -1623,7 +1624,7 @@ H. Baker was an American amateur athlete of the 20th century.</textarea
     </script>
   </body>
 </html>
-</textarea>
+```
 
 To conclude this DOM section, here is an overview of important keyboard and text events:
 
