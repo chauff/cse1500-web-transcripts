@@ -330,24 +330,24 @@ Scoping is also important when it comes to larger programming projects: imagine 
 Here is a toy example to showcase this issue 👇:
 
 <textarea class="html-code">
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    &lt;script>
       $(document).ready(function () {
         //$ = "overwriting";
         $("#b").click(function () {
           $("#b").hide();
         });
       });
-    </script>
-  </head>
-  <body>
-    <h1>Hide this button</h1>
-    <button id="b">Hide me forever</button>
-  </body>
-</html>
+    &lt;/script>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Hide this button</h1>
+    &lt;button id="b">Hide me forever</button>
+  &lt;/body>
+&lt;/html>
 </textarea>
 
 :point_up: This code uses the jQuery JavaScript library which used to be extremely popular as it simplifies DOM traversal and manipulation (among others). It is still being used, but less so, as other libraries exist and the JavaScript runtime engines have improved. Here, the first `script` tag directs the browser to load an external script. The second time the `script` tag is used, we embed code directly within the HTML document. You may wonder why we place the `script` tag within the `<head>` element after stating that we will place it right before the closing `<body>` tag earlier on. This is simply to show that this is possible too.
