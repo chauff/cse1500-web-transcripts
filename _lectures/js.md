@@ -151,15 +151,7 @@ public class MyTest {
 }
 ```
 
-Compiling this code will lead to an error because Java has static type checking :point_down::
-
-```console
-○ → javac MyTest.java
-MyTest.java:4: error: incompatible types: int cannot be converted to String
-        s = 5;
-            ^
-1 error
-```
+Compiling this code will lead to an error (`incompatible types: int cannot be converted to String`) because Java has **static** type checking.
 
 In JavaScript, the assignment of a number to a string goes down without problems, the JavaScript runtime engine does its best to infer the correct type :point_down::
 
