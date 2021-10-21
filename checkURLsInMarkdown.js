@@ -6,7 +6,7 @@ const http = require('http');
 const path = require('path');
 const url = require('url');
 
-const absURL = "https://github.com/chauff/Web-Teaching/";
+const absURL = "https://chauff.github.io/cse1500-web-transcripts/";
 
 const regex = /\]\(.*?\)/g;//simple regex to extract markdown links
 
