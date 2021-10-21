@@ -205,7 +205,7 @@ Now that you have a first idea of what HTTP messages are about we can take a loo
 
 Remember that HTTP request messages are always sent by the client. Below is a typical HTTP request message :point_down::
 
-```
+```http
 GET / HTTP/1.1
 Host: www.tudelft.nl
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:31.0) Gecko/20100101 Firefox/31.0
@@ -225,7 +225,7 @@ HTTP/2 (and subsequent versions) have switched to a binary protocol.
 
 The server that received the above HTTP request may now assemble the following response :point_down::
 
-```
+```http
 HTTP/1.1 200 OK
 Date: Fri, 22 Nov 2019 13:35:55 GMT
 Content-Type: text/html; charset=utf-8
@@ -445,7 +445,7 @@ For a concrete example, explore the HTTP request/response headers of our [demo g
 
 The client sends the following HTTP headers to request the upgrade to the WebSocket protocol:
 
-```
+```http
 Host: localhost:3000
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:61.0) Gecko/20100101 Firefox/61.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -465,7 +465,7 @@ As you can see, besides `Connection` and `Upgrade` a number of other information
 
 The server accepts the protocol with the following headers:
 
-```
+```http
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
@@ -512,7 +512,7 @@ Errors on the server side start with 5; one relatively common status code is `50
 
 Consider the first line of our introductory [HTTP request message](#http-request-message) example above:
 
-```
+```http
 GET / HTTP/1.1
 ```
 
@@ -558,7 +558,7 @@ We are conducting our telnet activity on [mit.edu](http://mit.edu), the homepage
 
 **Use `HEAD` to get information about the page** :point_down::
 
-```
+```http
 telnet mit.edu 80
     Trying 88.221.9.235...
     Connected to mit.edu.
@@ -577,7 +577,7 @@ host:mit.edu
 
 **Use `HEAD` to see what is at the moved location** (note that `mit.edu` and `web.mit.edu` refer to different locations) :point_down::
 
-```
+```http
 telnet web.mit.edu 80
     Trying 104.73.43.233...
     Connected to e9566.dscb.akamaiedge.net.
@@ -597,7 +597,7 @@ host:web.mit.edu
 <optional-info markdown="block">
 At this point, we need to switch to openssl (as the redirect location is `https`) if we want to continue down this path and retrieve the content available at the URL's location (*lecture transcript changed as of Dec. 14, 2020*). Note the changed port number (443); this is the default port for https. We use `GET` to retrieve the content:
 
-```
+```http
 openssl s_client -crlf -connect web.mit.edu:443
     ...
     ...
@@ -613,7 +613,7 @@ host:web.mit.edu
 
 Finally, for those that want to see to what extremes people go to make fun (or use) of telnet, try out the following :point_down::
 
-```
+```http
 telnet towel.blinkenlights.nl
 ```
 
