@@ -153,7 +153,7 @@ public class MyTest {
 
 Compiling this code will lead to an error because Java has static type checking :point_down::
 
-```
+```console
 ○ → javac MyTest.java
 MyTest.java:4: error: incompatible types: int cannot be converted to String
         s = 5;
