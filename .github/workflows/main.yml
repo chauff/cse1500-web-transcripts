@@ -34,7 +34,7 @@ jobs:
     - name: Check URLs
       run: |-
         node checkURLsInMarkdown.js
-        echo "::set-output name=errors::$(grep '[ERROR]' test.txt |wc -l)\n"
+        echo "::set-output name=errors::$(grep '[ERROR]' urlCheck.txt |wc -l)"
       id: check
 
     # Make the output file available as an artifact
@@ -49,6 +49,6 @@ jobs:
       uses: JasonEtco/create-an-issue@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ERRORS: ${{ steps.check.outputs.* }}
+        ERRORS: ${{ steps.check.outputs.errors }}
       with:
         filename: .github/checkURL-template.md
