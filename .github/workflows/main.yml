@@ -34,7 +34,7 @@ jobs:
     - name: Check URLs
       run: |-
         node checkURLsInMarkdown.js
-        echo "::set-output name=errors::$(grep '[ERROR]'' test.txt |wc -l)\n"
+        echo "::set-output name=errors::$(grep '[ERROR]' test.txt |wc -l)\n"
       id: check
 
     # Make the output file available as an artifact
