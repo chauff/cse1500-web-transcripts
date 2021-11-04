@@ -20,7 +20,7 @@ We cover the following languages: HTTP, HTML, CSS as well as JavaScript on the c
 In the five weeks of the web technology lectures we can only cover the web programming fundamentals and thus chose a small application stack. If you want to get a comprehensive overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
-- [Book :closed_book:](#book-closed_book)
+- [Book](#book)
 - [Tooling](#tooling)
   - [Recommended](#recommended)
   - [Required](#required)
@@ -30,7 +30,7 @@ In the five weeks of the web technology lectures we can only cover the web progr
 - [Lecture material types](#lecture-material-types)
 - [University courses with a web focus elsewhere](#university-courses-with-a-web-focus-elsewhere)
 
-## Book :closed_book:
+## Book
 
 <img align="right" width="150px" src="img/node-book.png">
 
@@ -94,7 +94,7 @@ There are three web technology assignments, each one covering the contents of tw
 - [The second web technology assignment asks you to write client-side and server-side JavaScript code](_practicals/assignment-js-node.md).
 - [The last web technology assignment focuses on server-side JavaScript and CSS](_practicals/assignment-css-node.md).
 
-The three assignments build on each other&mdash;over the course of them you are tasked with implementing a **multi-player board game** :game_die:. FYI, in previous years, roughly 90% of teams passed the first web assignment, 60% passed the first two and 30% of teams passed all three web assignments.
+The three assignments build on each other&mdash;over the course of them you are tasked with implementing a **multi-player board game**. FYI, in previous years, roughly 90% of teams passed the first web assignment, 60% passed the first two and 30% of teams passed all three web assignments.
 
 ## Web development resources
 
