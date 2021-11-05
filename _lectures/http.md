@@ -545,6 +545,8 @@ In the next few paragraphs, we describe in detail how to practice writing HTTP m
 
 <asciinema-player src="../cast/mit-telnet-openssl.cast"></asciinema-player>
 
+<sup>HTTP requests made via telnet (http) and openssl (https).</sup>
+
 Every line of the protocol is completed with a _carriage return_ (i.e., press <kbd>Enter</kbd>). The protocol also has _empty lines_, those are indicated below with a `<carriage return>` tag (again, just press <kbd>Enter</kbd>). **All indented lines are returned by the server and do not have to be typed out.**
 
 In order to close a telnet session, enter the telnet prompt. To do so, press <kbd>Ctrl</kbd> + <kbd>]</kbd>. This You should now see `telnet>` on your terminal; type `quit` and press <kbd>Enter</kbd> to close the session.
@@ -591,7 +593,7 @@ host:web.mit.edu
 
 At this point, we need to switch to openssl (as the redirect location is `https`) to continue down this path and retrieve the content available at the URL's location. Note the changed port number (443); this is the default port for https. We use `GET` to retrieve the content:
 
-```http
+```
 openssl s_client -crlf -connect web.mit.edu:443
     ...
     ...
@@ -605,33 +607,7 @@ host:web.mit.edu
     ...
 ```
 
-<optional-info markdown="block"> 
-For those that want to see to what extremes people go to make fun (or use) of telnet, try out the following:
-
-```
-telnet towel.blinkenlights.nl
-```
-
-and wait for the movie to start (it may take a few seconds). After a while you should see something like this ...
-
-```
-
-      .....                    @@@@@    @@@@@            ...........
-      ......                  @     @  @     @           ..........
-      .......                    @@@   @     @           .........
-      ........                 @@      @     @            .......
-       ........               @@@@@@@   @@@@@  th         ......
-         .......            -----------------------       ......
-           ......             C  E  N  T  U  R  Y          ....
-             .....          -----------------------        ....
-                ...         @@@@@ @@@@@ @   @ @@@@@        ...
-                  ==          @   @      @ @    @          ==
-                __||__        @   @@@@    @     @        __||__
-               |      |       @   @      @ @    @       |      |
-      _________|______|_____  @   @@@@@ @   @   @  _____|______|_________
-
-```
-</optional-info>
+This is it. We have followed the redirects and retrieved the one resource we were after. The browser takes care of all of these intermediate steps for you.
 
 ### From domain to IP address
 
@@ -649,7 +625,7 @@ Why are we still using IPv4? Because transitioning to the new standard takes tim
 
 [Google keeps track of the percentage of users using its services through IPv6](https://www.google.com/intl/en/ipv6/statistics.html#tab=ipv6-adoption&tab=ipv6-adoption). As of November 2021 about 37% of users rely on IPv6, a slow and steady increase. It is just a matter of years until IPv4 is replaced by IPv6.
 
-While we typically use domain names, we can also use IP addresses directly in the browser's address bar. One quick way of determining the IP address of a domain is the `ping` command: it sends an echo request package to a destination and awaits the reply, measuring the round-trip time as part of it. Let's use it to determine the IP address of `www.google.com`:
+While we typically use domain names, we can also use IP addresses directly in the browser's address bar. One quick way of determining the IP address of a domain is the `ping` command: it sends an echo request package to a destination and awaits the reply, measuring the round-trip time as part of it and listing the IP address as a by-product. For example, `ping www.google.com` tells us that the corresponding IP address is `142.251.36.36` (a single domain can be tied to several IP addresses to enable large-scale operations and thus you are likely to receive a different IP address when trying out this command):
 
 <asciinema-player src="../cast/ping-example.cast"></asciinema-player>
 
@@ -690,14 +666,11 @@ which have the following meaning:
 
 ### URL syntax: query
 
-One of the most important URL parts for us is the syntax for a `query`.  Let's consider this URL:
-
-[https://duckduckgo.com/html?q=delft](https://duckduckgo.com/html?q=delft)
-
-:point_up: This URL points to the Duckduckgo website and contains the `q=delft` query. This query component is passed to the application accessed at the web server&mdash;in this case, DuckDuckGo's search system. Returned to you is a list of search results for the query `delft`. This syntax is necessary to enable interactive application.
+One of the most important URL parts for us is the syntax for a `query`.  Let's consider `https://duckduckgo.com/html?q=delft`. This URL points to the Duckduckgo website and contains the `q=delft` query. This query component is passed to the application accessed at the web server&mdash;in this case, DuckDuckGo's search system. Returned to us is a list of search results for the keyword `delft`. This syntax is necessary to enable interactive application.
 By convention we use `name=value` to pass application variables. If an application expects several variables, e.g. not only the search string but also the number of expected search results, we combine them with an ampersand (`&`): `name1=value1&name2=value2& ...`. 
 
-As URLs cannot contain spaces an obvious next question is how we deal with searches that contain spaces such as `delft weather` or `delft number of university students`. In URL query components, whitespaces are typically encoded with the reserved character `+` which leads to [https://duckduckgo.com/?q=delft+weather](https://duckduckgo.com/?q=delft+weather).
+As URLs cannot contain spaces an obvious next question is how we deal with searches that contain spaces such as `delft weather` or `delft number of university students`. In URL query components, whitespaces are typically encoded with the reserved character `+` which leads to `https://duckduckgo.com/?q=delft+weather`.
+
 ### URL syntax: port
 
 When typing a URL into the browser's address bar, we seemingly do not have to worry about ports as we rarely encounter one in URLs. This, however, is only the case because of the use of **default ports**: if no port is provided in the URL, the browser uses the default port of the scheme. For `http` port `80` is the default port (as stated in its [RFC](https://datatracker.ietf.org/doc/html/rfc2616#section-3.2.2)) and for `https` it is port `443` (as stated in its [RFC](https://datatracker.ietf.org/doc/html/rfc2818#section-2.3)).
