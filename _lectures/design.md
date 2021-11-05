@@ -3,7 +3,7 @@ layout: default
 permalink: /html/
 linkname: HTML
 ordering: 2
-warning: true
+warning: false
 ---
 
 # HTML: the language of the web <!-- omit in toc -->
@@ -35,16 +35,12 @@ warning: true
   - [HTML text fundamentals @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals)
   - [Document and website structure @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure)
   - [Introduction to HTML forms @MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form) (**skip over** the section on _Basic form styling_, we will cover this topic in a later lecture).
-- Recommended activity:
-  - :headphones: Listen to [this podcast with Tom Dale](http://talkingcode.com/podcast/episode-11-tom-dale/) discussing modern web applications and the move from web sites to web apps and an almost _native_ experience.
 - Recommended readings:
   - :closed_book: Chapter 3 of the [Definite Guide to HTML5](https://www.apress.com/gp/book/9781430239604).
   - A blog post on the [use of animations to enhance the user experience](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9).
-  - [Web Fundamentals by Google](https://developers.google.com/web/fundamentals/).
   - [Examples of what modern web technologies can achieve in Chrome](https://experiments.withgoogle.com/) (if you use another browser, not all examples may work as expected).
   - [Atomic Design by Brad Frost](http://atomicdesign.bradfrost.com/)
   - [Laws of UX](https://lawsofux.com/): web design principles explained in short snippets.
-  - [CodePen's September 2020 Challenges are all about HTML](https://codepen.io/challenges/2020/september/) and what you can do with 100 HTML elements of a single type.
 - Relevant scientific publications:
   - Fernandez, Adrian, Emilio Insfran, and Silvia Abrahão. [Usability evaluation methods for the web: A systematic mapping study](https://www.sciencedirect.com/science/article/pii/S0950584911000607). Information and software Technology 53.8 (2011): 789-817.
   - Sonderegger, Andreas, and Juergen Sauer. [The influence of design aesthetics in usability testing: Effects on user performance and perceived usability](https://www.sciencedirect.com/science/article/pii/S0003687009001148). Applied ergonomics 41.3 (2010): 403-410.
@@ -63,29 +59,23 @@ This lecture does not cover **how to write HTML**, this is covered in the requir
 The W3C has many working groups, among them (until 2016) the _Web Applications (WebApps) Working Group_ whose [goal](https://www.w3.org/2014/06/webapps-charter.html) was as follows:
 
 ```
-As web browsers and the web engine components that power them become ubiquitous across a range
-of operating systems and devices, developers are increasingly using web technologies to build
-applications and are relying on web engines as application runtime environments. Examples of
-applications now commonly built using web technologies include reservation systems, online
-shopping / auction sites, games, multimedia applications, maps, enterprise-specific applications,
-interactive design applications, and PIM (email, calendar, etc) systems.
+As web browsers and the web engine components that power them become 
+ubiquitous across a range of operating systems and devices, developers 
+are increasingly using web technologies to build applications and are 
+relying on web engines as application runtime environments. Examples of
+applications now commonly built using web technologies include 
+reservation systems, online shopping / auction sites, games, multimedia 
+applications, maps, enterprise-specific applications, interactive design 
+applications, and PIM (email, calendar, etc) systems.
 ```
 
-In 2017 this group was superseded by the [_Web Platform Working Group_](https://www.w3.org/2017/08/webplatform-charter.html) which has a similar goal (but not written up as nicely). The working group is responsible for a number of web technologies that move us closer towards the vision of the **browser as the operating system**, including:
-
-- client-side database and offline applications;
-- file and filesystem APIs;
-- WebSockets;
-- Web Workers (enables web applications to spawn background processes);
-- DOM & HTML;
-- Canvas (for drawing);
-- Web components (a component model for the web).
+In 2017 this group was superseded by the [_Web Platform Working Group_](https://www.w3.org/2017/08/webplatform-charter.html) which has a similar goal (but not written up as nicely). The working group is responsible for a number of web technologies that move us closer towards the vision of the **browser as the operating system**.
 
 ## Cross-platform applications
 
-_Do web technologies also help you to create desktop apps or mobile apps?_
+_Do web technologies also help us to create desktop apps or mobile apps?_
 
-Indeed, they do! [Electron](https://electronjs.org/) is an open-source project that enables you to build **cross-platform desktop apps** for Windows, Mac and Linux with HTML, JavaScript and CSS - the very technologies you learn about in this course.
+Indeed, they do! [Electron](https://electronjs.org/) is an open-source project that enables us to build **cross-platform desktop apps** for Windows, Mac and Linux with HTML, JavaScript and CSS&mdash;the very technologies you learn about in this course.
 
 Electron itself uses [Node.js](https://nodejs.org/en/), the server-side JavaScript runtime we cover in a later lecture together with [Chromium](https://www.chromium.org/), an open-source web runtime.
 
@@ -97,7 +87,7 @@ If you ever wanted to know how _Windows 95_ looks like, there is an [Electron ap
 
 <sup>Windows 95 stuffed into an Electron app.</sup>
 
-On the downside, such a cross-platform approach usually brings with it considerable overhead - each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. More concretely, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](https://www.technologytips.com/windows-system-requirements/).
+On the downside, such a cross-platform approach usually brings with it considerable overhead&mdash;each application for instance bundles Chromium, which means that even if your app is not doing anything else besides `Hello World` it will be at least 30MB large. As a concrete example, the unzipped Windows95 Electron app is more than 454 MB in size, while the original Windows 95 operating system required about [40 MB of disk space](https://www.technologytips.com/windows-system-requirements/).
 
 While Electron focuses on **cross-platform desktop applications**, initiatives with a similar goal for the mobile world (i.e. generating native apps for Android/iOS from HTML/CSS/JavaScript) exist as well. By far the most popular is [React Native](https://reactnative.dev/). Before you can use it though you will have to learn [React](https://reactjs.org/), a very popular JavaScript library for building user interfaces that is being developed by Facebook.
 
@@ -105,15 +95,15 @@ While Electron focuses on **cross-platform desktop applications**, initiatives w
 
 The design of a meaningful user experience ("UX"), which for us is narrowed down to the design of web user interfaces (UIs), requires insights primarily from psychology and human-computer interaction.
 
-While this is well beyond the scope of our course, we present here a few basic rules that web applications should adhere to. These rules may seem obvious, but in practice are often ignored. This lecture is partially based on the book [Don't Make Me Think, Revisited (2014)](http://www.sensible.com/dmmt.html) by Steve Krug. In the following sections we go over a number of Krug's rules with concrete examples. Note that the book may look somewhat outdated (in the end, web applications six years ago looked quite different from today), however the principles are general enough to remain applicable to this day.
+While this is well beyond the scope of our course, we present here a few basic rules that web applications should adhere to. These rules may seem obvious, but in practice are often ignored. This lecture is partially based on the book [Don't Make Me Think, Revisited (2014)](http://www.sensible.com/dmmt.html) by Steve Krug. In the following sections we go over a number of Krug's rules with concrete examples. Note that the book may look somewhat outdated (in the end, web applications seven years ago looked quite different from today), however the principles are general enough to remain applicable to this day.
 
-Before you continue, I suggest you head to [https://userinyerface.com/](https://userinyerface.com/) and "play" its game: attempt to fill in the form as quickly as you can. Along the way, you will come across many _extremely_ annoying user interface features that you have undoubtedly seen elsewhere on the web already. This (probably horrifying) experience shows why good UI design is so important.
+Before you continue, head to [https://userinyerface.com/](https://userinyerface.com/) and "play" its game: attempt to fill in the form as quickly as you can. Along the way, you will come across many _extremely_ annoying user interface features that you have undoubtedly seen elsewhere on the web already. This (probably horrifying) experience :rage: shows why good UI design is so important.
 
 ### Rule: Don't make me think
 
-The way a web site or web application (I tend to use the terms interchangeably here; the rules apply to both apps and sites) works should be self-evident; the user should not have to expend **cognitive effort** to understand what she can do.
+The way a web site or web application (we tend to use the terms interchangeably here; the rules apply to both apps and sites) works should be self-evident; the user should not have to expend **cognitive effort** to understand what she can do.
 
-Consider this example of [ebay.com](https://www.ebay.com/) :point_down::
+Consider this example of [ebay.com](https://www.ebay.com/):
 
 ![ebay web site](../img/design-ebay.png)
 
@@ -121,7 +111,7 @@ Consider this example of [ebay.com](https://www.ebay.com/) :point_down::
 
 :point_up: Here, it is very clear for the user what she can do: search for products, browse through the available items via product categories and shop for discounted electronics.
 
-Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/) :point_down::
+Contrast ebay with the following older example from [koopplein](https://web.archive.org/web/20140207233217/http://koopplein.nl/):
 
 ![koopplein web site](../img/design-koopplein.png)
 
@@ -139,7 +129,7 @@ When naming and formatting links, buttons, section headers, etc. adhere to **est
 
 Similarly, there are established style standards of how to format a link: in the early years of the web, blue underlined text was synonymous with a link and thus we are now stuck with the saying _10 blue links_ as a synonym for web search results.
 
-Users should also **not get lost within a web site**. A site should provide users with information on where they are and on how they arrived at that point. Ebay for instance leaves so-called **breadcrumbs** :point_down::
+Users should also **not get lost within a web site**. A site should provide users with information on where they are and on how they arrived at that point. Ebay for instance leaves so-called **breadcrumbs**:
 
 ![ebay web site](../img/design-ebay2.png)
 
@@ -161,11 +151,11 @@ It should be mentioned that Google is not the only offender here, take this exam
 
 <sup>Twitter, September 7, 2020.</sup>
 
-The Google/Twitter examples above are of course not accidental: user interface designers are not accidentally trying to disguise the fact that those are ads (also known as _promoted_ or _sponsored_ content). This is done on purpose: [we know that users are less likely to focus their attention on ads](https://doi.org/10.1145/1835449.1835459) if they recognize them as such. Disguising them to some degree means a higher likelihood of users paying attention to them. A higher engagement level means a higher financial return for the company. This is what is known as a **dark pattern**, more specifically the pattern of disguised ads. More formally, \*"dark patterns are user interface design choices that benefit an online service by coercing, steering, or deceiving users into making unintended and potentially harmful decisions." A recent [study of 11K shopping websites](https://webtransparency.cs.princeton.edu/dark-patterns/) found dark patterns in more than 10% of them (the more popular the shopping site, the more likely the appearance of dark patterns). Dark patterns exist in different domains, not just social web platforms, e-commerce sites or search engines: in the past, researchers have looked at dark patterns [in the design of games](http://fdg2013.org/program/papers/paper06_zagal_etal.pdf), [privacy](https://www.degruyter.com/downloadpdf/j/popets.2016.2016.issue-4/popets-2016-0038/popets-2016-0038.pdf) and [home robots](https://ieeexplore.ieee.org/abstract/document/8673274).
+The Google/Twitter examples above are of course not accidental: user interface designers are not accidentally trying to disguise the fact that those are ads (also known as _promoted_ or _sponsored_ content). This is done on purpose: [we know that users are less likely to focus their attention on ads](https://doi.org/10.1145/1835449.1835459) if they recognize them as such. Disguising them to some degree means a higher likelihood of users paying attention to them. A higher engagement level means a higher financial return for the company. This is what is known as a **dark pattern**, more specifically the pattern of disguised ads. Formally, "dark patterns are user interface design choices that benefit an online service by coercing, steering, or deceiving users into making unintended and potentially harmful decisions." A recent [study of 11K shopping websites](https://webtransparency.cs.princeton.edu/dark-patterns/) found dark patterns in more than 10% of them. 
 
 ### Rule: Minimize noise and clutter
 
-This rule does not have to be explained in great detail. Here is an example of ZDNet and how it looked in 2001 and 2014 respectively, to make things clear :point_down::
+This rule does not have to be explained in great detail. Here is an example of ZDNet and how it looked in 2001 and 2014 respectively, to make things clear:
 
 ![ZDNet web site](../img/design-zdnet-2001.png)
 
@@ -175,19 +165,19 @@ This rule does not have to be explained in great detail. Here is an example of Z
 
 <sup>ZDNet crawled on [August 31, 2014](https://web.archive.org/web/20140831235129/http://www.zdnet.com/).</sup>
 
-While it is not hard to go back to very old web designs and find faults in them (a not-too-serious look at the history of web design can be found [here](https://pavellaptev.github.io/web-dark-ages)), it should also be mentioned that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single page which could then be sent to the client in a single HTTP response.
+While it is not hard to go back to old web designs and find faults in them (a not-too-serious look at the history of web design can be found [here](https://pavellaptev.github.io/web-dark-ages)), it should also be mentioned that in those times, every single HTTP request/response pair was time-consuming (the Internet was slow) and expensive. It made sense to push as much content as possible into a single page which could then be sent to the client in a single HTTP response.
 
 ### Rule: If you cannot make it self-evident, make it self-explanatory
 
 Self-explanatory sites require users to expend a small amount of **cognitive effort**, that is, the mental effort it takes to engage in a task. When a site is not self-explanatory, a small amount of explanatory text can go a long way. In today's mobile world where a lot of content is accessed [_mobile first_](https://mayvendev.com/blog/mobilefirst), it is vital to keep the mobile user in mind who has to deal with a small screen, a touch-based interface and possibly many distractions while surfing the web.
 
-A positive example of this rule is the following Surveymonkey splash screen :point_down::
+A positive example of this rule is the following Surveymonkey splash screen:
 
 ![Surveymonkey](../img/design-surveymonkey.png)
 
 <sup>Surveymonkey crawled on [December 1, 2013](https://web.archive.org/web/20131201000510/https://www.surveymonkey.com/).</sup>
 
-In contrast, take a look at this entry page of a Dutch business and take a guess at what it does :point_down::
+In contrast, take a look at this entry page of a Dutch business and take a guess at what it does:
 
 ![Coffeecompany](../img/design-coffeecompany.png)
 
@@ -195,7 +185,7 @@ In contrast, take a look at this entry page of a Dutch business and take a guess
 
 <details> 
   <summary>Click to find out the answer! </summary>
-   This is the homepage of a Dutch cafe chain: https://coffeecompany.nl/ - not something easily guessable from the entry page. 
+   This is the homepage of a Dutch cafe chain: <a href="https://coffeecompany.nl/">Coffeecompany</a>&mdash;not something easily guessable from the entry page. 
 </details>
 
 The entry page (or home page) of a web application should answer a number of essential questions, none of which are answered in our example:
@@ -211,13 +201,11 @@ Lastly, **avoid happy talk**, that is text without any content for the sake of a
 
 ### Aesthetics matter (of course!)
 
-This may be obvious, but the look and feel of an application of course also influences both the users' _perceived_ usability as well as the _actual_ usability. An insightful piece of research conducted by [Sonderegger & Sauer](https://www.sciencedirect.com/science/article/pii/S0003687009001148) has measured this influence. They conducted an experiment with an objectively ugly and an objectively good looking mobile phone prototype: not only did the study participants rate the ugly phone as being less usable, they actually performed worse in a given task than the participants receiving the good looking device.
+This may be obvious, but the look and feel of an application of course also influences both the users' _perceived_ usability as well as the _actual_ usability. An insightful piece of research conducted by [Sonderegger & Sauer](https://www.sciencedirect.com/science/article/pii/S0003687009001148) has measured this influence. They conducted an experiment with an objectively ugly and an objectively good looking mobile phone prototype that had the same actual usability: not only did the study participants rate the ugly phone as being less usable, they actually performed worse in a given task than the participants receiving the good looking device.
 
 ## Usability testing: expectations vs. reality
 
-Our expectations of web users are often _not_ grounded in reality. We may expect users to be **rational**, **attentive** and having a **clear goal** in mind.
-
-Instead, the average web user:
+Our expectations of web users are often _not_ grounded in reality. We may expect users to be **rational**, **attentive** and having a **clear goal** in mind. Instead, the average web user:
 
 - quickly scans a web page (not even reading it);
 - decides within seconds whether or not a site is worth their attention (research on so-called _dwell time_ has shown this [again](https://dl.acm.org/citation.cfm?id=1835513) and [again](https://dl.acm.org/citation.cfm?id=2835833));
@@ -251,19 +239,17 @@ A typical usability setup has the following roles:
 - The **facilitator** sits next to her and guides her through the test.
 - The **observers** (developers of the app, managers, etc.) watch the usability test and discuss the tester's performance (and how to improve it) afterwards.
 
-This [blog post](https://asinthecity.com/2013/04/09/recording-mobile-device-usability-testing-sessions-guerrilla-style/) provides a good practical overview of usability testing with mobile devices, and includes imagery of the [participant and facilitator setup](https://benmelbourne.files.wordpress.com/2013/04/pop-up-mobile-usability-testing-lab-2.jpg) and the [observer setup](https://benmelbourne.files.wordpress.com/2013/04/pop-up-mobile-usability-testing-lab-5.jpg).
-
 The result of a usability test are a set of issues. Each of those issues should be assigned a **priority** (low, medium, high) and the next iteration of the development should focus on the high priority problems. No new issues should be added to the list until the most severe issues are fixed.
 
 ## Performance metrics
 
-Once web applications become complex, besides general usability we also need to consider various **performance metrics**, ideally metrics that are _user-centric_. A basic question to ask is: _how long does it take for the entire application to load?_. This is of course a rather crude metric and it is not always clear what exactly this means, due to polling, etc. We thus need more fine-grained performance metrics. The [web vitals section at Google's web.dev resource](https://web.dev/metrics/) provides a good overview of what questions to ask in order to measure aspects of an application's performance that are _relevant_ to the user. Let's focus on the three metrics that Google considers to be [core web vitals](https://web.dev/vitals/):
+Once web applications become complex, besides general usability we also need to consider various **performance metrics**, ideally metrics that are _user-centric_. A basic question to ask is: _how long does it take for the entire application to load?_ This is of course a rather crude metric and it is not always clear what exactly this means, due to polling, etc. We thus need more fine-grained performance metrics. [Google's web.dev resource](https://web.dev/metrics/) provides a good overview of what questions to ask in order to measure aspects of an application's performance that are _relevant_ to the user. Let's focus on the three metrics that Google considers to be [core web vitals](https://web.dev/vitals/):
 
 - Largest contentful paint ([LCP](https://web.dev/lcp/)): LCP measures the time it takes to load a page's main content, which correlates very well with users' perceived load speed.
 - First input delay ([FID](https://web.dev/fid/)): FID measures the time between a user first interacting with a page and the browser processing corresponding event handlers.
 - Cumulative layout shift ([CLS](https://web.dev/cls/)): CLS measures a page's visual stability by aggregating to what extent visible elements shift in the layout unexpectedly.
 
-As an example of a popular online web metrics tool let's take a look at Google's [https://web.dev/measure/](https://web.dev/measure/). How does TU Delft's homepage do in terms of its web performance? Let's find out :point_down::
+As an example of a popular online web metrics tool let's take a look at Google's [https://web.dev/measure/](https://web.dev/measure/). How does TU Delft's homepage do in terms of its web performance? Let's find out:
 
 ![performance pane](../img/design-performance.png)
 
@@ -271,13 +257,13 @@ As an example of a popular online web metrics tool let's take a look at Google's
 
 :point_up: Overall, it could be better. A click on [View Report](https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Fwww.tudelft.nl) shows not only more performance metrics but also actionable insights (e.g. _remove unused JavaScript_, _reduce initial server response time_, _avoid excessive DPOM size_, ...).
 
-An alternative service is [webhint.io](https://webhint.io/) (originally coming out of the Microsoft Edge development team). Once more, let's use the TU Delft home page as an example :point_down::
+An alternative service is [webhint.io](https://webhint.io/) (originally coming out of the Microsoft Edge development team). Once more, let's use the TU Delft home page as an example:
 
 ![performance pane](../img/design-performance2.png)
 
 <sup>Screenshot taken September 2, 2020.</sup>
 
-In both examples, we see that web performance only delivers part of the picture. There are many more metrics beyond those related to an application's _performance_. Other important types of web metrics revolve around accessibility and security.
+In both examples, we see that web performance only delivers part of the picture. There are many more metrics beyond those related to an application's _performance_ that we consider in this lecture. Other important types of web metrics revolve around accessibility and security.
 
 <debug-info markdown="block">
 Beyond online tools, browser extensions such as [Lighthouse](https://developers.google.com/web/tools/lighthouse/) and web performance libraries such as [Perfume.js](https://github.com/zizzamia/perfume.js) exist as well that allow you to gain more specific insights into your application's performance.
@@ -312,13 +298,13 @@ XHTML was designed to make processing of web pages **easier for machines** by ha
 
 With this introduction of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to implementing their own non-standardized features). A good resource to check which browser versions support which HTML5 feature and to what extent is [https://caniuse.com/](https://caniuse.com/).
 
-As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form%20features) :point_down::
+As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form%20features) in 2020:
 
 ![HTML5 form support](../img/design-html5-form.png)
 
 <sup>Screenshot taken on September 2, 2020.</sup>
 
-We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices - depending on their target population (and the most popular browsers among the target population), certain HTML5 features should be employed _with care_. That does not mean to _not_ use the latest HTML5 features, it just means that we need to be considerate of our users and provide them with options, even if they rely on browsers that are not supporting the features we use. As a concrete example, let's use the `<input type="date">` widget. Here is how the [MDN demo on this input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date) is rendered on Firefox and Safari respectively :point_down::
+We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices&mdash;depending on their target population (and the most popular browsers among the target population), certain HTML5 features should be employed _with care_. That does not mean to _not_ use the latest HTML5 features, it just means that we need to be considerate of our users and provide them with options, even if they rely on browsers that are not supporting the features we use. As an example, let's use the `<input type="date">` widget. Here is how the [MDN demo on this input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date) is rendered on Firefox and Safari respectively :point_down::
 
 ![HTML5 input date Firefox](../img/design-inputDate-firefox.png)
 
@@ -339,18 +325,20 @@ The initial list of HTML tags (1991/92) was **static**: `<title> <a> <isindex> <
 HTML5 introduced a number of **semantic HTML elements** including `<article> <footer> <header> <main> <aside> <section> <output>`. As a guideline, when creating an HTML document, it is always best to select the **most specific** element to represent your content (instead of only using `<div>`'s). Semantic elements provide **meaning** but do not force a particular presentation. Older HTML elements (pre-HTML5) often do force a particular presentation, e.g. `<b>` (bold) or `<i>` (italics). At the same time, those heavily used HTML elements cannot be moved to an obsolete state - as this would inevitably break a large portion of the web. For the browser vendors, backwards compatibility is a necessity, not an option. It should be pointed out that **semantic HTML** is quite different from the grand vision of the [Semantic Web](https://www.w3.org/standards/semanticweb/) :point_down::
 
 ```
-The Semantic Web is a Web of data — of dates and titles and part numbers and chemical
-properties and any other data one might conceive of.
+The Semantic Web is a Web of data — of dates and titles and part 
+numbers and chemical properties and any other data one might 
+conceive of.
 ```
 
 <debug-info markdown="block">
-If you are interested in how web applications are structured, the browser's dev tools are your friend! In Firefox, open the web developer tools and head to the *Inspector* tab. Hovering with the mouse over elements of the web application will highlight the corresponding HTML (and vice versa) as shown here for our course home page :point_down::
+If you are interested in how web applications are structured, the browser's dev tools are your friend! In Firefox, open the web developer tools and head to the *Inspector* tab. Hovering with the mouse over elements of the web application will highlight the corresponding HTML (and vice versa) as shown here for our course home page:
 
 ![Firefox web dev inspector tab](../img/design-inspector.png)
 
 <sup>Firefox web dev tooling. Inspector tab. Screenshot taken September 2, 2020.</sup>
 </debug-info>
 
+<optional-info markdown="block">
 ### Who decides the HTML standard
 
 HTML is widely used, which makes standardization a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (Microsoft, Google, Mozilla, Nokia, Baidu, Yandex, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required:
@@ -377,7 +365,7 @@ In rare cases, features added to a web standard can also be removed again, the [
 <sup>Screenshot taken on September 2, 2020.</sup>
 
 The W3C writes the following about the AppCache: _This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead._
-
+</optional-info>
 ## Self-check
 
 Here are a few questions you should be able to answer after having followed the lecture and having worked through the required readings:
