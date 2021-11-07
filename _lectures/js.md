@@ -34,17 +34,18 @@ _This is the densest web technology lecture of this course. Learning how to prog
   - [Design pattern I: Basic constructor](#design-pattern-i-basic-constructor)
   - [Design pattern 2: Prototype-based constructor](#design-pattern-2-prototype-based-constructor)
   - [Design pattern 3: Module](#design-pattern-3-module)
-- [Events and the DOM](#events-and-the-dom)
+- [Becoming interactive](#becoming-interactive)
   - [Document object model](#document-object-model)
   - [Events](#events)
-  - [:bangbang: Example 1: Changing an element's style](#bangbang-example-1-changing-an-elements-style)
-    - [:bangbang: Example 1: document.getElementById / document.querySelector](#bangbang-example-1-documentgetelementbyid--documentqueryselector)
+  - [Seven examples](#seven-examples)
+    - [:bangbang: Example 1: Changing an element's style](#bangbang-example-1-changing-an-elements-style)
+    - [:bangbang: Example 2: document.getElementById / document.querySelector](#bangbang-example-2-documentgetelementbyid--documentqueryselector)
     - [:bangbang: Example 3: creating new nodes](#bangbang-example-3-creating-new-nodes)
     - [:bangbang: Example 4: `this`](#bangbang-example-4-this)
     - [:bangbang: Example 5: mouse events](#bangbang-example-5-mouse-events)
     - [:bangbang: Example 6: a crowdsourcing interface](#bangbang-example-6-a-crowdsourcing-interface)
     - [:bangbang: Example 7: a typing game](#bangbang-example-7-a-typing-game)
-  - [Final notes ...](#final-notes-)
+- [Final notes ...](#final-notes-)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -955,9 +956,9 @@ Summarizing the module pattern:
   - Changing the type of membership (public/private) takes effort (unlike in Java).
   - Methods added on the fly later cannot access emulated private members (as seen in the last code snippet).
 
-## Events and the DOM
+## Becoming interactive
 
-In this section, we first introduce the DOM
+JavaScript was originally developed as language for the browser, adding interactive elements to the web experience. We now discuss how this interactivity is achieved.
 ### Document object model
 
 Having read the required readings, you should be somewhat familiar with the *Document Object Model* (DOM) and DOM events. In JavaScript we use the `document` object as our entry point to the DOM. It allows us to:
@@ -1013,7 +1014,9 @@ If you want to examine how web applications make use of events, the browser deve
 
 What follows are a number of examples that showcase this concept of writing code that is executed in response to events. Each example is presented as a **self-contained piece of code**: you can copy the code, save it in a file with ending `.html` and open it in your web browser.
 
-### :bangbang: Example 1: Changing an element's style
+
+### Seven examples
+#### :bangbang: Example 1: Changing an element's style
 
 ![DOM Example 1](../img/js-example1.png)
 
@@ -1078,7 +1081,7 @@ As we have not yet discussed styling (this comes up in one of our next lectures)
 </html>
 ```
 
-#### :bangbang: Example 1: document.getElementById / document.querySelector
+#### :bangbang: Example 2: document.getElementById / document.querySelector
 
 ![DOM Example 2](../img/js-example2.png)
 
@@ -1544,11 +1547,11 @@ In this example we do do make slight use of CSS (to flash a red background and a
 </html>
 ```
 
-### Final notes ...
+## Final notes ...
 
 In the seven DOM interaction examples shown here, we did not have to add a lot of code and thus **for presentation purposes** we chose to keep things lean and move all JavaScript code into the HTML file. This allows you to copy the code snippet at once and run/explore it. When writing web applications that go beyond those having just a few lines of code, this should be avoided: your JavaScript code should be in dedicated files and the object-oriented programming paradigm should be employed.
 
-Many of the concepts introduced here will come back in the later lectures&mdash;JavaScript will keep us busy right up to the last lecture of this course.
+Many of the concepts introduced throughout this lecture will come back in the later lectures&mdash;JavaScript will keep us busy right up to the last lecture of this course.
 
 <optional-info markdown="block">
 If you are already familiar with modern JavaScript you may wonder why we do not cover concepts such as promises and async/await (which were designed to solve the major issue that arise with callbacks) in this course. The reason is a lack of time. For those interested in how to make asynchronous programming in JavaScript less painful (and once you will have used callbacks in the programming project of this class you will understand what the phrase *callback hell* refers to), take a look at this [very detailed video](https://youtu.be/gB-OmN1egV8) on the topic.
