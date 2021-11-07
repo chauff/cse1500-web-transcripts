@@ -1020,7 +1020,7 @@ What follows are a number of examples that showcase this concept of writing code
 
 ![DOM Example 1](../img/js-example1.png)
 
-In this example, we have a web page that changes its background color when the first `<h1>` element is clicked; it changes the font color when the user presses <kbd>Enter</kdbd>. The currently set background and font colors are visible inside `<h2>` tags. 
+In this example, we have a web page that changes its background color when the first `<h1>` element is clicked; it changes the font color when the user presses <kbd>Enter</kbd>. The currently set background and font colors are visible inside `<h2>` tags. 
 
 As we have not yet discussed styling (this comes up in one of our next lectures), for now just accept the way in which we can change the background and font color in our example. For now, focus on the use of selectors to retrieve particular DOM elements and the application of `addEventListener` and `onkeydown` to link events to actions :point_down::
 
