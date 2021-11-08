@@ -811,13 +811,7 @@ console.log(TPGame.p1); //prints out "Alice"
 
 :point_up: Why do we need to redirect the prototype? Recall the prototype chain: when we make the call to `TPGame.getID()` the JavaScript runtime finds `getID()` to not be a property of `TPGame`. So it attempts to walk up the prototype chain and in order to make `Game` part of the `TPGame` prototype chain we have to manually set it.
 
-Why do we have to also set the `constructor` property? You will see if you run this piece of code and remove the line :point_down::
-
-```javascript
-TwoPlayerGame.prototype.constructor = TwoPlayerGame;
-```
-
-the code still works as expected. Why do we even add this line? If we do not add this line, then the `constructor` of `TwoPlayerGame.prototype` will be `Game` (check it out for yourself). With this extra line of code we "hand-wire" the correct constructor (which for `TwoPlayerGame.prototype` should be `TwoPlayerGame`). You can think of this as making sure the wiring is correct, even if your code does not rely on this wiring at the moment.
+Why do we have to also set the `constructor` property? You will see if you run this piece of code and remove line 26 the code still works as expected. Why do we even add this line? If we do not add this line, then the `constructor` of `TwoPlayerGame.prototype` will be `Game` (check it out for yourself). With this extra line of code we "hand-wire" the correct constructor (which for `TwoPlayerGame.prototype` should be `TwoPlayerGame`). You can think of this as making sure the wiring is correct, even if your code does not rely on this wiring at the moment.
 
 Here is one example where it does indeed matter whether whether this wiring is correct :point_down::
 
@@ -988,7 +982,7 @@ The last two ways of selecting DOM elements allow complex selector rules to be s
 
 ### Events
 
-The browser provides us with an API to access events, such as keyboard events (a key was pressed), mouse events (the mouse moved somewhere), window events (the window was resized, the window lost focus) etc. In our course, we mostly focus on keyboard and mouse events. 
+The browser provides us with an API to access events, such as keyboard events (a key was pressed), mouse events (the mouse moved somewhere), window events (the window was resized, the window lost focus), clipboard events (the clipboard was modified), touch events (a touch screen was touched), etc. **In our lectures, we mostly focus on keyboard and mouse events.** 
 
 Writing the client-side of a web application centers around the question of _what happens after event X has occurred?_. The code examples we present in the next few sections show off the **callback principle**, which we come across in all of JavaScript: we define **what happens _when_ an event fires**. 
 
@@ -1085,7 +1079,7 @@ As we have not yet discussed styling (this comes up in one of our next lectures)
 
 ![DOM Example 2](../img/js-example2.png)
 
-Here :point_down: we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box. As you can see there are different ways (we have listed four here) of pinpointing a DOM element:
+Here we have a page with two elements: a button and a text box. A click on the button will show `Hello World!` in the text box. As you can see there are different ways (we have listed four here) of pinpointing a DOM element:
 
 ```html
 <!DOCTYPE html>
@@ -1294,7 +1288,7 @@ We can avoid code duplication with the use of `this` in order to _read out_ the 
         let times = parseInt(this.innerHTML);
         let input = parseFloat(document.getElementById("input").value);
         let res = times * input;
-        alert("The result is " + res);
+        alert(`The result is ${res}`);
       }
     </script>
   </body>
@@ -1321,7 +1315,7 @@ A number of different mouse events exist (`mouseup`, `mousedown`, `mousemove`, .
   5. `mousemove`
   6. `mouseup`
 
-Let's look at an example :point_down: of `mouseover` and `mouseout`. A timer starts and remains active as long as the mouse pointer hovers over the button element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
+Let's look at an example of `mouseover` and `mouseout`. A timer starts and remains active as long as the mouse pointer hovers over the button element and it resets when the mouse leaves the element. Each of the three buttons has a different timer speed:
 
 ```html
 <!DOCTYPE html>
@@ -1457,13 +1451,13 @@ Here is another event that can be useful, especially for text-heavy interfaces: 
 
 ![DOM Example 7](../img/js-example7.png)
 
-The last example is a typing game :point_down:. Given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keydown` event type (note that until recently `keypress` was an often used event for this purpose; it has been [deprecated](https://developer.mozilla.org/en-US/docs/Web/API/Document/keypress_event) and should no longer be used). 
+The last example is a typing game. Given a piece of text, type it correctly as fast as possible. The interface records how many seconds it took to type and alerts the user to mistyping. In this example we make use of the `keydown` event type (note that until recently `keypress` was an often used event for this purpose; it has been [deprecated](https://developer.mozilla.org/en-US/docs/Web/API/Document/keypress_event) and should no longer be used). 
 
 We start the timer with [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) (incrementing once per second), which returns a handle that we can later pass to [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) to stop the associated callback from executing (thus stopping the clock). 
 
 You see here too how to determine which key was pressed: we use the `KeyboardEvent`'s `key` property. The site [keycode.info](https://keycode.info/) makes it easy for you to find out what `KeyboardEvent` property (there are several, we care about `key`) each key of your keyboard assigned to!
 
-In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those lines by their use of the `.style` property.
+In this example we do do make slight use of CSS (to flash a red background and alter the color of the timer in the end), you can recognize those lines by their use of the `.style` property:
 
 ```html
 <!DOCTYPE html>
