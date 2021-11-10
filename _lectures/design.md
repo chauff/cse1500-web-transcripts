@@ -341,7 +341,7 @@ If you are interested in how web applications are structured, the browser's dev 
 <optional-info markdown="block">
 ### Who decides the HTML standard
 
-HTML is widely used, which makes standardization a slow process. Many different stakeholders are part of W3C's [Web Platform Working Group](https://www.w3.org/WebPlatform/WG/) (Microsoft, Google, Mozilla, Nokia, Baidu, Yandex, etc.). The standardization process of the W3C is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required:
+HTML is widely used, which makes standardization a slow process. Until 2019 the W3C was leading in the standardization of HTML. Its standardization process  is elaborate, as a wide variety of stakeholders have to build consensus. Confusingly, a **W3C recommendation** is the highest level of standardization possible, before achieving it, a number of steps leading up to the recommendation are required:
 
 1. **Working Draft**: _a document that W3C has published for review by the community, including W3C Members, the public, and other technical organizations._
 2. **Candidate Recommendation**: _a document that W3C believes has been widely reviewed and satisfies the Working Group's technical requirements. W3C publishes a Candidate Recommendation to gather implementation experience._
@@ -356,7 +356,7 @@ Informally, one could say that the W3C standardizes what the browser vendors hav
 
 Consensus building takes time. HTML5 for instance was a candidate recommendation in Q4-2012 and became a W3C recommendation in Q4-2014. HTML5.1 was a candidate recommendation in Q1-2015 and became a recommendation in Q4-2016.
 
-As of August 2018, [HTML5.3](https://www.w3.org/TR/html53/) has a _Working Draft_ status; if you look at the standard text you will find it to be very elaborate (this is a 1,000+ pages document!) and precise, sufficiently so that any browser vendor can take the text and implement the features described in it without ambiguity.
+In 2019, the W3C turned over control of the HTML5 standard to the Web Hypertext Application Technology Working Group or WHATWG. In contrast to the snapshot-based releases of the W3C, the WHATWG works with the principle of a "living standard". This living HTML standard specification document can be found [here](https://html.spec.whatwg.org/multipage/). 
 
 In rare cases, features added to a web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner (by adding a manifest file to a site containing no more than a few lines of text), but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favor of another set of technologies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is [still supported by all major browsers apart from the latest Chrome versions](https://caniuse.com/#search=appcache):
 
