@@ -60,13 +60,11 @@ You can clone the GitHub repository from VSC following [these instructions](http
 
 _Note: after adding the URL of the remote repository and after indicating the folder where the local repository will be created, you will be asked for the GitHub user name and password._
 
-When you edit your project, the `Source Control` icon :point_down: at the left will indicate the number of files modified. You can record a set of changes in your local repository by clicking on *Commit All*. Remember to add a meaningful message so it can be useful to follow the status of the project. You can see how to use other git commands [here](https://git-scm.com/docs).
+When you edit your project, the `Source Control` icon :point_down: at the left will indicate the number of files modified. You can record a set of changes in your local repository by clicking on `Commit All`. Remember to add a meaningful message so it can be useful to follow the status of the project. Once your changes are registered in your local repository, you synchronize with the remote repository, so that your changes make it to the shared repository on GitHub. In order to do that, use the `Push` command you find in the same menu as the commit commands. In order to pull the code from the remote repository (where your partner is also pushing to), use the `Pull` command. You can see how to use other git commands [here](https://git-scm.com/docs).
 
 ![VSC source](../img/VSC-source.png)
 
 <sup>Source control view of VSC.</sup>
-
-Once your changes are registered in your local repository, you synchronize with the remote repository, so that your changes make it to the shared repository on GitHub. In order to do that, use the *Push* command you find in the same menu as the commit commands. In order to pull the code from the remote repository (where your partner is also pushing to), use the *Pull* command.
 
 If you want to give this setup a try, we suggest you start setting things up early and get help from the TAs if you get stuck. All TAs are familiar with `git`, GitHub and VSC!
 
@@ -78,20 +76,16 @@ If you do not yet care about `git`, use the Live Share option instead. For small
 
 <sup>VSC's *Extensions* tab.</sup>
 
-After installing the extension in VSC you will see a *Live Share* icon at the bottom of the VSC window. The first time you click on it you will be asked to sign in to VSC with Microsoft or GitHub. After signing in, you will see in your VSC the URL you can share with your team member. Once your team member clicks the link, her local instance of VSC will display the shared project. Host and partners can then edit the files and see any changes made by their partners in real time. You can even debug collaboratively: when the host starts debugging, partners can not only see the debugging window, but they can also use debugging options (step into, step over, add breakpoints, write expressions to evaluate, etc.).
+After installing the extension in VSC you will see a *Live Share* icon in the left-hand side menu of VSC. The first time you click on it you will be asked to sign in to VSC with Microsoft or GitHub. After signing in, you will see in your VSC the URL you can share with your team member. Once your team member clicks the link, her local instance of VSC will display the shared project. Host and partners can then edit the files and see any changes made by their partners in real time. You can even debug collaboratively: when the host starts debugging, partners can not only see the debugging window, but they can also use debugging options (step into, step over, add breakpoints, write expressions to evaluate, etc.).
 
 **Bear in mind that only the project owned by the host is actually modified. That also means that once the host closes VSC (or the collaborative session), their partners can no longer collaborate until it is open again. It also means that the non-hosting partner has no access to the code, unless it is shared via another channel.**
 
-You can find [here](https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare) more information about VS Live Share.
-
 ## Debugging Node.js scripts
 
-You can enter VSC's debugging window by clicking on the *Run* icon in the left-hand side menu. From this window you can run the code in debug mode by clicking on the *Run and Debug* button.
+You can enter VSC's debugging window by clicking on the `Run and Debug` icon in the left-hand side menu of VSC. From this window you can run the code in debug mode by clicking on the `Run and Debug` button.
 
 The execution will stop at each breakpoint you have defined. Once the execution stops, you will be able to watch the values of the variables, the values of expressions you define, and the call stack. From here you can continue or execute the next lines of code step by step.
 
-Since JavaScript is [dynamically typed](https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_typing) a lot of common programming mistakes can remain unnoticed before running js code. [`@ts-check`](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript) is a good tool to catch some of these mistakes at the very moment you type your code.
+Since JavaScript is [dynamically typed](https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_typing) common programming mistakes can remain unnoticed before running the code. [`@ts-check`](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript) is a good tool to catch some of these mistakes at the very moment you write your code.
 
 You can find more information about debugging in VSC [here](https://code.visualstudio.com/docs/editor/debugging).
-
-To debug the client-side, use the [`Debug: Open Link`](https://code.visualstudio.com/updates/v1_48#_debug-open-link-command) command from the VSC command palette.
