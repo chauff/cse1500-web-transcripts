@@ -3,7 +3,7 @@ layout: default
 permalink: /assignmentI/
 linkname: Assignment HTTP+Design
 ordering: 1
-warning: true
+warning: false
 ---
 
 # Assignment HTTP+Design
@@ -45,7 +45,7 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 ## 1. HTTP request messages: GET/HEAD
 
 <debug-info markdown="block">
-👉 Let us start with a few hints:
+👉 Let us start with a few pointers:
 
 - This assignment requires you to work on the shell. If you are not familiar with this type of command line interface, take a look at this [MIT class](https://missing.csail.mit.edu/); it covers the *missing semester of computer science education* and introduces a range of practical tools, including in lesson 1 [the shell](https://missing.csail.mit.edu/2020/course-shell/).
 - To store `telnet`'s or `openssl`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.tudelft.nl 80|tee out` will save all output to a file called `out`.
