@@ -3,7 +3,7 @@ layout: default
 permalink: /css/
 linkname: CSS
 ordering: 5
-warning: true
+warning: false
 ---
 
 # CSS: the language of web design <!-- omit in toc -->
@@ -29,11 +29,11 @@ warning: true
   - [:bangbang: ::before and ::after](#bangbang-before-and-after)
 - [:bangbang: Data attributes](#bangbang-data-attributes)
 - [Element positioning](#element-positioning)
-  - [Display Types](#display-types)
-  - [`grid` Layout](#grid-layout)
+  - [Display types](#display-types)
+  - [Grid layout](#grid-layout)
   - [CSS units and functions](#css-units-and-functions)
-    - [Essential CSS units of measurement](#essential-css-units-of-measurement)
-    - [Basic CSS functions](#basic-css-functions)
+    - [Units of measurement](#units-of-measurement)
+    - [Functions](#functions)
   - [:bangbang: Position](#bangbang-position)
     - [position:relative](#positionrelative)
     - [position:absolute](#positionabsolute)
@@ -62,16 +62,12 @@ warning: true
   - :headphones: An entire [podcast series](https://pod.link/thecsspodcast) by Una Kravets and Adam Argyle about CSS exists too!
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
   - The [CSS grid generator](https://cssgrid-generator.netlify.app/) can help you wrap your head around the main CSS grid properties.
-  - If you are looking for styling challenges, take a look at the weekly [CodePen Challenges](https://codepen.io/challenges/).
-  - At [https://flukeout.github.io/](https://flukeout.github.io/) you find a small game that allows you to practice CSS selectors.
+  - At [https://flukeout.github.io/](https://flukeout.github.io/) you find a game to practice CSS selectors.
 - Recommended readings:
-  - [The state of CSS 2019](https://2019.stateofcss.com/): a developer survey on the CSS features that are being used and seen as important going forward.
+  - [The state of CSS 2020](https://2020.stateofcss.com/): a developer survey on the CSS features that are being used and seen as important going forward.
   - [Extensive post](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS) on Firefox's developer tools for CSS.
   - :closed_book: Chapters 1-4 and chapter 13 of [The Book of CSS3: A developer's guide to the future of web design](https://nostarch.com/css3_2e) by Peter Gasston (2nd edition, 2014).
   - [A blog post on the history of CSS: Old CSS, new CSS](https://eev.ee/blog/2020/02/01/old-css-new-css/)
-  - To make sense of CSS positioning, take a look [here](https://alistapart.com/article/css-positioning-101).
-  - If you want to look behind the scenes of a rendering engine, read Mozilla's blog post on their [CSS engine Quantum CSS](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/).
-  - Polished web applications typically contain _skeleton loaders_ (or _skeleton screens_) that provide [an illusion of speed](https://css-tricks.com/building-skeleton-screens-css-custom-properties/).
 - Relevant scientific publications:
   - Meyerovich, Leo A., and Rastislav Bodik. [Fast and parallel webpage layout](https://dl.acm.org/citation.cfm?id=1772763). Proceedings of the 19th international conference on WWW. 2010.
   - Panchekha, Pavel, and Emina Torlak. [Automated reasoning for web page layout](https://doi.org/10.1145/2983990.2984010). Proceedings of the 2016 ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications. 2016.
@@ -88,15 +84,15 @@ warning: true
 
 ![Weather app](../img/css-weather.png)
 
-<sup>Screenshot of our [CSS weather demo](https://codepen.io/charlottehase/full/abzYoQp).</sup>
+<sup>[CSS weather demo](https://codepen.io/charlottehase/full/abzYoQp).</sup>
 
-At [CodePen](https://codepen.io/) you find our [CSS weather demo](https://codepen.io/charlottehase/full/abzYoQp) that shows off some of CSS capabilities. Throughout this transcript we will refer to it from time to time, especially when it comes to discussing CSS animations; by the end of this lecture you will be able to create similar animations yourself. We added elaborate comments that should help you get started to explore the demo code. This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>`) the demo also shows off how to set up an element's style in JavaScript.
+At [CodePen](https://codepen.io/) you find our [CSS weather demo](https://codepen.io/charlottehase/full/abzYoQp) that shows off some CSS capabilities. Throughout this transcript we will refer to this demo from time to time. We added elaborate comments that should help you get started exploring the demo code. This demo contains only a single image (the TU DELFT EWI building), everything else is designed with CSS. Since some elements appear hundreds of times (e.g., every rain drop is a separate `<span>`, every cloud is a `<div>` element) the demo also shows off how to set up an element's style in JavaScript.
 
-If you want to find inspirations about what is possible with a bit of HTML, CSS (and JavaScript), it is worthwhile to explore [CodePen](https://codepen.io/) and what it has to offer.
+If you want to find inspirations about what is possible with HTML, CSS (and JavaScript), it is worthwhile to explore [CodePen](https://codepen.io/) (a platform where frontend designers share and learn).
 
 ## A word of warning
 
-This tweet :point_down: sums up a lot of CSS experiences - some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements before CSS grid came along), will cost you a lot of time.
+The tweet below sums up a lot of CSS experiences&mdash;some things are easy with CSS (animations come to mind), while others, which intuitively should not be that hard to accomplish (e.g. the vertical alignment of elements before CSS grid came along), will cost you a lot of time.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">when I think I&#39;m a fairly decent programmer, and then try and align two buttons next to each other in CSS <a href="https://t.co/v43Lp9Vv0U">pic.twitter.com/v43Lp9Vv0U</a></p>&mdash; I Am Devloper (@iamdevloper) <a href="https://twitter.com/iamdevloper/status/936199543099621376?ref_src=twsrc%5Etfw">November 30, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -104,11 +100,11 @@ Another important bit of information comes from Addy Osmani :point_down::
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">border: 1px solid red; is the console.log of CSS</p>&mdash; Addy Osmani (@addyosmani) <a href="https://twitter.com/addyosmani/status/1275700187491639298?ref_src=twsrc%5Etfw">June 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Finally, remember to take a look at [caniuse.com](https://caniuse.com/) if you find different browsers showing different renderings of your styling. As a concrete example, you may have noticed that the hyperlink styling on our course page looks slightly different in Firefox and Chrome: while in Firefox the underline and overline are relatively thick, in Chrome they are not. The reason is that the CSS property `text-decoration-thickness` is at the moment only supported in Firefox and Safari as seen [here](https://caniuse.com/#search=text-decoration-thickness).
+Finally, remember to take a look at [caniuse.com](https://caniuse.com/) if you find different browsers showing different renderings of your styling.
 
 ## A bit of history
 
-The CSS - or **Cascading Style Sheets** - language describes how elements in the document object model (DOM) should be rendered. As other web technologies, CSS can be considered to be a victim of the browser wars - which led to years of inactivity in the standard's refinement:
+The **Cascading Style Sheets** (CSS) language describes how elements in the DOM should be rendered. As other web technologies, CSS can be considered to be a victim of the browser wars&mdash;which led to years of inactivity in the standard's refinement:
 
 - **CSS1** became a W3C recommendation in 1996. It had support for fonts, colors, alignment, margins, ids and classes.
 - Two years later, **CSS2** became a W3C recommendation, adding support for media queries and element positioning (among others). The W3C was ready to get started on CSS3. However, the browser support for CSS2 remained inconsistent; the W3C decided to focus on fixing inconsistencies with CSS2.1.
@@ -119,7 +115,7 @@ Any CSS module developed after CSS2.1 can be considered as CSS3. There will not 
 
 ## Takeaways of the required readings
 
-Having worked through the required readings, you should be able to style HTML elements with CSS. You know that style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
+Having worked through the required readings, you should be able to add basic styling to HTML elements. You know that style sheets are processed in order: later declarations override earlier ones if they are on the same or a higher specificity level.
 
 You know that the following code snippet shows a **CSS rule** :point_down::
 
@@ -132,21 +128,17 @@ body {
 
 :point_up: Here, `body` is a **selector**, `background-color` and `color` are **properties** and `#ffff00` as well as `gold` are **values**. You know the difference between a `class` and an `id` attribute and how to make use of both in CSS.
 
-_Note_: In this example :point_up: one color value is represented by its hex value, another one by name. Throughout this transcript, we often use color names - there are more than 140 color names that all modern browsers recognize ([a nicely formatted list is available on Wikipedia](https://en.wikipedia.org/wiki/Web_colors#X11_color_names)). Besides hex values, colors can also be represented by their `rgba` values (red, green, blue, alpha). We suggest [convertingcolors.com](https://convertingcolors.com/) as one option to convert between different color formats.
+_Note_: In this example :point_up: one color value is represented by its hex value, another one by name. Throughout this transcript, we often use color names&mdash;there are more than 140 color names that all modern browsers recognize ([a nicely formatted list is available on Wikipedia](https://en.wikipedia.org/wiki/Web_colors#X11_color_names)). Besides hex values, colors can also be represented by their `rgba` values (red, green, blue, alpha). We suggest [convertingcolors.com](https://convertingcolors.com/) as one option to convert between different color formats.
 
 You have also learned about two types of style sheets: the **browser's style sheets** (also called the _internal stylesheets_ or _default styles_) and the **web application style sheets**, the latter overriding the former. There is a third type of style sheets and that are the **user style sheets**: user style sheets allow users to override the web applications' look and feel according to their own needs (e.g. larger font sizes or specific colors).
 
-In this lecture, we move beyond these basics and introduce a number of more advanced CSS concepts.
-
-:bangbang: **We suggest to work with the toy examples presented here and not only render them yourself in the browser, but also make changes to the CSS to see the impact of those changes. Find out what your browser's Style Editor and Inspector can do!**
-
-Let's dive into the details!
+We now move beyond these basics and introduce a number of more advanced CSS concepts.
 
 ## Pseudo-classes
 
 A **pseudo-class** is a keyword added to a **selector** that indicates _a particular state or type_ of the corresponding element. Pseudo-classes allow styling according to, among others, **document external** factors such as mouse movements and user browsing history as well as **element external** factors such as the placement of the element within the document structure.
 
-Pseudo-classes are added to a selector with a colon (`:`) separating them :point_down::
+Pseudo-classes are added to a selector with a colon (`:`) separating them:
 
 ```css
 selector:pseudo-class {
@@ -155,16 +147,16 @@ selector:pseudo-class {
 }
 ```
 
-In the upcoming sections, we introduce the following pseudo-classes: `nth-child`, `nth-of-type`, `root`, `hover`, `active`, `visited`, `enabled` and `disabled`. This list is by no means complete (take a look at this list of [pseudo-classes implemented in most modern browsers](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)), but sufficient for our purposes.
+In the upcoming sections, we introduce the following pseudo-classes: `nth-child`, `nth-of-type`, `root`, `hover`, `active`, and `visited`, `enabled` and `disabled`. This list is by no means complete (take a look at this list of [pseudo-classes implemented in most modern browsers](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)), but sufficient for our purposes.
 
 ### :bangbang: nth-child(X) and nth-of-type(X)
 
-Imagine you want to show off a number of game statistics on the splash screen of your web application. To increase readability, the background and font colors of the items should alternate. There are various ways to do this, here are two simple ones:
+Imagine you want to show off a number of game statistics on the splash screen of your web application. To increase readability, the background and font colors of the items should alternate. There are various ways to do this, here are two:
 
 - We can _hardcode_ the CSS rule of every element, ending up with as many rules as we have game statistics to show off. This is not maintainable.
 - We write two CSS rules (one per color choice), assign each to a class (e.g. `.odd` and `.even`) and then alternate the class assignment of the elements holding the game statistics. Better than the first option, but still not ideal. What happens if we want to include a game statistic in the middle of the existing list? All subsequent game statistics would have to be assigned a different class to maintain the alternating colors styles.
 
-Ideally, we only create two CSS rules and solve the rest (alternate assignment of colors) with pseudo-classes. And that's exactly what we can do with the two pseudo-classes we introduce now:
+Ideally, we only create two CSS rules and solve the rest (alternate assignment of colors) automatically. And that's exactly what we can do with the two pseudo-classes we introduce now:
 
 - [`:nth-child(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) is any element that is the Xth **child element** of its parent;
 - [`:nth-of-type(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type) is any element that is the Xth **sibling** of its type.
@@ -174,19 +166,19 @@ In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represent
 If we are aiming at the first and/or last child or sibling element, we also have additional pseudo-classes available to us:
 
 | Pseudo-class     | Equivalent to          |
-| ---------------- | ---------------------- |
+| :--------------- | :--------------------- |
 | `:first-child`   | `:nth-child(1)`        |
 | `:last-child`    | `:nth-last-child(1)`   |
 | `:first-of-type` | `:nth-of-type(1)`      |
 | `:last-of-type`  | `:nth-last-of-type(1)` |
 
-Let's see how this looks in a toy example. Lets style a list of five game statistics, each one being held by a `<div>` element. We also add a `<h1>` element for our header (_Game statistics_). Our DOM tree thus looks as follows :point_down::
+Let's see how this looks in a toy example. Lets style a list of five game statistics, each one being held by a `<div>` element. We also add a `<h1>` element for our header (_Game statistics_). Our DOM tree thus looks as follows:
 
 ![CSS DOM tree](../img/css-dom-tree-simple.png)
 
 <sup>"Hand-drawn" DOM tree. It corresponds to the HTML document below.</sup>
 
-The corresponding HTML document with _inline_ styling showcases the pseudo-classes `:nth-child` and `:nth-of-type` :point_down::
+The corresponding HTML document with _inline_ styling showcases the pseudo-classes `:nth-child` and `:nth-of-type`:
 
 ```html
 <!DOCTYPE html>
@@ -226,7 +218,7 @@ The corresponding HTML document with _inline_ styling showcases the pseudo-class
 </html>
 ```
 
-:bangbang: Save this code :point_up: in a file and open it in your browser. Right-click anywhere on the page and select <kbd>Inspect element</kbd> (Firefox) or <kbd>Inspect</kbd> (Chrome). This will open the dev tools' page inspector. If you use Firefox, you should see the following [interface](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/UI_Tour) :point_down::
+:bangbang: Save this code :point_up: in a file and open it in your browser. Right-click anywhere on the page and select <kbd>Inspect element</kbd> (Firefox) or <kbd>Inspect</kbd> (Chrome). This will open the dev tools' page inspector. If you use Firefox, you should see the following interface:
 
 ![CSS pseudo-class](../img/css-pseudo-classes.png)
 
@@ -305,7 +297,7 @@ In fact, since 2016 (_yes, it took that long_), [CSS variables](https://develope
 
 :point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custom prefix `--` and can be accessed using the `var()` function. Non-global CSS variables can be added in the same manner to any element, though they are then only available within their `{....}` block.
 
-For our course homepage we developed several themes (screenshots of all of them can be found in [this GitHub repo](https://github.com/chauff/cse-theme)), before settling on the final one you are seeing now. In order to make the creation of different themes efficient, we created variables for everything customizable (mostly colors). Take a look at the page inspector and explore the 39 variables we created for this purpose :point_down::
+For our course homepage we developed several themes, before settling on the final one you are seeing now. In order to make the creation of different themes efficient, we created variables for everything customizable (mostly colors). Take a look at the page inspector and explore the more than 40 variables we created for this purpose :point_down::
 
 ![CSS course homepage color theme](../img/css-color-theme2.png)
 
@@ -321,7 +313,7 @@ Earlier on, we listed mouse movements as one of the document external factors th
 - `:active` is a selector that becomes active when the element is currently _being active_ (e.g. while it is _being clicked_).
 - `:visited` is a selector that selects links a user has _already visited_. It is thus more specific than `:hover` and `:active` which apply to any type of element, not just links.
 
-Take a look at our slightly revised game statistics example which showcases all three pseudo-classes :point_down:. :bangbang: Store the code in a file, and open it in your browser. Use the mouse to hover over/click on elements and note how the color and border properties change.
+Take a look at our slightly revised game statistics example which showcases all three pseudo-classes :point_down:. When running this example, use the mouse to hover over/click on elements and note how the color and border properties change.
 
 ```html
 <!DOCTYPE html>
@@ -393,7 +385,7 @@ Particularly helpful for board game applications are the pseudo-classes `:enable
 
 Imagine a game element that is only available sometimes; in our [balloons demo game](https://github.com/chauff/balloons-game) for instance, once a letter has been chosen in the game, it is no longer possible to select it again. This information should be visually conveyed to the user. To do this, we enable/disable an element and define the look of the element in its two states with pseudo-elements `:enabled` and `:disabled`.
 
-These two pseudo-classes are not available for all elements (as not all elements are clickable), but they are available, among others, for `<button>`, `<input>` and `<textarea>`. So, in order to continue with our game statistics example, we now replace all `<div>` elements (which cannot be enabled/disabled) with `<button>` elements. We add an event listener to every button: once it has been clicked, it will be disabled :point_down:. According to our styling rules, disabled buttons are greyed out. We define hover/active pseudo-classes for enabled buttons only via `button:enabled:active`; it is thus possible to combine certain pseudo-classes. Once a button is disabled, its style will no longer change, no matter the mouse actions :point_down::
+These two pseudo-classes are not available for all elements (as not all elements are clickable), but they are available, among others, for `<button>`, `<input>` and `<textarea>`. So, in order to continue with our game statistics example, we now replace all `<div>` elements (which cannot be enabled/disabled) with `<button>` elements. We add an event listener to every button: once it has been clicked, it will be disabled :point_down:. According to our styling rules, disabled buttons are greyed out. We define hover/active pseudo-classes for enabled buttons only via `button:enabled:active`; it is thus possible to combine certain pseudo-classes. Once a button is disabled, its style will no longer change, no matter the mouse actions:
 
 ```html
 <!DOCTYPE html>
@@ -711,13 +703,11 @@ The relevant CSS code snippets in our CSS weather demo looks as follows:
 }
 ```
 
-:point*up: The rounded edges are achieved via the [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) property. We have not yet introduced element positioning, but note that [`position: absolute`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) positions an element \_relative to its closest positioned ancestor*. Since we know that pseudo-elements `::before` and `::after` are the first and last child of the element `E` they have been defined for respectively, their closest positioned ancestor is `E`. we can use `position:absolute` to create the slight offset we need to achieve the cloud effect.
+:point_up: The rounded edges are achieved via the [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) property. We have not yet introduced element positioning, but note that [`position: absolute`](https://developer.mozilla.org/en-US/docs/Web/CSS/position) positions an element *relative to its closest positioned ancestor*. Since we know that pseudo-elements `::before` and `::after` are the first and last child of the element `E` they have been defined for respectively, their closest positioned ancestor is `E`. We can use `position:absolute` to create the slight offset we need to achieve the cloud effect.
 
 <debug-info markdown="block">
-Note that above we include the `content` property, even though it is empty: `content: ''`. This is required; if a pseudo-element has its `content` property not set, the pseudo-element will not be rendered.
+Note that above we include the `content` property, even though it is empty and thus `content: ''`. This is required; if a pseudo-element has its `content` property not explicitly set, the pseudo-element will not be rendered.
 </debug-info>
-
-:bangbang: Another good example of this usage of pseudo-elements can be found [on CodePen](https://codepen.io/nocni_sovac/pen/poyabaB): here, 100 hexagon shapes are created, each from a rectangle (a `<div>`) and two triangles (the `::before` and `::after`). Take a look at the CSS style via the page inspector. Besides hexagons, a whole range of [additional shapes](https://css-tricks.com/the-shapes-of-css/) can be created in a similar manner.
 
 ## :bangbang: Data attributes
 
@@ -847,8 +837,6 @@ The canonical example for `data-` attributes are tooltips as they provide useful
 
 This example :point_up: also showcases the use of the [`cursor`](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor) property. Hovering over the list items results in a help icon. Note, that `cursor: none` results in no cursor being rendered, though this should be used with care as it tends to confuse users. The `position`, `bottom` and `left` properties will be discussed next (in short: they determine the placement of the tooltip).
 
-As a final example, take a look at [intro.js](https://introjs.com/), a small JavaScript library whose purpose is to provide an interactive step-by-step guide through a user interface (imagine you have a web app with many features that you want new users to know about). The steps are defined by adding `data-intro` attributes to HTML elements.
-
 ## Element positioning
 
 One of the most complex aspects of CSS are the myriad of ways to achieve element positioning. MDN's [CSS layout guide](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) provides you with a good idea of what options exists. We here cover three types of positioning in this order:
@@ -934,12 +922,12 @@ However, it serves a purpose: it helps us to understand how the different elemen
 
 Having introduced elements' flow and block as well as inline elements, we can now move on to display types.
 
-### Display Types
+### Display types
 
-The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) property enables us to change the element type (e.g. from block-level to inline), _hide_ elements from view and determine the layout of its children.
+The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) property enables us to change the element type (e.g. from block-level to inline), _hide_ elements from view and determine the layout of its children. These are the most important display types:
 
 | Value            | Description                                                                                 |
-| ---------------- | ------------------------------------------------------------------------------------------- |
+| :--------------- | :------------------------------------------------------------------------------------------ |
 | `display:inline` | The element is treat as an inline element.                                                  |
 | `display:block`  | The element is treated as a block element (line breaks before and after the element).       |
 | `display:none`   | The element (and its descendants) are hidden from view; no space is reserved in the layout. |
@@ -947,17 +935,19 @@ The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) proper
 
 There [are more display types](https://developer.mozilla.org/en-US/docs/Web/CSS/display), but for the purposes of our class these four are sufficient. Probably the most relevant for the board game project (next to using the grid layout) is `display:none` as it allows us to hide an element from view with a single line of CSS.
 
-### `grid` Layout
+### Grid layout
 
-As the name suggests, a `display` type of `grid` allows us to create a two-dimensional grid layout within a page. This relatively new construct to CSS reduces the effort required to implement grid-like layouts. Previously, one would implement a grid through the use of `float`s, for example.
+As the name suggests, a `display` type of `grid` allows us to create a two-dimensional grid layout within a page. This relatively new construct to CSS reduces the effort required to implement grid-like layouts. Such grids can be arbitrarily complex as seen in our [stained glass window demo](https://codepen.io/charlottehase/full/xxrRmXK):
 
-To demonstrate the basics of implementing a grid layout, let's walk through creating a simple 3x3 grid. A CSS grid is comprised of rows and columns. Each element that we define within the grid can be likened to as a _cell_. An example of the 3x3 grid is shown below :point_down::
+![CSS grid example](../img/css-glass-window.png)
+
+To demonstrate the basics of implementing a grid layout, let's walk through creating a simple 3x3 grid. A CSS grid is comprised of rows and columns. Each element that we define within the grid can be likened to as a _cell_. An example of the 3x3 grid is shown below:
 
 ![CSS grid explanation](../img/css-grid-explanation.svg)
 
-:point_up: Included within the example are a series of lines. We will be making use of these later, but for now you can use these lines to work out what column (in red) or row (in green) a particular cell is located at within the grid. Note that the cell corresponding to a column line is to its right; the cell corresponding to a row line is underneath it. Counting starts from the **top left corner**.
+:point_up: Included within the example are a series of lines. We will be making use of those later, but for now you can use the lines to work out what column (in red) or row (in green) a particular cell is located at within the grid. Note that the cell corresponding to a column line is to its right; the cell corresponding to a row line is underneath it. Counting starts from the **top left corner**.
 
-To create a grid layout, pick the element that will contain the grid. For the said container, set the `display` attribute to `grid`. Each of the child elements within the container element will act as grid cells. Consider this example :point_down:. Note that we also add a selector for the child elements; these are the cells, or the elements within the `grid-container`.
+To create a grid layout, pick the element that will contain the grid (*the container*). For the container, set the `display` attribute to `grid`. Each of the child elements within the container element will act as grid cells. Consider this example :point_down:. Note that we also add a selector for the child elements; these are the cells, or the elements within the `grid-container`.
 
 ```css
 .grid-container {
@@ -1009,7 +999,7 @@ For the two new properties that we have just added, we provide _three_ values; o
 
 This approach is useful if you wish to provide a lop-sided grid (i.e. a table, with more rows than columns).
 
-Note that we could make the definitions more succinct using the CSS `repeat()` function. The below CSS snippet :point_down: has the exact same outcome as what we show above point_down::
+Note that we could make the definitions more succinct using the CSS `repeat()` function. The below CSS snippet :point_down: has the exact same outcome as what we have shown above:
 
 ```css
 .grid-container {
@@ -1033,7 +1023,7 @@ Notice how the gap between columns 1 and 2 is wider than between columns 2 and 3
 
 ![CSS grid elements - step 3](../img/css-grid-step3.png)
 
-Of course, our grid currently looks a bit off as the different cells that we have are right next to one another. CSS grids provide the ability to easily add gaps between rows and columns via the `grid-row-gap` and `grid-column-gap` properties, respectively point_down::
+Of course, our grid currently looks a bit off as the different cells that we have are right next to one another. CSS grids provide the ability to add gaps between rows and columns via the `grid-row-gap` and `grid-column-gap` properties, respectively:
 
 ```css
 .grid-container {
@@ -1048,8 +1038,6 @@ Of course, our grid currently looks a bit off as the different cells that we hav
 This :point_up: produces a much nicer looking grid, with 10 pixel gaps between each row and column :point_down::
 
 ![CSS grid elements - step 4](../img/css-grid-step4.png)
-
-We could also have used `grid-gap` to set both the row and column gaps at the same time.
 
 As an aside, we could use some fancy CSS selectors to make the grid look more like a chessboard, with alternating black and white (or near-white) cells. The CSS snippet below redefines the selectors for the children of the `grid-container` :point_down::
 
@@ -1068,7 +1056,7 @@ As an aside, we could use some fancy CSS selectors to make the grid look more li
 
 ![CSS grid elements - step 5](../img/css-grid-step5.png)
 
-Finally, we want to demonstrate how you merge cells together. There may be instances where a particular cell should span over multiple rows and columns (for example, when you have headers for groups of data in a table). Remember the lines that we defined in our simple grid illustration at the top of this section? This is where they will come in handy. Let's say we want to stretch the cell that belongs to _Row 3, Column 2_ over to also cover _Row 3, Column 3_ :point_down::
+Finally, we demonstrate how to merge cells together. There may be instances where a particular cell should span over multiple rows and columns (for example, when you have headers for groups of data in a table). Remember the lines that we defined in our grid illustration at the start of this section? This is where they will come in handy. Let's say we want to stretch the cell that belongs to _Row 3, Column 2_ over to also cover _Row 3, Column 3_ :point_down::
 
 ![CSS grid elements - step 6](../img/css-grid-step6.png)
 
@@ -1104,12 +1092,12 @@ Note the stretched cell at the bottom right, spanning over two columns.
 
 We can also stretch a cell over two or more rows using the `grid-row-start` and `grid-row-end` properties. Of course, we can also combine column and row stretching by using a combination of both! This provides an incredibly powerful way of keeping order in your grids.
 
-As always, we have only scratched the surface with our introduction of CSS grids. There are many other properties that are defined in the CSS specification that allow you to control grids - check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) if you are interested!
+As always, we have only scratched the surface with our introduction of CSS grids. There are many other properties that are defined in the CSS specification that allow you to control grids&mdash;check out the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/grid) if you are interested!
 
 <optional-info markdown="block">
 ### CSS units and functions
 
-Up until now, we've used some pretty basic units of measurement to express the widths and heights of elements on a page, and indeed the size of fonts, for example. We have come across pixels as unit of measurement (identified with the `px` suffix). Modern screens are comprised of many pixels; this unit of measurement allows you to specify an _absolute measurement_ on the screen :point_down::
+Up until now, we have used a small number of units of measurement to express the widths and heights of elements on a page. We have come across `px` as unit of measurement (the [magic unit of CSS](https://www.w3.org/Style/Examples/007/units.en.html)&mdash;`1px` is defined "such that a horizontal 1px wide line can be displayed with sharp edges"). This unit of measurement allows you to specify an _absolute measurement_ on the screen:
 
 ```css
 .some-class {
@@ -1118,35 +1106,13 @@ Up until now, we've used some pretty basic units of measurement to express the w
 }
 ```
 
-We have also identified percentage units. As you may expect, these allow you to express the width/height/measurement of a particular element in percentage terms of its container. In other words, this measurement is _relative_ to its container, rather than being absolute :point_down::
-
-```css
-.container {
-  width: 200px;
-  height: 100px;
-}
-
-.container div {
-  width: 50%;
-  height: 50%;
-}
-```
-
-```html
-<div class="container">
-  <div>50%!</div>
-</div>
-```
-
-:point_up: Here, we define a `container` with a pixel width and height. The child `<div>` then has a width and height of 50% -- yielding an absolute width of 100 pixels, and an absolute height of 50 pixels.
+We have also identified percentage units, e.g. `width: 50%`. As you may expect, these allow you to express the width/height/measurement of a particular element in percentage terms of its container. In other words, this measurement is _relative_ to its container, rather than being absolute.
 
 But what about more complex units of measurement? Many different types of measurement are available as part of contemporary CSS implementations, but what are the essential ones to know?
 
-#### Essential CSS units of measurement
+#### Units of measurement
 
-Having discussed pixels (absolute) and percentages (relative) above, there are several other that you should be aware of. You can use measurements such as `mm` (for millimeters) and `cm` (for centimeters); if you like imperial measurements, inches (`in`) are also valid.
-
-However, for modern web design, we are more interested in _relative units_ -- that is, units of measurement relative to the container of the element you are assigning values to.
+For modern web design, we are most interested in _relative units_&mdash;that is, units of measurement relative to the container of the element you are assigning values to.
 
 - `em` is a unit of measurement relative to the font size of the element being used. This is useful, for example, when setting the height of an element to be slightly taller than the text it contains.
 
@@ -1169,7 +1135,7 @@ There are also a series of measurements specific to given scenarios. For example
 }
 ```
 
-:point_up: The above example creates three columns of equal width (1 fractional unit each). If we wished to make the first column double the width of the other two columns, we would double up the value for the first column.
+:point_up: The above example creates three columns of equal width (1 fractional unit each). If we wished to make the first column double the width of the other two columns, we would double up the value for the first column:
 
 ```css
 .grid-container {
@@ -1178,7 +1144,7 @@ There are also a series of measurements specific to given scenarios. For example
 }
 ```
 
-For a more concrete (and advanced example), we can assign a width to the `grid-container`.
+We can also assign a width to the `grid-container`:
 
 ```css
 .grid-container {
@@ -1188,11 +1154,11 @@ For a more concrete (and advanced example), we can assign a width to the `grid-c
 }
 ```
 
-With a maximum width of `520px` for the container, our first column will take nearly half of the available space (`250px`). The final two columns will then be split over three fractional units (from a remaining space of `270px`, this means three equal divisions of `90px`). As such, the second column of `2fr` will have an absolute width of `180px`, with the third column of `1fr` having an absolute width filling out the remaining `90px`.
+:point_up: With a maximum width of `520px` for the container, our first column will take nearly half of the available space (`250px`). The final two columns will then be split over three fractional units (from a remaining space of `270px`, this means three equal divisions of `90px`). As such, the second column of `2fr` will have an absolute width of `180px`, with the third column of `1fr` having an absolute width filling out the remaining `90px`.
 
 _As a general rule of thumb, you should consider using relative units of measurement when developing responsive CSS designs. This will mean you do not have to worry about designing different CSS rules for different sizes of screen; everything will be relative to the size of the screen the page is being rendered on!_
 
-#### Basic CSS functions
+#### Functions
 
 Modern CSS allows you to make use of _built-in functions_ to compute values on-the-fly for attributes you specify. Your CSS styles may have attributes whose values can only be determined at runtime. For example, we made use of the `repeat()` function when learning about CSS grids.
 
@@ -1206,7 +1172,7 @@ selector {
 
 :point_up: Here, `function` is the function name, and `parameters` are parameters (usually provided as an expression) that you can pass to the function.
 
-A useful function is `calc()`: it calculates the result of a provided expression. You can add, subtract, divide and multiply values together. Values can be of different units, too :point_down::
+A useful function is `calc()`: it calculates the result of a provided expression. You can add, subtract, divide and multiply values together. Values can be of different units:
 
 ```css
 .container {
@@ -1224,7 +1190,7 @@ You can also mix relative and absolute measurements :point_down::
 }
 ```
 
-If you have followed the lecture carefully, you may also be aware of a function that was used previously to obtain variables. This function is called `var()`, and takes the name of the variable you wish to be put in place of the function call :point_down::
+If you have followed the lecture carefully, you may also be aware of a function that is used previously to obtain variables. This function is called `var()`, and takes the name of the variable you wish to be put in place of the function call:
 
 ```css
 :root {
@@ -1236,7 +1202,7 @@ If you have followed the lecture carefully, you may also be aware of a function 
 }
 ```
 
-There are also functions for defining colours according to the RGB colour model :point_down::
+There are also functions for defining colours according to the RGB colour model:
 
 ```css
 .container {
@@ -1244,7 +1210,7 @@ There are also functions for defining colours according to the RGB colour model 
 }
 ```
 
-:point_up: This example makes use of the `rgb()` function, which returns the colour you specify (in this case, blue!). For colours with an alpha channel (with transparency), use `rgba` :point_down::
+:point_up: This example makes use of the `rgb()` function, which returns the colour you specify (in this case, blue!). For colours with an alpha channel (with transparency), use `rgba`:
 
 ```css
 .container {
@@ -1256,7 +1222,7 @@ There are also functions for defining colours according to the RGB colour model 
 
 The final function we introduce here is called `minmax()`. This function is used within CSS grids, and allows you to specify a _range of acceptable values_ for your grid column widths and row heights. By including this function, CSS allows you to make CSS grids that better adapt to the available viewport size as it is resized.
 
-To demonstrate this function in action, observe the following CSS and HTML snippets :point_down::
+To demonstrate this function in action, observe the following CSS:
 
 ```css
 .grid-container {
@@ -1271,6 +1237,8 @@ To demonstrate this function in action, observe the following CSS and HTML snipp
   background-color: seagreen;
 }
 ```
+
+and corresponding HTML snippet: 
 
 ```html
 <div class="grid-container">
@@ -1287,7 +1255,7 @@ To demonstrate this function in action, observe the following CSS and HTML snipp
 
 :point_up: Of particular interest here is the value assigned to `grid-template-columns` in `.grid-container`. We make use of the `repeat()` function to repeat the `minmax(100px, 200px)` function call 4 times, resulting in four column values. The `minmax(100px, 200px)` function call provides a value that is a minimum of `100px`, and steadily increases as the width of the container also increases. This will increase up until a maximum of `200px` in this example.
 
-A demonstration of this in action is shown below :point_down::
+A demonstration of this in action is shown below:
 
 ![CSS grid elements - step 8](../img/css-grid-step8.gif)
 
@@ -1299,10 +1267,10 @@ A demonstration of this in action is shown below :point_down::
 
 The [`position` property](https://developer.mozilla.org/en-US/docs/Web/CSS/position) enables fine-grained movement of elements. Elements can be moved around in any direction (up/down/left/right) by absolute or relative units.
 
-The `position` property has a number of possible values:
+The `position` property takes a number of possible values:
 
 | Value               | Description                                                                                 |
-| ------------------- | ------------------------------------------------------------------------------------------- |
+| :------------------ | :------------------------------------------------------------------------------------------ |
 | `position:static`   | the default                                                                                 |
 | `position:relative` | the element is adjusted on the fly, other elements are **not** affected                     |
 | `position:absolute` | the element is taken out of the normal flow (**no space is reserved for it**)               |
@@ -1410,12 +1378,14 @@ Below is our HTML document and the corresponding rendering, so far without any`p
 
 A few remarks about the piece of code :point_up::
 
-- :cookie: If you look closely, the flags are not images that we link from another source, these are images the browser is _generating_. How does that work? The [`linear-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) function creates an image on the fly, based on the color gradient information provide. This may look odd at first sight, as there is nothing gradual in terms of color changes, but that is due to the manner in which we define the gradient. If we were to replace `linear-gradient(black 33%, red 33% 66%, gold 66%)` with `linear-gradient(black, red, gold)` we would see the gradual change of color. By setting the color boundary explicitly (e.g. `red 33% 66%`) we achieve the clear-cut color changes we need for our flags. Having defined the `linear-gradient` function, we assign the returned image to a `<div>`'s `background` property and our flag is ready. Other types of gradients exist such as the [`radial-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient) which we employed to style the moon in our CSS weather demo.
-- How do we assign a flag to a specific `<div>`? We add the corresponding classname in the `<div>`'s `class` attribute. As can be seen, it is possible to assign a number of classes to an element. This is quite useful for the board game project to style game fields according to whether or not they contain a game piece.
-- :cookie: If we want to style elements that have a particular set of classes assigned to them, we have a selector for this purpose: `.class1.class2.class3...`.
+- How do we assign a flag to a specific `<div>`? We add the corresponding classname in the `<div>`'s `class` attribute. As shown here, it is possible to assign a number of classes to an element. This is quite useful for the board game project to style game fields according to whether or not they contain a game piece.
+-  If we want to style elements that have a particular **set of classes** assigned to them, we have a selector for this purpose: `.class1.class2.class3...`.
 - By setting each flag' width and height to 1/3 of the viewport width (`1vw` corresponds to 1% of the viewport width) and 1/3 of the viewport height (`1vh` corresponds to 1% of the viewport height) respectively, we ensure that our grid is always fully shown in the viewport.
-- We define a `2px` border around each `<div>`. Note how the border collapses when two `<div>`s are adjacent: the border between the `<div>`s is not `4px` in total, it remains `2px`. Finally, observe what happens when `box-sizing: border-box` is removed from the `div` CSS rule: you should notice that it is now necessary to (slightly) scroll to see all flags. This is because without this setting, the `2px` of the border is added to the width and height of each `<div>` (and we thus end up with content overflowing the viewport). The `border-box` value means that the border (and padding if set) is _included_ in the specified width/height values.
 - The full set of rules applied to an element is the _union_ of all rules whose selectors match the element.
+
+<optional-info markdown="block">
+If you look closely at our flag example above, the flags are not images that we link from another source, these are images the browser is _generating_. How does that work? The [`linear-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) function creates an image on the fly, based on the color gradient information provide. This may look odd at first sight, as there is nothing gradual in terms of color changes, but that is due to the manner in which we define the gradient. If we were to replace `linear-gradient(black 33%, red 33% 66%, gold 66%)` with `linear-gradient(black, red, gold)` we would see the gradual change of color. By setting the color boundary explicitly (e.g. `red 33% 66%`) we achieve the clear-cut color changes we need for our flags. Having defined the `linear-gradient` function, we assign the returned image to a `<div>`'s `background` property and our flag is ready. Other types of gradients exist such as the [`radial-gradient`](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient) which we employed to style the moon in our CSS weather demo.
+</optional-info>
 
 Let's walk through each of the position values in turn. _We stick to the above HTML document and only present the CSS rules that need to be changed._
 
@@ -1498,7 +1468,7 @@ Once again, the browser will render the HTML document as follows (minus the anno
 
 <sup>The Romanian and German flags have been moved from the original position via position:absolute. The closest ancestor with absolute positioning is the &lt;body&gt; element. The dashed line demarks the viewport.</sup>
 
-:point*up: As `<body>`'s `position` value is `absolute`, the two flags are now positioned relative to the `<body>` element. The most important observation to make is that almost all flags have changed their position. Since the Romanian and German flags have been taken out of the document flow, no space is reserved for them and as a result all but the first flag (Austria top/left) have moved. We here also see once again that the order of CSS rules matters: in our \_initial code listing* we have a rule for `<div>`s that contains `height: 33vh`. We now add a rule `div {height: 50vh; }` which **overrides** this earlier setting.
+:point_up: As `<body>`'s `position` value is `absolute`, the two flags are now positioned relative to the `<body>` element. The most important observation to make is that almost all flags have changed their position. Since the Romanian and German flags have been taken out of the document flow, no space is reserved for them and as a result all but the first flag (Austria top/left) have moved. We here also see once again that the order of CSS rules matters: in our *initial code listing* we have a rule for `<div>`s that contains `height: 33vh`. We now add a rule `div {height: 50vh; }` which **overrides** this earlier setting.
 
 <optional-info markdown="block">
 Remember that CSS rule ordering matters when you are trying to update properties with seemingly no effect. Important to know though, CSS rule precedence is more complicated than _later rules trump earlier ones_ when the selectors are not exactly the same (as is the case for us): [take a look at this article](http://vanseodesign.com/css/css-specificity-inheritance-cascaade/) to learn more.
@@ -1650,7 +1620,7 @@ main {
 }
 ```
 
-:point*up: We have defined two columns, the navigation bar on the left and the content on the right. For smaller devices we want those two columns \_stacked* on top of each other. And so we add the following CSS code snippet:
+:point_up: We have defined two columns, the navigation bar on the left and the content on the right. For smaller devices we want those two columns *stacked* on top of each other. And so we add the following CSS code snippet:
 
 ```css
 @media (max-width: 500px) {
@@ -1673,7 +1643,7 @@ Admittedly, there are a few more CSS rules that govern the responsive design of 
 More formally: **CSS media queries** enable the use of **device**/**media-type dependent** style sheets and rules. While the HTML document is written once, the CSS is written once per device type. There are four device types currently in use:
 
 | Value          | Description                                                              |
-| -------------- | ------------------------------------------------------------------------ |
+| :------------- | :----------------------------------------------------------------------- |
 | `media all`    | Suitable for all device types. The default if no media type is provided. |
 | `media print`  | Suitable for documents in print preview.                                 |
 | `media screen` | Suitable for screens.                                                    |
@@ -1722,7 +1692,7 @@ In general, CSS styles (states) are defined by the developer. As concrete exampl
 The **rendering engine** then takes care of the **transition between styles**. A rendering engine - also known as _browser engine_ or _layout engine_ - is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time, especially when using CSS animations and transitions:
 
 | Engine     | Browsers                                |
-| ---------- | --------------------------------------- |
+| :--------- | :-------------------------------------- |
 | `Gecko`    | Firefox                                 |
 | `Trident`  | Internet Explorer                       |
 | `EdgeHTML` | Microsoft Edge                          |
@@ -2017,7 +1987,7 @@ Once again, we only have to define the states of the animation, the rendering en
 }
 ```
 
-Beyond lightning, we also have an animated moon: it appears to be radiating continuously if you look closely. This is a simple animation of the moon's `box-shadow` property. The moon itself is a `<div>` element with a `border-radius` set such that it results in a perfect circle :point_down: :
+Beyond lightning, we also have an animated moon: it appears to be radiating continuously if you look closely. This is an animation of the moon's `box-shadow` property. The moon itself is a `<div>` element with a `border-radius` set such that it results in a perfect circle :point_down: :
 
 ```css
 #moon {
@@ -2056,7 +2026,7 @@ Beyond lightning, we also have an animated moon: it appears to be radiating cont
 }
 ```
 
-Lastly, while lightning and the moon were done in _pure CSS_, for the raindrops and the clouds we made use of a bit of JavaScript: note though that this is not strictly necessary. Since we need hundreds of raindrops/clouds that are all slightly different (slightly different locations, size, color, opacity, speed) we would need to create hundreds of different CSS rules. JavaScript makes this much easier - we create these rules programmatically. Let's quickly look at how the clouds were created. All properties that remain static for the majority of clouds are fixed in the CSS file :point_down::
+Lastly, while lightning and the moon were done in _pure CSS_, for the raindrops and the clouds we made use of JavaScript: note though that this is not strictly necessary. Since we need hundreds of raindrops/clouds that are all slightly different (slightly different locations, size, color, opacity, speed) we would need to create hundreds of different CSS rules. JavaScript makes this much easier&mdash;we create these rules programmatically. Let's quickly look at how the clouds were created. All properties that remain static for the majority of clouds are fixed in the CSS file:
 
 ```css
 .cloud {
