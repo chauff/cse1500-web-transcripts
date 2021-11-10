@@ -278,8 +278,11 @@ We here take up the **Login Bender** attack among all available [Juice Shop inje
 Why does this work? Lets take a look at the source code of Juice Shop, in particular the [login route](https://github.com/juice-shop/juice-shop/blob/master/routes/login.ts)&mdash;it has recently been rewritten in TypeScript but still contains code that is recognizable to us. It contains the following code snippet :point_down::
 
 ```javascript
-models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: models.User, plain: true })
-
+models.sequelize.query(
+  `SELECT * FROM Users WHERE email = '${req.body.email || ''}' 
+   AND password = '${security.hash(req.body.password || '')}' 
+   AND deletedAt IS NULL`, 
+   { model: models.User, plain: true })
 ```
 
 :point_up: As we anticipated, the user input is not validated but inserted directly into an SQL query.
