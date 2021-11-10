@@ -40,7 +40,7 @@ You can download and install git from [here](https://git-scm.com/downloads). The
 
 [GitHub](https://github.com/) is a web-based hosting service for `git` repositories. That way collaborators can push and pull changes to the repository located at GitHub, and synchronize it with their local copies. *Note that GitHub is not the only git repository hosting service; we do not cover any alternatives but they work in a similar fashion to GitHub.*
 
-In order to work with GitHub, all group members must have a [GitHub account](https://github.com) - if you do not yet have one, create one. One project member will then create a new repository for the project by clicking on *New repository*. It can be public, so everyone can see it, or private, where you control who can see and access it.
+In order to work with GitHub, all group members must have a [GitHub account](https://github.com)&mdash;if you do not yet have one, create one. One project member will then create a new repository for the project by clicking on *New repository*. It can be public, so everyone can see it, or private, where you control who can see and access it.
 
 Now you can add your partner to the repository, so you can work together. To that end go to the main page of the new repository and click on the *Settings* tab :point_down::
 
@@ -48,11 +48,11 @@ Now you can add your partner to the repository, so you can work together. To tha
 
 <sup>Options available after creating a new repository on GitHub.</sup>
 
-A menu will appear on the left which has an entry *Manage access*: click it. A click on *Invite a collaborator* will lead to a popup where you can search for your team member's GitHub account. Add the account as collaborator.
+A menu will appear on the left which has an entry `Manage access`: click it. A click on `Invite a collaborator` will lead to a popup where you can search for your team member's GitHub account. Add the account as collaborator.
 
 ### Local vs. remote repository
 
-The repository created on GitHub is the **remote repository** - all team members contribute code to this remote repository. Every team member also has a **local repository**, the repository residing on a team member's physical machine. When a team member makes code changes, these are first recorded in the **local repository** and then in a second step recorded in the **remote repository**.
+The repository created on GitHub is the **remote repository**&mdash;all team members contribute code to this remote repository. Every team member also has a **local repository**, the repository residing on a team member's physical machine. When a team member makes code changes, these are first recorded in the **local repository** and then in a second step recorded in the **remote repository**.
 
 ### GitHub and VSC
 
@@ -60,7 +60,7 @@ You can clone the GitHub repository from VSC following [these instructions](http
 
 _Note: after adding the URL of the remote repository and after indicating the folder where the local repository will be created, you will be asked for the GitHub user name and password._
 
-When you edit your project, the icon *Source Control* :point_down: at the left will indicate the number of files modified. You can record a set of changes in your local repository by clicking on *Commit All*. Remember to add a meaningful message so it can be useful to follow the status of the project. You can see how to use other git commands [here](https://git-scm.com/docs).
+When you edit your project, the `Source Control` icon :point_down: at the left will indicate the number of files modified. You can record a set of changes in your local repository by clicking on *Commit All*. Remember to add a meaningful message so it can be useful to follow the status of the project. You can see how to use other git commands [here](https://git-scm.com/docs).
 
 ![VSC source](../img/VSC-source.png)
 
