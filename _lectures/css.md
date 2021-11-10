@@ -374,7 +374,7 @@ Take a look at our slightly revised game statistics example which showcases all 
 
 One remark about the code :point_up:: the `unset` value resets a property to its inherited value. By default, the browser renders an unvisited link in a bright blue color. Here though, we want the link to retain the color of its surrounding text. The `unset` keyword helps us to achieve this without having to explicitly set a link color.
 
-While this small example does not look overly impressive, it should be noted that `:hover` can be employed to create image galleries (preview vs. full image) as well as CSS-only dropdown menus (hide the menu items apart from the header and only reveal them when the mouse hovers over the header). The latter is exactly what we are doing on this website with the _arrow up box_ on the bottom left corner of your screen. Hovering over it brings up the navigation links: this is particularly useful when scrolling far down the transcript (as otherwise one would have to scroll all the way up again to get to the navigation links). An alternative would have been to fix the major navigation bar to the viewport. This though is only viable for screens with large resolutions, on mobile devices this would not work. Our solution is largely resolution independent.
+While this small example does not look overly impressive, it should be noted that `:hover` can be employed to create CSS-only dropdown menus. This is exactly what we are doing on this site with the _arrow up box_ on the bottom left corner of your screen. Hovering over it brings up the navigation links. Another hover example (this time materialized as detecting a mouseover event in JavaScript) is our [Stars at night demo at CodePen](https://codepen.io/charlottehase/full/rNwVBxP): hovering over one of the three style buttons changes the style of the page.
 
 ### :bangbang: :enabled and :disabled
 
@@ -1689,7 +1689,7 @@ In general, CSS styles (states) are defined by the developer. As concrete exampl
 - the opacity levels of a `<div>` to simulate flash lightning;
 - etc.
 
-The **rendering engine** then takes care of the **transition between styles**. A rendering engine - also known as _browser engine_ or _layout engine_ - is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time, especially when using CSS animations and transitions:
+The **rendering engine** then takes care of the **transition between styles**. A rendering engine&mdash;also known as _browser engine_ or _layout engine_&mdash;is responsible for translating HTML+CSS (among others) to the screen. The major browsers ship with their own rendering engines, the names of which you will encounter from time to time, especially when using CSS animations and transitions:
 
 | Engine     | Browsers                                |
 | :--------- | :-------------------------------------- |

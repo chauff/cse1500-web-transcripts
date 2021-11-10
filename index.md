@@ -69,6 +69,9 @@ The latest stable version of [Node.js](https://nodejs.org/en/).
 Two modern web browsers such as Chrome, Firefox, Edge, etc. to test your project code across browser implementations.
 
 Telnet (for your first web technology assignment).
+
+OpenSSL (for your first web technology assignment).
+
 ## Web technology topics
 
 The web technology topics we cover  are the following:
