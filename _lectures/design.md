@@ -298,11 +298,11 @@ XHTML was designed to make processing of web pages **easier for machines** by ha
 
 With this introduction of new features **browser compatibility** issues returned: some browser vendors are faster than others in implementing W3C standards (in addition to implementing their own non-standardized features). A good resource to check which browser versions support which HTML5 feature and to what extent is [https://caniuse.com/](https://caniuse.com/).
 
-As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form%20features) in 2020:
+As a concrete example, here is the browser support overview of HTML5 form features as provided by [caniuse](https://caniuse.com/#search=form%20features) in 2021:
 
 ![HTML5 form support](../img/design-html5-form.png)
 
-<sup>Screenshot taken on September 2, 2020.</sup>
+<sup>Screenshot taken on November 10, 2021.</sup>
 
 We can thus easily find out which browser versions do (not) support these features or only partially support them. This enables application developers to make choices&mdash;depending on their target population (and the most popular browsers among the target population), certain HTML5 features should be employed _with care_. That does not mean to _not_ use the latest HTML5 features, it just means that we need to be considerate of our users and provide them with options, even if they rely on browsers that are not supporting the features we use. As an example, let's use the `<input type="date">` widget. Here is how the [MDN demo on this input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date) is rendered on Firefox and Safari respectively :point_down::
 
@@ -358,13 +358,12 @@ Consensus building takes time. HTML5 for instance was a candidate recommendation
 
 In 2019, the W3C turned over control of the HTML5 standard to the Web Hypertext Application Technology Working Group or WHATWG. In contrast to the snapshot-based releases of the W3C, the WHATWG works with the principle of a "living standard". This living HTML standard specification document can be found [here](https://html.spec.whatwg.org/multipage/). 
 
-In rare cases, features added to a web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner (by adding a manifest file to a site containing no more than a few lines of text), but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favor of another set of technologies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is [still supported by all major browsers apart from the latest Chrome versions](https://caniuse.com/#search=appcache):
+In rare cases, features added to a web standard can also be removed again, the [AppCache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache) is a prime example of this: it was developed as technology to enable offline web applications in a simple manner (by adding a manifest file to a site containing no more than a few lines of text), but turned out to have so many [pitfalls](https://alistapart.com/article/application-cache-is-a-douchebag) that it was eventually abandoned in favor of another set of technologies ([Service Workers](https://developers.google.com/web/fundamentals/primers/service-workers/)). However, it is [still supported by Safari, though other major browsers have finally removed their support in 2020](https://caniuse.com/#search=appcache):
 
 ![AppCache](../img/design-appcache.png)
 
-<sup>Screenshot taken on September 2, 2020.</sup>
+<sup>Screenshot taken on November 10, 2021.</sup>
 
-The W3C writes the following about the AppCache: _This feature is in the process of being removed from the web platform. (**This is a long process that takes many years.**) Using the application cache feature at this time is highly discouraged. Use service workers instead._
 </optional-info>
 ## Self-check
 
