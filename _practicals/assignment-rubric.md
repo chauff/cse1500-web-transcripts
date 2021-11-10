@@ -30,7 +30,7 @@ The rubric below contains example questions/tasks for each assignment **as well 
 
 ### Possible questions / tasks
 
-- Show off a `HEAD` and `GET` request via telnet. What is the difference between the two?
+- Show off a `HEAD` and `GET` request via telnet or openssl. What is the difference between the two requests?
 - Execute the `PUT` request.
 - What is the difference between authentication using telnet vs. a browser?
 - Show off the board game design.
@@ -40,7 +40,7 @@ The rubric below contains example questions/tasks for each assignment **as well 
 ### Passing requirements
 
 - The student is able to answer most of the TA's questions correctly.
-- The board game design is available on TUD's Stack Overflow instance. The deliverables are uploaded to Brightspace.
+- The board game design is available on Brightspace. The deliverables are uploaded to Brightspace.
 - The splash / board game design fulfils the board game requirements (listed in the first web technology assignment).
 
 ## Assignment JS+Node
@@ -78,6 +78,7 @@ The rubric below contains example questions/tasks for each assignment **as well 
 
 ### Passing requirements
 
+- The JS+Node assignment was passed. *It is not possible to pass this last assignment, without passing the previous one.*
 - The student is able to answer most of the TA's questions correctly.
 - The deliverables are uploaded to Brightspace.
 - The implementation contains the necessary CSS elements.
