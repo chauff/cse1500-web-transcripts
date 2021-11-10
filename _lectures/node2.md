@@ -3,7 +3,7 @@ layout: default
 permalink: /nodejs2/
 linkname: Node.js II
 ordering: 6
-warning: true
+warning: false
 ---
 
 # Advanced Node.js <!-- omit in toc -->
@@ -74,11 +74,11 @@ By default, _no code in a module is accessible to other modules_. Any property o
 
 You already know how to install modules, e.g. `npm install winston` installs one of the more popular [Node logging libraries](https://www.npmjs.com/package/winston). You can also use the command line to search for modules to install, e.g. `npm search winston`.
 
-While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code - a single npm module - nearly broke much of the modern web for half a day can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
+While it is beyond the scope of this course to dive into the details of the npm registry, it should be mentioned that it is not without issues; the story of how 17 lines of code&mdash;a single npm module&mdash;nearly broke much of the modern web for half a day can be found [here](http://arstechnica.com/information-technology/2016/03/rage-quit-coder-unpublished-17-lines-of-javascript-and-broke-the-internet/).
 
 ### A file-based module system
 
-In Node.js each file is its own module. This means that the code we write in a file does not pollute the _global namespace_. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in the [JavaScript lecture](https://chauff.github.io/Web-Teaching/js/#javascript-design-patterns)).
+In Node.js each file is its own module. This means that the code we write in a file does not pollute the _global namespace_. In Node.js we get this setup "for free". When we write client-side JavaScript, we have to work hard to achieve the same effect (recall the module pattern covered in the JavaScript lecture).
 
 The module system works as follows: each Node.js file can access its so-called **module definition** through the `module` object. The module object is your entry point to modularize your code. To make something available from a module to the outside world, `module.exports` or `exports` is used as we will see in a moment. The `module` object looks as follows (depending on the Node version and underlying operating system the property values will vary) :point_down::
 
@@ -106,7 +106,7 @@ To see for yourself how the `module` object looks on your machine you can do one
 1. Create a Node.js script containing only the line `console.log(module);` and run it.
 2. Start the node REPL (just type `node` into the terminal) and then type `console.log(module);`.
 
-We see that in our module object above :point*up: nothing is currently being \_exported* as the `exports` property has an empty object (`{}`) as value.
+We see that in our module object above :point_up: nothing is currently being *exported* as the `exports` property has an empty object (`{}`) as value.
 
 Once you have defined your own module, the globally available `require` function is used to import a module. At this stage, you should recognize that you have been using Node.js modules since your first attempts with Node.js.
 
@@ -114,19 +114,18 @@ Here is a graphical overview of the connection between `require` and `module.exp
 
 ![Modules](../img/node2-module.png)
 
-:point_up: An application uses the `require` function to import module code. The module itself populates the `module.exports` variable to make certain parts of the code base in the module available to the outside world. Whatever was assigned to `module.exports` (or `exports` - we will get to it) is then returned to the application when the application calls `require()`.
+:point_up: An application uses the `require` function to import module code. The module itself populates the `module.exports` variable to make certain parts of the code base in the module available to the outside world. Whatever was assigned to `module.exports` (or `exports`&mdash;we will get to it) is then returned to the application when the application calls `require()`.
 
 ### :bangbang: A first module example
 
 Let's consider files `foo.js` :point_down::
 
 ```javascript
-var fooA = 1; //LINE 1
-module.exports = "Hello!"; //LINE 2
+var fooA = 1;
+module.exports = "Hello!";
 module.exports = function () {
-  //LINE 3
-  console.log("Hi from foo!"); //LINE 4
-}; //LINE 5
+  console.log("Hi from foo!");
+};
 ```
 
 and `bar.js` :point_down::
@@ -141,18 +140,18 @@ console.log(fooA); //CASE 5: ReferenceError (you will have to remove this line t
 console.log(module.exports); //CASE 6: {}
 ```
 
-:point*up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`). In the `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out \_Hi from foo!* on the console. Which of the two assignments will our application `bar` end up with? In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js` - you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
+:point_up: Here, `foo.js` is our `foo` module and `bar.js` is our application that imports the module to make use of the module's functionality (you can run the script as usual with `node bar.js`). In the `foo` module, we define a variable `fooA` in line 1. In lines 2 and 3, you can see how a module uses `module.exports` to make parts of its code available: in line 2, we assign a string to `module.exports`, in line 3 we make a new assignment to `module.exports` and define a function that prints out *Hi from foo!* on the console. Which of the two assignments will our application `bar` end up with? In `bar.js` the first line calls the `require()` function and assigns the returned value to the variable `foo`. In line 1 we used as argument `./foo` instead of `./foo.js` - you can use both variants. The dot-slash indicates that `foo.js` resides in the current directory.
 
 Node.js runs the referenced JavaScript file :point_up: (here: `foo.js`) in a **new scope** and **returns the final value** of `module.exports`. What then is the final value after executing `foo.js`? It is the function we defined in line 3.
 
 :point_up: As you can see in lines 2 and beyond of `bar.js` there are several ways to access whatever `require` returned:
 
-- **CASE 1** We can call the returned function and this results in _Hi from foo!_ as you would expect.
-- **CASE 2** We can also combine lines 1 and 2 into a single line with the same result.
-- **CASE 3** If we print out the variable `foo`, we learn that it is a function.
-- **CASE 4** Using the `toString()` function prints out the content of the function.
-- **CASE 5** Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. Note, that Visual Studio Code flags up this error (`fooA is not defined`) already at the code writing stage.
-- **CASE 6** Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
+- **CASE 1**: We can call the returned function and this results in _Hi from foo!_ as you would expect.
+- **CASE 2**: We can also combine lines 1 and 2 into a single line with the same result.
+- **CASE 3**: If we print out the variable `foo`, we learn that it is a function.
+- **CASE 4**: Using the `toString()` function prints out the content of the function.
+- **CASE 5**: Next, we try to access `fooA` - a variable defined in `foo.js`. Remember that Node.js runs each file in a new scope and only what is assigned to `module.exports` is available. Accordingly, `fooA` is not available in `bar.js` and we end up with a reference error. Note, that Visual Studio Code flags up this error (`fooA is not defined`) already at the code writing stage.
+- **CASE 6**: Finally, we can also look at the `module.exports` variable of `bar.js` - this is always available to a file in Node.js. In `bar.js` we have not assigned anything to `module.exports` and thus it is an empty object.
 
 ### :bangbang: `require` is blocking
 
@@ -172,9 +171,7 @@ console.log(process.hrtime()[1] - t2); //35012
 
 Run `node bar.js` and observe the execution times logged to the terminal. :point_up: Here, we execute `require('./foo')` twice and log both times the time it takes for `require` to return. The first time the line `require(foo.js)` is executed, the file `foo.js` is read from disk (this takes some time). In subsequent calls to `require(foo.js)`, however, the **in-memory object is returned**. Thus, **`module.exports` is cached**.
 
-:point*up: We here resort to using `process.hrtime()` which returns an array whose first value is the time in seconds and the second is the time in nanoseconds relative to *"an arbitrary time in the past"\_ ([Node documentation](https://nodejs.org/api/process.html#process_process_hrtime_time)). While it is not possible to compute an absolute time in this manner, we can accurately measure the duration of code as seen in the above example. Depending on your machine, the reported nanoseconds intervals will differ, though the first `require()` statement will always take significantly (10x-100x) longer than the second `require()` statement.
-
-_Note: if you are already familiar with JavaScript you may ask yourself why we do not rely on [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) to measure time differences. It returns the number of **milliseconds** that have passed since January 1, 1970 00:00:00 UTC (why this particular time? Because that is the [Unix time](https://en.wikipedia.org/wiki/Unix_time)!). On modern machines, a millisecond-based time resolution does not offer a high enough resolution to detect this difference in loading time._
+:point_up: We here resort to using `process.hrtime()` which returns an array whose first value is the time in seconds and the second is the time in nanoseconds relative to *"an arbitrary time in the past"* ([Node documentation](https://nodejs.org/api/process.html#process_process_hrtime_time)). While it is not possible to compute an absolute time in this manner, we can accurately measure the duration of code as seen in the above example. Depending on your machine, the reported nanoseconds intervals will differ, though the first `require()` statement will always take significantly (10x-100x) longer than the second `require()` statement.
 
 ### :bangbang: module.exports vs. exports
 
@@ -331,9 +328,9 @@ app.listen(3001);
 
 If you start the script and then make the following HTTP requests:
 
-- http://localhost:3001/first
-- http://localhost:3001/second
-- http://localhost:3001/
+- `http://localhost:3001/first`
+- `http://localhost:3001/second`
+- `http://localhost:3001/`
 
 your output on the terminal will look something like this:
 
@@ -348,7 +345,7 @@ your output on the terminal will look something like this:
 
 :point_up: Importantly, `next()` enables us to move on to the next middleware component while **`app.use(...)` registers the middleware component with the dispatcher**. Try out this code for yourself and see what happens if:
 
-- `app.use` is removed <spoiler-info>(the component is not available to the dispatcher)</spoiler-info>;
+- `app.use` is removed;
 - the order of the middleware components is switched, i.e. we first add `app.use(delimiter)` and then `app.use(logger)`;
 - in one or both of the middleware components the `next()` call is removed.
 
@@ -358,21 +355,27 @@ In the example above we did not actually sent an HTTP response back, but you kno
 
 ### :bangbang: Authorization component example
 
-In the [node-component-ex](https://github.com/chauff/demo-code/tree/master/node-component-ex) example application, we add an authorization component to a simple wishlist application back-end: only clients with the **correct username and password** (i.e. authorized users) should be able to receive their wishlist when requesting it. We achieve this by adding a middleware component that is activated for every single HTTP request and determines:
+In the [node-component-ex](https://github.com/chauff/demo-code/tree/master/node-component-ex) example application, we add an authorization component to a wishlist application back-end: only clients with the **correct username and password** (i.e. authorized users) should be able to receive their wishlist when requesting it. We achieve this by adding a middleware component that is activated for every single HTTP request and determines:
 
 - whether the HTTP request contains an authorization header (if not, access is denied);
 - and whether the provided username and password combination is the correct one.
 
-Before we dive into the code details, install and start the server as explained [here](https://github.com/chauff/demo-code#node-component-ex). Take a look at `app.js` before proceeding.
+Before we dive into the code details, install and start the server as explained [here](https://github.com/chauff/cse1500-demo-code/blob/master/README.md#node-component-ex). Take a look at `app.js` before proceeding.
 
 Once the server is started, open another terminal and use [curl](https://github.com/curl/curl), a command line tool that provides us with a convenient way to include username and password as you will see:
 
-- Request the list of wishes without authorization, i.e. `curl http://localhost:3000/wishlist` - you should see an `Unauthorized access` error.
-- Request the list of wishes with the correct username and password (as hard-coded in our demonstration code): `curl --user user:password http://localhost:3000/wishlist`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format. This request should work.
-- Request the list of wishes with an incorrect username/password combination: `curl --user test:test http://localhost:3000/wishlist`. You should receive a `Wrong username/password combination` error.
-- Add a wish to the wishlist: `curl --user user:password 'http://localhost:3000/addWish?type=board%20game&name=Treasure%20Hunt&priority=low'` (note that whitespaces are replaced by `%20` in URLs and the URL has to appear within quotes due to the special characters `&` in it). Did it work? If so, another execution of `curl --user user:password http://localhost:3000/wishlist` should result in a wishlist with now three wishes.
+- Request the list of wishes without authorization, i.e. `curl -w "\n" http://localhost:3000/wishlist` - you should see an `Unauthorized access` error. The `-w "\n"` option is not strictly necessary; it adds a newline after a completed transfer to make the console output a bit more readable.
+- Request the list of wishes with the correct username and password (as hard-coded in our demonstration code): `curl -w "\n" --user user:password http://localhost:3000/wishlist`. The option `--user` allows us to specify the username and password to use for authentication in the `[USER]:[PASSWORD]` format.
+- Request the list of wishes with an incorrect username/password combination: `curl -w "\n" --user test:test http://localhost:3000/wishlist`. You should receive a `Wrong username/password combination` error.
+- Add a wish to the wishlist: `curl -w "\n" --user user:password 'http://localhost:3000/addWish?type=board%20game&name=Treasure%20Hunt&priority=low'` (note that whitespaces are replaced by `%20` in URLs and the URL has to appear within quotes due to the special characters `&` in it). Did it work? If so, another execution of `curl -w "\n" --user user:password http://localhost:3000/wishlist` should result in a wishlist with now three wishes.
 
-Having found out how the code _behaves_, let us look at the authorization component. We here define it as an anynymous function as argument to `app.use` :point_down::
+Let's take a look at what your terminal session should look like:
+
+<asciinema-player src="../cast/node-authorization.cast"></asciinema-player>
+
+<sup>`node-component-ex` and `curl`.</sup>
+
+Having found out how the code _behaves_, let us look at the authorization component. We here define it as an anynymous function as argument to `app.use`:
 
 ```javascript
 app.use(function (req, res, next) {
@@ -416,7 +419,7 @@ app.use(setup({ param1: "value1" }));
 
 ## Routing
 
-Routing is the mechanism by which requests are routed to the code that handles them. The routes are [specified by a URL and HTTP method](https://expressjs.com/en/api.html#app.METHOD) (most often `GET` or `POST`). You have employed routes already - every time you wrote `app.get()` you specified a so-called **route handler** for HTTP method GET and wrote code that should be executed when that route (or URL) is called.
+Routing is the mechanism by which requests are routed to the code that handles them. The routes are [specified by a URL and HTTP method](https://expressjs.com/en/api.html#app.METHOD) (most often `GET` or `POST`). You have employed routes already&mdash;every time you wrote `app.get()` you specified a so-called **route handler** for HTTP method GET and wrote code that should be executed when that route (or URL) is called.
 
 This routing paradigm is a significant departure from the past, where **file-based** routing was commonly employed. In file-based routing, we access files on the server by their actual name, e.g. if you have a web application with your contact details, you typically would write those details in a file `contact.html` and a client would access that information through a URL that ends in `contact.html`. Modern web applications are not based on file-based routing, as is evident by the fact URLs these days do not contain file endings (such as `.html` or `.asp`) anymore.
 
@@ -443,9 +446,9 @@ app.get("/wishlist", function (req, res, next) {
 });
 ```
 
-:point*up: We define two route handlers for the same route `/wishlist`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
+:point_up: We define two route handlers for the same route `/wishlist`. Both anonymous functions passed as arguments to `app.get()` include the `next` argument. The first route handler generates a random number between 0 and 1 and if that generated number is below 0.5, it calls `next()` in the return statement. If the generated number is >=0.5, `next()` is not called, and instead a response is sent to the client making the request.
 If `next` was used, the dispatcher will move on to the second route handler and here, we do not call `next`, but instead send a response to the client.
-What we have done here is to hardcode so-called \_A/B testing*. Imagine you have an application and two data schemas and you aim to learn which schema your users prefer. Half of the clients making requests will receive schema A and half will receive schema B.
+What we have done here is to hardcode so-called *A/B testing*. Imagine you have an application and two data schemas and you aim to learn which schema your users prefer. Half of the clients making requests will receive schema A and half will receive schema B.
 
 We can also provide multiple handlers in a single `app.get()` call :point_down::
 
@@ -474,7 +477,7 @@ app.get(
 );
 ```
 
-:point*up: This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/wishlist`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important to understand \_when* to call `next` and _why_ in this setting we have to use a `return` statement - without it, the function's code would be continued to be executed.
+:point_up: This code snippet contains three handlers - and each handler will be used for about one third of all clients requesting `/wishlist`. While this may not seem particularly useful at first, it allows you to create generic functions that can be used in any of your routes, by dropping them into the list of functions passed into `app.get()`. What is important to understand *when* to call `next` and _why_ in this setting we have to use a `return` statement&mdash;without it, the function's code would be continued to be executed.
 
 ### Routing paths and string patterns
 
@@ -482,16 +485,18 @@ When we specify a path (like `/wishlist`) in a route, the path is eventually con
 
 Express distinguishes three different types of route paths:
 
-- strings;
-- string patterns; and
-- regular expressions.
+1. strings;
+2. string patterns; and
+3. regular expressions.
 
-So far, we have employed just strings to set route paths. **String patterns** are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. Regular expressions contain the full range of common regex functionalities (routes defined through regular expressions are enclosed in `/ /` instead of `' '`), allowing you to create arbitrarily complex patterns. If you are curious how complex regular expressions can become, take a look at the size of regular expressions to [validate email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression). Let's zoom in on string patterns (the full regex functionalities are beyond the scope of this class).
+So far, we have employed just strings to set route paths. **String patterns** are routes defined with strings and a subset of the standard regex meta-characters, namely: `+ ? * ( ) []`. 
 
-Express' **string pattern meta-characters** have the following interpretations:
+Regular expressions contain the full range of common regex functionalities (routes defined through regular expressions are enclosed in `/ /` instead of `' '`), allowing you to create arbitrarily complex patterns. If you are curious how complex regular expressions can become, take a look at the size of regular expressions to [validate email addresses](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression). 
+
+Let's zoom in on **string patterns** (the full regex functionalities are beyond the scope of this class). Express' **string pattern meta-characters** have the following interpretations:
 
 | Character | Description                                      | Regex    | Matched expressions |
-| --------- | ------------------------------------------------ | -------- | ------------------- |
+| :-------- | :----------------------------------------------- | :------- |:------------------ |
 | +         | one or more occurrences                          | ab+cd    | abcd, abbcd, …      |
 | ?         | zero or one occurrence                           | ab?cd    | acd, abcd           |
 | \*        | zero or more occurrences of any char (wildcard)  | ab\*cd   | abcd, ab1234cd, …   |
@@ -516,25 +521,11 @@ app.get('/user(name)?s+', function(req,res){
 
 And thus `/user` or `/names` do _not_ match this pattern, but `/users` or `/usernames` do indeed match.
 
-In order to test your own string patterns, you can set up a simple server-side script such as the following :point_down:
+If you want to play around with your own string patterns, we have a small demo application for this purpose :point_down:.  You find the installation instructions [here](https://github.com/chauff/cse1500-demo-code#node-express-regex).
 
-```javascript
-const express = require("express");
+![Regex demo](../img/node2-regex-app.png)
 
-const app = express();
-
-app.get("/user(name)?s+", function (req, res) {
-  res.send("Yes!");
-});
-
-app.get("*", function (req, res) {
-  res.send("No!");
-});
-
-app.listen(3001);
-```
-
-Once a string pattern is coded, you can open your browser at `http://localhost:3001/`, and test different routes, receiving a _Yes!_ for a matching route and a _No!_ for a non-matching route.
+<sup>Express string patterns demo application.</sup>
 
 ### Routing parameters
 
@@ -674,18 +665,11 @@ Let's take a first look at EJS. For this exercise, we will use Node's **REPL** (
 
 To start the REPL, type `node` in the terminal. The Node shell becomes available, indicated by the `>` prompt. Start your REPL and try a few things (declare a variable, define a function, etc.) by typing into the shell, ending each line with <kbd>Enter</kbd>. You should see something like this :point_down::
 
-```
-○ → node
-Welcome to Node.js v14.11.0.
-Type ".help" for more information.
-> const s = "hello CSE1500!"
-undefined
-> s
-'hello CSE1500!'
->
-```
+<asciinema-player src="../cast/node-repl.cast"></asciinema-player>
 
-:point_up: If you want to avoid the constant `undefined` messages on the REPL (which are simply the return values of the commands entered), start the REPL as follows:
+<sup>Node REPL.</sup>
+
+:point_up: If you want to avoid the constant `undefined` messages on the REPL (after every executed command, the REPL prints out the return value&mdash;and it prints `undefined` if there is no return value), start the REPL as follows:
 
 ```
 node -e "require('repl').start({ignoreUndefined:true})"
@@ -694,13 +678,13 @@ node -e "require('repl').start({ignoreUndefined:true})"
 Back to EJS. Before we can use the EJS module, we need to install it as it is not part of core Node.js modules. You already know how to do this: `npm install ejs`. Then, you can start the REPL and type out the following EJS snippet :point_down::
 
 ```javascript
-var ejs = require("ejs");
-var template = "<%= message %>"; //<%= outputs the value into the template
-var context = { message: "Hello CSE1500!" };
+const ejs = require("ejs");
+const template = "<%= message %>"; //<%= outputs the value into the template
+const context = { message: "Hello CSE1500!" };
 console.log(ejs.render(template, context));
 ```
 
-:point*up: Here, we first make the EJS object available via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello CSE1500!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called \_scriptlet tag* to indicate the start of an element to be replaced with data as well as an ending tag `%>`.
+:point_up: Here, we first make the EJS object available via `require()`. Next, we define our template string. In this template we aim to replace the message with the actual data. Our `context` variable holds an object with a property `message` and value `Hello CSE1500!`. Lastly, we have to bring the template and the data together by calling `ejs.render()`. The output will be the **rendered view**. The template contains `<%=`, a so-called *scriptlet tag* to indicate the start of an element to be replaced with data as well as an ending tag `%>`.
 
 There are two types of scriptlet tags that **output values**:
 
@@ -710,22 +694,24 @@ There are two types of scriptlet tags that **output values**:
 In order to see the difference between the two types of tags, go back to Node's REPL and try out the following code snippet :point_down::
 
 ```javascript
-var ejs = require("ejs");
-var unescapedTemplate = "<%- message %>";
-var escapedTemplate = "<%= message %>";
-var context = { message: "<script>alert('Hello CSE1500!');</script>" };
+const ejs = require("ejs");
+const unescapedTemplate = "<%- message %>";
+const escapedTemplate = "<%= message %>";
+const context = { message: "<script>alert('Hello CSE1500!');</script>" };
 
 console.log("[UNESCAPED] " + ejs.render(unescapedTemplate, context));
 console.log("[ESCAPED] " + ejs.render(escapedTemplate, context));
 ```
 
-:point_up: The HTML-escaped variant produces the output
+You should see the following:
 
-```
-&lt;script&gt;alert(&#39;Hello CSE1500!&#39;);&lt;/script&gt;
-```
+<asciinema-player src="../cast/node-ejs.cast"></asciinema-player>
 
-:point*up: Here, we observe that the special characters in HTML are replaced by so-called [HTML entities](https://developer.mozilla.org/en-US/docs/Glossary/Entity), each one being a string starting with `&` and ending with `;`. The opening tag bracket `<` becomes `&lt;`, a single quotation mark `'` becomes `&#39;`. The browser's rendering engine \_renders* these HTML entities as special characters. Try it out for yourself! Save in a `*.html` file and open it in your browser :point_down::
+<sup>Node REPL and (un)escaped EJS templates.</sup>
+
+:point_up: Here, we observe that the special characters in HTML are replaced by so-called [HTML entities](https://developer.mozilla.org/en-US/docs/Glossary/Entity), each one being a string starting with `&` and ending with `;`. The opening tag bracket `<` becomes `&lt;`, a single quotation mark `'` becomes `&#39;`. The browser's rendering engine *renders* these HTML entities as special characters.
+
+ Try it out for yourself! Save the following snippet in a `*.html` file and open it in your browser :point_down::
 
 ```html
 <html>
@@ -736,22 +722,22 @@ console.log("[ESCAPED] " + ejs.render(escapedTemplate, context));
 </html>
 ```
 
-In contrast, un-escaped variant produces `<script>alert('Hello CSE1500!');</script>` as output. In the latter case, this is code that the browser will execute. Once more, try it out yourself by replacing the escaped output in the HTML document above with the unescaped output. Loading the page should now result in a popup appearing in the browser.
+In contrast, the un-escaped variant produces `<script>alert('Hello CSE1500!');</script>` as output. In the latter case, this is code that the browser will execute. Once more, try it out yourself by replacing the escaped output in the HTML document above with the unescaped output. Loading the page should now result in a popup appearing in the browser.
 
 ### :bangbang: EJS and user-defined functions
 
 In order to make templates maintainable, it is possible to provide user-defined functions to a template as follows :point_down::
 
 ```javascript
-var ejs = require("ejs");
-var people = ["wolverine", "paul", "picard"];
+const ejs = require("ejs");
+const people = ["wolverine", "paul", "picard"];
 
-var transformUpper = function (inputString) {
+const transformUpper = function (inputString) {
   return inputString.toUpperCase();
 };
 
-var template = '<%= helperFunc(input.join(", ")); %>';
-var context = {
+const template = '<%= helperFunc(input.join(", ")); %>';
+const context = {
   input: people,
   helperFunc: transformUpper, //user-defined function
 };
@@ -765,12 +751,16 @@ console.log(ejs.render(template, context));
 To make templates even more flexible, we can incorporate JavaScript in the template, using the `<%` scriptlet tag :point_down::
 
 ```javascript
-var ejs = require("ejs");
+const ejs = require("ejs");
 
-var template =
-  "<% if(movies.length>2){movies.forEach(function(m){console.log(m.title)})} %>";
+const template =
+  `<% 
+    if(movies.length>2){
+      movies.forEach(function(m){console.log(m.title)})
+      } 
+  %>`;
 
-var context = {
+const context = {
   movies: [
     { title: "The Hobbit", release: 2014 },
     { title: "X-Men", release: 2016 },
@@ -781,7 +771,7 @@ var context = {
 ejs.render(template, context);
 ```
 
-:point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to iterate over the array and print out the title and release date if our array has more than two elements (admittedly, not a very sensible example but it shows off the main principle). The `<%` scriptlet tags are used for **control-flow purposes**. If you replace the opening scriptlet tag with `<%-` or `<%=` (try it!), you will end up with an error.
+:point_up: The context is an array of objects, each movie with a title and release date. In the template, we use [`Array.prototype.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) (it executes a provided function once per array element) to iterate over the array and print out the title and release date if our array has more than two elements (admittedly, not a very sensible example but it shows off the main principle). The `<%` scriptlet tags are used for **control-flow purposes**. If you replace the opening scriptlet tag with `<%-` or `<%=` (try it!), you will end up with an error. Note that we are using backticks here in our `template` to surround the string as backticks allow the use of multiline strings.
 
 ### :bangbang: Express and templates
 
@@ -789,35 +779,24 @@ By now you might be asking why we are doing this. So far, we have only used Node
 
 Three steps are involved:
 
-:one: We set up the _views directory_ - the directory containing all templates. Templates are essentially HTML files with EJS scriptlet tags embedded and file ending `.ejs`:
+1. We set up the _views directory_&mdash;the directory containing all templates. Templates are essentially HTML files with EJS scriptlet tags embedded and file ending `.ejs`: `app.set("views", __dirname + "/views");`
+2. We define the template engine of our choosing: `app.set("view engine", "ejs");`
+3. We create template files.
+
+A functioning Express/EJS demo can be found [here](https://github.com/chauff/cse1500-demo-code/tree/master/node-ejs-ex). Try it out yourself by installing and running it. Let's consider the application's `app.js` :point_down::
 
 ```javascript
-app.set("views", __dirname + "/views");
-```
+const express = require("express");
+const url = require("url");
+const http = require("http");
 
-:two: We define the template engine of our choosing:
-
-```javascript
-app.set("view engine", "ejs");
-```
-
-:three: We create template files.
-
-An functioning Express/EJS demo can be found [here](<[demo-code/node-ejs-ex](https://github.com/chauff/demo-code/tree/master/node-ejs-ex)>). Try it out yourself by installing and running it. Let's consider the application's `app.js` :point_down::
-
-```javascript
-var express = require("express");
-var url = require("url");
-var http = require("http");
-var app;
-
-var port = process.argv[2];
-app = express();
+const port = process.argv[2];
+const app = express();
 http.createServer(app).listen(port, function () {
   console.log("Ready on port " + port);
 });
 
-var wishlist = [];
+const wishlist = [];
 wishlist.push({ name: "Wingspan", type: "game night" });
 wishlist.push({ name: "Munchkin", type: "party game" });
 wishlist.push({ name: "Scrabble", type: "game night" });
