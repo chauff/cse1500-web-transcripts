@@ -157,7 +157,7 @@ Request the same page without the `Authorization` header field&mdash;what happen
 
 In this, and the upcoming two assignments, you will complete a web programming project: you will implement a classic **board game with a design that is related to Delft**.
 
-<img width="600px" src="../img/boardgame-delft.png">
+<img width="625px" src="../img/boardgame-delft.png">
 
 You can choose from six games:
 
