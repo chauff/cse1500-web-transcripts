@@ -166,7 +166,7 @@ You can choose from six games:
 3. [Draughts](https://en.wikipedia.org/wiki/Draughts): 2 players
 4. Chess - there are many variants available besides the default, [pick one](https://en.wikipedia.org/wiki/List_of_chess_variants): 2-4 players depending on the variant
 5. [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)): 2 players
-6. [Memory](https://en.wikipedia.org/wiki/Concentration_(card_game)): 2 players
+6. [Memory](https://en.wikipedia.org/wiki/Concentration_(card_game)): 2+ players. **It is sufficient if you implement a working game for two players.** Similar to chess, there are several variations available on the linked Wikipedia page, feel free to pick one of them.
 
 At the end of the three web assignments, your board game application should have the following functionalities :point_down::
 
