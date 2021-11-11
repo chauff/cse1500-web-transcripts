@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /
-warning: true
+warning: false
 ---
 
 Web technology course information <!-- omit in toc -->
