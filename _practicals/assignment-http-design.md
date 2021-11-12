@@ -12,7 +12,7 @@ The first part of this assignment gives you hands-on experience with **HTTP**. I
 
 ## 0. Preliminaries
 
-Remember that this is a group assignment! Work efficiently as a team! If you have not programmed as a team before, read up on our introduction to [Visual Studio Code](https://chauff.github.io/Web-Teaching/vsc/). Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.
+Remember that this is a group assignment! Work efficiently as a team! Use this assignment to set up a collaborative coding environment within your team. The next assignment will require extensive JavaScript programming that both team members need to contribute to.
 
 ### Overview of deliverables and upload procedure
 
