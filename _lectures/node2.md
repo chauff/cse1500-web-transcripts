@@ -371,7 +371,7 @@ Once the server is started, open another terminal and use [curl](https://github.
 
 Let's take a look at what your terminal session should look like:
 
-<asciinema-player src="../cast/node-authorization.cast"></asciinema-player>
+<asciinema-player src="../cast/node-authorization.cast"  cols="80" rows="18"></asciinema-player>
 
 <sup>`node-component-ex` and `curl`.</sup>
 
@@ -665,7 +665,7 @@ Let's take a first look at EJS. For this exercise, we will use Node's **REPL** (
 
 To start the REPL, type `node` in the terminal. The Node shell becomes available, indicated by the `>` prompt. Start your REPL and try a few things (declare a variable, define a function, etc.) by typing into the shell, ending each line with <kbd>Enter</kbd>. You should see something like this :point_down::
 
-<asciinema-player src="../cast/node-repl.cast"></asciinema-player>
+<asciinema-player src="../cast/node-repl.cast"  cols="80" rows="18"></asciinema-player>
 
 <sup>Node REPL.</sup>
 
@@ -705,7 +705,7 @@ console.log("[ESCAPED] " + ejs.render(escapedTemplate, context));
 
 You should see the following:
 
-<asciinema-player src="../cast/node-ejs.cast"></asciinema-player>
+<asciinema-player src="../cast/node-ejs.cast"  cols="80" rows="18"></asciinema-player>
 
 <sup>Node REPL and (un)escaped EJS templates.</sup>
 

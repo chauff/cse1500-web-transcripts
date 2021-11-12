@@ -121,7 +121,7 @@ fs.readFile("./course-info.md", "utf8", function (err, data) {
 
 Having described what happens in our little script, let's look at the actual terminal session: 
 
-<asciinema-player src="../cast/node-file-reading.cast"></asciinema-player>
+<asciinema-player src="../cast/node-file-reading.cast"  cols="80" rows="18"></asciinema-player>
 
 <sup>In this terminal session, we first list the files in the current directory with `ls`, then show the file content of both files with `more` and finally start the execution of the script with the command `node app.js`. Before the second execution, we delete the file to read with the `rm` command.</sup>
 
@@ -217,7 +217,7 @@ fs.access(file, fs.constants.F_OK, function (err) {
 
 :point_up: That's all. Store this code in a file of your choosing, e.g. `watching.js`, open the terminal and then start the script execution with `node watching.js /path/to/file/to/watch`. The command line argument here is the path to the file to watch. If it is a file in the same directory as your script, you simply add the filename. Now change the file and see what happens. Depending on the operating system, when you make a change to the watched file (e.g. add a line of text) this may or may not require saving the file before your Node script reports a file change. If a command line argument is missing or the file does not exist, the script ends. Trying this script yourself should lead to something like this :point_down::
 
-<asciinema-player src="../cast/node-file-watching.cast"></asciinema-player>
+<asciinema-player src="../cast/node-file-watching.cast"  cols="80" rows="18"></asciinema-player>
 
 <sup>Side note: If you are looking for a well-styled terminal, take a look at the [bash-it framework](https://github.com/Bash-it/bash-it).</sup>
 
@@ -458,7 +458,7 @@ How do we go about setting up our own project and installing  modules? We follow
 2. **Installation of dependences**. We are ready to install the packages we need for our project. To install the Express package, execute the command `npm install express --save`. If the installation was successful, we should now have a folder `node_modules`. As Express itself is dependent on many other packages, you will find more than just Express in there. The `--save` option ensures that the `package.json` file is altered: in it we now find the `dependencies` entry. It means, that the project is now dependent on Express. Without the `--save` option, the installation of Express would have occurred as well, however, the `package.json` file would remain unaltered and it would not have been saved as dependency. When `package.json` is properly maintained, the application can be installed by anyone with `npm install`. There is one more file in your folder, `package-lock.json`, that we are skipping over. If you look into it, you will find it much more detailed than `package.json`, it provides step by step instructions of how the `node_modules` tree was generated. More information [can be found here](https://docs.npmjs.com/configuring-npm/package-lock-json.html) but for the purposes of this course you can ignore it.
 
 The execution of both steps is shown here in the terminal:
-<asciinema-player src="../cast/node-install-express.cast"></asciinema-player>
+<asciinema-player src="../cast/node-install-express.cast"  cols="80" rows="18"></asciinema-player>
 
 Finally, we note that on [npmjs](https://www.npmjs.com/) you can find and search for nearly 2 million packages that have been created by the Node.js community.
 

@@ -543,7 +543,7 @@ Telnet **is not capable of dealing with https** (i.e. **secure** http). Keep thi
 
 In the next few paragraphs, we describe in detail how to practice writing HTTP messages yourself via telnet and openssl. Before we start though, we here show the entire terminal session in one go:
 
-<asciinema-player src="../cast/mit-telnet-openssl.cast"></asciinema-player>
+<asciinema-player src="../cast/mit-telnet-openssl.cast" cols="80" rows="18"></asciinema-player>
 
 <sup>HTTP requests made via telnet (http) and openssl (https).</sup>
 
@@ -627,7 +627,7 @@ Why are we still using IPv4? Because transitioning to the new standard takes tim
 
 While we typically use domain names, we can also use IP addresses directly in the browser's address bar. One quick way of determining the IP address of a domain is the `ping` command: it sends an echo request package to a destination and awaits the reply, measuring the round-trip time as part of it and listing the IP address as a by-product. For example, `ping www.google.com` tells us that the corresponding IP address is `142.251.36.36` (a single domain can be tied to several IP addresses to enable large-scale operations and thus you are likely to receive a different IP address when trying out this command):
 
-<asciinema-player src="../cast/ping-example.cast"></asciinema-player>
+<asciinema-player src="../cast/ping-example.cast"  cols="80" rows="18"></asciinema-player>
 
 ## Uniform Resource Locators (URLs)
 
