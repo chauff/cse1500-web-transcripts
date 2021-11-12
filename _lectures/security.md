@@ -582,7 +582,7 @@ Of the [unvalidated redirects challenges](https://pwning.owasp-juice.shop/part2/
 2. Check out the payment options at `http://localhost:3000/#/payment/shop` (assuming a local installation). You can also land here by following the procedure for _checking out_.
 3. Observe that you cannot pay using a crypto currency. We know though that this used to be a feature in Juice Shop. Lets see whether we can still find it in the source code.
 4. Use the browser's dev tools and open the Debugger tab. It should show you a list of JavaScript files that our application requires. View the contents of `main-es2018.js`.
-5. Search in `main-es2018.js` for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash` and `Ether`. If you were to click on <kbd>Pay with Bitcoin</kbd> (_now unavailable_), you would be redirected to Blockchain's website without any warning. Note that here some protection is enabled: while a redirect to those three cryptocurrency URLs is possible, other redirects yield an _406 Error: Unrecognized target URL for redirect_.
+5. Search in `main-es2018.js` for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash` and `Ether`. If you were to click on <kbd>Pay with Bitcoin</kbd> (_now unavailable_), you would be redirected to Blockchain's website without any warning.
 
 #### How to avoid it
 
