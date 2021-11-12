@@ -45,7 +45,7 @@ _This is the densest web technology lecture of this course. Learning how to prog
     - [:bangbang: Example 5: mouse events](#bangbang-example-5-mouse-events)
     - [:bangbang: Example 6: a crowdsourcing interface](#bangbang-example-6-a-crowdsourcing-interface)
     - [:bangbang: Example 7: a typing game](#bangbang-example-7-a-typing-game)
-- [Final notes ...](#final-notes-)
+- [Final notes](#final-notes)
 - [Self-check](#self-check)
 
 ## Required & recommended readings and activities
@@ -58,6 +58,8 @@ _This is the densest web technology lecture of this course. Learning how to prog
 - Recommended activities:
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
   - [JavaScript30](https://javascript30.com/): 30 day vanilla JS coding challenges by Wes Bos
+  - 
+  - [This interactive DOM explorer](https://domevents.dev/) can help you to get a better sense of the Document Object Model and DOM events. It covers a lot more ground than we do in this class.
 - Recommended readings:
   - [A blog post by the V8 team on how to read the ECMAscript specification](https://v8.dev/blog/understanding-ecmascript-part-1).
   - :closed_book: [Learning JavaScript design patterns](https://addyosmani.com/resources/essentialjsdesignpatterns/book/), in particular the sections on the [constructor pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript) and the [module pattern](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
@@ -425,6 +427,8 @@ A canonical use case for arrow functions are the `.map()`, `.reduce()` and `.fil
 - [`.filter()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter): creates a new array with those elements of the calling array that pass the provided filter function.
 
 This may sound a bit abstract, but once you see an example it wil all makes sense. Consider the array `let ar=["Beat Saber", "Astro Bot Rescue Mission", "Tetris Effect"]`. If we want to convert all array elements to upper case, we apply a function to every array element: `let arUpperCase = ar.map(x => x.toUpperCase())`. If we want to only keep those strings of more than ten characters we use `let arLong = ar.filter(x => x.length > 10)`. The `.reduce()` function works on every element of the array and produces a single output value. For instance, the total number of characters of our array of strings can be computed as follows: `let totalChars = ar.reduce((acc, val) => acc + val.length,0);`.
+
+Take a look at [this tweet](https://twitter.com/rauschma/status/1398668839177568259) for a visual aid for some of the more important array functions in JavaScript.
 </optional-info>
 
 <debug-info markdown="block">
@@ -1541,7 +1545,7 @@ In this example we do do make slight use of CSS (to flash a red background and a
 </html>
 ```
 
-## Final notes ...
+## Final notes
 
 In the seven DOM interaction examples shown here, we did not have to add a lot of code and thus **for presentation purposes** we chose to keep things lean and move all JavaScript code into the HTML file. This allows you to copy the code snippet at once and run/explore it. When writing web applications that go beyond those having just a few lines of code, this should be avoided: your JavaScript code should be in dedicated files and the object-oriented programming paradigm should be employed.
 

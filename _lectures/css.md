@@ -62,7 +62,7 @@ warning: false
   - :headphones: An entire [podcast series](https://pod.link/thecsspodcast) by Una Kravets and Adam Argyle about CSS exists too!
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/021/what-s-new-in-css-variables-scoping-new-selectors-and-color-functions) on the present and future of CSS.
   - The [CSS grid generator](https://cssgrid-generator.netlify.app/) can help you wrap your head around the main CSS grid properties.
-  - At [https://flukeout.github.io/](https://flukeout.github.io/) you find a game to practice CSS selectors.
+  - At [https://flukeout.github.io/](https://flukeout.github.io/) you find a game to practice CSS selectors. Another CSS selector practice page can be found [here](https://codepen.io/pehaa/full/ROapJZ).
 - Recommended readings:
   - [The state of CSS 2020](https://2020.stateofcss.com/): a developer survey on the CSS features that are being used and seen as important going forward.
   - [Extensive post](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_and_edit_CSS) on Firefox's developer tools for CSS.

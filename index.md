@@ -29,6 +29,7 @@ In the five weeks of the web technology lectures we can only cover the web progr
 - [Web development resources](#web-development-resources)
 - [Lecture material types](#lecture-material-types)
 - [University courses with a web focus elsewhere](#university-courses-with-a-web-focus-elsewhere)
+- [Courses elsewhere](#courses-elsewhere)
 
 ## Book
 
@@ -146,3 +147,7 @@ Naturally, what we present here is only one way of introducing the fundamentals 
 - [Web Programming /U Washington](https://courses.cs.washington.edu/courses/cse154/20su/)
 - [Web and Mobile Systems /U Virginia](http://cs4720.cs.virginia.edu/f14/)
 - [JavaScript /UPenn](http://www.seas.upenn.edu/~cis197/)
+
+## Courses elsewhere
+
+- [Microsoft's Web Development for Beginners Curriculum](https://microsoft.github.io/Web-Dev-For-Beginners/#/)

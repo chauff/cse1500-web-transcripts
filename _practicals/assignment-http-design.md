@@ -47,7 +47,7 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 <debug-info markdown="block">
 👉 Let us start with a few pointers:
 
-- This assignment requires you to work on the shell. If you are not familiar with this type of command line interface, take a look at this [MIT class](https://missing.csail.mit.edu/); it covers the *missing semester of computer science education* and introduces a range of practical tools, including in lesson 1 [the shell](https://missing.csail.mit.edu/2020/course-shell/).
+- This assignment requires you to work on the shell. If you are not familiar with this type of command line interface, take a look at this [MIT class](https://missing.csail.mit.edu/); it covers the *missing semester of computer science education* and introduces a range of practical tools, including in lesson 1 [the shell](https://missing.csail.mit.edu/2020/course-shell/). This [YouTube video](https://www.youtube.com/watch?v=ZtqBQ68cfJc) covers 50 popular Linux \& terminal commands.
 - To store `telnet`'s or `openssl`'s output to file (in addition to printing it on the console), you can use the command `tee`, e.g. `telnet www.tudelft.nl 80|tee out` will save all output to a file called `out`.
 - To exit a telnet session, first press <kbd>CTRL</kbd>+<kbd>]</kbd>. This brings you to a `telnet>` prompt and you can type `close` to end the session.
 - Be aware that `some-domain.com` is not the same as `www.some-domain.com`.
@@ -173,7 +173,7 @@ At the end of the three web assignments, your board game application should have
 - The game is for 2+ players and in 2D.
 - The game works in 2+ modern browsers (e.g. Firefox and Chrome).
 - It works well on a laptop/desktop device. We are considering screen resolutions of ~1366x768 or higher. In this project, we are **not** concerned about apps for mobile devices or apps with a responsive design.
-- Upon entering your web application's URL, a **splash screen** is shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.). <ins>Pick three statistics you want to report on the splash screen</ins>. Add a brief description of how-to-play and a *Play* button.
+- Upon entering your web application's URL, a **splash screen** is shown that allows a user to see some statistics of the game (how many games are currently ongoing, how many users have started a game, etc.). <ins>Pick three statistics you want to report on the splash screen</ins>. Add a brief description of how-to-play (if you need inspiration for good looking *how it works* designs, take a look [here](https://robhope.com/how-it-works-examples))and a *Play* button.
 - Upon pressing *Play*, the user enters the **game screen** and waits for a sufficient number of other gamers to start playing. It is clear for the player that s/he is waiting for more players to enter the game.
 - Once there are sufficiently many players, the game automatically starts and the players play against each other. 
 - The server supports multiple games to take place at the same time.
@@ -205,7 +205,7 @@ Which *game features* in the game examples of 4.2) stand out positively and whic
 
 Having looked at at least three existing implementations of your chosen board game (Exercise 4.2), you are now in a position to design your own game interface. 
 
-Similar to the [splash](https://github.com/chauff/balloons-game/blob/master/wireframes/splash.png) and [game](https://github.com/chauff/balloons-game/blob/master/wireframes/game.png) screen wireframes of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. Your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. You can use pen-and-paper to create mockups, you can make use of a presentation program (like Powerpoint or Google Slides) or head to online platforms specifically for wireframe design, such as [wireframe.cc](https://wireframe.cc/) or [excalidraw](https://excalidraw.com/).
+Similar to the [splash](https://github.com/chauff/balloons-game/blob/master/wireframes/splash.png) and [game](https://github.com/chauff/balloons-game/blob/master/wireframes/game.png) screen wireframes of the demo game, start designing your own application. Create one **splash screen** and one **game screen**. Your web application should be designed for the standard Desktop interface. Use the software of your choice to create those wireframes. You can use pen-and-paper to create mockups, you can make use of a presentation program (like Powerpoint or Google Slides) or head to online platforms specifically for wireframe design, such as [wireframe.cc](https://wireframe.cc/), [figma](https://www.figma.com/) or [excalidraw](https://excalidraw.com/).
 
 ### 5.1)
 
@@ -225,3 +225,12 @@ Once you have completed the design of your app, head over to Brightspace and pos
 ## 6. Your own board game app: HTML
 
 Similar to the demo game, take your design as a starting point and create the respective **two HTML documents**. These documents should **only** contain HTML, no CSS or JavaScript. To get an idea of the expected amount of content (it is not a lot!), take a look at our demo game's [`game.html`](https://github.com/chauff/balloons-game/blob/master/public/game.html) and [`splash.html`](https://github.com/chauff/balloons-game/blob/master/public/splash.html). Ignore the few lines of code loading JavaScript and CSS files, these will be covered in the two later assignments. You can of course later always make changes to these HTML files.
+
+<debug-info markdown="block">
+HTML files contain a certain amount of boilerplate content that needs to be rewritten every time a HTML page is created. 
+
+If you are using Visual Studio Code, you can have this boilerplate generated for you by either:
+
+- Creating a new file with ending `.html` and then typing `html:5` into the editor (this should bring up a command with a little wrench) and clicking <kbd>Enter</kbd>.
+- If the file is not named (and no file ending is telling VSC what type of content to expect), you should see as first line *Select a language to get started...*. Click on *Select a language, pick `HTML` and then type into the editor `html:5`.
+</debug-info>
