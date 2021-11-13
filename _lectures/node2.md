@@ -20,6 +20,7 @@ warning: false
   - [:bangbang: `require` is blocking](#bangbang-require-is-blocking)
   - [:bangbang: module.exports vs. exports](#bangbang-moduleexports-vs-exports)
 - [Creating and using a (useful) module](#creating-and-using-a-useful-module)
+  - [CommonJS vs. ECMAScript modules](#commonjs-vs-ecmascript-modules)
 - [Middleware in Express](#middleware-in-express)
   - [:bangbang: Logger example](#bangbang-logger-example)
   - [:bangbang: Authorization component example](#bangbang-authorization-component-example)
@@ -277,6 +278,16 @@ Assuming the Node script is started on `localhost` and port `3000`, we can then 
 - `http://localhost:3000/round?grade=2.1`
 - `http://localhost:3000/round?grade=`
 - `http://localhost:3000/round?grade=10`
+
+<optional-info markdown="block">
+### CommonJS vs. ECMAScript modules
+
+When Node.js was created, there was no standardized format for modules and Node.js went with the format introduced above&mdash;this is known as the [**CommonJS**](https://nodejs.org/docs/latest/api/modules.html#modules-commonjs-modules) module formatting. 
+
+As modules are important to enable code encapsulation, improve code maintenance, etc. eventually modules were added to the ECMAScript specification: not Node.js' choice of module formatting though; **ECMAScript modules** were introduced in ES6. Those files are usually recognizable by the file ending `*.mjs` (though [MDN argues against it](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#aside_%E2%80%94_.mjs_versus_.js)). Node.js supports both module systems; in this class we stick to the CommonJS formatting which remains the more common one in Node.js.
+
+All modern browsers [support ECMAScript modules](https://caniuse.com/?search=modules). We have not introduced them in the client-side JavaScript lecture due to a lack of time.
+</optional-info>
 
 ## Middleware in Express
 
