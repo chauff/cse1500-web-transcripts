@@ -100,6 +100,7 @@ There are three web technology assignments, each one covering the contents of tw
 
 The three assignments build on each other&mdash;over the course of them you are tasked with implementing a **multi-player board game**. FYI, in previous years, roughly 90% of teams passed the first web assignment, 60% passed the first two and 30% of teams passed all three web assignments.
 
+**In order to help you get started, we have created a [demo game application](https://github.com/chauff/cse1500-balloons-game).** If you get stuck, take a look at the demo application, it may help you.
 ## Web development resources
 
 The practical assignments may require looking up web development specifics. Two good resources for web engineering are [Mozilla's MDN portal](https://developer.mozilla.org/en-US/) and [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).
