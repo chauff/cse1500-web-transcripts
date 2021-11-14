@@ -722,7 +722,7 @@ The development of the Internet had largely been driven by US companies and orga
 
 Later, **character encoding** was added, e.g. a whitespace becomes `%20`. If a URL such as `https://www.tudelft.nl.nl/event calendar 2020.pdf` is entered into a modern browser, it is automatically encoded as `https://www.tudelft.nl.nl/event%20calendar%202020.pdf` before the HTTP request is made. In this manner, characters that are not part of ASCII can be encoded through a **combination** of ASCII characters.
 
-Character encodings are not sufficient though, what about languages that are not based on the Latin alphabet (what about URLs like `http://правительство.рф` which uses the cyrillic script)? Ideally, URLs should allow non-Latin characters as well, which today boils down to the use of the [Unicode standard](https://www.unicode.org/versions/Unicode13.0.0/):
+Character encodings are not sufficient though, what about languages that are not based on the Latin alphabet (what about URLs like `http://правительство.рф` which uses the cyrillic script)? Ideally, URLs should allow non-Latin characters as well, which today boils down to the use of the [Unicode standard](https://unicode.org/standard/standard.html):
 
 ```
 The Unicode Standard is a character coding system designed 

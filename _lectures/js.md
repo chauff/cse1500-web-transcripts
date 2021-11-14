@@ -81,8 +81,7 @@ _This is the densest web technology lecture of this course. Learning how to prog
   - Wirfs-Brock, Allen, and Brendan Eich. [JavaScript: the first 20 years](https://doi.org/10.1145/3386327). Proceedings of the ACM on Programming Languages 4.HOPL (2020): 1-189.
   - Charland, Andre, and Brian Leroux. [Mobile application development: web vs. native](https://queue.acm.org/detail.cfm?id=1968203). Communications of the ACM 54.5 (2011): 49-53.
   - Mowery, Keaton, et al. [Fingerprinting information in JavaScript implementations](https://hovav.net/ucsd/dist/jspriv.pdf). Proceedings of W2SP 2.11 (2011).
-  - Ratanaworabhan, Paruj, Benjamin Livshits, and Benjamin G. Zorn. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.usenix.org/legacy/events/webapps10/tech/full_papers/Ratanaworabhan.pdf). WebApps 10 (2010).
-  - Lin, Jimmy. [Computing without Servers, V8, Rocket Ships, and Other Batshi\*t Crazy Ideas in Data Systems](http://ceur-ws.org/Vol-2167/keynote1.pdf) DESIRES (2018): 3-6.
+  - Ratanaworabhan, Paruj, Benjamin Livshits, and Benjamin G. Zorn. [JSMeter: Comparing the Behavior of JavaScript Benchmarks with Real Web Applications](https://www.cpe.ku.ac.th/~paruj/papers/webapps10.pdf). WebApps 10 (2010).
   - Patra, Jibesh, Pooja N. Dixit, and Michael Pradel. [ConflictJS: finding and understanding conflicts between JavaScript libraries](http://mp.binaervarianz.de/icse2018.pdf). Proceedings of the 40th International Conference on Software Engineering. 2018.
   - Jangda, Abhinav, et al. [Not so fast: analyzing the performance of webassembly vs. native code](https://www.usenix.org/system/files/atc19-jangda.pdf). In Proceedings of the 2019 USENIX Annual Technical Conference, pp. 107-120.
   - Chaqfeh, Moumena, et al. [JSCleaner: De-Cluttering Mobile Webpages Through JavaScript Cleanup](https://doi.org/10.1145/3366423.3380157). Proceedings of The Web Conference. 2020.

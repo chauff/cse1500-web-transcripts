@@ -157,7 +157,7 @@ The npm registry has its share of _typosquatting attacks_ (e.g. [here](https://s
 
 In order to effectively secure a web application, it helps to know what the most frequent security issues are.
 
-Ideally, we can refer to a single report, that is updated yearly and showcases the most frequent vulnerabilities derived from a large sample of web applications. Unfortunately, due to the big business that _cybersecurity_ is, many existing reports read more like an advertisement and are vague on their methodology, where the numbers come from, how the vulnerabilities were derived and so on. For this reason, we here mostly rely on the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (in short: CSRHPE). For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Although the report is from 2016, the major findings have been corroborated by more recent reports as well (such as the [2019 vulnerability statistics report](https://www.edgescan.com/wp-content/uploads/2019/02/edgescan-Vulnerability-Stats-Report-2019.pdf) and the [2019 Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf)). In this section of the lecture, we go over some of the most important findings in the CSRHPE concerning web applications.
+Ideally, we can refer to a single report, that is updated yearly and showcases the most frequent vulnerabilities derived from a large sample of web applications. Unfortunately, due to the big business that _cybersecurity_ is, many existing reports read more like an advertisement and are vague on their methodology, where the numbers come from, how the vulnerabilities were derived and so on. For this reason, we here mostly rely on the [Cyber security risk report 2016 published by HPE](https://www.thehaguesecuritydelta.com/media/com_hsd/report/57/document/4aa6-3786enw.pdf) (in short: CSRHPE). For this report, several thousand applications (mobile, web, desktop) were sampled and their security was probed. Although the report is from 2016, the major findings have been corroborated by more recent reports as well (such as the [2020 vulnerability statistics report](https://info.edgescan.com/vulnerability-stats#stats) and the [2019 Internet Security Threat Report](https://www.symantec.com/content/dam/symantec/docs/reports/istr-24-2019-en.pdf)). In this section of the lecture, we go over some of the most important findings in the CSRHPE concerning web applications.
 
 The most important **software security issues** for web and mobile applications are the following, reported as _percentage of scanned applications_:
 
@@ -269,7 +269,7 @@ let sqlQuery = "select * from users where name = '"+u+"' and password = '" + p +
 
 We here take up the **Login Bender** attack among all available [Juice Shop injection attacks](https://pwning.owasp-juice.shop/part2/injection.html). The task is to try to login as the user `Bender` via an injection attack.
 
-1. To execute, head to your local Juice Shop installation. If you followed our suggestion of using the Docker setup, your local installation will be at [http://localhost:3000](http://localhost:3000).
+1. To execute, head to your local Juice Shop installation. If you followed our suggestion of using the Docker setup, your local installation will be at http://localhost:3000.
 2. Head to the login screen via the Account link at the top right.
 3. If we know that `Bender` is a user, we now need to guess that user's email address. If our guess is correct, we can then see what happens if we append `'--` to the email address. If the application is susceptible to a SQL injection attack, we should be able to login with Bender's email address and any password of our choosing.
 4. With a little bit of guessing, we will end up at `bender@juice-sh.op` as the email address of user `Bender`. See if you can log in with that email address and any password of your choosing. _This should not be possible. You should receive an error message._
@@ -421,7 +421,7 @@ Web application engineering requires extensive knowledge of system administratio
 
 #### :bangbang: Juice Shop
 
-Among the [security misconfiguration challenges](https://pwning.owasp-juice.shop/part2/security-misconfiguration.html) we take a look at error handling: the task here is to find a URL that provides us with information about the server (essentially a 5XX status message). While URLs (we assume a local installation of Juice Shop) such as `http://localhost:3000/fdsfs` are handled gracefully, the REST API endpoints have issues. The URL `http://localhost:3000/rest/` will return a status code 500 with important information bout the Express version that is being run on the server-side. This information in turn can be used by a malicious user to track down security vulnerabilities of this particular Express version. The proper way to deal with such server-side errors is to show a customized error message that does not reveal unnecessary information about the server.
+Among the [security misconfiguration challenges](https://pwning.owasp-juice.shop/part2/security-misconfiguration.html) we take a look at error handling: the task here is to find a URL that provides us with information about the server (essentially a 5XX status message). While URLs (we assume a local installation of Juice Shop) such as http://localhost:3000/fdsfs are handled gracefully, the REST API endpoints have issues. The URL http://localhost:3000/rest/ will return a status code 500 with important information bout the Express version that is being run on the server-side. This information in turn can be used by a malicious user to track down security vulnerabilities of this particular Express version. The proper way to deal with such server-side errors is to show a customized error message that does not reveal unnecessary information about the server.
 
 #### How to avoid it
 
@@ -445,7 +445,7 @@ Of the [sensitive data exposure challenges](https://pwning.owasp-juice.shop/part
 
 1. Head over to your Juice Shop installation, access the top-left side menu and click on the _About Us_ link.
 2. Take a closer link at the hyperlink `Check out our boring terms of use if you are interested in such lame stuff`. It is a relative link `ftp/legal.md`.
-3. Let's see whether there is something else in this `ftp` directory; all we have to do is slightly change our URL to `http://localhost:3000/ftp` (again, assuming a local installation of Juice Shop). <spoiler-info markdown="block">We can access this directory (which is a huge security issue) and more importantly, we can view the confidential document `acquisitions.md` which describes Juice Shop's plans for the coming years.</spoiler-info>
+3. Let's see whether there is something else in this `ftp` directory; all we have to do is slightly change our URL to http://localhost:3000/ftp (again, assuming a local installation of Juice Shop). <spoiler-info markdown="block">We can access this directory (which is a huge security issue) and more importantly, we can view the confidential document `acquisitions.md` which describes Juice Shop's plans for the coming years.</spoiler-info>
 
 #### How to avoid it
 
@@ -486,7 +486,7 @@ Consider a user who accesses her wishlist using the following URL `http://mywish
 Of the [broken access control challenges](https://pwning.owasp-juice.shop/part2/broken-access-control.html) we cover the _View Basket_ challenge: view another user's shopping basket.
 
 1. Go to your Juice Shop and login as `Bender`.
-2. Add a few items to your shopping basket and view the basket at `http://localhost:3000/#/basket` (assuming a local installation).
+2. Add a few items to your shopping basket and view the basket at http://localhost:3000/#/basket (assuming a local installation).
 3. Open the browser's dev tools and look into the _Session Storage_.
 4. You will find a key/value pair with key `bid` and a particular numerical value.
 5. Change this value to some other numbers to view other customers' baskets. Since you are accessing other accounts having the same privilege level, we are here dealing with a _horizontal privilege escalation_.
@@ -579,7 +579,7 @@ The user, when seeing this URL :point_up: in an email or forum, might just inspe
 Of the [unvalidated redirects challenges](https://pwning.owasp-juice.shop/part2/unvalidated-redirects.html) we cover the _Outdated Allowlist_ challenge: attempt to redirect to a crypto currency address which is no longer included in the shop.
 
 1. Head over to your Juice Shop installation and log in as any user.
-2. Check out the payment options at `http://localhost:3000/#/payment/shop` (assuming a local installation). You can also land here by following the procedure for _checking out_.
+2. Check out the payment options at http://localhost:3000/#/payment/shop (assuming a local installation). You can also land here by following the procedure for _checking out_.
 3. Observe that you cannot pay using a crypto currency. We know though that this used to be a feature in Juice Shop. Lets see whether we can still find it in the source code.
 4. Use the browser's dev tools and open the Debugger tab. It should show you a list of JavaScript files that our application requires. View the contents of `main-es2018.js`.
 5. Search in `main-es2018.js` for the keyword `redirect?to`. Among other options, you will see three modes of crypto currency payments: `Bitcoin`, `Dash` and `Ether`. If you were to click on <kbd>Pay with Bitcoin</kbd> (_now unavailable_), you would be redirected to Blockchain's website without any warning.
