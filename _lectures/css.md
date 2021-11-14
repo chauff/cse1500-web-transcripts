@@ -1677,6 +1677,8 @@ We can create different style sheets for different device types and link them **
 
 :point_up: Thus, a logical _and_ is expressed as `and` and a logical _or_ is expressed as `,`. The logical and has precedence over the logical or. As always in CSS, the order of the rules matter, later media queries trump those declared earlier.
 
+Lastly, as another example it is worth mentioning that in our [demo game](https://github.com/chauff/cse1500-balloons-game) we employ a CSS media query (the last few lines in [style.css](https://github.com/chauff/cse1500-balloons-game/blob/master/public/stylesheets/style.css)) to display a warning message to the user if the display size is too small.
+
 ## CSS animations and transitions
 
 Finally we come to the most visually exciting part of CSS! How to liven up a web app with CSS animations!
