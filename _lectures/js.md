@@ -896,7 +896,7 @@ Let's get back to our module example :point_up:. The function we immediately exe
 <debug-info markdown="block">
 A common error in the module pattern is to forget to add the final bracket pair `()` when defining the IIFE. Those issues will be caught at runtime when the code does not work as expected. In our game module example, the line `gameStatModule.incrGamesStarted();` will lead to the error `TypeError: gameStatModule.incrGamesStarted is not a function` if we remove the final IIFE bracket pair. VSC offers a simple way to catch those errors already when coding. We add the line:
 
-```
+```javascript
 //@ts-check
 ```
 
