@@ -905,6 +905,29 @@ at the top of any JavaScript file we want to have type-checked. The error of the
 ![Exploring events](../img/js-ts-check.png)
 
 We thus borrow the type checker of TypeScript to make sure to catch&mdash;at least some&mdash;coding mistakes we make early on. To avoid copying this line everywhere, we can also set up VSC to perform type checking [automatically for all JavaScript files](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript).
+
+Another useful tool in your debugging arsinal are [JSDoc annotations](https://jsdoc.app/) (analogous to javadoc annotations for Java) that help the type checker to flag up errors. JSDoc annotations can be triggered by typing `/**` into VSC and VSC will autocomplete the template for you. If you trigger a JSDoc annotation on top of a function, VSC will populate `@param` and `@return` templates (if the function takes parameters or returns something). Here is a concrete example you find in the [demo game source](https://github.com/chauff/cse1500-balloons-game/blob/master/game.js):
+
+```javascript
+/**
+ * Determines whether the transition from state `from` to `to` is valid.
+ * @param {string} from starting transition state
+ * @param {string} to ending transition state
+ * @returns {boolean} true if the transition is valid, false otherwise
+ */
+game.prototype.isValidTransition = function(from, to) {
+  /* .. */
+  return /* something */;
+};
+```
+
+:point_up: We here denote the type we expect (`from` and `to` should be of type `string`): JavaScript is dynamically typed, so we are not adding this information to the source code, instead we add it to the JSDoc annotations, which the type checker picks up. Importantly, these annotations are also picked up by IntelliSense, VSC's code information plugin that is triggered when hovering over a piece of code. Having defined the above annotations, whenever `isValidTransition()` is being used, we can hover over it and see the information we provided:
+
+![JSDoc annotation](../img/js-jsdoc-example.png)
+
+<sup>JSDoc annotation example.</sup>
+
+
 </debug-info>
 
 Finally we note that in the module pattern, the encapsulating function can also contain parameters as seen here:
