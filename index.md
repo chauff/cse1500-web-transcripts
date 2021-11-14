@@ -59,7 +59,7 @@ VSC offers **many extensions**. You can find a guide on how to browse and instal
 - If you like to add TODOs to your code, try [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree), it makes sure you do not overlook any of your TODOs!
 - Finally, install a good [theme](https://code.visualstudio.com/docs/getstarted/themes) for your IDE to make coding more enjoyable. [Dracula](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula) is a popular one. [Cobalt2](https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2) is also nice. If you want to pick based on visuals, head to [https://vscodethemes.com/](https://vscodethemes.com/).
 
-If you are new to team programming, and want to use VSC's features efficiently, [read our VSC guide](../Web-Teaching/_practicals/vsc-usage.md).
+If you are new to team programming, and want to use VSC's features efficiently, [read our VSC guide](../_practicals/vsc-usage.md).
 
 **Browser developer tools** are integrated in all modern browsers; familiarize yourself with the developer tools of your favorite browser. In our transcripts, we showcase [Firefox's](https://developer.mozilla.org/en-US/docs/Tools) and from time to [Chrome's](https://developers.google.com/web/tools/chrome-devtools) developer tools.
 
