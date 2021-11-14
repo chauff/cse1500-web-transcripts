@@ -569,10 +569,13 @@ app.listen(3002);
 
 :point_up: We have defined an object `wishlistPriorities` which contains `high`, `medium` and `low` priority wishes. We can hardcode routes, for example `/wishlist/high` to return only the high priority wishes, `/wishlist/medium` to return the medium priority wishes and `/wishlist/low` to return the low priority wishes. This is not a maintainable solution though (just think about objects with hundreds of properties). Instead, we create a single route that, dependent on a **routing parameter**, serves different wishlists. This is achieved in the code snippet shown here. The routing parameter `priority` (indicated with a starting colon `:`) will match any string that does **not** contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `priority` (what name we give this parameter is up to us), we access it as `req.params.priority`. The code snippet checks whether the route parameter matches a property of the `wishlistPriorities` object and if it does, the corresponding wishlist is returned in an HTTP response. If the parameter does not match any property of the `wishlistPriorities` object, we make a call to next and move on the next route handler.
 
-Routing parameters can have various levels of nesting :point_down::
+Routing parameters can have various levels of nesting. Route paths can also contain optional parameters&mdash;those have an `?` appended at the end of the routing parameter name :point_down::
 
 ```javascript
-var wishlistPriorities = {
+const express = require("express");
+const app = express();
+
+const wishlistPriorities = {
   high: {
     partyGame: [],
     gameNightGame: ["Wingspan", "Settlers of Catan", "Azul"],
@@ -587,16 +590,26 @@ var wishlistPriorities = {
   },
 };
 
-app.get("/wishlist/:priority/:gameType", function (req, res, next) {
-  let list = wishlistPriorities[req.params.priority][req.params.gameType];
-  if (!list) {
+//the second route parameter is optional
+app.get("/wishlist/:priority/:gameType?", function (req, res, next) {
+  const prio = req.params.priority;
+  const type = req.params.gameType;
+
+  let list;
+
+  if(list = wishlistPriorities[req.params.priority][req.params.gameType] ){
+    res.send(list);
+  }
+  else if(list = wishlistPriorities[req.params.priority]){
+    res.send(list);
+  }
+  else {
     return next(); // will eventually fall through to 404
   }
-  res.send(list);
 });
 ```
 
-:point_up: We do not only use the priorities for our wishlist, but also partition them according to whether the wanted games are party games or rather something for a long game night. The route handler now contains two routing parameters, `:priority` and `:gameType`. Both are accessible through the HTTP request object. If our corresponding Node.js script runs on our own machine, we can access high priority games for a game night via `http://localhost:3002/wishlist/high/gameNightGame`. We use the two parameters to access the contents of the `wishlistPriorities` object. If the two parameters do not match properties of `wishlistPriorities`, we call `next()` and otherwise, send the requested response.
+:point_up: Here, we do not only use the priorities for our wishlist, but also partition them according to whether the wanted games are party games or rather something for a long game night. The route handler now contains two routing parameters, `:priority` and `:gameType`. The `?` at the end of `:gameType` indicates that this is an optional parameter. Both parameters are accessible through the HTTP request object. We use the two parameters to access the contents of the `wishlistPriorities` object. If our corresponding Node.js script runs on our own machine, we can access high priority games for a game night via `http://localhost:3002/wishlist/high/gameNightGame`. If the second route parameter is not provided, we return the wishlist according to the priority level only, e.g. `http://localhost:3002/wishlist/high`. Otherwise, we call `next()`.
 
 <debug-info markdown="block">
 ### Organizing routes
