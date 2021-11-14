@@ -59,9 +59,12 @@ let parseMarkdownFiles = (function () {
                             else if (link.startsWith("..") || link.startsWith("/")) {
                                 protocol = https; //we remain on github
 
-                                if(link.startsWith("..")){ //remove ".."; there is a mismatch between markdown link and Jekyll links
+                                //another brittle bit; we parse markdown but
+                                //in the end resolve to http(s)
+                                if(link.startsWith("..")){
                                     link = link.replace("..", "");
                                 }
+                                link = "." + link; //needed, otherwise resolve removes /cse1500-web-transcripts
                                 link = url.resolve(absURL, link);
                             }
                             else if (protocol == null) {
