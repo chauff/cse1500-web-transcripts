@@ -40,7 +40,7 @@ All deliverable text/imagery (apart from 6. which are two html files) must be in
 
 The PDF and code have to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistants and before the ultimate assessment deadline. This means that the outcomes of all web assignments are **all** uploaded to the same directory!
 
-**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.** The [rubric](../_practicals/assignment-rubric.md) contains example questions for each assignment. During the assessment you can make use of your notes.
+**To pass this assignment, you must have completed all tasks and be able to answer the questions of the TAs.** The [rubric](../rubric/) contains example questions for each assignment. During the assessment you can make use of your notes.
 
 ## 1. HTTP request messages: GET/HEAD
 

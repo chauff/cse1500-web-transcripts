@@ -36,7 +36,7 @@ Submit your code in the form of a zipped folder. Make sure that your code contai
 
 The code has to be uploaded by one of the team members to 💡 Brightspace under **CSE Web assessment** (find the category your group belongs too) before the assessment session with the teaching assistant and before the ultimate assessment deadline. This means that the outcomes of all web technology assignments are uploaded to the same directory!
 
-**To pass this assignment, you must have employed the necessary CSS and use templating. You pass if your app can deal with players executing the game as intended** (already achieved in the previous assignment) **AND with players trying to make at least some invalid moves**. **You cannot pass this last web assignment without having passed the previous web assignment.** The [rubric](assignment-rubric.md) contains example questions for each assignments. During the assessment you can make use of your notes.
+**To pass this assignment, you must have employed the necessary CSS and use templating. You pass if your app can deal with players executing the game as intended** (already achieved in the previous assignment) **AND with players trying to make at least some invalid moves**. **You cannot pass this last web assignment without having passed the previous web assignment.** The [rubric](../rubric/) contains example questions for each assignments. During the assessment you can make use of your notes.
 
 ## 1. CSS
 
