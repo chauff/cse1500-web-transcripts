@@ -1660,7 +1660,6 @@ We can create different style sheets for different device types and link them **
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Example of a logical or (,) in the media query -->
     <link
       rel="stylesheet"
       media="screen and (min-width: 800px) and (max-width: 2000px), 
@@ -1676,7 +1675,7 @@ We can create different style sheets for different device types and link them **
 </html>
 ```
 
-:point*up: Thus, a logical \_and* is expressed as `and` and a logical _or_ is expressed as `,`. The logical and has precedence over the logical or. As always in CSS, the order of the rules matter, later media queries trump those declared earlier.
+:point_up: Thus, a logical _and_ is expressed as `and` and a logical _or_ is expressed as `,`. The logical and has precedence over the logical or. As always in CSS, the order of the rules matter, later media queries trump those declared earlier.
 
 ## CSS animations and transitions
 
