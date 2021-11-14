@@ -45,7 +45,7 @@ let parseMarkdownFiles = (function () {
                         }
 
                         for (let i = 0; i < links.length; i++) {
-                            let link = links[i].slice(2, -1).toLowerCase();//get rid if "](" and ")"
+                            let link = links[i].slice(2, -1);//get rid if "](" and ")"
 
                             let protocol = null;
 
@@ -58,6 +58,10 @@ let parseMarkdownFiles = (function () {
                             }
                             else if (link.startsWith("..") || link.startsWith("/")) {
                                 protocol = https; //we remain on github
+
+                                if(link.startsWith("..")){ //remove ".."; there is a mismatch between markdown link and Jekyll links
+                                    link = link.replace("..", "");
+                                }
                                 link = url.resolve(absURL, link);
                             }
                             else if (protocol == null) {
@@ -66,10 +70,12 @@ let parseMarkdownFiles = (function () {
                             else
                                 ;
 
-                            //check status code
+                            //check status code: write out 400+ status codes
+                            //and errors
                             protocol.get(link, (res) => {
-                                outFile.write("[" + res.statusCode + "] " + file + " => " + link + "\n");
-
+                                if (res.statusCode >= 400) {
+                                    outFile.write("[" + res.statusCode + "] " + file + " => " + link + "\n");
+                                }   
                             }).on('error', (e) => {
                                 outFile.write("[ERROR] " + e.message + " " + file + " => " + link + "\n");
                             });
