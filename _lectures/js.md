@@ -116,7 +116,7 @@ Vital to JavaScript's rise from toy language to serious contender ([even in spac
 Today's **JavaScript runtime environments** are highly efficient and a number of them exist:
 
 - [V8](https://developers.google.com/v8/) is Google's JavaScript engine (used in Chrome and other browsers).
-- [SpiderMonkey](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey) is Mozilla's engine and used in Firefox.
+- [SpiderMonkey](https://spidermonkey.dev/) is Mozilla's engine and used in Firefox.
 - [Chakra](https://github.com/Microsoft/ChakraCore) is Microsoft's JavaScript runtime engine. It was originally used in Microsoft's Edge browser. In December 2018, Microsoft decided to [adopt Chromium](https://blogs.windows.com/windowsexperience/2018/12/06/microsoft-edge-making-the-web-better-through-more-open-source-collaboration/) (Google's open-source browser project) as its JavaScript runtime in the browser. Chakra is still powering Windows applications that are written in HTML/CSS and JavaScript.
 
 While the browser is the most obvious usage scenario for JavaScript runtime environments, they are also used in other areas such as [microcontrollers](https://github.com/jerryscript-project/jerryscript). **Most importantly for us: the Node.js platform we cover in the next lecture is built on top of V8.**

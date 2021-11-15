@@ -306,7 +306,7 @@ Quoting OWASP: _"Application functions related to authentication and session man
 
 We here focus in particular on technical weaknesses, though phishing and other social techniques are often employed to guess passwords and answers to security questions (which in turn allow password resets).
 
-[Recall](https://chauff.github.io/Web-Teaching/sessions/#bangbang-sessions) that in order to establish _sessions_, cookies are used. A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server :point_down::
+Recall that in order to establish _sessions_, cookies are used. A cookie stores a randomly generated user ID on the client, the remaining user information is stored on the server :point_down::
 
 ![Session](../img/sessions-sessions.png)
 
@@ -459,7 +459,7 @@ Of the [sensitive data exposure challenges](https://pwning.owasp-juice.shop/part
 
 A malicious user, who is authorized to access a web application (e.g., a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g., from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
-Web applications often make use of _Direct Object References_ when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](https://chauff.github.io/Web-Teaching/nodejs2/) :point_down::
+Web applications often make use of _Direct Object References_ when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](node2.md) :point_down::
 
 ```javascript
 const wishlistPriorities = {
