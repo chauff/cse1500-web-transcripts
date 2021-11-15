@@ -459,7 +459,7 @@ Of the [sensitive data exposure challenges](https://pwning.owasp-juice.shop/part
 
 A malicious user, who is authorized to access a web application (e.g., a student accessing Brightspace), changes the URL (or URL parameters) to a more privileged function (e.g., from student to grader). If access is granted, **insufficient function level access control** is the culprit.
 
-Web applications often make use of _Direct Object References_ when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](node2.md) :point_down::
+Web applications often make use of _Direct Object References_ when generating a HTTP response. We have already seen this in a code snippet in the [second Node.js lecture](nodejs2) :point_down::
 
 ```javascript
 const wishlistPriorities = {
