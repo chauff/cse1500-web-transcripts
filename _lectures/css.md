@@ -616,7 +616,7 @@ Depending on the size of the browser window, what part of the text is enlarged d
 
 <sup>Two renderings (note the different browser window sizes) of the above HTML document.</sup>
 
-The code example :point*up: also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale the font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional \_tuning* for different devices is required.
+The code example :point_up: also showcases the percent unit for the `font-size` property. The base font-size of the document equates to `100%` and thus this unit allows you to scale the font-size in relation to the initial size. This is especially helpful when you design web applications for different device sizes - no additional tuning for different devices is required.
 
 ### :bangbang: ::before and ::after
 
