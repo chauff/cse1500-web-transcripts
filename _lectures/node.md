@@ -252,7 +252,7 @@ Finally, let's quickly walk through the steps to run this script from within VSC
 
 ### :bangbang: Low-level networking with Node.js
 
-Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number as discussed in the [lecture on HTTP](./http).
+Node.js was originally designed for I/O bound programs, in particular programs requiring **networking** functionalities. For this reason, Node.js has built-in support for **low-level** socket connections (TCP sockets in particular). Sockets are defined by IP address and port number as discussed in the [lecture on HTTP](./http). [second](../http) [third](../lectures/http)
 
 TCP socket connections have **two endpoints**:
 
