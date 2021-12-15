@@ -56,7 +56,7 @@ The PDF and code have to be uploaded by one of the team members to 💡 Brightsp
 - If you are a Windows user, use the Windows Subsystem for Linux. 
 </debug-info>
   
-With these hints out of the way, here is **your task**: Use `telnet` and `openssl` (where appropriate) to request the `/r/TUDelft` resource from Reddit. Start your *conversation* with the web server by typing the following into the terminal :point_down:, and then perform HTTP requests to ultimately fetch the `/r/TUDelft` resource:
+Here is **your task**: Use `telnet` and `openssl` (where appropriate) to request the `/r/TUDelft` resource from Reddit. Start your *conversation* with the web server by typing the following into the terminal :point_down:, and then perform HTTP requests to ultimately fetch the `/r/TUDelft` resource:
 
 ```
 telnet reddit.com 80
