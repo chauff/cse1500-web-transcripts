@@ -526,7 +526,7 @@ var game = {
 Object literals can be complex, they can contain objects themselves:
 
 ```javascript
-var paramModule = {
+let paramModule = {
   /* parameter literal */
   Param: {
     minGames: 1,
