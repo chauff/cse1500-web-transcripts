@@ -288,10 +288,10 @@ if (process.argv.length < 4) {
   process.exit(1);
 }
 
-let file = process.argv[2];
-let port = process.argv[3];
+const file = process.argv[2];
+const port = process.argv[3];
 
-let server = net.createServer(function (connection) {
+const server = net.createServer(function (connection) {
   //what to do on connect
   print("ok", "Subscriber connected!");
 
@@ -299,7 +299,7 @@ let server = net.createServer(function (connection) {
     colors["ok"] + "Now watching " + file + " for changes.\n" + colors["reset"]
   );
 
-  var watcher = fs.watch(file, function () {
+  const watcher = fs.watch(file, function () {
     connection.write(
       colors["changed"] +
         "File " +
