@@ -58,7 +58,6 @@ _This is the densest web technology lecture of this course. Learning how to prog
 - Recommended activities:
   - :headphones: Listen to [this podcast by Wes Bos and Scott Tolinski](https://syntax.fm/show/047/how-to-get-better-at-debugging) on debugging.
   - [JavaScript30](https://javascript30.com/): 30 day vanilla JS coding challenges by Wes Bos
-  - 
   - [This interactive DOM explorer](https://domevents.dev/) can help you to get a better sense of the Document Object Model and DOM events. It covers a lot more ground than we do in this class.
 - Recommended readings:
   - [A blog post by the V8 team on how to read the ECMAscript specification](https://v8.dev/blog/understanding-ecmascript-part-1).
