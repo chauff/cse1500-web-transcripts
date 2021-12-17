@@ -104,11 +104,11 @@ In this lecture we reinforce this knowledge and built upon it by covering a numb
 
 ## JavaScript in context
 
-In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in the past few years](https://octoverse.github.com/#top-languages), with [TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft which compiles into JavaScript, claiming rank #7 in 2019 and rank #4 in 2020:
+In the early years of JavaScript, it was considered more of a toy language. Today though, it is the most important language of the modern web stack. On GitHub, one of the most popular social coding platforms world-wide, [JavaScript has taken the number 1 language spot in the past few years](https://octoverse.github.com/#top-languages). [TypeScript](https://www.typescriptlang.org/), a language developed by Microsoft, which compiles into JavaScript, entered the top ten in 2017 and currently ranks at #4:
 
 ![Top languages on GitHub](../img/js-github.png)
 
-<sup>Top languages over time (as measured by number of contributors) on GitHub. [Image source](https://octoverse.github.com/), 2019.</sup>
+<sup>Top languages over time (as measured by number of contributors) on GitHub. [Image source](https://octoverse.github.com/), 2021.</sup>
 
 Vital to JavaScript's rise from toy language to serious contender ([even in space!](https://twitter.com/jason_mayes/status/1267227834096861184)) is the availability of tooling, frameworks and libraries such as browsers' built-in dev tools, build tools, testing frameworks, UI frameworks, and so on. Another reason that Javascript became so popular is that it enables development in multiple programming paradigms ([read this interview](https://levelup.gitconnected.com/kyle-simpson-ive-forgotten-more-javascript-than-most-people-ever-learn-3bddc6c13e93) with Kyle Simpson, author of one of the most popular JavaScript book series if you want to know more).
 
