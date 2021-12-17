@@ -118,7 +118,8 @@ Here is a list of useful Twitter accounts to follow:
 - [Wes Bos](https://twitter.com/wesbos) is the author of popular web stack tutorials.
 - [Mozilla Hacks](https://twitter.com/mozhacks) is Mozilla's account for web developers.
 - [Visual Studio Code](https://twitter.com/code).
-- [Chrome DevTools](https://twitter.com/ChromeDevTools) offers tips and tricks of the dev tool trade.
+- [Chrome DevTools](https://twitter.com/ChromeDevTools) offers tips and tricks of the dev tool trade for Chrome.
+- [Firefox DevTools](https://twitter.com/FirefoxDevTools) offers the same as Chrome DevTools but this time for Firefox.
 - [Syntax](https://twitter.com/syntaxfm) offers [podcasts](https://syntax.fm/) for web developers, hosted by Wes Bos and Scott Tolinski.
 
 ## Lecture material types
