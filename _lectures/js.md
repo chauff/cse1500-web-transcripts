@@ -681,7 +681,7 @@ g1.toString(); //"[object Object]" (we never defined toString() )
 
 Here is a quick summary of the basic constructor:
 
-- Advantage: very easy to use
+- Advantage: easy to use
 - Issues:
   1. Not obvious how to use **inheritance**;
   2. Objects **do not share** functions (`g2` did not have a `printPlayer` method, but `g1` had);
