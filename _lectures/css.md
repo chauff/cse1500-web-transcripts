@@ -295,7 +295,7 @@ In fact, since 2016 (_yes, it took that long_), [CSS variables](https://develope
 </html>
 ```
 
-:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-element `:root` which represents the `<html>` element. Variables are defined with the custom prefix `--` and can be accessed using the `var()` function. Non-global CSS variables can be added in the same manner to any element, though they are then only available within their `{....}` block.
+:point_up: In this example, we create a global CSS variable, i.e. one that is available to all elements in the DOM tree. For this reason, we make use of the pseudo-class `:root` which represents the `<html>` element. Variables are defined with the custom prefix `--` and can be accessed using the `var()` function. Non-global CSS variables can be added in the same manner to any element, though they are then only available within their `{....}` block.
 
 For our course homepage we developed several themes, before settling on the final one you are seeing now. In order to make the creation of different themes efficient, we created variables for everything customizable (mostly colors). Take a look at the page inspector and explore the more than 40 variables we created for this purpose :point_down::
 
