@@ -161,7 +161,7 @@ Ideally, we only create two CSS rules and solve the rest (alternate assignment o
 - [`:nth-child(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child) is any element that is the Xth **child element** of its parent;
 - [`:nth-of-type(X)`](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type) is any element that is the Xth **sibling** of its type.
 
-In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Instead of `2n` and `2n+1` we can also use `even` and `odd` as shortcuts. If we want to start counting elements in reverse order, we can use the analogous `:nth-last-child(X)` and `:nth-last-of-type(X)` pseudo-classes.
+In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Element indices start at `1`. Instead of `2n` and `2n+1` we can also use `even` and `odd` as shortcuts. If we want to start counting elements in reverse order, we can use the analogous `:nth-last-child(X)` and `:nth-last-of-type(X)` pseudo-classes.
 
 If we are aiming at the first and/or last child or sibling element, we also have additional pseudo-classes available to us:
 
