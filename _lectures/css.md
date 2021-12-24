@@ -23,10 +23,10 @@ warning: false
   - [:bangbang: :root](#bangbang-root)
   - [:bangbang: :hover, :active and :visited](#bangbang-hover-active-and-visited)
   - [:bangbang: :enabled and :disabled](#bangbang-enabled-and-disabled)
-- [:bangbang: Selector combinations](#bangbang-selector-combinations)
 - [Pseudo-elements](#pseudo-elements)
   - [:bangbang: ::first-letter and ::first-line](#bangbang-first-letter-and-first-line)
   - [:bangbang: ::before and ::after](#bangbang-before-and-after)
+- [:bangbang: Selector combinations](#bangbang-selector-combinations)
 - [:bangbang: Data attributes](#bangbang-data-attributes)
 - [Element positioning](#element-positioning)
   - [Display types](#display-types)
@@ -457,122 +457,6 @@ For completeness, this is how our above code snippet looks rendered with two but
 
 ![CSS game statistics enabled disabled](../img/css-enabled-disabled.png)
 
-## :bangbang: Selector combinations
-
-So far, we have dealt with individual selectors such as `button` or `div`. As the HTML documents increase in complexity, we also need to be able to combine several selectors to target a specific subset of elements. A number of selector combinations exist, we here list the ones most commonly used :point_down::
-
-| Selector combination | Description                                                |
-| -------------------- | ---------------------------------------------------------- |
-| e1                   | Selects all `<e1>` elements                                |
-| e1 e2                | Selects all `<e2>` elements within `<e1>`                  |
-| e1,e2                | Selects all `<e1>` elements and all `<e2>` elements        |
-| e1>e2                | Selects all `<e2>` elements that have `<e1>` as parent     |
-| e1+e2                | Selects all `<e2>` elements that follow `<e1>` immediately |
-
-Let's slightly revise our running game statistics example to clarify what each of the selector combinations means. We now consider this DOM tree which showcases three different selector combinations :point_down::
-
-![CSS selector combinations](../img/css-dom-tree.png)
-
-<sup>The DOM tree visualization (with some post-processing) is derived from [this CodePen demo](https://codepen.io/pavlovsk/pen/QKGpQA): it allows you to visualize arbitrary html document structures.</sup>
-
-Let's walk through the three examples:
-
-- In order to select all `<span>` elements that appear _inside_ a button, we use the selector `button span`: it selects all `span` elements within `button`.
-- To select all elements that are neither a button nor inside of one, we use `h1, body>span`: it selects all `<h1>` elements and all `<span>` elements that have `<body>` as parent.
-- Finally, to select the last two `<span>` elements we use `span+span`: it selects all `<span>` elements that follow immediately after a `<span>` element.
-
-There may of course be other selectors that lead to the same subset of selected elements. Here are three questions to test your selector combination knowledge without resorting to `class` or `id` attributes. Remember that your solution may differ from what is shown here. The questions revolve around the above DOM tree visualization.
-
-<details>
-<summary>How can we select just the second &lt;h1&gt; element?</summary>
-button+h1
-</details>
-
-<details>
-<summary>How can we select the one &lt;span&gt; element that is inside another?</summary>
-span>span
-</details>
-
-<details>
-<summary>Which buttons does the selector combination button+button+button select?</summary>
-The last three buttons. Why? Because now we want to select all button elements that follow a button+button element immediately. 
-</details>
-
-For completeness, the HTML document corresponding to our DOM tree visualization and its rendering look as follows:
-
-```html
-<!DOCTYPE html>
-    <head>
-        <style>
-            :root {
-                --darkColor: orchid;
-                --lightColor: lavender;
-                --borderColor: darkslateblue;
-                --activeBorderColor: white;
-                --borderThickness: 3px;
-                --visitedColor: gray;
-            }
-            * {
-                font-family: monospace;
-            }
-            button {
-                margin-bottom: 2px;
-                padding: 2px;
-                white-space: pre;
-                border: var(--borderThickness) solid transparent;
-                display: block;
-                width: 95vw;
-                text-align: left;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            button:nth-child(2n){
-                background-color: var(--darkColor);
-                color: var(--lightColor);
-            }
-            button:nth-child(2n+1){
-                background-color: var(--lightColor);
-                color: var(--darkColor);
-            }
-
-            button span {
-                font-style: italic;
-                color: darkblue;
-            }
-
-            h1, body>span {
-                font-family: sans-serif;
-                color: DeepPink;
-            }
-
-            span+span {
-                color: RoyalBlue;
-            }
-
-        </style>
-    </head>
-
-    <body>
-        <h1>Game statistics</h1>
-        <button><span class="count">12,567</span> players registered</button>
-        <button>   <span class="count">231</span> games ongoing</button>
-        <button>    <span class="count">17</span> games waiting for players to join</button>
-        <button> <span class="count">2,302</span> users are in audience mode</button>
-        <button><span class="perc">99.87<span class="sign">%</span></span> server uptime</button>
-        <h1>Game rules</h1>
-        <span>Rule 1: Have fun!</span>
-        <span>Rule 2: No less than 3, no more than 5 players!</span>
-        <span>Rule 3: There can only be one winner!</span>
-    </body>
-</html>
-```
-
-<sup>HTML document corresponding to the above DOM tree visualization.</sup>
-
-![CSS selector combinations rendering](../img/css-selector-combinations.png)
-
-<sup>Rendering of the above HTML document.</sup>
-
 ## Pseudo-elements
 
 **Pseudo-elements** create abstractions about the document tree _beyond_ those specified by the document language. They provide access to an element's **sub-parts** such as the first letter of a paragraph.
@@ -708,6 +592,123 @@ The relevant CSS code snippets in our CSS weather demo looks as follows:
 <debug-info markdown="block">
 Note that above we include the `content` property, even though it is empty and thus `content: ''`. This is required; if a pseudo-element has its `content` property not explicitly set, the pseudo-element will not be rendered.
 </debug-info>
+
+## :bangbang: Selector combinations
+
+So far, we have dealt with individual selectors such as `button` or `div`. As the HTML documents increase in complexity, we also need to be able to combine several selectors to target a specific subset of elements. A number of selector combinations exist, we here list the ones most commonly used :point_down::
+
+| Selector combination | Description                                                |
+| -------------------- | ---------------------------------------------------------- |
+| e1                   | Selects all `<e1>` elements                                |
+| e1 e2                | Selects all `<e2>` elements within `<e1>`                  |
+| e1,e2                | Selects all `<e1>` elements and all `<e2>` elements        |
+| e1>e2                | Selects all `<e2>` elements that have `<e1>` as parent     |
+| e1+e2                | Selects all `<e2>` elements that follow `<e1>` immediately |
+
+Let's slightly revise our running game statistics example to clarify what each of the selector combinations means. We now consider this DOM tree which showcases three different selector combinations :point_down::
+
+![CSS selector combinations](../img/css-dom-tree.png)
+
+<sup>The DOM tree visualization (with some post-processing) is derived from [this CodePen demo](https://codepen.io/pavlovsk/pen/QKGpQA): it allows you to visualize arbitrary html document structures.</sup>
+
+Let's walk through the three examples:
+
+- In order to select all `<span>` elements that appear _inside_ a button, we use the selector `button span`: it selects all `span` elements within `button`.
+- To select all elements that are neither a button nor inside of one, we use `h1, body>span`: it selects all `<h1>` elements and all `<span>` elements that have `<body>` as parent.
+- Finally, to select the last two `<span>` elements we use `span+span`: it selects all `<span>` elements that follow immediately after a `<span>` element.
+
+There may of course be other selectors that lead to the same subset of selected elements. Here are three questions to test your selector combination knowledge without resorting to `class` or `id` attributes. Remember that your solution may differ from what is shown here. The questions revolve around the above DOM tree visualization.
+
+<details>
+<summary>How can we select just the second &lt;h1&gt; element?</summary>
+button+h1
+</details>
+
+<details>
+<summary>How can we select the one &lt;span&gt; element that is inside another?</summary>
+span>span
+</details>
+
+<details>
+<summary>Which buttons does the selector combination button+button+button select?</summary>
+The last three buttons. Why? Because now we want to select all button elements that follow a button+button element immediately. 
+</details>
+
+For completeness, the HTML document corresponding to our DOM tree visualization and its rendering look as follows:
+
+```html
+<!DOCTYPE html>
+    <head>
+        <style>
+            :root {
+                --darkColor: orchid;
+                --lightColor: lavender;
+                --borderColor: darkslateblue;
+                --activeBorderColor: white;
+                --borderThickness: 3px;
+                --visitedColor: gray;
+            }
+            * {
+                font-family: monospace;
+            }
+            button {
+                margin-bottom: 2px;
+                padding: 2px;
+                white-space: pre;
+                border: var(--borderThickness) solid transparent;
+                display: block;
+                width: 95vw;
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            button:nth-child(2n){
+                background-color: var(--darkColor);
+                color: var(--lightColor);
+            }
+            button:nth-child(2n+1){
+                background-color: var(--lightColor);
+                color: var(--darkColor);
+            }
+
+            button span {
+                font-style: italic;
+                color: darkblue;
+            }
+
+            h1, body>span {
+                font-family: sans-serif;
+                color: DeepPink;
+            }
+
+            span+span {
+                color: RoyalBlue;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h1>Game statistics</h1>
+        <button><span class="count">12,567</span> players registered</button>
+        <button>   <span class="count">231</span> games ongoing</button>
+        <button>    <span class="count">17</span> games waiting for players to join</button>
+        <button> <span class="count">2,302</span> users are in audience mode</button>
+        <button><span class="perc">99.87<span class="sign">%</span></span> server uptime</button>
+        <h1>Game rules</h1>
+        <span>Rule 1: Have fun!</span>
+        <span>Rule 2: No less than 3, no more than 5 players!</span>
+        <span>Rule 3: There can only be one winner!</span>
+    </body>
+</html>
+```
+
+<sup>HTML document corresponding to the above DOM tree visualization.</sup>
+
+![CSS selector combinations rendering](../img/css-selector-combinations.png)
+
+<sup>Rendering of the above HTML document.</sup>
+
 
 ## :bangbang: Data attributes
 
