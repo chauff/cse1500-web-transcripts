@@ -441,10 +441,10 @@ These two pseudo-classes are not available for all elements (as not all elements
         <button>99.87% server uptime</button>
 
         <script>
-            let divs = document.querySelectorAll("button");
-            console.log(divs.length);
-            for(let div of divs){
-                div.addEventListener("click", function(){
+            let buttons = document.querySelectorAll("button");
+            console.log(buttons.length);
+            for(let b of buttons){
+                b.addEventListener("click", function(){
                     this.disabled = true;
                 })
             }
