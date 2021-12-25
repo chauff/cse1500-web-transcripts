@@ -1907,7 +1907,7 @@ The code above :point_up: also showcases a few elements that are outside the sco
 To summarize, for our purposes the most important animation properties are the following:
 
 | Property                    | Description                                                                                                                                                                                                          |
-| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `animation-iteration-count` | Number of times an animation is executed (default: 1); the value is either a positive number or `infinite`.                                                                                                          |
 | `animation-direction`       | By default the animation restarts at the starting keyframe; if set to `alternate` the animation direction changes every iteration.                                                                                   |
 | `animation-delay`           | Number of seconds (s) or milliseconds (ms) until the animation starts (default 0s). A **negative** value (e.g. `x=-5s`) means that the animation starts immediately but already `x` seconds into the animation cycle |
