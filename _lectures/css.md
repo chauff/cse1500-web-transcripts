@@ -1596,6 +1596,7 @@ This video shows off the effect both `position` values `fixed` and `absolute` ha
 <sup>Position property set on the info box: position:fixed (on the left) and position:absolute (on the right).</sup>
 </optional-info>
 
+<optional-info markdown="block">
 ## CSS media queries
 
 So far, we have largely ignored the fact that in today's **multi-device** world, we are designing web applications for vastly different screen sizes. Different devices should be served different styles:
@@ -1681,6 +1682,7 @@ We can create different style sheets for different device types and link them **
 :point_up: Thus, a logical _and_ is expressed as `and` and a logical _or_ is expressed as `,`. The logical and has precedence over the logical or. As always in CSS, the order of the rules matter, later media queries trump those declared earlier.
 
 Lastly, as another example it is worth mentioning that in our [demo game](https://github.com/chauff/cse1500-balloons-game) we employ a CSS media query (the last few lines in [style.css](https://github.com/chauff/cse1500-balloons-game/blob/master/public/stylesheets/style.css)) to display a warning message to the user if the display size is too small.
+</optional-info>
 
 ## CSS animations and transitions
 
