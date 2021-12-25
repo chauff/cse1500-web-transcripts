@@ -121,7 +121,7 @@ Here is a graphical overview of the connection between `require` and `module.exp
 Let's consider files `foo.js` :point_down::
 
 ```javascript
-var fooA = 1;
+const fooA = 1;
 module.exports = "Hello!";
 module.exports = function () {
   console.log("Hi from foo!");
@@ -131,7 +131,7 @@ module.exports = function () {
 and `bar.js` :point_down::
 
 ```javascript
-var foo = require("./foo");
+const foo = require("./foo");
 foo(); //CASE 1: Hi from foo!
 require("./foo")(); //CASE 2: Hi from foo!
 console.log(foo); //CASE 3: [Function]
@@ -160,12 +160,12 @@ This module setup also explains why `require` is **blocking**: once a call to `r
 Let's now consider what happens if a module is imported more than once. Keep `foo.js` intact; `bar.js` now becomes :point_down::
 
 ```javascript
-var t1 = process.hrtime()[1]; //returns an array with [seconds, nanoseconds]
-var foo1 = require("./foo");
+const t1 = process.hrtime()[1]; //returns an array with [seconds, nanoseconds]
+const foo1 = require("./foo");
 console.log(process.hrtime()[1] - t1); //303914
 
-var t2 = process.hrtime()[1];
-var foo2 = require("./foo");
+const t2 = process.hrtime()[1];
+const foo2 = require("./foo");
 console.log(process.hrtime()[1] - t2); //35012
 ```
 
@@ -212,7 +212,7 @@ A module can contain other modules (that's what `require` is for) and should hav
 
 ```javascript
 /* not exposed */
-var errorString = "Grades must be a number between 1 and 10.";
+const errorString = "Grades must be a number between 1 and 10.";
 
 function roundGradeUp(grade) {
   if (isValidNumber(grade) == false) {
@@ -247,19 +247,18 @@ exports.roundGradeDown = function (grade) {
 We can use the grading module in an Express application as follows :point_down::
 
 ```javascript
-var express = require("express");
-var url = require("url");
-var http = require("http");
-var grading = require("./grades"); // our module file resides in the current directory
-var app;
+const express = require("express");
+const url = require("url");
+const http = require("http");
+const grading = require("./grades"); // our module file resides in the current directory
 
-var port = process.argv[2];
-app = express();
+const port = process.argv[2];
+const app = express();
 http.createServer(app).listen(port);
 
 app.get("/round", function (req, res) {
-  var query = url.parse(req.url, true).query;
-  var grade = query["grade"] != undefined ? query["grade"] : "0";
+  const query = url.parse(req.url, true).query;
+  const grade = query["grade"] != undefined ? query["grade"] : "0";
 
   //accessing module functions
   res.send(
@@ -316,11 +315,11 @@ As a concrete example, imagine an Express application with a POST route `/user/m
 Our goal is to create a logger that records every single HTTP request made to our application as well as the URL of the request. We need to write a function that accepts the HTTP request and response objects as arguments and `next` as callback function. Here, we write two functions to showcase the use of several middleware components :point_down::
 
 ```javascript
-var express = require("express");
+const express = require("express");
 
 //a middleware logger component
 function logger(request, response, next) {
-  console.log("%s\t%s\t%s", new Date(), request.method, request.url);
+  console.log(`${new Date()}, ${request.method}, ${request.url}`);
   next(); //control shifts to next middleware function
 }
 
@@ -330,7 +329,7 @@ function delimiter(request, response, next) {
   next();
 }
 
-var app = express();
+const app = express();
 app.use(logger); //register middleware component
 app.use(delimiter);
 app.listen(3001);
@@ -545,7 +544,7 @@ Apart from regular expressions, routing parameters can be employed to enable **v
 const express = require("express");
 const app = express();
 
-var wishlistPriorities = {
+const wishlistPriorities = {
   high: ["Wingspan", "Settlers of Catan", "Azul"],
   medium: ["Munchkin"],
   low: ["Uno", "Scrabble"],
@@ -563,7 +562,7 @@ app.get("*", function (req, res) {
   res.send("No wishlist to return");
 });
 
-app.listen(3002);
+app.listen(3000);
 ```
 
 :point_up: We have defined an object `wishlistPriorities` which contains `high`, `medium` and `low` priority wishes. We can hardcode routes, for example `/wishlist/high` to return only the high priority wishes, `/wishlist/medium` to return the medium priority wishes and `/wishlist/low` to return the low priority wishes. This is not a maintainable solution though (just think about objects with hundreds of properties). Instead, we create a single route that, dependent on a **routing parameter**, serves different wishlists. This is achieved in the code snippet shown here. The routing parameter `priority` (indicated with a starting colon `:`) will match any string that does **not** contain a slash. The routing parameter is available to us in the `req.params` object. Since the route parameter is called `priority` (what name we give this parameter is up to us), we access it as `req.params.priority`. The code snippet checks whether the route parameter matches a property of the `wishlistPriorities` object and if it does, the corresponding wishlist is returned in an HTTP response. If the parameter does not match any property of the `wishlistPriorities` object, we make a call to next and move on the next route handler.
@@ -606,6 +605,8 @@ app.get("/wishlist/:priority/:gameType?", function (req, res, next) {
     return next(); // will eventually fall through to 404
   }
 });
+
+app.listen(3000);
 ```
 
 :point_up: Here, we do not only use the priorities for our wishlist, but also partition them according to whether the wanted games are party games or rather something for a long game night. The route handler now contains two routing parameters, `:priority` and `:gameType`. The `?` at the end of `:gameType` indicates that this is an optional parameter. Both parameters are accessible through the HTTP request object. We use the two parameters to access the contents of the `wishlistPriorities` object. If our corresponding Node.js script runs on our own machine, we can access high priority games for a game night via `http://localhost:3002/wishlist/high/gameNightGame`. If the second route parameter is not provided, we return the wishlist according to the priority level only, e.g. `http://localhost:3002/wishlist/high`. Otherwise, we call `next()`.
