@@ -1479,6 +1479,7 @@ Remember that CSS rule ordering matters when you are trying to update properties
 
 In our CSS weather demo many elements (the moon, the raindrops, the snow flakes) have an absolute position as they should be placed with respect to the closest absolutely positioned ancestor. In the CSS weather demo, this is the viewport: we want the moon to always be at the top left of the viewport, the rain drops should always start at the top of the viewport and end at the bottom, etc.
 
+<optional-info markdown="block">
 #### position:fixed
 
 :point_down: The `position:fixed` setting is similar to `position:absolute`, but now the containing element is **always** the **viewport**. This means that elements with `position:fixed` always remain visible. We now add another `<div>` element to show some information about the flags that should always remain at the same position, no matter the amount of scrolling. The HTML document looks as follows (all updated lines compared to the initial code listing contain comments) :point_down::
@@ -1593,6 +1594,7 @@ This video shows off the effect both `position` values `fixed` and `absolute` ha
 <video src="../img/css-abs-fixed.mov" controls></video>
 
 <sup>Position property set on the info box: position:fixed (on the left) and position:absolute (on the right).</sup>
+</optional-info>
 
 ## CSS media queries
 
