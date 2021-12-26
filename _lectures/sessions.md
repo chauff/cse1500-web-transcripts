@@ -469,7 +469,7 @@ Finally, we discuss session storage, which is also used for client-side data sto
 
 ## :bangbang: Sessions
 
-Let's now turn to sessions. Sessions make use of cookies. Sessions improve upon cookies in two ways:
+Let's now turn to sessions established between client and server. Sessions make use of cookies. Sessions improve upon cookies in two ways:
 
 1. they enable tracking of user information without too much reliance on the unreliable cookie architecture;
 2. they allow server-side applications to store much larger amounts of data.
