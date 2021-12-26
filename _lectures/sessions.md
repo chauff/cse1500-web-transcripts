@@ -32,7 +32,7 @@ warning: false
   - [Third-party cookies](#third-party-cookies)
   - [Evercookie](#evercookie)
   - [Browser fingerprinting](#browser-fingerprinting)
-- [Client-side cookies and local storage](#client-side-cookies-and-local-storage)
+- [Client-side cookies and local/session storage](#client-side-cookies-and-localsession-storage)
 - [:bangbang: Sessions](#bangbang-sessions)
 - [Third-party authentication](#third-party-authentication)
   - [OAuth 2.0 roles](#oauth-20-roles)
@@ -415,7 +415,7 @@ Storing small pieces of information **somewhere** in the browser can actually be
 Besides all sorts of client-side storage, it is also possible to collect a relatively stable and unique _fingerprint_ of a particular browser with a few of the browser's web API calls. In this manner, users can be tracked as long as they use the same browser on the same device. One defence against browser fingerprinting is for instance [the randomization of specific browser functions](https://link.springer.com/chapter/10.1007/978-3-319-62105-0_7). This is an active area of security research. This problem is also significant enough, that the W3C has an entire working group dedicated to [mitigating browser fingerprinting in web specifications](https://www.w3.org/TR/fingerprinting-guidance/).
 </optional-info>
 
-## Client-side cookies and local storage
+## Client-side cookies and local/session storage
 
 So far, we have looked at cookies that are created by a server-side application, sent to clients in response to HTTP requests and then returned to the server in subsequent requests.
 We thus have an exchange of information between the client and server. Now, we look at so-called client-side cookies, that are cookies which are created by the client itself and also only used by the client. They are still sent to a server as part of an HTTP request.
@@ -448,7 +448,7 @@ for (let i = 0; i < cookiesArray.length; i++) {
 }
 ```
 
-On the site you are currently reading this transcript, it is possible to highlight pieces of text and add a few notes. You may have noticed that you were not asked to provide a username/password to enable highlighting. If we would have chosen to store those highlights/notes on a server, it would have been necessary to add an authorization step (you probably only want to receive your own notes and highlights!). Here, we store all this information on the client-side only. We could have used cookies for this purpose but there is a more recent solution: [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Local storage persists data on disk and has an intuitive programming interface:
+On the site you are currently reading this transcript, it is possible to highlight pieces of text and add a few notes. You may have noticed that you were not asked to provide a username/password to enable highlighting. If we would have chosen to store those highlights/notes on a server, it would have been necessary to add an authorization step (you probably only want to receive your own notes and highlights!). Here, we store all this information on the client-side only. We could have used cookies for this purpose but there is a more recent solution: [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage). Local storage persists data on disk (without an expiration date) and has an intuitive programming interface. Its storage object can be accessed via `window.localStorage` (or shorter `localStorage` as this refers by default to a property of the `window` object in the browser). The addition and removal of items in local storage is performed as follows: 
 
 ```javascript
 localStorage.setItem("1600637", "Why not use something else?"); //add a data item (key/value must be strings)
@@ -463,6 +463,9 @@ When exploring the local storage (after a few highlights) of our course site, yo
 ![Third-party cookies](../img/sessions-localstorage.png)
 
 <sup>CSE1500 web technology site. Firefox Storage Inspector tab. Screenshot taken September 20, 2020.</sup>
+
+Finally, we discuss session storage, which is also used for client-side data storage. In contrast to local storage, [**session storage**](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) clears the data once the *page session* ends. A new page session is created by the browser each time a browser tab/window is opened. The tab/window closure finishes the page session. Importantly, this page session concept is different from sessions between client and server which we discuss next. The session storage object can be accessed via `window.sessionStorage`. The API is equivalent to the `localStorage` API.
+
 
 ## :bangbang: Sessions
 
