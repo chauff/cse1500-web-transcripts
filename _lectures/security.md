@@ -236,7 +236,7 @@ Injection attacks on the server can take multiple forms, we first consider **OS 
 
 ![OS command injection](../img/security-os-command-injection.png)
 
-<sup>OS command injection.</sup>
+<sup>OS command injection. After the initial HTTP request made by the client, the server returns the resource which contains a signup form (①). The client fills in the form and sends the form entries back to the server (②). The server processes the provided input and sends a response confirming the signup (③). </sup>
 
 :point_up: Here, we have a web portal that allows a user to sign up to a newsletter. The form looks simple enough: one `<input type="text">` element and a `<button>` to submit the form. On the server-side, a bash script takes a fixed confirmation string (stored in file `confirm`) and sends an email to the email address as stated in the user's input (*Thank you for signing up for our mailing list.*). This setup of course assumes, that the user actually used an email address as input. Let's look at benign and malicious user input:
 
