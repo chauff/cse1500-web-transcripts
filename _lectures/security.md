@@ -537,6 +537,8 @@ Not only the application itself needs to be kept up-to-date, the server's operat
 
 In 2018, a vulnerability called [Zip Slip](https://github.com/snyk/zip-slip-vulnerability) was discovered in many open source archiving libraries. The problem arises from missing validation of archives while decompressing. As a result, any compressed archive containing file names with relative paths (e.g., `../file.txt`) went unchecked. This means that during decompression each of those files was placed at its relative address which can be outside the archive directory. Attackers can use this vulnerability to move their own versions of critical libraries to the `/root` folder.
 
+Other examples are the 2014 [Heartbleed bug](https://en.wikipedia.org/wiki/Heartbleed) and the 2021 [Log4j vulnerability](https://en.wikipedia.org/wiki/Log4Shell).
+
 #### :bangbang: Juice Shop
 
 Among the [vulnerable components challenges](https://pwning.owasp-juice.shop/part2/vulnerable-components.html) we cover the _Vulnerable Library_: inform the shop about a vulnerable library it is using.
