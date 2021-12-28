@@ -1607,8 +1607,6 @@ So far, we have largely ignored the fact that in today's **multi-device** world,
 - when **viewing** a web application on a large screen :computer: all available information should be presented side-by-side;
 - when using **text-to-speech** devices :sound:, non-essential information should be removed.
 
-While we do not employ media queries in the board game project, it is still useful to realize how quickly a responsive design can be created.
-
 Our course page looks quite different in small screen vs. large screen devices, i.e. it is responsive :point_down::
 
 ![CSS flags absolute](../img/css-mobile-screen.png)
