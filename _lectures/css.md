@@ -163,6 +163,7 @@ Ideally, we only create two CSS rules and solve the rest (alternate assignment o
 
 In both cases, `X` can be an integer or formula, e.g `2n+1`, where `n` represents a number starting at 0 and incrementing. Element indices start at `1`. Instead of `2n` and `2n+1` we can also use `even` and `odd` as shortcuts. If we want to start counting elements in reverse order, we can use the analogous `:nth-last-child(X)` and `:nth-last-of-type(X)` pseudo-classes.
 
+<optional-info markdown="block">
 If we are aiming at the first and/or last child or sibling element, we also have additional pseudo-classes available to us:
 
 | Pseudo-class     | Equivalent to          |
@@ -171,6 +172,7 @@ If we are aiming at the first and/or last child or sibling element, we also have
 | `:last-child`    | `:nth-last-child(1)`   |
 | `:first-of-type` | `:nth-of-type(1)`      |
 | `:last-of-type`  | `:nth-last-of-type(1)` |
+</optional-info>
 
 Let's see how this looks in a toy example. Lets style a list of five game statistics, each one being held by a `<div>` element. We also add a `<h1>` element for our header (_Game statistics_). Our DOM tree thus looks as follows:
 
