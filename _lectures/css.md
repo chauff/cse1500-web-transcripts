@@ -57,6 +57,8 @@ warning: false
   - [How CSS is structured @MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured)
 - Recommended activities:
   - :tv: Watch [this talk by Rachel Andrew](https://www.youtube.com/watch?v=cYGOv2ToZjY) to learn more about the long (and painful) history of CSS.
+  - :tv: Watch [this talk by Lea Verou](https://www.youtube.com/watch?v=kZOJCVvyF-4) to learn more about CSS variables.
+  - :tv: Watch [this talk by Lea Verou](https://www.youtube.com/watch?v=YsX4uFgyvpk) to learn a few more CSS tricks.
   - :tv: Watch [this talk by Mandy Michael](https://youtu.be/5qgUC_z8syw) on text effects in CSS. Data attributes and pseudo-elements are a powerful combination!
   - :tv: Watch [Una Kravetz](https://www.youtube.com/watch?v=qm0IfG1GyZU) run through 10 modern layouts with just a few lines of CSS grid!
   - :headphones: An entire [podcast series](https://pod.link/thecsspodcast) by Una Kravets and Adam Argyle about CSS exists too!
