@@ -109,6 +109,7 @@ If you want to hear the latest and greatest about the web stack, Twitter is a go
 Here is a list of useful Twitter accounts to follow:
 
 - [Franziska Hinkelmann](https://twitter.com/fhinkel) works on Node.js at Google.
+- [Lea Verou](https://twitter.com/LeaVerou) tweets about all things CSS and the wider web UI world.
 - [Lin Clark](https://twitter.com/linclark) makes (among others) technical challenges accessible to the wider public.
 - [V8](https://twitter.com/v8js) is Google's JavaScript engine.
 - [JavaScript Daily](https://twitter.com/JavaScriptDaily) does exactly what the name suggests.
