@@ -242,7 +242,7 @@ Firefox's developer tools do not only allow us to inspect the CSS, but also to:
 The last point makes for efficient CSS styling: instead of coding, saving and opening your HTML file in the browser, you can prototype your CSS rules directly in the browser. Just do not forget to then copy the new rules to your original CSS file as those changes are lost when the browser tab is closed. In addition, Visual Studio Code has also good code commentary for CSS: it not only flags misspelt properties but also flags rules that are incompatible with each other.
 </debug-info>
 
-### :bangbang: :root
+### :bangbang: CSS variables and :root 
 
 One of the often voiced complaints about CSS used to be the lack of variable support and thus languages that compile into CSS were born, e.g. [Sass](https://sass-lang.com/). If we want to change for instance the color scheme of our course homepage to something like this :point_down::
 
@@ -306,6 +306,8 @@ For our course homepage we developed several themes, before settling on the fina
 <sup>Firefox's Page Inspector panel. Screenshot taken September 8, 2020. The middle pane shows a subset of all global variables defined for our course page styling.</sup>
 
 With those variables defined, we can replace one theme with another by changing the property values of a single CSS file (i.e. the one holding all global variables).
+
+While we can only take a glimpse at CSS variables here, note that they are vital to achieve a separation of concern between style and behaviour. Take a look at [this talk by Lea Verou](https://www.youtube.com/watch?v=kZOJCVvyF-4) to learn more about CSS variables.
 
 ### :bangbang: :hover, :active and :visited
 
