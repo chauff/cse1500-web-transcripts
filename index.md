@@ -7,8 +7,6 @@ warning: true
 Web technology course information <!-- omit in toc -->
 ==
 
-<img align="right" width="150px" src="https://chauff.github.io/img/og_claudia.png">
-
 CSE1500 is the **Web and Database Technology course**, that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/). The materials were developed by [Claudia Hauff](https://chauff.github.io/).
 
 This website contains all materials of the course's web technology part. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in your browser's [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage): this means that no data (highlights/notes) leaves your machine. Be aware though that all this data is deleted when you clear your browser's storage.
