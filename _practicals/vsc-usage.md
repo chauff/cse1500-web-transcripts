@@ -3,6 +3,7 @@ layout: default
 permalink: /vsc/
 linkname: How to use VSC
 ordering: 5
+warning: true
 ---
 
 # :bug: How to use VSC <!-- omit in toc -->

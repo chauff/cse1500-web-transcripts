@@ -3,6 +3,7 @@ layout: default
 permalink: /nodeschool/
 linkname: Nodeschool exercises
 ordering: 6
+warning: true
 ---
 
 # Overview of interactive web programming exercises

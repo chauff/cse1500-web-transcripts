@@ -3,6 +3,7 @@ layout: default
 permalink: /rubric/
 linkname: Assignment rubric
 ordering: 4
+warning: true
 ---
 
 # Rubric web technology assignments <!-- omit in toc -->

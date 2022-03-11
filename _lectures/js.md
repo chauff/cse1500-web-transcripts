@@ -3,7 +3,7 @@ layout: default
 permalink: /js/
 linkname: JavaScript
 ordering: 3
-warning: false
+warning: true
 ---
 
 # JavaScript: the language of browser interactions <!-- omit in toc -->

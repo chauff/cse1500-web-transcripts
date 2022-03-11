@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /
-warning: false
+warning: true
 ---
 
 Web technology course information <!-- omit in toc -->
@@ -9,15 +9,13 @@ Web technology course information <!-- omit in toc -->
 
 <img align="right" width="150px" src="https://chauff.github.io/img/og_claudia.png">
 
-CSE1500 is the **Web and Database Technology course**, that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/). 
-
-The responsible instructor of the web technology part is Associate Prof. [Claudia Hauff](https://chauff.github.io/). Inquiries about the course content, exams and so on should be emailed to `cse1500-ewi["at"]tudelft.nl`; this email reaches all responsible course instructors.
+CSE1500 is the **Web and Database Technology course**, that first-year students of the Bachelor Computer Science and Engineering take at [TU Delft](https://www.tudelft.nl/). The materials were developed by [Claudia Hauff](https://chauff.github.io/).
 
 This website contains all materials of the course's web technology part. With a modern browser, you can use highlighting and note-taking in the browser. All data is stored in your browser's [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage): this means that no data (highlights/notes) leaves your machine. Be aware though that all this data is deleted when you clear your browser's storage.
 
-We cover the following languages: HTTP, HTML, CSS as well as JavaScript on the client and server-side. Our *web application stack* is rather minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
+The following languages are covered: HTTP, HTML, CSS as well as JavaScript on the client and server-side. The *web application stack* is rather minimalistic: it consists of [Node.js](https://nodejs.org/en/), [express](http://expressjs.com/), [axios](https://github.com/axios/axios) and [ws](https://github.com/websockets/ws). 
 
-In the five weeks of the web technology lectures we can only cover the web programming fundamentals and thus chose a small application stack. If you want to get a comprehensive overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
+In the five weeks of the web technology lectures only the web programming fundamentals can be covered. If you want to get a comprehensive overview of the set of languages, technologies and frameworks a frontend or backend web engineer should be familiar with, take a look at the [web developer roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap).
 
 ## Table of contents <!-- omit in toc -->
 - [Book](#book)
@@ -35,19 +33,15 @@ In the five weeks of the web technology lectures we can only cover the web progr
 
 <img align="right" width="150px" src="img/node-book.png">
 
-The book we recommend is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). 
+The book we recommend is [Web Development with Node and Express, 2nd Edition](https://www.oreilly.com/library/view/web-development-with/9781492053507/). It shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in **production settings**. It goes well beyond the course content and includes chapters on code maintenance, quality assurance and how to deploy an application in production. The book already assumes familiarity with basic web programming.
 
-It is not required though&mdash;we do not come close to covering the majority of the book's content. To give you an idea, the book contains 22 content chapters and we include nine of them in our recommended readings list.
-
-The book shows where and how Node.js/Express (two key frameworks we introduce in this course) can be employed in **production settings**. It goes well beyond what you need to know for this class and includes chapters on code maintenance, quality assurance and how to deploy an application in production. The book already assumes familiarity with basic web programming.
-
-**There is no recommended book to introduce HTML, CSS and JavaScript.** Instead, we point you to a number of introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
+**There is no recommended book to introduce HTML, CSS and JavaScript.** Instead, there are pointers to introductory resources that cover the basics of each of these technologies. The lecture materials go beyond those basics.
 
 ## Tooling
 
 ### Recommended
 
-[Visual Studio Code](https://code.visualstudio.com/) (VSC) is our recommended development environment for the assignments. It is a free and open-source Integrated Development Environment (IDE). It is also [the most popular IDE](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment) for developers today. 
+[Visual Studio Code](https://code.visualstudio.com/) (VSC) is the recommended development environment for the assignments. It is a free and open-source Integrated Development Environment (IDE). It is also [the most popular IDE](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment) for developers today. 
 
 ![Visual Studio Code](img/RME-vsc.png)
 
@@ -86,8 +80,6 @@ The web technology topics we cover  are the following:
 - Cookies and sessions
 - Web security
 
-The order may strike you as odd, especially if you are already familiar with the basics of web programming, as often CSS is introduced before JavaScript. We introduce JavaScript as early as possible, to give you the chance to practice it a longer period of time before the exam moment.
-
 ## Web technology assignments
 
 <img align="right" width="150px" src="img/boardgame-ludo.png">
@@ -98,9 +90,10 @@ There are three web technology assignments, each one covering the contents of tw
 - [The second web technology assignment asks you to write client-side and server-side JavaScript code](_practicals/assignment-js-node.md).
 - [The last web technology assignment focuses on server-side JavaScript and CSS](_practicals/assignment-css-node.md).
 
-The three assignments build on each other&mdash;over the course of them you are tasked with implementing a **multi-player board game**. FYI, in previous years, roughly 90% of teams passed the first web assignment, 60% passed the first two and 30% of teams passed all three web assignments.
+The three assignments build on each other&mdash;over the course of them you are tasked with implementing a **multi-player board game**.
 
 **In order to help you get started, we have created a [demo game application](https://github.com/chauff/cse1500-balloons-game).** If you get stuck, take a look at the demo application, it may help you.
+
 ## Web development resources
 
 The practical assignments may require looking up web development specifics. Two good resources for web engineering are [Mozilla's MDN portal](https://developer.mozilla.org/en-US/) and [Google's Web Fundamentals](https://developers.google.com/web/fundamentals/).

@@ -3,6 +3,7 @@ layout: default
 permalink: /exams/
 linkname: Sample exams
 ordering: 7
+warning: true
 ---
 
 # Sample exams
