@@ -1,6 +1,6 @@
 # Web technology course materials
 
-This repository contains the web technology course materials for the CSE1500 Web and Database Technology course at TU Delft. Last updated for the 2021/22 course edition. **There will be no more updates in the future.**
+This repository contains the web technology course materials for the CSE1500 Web and Database Technology course at TU Delft. Last updated for the 2021/22 course edition. **There will be no more updates in the future as I am leaving TU Delft and academia.**
 
 The course page can be found at https://chauff.github.io/cse1500-web-transcripts/.
 
