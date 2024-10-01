@@ -2,8 +2,6 @@
 
 This repository contains the web technology course materials for the CSE1500 Web and Database Technology course at TU Delft. Last updated for the 2021/22 course edition. **There will be no more updates in the future.**
 
-The course page can be found at https://chauff.github.io/cse1500-web-transcripts/.
-
 ## Contributors
 
 Creating such transcripts is not a job for a single person, but a group effort! All contributors to this repository can be found on the [Contributors](https://github.com/chauff/Web-Teaching/graphs/contributors) tab! 
